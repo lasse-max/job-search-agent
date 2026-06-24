@@ -7,6 +7,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
+from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.services.ingest import run_scan
 
 
@@ -103,6 +104,41 @@ class DatabricksSliceTest(unittest.TestCase):
             self.assertEqual(source["health_status"], "healthy")
             self.assertEqual(_count(conn, "job_postings"), 3)
             self.assertEqual(_count(conn, "role_evaluations"), 3)
+
+    def test_evaluation_records_real_config_versions(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+
+            run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            row = conn.execute(
+                """
+                SELECT profile_version_id, location_policy_version_id, prompt_version,
+                       model_version, evaluation_json
+                FROM role_evaluations
+                ORDER BY id
+                LIMIT 1
+                """
+            ).fetchone()
+            evaluation = json.loads(row["evaluation_json"])
+
+            self.assertEqual(row["profile_version_id"], load_candidate_profile().version)
+            self.assertEqual(row["location_policy_version_id"], load_location_policy().version)
+            self.assertEqual(row["prompt_version"], load_scoring_policy().version)
+            self.assertEqual(
+                evaluation["provenance"]["candidate_profile_version"],
+                load_candidate_profile().version,
+            )
+            self.assertEqual(
+                evaluation["provenance"]["location_policy_version"],
+                load_location_policy().version,
+            )
+            self.assertEqual(
+                evaluation["provenance"]["scoring_policy_version"],
+                load_scoring_policy().version,
+            )
 
 
 def _count(conn: sqlite3.Connection, table: str) -> int:

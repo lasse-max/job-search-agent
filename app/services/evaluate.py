@@ -11,50 +11,21 @@ import json
 import re
 import sqlite3
 from dataclasses import dataclass
-from pathlib import Path
 
-from app.config import load_relevance_filter
+from app.config import (
+    CandidateProfileConfig,
+    LocationPolicyConfig,
+    MarketPolicyConfig,
+    ScoringPolicyConfig,
+    load_candidate_profile,
+    load_location_policy,
+    load_relevance_filter,
+    load_scoring_policy,
+)
 from app.models import Alignment, CompanyConfig, Gap, HardBlocker, RoleEvaluation
 
 
 EVALUATOR_VERSION = "uncalibrated_dev_stub_v1"
-
-TECHNICAL_ENGINEERING_TERMS = (
-    "software engineer",
-    "staff engineer",
-    "forward deployed engineer",
-    "full stack",
-    "backend",
-    "machine learning engineer",
-)
-
-PRIMARY_FAMILY_PATTERNS = (
-    r"\bs\s*&\s*o\b",
-    r"\bstrateg\w*\s*(?:&|and)?\s*operations\b",
-    r"\bbusiness operations\b",
-    r"\bbusiness ops\b",
-    r"\bbizops\b",
-    r"\bproduct operations\b",
-    r"\bproduct ops\b",
-    r"\bproduct strateg\w*\b",
-    r"\bgtm\b",
-    r"\bgo-to-market\b",
-    r"\b(?:gtm|sales)\s+s\s*&\s*o\b",
-    r"\bsales strateg\w*\s*(?:&|and)?\s*operations\b",
-    r"\brevenue operations\b",
-    r"\brevenue ops\b",
-    r"\brevops\b",
-    r"\bbusiness transformation\b",
-    r"\bstrategic programs?\b",
-    r"\bprogram(?:me)?\b",
-    r"\bchief of staff\b",
-)
-
-STRETCH_FAMILY_PATTERNS = (
-    r"\bdeployment strategist\b",
-    r"\bforward[- ]deployed strateg\w*\b",
-    r"\bprofessional services operations\b",
-)
 
 
 @dataclass(frozen=True)
@@ -84,6 +55,7 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
     """Keep the slice focused while recording why a posting was skipped."""
 
     filter_config = load_relevance_filter()
+    profile = load_candidate_profile()
     locations = json.loads(row["locations_json"])
     if filter_config.target_location_required and not _matches_target_location(
         locations,
@@ -92,7 +64,10 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
         return RelevanceDecision(False, "non_target_location")
 
     text = _role_text(row)
-    if not _matches_any(text, filter_config.role_family_patterns):
+    role_family_patterns = (
+        profile.primary_role_family_patterns + profile.stretch_role_family_patterns
+    )
+    if not _matches_any(text, role_family_patterns):
         return RelevanceDecision(False, "no_primary_or_stretch_family_signal")
 
     return RelevanceDecision(True, "matched_target_location_and_role_family")
@@ -103,12 +78,15 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
     title_lower = row["title"].lower()
     text = _role_text(row)
     locations = json.loads(row["locations_json"])
-    hard_blockers = _technical_blockers(title_lower)
+    scoring_policy = load_scoring_policy()
+    location_policy = load_location_policy()
+    profile = load_candidate_profile()
+    hard_blockers = _technical_blockers(title_lower, scoring_policy)
 
-    role_family_fit = _role_family_fit(title, row["department"] or "", text)
+    role_family_fit = _role_family_fit(title, row["department"] or "", text, profile)
     evidence_strength = _evidence_strength(text)
-    scope_seniority = _scope_seniority(title, text)
-    gap_manageability = 35 if hard_blockers else _gap_manageability(text)
+    scope_seniority = _scope_seniority(title, text, profile)
+    gap_manageability = 35 if hard_blockers else _gap_manageability(text, scoring_policy)
 
     dimensions = {
         "role_family_fit": role_family_fit,
@@ -116,22 +94,17 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
         "scope_seniority": scope_seniority,
         "gap_manageability": gap_manageability,
     }
-    fit_score = round(
-        role_family_fit * 0.30
-        + evidence_strength * 0.30
-        + scope_seniority * 0.25
-        + gap_manageability * 0.15
-    )
-    feasibility_state, feasibility_reason = _feasibility(locations)
-    is_stretch = _is_stretch_family(title, row["department"] or "", text)
+    fit_score = _weighted_fit_score(dimensions, scoring_policy)
+    feasibility_state, feasibility_reason = _feasibility(locations, location_policy)
+    is_stretch = _is_stretch_family(title, row["department"] or "", text, profile)
     recommendation = _recommendation(
         fit_score,
         feasibility_state,
         company,
         hard_blockers,
         stretch_family=is_stretch,
+        scoring_policy=scoring_policy,
     )
-    policy_version = _config_version("location_policy.yaml", "location_policy_unknown")
 
     return RoleEvaluation(
         role_fit_score=fit_score,
@@ -142,7 +115,7 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
             "reason": "Technical blocker overrides feasibility."
             if hard_blockers
             else feasibility_reason,
-            "policy_version": policy_version,
+            "policy_version": location_policy.version,
         },
         strategic_priority={
             "company_tier": f"tier_{company.tier}",
@@ -150,7 +123,7 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
             "warm_path": company.warm_path,
             "reason": "Tier 1 company with a warm path in the tracker."
             if company.warm_path
-            else f"Tier {company.tier} company from the configured watchlist.",
+            else _strategic_priority_reason(company, profile),
         },
         recommendation=recommendation,
         hard_blockers=hard_blockers,
@@ -160,17 +133,29 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
             f"This Checkpoint B evaluation uses {EVALUATOR_VERSION}, not the final LLM evaluator.",
             "Work authorization must be confirmed against the stored policy before applying.",
         ],
+        provenance={
+            "candidate_profile_version": profile.version,
+            "location_policy_version": location_policy.version,
+            "scoring_policy_version": scoring_policy.version,
+            "evaluator_version": EVALUATOR_VERSION,
+        },
         summary=_summary(title, fit_score, recommendation, hard_blockers),
     )
 
 
-def _role_family_fit(title: str, department: str, text: str) -> int:
+def _role_family_fit(
+    title: str,
+    department: str,
+    text: str,
+    profile: CandidateProfileConfig | None = None,
+) -> int:
+    profile = profile or load_candidate_profile()
     combined = f"{title} {department}".lower()
-    if _is_stretch_family(title, department, text):
+    if _is_stretch_family(title, department, text, profile):
         return 78
-    if _matches_any(combined, PRIMARY_FAMILY_PATTERNS) or _matches_any(
+    if _matches_any(combined, profile.primary_role_family_patterns) or _matches_any(
         text,
-        PRIMARY_FAMILY_PATTERNS,
+        profile.primary_role_family_patterns,
     ):
         return 92
     if "customer success" in text or "account executive" in text:
@@ -194,66 +179,92 @@ def _evidence_strength(text: str) -> int:
     return min(score, 88)
 
 
-def _scope_seniority(title: str, text: str) -> int:
+def _scope_seniority(
+    title: str,
+    text: str,
+    profile: CandidateProfileConfig | None = None,
+) -> int:
+    profile = profile or load_candidate_profile()
     title_lower = title.lower()
-    if "intern" in title_lower:
+    if any(term in title_lower for term in profile.below_level_title_terms):
         return 35
     score = 68
-    if "associate" in title_lower:
-        score -= 4
-    if any(term in title_lower for term in ("senior", "manager", "lead", "strategist")):
+    if any(term in title_lower for term in profile.senior_title_terms):
         score += 10
-    if any(
-        term in text
-        for term in ("executive", "leadership", "own", "drive", "cross-functional")
-    ):
+    if any(term in text for term in profile.scope_signals):
         score += 6
     return min(score, 88)
 
 
-def _gap_manageability(text: str) -> int:
+def _gap_manageability(
+    text: str,
+    scoring_policy: ScoringPolicyConfig | None = None,
+) -> int:
+    scoring_policy = scoring_policy or load_scoring_policy()
+    penalties = scoring_policy.gap_penalties
     score = 78
     if "python" in text or "sql" in text:
-        score -= 8
+        score -= penalties.get("python_or_sql", 0)
     if "technical" in text or "architecture" in text:
-        score -= 8
+        score -= penalties.get("technical_or_architecture", 0)
     if "quota" in text:
-        score -= 18
+        score -= penalties.get("quota", 0)
     return max(score, 45)
 
 
-def _feasibility(locations: list[str]) -> tuple[str, str]:
-    joined = " ".join(locations).lower()
-    if any(place in joined for place in ("sydney", "australia")):
-        return (
-            "viable",
-            "Australia is viable; spouse-visa work eligibility has an estimated "
-            "three-month lead time from arrival.",
+def _weighted_fit_score(
+    dimensions: dict[str, int],
+    scoring_policy: ScoringPolicyConfig | None = None,
+) -> int:
+    scoring_policy = scoring_policy or load_scoring_policy()
+    return round(
+        sum(
+            dimensions[dimension] * weight
+            for dimension, weight in scoring_policy.fit_weights.items()
         )
-    if "london" in joined or "united kingdom" in joined:
-        return (
-            "viable",
-            "UK is viable; Skilled Worker sponsorship is needed but routine for "
-            "German candidates at sponsoring employers.",
-        )
-    if "singapore" in joined:
-        return (
-            "viable",
-            "Singapore is viable with sponsorship; COMPASS is noted but not a down-rank "
-            "in the dev evaluator.",
-        )
-    if "united states" in joined or "california" in joined:
-        return (
-            "sponsorship_required",
-            "US is the high-friction market; require credible sponsorship, transfer path, "
-            "or warm route.",
-        )
-    if any(place in joined for place in ("germany", "munich", "berlin")):
-        return "viable", "EU/Germany authorization is marked high-confidence."
-    return (
-        "uncertain",
-        "Location is not explicitly mapped by the Checkpoint B deterministic policy.",
     )
+
+
+def _feasibility(
+    locations: list[str],
+    location_policy: LocationPolicyConfig | None = None,
+) -> tuple[str, str]:
+    location_policy = location_policy or load_location_policy()
+    joined = " ".join(locations).lower()
+    market = _market_for_location(joined, location_policy)
+    if market is None:
+        return (
+            "uncertain",
+            "Location is not explicitly mapped by the active location policy.",
+        )
+    if market.name == "United States":
+        return "sponsorship_required", market.notes
+    if "blocked" in market.current_authorization:
+        return "blocked", market.notes
+    if market.expected_availability_date:
+        return (
+            "viable",
+            f"{market.notes} Expected availability: {market.expected_availability_date}.",
+        )
+    return "viable", market.notes
+
+
+def _market_for_location(
+    joined_location: str,
+    location_policy: LocationPolicyConfig,
+) -> MarketPolicyConfig | None:
+    market_aliases = {
+        "Australia": ("sydney", "melbourne", "australia"),
+        "UK": ("london", "united kingdom", "uk"),
+        "Singapore": ("singapore",),
+        "United States": ("united states", "california", "new york", "san francisco"),
+        "EU": ("germany", "munich", "berlin", "paris", "amsterdam", "madrid", "europe"),
+    }
+    for market_name, aliases in market_aliases.items():
+        market = location_policy.markets.get(market_name)
+        if market and any(alias in joined_location for alias in aliases):
+            return market
+    return None
 
 
 def _recommendation(
@@ -264,33 +275,60 @@ def _recommendation(
     *,
     stretch_family: bool = False,
     exceptional_upside: bool = False,
+    scoring_policy: ScoringPolicyConfig | None = None,
 ) -> str:
+    scoring_policy = scoring_policy or load_scoring_policy()
+    thresholds = scoring_policy.recommendation_thresholds
     if hard_blockers or feasibility_state == "blocked":
         return "blocked"
 
     if stretch_family:
-        if fit_score >= 70 and company.tier == 1 and (company.warm_path or exceptional_upside):
+        if (
+            fit_score >= thresholds.warm_path_apply_now_min_fit
+            and company.tier == thresholds.stretch_apply_now_tier
+            and (company.warm_path or exceptional_upside)
+        ):
             return "apply_now"
-        if fit_score >= 65:
+        if fit_score >= thresholds.consider_min_fit:
             return "consider"
-        if fit_score >= 50 and company.tier <= 2:
+        if (
+            fit_score >= thresholds.stretch_min_fit
+            and company.tier <= thresholds.max_stretch_tier
+        ):
             return "stretch"
         return "skip"
 
-    if fit_score >= 80 and company.tier <= 2:
+    if (
+        fit_score >= thresholds.apply_now_min_fit
+        and company.tier <= thresholds.max_apply_now_tier
+    ):
         return "apply_now"
-    if fit_score >= 70 and company.tier == 1 and company.warm_path:
+    if (
+        fit_score >= thresholds.warm_path_apply_now_min_fit
+        and company.tier == thresholds.warm_path_apply_now_tier
+        and company.warm_path
+    ):
         return "apply_now"
-    if fit_score >= 65:
+    if fit_score >= thresholds.consider_min_fit:
         return "consider"
-    if fit_score >= 50 and company.tier <= 2:
+    if (
+        fit_score >= thresholds.stretch_min_fit
+        and company.tier <= thresholds.max_stretch_tier
+    ):
         return "stretch"
     return "skip"
 
 
-def _technical_blockers(title_lower: str) -> list[HardBlocker]:
-    if any(term in title_lower for term in TECHNICAL_ENGINEERING_TERMS) or (
-        "engineer" in title_lower and "strategist" not in title_lower
+def _technical_blockers(
+    title_lower: str,
+    scoring_policy: ScoringPolicyConfig | None = None,
+) -> list[HardBlocker]:
+    scoring_policy = scoring_policy or load_scoring_policy()
+    allowed = any(
+        term in title_lower for term in scoring_policy.technical_blocker_allowed_terms
+    )
+    if any(term in title_lower for term in scoring_policy.technical_blocker_terms) or (
+        "engineer" in title_lower and not allowed
     ):
         return [
             HardBlocker(
@@ -304,11 +342,17 @@ def _technical_blockers(title_lower: str) -> list[HardBlocker]:
     return []
 
 
-def _is_stretch_family(title: str, department: str, text: str) -> bool:
+def _is_stretch_family(
+    title: str,
+    department: str,
+    text: str,
+    profile: CandidateProfileConfig | None = None,
+) -> bool:
+    profile = profile or load_candidate_profile()
     combined = f"{title} {department}".lower()
-    return _matches_any(combined, STRETCH_FAMILY_PATTERNS) or _matches_any(
+    return _matches_any(combined, profile.stretch_role_family_patterns) or _matches_any(
         text,
-        STRETCH_FAMILY_PATTERNS,
+        profile.stretch_role_family_patterns,
     )
 
 
@@ -328,17 +372,6 @@ def _matches_target_location(locations: list[str], target_locations: list[str]) 
             if candidate and candidate in haystack:
                 return True
     return False
-
-
-def _config_version(file_name: str, fallback: str) -> str:
-    path = Path(__file__).resolve().parents[2] / "config" / file_name
-    try:
-        for line in path.read_text(encoding="utf-8").splitlines():
-            if line.startswith("version:"):
-                return line.split(":", 1)[1].strip().strip('"')
-    except OSError:
-        pass
-    return fallback
 
 
 def _alignments(title: str, text: str) -> list[Alignment]:
@@ -415,6 +448,13 @@ def _gaps(text: str, hard_blockers: list[HardBlocker]) -> list[Gap]:
             )
         )
     return gaps
+
+
+def _strategic_priority_reason(company: CompanyConfig, profile: CandidateProfileConfig) -> str:
+    brand_rule = str(profile.brand_floor.get("rule") or "")
+    if brand_rule:
+        return f"Tier {company.tier} company from the configured watchlist. {brand_rule}"
+    return f"Tier {company.tier} company from the configured watchlist."
 
 
 def _summary(

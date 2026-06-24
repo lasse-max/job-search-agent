@@ -13,6 +13,15 @@ fit_dimensions:
   gap_manageability:
     weight: 15
     meaning: "Severity of functional, technical, or domain gaps; higher score means more manageable."
+recommendation_thresholds:
+  apply_now_min_fit: 80
+  warm_path_apply_now_min_fit: 70
+  consider_min_fit: 65
+  stretch_min_fit: 50
+  max_apply_now_tier: 2
+  max_stretch_tier: 2
+  warm_path_apply_now_tier: 1
+  stretch_apply_now_tier: 1
 true_blockers:
   - "Posting is closed or unavailable at first discovery."
   - "Mandatory active security/government clearance that the candidate cannot obtain."
@@ -20,6 +29,16 @@ true_blockers:
   - "Production software engineering, production coding, or deep ML engineering is a central duty."
   - "Role is clearly junior based on responsibilities and required experience, not title alone."
   - "Location is genuinely impossible under the current stored policy."
+technical_blocker_terms:
+  - "software engineer"
+  - "staff engineer"
+  - "forward deployed engineer"
+  - "full stack"
+  - "backend"
+  - "machine learning engineer"
+  - "production coding"
+technical_blocker_allowed_terms:
+  - "strategist"
 strong_penalties:
   - "Customer Success/account management without clear strategy ownership."
   - "Quota-carrying sales."
@@ -27,6 +46,10 @@ strong_penalties:
   - "US role with no sponsorship information."
   - "Pure PM role without an implementation/operations angle."
   - "Domain experience requirement not demonstrated by the candidate."
+gap_penalties:
+  python_or_sql: 8
+  technical_or_architecture: 8
+  quota: 18
 recommendation_rules:
   blocked: "Any true blocker."
   apply_now:
@@ -35,4 +58,3 @@ recommendation_rules:
   consider: "Fit 65-79 with manageable feasibility."
   stretch: "Fit 50-64 and Tier 1/2, approved stretch family, or strong warm path."
   skip: "Fit < 50 or severe gap burden without compensating value."
-

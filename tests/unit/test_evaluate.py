@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+from dataclasses import replace
 import json
 import unittest
 
+from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.models import CompanyConfig, HardBlocker
 from app.services.evaluate import (
     _feasibility,
@@ -10,6 +12,7 @@ from app.services.evaluate import (
     _role_family_fit,
     _scope_seniority,
     _technical_blockers,
+    _weighted_fit_score,
     relevance_decision,
 )
 
@@ -122,6 +125,90 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         for locations, expected in cases:
             with self.subTest(locations=locations):
                 self.assertEqual(_feasibility(locations)[0], expected)
+
+    def test_location_policy_reason_is_config_driven(self) -> None:
+        policy = load_location_policy()
+        changed_australia = replace(
+            policy.markets["Australia"],
+            notes="Custom Australia policy note.",
+            expected_availability_date="arrival_plus_6_months",
+        )
+        changed_policy = replace(
+            policy,
+            markets={**policy.markets, "Australia": changed_australia},
+        )
+
+        state, reason = _feasibility(["Sydney, Australia"], changed_policy)
+
+        self.assertEqual(state, "viable")
+        self.assertIn("Custom Australia policy note.", reason)
+        self.assertIn("arrival_plus_6_months", reason)
+
+    def test_scoring_policy_weights_drive_fit_score(self) -> None:
+        policy = load_scoring_policy()
+        dimensions = {
+            "role_family_fit": 100,
+            "evidence_strength": 50,
+            "scope_seniority": 50,
+            "gap_manageability": 50,
+        }
+        family_only_policy = replace(
+            policy,
+            fit_weights={
+                "role_family_fit": 1.0,
+                "evidence_strength": 0.0,
+                "scope_seniority": 0.0,
+                "gap_manageability": 0.0,
+            },
+        )
+
+        self.assertEqual(_weighted_fit_score(dimensions, family_only_policy), 100)
+        self.assertLess(_weighted_fit_score(dimensions, policy), 100)
+
+    def test_recommendation_bands_are_config_driven(self) -> None:
+        policy = load_scoring_policy()
+        higher_apply_thresholds = replace(
+            policy.recommendation_thresholds,
+            apply_now_min_fit=90,
+        )
+        stricter_policy = replace(
+            policy,
+            recommendation_thresholds=higher_apply_thresholds,
+        )
+        company = _company(tier=1)
+
+        self.assertEqual(_recommendation(80, "viable", company, []), "apply_now")
+        self.assertEqual(
+            _recommendation(80, "viable", company, [], scoring_policy=stricter_policy),
+            "consider",
+        )
+
+    def test_candidate_profile_family_patterns_drive_role_fit(self) -> None:
+        profile = load_candidate_profile()
+        narrowed_profile = replace(
+            profile,
+            primary_role_family_patterns=(r"\bchief astronaut\b",),
+            stretch_role_family_patterns=(),
+        )
+
+        self.assertEqual(
+            _role_family_fit(
+                "Strategic Operations Manager",
+                "Business Operations",
+                "lead strategic operations programs",
+                profile,
+            ),
+            92,
+        )
+        self.assertEqual(
+            _role_family_fit(
+                "Strategic Operations Manager",
+                "Business Operations",
+                "lead strategic operations programs",
+                narrowed_profile,
+            ),
+            58,
+        )
 
     def test_associate_strategy_role_is_not_auto_scored_low(self) -> None:
         self.assertEqual(_scope_seniority("Strategy Intern", "strategic operations"), 35)

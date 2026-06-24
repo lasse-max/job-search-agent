@@ -8,10 +8,10 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from app.adapters import parser_version, source_endpoint
+from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 
 
-CONFIG_DIR = Path(__file__).resolve().parents[1] / "config"
 DEV_EVALUATOR_VERSION = "uncalibrated_dev_stub_v1"
 
 SCHEMA = """
@@ -397,9 +397,9 @@ def persist_evaluation(
         """,
         (
             job_posting_id,
-            _config_version("candidate_profile.yaml", DEV_EVALUATOR_VERSION),
-            _config_version("location_policy.yaml", DEV_EVALUATOR_VERSION),
-            DEV_EVALUATOR_VERSION,
+            load_candidate_profile().version,
+            load_location_policy().version,
+            load_scoring_policy().version,
             model_version,
             input_hash,
             json.dumps(evaluation.to_jsonable(), sort_keys=True),
@@ -407,17 +407,6 @@ def persist_evaluation(
         ),
     )
     return cursor.rowcount > 0
-
-
-def _config_version(file_name: str, fallback: str) -> str:
-    path = CONFIG_DIR / file_name
-    try:
-        for line in path.read_text(encoding="utf-8").splitlines():
-            if line.startswith("version:"):
-                return line.split(":", 1)[1].strip().strip('"')
-    except OSError:
-        pass
-    return fallback
 
 
 def record_evaluation_skip(

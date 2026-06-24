@@ -1,6 +1,26 @@
 version: "candidate_profile_v1"
 active: true
 positioning: "Strategy and Operations / Product Operations leader with approximately eight years at Google Devices and Services, two promotions, and experience scaling global commercial operations and transformation programs."
+target_seniority:
+  preferred_levels:
+    - "Manager"
+    - "Senior Manager"
+    - "Lead"
+    - "Principal"
+    - "Senior IC"
+  principle: "Judge level by scope and responsibilities, not by title word alone."
+  in_scope_note: "Associate or Senior Associate on a strategy team at a strong company can be L4-appropriate when the role owns meaningful strategic programs."
+  below_level_rule: "Reject only when responsibilities are materially below roughly eight-year / L4 scope."
+languages:
+  German: "native"
+  English: "professional/fluent"
+brand_floor:
+  rule: "Deprioritize prestige or trajectory step-downs even when role fit and visa are fine."
+  preferred_brands:
+    - "frontier AI labs"
+    - "respected scaled technology companies"
+    - "high-growth companies with clear strategic learning value"
+  exception: "Allow lower-tier companies only for unusually strong role fit or clear strategic learning value."
 core_strengths:
   - "Zero-to-one process and product design"
   - "Cross-functional leadership across Sales, GTM, Finance, Revenue Operations, Controllership, and Engineering"
@@ -33,6 +53,49 @@ approved_stretch_families:
   - "Deployment Strategist"
   - "Forward-Deployed Strategy"
   - "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering"
+role_family_patterns:
+  primary:
+    - "\\bs\\s*&\\s*o\\b"
+    - "\\bstrateg\\w*\\s*(?:&|and)?\\s*operations\\b"
+    - "\\bbusiness operations\\b"
+    - "\\bbusiness ops\\b"
+    - "\\bbizops\\b"
+    - "\\bproduct operations\\b"
+    - "\\bproduct ops\\b"
+    - "\\bproduct strateg\\w*\\b"
+    - "\\bgtm\\b"
+    - "\\bgo-to-market\\b"
+    - "\\b(?:gtm|sales)\\s+s\\s*&\\s*o\\b"
+    - "\\bsales strateg\\w*\\s*(?:&|and)?\\s*operations\\b"
+    - "\\brevenue operations\\b"
+    - "\\brevenue ops\\b"
+    - "\\brevops\\b"
+    - "\\bbusiness transformation\\b"
+    - "\\bstrategic programs?\\b"
+    - "\\bprogram(?:me)?\\b"
+    - "\\bchief of staff\\b"
+  stretch:
+    - "\\bdeployment strategist\\b"
+    - "\\bforward[- ]deployed strateg\\w*\\b"
+    - "\\bprofessional services operations\\b"
+scope_seniority_signals:
+  below_level_title_terms:
+    - "intern"
+  scope_signals:
+    - "executive"
+    - "leadership"
+    - "own"
+    - "drive"
+    - "cross-functional"
+  senior_title_terms:
+    - "senior"
+    - "manager"
+    - "lead"
+    - "strategist"
+    - "principal"
+  ambiguous_title_terms:
+    - "associate"
+    - "senior associate"
 usually_deprioritize:
   - "Customer Success or account management without meaningful strategy or transformation scope"
   - "Pure quota-carrying sales"
@@ -44,4 +107,3 @@ honest_gaps:
   - "Python basic and actively learning"
   - "Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management"
   - "Limited direct consulting brand and classic case-team experience"
-

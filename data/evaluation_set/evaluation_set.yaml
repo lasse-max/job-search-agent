@@ -335,18 +335,18 @@ evaluation_set:
     key_reason: CS function. A GTM Strategy & Operations role at Glean would instead be a consider.
     actual_outcome: n/a
 
-  # ---------- BELOW-LEVEL (good company, junior scope) ----------
+  # ---------- BELOW-LEVEL BY SCOPE, NOT TITLE (good company, junior scope) ----------
   - id: EV-24
     company: Cognition (Devin)
     role_title: GTM Operations Associate
     location: Singapore
     jd_source: https://cognition.ai/careers
-    label: below_level
+    label: below_level_by_scope_not_title
     expected_recommendation: skip
     expected_feasibility: sponsorship_required
     expected_strategic_tier: tier_2
     hard_blockers: []
-    key_reason: Associate scope below an ~8-yr leader. Strong penalty on seniority, not a title block. Real rejection confirms the call.
+    key_reason: Below-level by scope, not title alone; the responsibilities read below an ~8-yr leader. Real rejection confirms the call.
     actual_outcome: Applied — rejected.
 
   - id: EV-25
@@ -354,12 +354,12 @@ evaluation_set:
     role_title: Manager, Revenue Operations
     location: Singapore
     jd_source: https://careers.airwallex.com/
-    label: below_level
+    label: below_level_by_scope_not_title
     expected_recommendation: skip
     expected_feasibility: sponsorship_required
     expected_strategic_tier: tier_2
     hard_blockers: []
-    key_reason: Reads junior in scope despite "Manager" title; same company's Senior Manager Operations Strategy (London) is the right-level bet. Tests title-vs-scope.
+    key_reason: Below-level by scope, not title; reads junior despite "Manager" title. Same company's Senior Manager Operations Strategy (London) is the right-level bet.
     actual_outcome: Applied — rejected.
 
   - id: EV-26

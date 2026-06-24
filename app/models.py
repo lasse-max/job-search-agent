@@ -105,6 +105,7 @@ class RoleEvaluation:
     alignments: list[Alignment] = field(default_factory=list)
     gaps: list[Gap] = field(default_factory=list)
     uncertainties: list[str] = field(default_factory=list)
+    provenance: dict[str, str] = field(default_factory=dict)
     summary: str = ""
 
     def to_jsonable(self) -> dict[str, Any]:
