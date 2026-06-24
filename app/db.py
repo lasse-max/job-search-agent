@@ -7,6 +7,7 @@ import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 
+from app.adapters import parser_version, source_endpoint
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 
 
@@ -153,9 +154,8 @@ def upsert_company(conn: sqlite3.Connection, company: CompanyConfig) -> int:
 
 
 def upsert_source(conn: sqlite3.Connection, company_id: int, company: CompanyConfig) -> int:
-    source_url = (
-        f"https://boards-api.greenhouse.io/v1/boards/{company.source_key}/jobs?content=true"
-    )
+    source_url = source_endpoint(company.ats_type, company.source_key)
+    source_parser_version = parser_version(company.ats_type)
     conn.execute(
         """
         INSERT INTO job_sources (
@@ -166,7 +166,14 @@ def upsert_source(conn: sqlite3.Connection, company_id: int, company: CompanyCon
           source_url=excluded.source_url,
           parser_version=excluded.parser_version
         """,
-        (company_id, company.ats_type, company.source_key, source_url, "greenhouse_v1", "healthy"),
+        (
+            company_id,
+            company.ats_type,
+            company.source_key,
+            source_url,
+            source_parser_version,
+            "healthy",
+        ),
     )
     return int(
         conn.execute(

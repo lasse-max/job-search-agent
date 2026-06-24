@@ -34,6 +34,7 @@ class GreenhouseAdapter:
     """Adapter for `boards-api.greenhouse.io/v1/boards/{token}/jobs`."""
 
     source_type = "greenhouse"
+    parser_version = "greenhouse_v1"
 
     def __init__(self, timeout_seconds: int = 20) -> None:
         self.timeout_seconds = timeout_seconds
@@ -97,6 +98,9 @@ class GreenhouseAdapter:
             response_body=body,
         )
 
+    def identity(self, raw_job: dict[str, Any]) -> str:
+        return str(raw_job["id"])
+
     def health_check(self, result: FetchResult) -> SourceHealth:
         if result.status != "success":
             return SourceHealth("failing", 0, result.error or "fetch failed")
@@ -121,13 +125,15 @@ class GreenhouseAdapter:
         return postings
 
     def _normalize_job(self, job: dict[str, Any], company: CompanyConfig) -> JobPosting:
-        source_job_id = str(job["id"])
+        source_job_id = self.identity(job)
         title = str(job.get("title") or "").strip()
         department = _first_name(job.get("departments"))
         locations = _locations(job)
         raw = json.dumps(job, sort_keys=True)
         raw_hash = hashlib.sha256(raw.encode("utf-8")).hexdigest()
-        requisition_id = str(job.get("requisition_id") or job.get("internal_job_id") or source_job_id)
+        requisition_id = str(
+            job.get("requisition_id") or job.get("internal_job_id") or source_job_id
+        )
         canonical_key = _normal_key(
             "|".join([company.name, title, department or "", requisition_id])
         )

@@ -140,7 +140,7 @@ class DatabricksSliceTest(unittest.TestCase):
             db_path = Path(directory) / "slice.sqlite"
 
             with patch(
-                "app.services.ingest.GreenhouseAdapter.normalize",
+                "app.adapters.greenhouse.GreenhouseAdapter.normalize",
                 side_effect=RuntimeError("normalizer exploded"),
             ):
                 failed = run_scan(db_path=db_path, fixture_path=FIXTURE)

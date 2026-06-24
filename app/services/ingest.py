@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from app.adapters.greenhouse import GreenhouseAdapter
+from app.adapters import get_adapter
 from app.config import DEFAULT_DB_PATH, OUTPUT_DIR, load_company_config
 from app.db import (
     connect,
@@ -47,10 +47,10 @@ def run_scan(
     fixture_path: Path | None = None,
 ) -> ScanSummary:
     company = load_company_config(company_name)
-    if company.ats_type != "greenhouse":
-        raise ValueError("Checkpoint B currently supports the Greenhouse Databricks slice only")
+    if not company.enabled:
+        raise ValueError(f"Company is not enabled for automated scanning: {company.name}")
 
-    adapter = GreenhouseAdapter()
+    adapter = get_adapter(company.ats_type)
     conn = connect(db_path)
     init_db(conn)
     started_at = utc_now()

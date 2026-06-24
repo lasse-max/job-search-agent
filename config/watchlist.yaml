@@ -187,7 +187,7 @@ companies:
     selected_for_initial_coverage: true
   - name: "Mistral AI"
     tier: 1
-    enabled: true
+    enabled: false
     careers_url: "https://jobs.lever.co/mistral"
     current_role_url: null
     ats_type: "lever"
@@ -203,7 +203,7 @@ companies:
     selected_for_initial_coverage: true
   - name: "Palantir"
     tier: 1
-    enabled: true
+    enabled: false
     careers_url: "https://www.palantir.com/careers/"
     current_role_url: null
     ats_type: "lever"
@@ -380,7 +380,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Spotify"
     tier: 2
-    enabled: true
+    enabled: false
     careers_url: "https://www.lifeatspotify.com/jobs"
     current_role_url: null
     ats_type: "lever"
