@@ -255,7 +255,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             "Strategic Operations Manager",
             ["Munich, Germany"],
             department="Strategy & Operations",
-            description="lead strategy operations programs for German-speaking customers",
+            description="lead strategy operations programs for customers; fluent in German required",
         )
 
         base = evaluate_role(base_row, company)
@@ -269,6 +269,44 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         self.assertIn(
             "German is listed in the profile as native.",
             [alignment.candidate_evidence for alignment in german.alignments],
+        )
+
+    def test_english_and_bare_language_mentions_do_not_raise_score(self) -> None:
+        company = _company(target_locations=["Munich / Germany"])
+        base_row = _row(
+            "Strategic Operations Manager",
+            ["Munich, Germany"],
+            department="Strategy & Operations",
+            description="lead strategy operations programs for customers",
+        )
+        english_row = _row(
+            "Strategic Operations Manager",
+            ["Munich, Germany"],
+            department="Strategy & Operations",
+            description="lead strategy operations programs for English-speaking customers",
+        )
+        bare_german_row = _row(
+            "Strategic Operations Manager",
+            ["Munich, Germany"],
+            department="Strategy & Operations",
+            description="lead strategy operations programs for customers in the German market",
+        )
+
+        base = evaluate_role(base_row, company)
+        english = evaluate_role(english_row, company)
+        bare_german = evaluate_role(bare_german_row, company)
+
+        self.assertEqual(
+            english.dimensions["evidence_strength"],
+            base.dimensions["evidence_strength"],
+        )
+        self.assertEqual(
+            bare_german.dimensions["evidence_strength"],
+            base.dimensions["evidence_strength"],
+        )
+        self.assertNotIn(
+            "German is listed in the profile as native.",
+            [alignment.candidate_evidence for alignment in bare_german.alignments],
         )
 
     def test_associate_strategy_role_is_not_auto_scored_low(self) -> None:

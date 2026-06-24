@@ -495,10 +495,12 @@ def _language_match(
     profile: CandidateProfileConfig,
 ) -> tuple[str, str] | None:
     for language, proficiency in profile.languages.items():
+        if language.lower() == "english":
+            continue
         if not _is_profile_language_strength_usable(proficiency):
             continue
-        for signal in _language_signals(language):
-            if signal in text:
+        for pattern in _language_requirement_patterns(language):
+            if re.search(pattern, text, flags=re.IGNORECASE):
                 return language, proficiency
     return None
 
@@ -508,13 +510,18 @@ def _is_profile_language_strength_usable(proficiency: str) -> bool:
     return any(term in normalized for term in ("native", "professional", "fluent"))
 
 
-def _language_signals(language: str) -> tuple[str, ...]:
-    normalized = language.lower()
-    signals = {
-        normalized,
-        f"{normalized}-speaking",
-        f"{normalized} speaking",
-    }
+def _language_requirement_patterns(language: str) -> tuple[str, ...]:
+    normalized = language.lower().strip()
+    language_pattern = r"\s+".join(re.escape(part) for part in normalized.split())
+    patterns = [
+        rf"\b{language_pattern}[-\s]+speaking\b",
+        rf"\bfluent\s+(?:in\s+)?{language_pattern}\b",
+        rf"\b{language_pattern}\s+required\b",
+        rf"\brequires?\s+{language_pattern}\b",
+        rf"\b{language_pattern}\s+language\b",
+        rf"\b(?:native|professional|business)\s+{language_pattern}\b",
+        rf"\bproficiency\s+in\s+{language_pattern}\b",
+    ]
     if normalized == "german":
-        signals.add("deutsch")
-    return tuple(signals)
+        patterns.append(r"\bdeutsch\b")
+    return tuple(patterns)
