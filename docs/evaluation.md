@@ -16,7 +16,7 @@ The benchmark deliberately includes the cases that distinguish encoded judgment 
 
 - **Warm path beats a fit gap** — a Deployment Strategist *stretch* is `apply_now` when there's a warm intro.
 - **Visa blocks a strong role** — a fit bullseye is `blocked` when it's US-only with no sponsorship; a high score must never override a hard blocker.
-- **Brand outweighs fit + free visa** — a role that fits the candidate's transformation work *and* is zero-visa is still `skip` on trajectory. This is the hardest signal to learn.
+- **Brand outweighs fit + free visa** — a role that fits the candidate's transformation work *and* is zero-visa can still be `skip` on trajectory. This signal is surfaced in the profile/benchmark; scoring is deferred to the calibrated LLM evaluator.
 - **Function over title** — the same company's Customer Success role is `skip` while its Partner Operations role is `consider`.
 - **Title vs. scope** — a "Manager, RevOps" with associate-level scope is `below_level_by_scope_not_title`.
 

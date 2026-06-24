@@ -23,7 +23,6 @@ DEFAULT_DB_PATH = DATA_DIR / "job_search_agent.sqlite"
 class RelevanceFilterConfig:
     version: str
     target_location_required: bool
-    role_family_patterns: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -76,7 +75,6 @@ class CandidateProfileConfig:
     stretch_role_family_patterns: tuple[str, ...]
     below_level_title_terms: tuple[str, ...]
     senior_title_terms: tuple[str, ...]
-    ambiguous_title_terms: tuple[str, ...]
     scope_signals: tuple[str, ...]
     languages: dict[str, str]
     brand_floor: dict[str, object]
@@ -253,7 +251,6 @@ def load_candidate_profile(
         stretch_role_family_patterns=_tuple_of_str(role_patterns.get("stretch")),
         below_level_title_terms=_tuple_of_str(scope_signals.get("below_level_title_terms")),
         senior_title_terms=_tuple_of_str(scope_signals.get("senior_title_terms")),
-        ambiguous_title_terms=_tuple_of_str(scope_signals.get("ambiguous_title_terms")),
         scope_signals=_tuple_of_str(scope_signals.get("scope_signals")),
         languages={str(key): str(value) for key, value in languages.items()},
         brand_floor=dict(brand_floor),
@@ -266,8 +263,6 @@ def load_relevance_filter(
 ) -> RelevanceFilterConfig:
     version = "relevance_filter_unknown"
     target_location_required = True
-    role_family_patterns: list[str] = []
-    active_list: str | None = None
 
     for raw_line in path.read_text(encoding="utf-8").splitlines():
         stripped = raw_line.strip()
@@ -275,25 +270,14 @@ def load_relevance_filter(
             continue
         if stripped.startswith("version:"):
             version = str(_parse_scalar(stripped.split(":", 1)[1]))
-            active_list = None
             continue
         if stripped.startswith("target_location_required:"):
             target_location_required = bool(_parse_scalar(stripped.split(":", 1)[1]))
-            active_list = None
             continue
-        if stripped == "role_family_patterns:":
-            active_list = "role_family_patterns"
-            continue
-        if active_list == "role_family_patterns" and stripped.startswith("- "):
-            role_family_patterns.append(str(_parse_scalar(stripped[2:])))
-
-    if not role_family_patterns:
-        raise ValueError(f"No role_family_patterns configured in {path}")
 
     return RelevanceFilterConfig(
         version=version,
         target_location_required=target_location_required,
-        role_family_patterns=tuple(role_family_patterns),
     )
 
 

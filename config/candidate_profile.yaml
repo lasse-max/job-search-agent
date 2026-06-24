@@ -93,9 +93,6 @@ scope_seniority_signals:
     - "lead"
     - "strategist"
     - "principal"
-  ambiguous_title_terms:
-    - "associate"
-    - "senior associate"
 usually_deprioritize:
   - "Customer Success or account management without meaningful strategy or transformation scope"
   - "Pure quota-carrying sales"

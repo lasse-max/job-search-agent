@@ -84,7 +84,7 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
     hard_blockers = _technical_blockers(title_lower, scoring_policy)
 
     role_family_fit = _role_family_fit(title, row["department"] or "", text, profile)
-    evidence_strength = _evidence_strength(text)
+    evidence_strength = _evidence_strength(text, profile)
     scope_seniority = _scope_seniority(title, text, profile)
     gap_manageability = 35 if hard_blockers else _gap_manageability(text, scoring_policy)
 
@@ -123,11 +123,11 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
             "warm_path": company.warm_path,
             "reason": "Tier 1 company with a warm path in the tracker."
             if company.warm_path
-            else _strategic_priority_reason(company, profile),
+            else f"Tier {company.tier} company from the configured watchlist.",
         },
         recommendation=recommendation,
         hard_blockers=hard_blockers,
-        alignments=_alignments(title, text),
+        alignments=_alignments(title, text, profile),
         gaps=_gaps(text, hard_blockers),
         uncertainties=[
             f"This Checkpoint B evaluation uses {EVALUATOR_VERSION}, not the final LLM evaluator.",
@@ -163,7 +163,11 @@ def _role_family_fit(
     return 58
 
 
-def _evidence_strength(text: str) -> int:
+def _evidence_strength(
+    text: str,
+    profile: CandidateProfileConfig | None = None,
+) -> int:
+    profile = profile or load_candidate_profile()
     signals = {
         "stakeholder": 8,
         "cross-functional": 8,
@@ -176,6 +180,8 @@ def _evidence_strength(text: str) -> int:
         "program": 5,
     }
     score = 54 + sum(weight for keyword, weight in signals.items() if keyword in text)
+    if _language_match(text, profile):
+        score += 4
     return min(score, 88)
 
 
@@ -237,16 +243,21 @@ def _feasibility(
             "uncertain",
             "Location is not explicitly mapped by the active location policy.",
         )
-    if market.name == "United States":
-        return "sponsorship_required", market.notes
-    if "blocked" in market.current_authorization:
+    authorization = market.current_authorization.lower()
+    if "blocked" in authorization or "impossible" in authorization:
         return "blocked", market.notes
+    if "not_authorized" in authorization or "high_friction" in authorization:
+        return "sponsorship_required", market.notes
     if market.expected_availability_date:
         return (
             "viable",
             f"{market.notes} Expected availability: {market.expected_availability_date}.",
         )
-    return "viable", market.notes
+    if "authorized" in authorization or "viable" in authorization:
+        return "viable", market.notes
+    if market.sponsorship_required:
+        return "sponsorship_required", market.notes
+    return "uncertain", market.notes
 
 
 def _market_for_location(
@@ -374,7 +385,12 @@ def _matches_target_location(locations: list[str], target_locations: list[str]) 
     return False
 
 
-def _alignments(title: str, text: str) -> list[Alignment]:
+def _alignments(
+    title: str,
+    text: str,
+    profile: CandidateProfileConfig | None = None,
+) -> list[Alignment]:
+    profile = profile or load_candidate_profile()
     alignments = [
         Alignment(
             job_requirement="Lead ambiguous strategy and operations work.",
@@ -406,6 +422,16 @@ def _alignments(title: str, text: str) -> list[Alignment]:
                     "framing through implementation."
                 ),
                 evidence_strength="medium",
+            )
+        )
+    language_match = _language_match(text, profile)
+    if language_match:
+        language, proficiency = language_match
+        alignments.append(
+            Alignment(
+                job_requirement=f"Operate in a {language}-language role context.",
+                candidate_evidence=f"{language} is listed in the profile as {proficiency}.",
+                evidence_strength="strong",
             )
         )
     return alignments
@@ -450,13 +476,6 @@ def _gaps(text: str, hard_blockers: list[HardBlocker]) -> list[Gap]:
     return gaps
 
 
-def _strategic_priority_reason(company: CompanyConfig, profile: CandidateProfileConfig) -> str:
-    brand_rule = str(profile.brand_floor.get("rule") or "")
-    if brand_rule:
-        return f"Tier {company.tier} company from the configured watchlist. {brand_rule}"
-    return f"Tier {company.tier} company from the configured watchlist."
-
-
 def _summary(
     title: str,
     fit_score: int,
@@ -469,3 +488,33 @@ def _summary(
         f"{title} scores {fit_score}/100 with recommendation `{recommendation}` under "
         "the Checkpoint B deterministic evaluator."
     )
+
+
+def _language_match(
+    text: str,
+    profile: CandidateProfileConfig,
+) -> tuple[str, str] | None:
+    for language, proficiency in profile.languages.items():
+        if not _is_profile_language_strength_usable(proficiency):
+            continue
+        for signal in _language_signals(language):
+            if signal in text:
+                return language, proficiency
+    return None
+
+
+def _is_profile_language_strength_usable(proficiency: str) -> bool:
+    normalized = proficiency.lower()
+    return any(term in normalized for term in ("native", "professional", "fluent"))
+
+
+def _language_signals(language: str) -> tuple[str, ...]:
+    normalized = language.lower()
+    signals = {
+        normalized,
+        f"{normalized}-speaking",
+        f"{normalized} speaking",
+    }
+    if normalized == "german":
+        signals.add("deutsch")
+    return tuple(signals)

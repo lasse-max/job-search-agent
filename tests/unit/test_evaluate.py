@@ -7,6 +7,7 @@ import unittest
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.models import CompanyConfig, HardBlocker
 from app.services.evaluate import (
+    evaluate_role,
     _feasibility,
     _recommendation,
     _role_family_fit,
@@ -144,6 +145,38 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         self.assertIn("Custom Australia policy note.", reason)
         self.assertIn("arrival_plus_6_months", reason)
 
+    def test_feasibility_outcome_uses_policy_fields_not_market_name(self) -> None:
+        policy = load_location_policy()
+        us_as_viable = replace(
+            policy.markets["United States"],
+            current_authorization="viable_with_sponsorship",
+            sponsorship_required=True,
+            notes="US edited to viable for this test.",
+        )
+        singapore_as_friction = replace(
+            policy.markets["Singapore"],
+            current_authorization="not_authorized_high_friction",
+            sponsorship_required=True,
+            notes="Singapore edited to friction for this test.",
+        )
+        changed_policy = replace(
+            policy,
+            markets={
+                **policy.markets,
+                "United States": us_as_viable,
+                "Singapore": singapore_as_friction,
+            },
+        )
+
+        self.assertEqual(
+            _feasibility(["San Francisco, California, United States"], changed_policy)[0],
+            "viable",
+        )
+        self.assertEqual(
+            _feasibility(["Singapore"], changed_policy)[0],
+            "sponsorship_required",
+        )
+
     def test_scoring_policy_weights_drive_fit_score(self) -> None:
         policy = load_scoring_policy()
         dimensions = {
@@ -208,6 +241,34 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
                 narrowed_profile,
             ),
             58,
+        )
+
+    def test_profile_language_match_raises_score_and_alignment_strength(self) -> None:
+        company = _company(target_locations=["Munich / Germany"])
+        base_row = _row(
+            "Strategic Operations Manager",
+            ["Munich, Germany"],
+            department="Strategy & Operations",
+            description="lead strategy operations programs for customers",
+        )
+        german_row = _row(
+            "Strategic Operations Manager",
+            ["Munich, Germany"],
+            department="Strategy & Operations",
+            description="lead strategy operations programs for German-speaking customers",
+        )
+
+        base = evaluate_role(base_row, company)
+        german = evaluate_role(german_row, company)
+
+        self.assertGreater(
+            german.dimensions["evidence_strength"],
+            base.dimensions["evidence_strength"],
+        )
+        self.assertGreater(german.role_fit_score, base.role_fit_score)
+        self.assertIn(
+            "German is listed in the profile as native.",
+            [alignment.candidate_evidence for alignment in german.alignments],
         )
 
     def test_associate_strategy_role_is_not_auto_scored_low(self) -> None:

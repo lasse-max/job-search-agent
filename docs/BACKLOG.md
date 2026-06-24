@@ -13,3 +13,4 @@ Living backlog. Deferred with a reason; pulled in when it earns priority. (Team 
 | B-09 | **Scope README to implemented commands (review m4).** | Documentation polish; current pass is limited to review-blocking behavior. | Before the next checkpoint handoff. |
 | B-11 | **Repository boundary + first migration (review m3).** | Structural boundary work is useful, but would expand this fix pass beyond the approved slice. | First persistence refactor / Stage 2 migration prep. |
 | B-12 | **Pydantic schema validation for evaluator outputs (review m2).** | Lands naturally with the LLM evaluator, where schema enforcement matters most. | Checkpoint C LLM evaluator. |
+| B-13 | **Wire `brand_floor` as a scoring/recommendation input with the LLM evaluator.** | The deterministic dev evaluator already uses company tier; nuanced prestige/trajectory floors are better judged with semantic context and calibrated examples. | When the LLM evaluator replaces the dev stub. |
