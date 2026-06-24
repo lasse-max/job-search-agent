@@ -1,0 +1,15 @@
+Cached JD snapshot for EV-01
+Source URL: https://openai.com/careers/sales-strategy-and-operations-anz-sydney-australia/
+Fetch status: fetch_failed: HTTPStatusError: Client error '403 Forbidden' for url 'https://openai.com/careers/sales-strategy-and-operations-anz-sydney-australia/'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Company: OpenAI
+Role title: Sales Strategy and Operations, ANZ
+Location: Sydney
+
+Cached fallback snapshot because the public source page could not be converted into stable offline JD text.
+Fetch status: fetch_failed: HTTPStatusError: Client error '403 Forbidden' for url 'https://openai.com/careers/sales-strategy-and-operations-anz-sydney-australia/'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+Company: OpenAI
+Role title: Sales Strategy and Operations, ANZ
+Location: Sydney
+Role context: Frontier-AI brand; clean GTM S&O lane; Sydney = partner-visa, no sponsorship. Top priority despite competitive bar.

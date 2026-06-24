@@ -22,7 +22,7 @@ from app.services.evaluate import (
 FIT_EDGES = (49, 50, 64, 65, 79, 80)
 CORE_COLD = ("skip", "stretch", "stretch", "consider", "consider", "apply_now")
 CORE_WARM = ("skip", "stretch", "stretch", "consider", "apply_now", "apply_now")
-TIER3_CORE = ("skip", "skip", "skip", "consider", "consider", "consider")
+TIER3_CORE = ("skip", "skip", "skip", "skip", "skip", "skip")
 STRETCH_COLD = ("skip", "stretch", "stretch", "consider", "consider", "consider")
 STRETCH_WARM = ("skip", "stretch", "stretch", "consider", "apply_now", "apply_now")
 BLOCKED = ("blocked", "blocked", "blocked", "blocked", "blocked", "blocked")
@@ -88,6 +88,60 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         blocker = HardBlocker(type="technical_role", evidence="Engineering is central.")
 
         self.assertEqual(_recommendation(80, "viable", company, [blocker]), "blocked")
+
+    def test_us_without_warm_path_blocks_but_warm_path_softens(self) -> None:
+        row = _row(
+            "Principal Strategy and Operations",
+            ["San Mateo (US)"],
+            department="Strategy & Operations",
+            description="lead strategy operations programs",
+        )
+
+        cold = evaluate_role(row, _company(tier=2, warm_path=False))
+        warm = evaluate_role(row, _company(tier=3, warm_path=True))
+
+        self.assertEqual(cold.recommendation, "blocked")
+        self.assertEqual(cold.feasibility["state"], "blocked")
+        self.assertIn(
+            "location_work_authorization",
+            [blocker.type for blocker in cold.hard_blockers],
+        )
+        self.assertEqual(warm.feasibility["state"], "sponsorship_required")
+        self.assertEqual(warm.recommendation, "stretch")
+
+    def test_security_clearance_and_technical_pm_depth_block(self) -> None:
+        clearance = evaluate_role(
+            _row(
+                "Deployment Strategist",
+                ["London, United Kingdom"],
+                department="Professional Services Operations",
+                description="requires SC clearance and continuous UK residency",
+            ),
+            _company(tier=2),
+        )
+        technical_pm = evaluate_role(
+            _row(
+                "Product Manager, Payments",
+                ["London, United Kingdom"],
+                department="Product",
+                description=(
+                    "requires product management experience, technical specifications, "
+                    "experimentation, and engineering to design scalable solutions"
+                ),
+            ),
+            _company(tier=2),
+        )
+
+        self.assertEqual(clearance.recommendation, "blocked")
+        self.assertIn(
+            "security_clearance",
+            [blocker.type for blocker in clearance.hard_blockers],
+        )
+        self.assertEqual(technical_pm.recommendation, "blocked")
+        self.assertIn(
+            "technical_pm_depth",
+            [blocker.type for blocker in technical_pm.hard_blockers],
+        )
 
     def test_engineering_blocker_triggers_but_strategy_titles_are_allowed(self) -> None:
         blocked_titles = (

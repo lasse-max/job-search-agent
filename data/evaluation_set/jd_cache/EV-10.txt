@@ -1,0 +1,15 @@
+Cached JD snapshot for EV-10
+Source URL: https://www.personio.com/about-personio/careers/
+Fetch status: fetch_failed: HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.personio.com/about-personio/careers/'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+Company: Personio
+Role title: Senior Revenue Operations & Strategy Manager
+Location: Munich
+
+Cached fallback snapshot because the public source page could not be converted into stable offline JD text.
+Fetch status: fetch_failed: HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.personio.com/about-personio/careers/'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+Company: Personio
+Role title: Senior Revenue Operations & Strategy Manager
+Location: Munich
+Role context: Direct RevOps/S&O hit at a credible EU SaaS; zero visa friction (German citizen).

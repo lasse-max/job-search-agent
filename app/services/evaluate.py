@@ -74,7 +74,14 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
     scoring_policy = load_scoring_policy()
     location_policy = load_location_policy()
     profile = load_candidate_profile()
-    hard_blockers = _technical_blockers(title_lower, scoring_policy)
+    hard_blockers = _hard_blockers(
+        title_lower,
+        text,
+        locations,
+        company,
+        scoring_policy,
+        location_policy,
+    )
 
     role_family_fit = _role_family_fit(title, row["department"] or "", text, profile)
     evidence_strength = _evidence_strength(text, profile)
@@ -144,6 +151,13 @@ def _role_family_fit(
 ) -> int:
     profile = profile or load_candidate_profile()
     combined = f"{title} {department}".lower()
+    title_lower = title.lower()
+    if _is_customer_success_function(combined):
+        return 35
+    if _is_junior_scope_title(title_lower) and not _has_clear_senior_scope(text, profile):
+        return 15
+    if _is_plain_revenue_ops_manager(title_lower):
+        return 30
     if _is_stretch_family(title, department, text, profile):
         return 78
     if _matches_any(combined, profile.primary_role_family_patterns) or _matches_any(
@@ -187,10 +201,16 @@ def _scope_seniority(
     title_lower = title.lower()
     if any(term in title_lower for term in profile.below_level_title_terms):
         return 35
+    if _is_plain_revenue_ops_manager(title_lower) and not _has_clear_senior_scope(text, profile):
+        return 50
+    if "analyst" in title_lower and not _has_clear_senior_scope(text, profile):
+        return 42
+    if "associate" in title_lower and not _has_clear_senior_scope(text, profile):
+        return 42
     score = 68
     if any(term in title_lower for term in profile.senior_title_terms):
         score += 10
-    if any(term in text for term in profile.scope_signals):
+    if _has_clear_senior_scope(text, profile):
         score += 6
     return min(score, 88)
 
@@ -202,10 +222,21 @@ def _gap_manageability(
     scoring_policy = scoring_policy or load_scoring_policy()
     penalties = scoring_policy.gap_penalties
     score = 78
+    leading_text = text[:160]
+    if _is_junior_scope_title(leading_text):
+        score -= penalties.get("junior_scope_title", 0)
+    if _is_plain_revenue_ops_manager(leading_text):
+        score -= penalties.get("plain_revenue_ops", 0)
+    if _is_customer_success_function(text):
+        score -= penalties.get("customer_success", 0)
     if "python" in text or "sql" in text:
         score -= penalties.get("python_or_sql", 0)
     if "technical" in text or "architecture" in text:
         score -= penalties.get("technical_or_architecture", 0)
+    if _technical_pm_depth("", text):
+        score -= penalties.get("technical_pm_depth", 0)
+    if _partnership_domain_gap(text):
+        score -= penalties.get("partnership_domain_gap", 0)
     if "quota" in text:
         score -= penalties.get("quota", 0)
     return max(score, 45)
@@ -261,7 +292,15 @@ def _market_for_location(
         "Australia": ("sydney", "melbourne", "australia"),
         "UK": ("london", "united kingdom", "uk"),
         "Singapore": ("singapore",),
-        "United States": ("united states", "california", "new york", "san francisco"),
+        "United States": (
+            "united states",
+            "california",
+            "new york",
+            "san francisco",
+            "san mateo",
+            "glendale",
+            "(us)",
+        ),
         "EU": ("germany", "munich", "berlin", "paris", "amsterdam", "madrid", "europe"),
     }
     for market_name, aliases in market_aliases.items():
@@ -285,6 +324,10 @@ def _recommendation(
     thresholds = scoring_policy.recommendation_thresholds
     if hard_blockers or feasibility_state == "blocked":
         return "blocked"
+    if company.tier >= 3:
+        if company.warm_path and fit_score >= thresholds.stretch_min_fit:
+            return "stretch"
+        return "skip"
 
     if stretch_family:
         if (
@@ -323,6 +366,41 @@ def _recommendation(
     return "skip"
 
 
+def _hard_blockers(
+    title_lower: str,
+    text: str,
+    locations: list[str],
+    company: CompanyConfig,
+    scoring_policy: ScoringPolicyConfig,
+    location_policy: LocationPolicyConfig,
+) -> list[HardBlocker]:
+    blockers = list(_technical_blockers(title_lower, scoring_policy))
+    if _technical_pm_depth(title_lower, text):
+        blockers.append(
+            HardBlocker(
+                type="technical_pm_depth",
+                evidence=(
+                    "Role is a native product-management lane with technical/product "
+                    "specification depth beyond the candidate's current anchor."
+                ),
+            )
+        )
+    if _security_clearance_required(text, company):
+        blockers.append(
+            HardBlocker(
+                type="security_clearance",
+                evidence=(
+                    "Posting appears to require government/security clearance that "
+                    "the candidate should not assume they can satisfy."
+                ),
+            )
+        )
+    work_authorization = _work_authorization_blocker(locations, company, location_policy)
+    if work_authorization is not None:
+        blockers.append(work_authorization)
+    return blockers
+
+
 def _technical_blockers(
     title_lower: str,
     scoring_policy: ScoringPolicyConfig | None = None,
@@ -344,6 +422,116 @@ def _technical_blockers(
             )
         ]
     return []
+
+
+def _work_authorization_blocker(
+    locations: list[str],
+    company: CompanyConfig,
+    location_policy: LocationPolicyConfig,
+) -> HardBlocker | None:
+    joined = " ".join(locations).lower()
+    market = _market_for_location(joined, location_policy)
+    if market is None or company.warm_path:
+        return None
+    authorization = market.current_authorization.lower()
+    if market.sponsorship_required and (
+        "not_authorized" in authorization or "high_friction" in authorization
+    ):
+        return HardBlocker(
+            type="location_work_authorization",
+            evidence=(
+                f"{market.name} role requires a credible sponsorship, transfer, or "
+                "warm-route path under the stored location policy."
+            ),
+        )
+    return None
+
+
+def _security_clearance_required(text: str, company: CompanyConfig) -> bool:
+    if company.name.lower() == "arondite":
+        return True
+    return bool(
+        re.search(
+            r"\b(?:security|sc|dv)\s+clearance\b|developed vetting|continuous uk residency",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _technical_pm_depth(title_lower: str, text: str) -> bool:
+    leading_text = text[:160]
+    if title_lower:
+        is_product_manager = "product manager" in title_lower
+    else:
+        is_product_manager = "product manager" in leading_text
+    if not is_product_manager:
+        return False
+    depth_signals = (
+        "product management experience",
+        "technical specifications",
+        "implementation details",
+        "engage with engineering",
+        "engineering to design",
+        "experimentation",
+        "a/b testing",
+        "sdlc",
+    )
+    return sum(1 for signal in depth_signals if signal in text) >= 2
+
+
+def _is_customer_success_function(text: str) -> bool:
+    return bool(
+        re.search(
+            r"\bcustomer success\b|\baccount management\b|\brenewals?\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _is_junior_scope_title(title_lower: str) -> bool:
+    return "analyst" in title_lower or "associate" in title_lower
+
+
+def _is_plain_revenue_ops_manager(title_lower: str) -> bool:
+    return (
+        "revenue operations" in title_lower
+        and "strategy" not in title_lower
+        and "senior" not in title_lower
+        and "lead" not in title_lower
+    )
+
+
+def _has_clear_senior_scope(
+    text: str,
+    profile: CandidateProfileConfig,
+) -> bool:
+    if not any(term in text for term in profile.scope_signals):
+        return False
+    return bool(
+        re.search(
+            (
+                r"\bown(?:s|ing)?\b.{0,80}\b(?:program|strategy|roadmap|portfolio|workstream)\b"
+                r"|\bdrive\b.{0,80}\b(?:executive|cross-functional|strategic|program|transformation)\b"
+                r"|\bexecutive\b.{0,80}\b(?:rhythm|stakeholder|leadership|reporting)\b"
+                r"|\blead\b.{0,80}\b(?:cross-functional|strategic|program|transformation)\b"
+                r"|\bcross-functional\b.{0,80}\b(?:leadership|strategy|program|execution)\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _partnership_domain_gap(text: str) -> bool:
+    return bool(
+        re.search(
+            r"\bglobal partnerships?\b|\bcard networks?\b|\bbanking\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
 
 
 def _is_stretch_family(
@@ -432,13 +620,14 @@ def _alignments(
 
 def _gaps(text: str, hard_blockers: list[HardBlocker]) -> list[Gap]:
     if hard_blockers:
+        blocker_types = ", ".join(blocker.type for blocker in hard_blockers)
         return [
             Gap(
-                gap="Production engineering appears central to the role.",
+                gap=f"Hard blocker detected: {blocker_types}.",
                 severity="high",
                 mitigation=(
-                    "Do not pursue unless the posting is actually strategy-led rather "
-                    "than engineering-led."
+                    "Do not pursue unless the blocker is disproven by current source "
+                    "or owner context."
                 ),
             )
         ]
@@ -476,7 +665,8 @@ def _summary(
     hard_blockers: list[HardBlocker],
 ) -> str:
     if hard_blockers:
-        return f"{title} is blocked because engineering appears central, despite company fit."
+        blocker_types = ", ".join(blocker.type for blocker in hard_blockers)
+        return f"{title} is blocked because of: {blocker_types}."
     return (
         f"{title} scores {fit_score}/100 with recommendation `{recommendation}` under "
         "the Checkpoint B deterministic evaluator."

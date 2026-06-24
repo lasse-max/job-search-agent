@@ -9,6 +9,13 @@ from pathlib import Path
 
 from app.config import DEFAULT_DB_PATH, OUTPUT_DIR
 from app.db import connect, init_db
+from app.services.benchmark import (
+    DEFAULT_EVALUATION_SET,
+    DEFAULT_JD_CACHE_DIR,
+    DEFAULT_REPORT_DIR,
+    refresh_jd_cache,
+    run_benchmark,
+)
 from app.services.export_csv import backup_sqlite, export_csvs
 from app.services.ingest import run_scan
 from app.services.manual_intake import add_text_intake, add_url_intake, read_text_input
@@ -74,6 +81,21 @@ def main(argv: list[str] | None = None) -> int:
     backup_parser = subparsers.add_parser("backup", help="Write a SQLite backup copy")
     backup_parser.add_argument("destination", type=Path)
     backup_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+
+    benchmark_parser = subparsers.add_parser("benchmark", help="Run offline evaluator benchmark")
+    benchmark_parser.add_argument("--evaluation-set", type=Path, default=DEFAULT_EVALUATION_SET)
+    benchmark_parser.add_argument("--cache-dir", type=Path, default=DEFAULT_JD_CACHE_DIR)
+    benchmark_parser.add_argument("--out", type=Path, default=DEFAULT_REPORT_DIR)
+    benchmark_parser.add_argument(
+        "--refresh-cache",
+        action="store_true",
+        help="Fetch/update cached JD snapshots before running the offline benchmark",
+    )
+    benchmark_parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Re-fetch cache files even when they already exist",
+    )
 
     subparsers.add_parser("stage0-status", help="Show the current stage boundary")
 
@@ -187,6 +209,30 @@ def main(argv: list[str] | None = None) -> int:
         path = backup_sqlite(conn, args.destination)
         print(f"backup={path}")
         return 0
+
+    if args.command == "benchmark":
+        if args.refresh_cache:
+            written = refresh_jd_cache(
+                evaluation_set_path=args.evaluation_set,
+                cache_dir=args.cache_dir,
+                force=args.force_refresh,
+            )
+            print(f"cache_written={len(written)}")
+        run = run_benchmark(
+            evaluation_set_path=args.evaluation_set,
+            cache_dir=args.cache_dir,
+            report_dir=args.out,
+        )
+        metrics = run.metrics
+        print(f"roles={metrics.total_roles}")
+        print(f"apply_consider_recall={metrics.apply_consider_recall:.3f}")
+        print(f"digest_precision={metrics.digest_precision:.3f}")
+        print(f"blocker_accuracy={metrics.blocker_accuracy:.3f}")
+        print(f"fit_band_agreement={metrics.fit_band_agreement:.3f}")
+        print(f"feasibility_correctness={metrics.feasibility_correctness:.3f}")
+        print(f"report_markdown={run.markdown_path}")
+        print(f"report_csv={run.csv_path}")
+        return 0 if metrics.recall_passes else 1
 
     parser.error("unknown command")
     return 2

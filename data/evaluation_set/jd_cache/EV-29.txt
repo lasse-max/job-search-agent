@@ -1,0 +1,15 @@
+Cached JD snapshot for EV-29
+Source URL: https://careers.roblox.com/jobs/7441863
+Fetch status: fetch_failed: HTTPStatusError: Client error '404 Not Found' for url 'https://careers.roblox.com/jobs/7441863'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+Company: Roblox
+Role title: Lead, Strategic Initiatives
+Location: San Mateo (US)
+
+Cached fallback snapshot because the public source page could not be converted into stable offline JD text.
+Fetch status: fetch_failed: HTTPStatusError: Client error '404 Not Found' for url 'https://careers.roblox.com/jobs/7441863'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+Company: Roblox
+Role title: Lead, Strategic Initiatives
+Location: San Mateo (US)
+Role context: US role but candidate has a warm internal referral — warm_path softens (do not hard-block); still high friction. Tests warm_path vs US-friction interaction.

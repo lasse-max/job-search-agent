@@ -1,0 +1,15 @@
+Cached JD snapshot for EV-22
+Source URL: https://www.harvey.ai/company/careers
+Fetch status: fetch_failed: HTTPStatusError: Client error '404 Not Found' for url 'https://www.harvey.ai/company/careers'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+Company: Harvey
+Role title: Majors Customer Success Manager
+Location: London
+
+Cached fallback snapshot because the public source page could not be converted into stable offline JD text.
+Fetch status: fetch_failed: HTTPStatusError: Client error '404 Not Found' for url 'https://www.harvey.ai/company/careers'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+Company: Harvey
+Role title: Majors Customer Success Manager
+Location: London
+Role context: CS role. NOTE Harvey's Partner Operations Manager (EMEA) WOULD be a clean fit — same company, different function. Tests function-level discrimination.

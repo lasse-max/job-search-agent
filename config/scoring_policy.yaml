@@ -47,8 +47,13 @@ strong_penalties:
   - "Pure PM role without an implementation/operations angle."
   - "Domain experience requirement not demonstrated by the candidate."
 gap_penalties:
+  junior_scope_title: 25
+  plain_revenue_ops: 25
+  customer_success: 25
   python_or_sql: 8
   technical_or_architecture: 8
+  technical_pm_depth: 18
+  partnership_domain_gap: 16
   quota: 18
 recommendation_rules:
   blocked: "Any true blocker."

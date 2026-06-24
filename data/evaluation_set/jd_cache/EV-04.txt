@@ -1,0 +1,15 @@
+Cached JD snapshot for EV-04
+Source URL: https://www.uber.com/global/en/careers/
+Fetch status: fetch_failed: HTTPStatusError: Client error '406 Not Acceptable' for url 'https://www.uber.com/global/en/careers/'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406
+Company: Uber
+Role title: Senior Strategy & Operations Manager
+Location: Sydney
+
+Cached fallback snapshot because the public source page could not be converted into stable offline JD text.
+Fetch status: fetch_failed: HTTPStatusError: Client error '406 Not Acceptable' for url 'https://www.uber.com/global/en/careers/'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406
+Company: Uber
+Role title: Senior Strategy & Operations Manager
+Location: Sydney
+Role context: Gold-standard S&O brand; Senior level matches seniority; marketplace domain is learnable, not a blocker. Analytics-heavy loop.
