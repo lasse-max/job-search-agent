@@ -21,6 +21,7 @@ from app.services.review import (
     show_review,
     snooze_review,
 )
+from app.services.scheduled_scan import run_scheduled_scan
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -31,6 +32,9 @@ def main(argv: list[str] | None = None) -> int:
     scan_parser.add_argument("--company", default="Databricks")
     scan_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
     scan_parser.add_argument("--fixture", type=Path, help="Use a local adapter fixture")
+
+    scan_all_parser = subparsers.add_parser("scan-all", help="Run all enabled source scans")
+    scan_all_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
 
     review_parser = subparsers.add_parser("review", help="Inspect new evaluated opportunities")
     review_subparsers = review_parser.add_subparsers(dest="review_command", required=True)
@@ -96,6 +100,24 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         return 0
 
+    if args.command == "scan-all":
+        result = run_scheduled_scan(db_path=args.db)
+        print(f"status={result.status}")
+        print(f"scanned={len(result.summaries)}")
+        print(f"skipped={len(result.skipped)}")
+        for skipped in result.skipped:
+            print(f"skip={skipped}")
+        for summary in result.summaries:
+            print(
+                f"source={summary.company} {summary.status} fetched={summary.fetched_count} "
+                f"new={summary.new_count} changed={summary.changed_count}"
+            )
+            if summary.error_summary:
+                print(f"source_error={summary.company}: {summary.error_summary}")
+        for failure in result.failures:
+            print(f"failure={failure}")
+        return 0 if result.status == "success" else 1
+
     if args.command == "review":
         conn = connect(args.db)
         init_db(conn)
@@ -125,7 +147,11 @@ def main(argv: list[str] | None = None) -> int:
             return 1
 
     if args.command == "add-url":
-        result = add_url_intake(args.url, db_path=args.db)
+        try:
+            result = add_url_intake(args.url, db_path=args.db)
+        except ValueError as exc:
+            print(str(exc))
+            return 1
         print(result.message)
         if result.job_id is not None:
             print(f"job_id={result.job_id}")

@@ -9,12 +9,15 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
+from app.adapters import get_adapter
 from app.cli import main
+from app.models import CompanyConfig
 from app.services.manual_intake import (
     ManualExtractionError,
     add_text_intake,
     add_url_intake,
 )
+from app.services.scheduled_scan import run_scheduled_scan
 
 
 JOB_TEXT = """Company: ExampleCo
@@ -145,6 +148,16 @@ class OperabilityTest(unittest.TestCase):
             self.assertEqual(row["status"], "needs_text")
             self.assertEqual(_count(conn, "job_postings"), 0)
 
+    def test_add_url_rejects_non_http_schemes_before_fetching(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+
+            with patch("app.services.manual_intake.fetch_url_text") as fetch:
+                with self.assertRaises(ValueError):
+                    add_url_intake("file:///tmp/job.html", db_path=db_path)
+
+            fetch.assert_not_called()
+
     def test_exports_and_backup_are_readable(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
@@ -175,6 +188,34 @@ class OperabilityTest(unittest.TestCase):
 
             backup = sqlite3.connect(backup_path)
             self.assertEqual(_count(backup, "job_postings"), 1)
+
+    def test_scheduler_skips_manual_sources_and_manual_adapter_is_intake_only(self) -> None:
+        manual_company = CompanyConfig(
+            name="ManualCo",
+            tier=3,
+            enabled=True,
+            ats_type="manual",
+            source_key="manualco",
+            careers_url="manual:text",
+            target_locations=["Manual / Unknown"],
+            target_role_family_notes="Manual intake",
+            warm_path=False,
+        )
+
+        result = run_scheduled_scan(companies=[manual_company])
+
+        self.assertEqual(result.status, "success")
+        self.assertEqual(result.summaries, [])
+        self.assertEqual(result.skipped, ["ManualCo: manual sources are intake-only"])
+        with self.assertRaisesRegex(ValueError, "intake-only"):
+            get_adapter("manual")
+
+    def test_scan_workflow_runs_every_six_hours_and_supports_manual_dispatch(self) -> None:
+        workflow = Path(".github/workflows/scan.yml").read_text(encoding="utf-8")
+
+        self.assertIn('cron: "0 */6 * * *"', workflow)
+        self.assertIn("workflow_dispatch:", workflow)
+        self.assertIn("job-agent scan-all", workflow)
 
 
 def _add_job(db_path: Path) -> int:

@@ -7,6 +7,7 @@ import re
 import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlparse
 
 import httpx
 
@@ -91,6 +92,7 @@ def add_url_intake(
     *,
     db_path: Path = DEFAULT_DB_PATH,
 ) -> ManualIntakeResult:
+    _validate_http_url(url)
     conn = connect(db_path)
     init_db(conn)
     try:
@@ -124,6 +126,12 @@ def fetch_url_text(url: str) -> str:
     if len(extracted) < MIN_EXTRACTED_TEXT_LENGTH:
         raise ManualExtractionError("url_extraction_too_short")
     return extracted
+
+
+def _validate_http_url(url: str) -> None:
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        raise ValueError("add-url only supports http(s) URLs")
 
 
 def read_text_input(path_or_dash: str) -> str:

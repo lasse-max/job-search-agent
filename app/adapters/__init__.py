@@ -16,6 +16,8 @@ def get_adapter(ats_type: str) -> SourceAdapter:
         return AshbyAdapter()
     if ats_type == LeverAdapter.source_type:
         return LeverAdapter()
+    if ats_type == ManualAdapter.source_type:
+        raise ValueError("Manual sources are intake-only and cannot be auto-scanned")
     raise ValueError(f"Unsupported ATS adapter: {ats_type}")
 
 
