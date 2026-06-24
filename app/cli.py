@@ -1,4 +1,4 @@
-"""Command-line interface for the Checkpoint B vertical slice."""
+"""Command-line interface for the Stage 1 discovery agent."""
 
 from __future__ import annotations
 
@@ -7,9 +7,20 @@ import json
 import sqlite3
 from pathlib import Path
 
-from app.config import DEFAULT_DB_PATH
-from app.db import connect, get_digest_rows, init_db
+from app.config import DEFAULT_DB_PATH, OUTPUT_DIR
+from app.db import connect, init_db
+from app.services.export_csv import backup_sqlite, export_csvs
 from app.services.ingest import run_scan
+from app.services.manual_intake import add_text_intake, add_url_intake, read_text_input
+from app.services.review import (
+    approve_review,
+    dismiss_review,
+    evaluation_summary,
+    list_reviews,
+    reopen_review,
+    show_review,
+    snooze_review,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -28,6 +39,37 @@ def main(argv: list[str] | None = None) -> int:
     review_show = review_subparsers.add_parser("show", help="Show one evaluated opportunity")
     review_show.add_argument("job_id", type=int)
     review_show.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    review_approve = review_subparsers.add_parser("approve", help="Approve one opportunity")
+    review_approve.add_argument("job_id", type=int)
+    review_approve.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    review_dismiss = review_subparsers.add_parser("dismiss", help="Dismiss one opportunity")
+    review_dismiss.add_argument("job_id", type=int)
+    review_dismiss.add_argument("--reason", required=True)
+    review_dismiss.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    review_snooze = review_subparsers.add_parser("snooze", help="Snooze one opportunity")
+    review_snooze.add_argument("job_id", type=int)
+    review_snooze.add_argument("--until", required=True)
+    review_snooze.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    review_reopen = review_subparsers.add_parser("reopen", help="Reopen one opportunity")
+    review_reopen.add_argument("job_id", type=int)
+    review_reopen.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+
+    add_url_parser = subparsers.add_parser("add-url", help="Add a role from a job URL")
+    add_url_parser.add_argument("url")
+    add_url_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+
+    add_text_parser = subparsers.add_parser("add-text", help="Add a role from pasted JD text")
+    add_text_parser.add_argument("path", nargs="?", default="-")
+    add_text_parser.add_argument("--url", help="Original source URL for the pasted JD")
+    add_text_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+
+    export_parser = subparsers.add_parser("export", help="Write readable CSV exports")
+    export_parser.add_argument("--out", type=Path, default=OUTPUT_DIR / "exports")
+    export_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+
+    backup_parser = subparsers.add_parser("backup", help="Write a SQLite backup copy")
+    backup_parser.add_argument("destination", type=Path)
+    backup_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
 
     subparsers.add_parser("stage0-status", help="Show the current stage boundary")
 
@@ -57,54 +99,100 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "review":
         conn = connect(args.db)
         init_db(conn)
-        if args.review_command == "list":
-            return _review_list(conn)
-        if args.review_command == "show":
-            return _review_show(conn, args.job_id)
+        try:
+            if args.review_command == "list":
+                return _review_list(conn)
+            if args.review_command == "show":
+                return _review_show(conn, args.job_id)
+            if args.review_command == "approve":
+                update = approve_review(conn, args.job_id)
+                print(f"approved job_id={update.job_id}")
+                return 0
+            if args.review_command == "dismiss":
+                update = dismiss_review(conn, args.job_id, args.reason)
+                print(f"dismissed job_id={update.job_id} reason={update.decision_reason}")
+                return 0
+            if args.review_command == "snooze":
+                update = snooze_review(conn, args.job_id, args.until)
+                print(f"snoozed job_id={update.job_id} until={update.snooze_until}")
+                return 0
+            if args.review_command == "reopen":
+                update = reopen_review(conn, args.job_id)
+                print(f"reopened job_id={update.job_id}")
+                return 0
+        except ValueError as exc:
+            print(str(exc))
+            return 1
+
+    if args.command == "add-url":
+        result = add_url_intake(args.url, db_path=args.db)
+        print(result.message)
+        if result.job_id is not None:
+            print(f"job_id={result.job_id}")
+            print(f"evaluated={result.evaluated_count}")
+        return 0 if result.status == "stored" else 1
+
+    if args.command == "add-text":
+        try:
+            result = add_text_intake(
+                read_text_input(args.path),
+                db_path=args.db,
+                source_url=args.url,
+            )
+        except ValueError as exc:
+            print(str(exc))
+            return 1
+        print(result.message)
+        print(f"job_id={result.job_id}")
+        print(f"evaluated={result.evaluated_count}")
+        return 0
+
+    if args.command == "export":
+        conn = connect(args.db)
+        init_db(conn)
+        written = export_csvs(conn, args.out)
+        for name, path in written.items():
+            print(f"{name}={path}")
+        return 0
+
+    if args.command == "backup":
+        conn = connect(args.db)
+        init_db(conn)
+        path = backup_sqlite(conn, args.destination)
+        print(f"backup={path}")
+        return 0
 
     parser.error("unknown command")
     return 2
 
 
 def _review_list(conn: sqlite3.Connection) -> int:
-    rows = get_digest_rows(conn)
+    rows = list_reviews(conn)
     if not rows:
-        print("No evaluated new opportunities.")
+        print("No opportunities in the review queue.")
         return 0
     for row in rows:
-        evaluation = json.loads(row["evaluation_json"])
+        evaluation = evaluation_summary(row)
         locations = ", ".join(json.loads(row["locations_json"]))
         print(
-            f"{row['job_id']}: {row['company']} - {row['title']} | {locations} | "
-            f"fit={evaluation['role_fit_score']} | {evaluation['recommendation']}"
+            f"{row['job_id']}: [{row['review_state']}] {row['company']} - "
+            f"{row['title']} | {locations} | fit={evaluation.get('role_fit_score', '')} | "
+            f"{evaluation.get('recommendation', '')}"
         )
     return 0
 
 
 def _review_show(conn: sqlite3.Connection, job_id: int) -> int:
-    row = conn.execute(
-        """
-        SELECT
-          jp.id AS job_id,
-          c.name AS company,
-          jp.title,
-          jp.locations_json,
-          jp.department,
-          jp.source_url,
-          re.evaluation_json
-        FROM job_postings jp
-        JOIN companies c ON c.id = jp.company_id
-        LEFT JOIN role_evaluations re ON re.job_posting_id = jp.id
-        WHERE jp.id = ?
-        ORDER BY re.id DESC
-        LIMIT 1
-        """,
-        (job_id,),
-    ).fetchone()
+    row = show_review(conn, job_id)
     if row is None:
         print(f"Job not found: {job_id}")
         return 1
     print(f"{row['company']} - {row['title']}")
+    print(f"Review: {row['review_state']}")
+    if row["decision_reason"]:
+        print(f"Reason: {row['decision_reason']}")
+    if row["snooze_until"]:
+        print(f"Snoozed until: {row['snooze_until']}")
     print(f"Location: {', '.join(json.loads(row['locations_json']))}")
     print(f"Department: {row['department'] or ''}")
     print(f"Source: {row['source_url']}")

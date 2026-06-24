@@ -105,6 +105,15 @@ CREATE TABLE IF NOT EXISTS opportunity_reviews (
   snooze_until TEXT
 );
 
+CREATE TABLE IF NOT EXISTS manual_intake_requests (
+  id INTEGER PRIMARY KEY,
+  url TEXT NOT NULL UNIQUE,
+  status TEXT NOT NULL,
+  error_summary TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS notifications (
   id INTEGER PRIMARY KEY,
   type TEXT NOT NULL,
