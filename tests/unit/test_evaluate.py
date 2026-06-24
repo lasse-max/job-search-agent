@@ -14,6 +14,7 @@ from app.services.evaluate import (
 )
 
 
+# These band-edge tests use zip(..., strict=True), so they require Python >= 3.10.
 FIT_EDGES = (49, 50, 64, 65, 79, 80)
 CORE_COLD = ("skip", "stretch", "stretch", "consider", "consider", "apply_now")
 CORE_WARM = ("skip", "stretch", "stretch", "consider", "apply_now", "apply_now")
