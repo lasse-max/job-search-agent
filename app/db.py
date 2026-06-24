@@ -10,6 +10,7 @@ from pathlib import Path
 from app.adapters import parser_version, source_endpoint
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
+from app.services.material import material_hash_for_posting, material_hash_for_row
 
 
 DEV_EVALUATOR_VERSION = "uncalibrated_dev_stub_v1"
@@ -253,6 +254,37 @@ def update_expected_volume_min(
     )
 
 
+def recover_expected_volume_min_after_degraded(
+    conn: sqlite3.Connection,
+    source_id: int,
+    *,
+    consecutive_runs: int = 3,
+) -> None:
+    rows = conn.execute(
+        """
+        SELECT status, fetched_count
+        FROM source_runs
+        WHERE job_source_id = ?
+        ORDER BY id DESC
+        LIMIT ?
+        """,
+        (source_id, consecutive_runs),
+    ).fetchall()
+    if len(rows) < consecutive_runs:
+        return
+    if any(row["status"] != "degraded" or int(row["fetched_count"]) <= 0 for row in rows):
+        return
+    recovered_minimum = max(int(row["fetched_count"]) for row in rows)
+    conn.execute(
+        """
+        UPDATE job_sources
+        SET expected_volume_min = ?
+        WHERE id = ?
+        """,
+        (recovered_minimum, source_id),
+    )
+
+
 def upsert_postings(
     conn: sqlite3.Connection,
     company_id: int,
@@ -269,7 +301,8 @@ def upsert_postings(
     for posting in postings:
         existing = conn.execute(
             """
-            SELECT id, raw_payload_hash FROM job_postings
+            SELECT *
+            FROM job_postings
             WHERE source_id = ? AND source_job_id = ?
             """,
             (source_id, posting.source_job_id),
@@ -310,7 +343,8 @@ def upsert_postings(
             continue
 
         job_id = int(existing["id"])
-        if existing["raw_payload_hash"] != posting.raw_payload_hash:
+        material_changed = material_hash_for_row(existing) != material_hash_for_posting(posting)
+        if material_changed:
             conn.execute(
                 """
                 UPDATE job_postings
@@ -335,10 +369,19 @@ def upsert_postings(
             conn.execute(
                 """
                 UPDATE job_postings
-                SET last_seen_at = ?, availability_state = 'open', missing_successful_scan_count = 0
+                SET company_id = ?, source_id = ?, source_job_id = ?, canonical_key = ?,
+                    title = ?, locations_json = ?, department = ?, employment_type = ?,
+                    description_text = ?, source_url = ?, posted_at = ?,
+                    last_seen_at = ?, raw_payload_hash = ?, availability_state = 'open',
+                    missing_successful_scan_count = 0
                 WHERE id = ?
                 """,
-                (seen_at, job_id),
+                (
+                    *values[:11],
+                    seen_at,
+                    posting.raw_payload_hash,
+                    job_id,
+                ),
             )
 
     unavailable_count = (

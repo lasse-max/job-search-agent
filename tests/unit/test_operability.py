@@ -17,7 +17,8 @@ from app.services.manual_intake import (
     add_text_intake,
     add_url_intake,
 )
-from app.services.scheduled_scan import run_scheduled_scan
+from app.services.ingest import ScanSummary
+from app.services.scheduled_scan import ScheduledScanResult, run_scheduled_scan
 
 
 JOB_TEXT = """Company: ExampleCo
@@ -209,6 +210,33 @@ class OperabilityTest(unittest.TestCase):
         self.assertEqual(result.skipped, ["ManualCo: manual sources are intake-only"])
         with self.assertRaisesRegex(ValueError, "intake-only"):
             get_adapter("manual")
+
+    def test_scan_all_surfaces_degraded_without_failing_command(self) -> None:
+        degraded_summary = ScanSummary(
+            company="Databricks",
+            source_type="greenhouse",
+            source_key="databricks",
+            status="degraded",
+            fetched_count=1,
+            new_count=0,
+            changed_count=0,
+            evaluated_count=0,
+            digest_count=0,
+            digest_html=Path("output/latest_digest.html"),
+            digest_text=Path("output/latest_digest.txt"),
+            error_summary="expected_volume_degraded",
+        )
+        result = ScheduledScanResult(
+            summaries=[degraded_summary],
+            skipped=[],
+            failures=[],
+        )
+
+        with patch("app.cli.run_scheduled_scan", return_value=result):
+            output = _run_cli(["scan-all"])
+
+        self.assertIn("status=degraded", output)
+        self.assertIn("source_error=Databricks: expected_volume_degraded", output)
 
     def test_scan_workflow_runs_every_six_hours_and_supports_manual_dispatch(self) -> None:
         workflow = Path(".github/workflows/scan.yml").read_text(encoding="utf-8")

@@ -6,7 +6,6 @@ required evaluation schema, but it is not the final LLM-backed evaluator.
 
 from __future__ import annotations
 
-import hashlib
 import json
 import re
 import sqlite3
@@ -23,6 +22,7 @@ from app.config import (
     load_scoring_policy,
 )
 from app.models import Alignment, CompanyConfig, Gap, HardBlocker, RoleEvaluation
+from app.services.material import material_hash_for_row
 
 
 EVALUATOR_VERSION = "uncalibrated_dev_stub_v1"
@@ -35,14 +35,7 @@ class RelevanceDecision:
 
 
 def input_hash(row: sqlite3.Row) -> str:
-    payload = {
-        "title": row["title"],
-        "locations": row["locations_json"],
-        "department": row["department"],
-        "description": row["description_text"],
-        "raw_payload_hash": row["raw_payload_hash"],
-    }
-    return hashlib.sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()
+    return material_hash_for_row(row)
 
 
 def should_evaluate(row: sqlite3.Row, company: CompanyConfig) -> bool:

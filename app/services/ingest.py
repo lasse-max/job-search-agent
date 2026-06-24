@@ -12,6 +12,7 @@ from app.db import (
     get_expected_volume_min,
     init_db,
     persist_evaluation,
+    recover_expected_volume_min_after_degraded,
     record_evaluation_skip,
     record_source_run,
     set_source_health,
@@ -187,6 +188,8 @@ def run_scan(
         health_status="degraded" if degraded_reason else "healthy",
         last_success_at=None if degraded_reason else finished_at,
     )
+    if degraded_reason:
+        recover_expected_volume_min_after_degraded(conn, source_id)
     conn.commit()
     html_path, text_path, digest_count, digest_error = _safe_write_digest(conn)
     return ScanSummary(

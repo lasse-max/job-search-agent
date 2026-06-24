@@ -184,6 +184,44 @@ class DatabricksSliceTest(unittest.TestCase):
             self.assertIn("degraded - Databricks", digest)
             self.assertIn("expected_volume_degraded", digest)
 
+            run_scan(db_path=db_path, fixture_path=partial_fixture)
+            run_scan(db_path=db_path, fixture_path=partial_fixture)
+            source = conn.execute("SELECT * FROM job_sources").fetchone()
+            self.assertEqual(source["expected_volume_min"], 1)
+
+            recovered = run_scan(db_path=db_path, fixture_path=partial_fixture)
+            source = conn.execute("SELECT * FROM job_sources").fetchone()
+            self.assertEqual(recovered.status, "success")
+            self.assertEqual(source["health_status"], "healthy")
+
+    def test_cosmetic_metadata_change_preserves_review_and_evaluation_cache(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            cosmetic_fixture = Path(directory) / "cosmetic.json"
+
+            run_scan(db_path=db_path, fixture_path=FIXTURE)
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            job = conn.execute("SELECT id FROM job_postings ORDER BY id LIMIT 1").fetchone()
+            dismiss_review(conn, int(job["id"]), "human decision should stay put")
+            before_review = _review_row(conn, int(job["id"]))
+            before_evaluation_count = _count(conn, "role_evaluations")
+
+            payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
+            payload["jobs"][0]["updated_at"] = "2026-06-24T11:00:00-04:00"
+            payload["jobs"][0]["metadata"] = [{"name": "cosmetic", "value": "ignored"}]
+            cosmetic_fixture.write_text(json.dumps(payload), encoding="utf-8")
+
+            cosmetic = run_scan(db_path=db_path, fixture_path=cosmetic_fixture)
+            after_review = _review_row(conn, int(job["id"]))
+
+            self.assertEqual(cosmetic.changed_count, 0)
+            self.assertEqual(cosmetic.evaluated_count, 0)
+            self.assertEqual(_count(conn, "role_evaluations"), before_evaluation_count)
+            self.assertEqual(after_review["state"], "dismissed")
+            self.assertEqual(after_review["decision_reason"], before_review["decision_reason"])
+            self.assertEqual(after_review["reviewed_at"], before_review["reviewed_at"])
+
     def test_material_change_reopens_approved_and_dismissed_reviews(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "slice.sqlite"
@@ -197,6 +235,7 @@ class DatabricksSliceTest(unittest.TestCase):
             ).fetchall()
             approve_review(conn, int(job_rows[0]["id"]))
             dismiss_review(conn, int(job_rows[1]["id"]), "already reviewed")
+            before_evaluation_count = _count(conn, "role_evaluations")
 
             payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
             for job in payload["jobs"][:2]:
@@ -206,6 +245,8 @@ class DatabricksSliceTest(unittest.TestCase):
             changed = run_scan(db_path=db_path, fixture_path=changed_fixture)
 
             self.assertEqual(changed.changed_count, 2)
+            self.assertEqual(changed.evaluated_count, 2)
+            self.assertEqual(_count(conn, "role_evaluations"), before_evaluation_count + 2)
             states = [
                 row[0]
                 for row in conn.execute(
@@ -244,6 +285,19 @@ class DatabricksSliceTest(unittest.TestCase):
 
 def _count(conn: sqlite3.Connection, table: str) -> int:
     return int(conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0])
+
+
+def _review_row(conn: sqlite3.Connection, job_id: int) -> sqlite3.Row:
+    row = conn.execute(
+        """
+        SELECT *
+        FROM opportunity_reviews
+        WHERE job_posting_id = ?
+        """,
+        (job_id,),
+    ).fetchone()
+    assert row is not None
+    return row
 
 
 def _fixture_job(

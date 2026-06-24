@@ -116,7 +116,7 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"source_error={summary.company}: {summary.error_summary}")
         for failure in result.failures:
             print(f"failure={failure}")
-        return 0 if result.status == "success" else 1
+        return 1 if result.failures else 0
 
     if args.command == "review":
         conn = connect(args.db)
