@@ -1,0 +1,56 @@
+{
+  "jobs": [
+    {
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8516118002",
+      "internal_job_id": 101,
+      "location": {"name": "Sydney, Australia"},
+      "metadata": [],
+      "id": 8516118002,
+      "updated_at": "2026-06-22T10:00:00-04:00",
+      "requisition_id": "REQ-DS-SYD",
+      "title": "Deployment Strategist",
+      "company_name": "Databricks",
+      "first_published": "2026-06-22T09:00:00-04:00",
+      "language": "en",
+      "application_deadline": null,
+      "content": "<p>Partner with customers and cross-functional teams to shape strategy, define value, and drive deployment of the Databricks platform. This role requires executive communication, program leadership, and operational judgment.</p>",
+      "departments": [{"name": "Professional Services Operations"}],
+      "offices": [{"name": "Sydney, Australia"}]
+    },
+    {
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8548183002",
+      "internal_job_id": 102,
+      "location": {"name": "London, United Kingdom"},
+      "metadata": [],
+      "id": 8548183002,
+      "updated_at": "2026-06-22T10:00:00-04:00",
+      "requisition_id": "REQ-DS-LON",
+      "title": "Deployment Strategist",
+      "company_name": "Databricks",
+      "first_published": "2026-06-22T09:00:00-04:00",
+      "language": "en",
+      "application_deadline": null,
+      "content": "<p>Work with leadership and customers to translate ambiguous business problems into deployments. The role emphasizes strategy, operations, transformation, and stakeholder management.</p>",
+      "departments": [{"name": "Professional Services Operations"}],
+      "offices": [{"name": "London, United Kingdom"}]
+    },
+    {
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8396801002",
+      "internal_job_id": 103,
+      "location": {"name": "London, United Kingdom"},
+      "metadata": [],
+      "id": 8396801002,
+      "updated_at": "2026-06-22T10:00:00-04:00",
+      "requisition_id": "REQ-FDE-LON",
+      "title": "Forward Deployed Engineer",
+      "company_name": "Databricks",
+      "first_published": "2026-06-22T09:00:00-04:00",
+      "language": "en",
+      "application_deadline": null,
+      "content": "<p>Production software engineering role building full stack applications and technical architecture directly with customers.</p>",
+      "departments": [{"name": "Professional Services Operations"}],
+      "offices": [{"name": "London, United Kingdom"}]
+    }
+  ],
+  "meta": {"total": 3}
+}

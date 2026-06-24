@@ -2,7 +2,7 @@
 
 Staged delivery. Each stage stands alone and delivers value before the next begins. Build only the current approved stage; pause at each checkpoint for owner review. Estimates are focused build-days for an owner using a coding agent — multiply for calendar time.
 
-## Stage 0 — Source audit & setup · _in progress_
+## Stage 0 — Source audit & setup · _complete_
 **Goal:** know exactly what we can cover before writing adapters.
 - Repository + config schemas (done in scaffold)
 - Read the master tracker; build a source-coverage matrix for every target company
@@ -11,7 +11,7 @@ Staged delivery. Each stage stands alone and delivers value before the next begi
 
 **Exit (Checkpoint A):** every company has a documented source status (`Supported` / `Needs configuration` / `Manual fallback` / `Unsupported`); ≥1 ATS company chosen for the first vertical slice; profile, location, and benchmark configs version-controlled. **Stop and show the owner the audit before broad implementation.**
 
-## Stage 1 — Operational discovery MVP · _next_
+## Stage 1 — Operational discovery MVP · _Checkpoint B in progress_
 **Goal:** a headless service that gives an early-application edge with nothing to maintain but a few adapters.
 - Greenhouse / Lever / Ashby adapters + manual URL/text intake
 - Normalize, dedupe (idempotent), source-health model
@@ -19,7 +19,7 @@ Staged delivery. Each stage stands alone and delivers value before the next begi
 - Scan every 6h; one consolidated morning digest; optional urgent alert
 - Review CLI + CSV exports
 
-**Checkpoints:** B — one-source vertical slice working end-to-end · C — all three adapters + health + schedule + review CLI · D — benchmark calibration + live digest.
+**Checkpoints:** B — one-source vertical slice working end-to-end (Databricks/Greenhouse local slice implemented; LLM evaluator still pending) · C — all three adapters + health + schedule + review CLI · D — benchmark calibration + live digest.
 **Exit (PRD §10.2):** the 12-point acceptance test passes, incl. ≥95% recall on owner-labelled Apply/Consider roles and zero silent connector failures. **Stop and wait for explicit approval before Stage 2.**
 
 ## Stage 2 — Web app & database tracker · _after owner approval_

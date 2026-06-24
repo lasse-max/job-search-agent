@@ -2,7 +2,7 @@
 
 A single-user system that detects strong, freshly-posted roles at a fixed company watchlist within hours, evaluates each one against a real, encoded career strategy, and keeps an accurate application pipeline — **without taking any consequential action silently.**
 
-> **Status:** Stage 0 (audit & scaffold). Stage 1 (discovery MVP) is the next approved build. See [ROADMAP.md](./ROADMAP.md).
+> **Status:** Stage 1 Checkpoint B started: one-source Databricks/Greenhouse vertical slice is implemented locally. See [ROADMAP.md](./ROADMAP.md).
 
 ---
 
@@ -74,6 +74,23 @@ job-agent add-url <job-url>   # manually evaluate any role
 ```
 
 Development sends no email by default — the digest is written to `output/latest_digest.html`.
+
+### Current Checkpoint B commands
+
+Run the deterministic fixture slice:
+
+```bash
+python -m app.cli scan --fixture data/fixtures/greenhouse/databricks_jobs.json
+python -m app.cli review list
+```
+
+Run the live Databricks Greenhouse slice:
+
+```bash
+python -m app.cli scan
+```
+
+The current evaluator is a deterministic development evaluator. It produces the required structured evaluation shape and proves the ingestion, dedupe, health, persistence, review, and digest path. The final LLM-backed evaluator is still a Stage 1 follow-up.
 
 ## Documentation
 

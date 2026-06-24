@@ -9,6 +9,7 @@ dependencies = [
   "openpyxl>=3.1",
   "pydantic>=2.7",
   "pydantic-settings>=2.3",
+  "pyyaml>=6.0",
   "python-dotenv>=1.0",
   "sqlalchemy>=2.0",
   "tenacity>=8.2",
@@ -23,7 +24,7 @@ dev = [
 ]
 
 [project.scripts]
-job-agent = "app.cli:app"
+job-agent = "app.cli:main"
 
 [tool.ruff]
 line-length = 100
@@ -35,4 +36,3 @@ strict = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-
