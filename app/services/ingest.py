@@ -11,6 +11,7 @@ from app.db import (
     connect,
     init_db,
     persist_evaluation,
+    record_evaluation_skip,
     record_source_run,
     set_source_health,
     upsert_company,
@@ -20,7 +21,7 @@ from app.db import (
 )
 from app.models import utc_now
 from app.services.digest import write_digest
-from app.services.evaluate import evaluate_role, input_hash, should_evaluate
+from app.services.evaluate import evaluate_role, input_hash, relevance_decision
 
 
 @dataclass(frozen=True)
@@ -55,6 +56,7 @@ def run_scan(
     started_at = utc_now()
     company_id = upsert_company(conn, company)
     source_id = upsert_source(conn, company_id, company)
+    conn.commit()
 
     if fixture_path:
         result = adapter.fetch_from_file(company.source_key, str(fixture_path))
@@ -64,8 +66,7 @@ def run_scan(
     health = adapter.health_check(result)
     if health.status != "healthy":
         finished_at = utc_now()
-        set_source_health(conn, source_id, health.status, None)
-        record_source_run(
+        _record_run(
             conn,
             source_id,
             started_at=started_at,
@@ -76,9 +77,11 @@ def run_scan(
             new_count=0,
             changed_count=0,
             error_summary=health.error_summary,
+            health_status=health.status,
+            last_success_at=None,
         )
         conn.commit()
-        html_path, text_path, digest_count = write_digest(conn, OUTPUT_DIR)
+        html_path, text_path, digest_count, digest_error = _safe_write_digest(conn)
         return ScanSummary(
             company=company.name,
             source_type=adapter.source_type,
@@ -91,24 +94,61 @@ def run_scan(
             digest_count=digest_count,
             digest_html=html_path,
             digest_text=text_path,
-            error_summary=health.error_summary,
+            error_summary=_join_errors(health.error_summary, digest_error),
         )
 
-    postings = adapter.normalize(result, company)
-    seen_at = utc_now()
-    upsert_result = upsert_postings(conn, company_id, source_id, postings, seen_at)
-    candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
-    evaluated_count = 0
-    for row in get_postings_by_ids(conn, candidate_ids):
-        if not should_evaluate(row, company):
-            continue
-        evaluation = evaluate_role(row, company)
-        if persist_evaluation(conn, int(row["id"]), input_hash(row), evaluation):
-            evaluated_count += 1
+    try:
+        postings = adapter.normalize(result, company)
+        seen_at = utc_now()
+        upsert_result = upsert_postings(conn, company_id, source_id, postings, seen_at)
+        candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
+        evaluated_count = 0
+        for row in get_postings_by_ids(conn, candidate_ids):
+            row_hash = input_hash(row)
+            relevance = relevance_decision(row, company)
+            if not relevance.should_evaluate:
+                record_evaluation_skip(conn, int(row["id"]), row_hash, relevance.reason)
+                continue
+            evaluation = evaluate_role(row, company)
+            if persist_evaluation(conn, int(row["id"]), row_hash, evaluation):
+                evaluated_count += 1
+    except Exception as exc:  # noqa: BLE001 - fail loud with durable source health.
+        conn.rollback()
+        finished_at = utc_now()
+        error_summary = f"{type(exc).__name__}: {exc}"
+        _record_run(
+            conn,
+            source_id,
+            started_at=started_at,
+            finished_at=finished_at,
+            status="failure",
+            http_status=result.http_status,
+            fetched_count=health.fetched_count,
+            new_count=0,
+            changed_count=0,
+            error_summary=error_summary,
+            health_status="failing",
+            last_success_at=None,
+        )
+        conn.commit()
+        html_path, text_path, digest_count, digest_error = _safe_write_digest(conn)
+        return ScanSummary(
+            company=company.name,
+            source_type=adapter.source_type,
+            source_key=company.source_key,
+            status="failure",
+            fetched_count=health.fetched_count,
+            new_count=0,
+            changed_count=0,
+            evaluated_count=0,
+            digest_count=digest_count,
+            digest_html=html_path,
+            digest_text=text_path,
+            error_summary=_join_errors(error_summary, digest_error),
+        )
 
     finished_at = utc_now()
-    set_source_health(conn, source_id, "healthy", finished_at)
-    record_source_run(
+    _record_run(
         conn,
         source_id,
         started_at=started_at,
@@ -119,14 +159,16 @@ def run_scan(
         new_count=len(upsert_result.new_posting_ids),
         changed_count=len(upsert_result.changed_posting_ids),
         error_summary=None,
+        health_status="healthy",
+        last_success_at=finished_at,
     )
-    html_path, text_path, digest_count = write_digest(conn, OUTPUT_DIR)
     conn.commit()
+    html_path, text_path, digest_count, digest_error = _safe_write_digest(conn)
     return ScanSummary(
         company=company.name,
         source_type=adapter.source_type,
         source_key=company.source_key,
-        status="success",
+        status="failure" if digest_error else "success",
         fetched_count=health.fetched_count,
         new_count=len(upsert_result.new_posting_ids),
         changed_count=len(upsert_result.changed_posting_ids),
@@ -134,4 +176,51 @@ def run_scan(
         digest_count=digest_count,
         digest_html=html_path,
         digest_text=text_path,
+        error_summary=digest_error,
     )
+
+
+def _record_run(
+    conn,
+    source_id: int,
+    *,
+    started_at: str,
+    finished_at: str,
+    status: str,
+    http_status: int | None,
+    fetched_count: int,
+    new_count: int,
+    changed_count: int,
+    error_summary: str | None,
+    health_status: str,
+    last_success_at: str | None,
+) -> None:
+    set_source_health(conn, source_id, health_status, last_success_at)
+    record_source_run(
+        conn,
+        source_id,
+        started_at=started_at,
+        finished_at=finished_at,
+        status=status,
+        http_status=http_status,
+        fetched_count=fetched_count,
+        new_count=new_count,
+        changed_count=changed_count,
+        error_summary=error_summary,
+    )
+
+
+def _safe_write_digest(conn) -> tuple[Path, Path, int, str | None]:
+    html_path = OUTPUT_DIR / "latest_digest.html"
+    text_path = OUTPUT_DIR / "latest_digest.txt"
+    try:
+        written_html, written_text, digest_count = write_digest(conn, OUTPUT_DIR)
+        return written_html, written_text, digest_count, None
+    except Exception as exc:  # noqa: BLE001 - fail loudly without rolling back scan state.
+        return html_path, text_path, 0, f"digest_render_failed: {type(exc).__name__}: {exc}"
+
+
+def _join_errors(primary: str | None, secondary: str | None) -> str | None:
+    if primary and secondary:
+        return f"{primary}; {secondary}"
+    return primary or secondary

@@ -10,6 +10,9 @@ from pathlib import Path
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 
 
+CONFIG_DIR = Path(__file__).resolve().parents[1] / "config"
+DEV_EVALUATOR_VERSION = "uncalibrated_dev_stub_v1"
+
 SCHEMA = """
 PRAGMA foreign_keys = ON;
 
@@ -83,6 +86,15 @@ CREATE TABLE IF NOT EXISTS role_evaluations (
   UNIQUE(job_posting_id, input_hash, model_version)
 );
 
+CREATE TABLE IF NOT EXISTS evaluation_skips (
+  id INTEGER PRIMARY KEY,
+  job_posting_id INTEGER NOT NULL REFERENCES job_postings(id),
+  input_hash TEXT NOT NULL,
+  reason TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  UNIQUE(job_posting_id, input_hash, reason)
+);
+
 CREATE TABLE IF NOT EXISTS opportunity_reviews (
   id INTEGER PRIMARY KEY,
   job_posting_id INTEGER NOT NULL UNIQUE REFERENCES job_postings(id),
@@ -135,11 +147,15 @@ def upsert_company(conn: sqlite3.Connection, company: CompanyConfig) -> int:
         """,
         (company.name, company.tier, int(company.enabled), int(company.warm_path), None),
     )
-    return int(conn.execute("SELECT id FROM companies WHERE name = ?", (company.name,)).fetchone()["id"])
+    return int(
+        conn.execute("SELECT id FROM companies WHERE name = ?", (company.name,)).fetchone()["id"]
+    )
 
 
 def upsert_source(conn: sqlite3.Connection, company_id: int, company: CompanyConfig) -> int:
-    source_url = f"https://boards-api.greenhouse.io/v1/boards/{company.source_key}/jobs?content=true"
+    source_url = (
+        f"https://boards-api.greenhouse.io/v1/boards/{company.source_key}/jobs?content=true"
+    )
     conn.execute(
         """
         INSERT INTO job_sources (
@@ -245,7 +261,13 @@ def upsert_postings(
                     missing_successful_scan_count = 0
                 WHERE id = ?
                 """,
-                (*values[:11], seen_at, posting.raw_payload_hash, posting.availability_state, job_id),
+                (
+                    *values[:11],
+                    seen_at,
+                    posting.raw_payload_hash,
+                    posting.availability_state,
+                    job_id,
+                ),
             )
             changed_ids.append(job_id)
             ensure_review(conn, job_id)
@@ -356,7 +378,7 @@ def persist_evaluation(
     input_hash: str,
     evaluation: RoleEvaluation,
     *,
-    model_version: str = "deterministic_dev_v1",
+    model_version: str = DEV_EVALUATOR_VERSION,
 ) -> bool:
     cursor = conn.execute(
         """
@@ -368,14 +390,41 @@ def persist_evaluation(
         """,
         (
             job_posting_id,
-            "candidate_profile_v1",
-            "location_policy_v1",
-            "role_evaluation_v1",
+            _config_version("candidate_profile.yaml", DEV_EVALUATOR_VERSION),
+            _config_version("location_policy.yaml", DEV_EVALUATOR_VERSION),
+            DEV_EVALUATOR_VERSION,
             model_version,
             input_hash,
             json.dumps(evaluation.to_jsonable(), sort_keys=True),
             utc_now(),
         ),
+    )
+    return cursor.rowcount > 0
+
+
+def _config_version(file_name: str, fallback: str) -> str:
+    path = CONFIG_DIR / file_name
+    try:
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.startswith("version:"):
+                return line.split(":", 1)[1].strip().strip('"')
+    except OSError:
+        pass
+    return fallback
+
+
+def record_evaluation_skip(
+    conn: sqlite3.Connection,
+    job_posting_id: int,
+    skipped_input_hash: str,
+    reason: str,
+) -> bool:
+    cursor = conn.execute(
+        """
+        INSERT OR IGNORE INTO evaluation_skips (job_posting_id, input_hash, reason, created_at)
+        VALUES (?, ?, ?, ?)
+        """,
+        (job_posting_id, skipped_input_hash, reason, utc_now()),
     )
     return cursor.rowcount > 0
 

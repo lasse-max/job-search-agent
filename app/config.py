@@ -9,6 +9,8 @@ PyYAML-backed validation.
 from __future__ import annotations
 
 import ast
+from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 from app.models import CompanyConfig
@@ -19,6 +21,13 @@ CONFIG_DIR = PROJECT_ROOT / "config"
 DATA_DIR = PROJECT_ROOT / "data"
 OUTPUT_DIR = PROJECT_ROOT / "output"
 DEFAULT_DB_PATH = DATA_DIR / "job_search_agent.sqlite"
+
+
+@dataclass(frozen=True)
+class RelevanceFilterConfig:
+    version: str
+    target_location_required: bool
+    role_family_patterns: tuple[str, ...]
 
 
 def _parse_scalar(value: str) -> object:
@@ -81,3 +90,40 @@ def load_company_config(company_name: str = "Databricks") -> CompanyConfig:
                 warm_path=bool(company.get("warm_path", False)),
             )
     raise ValueError(f"Company not found in watchlist: {company_name}")
+
+
+@lru_cache(maxsize=1)
+def load_relevance_filter(
+    path: Path = CONFIG_DIR / "relevance_filter.yaml",
+) -> RelevanceFilterConfig:
+    version = "relevance_filter_unknown"
+    target_location_required = True
+    role_family_patterns: list[str] = []
+    active_list: str | None = None
+
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        stripped = raw_line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if stripped.startswith("version:"):
+            version = str(_parse_scalar(stripped.split(":", 1)[1]))
+            active_list = None
+            continue
+        if stripped.startswith("target_location_required:"):
+            target_location_required = bool(_parse_scalar(stripped.split(":", 1)[1]))
+            active_list = None
+            continue
+        if stripped == "role_family_patterns:":
+            active_list = "role_family_patterns"
+            continue
+        if active_list == "role_family_patterns" and stripped.startswith("- "):
+            role_family_patterns.append(str(_parse_scalar(stripped[2:])))
+
+    if not role_family_patterns:
+        raise ValueError(f"No role_family_patterns configured in {path}")
+
+    return RelevanceFilterConfig(
+        version=version,
+        target_location_required=target_location_required,
+        role_family_patterns=tuple(role_family_patterns),
+    )
