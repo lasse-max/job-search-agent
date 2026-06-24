@@ -57,7 +57,7 @@ class DatabricksSliceTest(unittest.TestCase):
             ]
             self.assertEqual(
                 reasons,
-                ["no_primary_or_stretch_family_signal", "non_target_location"],
+                ["excluded_title_department_function", "non_target_location"],
             )
 
     def test_exception_after_fetch_records_failed_source_run(self) -> None:

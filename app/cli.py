@@ -7,7 +7,7 @@ import json
 import sqlite3
 from pathlib import Path
 
-from app.config import DEFAULT_DB_PATH, OUTPUT_DIR
+from app.config import DATA_DIR, DEFAULT_DB_PATH, OUTPUT_DIR
 from app.db import connect, init_db
 from app.services.benchmark import (
     DEFAULT_EVALUATION_SET,
@@ -18,6 +18,7 @@ from app.services.benchmark import (
 )
 from app.services.export_csv import backup_sqlite, export_csvs
 from app.services.ingest import run_scan
+from app.services.live_noise import sample_live_noise_set
 from app.services.manual_intake import add_text_intake, add_url_intake, read_text_input
 from app.services.review import (
     approve_review,
@@ -96,6 +97,19 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Re-fetch cache files even when they already exist",
     )
+
+    sample_parser = subparsers.add_parser(
+        "sample-live-noise",
+        help="Sample cached live postings for human precision labels",
+    )
+    sample_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    sample_parser.add_argument(
+        "--out",
+        type=Path,
+        default=DATA_DIR / "evaluation_set" / "live_noise_labels.yaml",
+    )
+    sample_parser.add_argument("--size", type=int, default=150)
+    sample_parser.add_argument("--seed", type=int, default=7)
 
     subparsers.add_parser("stage0-status", help="Show the current stage boundary")
 
@@ -241,6 +255,20 @@ def main(argv: list[str] | None = None) -> int:
         print(f"report_markdown={run.markdown_path}")
         print(f"report_csv={run.csv_path}")
         return 0 if metrics.recall_passes else 1
+
+    if args.command == "sample-live-noise":
+        conn = connect(args.db)
+        init_db(conn)
+        result = sample_live_noise_set(
+            conn,
+            args.out,
+            sample_size=args.size,
+            seed=args.seed,
+        )
+        print(f"available={result.available_count}")
+        print(f"sampled={result.sampled_count}")
+        print(f"output={result.output_path}")
+        return 0
 
     parser.error("unknown command")
     return 2

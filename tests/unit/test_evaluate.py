@@ -434,7 +434,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             with self.subTest(title=title):
                 decision = relevance_decision(_row(title, ["London, United Kingdom"]), company)
                 self.assertTrue(decision.should_evaluate)
-                self.assertEqual(decision.reason, "matched_target_location_and_role_family")
+                self.assertEqual(decision.reason, "matched_title_department_role_family")
 
     def test_relevance_filter_records_skip_reasons(self) -> None:
         company = _company(target_locations=["London / UK"])
@@ -451,8 +451,39 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
                 _row("Account Executive", ["London, United Kingdom"]),
                 company,
             ).reason,
-            "no_primary_or_stretch_family_signal",
+            "excluded_title_department_function",
         )
+
+    def test_relevance_gate_uses_title_department_not_description_for_positive_match(
+        self,
+    ) -> None:
+        company = _company(target_locations=["London / UK"])
+        payroll = relevance_decision(
+            _row(
+                "Payroll Manager",
+                ["London, United Kingdom"],
+                department="Finance",
+                description=(
+                    "Partner with strategy and operations teams on transformation "
+                    "program reporting."
+                ),
+            ),
+            company,
+        )
+        ambiguous = relevance_decision(
+            _row(
+                "Operations Manager",
+                ["London, United Kingdom"],
+                department="Operations",
+                description="Own operational execution for a broad business area.",
+            ),
+            company,
+        )
+
+        self.assertFalse(payroll.should_evaluate)
+        self.assertEqual(payroll.reason, "excluded_title_department_function")
+        self.assertTrue(ambiguous.should_evaluate)
+        self.assertEqual(ambiguous.reason, "ambiguous_title_department_routed_to_llm")
 
 
 def _company(

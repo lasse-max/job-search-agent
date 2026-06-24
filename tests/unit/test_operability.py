@@ -9,6 +9,8 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
+import yaml
+
 from app.adapters import get_adapter
 from app.cli import main
 from app.models import CompanyConfig
@@ -246,6 +248,32 @@ class OperabilityTest(unittest.TestCase):
         self.assertIn("job-agent scan-all", workflow)
         self.assertIn("RESEND_API_KEY", workflow)
         self.assertIn("DIGEST_RECIPIENT_EMAIL", workflow)
+
+    def test_sample_live_noise_cli_writes_label_template(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_path = Path(directory) / "live_noise.yaml"
+            _add_job(db_path)
+
+            output = _run_cli(
+                [
+                    "sample-live-noise",
+                    "--db",
+                    str(db_path),
+                    "--out",
+                    str(output_path),
+                    "--size",
+                    "1",
+                ]
+            )
+
+            self.assertIn("sampled=1", output)
+            data = yaml.safe_load(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(data["version"], "live_noise_labels_v1")
+            self.assertEqual(len(data["live_noise_set"]), 1)
+            item = data["live_noise_set"][0]
+            self.assertEqual(item["company"], "ExampleCo")
+            self.assertEqual(item["expected_recommendation"], None)
 
 
 def _add_job(db_path: Path) -> int:

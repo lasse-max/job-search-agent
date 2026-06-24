@@ -45,7 +45,7 @@ def should_evaluate(row: sqlite3.Row, company: CompanyConfig) -> bool:
 
 
 def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDecision:
-    """Keep the slice focused while recording why a posting was skipped."""
+    """Cost-bound LLM evaluation without judging fit from full JD text."""
 
     filter_config = load_relevance_filter()
     profile = load_candidate_profile()
@@ -56,14 +56,17 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
     ):
         return RelevanceDecision(False, "non_target_location")
 
-    text = _role_text(row)
     role_family_patterns = (
         profile.primary_role_family_patterns + profile.stretch_role_family_patterns
     )
-    if not _matches_any(text, role_family_patterns):
-        return RelevanceDecision(False, "no_primary_or_stretch_family_signal")
+    title_department = _title_department_text(row)
+    if _matches_any(title_department, role_family_patterns):
+        return RelevanceDecision(True, "matched_title_department_role_family")
 
-    return RelevanceDecision(True, "matched_target_location_and_role_family")
+    if _matches_any(title_department, filter_config.excluded_title_department_patterns):
+        return RelevanceDecision(False, "excluded_title_department_function")
+
+    return RelevanceDecision(True, "ambiguous_title_department_routed_to_llm")
 
 
 def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
@@ -562,6 +565,10 @@ def _is_stretch_family(
 
 def _role_text(row: sqlite3.Row) -> str:
     return f"{row['title']} {row['department'] or ''} {row['description_text']}".lower()
+
+
+def _title_department_text(row: sqlite3.Row) -> str:
+    return f"{row['title']} {row['department'] or ''}".lower()
 
 
 def _matches_any(text: str, patterns: tuple[str, ...]) -> bool:

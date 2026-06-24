@@ -23,6 +23,7 @@ DEFAULT_DB_PATH = DATA_DIR / "job_search_agent.sqlite"
 class RelevanceFilterConfig:
     version: str
     target_location_required: bool
+    excluded_title_department_patterns: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -270,23 +271,13 @@ def load_candidate_profile(
 def load_relevance_filter(
     path: Path = CONFIG_DIR / "relevance_filter.yaml",
 ) -> RelevanceFilterConfig:
-    version = "relevance_filter_unknown"
-    target_location_required = True
-
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        stripped = raw_line.strip()
-        if not stripped or stripped.startswith("#"):
-            continue
-        if stripped.startswith("version:"):
-            version = str(_parse_scalar(stripped.split(":", 1)[1]))
-            continue
-        if stripped.startswith("target_location_required:"):
-            target_location_required = bool(_parse_scalar(stripped.split(":", 1)[1]))
-            continue
-
+    data = _read_yaml_mapping(path)
     return RelevanceFilterConfig(
-        version=version,
-        target_location_required=target_location_required,
+        version=str(data.get("version") or "relevance_filter_unknown"),
+        target_location_required=bool(data.get("target_location_required", True)),
+        excluded_title_department_patterns=_tuple_of_str(
+            data.get("excluded_title_department_patterns"),
+        ),
     )
 
 
