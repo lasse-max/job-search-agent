@@ -13,7 +13,7 @@ from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 from app.services.material import material_hash_for_posting, material_hash_for_row
 
 
-DEV_EVALUATOR_VERSION = "uncalibrated_dev_stub_v1"
+DEFAULT_EVALUATOR_VERSION = "deterministic_fallback_v1"
 
 SCHEMA = """
 PRAGMA foreign_keys = ON;
@@ -515,8 +515,18 @@ def persist_evaluation(
     input_hash: str,
     evaluation: RoleEvaluation,
     *,
-    model_version: str = DEV_EVALUATOR_VERSION,
+    model_version: str | None = None,
 ) -> bool:
+    stored_model_version = (
+        model_version
+        or evaluation.provenance.get("model_version")
+        or evaluation.provenance.get("evaluator_version")
+        or DEFAULT_EVALUATOR_VERSION
+    )
+    stored_prompt_version = evaluation.provenance.get(
+        "prompt_version",
+        load_scoring_policy().version,
+    )
     cursor = conn.execute(
         """
         INSERT OR IGNORE INTO role_evaluations (
@@ -529,8 +539,8 @@ def persist_evaluation(
             job_posting_id,
             load_candidate_profile().version,
             load_location_policy().version,
-            load_scoring_policy().version,
-            model_version,
+            stored_prompt_version,
+            stored_model_version,
             input_hash,
             json.dumps(evaluation.to_jsonable(), sort_keys=True),
             utc_now(),

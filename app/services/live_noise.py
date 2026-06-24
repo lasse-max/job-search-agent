@@ -109,6 +109,7 @@ def _template_item(index: int, row: sqlite3.Row) -> dict[str, Any]:
         "posted_at": row["posted_at"] or "",
         "first_seen_at": row["first_seen_at"],
         "source_url": row["source_url"],
+        "description_text": row["description_text"],
         "description_excerpt": _excerpt(row["description_text"]),
         "expected_recommendation": None,
         "expected_feasibility": None,

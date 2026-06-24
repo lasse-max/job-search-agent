@@ -22,6 +22,9 @@ recommendation_thresholds:
   max_stretch_tier: 2
   warm_path_apply_now_tier: 1
   stretch_apply_now_tier: 1
+digest_limits:
+  apply_now: 20
+  consider: 30
 true_blockers:
   - "Posting is closed or unavailable at first discovery."
   - "Mandatory active security/government clearance that the candidate cannot obtain."

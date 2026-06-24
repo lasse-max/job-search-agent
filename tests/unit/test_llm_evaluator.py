@@ -1,0 +1,246 @@
+from __future__ import annotations
+
+import json
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+from pydantic import ValidationError
+
+from app.config import load_candidate_profile
+from app.models import CompanyConfig
+from app.services.evaluate import HYBRID_EVALUATOR_VERSION, evaluate_role
+from app.services.llm_evaluator import (
+    ClaudeLLMProvider,
+    LLMEvaluationOutput,
+    LLMEvaluationResult,
+    LLMRoleRequest,
+    ModelSpendCapExceeded,
+    ModelSpendTracker,
+)
+
+
+class LlmEvaluatorTest(unittest.TestCase):
+    def test_llm_dimensions_feed_deterministic_final_score_and_band(self) -> None:
+        row = _row("Strategic Operations Lead")
+        company = _company()
+        provider = FakeProvider(
+            LLMEvaluationOutput.model_validate(
+                {
+                    "role_family_fit": 92,
+                    "evidence_strength": 88,
+                    "scope_seniority": 84,
+                    "gap_manageability": 80,
+                    "confidence": 0.81,
+                    "advisory_recommendation": "skip",
+                    "alignments": [
+                        {
+                            "job_requirement": "Lead strategy operations programs",
+                            "candidate_evidence": "Google transformation work",
+                            "evidence_strength": "strong",
+                        }
+                    ],
+                    "gaps": [
+                        {
+                            "gap": "No direct AI-lab operating cadence",
+                            "severity": "medium",
+                            "mitigation": "Anchor in Google scale and rollout evidence",
+                        }
+                    ],
+                    "uncertainties": ["JD does not state team size."],
+                    "summary": "Strong strategy and operations match.",
+                }
+            )
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            tracker = ModelSpendTracker(ledger_path=Path(directory) / "spend.json")
+            evaluation = evaluate_role(
+                row,
+                company,
+                llm_provider=provider,
+                spend_tracker=tracker,
+            )
+
+        self.assertEqual(evaluation.recommendation, "apply_now")
+        self.assertGreaterEqual(evaluation.role_fit_score, 80)
+        self.assertEqual(evaluation.confidence, 0.81)
+        self.assertEqual(evaluation.provenance["model_version"], "fake-claude")
+        self.assertEqual(evaluation.provenance["evaluator_version"], HYBRID_EVALUATOR_VERSION)
+        self.assertEqual(evaluation.provenance["llm_advisory_recommendation"], "skip")
+        self.assertEqual(provider.calls, 1)
+
+    def test_cost_cap_halts_before_provider_call(self) -> None:
+        row = _row("Strategic Operations Lead")
+        provider = FakeProvider(_valid_output())
+        with tempfile.TemporaryDirectory() as directory:
+            tracker = ModelSpendTracker(
+                ledger_path=Path(directory) / "spend.json",
+                monthly_cap_usd=0.01,
+                estimated_eval_cost_usd=0.02,
+            )
+
+            with self.assertRaises(ModelSpendCapExceeded):
+                evaluate_role(
+                    row,
+                    _company(),
+                    llm_provider=provider,
+                    spend_tracker=tracker,
+                )
+
+        self.assertEqual(provider.calls, 0)
+
+    def test_claude_provider_rejects_malformed_structured_output(self) -> None:
+        provider = ClaudeLLMProvider(api_key="test-key", model="fake-model")
+        request = LLMRoleRequest(
+            row=_row("Strategic Operations Lead"),
+            company=_company(),
+            profile=load_candidate_profile(),
+        )
+        payload = _claude_payload(
+            {
+                "role_family_fit": 101,
+                "evidence_strength": 80,
+                "scope_seniority": 80,
+                "gap_manageability": 80,
+                "confidence": 0.5,
+                "advisory_recommendation": "consider",
+                "alignments": [],
+                "gaps": [],
+                "uncertainties": [],
+                "summary": "Bad score should fail.",
+            }
+        )
+
+        with patch("app.services.llm_evaluator.httpx.post", return_value=FakeHttpResponse(payload)):
+            with self.assertRaises(ValidationError):
+                provider.evaluate(request)
+
+    def test_claude_provider_caches_valid_response_by_material_hash(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            provider = ClaudeLLMProvider(
+                api_key="test-key",
+                model="fake-model",
+                cache_dir=Path(directory),
+            )
+            request = LLMRoleRequest(
+                row=_row("Strategic Operations Lead"),
+                company=_company(),
+                profile=load_candidate_profile(),
+            )
+            payload = _claude_payload(_valid_output().model_dump())
+
+            with patch(
+                "app.services.llm_evaluator.httpx.post",
+                return_value=FakeHttpResponse(payload),
+            ) as post:
+                first = provider.evaluate(request)
+                second = provider.evaluate(request)
+
+        self.assertFalse(first.cache_hit)
+        self.assertTrue(second.cache_hit)
+        self.assertEqual(post.call_count, 1)
+        self.assertEqual(second.output.summary, "Strong strategy and operations match.")
+
+
+class FakeProvider:
+    model_version = "fake-claude"
+
+    def __init__(self, output: LLMEvaluationOutput) -> None:
+        self.output = output
+        self.calls = 0
+
+    def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        self.calls += 1
+        return LLMEvaluationResult(
+            output=self.output,
+            model_version=self.model_version,
+            prompt_version="test_prompt_v1",
+            cost_usd=0.001,
+        )
+
+
+class FakeHttpResponse:
+    def __init__(self, payload: dict[str, object]) -> None:
+        self.payload = payload
+
+    def raise_for_status(self) -> None:
+        return None
+
+    def json(self) -> dict[str, object]:
+        return self.payload
+
+
+def _valid_output() -> LLMEvaluationOutput:
+    return LLMEvaluationOutput.model_validate(
+        {
+            "role_family_fit": 92,
+            "evidence_strength": 88,
+            "scope_seniority": 84,
+            "gap_manageability": 80,
+            "confidence": 0.81,
+            "advisory_recommendation": "apply_now",
+            "alignments": [
+                {
+                    "job_requirement": "Lead strategy operations programs",
+                    "candidate_evidence": "Google transformation work",
+                    "evidence_strength": "strong",
+                }
+            ],
+            "gaps": [
+                {
+                    "gap": "No direct AI-lab operating cadence",
+                    "severity": "medium",
+                    "mitigation": "Anchor in Google scale and rollout evidence",
+                }
+            ],
+            "uncertainties": ["JD does not state team size."],
+            "summary": "Strong strategy and operations match.",
+        }
+    )
+
+
+def _claude_payload(tool_input: dict[str, object]) -> dict[str, object]:
+    return {
+        "content": [
+            {
+                "type": "tool_use",
+                "name": "submit_role_evaluation",
+                "input": tool_input,
+            }
+        ],
+        "usage": {"input_tokens": 1000, "output_tokens": 500},
+    }
+
+
+def _company() -> CompanyConfig:
+    return CompanyConfig(
+        name="ExampleCo",
+        tier=1,
+        enabled=True,
+        ats_type="manual",
+        source_key="example",
+        careers_url="https://example.com",
+        target_locations=["London / UK"],
+        target_role_family_notes="Strategy and operations",
+        warm_path=False,
+    )
+
+
+def _row(title: str) -> dict[str, str]:
+    return {
+        "title": title,
+        "locations_json": json.dumps(["London, United Kingdom"]),
+        "department": "Strategy & Operations",
+        "employment_type": "Full-time",
+        "description_text": (
+            "Lead strategy and operations programs for cross-functional stakeholders. "
+            "Own executive cadence, transformation, and program delivery."
+        ),
+        "source_url": "https://example.com/job",
+    }
+
+
+if __name__ == "__main__":
+    unittest.main()

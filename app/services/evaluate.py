@@ -22,10 +22,18 @@ from app.config import (
     load_scoring_policy,
 )
 from app.models import Alignment, CompanyConfig, Gap, HardBlocker, RoleEvaluation
+from app.services.llm_evaluator import (
+    LLMProvider,
+    LLMRoleRequest,
+    ModelSpendTracker,
+    PROMPT_VERSION,
+    provider_from_env,
+)
 from app.services.material import material_hash_for_row
 
 
-EVALUATOR_VERSION = "uncalibrated_dev_stub_v1"
+DETERMINISTIC_FALLBACK_VERSION = "deterministic_fallback_v1"
+HYBRID_EVALUATOR_VERSION = "hybrid_claude_v1"
 
 
 @dataclass(frozen=True)
@@ -69,7 +77,13 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
     return RelevanceDecision(True, "ambiguous_title_department_routed_to_llm")
 
 
-def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
+def evaluate_role(
+    row: sqlite3.Row,
+    company: CompanyConfig,
+    *,
+    llm_provider: LLMProvider | None = None,
+    spend_tracker: ModelSpendTracker | None = None,
+) -> RoleEvaluation:
     title = row["title"]
     title_lower = row["title"].lower()
     text = _role_text(row)
@@ -85,6 +99,40 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
         scoring_policy,
         location_policy,
     )
+    provider = llm_provider or provider_from_env()
+    if provider is not None:
+        tracker = spend_tracker or ModelSpendTracker.from_env()
+        tracker.assert_budget_allows()
+        llm_result = provider.evaluate(LLMRoleRequest(row=row, company=company, profile=profile))
+        tracker.record(llm_result.cost_usd)
+        return _role_evaluation_from_llm(
+            row,
+            company,
+            hard_blockers,
+            llm_result.output.dimensions,
+            llm_confidence=llm_result.output.confidence,
+            llm_alignments=[
+                Alignment(
+                    job_requirement=item.job_requirement,
+                    candidate_evidence=item.candidate_evidence,
+                    evidence_strength=item.evidence_strength,
+                )
+                for item in llm_result.output.alignments
+            ],
+            llm_gaps=[
+                Gap(gap=item.gap, severity=item.severity, mitigation=item.mitigation)
+                for item in llm_result.output.gaps
+            ],
+            llm_uncertainties=list(llm_result.output.uncertainties),
+            llm_summary=llm_result.output.summary,
+            llm_advisory_recommendation=llm_result.output.advisory_recommendation,
+            model_version=llm_result.model_version,
+            prompt_version=llm_result.prompt_version,
+            cache_hit=llm_result.cache_hit,
+            scoring_policy=scoring_policy,
+            location_policy=location_policy,
+            profile=profile,
+        )
 
     role_family_fit = _role_family_fit(title, row["department"] or "", text, profile)
     evidence_strength = _evidence_strength(text, profile)
@@ -99,14 +147,14 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
     }
     fit_score = _weighted_fit_score(dimensions, scoring_policy)
     feasibility_state, feasibility_reason = _feasibility(locations, location_policy)
-    is_stretch = _is_stretch_family(title, row["department"] or "", text, profile)
-    recommendation = _recommendation(
-        fit_score,
-        feasibility_state,
+    recommendation = _final_recommendation(
+        row,
         company,
         hard_blockers,
-        stretch_family=is_stretch,
-        scoring_policy=scoring_policy,
+        fit_score,
+        feasibility_state,
+        scoring_policy,
+        profile,
     )
 
     return RoleEvaluation(
@@ -133,16 +181,121 @@ def evaluate_role(row: sqlite3.Row, company: CompanyConfig) -> RoleEvaluation:
         alignments=_alignments(title, text, profile),
         gaps=_gaps(text, hard_blockers),
         uncertainties=[
-            f"This Checkpoint B evaluation uses {EVALUATOR_VERSION}, not the final LLM evaluator.",
+            (
+                f"No ANTHROPIC_API_KEY was configured, so this evaluation uses "
+                f"{DETERMINISTIC_FALLBACK_VERSION}."
+            ),
             "Work authorization must be confirmed against the stored policy before applying.",
         ],
         provenance={
             "candidate_profile_version": profile.version,
             "location_policy_version": location_policy.version,
             "scoring_policy_version": scoring_policy.version,
-            "evaluator_version": EVALUATOR_VERSION,
+            "prompt_version": "deterministic_fallback",
+            "model_version": DETERMINISTIC_FALLBACK_VERSION,
+            "evaluator_version": DETERMINISTIC_FALLBACK_VERSION,
         },
         summary=_summary(title, fit_score, recommendation, hard_blockers),
+    )
+
+
+def _role_evaluation_from_llm(
+    row: sqlite3.Row,
+    company: CompanyConfig,
+    hard_blockers: list[HardBlocker],
+    dimensions: dict[str, int],
+    *,
+    llm_confidence: float,
+    llm_alignments: list[Alignment],
+    llm_gaps: list[Gap],
+    llm_uncertainties: list[str],
+    llm_summary: str,
+    llm_advisory_recommendation: str,
+    model_version: str,
+    prompt_version: str,
+    cache_hit: bool,
+    scoring_policy: ScoringPolicyConfig,
+    location_policy: LocationPolicyConfig,
+    profile: CandidateProfileConfig,
+) -> RoleEvaluation:
+    locations = json.loads(row["locations_json"])
+    fit_score = _weighted_fit_score(dimensions, scoring_policy)
+    feasibility_state, feasibility_reason = _feasibility(locations, location_policy)
+    recommendation = _final_recommendation(
+        row,
+        company,
+        hard_blockers,
+        fit_score,
+        feasibility_state,
+        scoring_policy,
+        profile,
+    )
+    gaps = list(llm_gaps)
+    if hard_blockers:
+        gaps = _gaps(_role_text(row), hard_blockers) + gaps
+    return RoleEvaluation(
+        role_fit_score=fit_score,
+        confidence=llm_confidence,
+        dimensions=dimensions,
+        feasibility={
+            "state": "blocked" if hard_blockers else feasibility_state,
+            "reason": "Hard blocker overrides feasibility."
+            if hard_blockers
+            else feasibility_reason,
+            "policy_version": location_policy.version,
+        },
+        strategic_priority=_strategic_priority(company),
+        recommendation=recommendation,
+        hard_blockers=hard_blockers,
+        alignments=llm_alignments,
+        gaps=gaps,
+        uncertainties=llm_uncertainties,
+        provenance={
+            "candidate_profile_version": profile.version,
+            "location_policy_version": location_policy.version,
+            "scoring_policy_version": scoring_policy.version,
+            "prompt_version": prompt_version or PROMPT_VERSION,
+            "model_version": model_version,
+            "evaluator_version": HYBRID_EVALUATOR_VERSION,
+            "llm_advisory_recommendation": llm_advisory_recommendation,
+            "llm_cache_hit": str(cache_hit).lower(),
+        },
+        summary=llm_summary,
+    )
+
+
+def _strategic_priority(company: CompanyConfig) -> dict[str, str | bool]:
+    return {
+        "company_tier": f"tier_{company.tier}",
+        "freshness": "new_today",
+        "warm_path": company.warm_path,
+        "reason": "Tier 1 company with a warm path in the tracker."
+        if company.warm_path
+        else f"Tier {company.tier} company from the configured watchlist.",
+    }
+
+
+def _final_recommendation(
+    row: sqlite3.Row,
+    company: CompanyConfig,
+    hard_blockers: list[HardBlocker],
+    fit_score: int,
+    feasibility_state: str,
+    scoring_policy: ScoringPolicyConfig,
+    profile: CandidateProfileConfig,
+) -> str:
+    return _recommendation(
+        fit_score,
+        feasibility_state,
+        company,
+        hard_blockers,
+        stretch_family=_is_stretch_family(
+            row["title"],
+            row["department"] or "",
+            _role_text(row),
+            profile,
+        ),
+        scoring_policy=scoring_policy,
     )
 
 

@@ -246,8 +246,8 @@ class OperabilityTest(unittest.TestCase):
         self.assertIn('cron: "0 */6 * * *"', workflow)
         self.assertIn("workflow_dispatch:", workflow)
         self.assertIn("job-agent scan-all", workflow)
-        self.assertIn("RESEND_API_KEY", workflow)
-        self.assertIn("DIGEST_RECIPIENT_EMAIL", workflow)
+        self.assertNotIn("RESEND_API_KEY", workflow)
+        self.assertNotIn("DIGEST_RECIPIENT_EMAIL", workflow)
 
     def test_sample_live_noise_cli_writes_label_template(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

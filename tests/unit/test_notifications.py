@@ -45,7 +45,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(result.recipient, "")
             self.assertTrue((output_dir / "latest_digest.html").exists())
             self.assertIn(
-                "Strategic Operations Manager",
+                "Low-priority / blocked",
                 (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
             )
             notification = conn.execute("SELECT * FROM notifications").fetchone()
@@ -95,7 +95,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(result.role_count, 1)
             self.assertEqual(len(provider.messages), 1)
             self.assertNotIn("Strategic Operations Manager", provider.messages[0].html_body)
-            self.assertIn("Business Operations Lead", provider.messages[0].html_body)
+            self.assertIn("Low-priority / blocked", provider.messages[0].html_body)
 
     def test_provider_without_recipient_fails_loud(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

@@ -9,7 +9,9 @@ from unittest.mock import patch
 
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.db import wake_due_snoozes
+from app.services.evaluate import DETERMINISTIC_FALLBACK_VERSION
 from app.services.digest import write_digest
+from app.services.llm_evaluator import PROMPT_VERSION
 from app.services.ingest import run_scan
 from app.services.review import approve_review, dismiss_review, snooze_review
 
@@ -129,7 +131,8 @@ class DatabricksSliceTest(unittest.TestCase):
 
             self.assertEqual(row["profile_version_id"], load_candidate_profile().version)
             self.assertEqual(row["location_policy_version_id"], load_location_policy().version)
-            self.assertEqual(row["prompt_version"], load_scoring_policy().version)
+            self.assertEqual(row["prompt_version"], "deterministic_fallback")
+            self.assertEqual(row["model_version"], DETERMINISTIC_FALLBACK_VERSION)
             self.assertEqual(
                 evaluation["provenance"]["candidate_profile_version"],
                 load_candidate_profile().version,
@@ -138,6 +141,16 @@ class DatabricksSliceTest(unittest.TestCase):
                 evaluation["provenance"]["location_policy_version"],
                 load_location_policy().version,
             )
+            self.assertEqual(
+                evaluation["provenance"]["scoring_policy_version"],
+                load_scoring_policy().version,
+            )
+            self.assertEqual(evaluation["provenance"]["prompt_version"], "deterministic_fallback")
+            self.assertEqual(
+                evaluation["provenance"]["model_version"],
+                DETERMINISTIC_FALLBACK_VERSION,
+            )
+            self.assertNotEqual(evaluation["provenance"]["prompt_version"], PROMPT_VERSION)
             self.assertEqual(
                 evaluation["provenance"]["scoring_policy_version"],
                 load_scoring_policy().version,

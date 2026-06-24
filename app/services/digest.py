@@ -7,6 +7,7 @@ import json
 import sqlite3
 from pathlib import Path
 
+from app.config import load_scoring_policy
 from app.db import get_digest_rows, latest_source_failures
 from app.models import utc_now
 
@@ -39,6 +40,7 @@ def write_digest(
 
 def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
     grouped = _group_rows(rows)
+    digest_limits = load_scoring_policy().digest_limits
     generated_at = utc_now()
     parts = [
         "<!doctype html>",
@@ -51,22 +53,32 @@ def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
         f"<h1>Job Search Digest</h1><p class='muted'>Generated {html.escape(generated_at)}</p>",
     ]
     for recommendation, label in RECOMMENDATION_SECTIONS:
-        section_rows = grouped.get(recommendation, [])
+        raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
+        section_limit = digest_limits.get(recommendation, len(raw_section_rows))
+        section_rows = raw_section_rows[:section_limit]
         if not section_rows:
             continue
         parts.append(f"<h2>{html.escape(label)}</h2>")
         for row in section_rows:
             parts.append(_role_card(row))
+        if len(raw_section_rows) > len(section_rows):
+            parts.append(
+                "<p class='muted'>"
+                f"{len(raw_section_rows) - len(section_rows)} additional "
+                f"{html.escape(label.lower())} roles hidden by the digest cap."
+                "</p>"
+            )
     low_priority = [
         row
         for recommendation in LOW_PRIORITY_RECOMMENDATIONS
         for row in grouped.get(recommendation, [])
     ]
     if low_priority:
-        parts.append("<details class='low'><summary>Low-priority / blocked</summary>")
-        for row in low_priority:
-            parts.append(_role_card(row))
-        parts.append("</details>")
+        parts.append(
+            "<p class='muted'><strong>Low-priority / blocked:</strong> "
+            f"{len(low_priority)} role{'s' if len(low_priority) != 1 else ''} "
+            "not expanded in this digest.</p>"
+        )
     parts.append("<h2>Source failures and coverage gaps</h2>")
     if failures:
         parts.append("<ul>")
@@ -89,15 +101,20 @@ def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
 
 def render_text(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
     grouped = _group_rows(rows)
+    digest_limits = load_scoring_policy().digest_limits
     parts = [f"Job Search Digest - generated {utc_now()}", ""]
     for recommendation, label in RECOMMENDATION_SECTIONS:
-        section_rows = grouped.get(recommendation, [])
+        raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
+        section_limit = digest_limits.get(recommendation, len(raw_section_rows))
+        section_rows = raw_section_rows[:section_limit]
         if not section_rows:
             continue
         parts.append(label)
         parts.append("-" * len(label))
         for row in section_rows:
             parts.extend(_role_text_lines(row))
+        if len(raw_section_rows) > len(section_rows):
+            parts.append(f"{len(raw_section_rows) - len(section_rows)} additional hidden by cap.")
         parts.append("")
     low_priority = [
         row
@@ -105,10 +122,7 @@ def render_text(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
         for row in grouped.get(recommendation, [])
     ]
     if low_priority:
-        parts.append("Low-priority / blocked")
-        parts.append("----------------------")
-        for row in low_priority:
-            parts.extend(_role_text_lines(row))
+        parts.append(f"Low-priority / blocked: {len(low_priority)} not expanded")
         parts.append("")
     parts.append("Source failures and coverage gaps")
     if failures:
@@ -130,6 +144,14 @@ def _group_rows(rows: list[sqlite3.Row]) -> dict[str, list[sqlite3.Row]]:
         evaluation = json.loads(row["evaluation_json"])
         grouped.setdefault(evaluation["recommendation"], []).append(row)
     return grouped
+
+
+def _ranked_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
+    return sorted(
+        rows,
+        key=lambda row: int(json.loads(row["evaluation_json"])["role_fit_score"]),
+        reverse=True,
+    )
 
 
 def _role_card(row: sqlite3.Row) -> str:

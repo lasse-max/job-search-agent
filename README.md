@@ -70,6 +70,7 @@ cp .env.example .env          # fill locally; never commit .env
 
 job-agent scan                # run a discovery scan (writes a local digest)
 job-agent scan-all            # scheduled-style scan + digest notification/fallback
+job-agent sample-live-noise   # write a label template from cached live postings
 job-agent review list         # review surfaced opportunities
 job-agent add-url <job-url>   # manually evaluate any role
 ```
@@ -78,6 +79,11 @@ Development sends no email by default — the digest is written to
 `output/latest_digest.html`. Live delivery uses Resend when `RESEND_API_KEY` is
 set. Required for live delivery: `DIGEST_RECIPIENT_EMAIL` (for example,
 `you@example.com`). Optional: `DIGEST_FROM_EMAIL`.
+
+The evaluator uses Claude only when `ANTHROPIC_API_KEY` is present. Without a
+key, local and CI runs use the deterministic fallback and record that fallback in
+evaluation provenance. The scheduled workflow intentionally leaves live email
+secrets unwired until the live-noise precision gate clears.
 
 ### MVP commands
 

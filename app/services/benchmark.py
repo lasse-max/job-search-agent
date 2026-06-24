@@ -20,6 +20,7 @@ from app.services.evaluate import evaluate_role
 
 DEFAULT_EVALUATION_SET = DATA_DIR / "evaluation_set" / "evaluation_set.yaml"
 DEFAULT_JD_CACHE_DIR = DATA_DIR / "evaluation_set" / "jd_cache"
+DEFAULT_LIVE_NOISE_SET = DATA_DIR / "evaluation_set" / "live_noise_labels.yaml"
 DEFAULT_REPORT_DIR = DATA_DIR / "evaluation_set" / "reports"
 APPLY_CONSIDER = {"apply_now", "consider"}
 MAX_CACHED_CHARS = 12000
@@ -75,6 +76,37 @@ class BenchmarkRun:
     csv_path: Path
 
 
+@dataclass(frozen=True)
+class LiveNoiseBenchmarkResult:
+    role_id: str
+    company: str
+    role_title: str
+    expected_recommendation: str
+    actual_recommendation: str
+    fit_score: int
+    surface_match: bool
+
+
+@dataclass(frozen=True)
+class LiveNoiseBenchmarkMetrics:
+    labelled_roles: int
+    surfaced_count: int
+    surfaced_correct: int
+    digest_precision: float
+
+    @property
+    def precision_passes(self) -> bool:
+        return self.labelled_roles > 0 and self.digest_precision >= 0.80
+
+
+@dataclass(frozen=True)
+class LiveNoiseBenchmarkRun:
+    metrics: LiveNoiseBenchmarkMetrics
+    results: list[LiveNoiseBenchmarkResult]
+    markdown_path: Path
+    csv_path: Path
+
+
 def run_benchmark(
     *,
     evaluation_set_path: Path = DEFAULT_EVALUATION_SET,
@@ -100,6 +132,38 @@ def run_benchmark(
     )
 
 
+def run_live_noise_benchmark(
+    *,
+    live_noise_set_path: Path = DEFAULT_LIVE_NOISE_SET,
+    report_dir: Path = DEFAULT_REPORT_DIR,
+) -> LiveNoiseBenchmarkRun:
+    examples = load_live_noise_set(live_noise_set_path) if live_noise_set_path.exists() else []
+    labelled = [
+        example
+        for example in examples
+        if str(example.get("expected_recommendation") or "") in {
+            "apply_now",
+            "consider",
+            "stretch",
+            "skip",
+            "blocked",
+        }
+    ]
+    results = [_evaluate_live_noise_example(example) for example in labelled]
+    metrics = _live_noise_metrics(results)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = report_dir / "live_noise_precision_report.csv"
+    markdown_path = report_dir / "live_noise_precision_report.md"
+    _write_live_noise_csv(csv_path, results)
+    _write_live_noise_markdown(markdown_path, metrics, results)
+    return LiveNoiseBenchmarkRun(
+        metrics=metrics,
+        results=results,
+        markdown_path=markdown_path,
+        csv_path=csv_path,
+    )
+
+
 def load_evaluation_set(path: Path = DEFAULT_EVALUATION_SET) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     try:
@@ -109,6 +173,13 @@ def load_evaluation_set(path: Path = DEFAULT_EVALUATION_SET) -> list[dict[str, A
     if not isinstance(data, dict) or not isinstance(data.get("evaluation_set"), list):
         raise ValueError(f"Expected evaluation_set list in {path}")
     return [dict(item) for item in data["evaluation_set"]]
+
+
+def load_live_noise_set(path: Path = DEFAULT_LIVE_NOISE_SET) -> list[dict[str, Any]]:
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("live_noise_set"), list):
+        raise ValueError(f"Expected live_noise_set list in {path}")
+    return [dict(item) for item in data["live_noise_set"]]
 
 
 def _load_loose_evaluation_set(text: str) -> list[dict[str, Any]]:
@@ -229,6 +300,46 @@ def _evaluate_example(example: dict[str, Any], cache_path: Path) -> BenchmarkRes
     )
 
 
+def _evaluate_live_noise_example(example: dict[str, Any]) -> LiveNoiseBenchmarkResult:
+    description_text = str(
+        example.get("description_text") or example.get("description_excerpt") or ""
+    )
+    row = {
+        "title": str(example["role_title"]),
+        "locations_json": json.dumps([str(example["location"])]),
+        "department": str(example.get("department") or ""),
+        "employment_type": str(example.get("employment_type") or ""),
+        "description_text": description_text,
+        "source_url": str(example.get("source_url") or ""),
+    }
+    company = CompanyConfig(
+        name=str(example["company"]),
+        tier=int(example.get("company_tier") or 3),
+        enabled=True,
+        ats_type="manual",
+        source_key=str(example.get("stable_id") or example["id"]).lower(),
+        careers_url=str(example.get("source_url") or ""),
+        target_locations=[str(example["location"])],
+        target_role_family_notes="Live-noise precision label.",
+        warm_path=bool(example.get("warm_path", False)),
+    )
+    evaluation = evaluate_role(row, company)
+    expected = str(example["expected_recommendation"])
+    return LiveNoiseBenchmarkResult(
+        role_id=str(example["id"]),
+        company=str(example["company"]),
+        role_title=str(example["role_title"]),
+        expected_recommendation=expected,
+        actual_recommendation=evaluation.recommendation,
+        fit_score=evaluation.role_fit_score,
+        surface_match=(
+            evaluation.recommendation in APPLY_CONSIDER
+            if expected in APPLY_CONSIDER
+            else evaluation.recommendation not in APPLY_CONSIDER
+        ),
+    )
+
+
 def _metrics(results: list[BenchmarkResult]) -> BenchmarkMetrics:
     expected_surface = [
         result for result in results if result.expected_recommendation in APPLY_CONSIDER
@@ -270,6 +381,19 @@ def _metrics(results: list[BenchmarkResult]) -> BenchmarkMetrics:
     )
 
 
+def _live_noise_metrics(results: list[LiveNoiseBenchmarkResult]) -> LiveNoiseBenchmarkMetrics:
+    surfaced = [result for result in results if result.actual_recommendation in APPLY_CONSIDER]
+    surfaced_correct = [
+        result for result in surfaced if result.expected_recommendation in APPLY_CONSIDER
+    ]
+    return LiveNoiseBenchmarkMetrics(
+        labelled_roles=len(results),
+        surfaced_count=len(surfaced),
+        surfaced_correct=len(surfaced_correct),
+        digest_precision=_ratio(len(surfaced_correct), len(surfaced)),
+    )
+
+
 def _write_csv(path: Path, results: list[BenchmarkResult]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
@@ -277,6 +401,15 @@ def _write_csv(path: Path, results: list[BenchmarkResult]) -> None:
             fieldnames=list(results[0].__dict__.keys()),
             lineterminator="\n",
         )
+        writer.writeheader()
+        for result in results:
+            writer.writerow(result.__dict__)
+
+
+def _write_live_noise_csv(path: Path, results: list[LiveNoiseBenchmarkResult]) -> None:
+    fieldnames = list(LiveNoiseBenchmarkResult.__dataclass_fields__)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for result in results:
             writer.writerow(result.__dict__)
@@ -336,6 +469,41 @@ def _write_markdown(
             f"{_pass_fail(result.recommendation_match)} | "
             f"{_pass_fail(result.blocker_match)} | "
             f"{_pass_fail(result.fit_band_match)} |"
+        )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _write_live_noise_markdown(
+    path: Path,
+    metrics: LiveNoiseBenchmarkMetrics,
+    results: list[LiveNoiseBenchmarkResult],
+) -> None:
+    lines = [
+        "# Live-Noise Precision Report",
+        "",
+        "Generated by `job-agent benchmark` when a labelled live-noise set is present.",
+        "",
+        "## Aggregate Metrics",
+        "",
+        f"- Labelled roles: {metrics.labelled_roles}",
+        (
+            "- Digest precision: "
+            f"{metrics.surfaced_correct}/{metrics.surfaced_count} "
+            f"({metrics.digest_precision:.1%})"
+        ),
+        f"- Precision gate: {_pass_fail(metrics.precision_passes)}",
+        "",
+        "## Per-Role Results",
+        "",
+        "| ID | Company | Role | Expected | Actual | Fit | Surface |",
+        "|---|---|---|---|---|---:|---|",
+    ]
+    for result in results:
+        lines.append(
+            "| "
+            f"{result.role_id} | {result.company} | {result.role_title} | "
+            f"{result.expected_recommendation} | {result.actual_recommendation} | "
+            f"{result.fit_score} | {_pass_fail(result.surface_match)} |"
         )
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

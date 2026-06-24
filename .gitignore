@@ -13,5 +13,7 @@ dist/
 build/
 *.egg-info/
 data/private/
+data/model_spend_ledger.json
+docs/briefs/* copy.md
 output/*
 !output/source_coverage.csv

@@ -43,6 +43,7 @@ class ScoringPolicyConfig:
     version: str
     fit_weights: dict[str, float]
     recommendation_thresholds: RecommendationThresholds
+    digest_limits: dict[str, int]
     true_blockers: tuple[str, ...]
     technical_blocker_terms: tuple[str, ...]
     technical_blocker_allowed_terms: tuple[str, ...]
@@ -79,6 +80,8 @@ class CandidateProfileConfig:
     scope_signals: tuple[str, ...]
     languages: dict[str, str]
     brand_floor: dict[str, object]
+    usually_deprioritize: tuple[str, ...]
+    honest_gaps: tuple[str, ...]
 
 
 def _parse_scalar(value: str) -> object:
@@ -193,6 +196,7 @@ def load_scoring_policy(
             ),
             stretch_apply_now_tier=_int_threshold(thresholds, "stretch_apply_now_tier"),
         ),
+        digest_limits=_dict_of_int(data.get("digest_limits")),
         true_blockers=_tuple_of_str(data.get("true_blockers")),
         technical_blocker_terms=_tuple_of_str(data.get("technical_blocker_terms")),
         technical_blocker_allowed_terms=_tuple_of_str(
@@ -264,6 +268,8 @@ def load_candidate_profile(
         scope_signals=_tuple_of_str(scope_signals.get("scope_signals")),
         languages={str(key): str(value) for key, value in languages.items()},
         brand_floor=dict(brand_floor),
+        usually_deprioritize=_tuple_of_str(data.get("usually_deprioritize")),
+        honest_gaps=_tuple_of_str(data.get("honest_gaps")),
     )
 
 

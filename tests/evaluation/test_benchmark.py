@@ -1,8 +1,17 @@
 from __future__ import annotations
 
+import tempfile
 import unittest
+from pathlib import Path
 
-from app.services.benchmark import APPLY_CONSIDER, DEFAULT_JD_CACHE_DIR, run_benchmark
+import yaml
+
+from app.services.benchmark import (
+    APPLY_CONSIDER,
+    DEFAULT_JD_CACHE_DIR,
+    run_benchmark,
+    run_live_noise_benchmark,
+)
 
 
 class BenchmarkCalibrationTest(unittest.TestCase):
@@ -32,6 +41,47 @@ class BenchmarkCalibrationTest(unittest.TestCase):
         ev31_cache = (DEFAULT_JD_CACHE_DIR / "EV-31.txt").read_text(encoding="utf-8")
         self.assertIn("Security clearance", ev31_cache)
         self.assertIn("continuous residency in the UK for at least 5 years", ev31_cache)
+
+    def test_live_noise_benchmark_reports_precision_from_labelled_sample(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            labels_path = Path(directory) / "live_noise.yaml"
+            reports_dir = Path(directory) / "reports"
+            labels_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "version": "live_noise_labels_v1",
+                        "live_noise_set": [
+                            {
+                                "id": "LN-001",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "Strategic Operations Lead",
+                                "department": "Strategy & Operations",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/job",
+                                "description_text": (
+                                    "Lead strategy and operations programs, own executive "
+                                    "cadence, and drive transformation work."
+                                ),
+                                "expected_recommendation": "apply_now",
+                            }
+                        ],
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+
+            run = run_live_noise_benchmark(
+                live_noise_set_path=labels_path,
+                report_dir=reports_dir,
+            )
+
+            self.assertEqual(run.metrics.labelled_roles, 1)
+            self.assertEqual(run.metrics.digest_precision, 1.0)
+            self.assertTrue(run.markdown_path.exists())
+            self.assertTrue(run.csv_path.exists())
 
 
 if __name__ == "__main__":

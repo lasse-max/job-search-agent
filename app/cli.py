@@ -12,9 +12,11 @@ from app.db import connect, init_db
 from app.services.benchmark import (
     DEFAULT_EVALUATION_SET,
     DEFAULT_JD_CACHE_DIR,
+    DEFAULT_LIVE_NOISE_SET,
     DEFAULT_REPORT_DIR,
     refresh_jd_cache,
     run_benchmark,
+    run_live_noise_benchmark,
 )
 from app.services.export_csv import backup_sqlite, export_csvs
 from app.services.ingest import run_scan
@@ -86,6 +88,7 @@ def main(argv: list[str] | None = None) -> int:
     benchmark_parser = subparsers.add_parser("benchmark", help="Run offline evaluator benchmark")
     benchmark_parser.add_argument("--evaluation-set", type=Path, default=DEFAULT_EVALUATION_SET)
     benchmark_parser.add_argument("--cache-dir", type=Path, default=DEFAULT_JD_CACHE_DIR)
+    benchmark_parser.add_argument("--live-noise-set", type=Path, default=DEFAULT_LIVE_NOISE_SET)
     benchmark_parser.add_argument("--out", type=Path, default=DEFAULT_REPORT_DIR)
     benchmark_parser.add_argument(
         "--refresh-cache",
@@ -254,7 +257,25 @@ def main(argv: list[str] | None = None) -> int:
         print(f"feasibility_correctness={metrics.feasibility_correctness:.3f}")
         print(f"report_markdown={run.markdown_path}")
         print(f"report_csv={run.csv_path}")
-        return 0 if metrics.recall_passes else 1
+        if args.live_noise_set.exists():
+            live_run = run_live_noise_benchmark(
+                live_noise_set_path=args.live_noise_set,
+                report_dir=args.out,
+            )
+            print(f"live_noise_labelled={live_run.metrics.labelled_roles}")
+            print(f"live_noise_precision={live_run.metrics.digest_precision:.3f}")
+            print(f"live_noise_report_markdown={live_run.markdown_path}")
+            print(f"live_noise_report_csv={live_run.csv_path}")
+            live_gate_passes = (
+                live_run.metrics.precision_passes
+                if live_run.metrics.labelled_roles
+                else True
+            )
+        else:
+            print("live_noise_labelled=0")
+            print("live_noise_precision=not_available")
+            live_gate_passes = True
+        return 0 if metrics.recall_passes and live_gate_passes else 1
 
     if args.command == "sample-live-noise":
         conn = connect(args.db)
