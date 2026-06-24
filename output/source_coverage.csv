@@ -1,0 +1,92 @@
+Company,Tier,Careers URL,ATS,Source key,Adapter supported,Status,Fallback,Job count at audit,Evidence URL,Selected initial coverage
+Google,1,https://careers.google.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Databricks,1,https://www.databricks.com/company/careers,greenhouse,databricks,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,757,https://boards-api.greenhouse.io/v1/boards/databricks/jobs,yes
+OpenAI,1,https://openai.com/careers/,ashby,openai,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,709,https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=false,yes
+Stripe,1,https://stripe.com/jobs,greenhouse,stripe,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,496,https://boards-api.greenhouse.io/v1/boards/stripe/jobs,yes
+Airbnb,1,https://careers.airbnb.com/,greenhouse,airbnb,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,218,https://boards-api.greenhouse.io/v1/boards/airbnb/jobs,yes
+DoorDash,1,https://careersatdoordash.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Uber,1,https://www.uber.com/global/en/careers/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Canva,1,https://www.lifeatcanva.com/en/jobs/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Atlassian,1,https://www.atlassian.com/company/careers,lever,atlassian,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",0,https://api.lever.co/v0/postings/atlassian?mode=json,no
+Airwallex,1,https://careers.airwallex.com/,ashby,airwallex,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,582,https://api.ashbyhq.com/posting-api/job-board/airwallex?includeCompensation=false,yes
+Sierra,1,https://sierra.ai/careers,ashby,sierra,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,135,https://api.ashbyhq.com/posting-api/job-board/sierra?includeCompensation=false,yes
+Mistral AI,1,https://jobs.lever.co/mistral,lever,mistral,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,172,https://api.lever.co/v0/postings/mistral?mode=json,yes
+Palantir,1,https://www.palantir.com/careers/,lever,palantir,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,237,https://api.lever.co/v0/postings/palantir?mode=json,yes
+Amazon / AWS,1,https://www.amazon.jobs/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Apple,1,https://jobs.apple.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Netflix,1,https://jobs.netflix.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+SafetyCulture,1,https://safetyculture.com/careers/,ashby,safetyculture,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",0,https://api.ashbyhq.com/posting-api/job-board/safetyculture?includeCompensation=false,no
+NEURA Robotics,1,https://jobs.neura-robotics.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Helsing,1,https://helsing.ai/careers,greenhouse,helsing,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,132,https://boards-api.greenhouse.io/v1/boards/helsing/jobs,yes
+Anthropic,1,https://www.anthropic.com/careers,greenhouse,anthropic,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,375,https://boards-api.greenhouse.io/v1/boards/anthropic/jobs,yes
+Xero,2,https://careers.xero.com/,ashby,xero,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,104,https://api.ashbyhq.com/posting-api/job-board/xero?includeCompensation=false,yes
+Rokt,2,https://www.rokt.com/company/careers,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Wise,2,https://wise.jobs/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Spotify,2,https://www.lifeatspotify.com/jobs,lever,spotify,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,134,https://api.lever.co/v0/postings/spotify?mode=json,yes
+Checkout.com,2,https://jobs.ashbyhq.com/checkout.com,ashby,checkout.com,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,208,https://api.ashbyhq.com/posting-api/job-board/checkout.com?includeCompensation=false,yes
+Grab,2,https://www.grab.careers/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Salesforce,2,https://careers.salesforce.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Snowflake,2,https://careers.snowflake.com/,ashby,snowflake,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,413,https://api.ashbyhq.com/posting-api/job-board/snowflake?includeCompensation=false,yes
+ServiceNow / Moveworks,2,https://careers.servicenow.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Meta,2,https://www.metacareers.com/jobs/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Microsoft,2,https://jobs.careers.microsoft.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+LinkedIn,2,https://careers.linkedin.com/,lever,linkedin,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,20,https://api.lever.co/v0/postings/linkedin?mode=json,no
+Disney,2,https://jobs.disneycareers.com/,greenhouse,disney,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,1,https://boards-api.greenhouse.io/v1/boards/disney/jobs,no
+OutSystems,2,https://www.outsystems.com/careers/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Celonis,2,https://careers.celonis.com/,greenhouse,celonis,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,201,https://boards-api.greenhouse.io/v1/boards/celonis/jobs,no
+Harvey,2,https://www.harvey.ai/careers,ashby,harvey,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,292,https://api.ashbyhq.com/posting-api/job-board/harvey?includeCompensation=false,yes
+Glean,2,https://www.glean.com/careers,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Cohere,2,https://cohere.com/careers,ashby,cohere,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,132,https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false,no
+ElevenLabs,2,https://elevenlabs.io/careers,ashby,elevenlabs,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,153,https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false,no
+Pigment,2,https://www.pigment.com/careers,lever,pigment,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,95,https://api.lever.co/v0/postings/pigment?mode=json,no
+Personio,2,https://www.personio.com/careers/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+N26,2,https://n26.com/en-eu/careers,greenhouse,n26,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,65,https://boards-api.greenhouse.io/v1/boards/n26/jobs,no
+TikTok,2,https://careers.tiktok.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Booking.com,2,https://careers.booking.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Deliveroo,2,https://careers.deliveroo.co.uk/,ashby,deliveroo,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,206,https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false,no
+Block,2,https://block.xyz/careers,greenhouse,block,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,210,https://boards-api.greenhouse.io/v1/boards/block/jobs,no
+DeepL,2,https://www.deepl.com/en/jobs,ashby,deepl,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,22,https://api.ashbyhq.com/posting-api/job-board/deepl?includeCompensation=false,no
+Parloa,2,https://www.parloa.com/careers,greenhouse,parloa,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,54,https://boards-api.greenhouse.io/v1/boards/parloa/jobs,no
+SAP,2,https://jobs.sap.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Expedia Group,2,https://careers.expediagroup.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Adobe,2,https://careers.adobe.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Visa,2,https://corporate.visa.com/en/jobs/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Mastercard,2,https://careers.mastercard.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Revolut,2,https://www.revolut.com/careers/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Vercel,2,https://vercel.com/careers,ashby,vercel,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",0,https://api.ashbyhq.com/posting-api/job-board/vercel?includeCompensation=false,no
+Quantexa,2,https://www.quantexa.com/careers/,ashby,quantexa,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,25,https://api.ashbyhq.com/posting-api/job-board/quantexa?includeCompensation=false,no
+Synthesia,2,https://www.synthesia.io/careers,ashby,synthesia,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,80,https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false,no
+Encord,2,https://encord.com/careers/,ashby,encord,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,48,https://api.ashbyhq.com/posting-api/job-board/encord?includeCompensation=false,no
+Lovable,2,https://lovable.dev/careers,ashby,lovable,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,79,https://api.ashbyhq.com/posting-api/job-board/lovable?includeCompensation=false,no
+Magentic,2,https://www.magentic.ai/careers,ashby,magentic,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,9,https://api.ashbyhq.com/posting-api/job-board/magentic?includeCompensation=false,no
+Aleph Alpha,2,https://aleph-alpha.com/careers/,ashby,alephalpha,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,10,https://api.ashbyhq.com/posting-api/job-board/alephalpha?includeCompensation=false,no
+Decagon,2,https://jobs.ashbyhq.com/decagon,ashby,decagon,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,108,https://api.ashbyhq.com/posting-api/job-board/decagon?includeCompensation=false,no
+Cognition,2,https://cognition.ai/careers,ashby,cognition,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,68,https://api.ashbyhq.com/posting-api/job-board/cognition?includeCompensation=false,no
+Fortescue,2,https://careers.fortescue.com/,unknown,,no,Needs configuration,"Confirm ATS/source key, then use manual URL/text intake until configured.",,,no
+Zendesk,3,https://jobs.zendesk.com/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Deputy,3,https://www.deputy.com/careers,lever,deputy,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,11,https://api.lever.co/v0/postings/deputy?mode=json,no
+Culture Amp,3,https://www.cultureamp.com/careers,greenhouse,cultureamp,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,13,https://boards-api.greenhouse.io/v1/boards/cultureamp/jobs,no
+Harrison.ai,3,https://harrison.ai/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Quantium,3,https://www.quantium.com/careers/,greenhouse,quantium,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,25,https://boards-api.greenhouse.io/v1/boards/quantium/jobs,no
+Nearmap,3,https://www.nearmap.com/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Macquarie Group,3,https://www.macquarie.com/au/en/careers.html,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Woodside Energy,3,https://www.woodside.com/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+BHP,3,https://www.bhp.com/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Rio Tinto,3,https://www.riotinto.com/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Wesfarmers,3,https://www.wesfarmers.com.au/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Klarna,3,https://www.klarna.com/careers/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Zalando,3,https://jobs.zalando.com/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Trade Republic,3,https://traderepublic.com/careers,greenhouse,traderepublic,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,1,https://boards-api.greenhouse.io/v1/boards/traderepublic/jobs,no
+Delivery Hero,3,https://careers.deliveryhero.com/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+HelloFresh,3,https://careers.hellofresh.com/,greenhouse,hellofresh,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,369,https://boards-api.greenhouse.io/v1/boards/hellofresh/jobs,no
+Flix,3,https://flix.careers/,greenhouse,flix,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,138,https://boards-api.greenhouse.io/v1/boards/flix/jobs,no
+Skyscanner,3,https://www.skyscanner.net/jobs,ashby,skyscanner,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,18,https://api.ashbyhq.com/posting-api/job-board/skyscanner?includeCompensation=false,no
+Plaid,3,https://plaid.com/careers/,ashby,plaid,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,105,https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=false,no
+Waymo,3,https://waymo.com/joinus/,greenhouse,waymo,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,398,https://boards-api.greenhouse.io/v1/boards/waymo/jobs,no
+"X, the Moonshot Factory",3,https://x.company/careers/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Noah Labs,3,https://www.noah-labs.com/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Roblox,3,https://careers.roblox.com/,greenhouse,roblox,yes,Supported,Manual URL/text intake if feed fails or a role is missing from the feed.,229,https://boards-api.greenhouse.io/v1/boards/roblox/jobs,no
+BCG / BCG X,3,https://careers.bcg.com/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+McKinsey / QuantumBlack,3,https://www.mckinsey.com/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Bain / Vector,3,https://www.bain.com/careers/,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no
+Accenture,3,https://www.accenture.com/us-en/careers,unknown,,no,Manual fallback,Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.,,,no

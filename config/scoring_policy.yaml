@@ -1,0 +1,38 @@
+version: "scoring_policy_v1"
+active: true
+fit_dimensions:
+  role_family_fit:
+    weight: 30
+    meaning: "Match to target or approved-stretch work, based on responsibilities rather than title alone."
+  evidence_strength:
+    weight: 30
+    meaning: "Specificity and quality of candidate evidence mapped to stated requirements."
+  scope_seniority:
+    weight: 25
+    meaning: "Ownership, ambiguity, stakeholder level, team/vendor leadership, required experience, and level match."
+  gap_manageability:
+    weight: 15
+    meaning: "Severity of functional, technical, or domain gaps; higher score means more manageable."
+true_blockers:
+  - "Posting is closed or unavailable at first discovery."
+  - "Mandatory active security/government clearance that the candidate cannot obtain."
+  - "Posting explicitly requires existing local work authorization and states sponsorship is unavailable."
+  - "Production software engineering, production coding, or deep ML engineering is a central duty."
+  - "Role is clearly junior based on responsibilities and required experience, not title alone."
+  - "Location is genuinely impossible under the current stored policy."
+strong_penalties:
+  - "Customer Success/account management without clear strategy ownership."
+  - "Quota-carrying sales."
+  - "Analyst/associate title with ambiguous level."
+  - "US role with no sponsorship information."
+  - "Pure PM role without an implementation/operations angle."
+  - "Domain experience requirement not demonstrated by the candidate."
+recommendation_rules:
+  blocked: "Any true blocker."
+  apply_now:
+    - "Fit >= 80, feasibility not blocked, and strategic priority Tier 1 or Tier 2."
+    - "Fit >= 70 for Tier 1 when there is a warm path or exceptional strategic upside."
+  consider: "Fit 65-79 with manageable feasibility."
+  stretch: "Fit 50-64 and Tier 1/2, approved stretch family, or strong warm path."
+  skip: "Fit < 50 or severe gap burden without compensating value."
+

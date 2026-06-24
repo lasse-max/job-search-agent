@@ -1,0 +1,47 @@
+version: "candidate_profile_v1"
+active: true
+positioning: "Strategy and Operations / Product Operations leader with approximately eight years at Google Devices and Services, two promotions, and experience scaling global commercial operations and transformation programs."
+core_strengths:
+  - "Zero-to-one process and product design"
+  - "Cross-functional leadership across Sales, GTM, Finance, Revenue Operations, Controllership, and Engineering"
+  - "Global rollout, UAT, training, and change management"
+  - "Executive reporting and dashboarding"
+  - "Partner operations and vendor-team leadership"
+  - "Data-driven process improvement and workflow automation"
+  - "Translating frontline and functional feedback into business requirements"
+flagship_evidence:
+  - name: "Zenith claims-validation product"
+    evidence: "Feature prioritization, validation logic, BRDs, Engineering partnership, UAT, training, and rollout; automated 60%+ of end-to-end claims and saved 1,500+ hours annually."
+  - name: "Claims and deductions transformation"
+    evidence: "Reduced aged deductions backlog by 95% within 12 months and recovered tens of millions in revenue."
+  - name: "Fitbit integration"
+    evidence: "Led sales-data migration for 96 partners within five months; achieved 107% of priority onboarding and 115% overall."
+  - name: "Executive analytics"
+    evidence: "Built APAC and global dashboards used by senior leadership."
+  - name: "Commercial scale"
+    evidence: "Supported operations across 120+ partners and multiple regions."
+primary_role_families:
+  - "Strategy and Operations"
+  - "Business Operations"
+  - "Product Operations"
+  - "Product Strategy"
+  - "GTM / Sales Strategy and Operations"
+  - "Revenue Operations at appropriate seniority"
+  - "Business Transformation"
+  - "Strategic Programs / Program Leadership"
+approved_stretch_families:
+  - "Deployment Strategist"
+  - "Forward-Deployed Strategy"
+  - "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering"
+usually_deprioritize:
+  - "Customer Success or account management without meaningful strategy or transformation scope"
+  - "Pure quota-carrying sales"
+  - "Junior analyst or associate scope"
+  - "Pure Product Manager roles requiring extensive native PM or SDLC history"
+  - "Deeply technical FDE, SWE, or ML engineering roles"
+honest_gaps:
+  - "No production software-engineering background"
+  - "Python basic and actively learning"
+  - "Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management"
+  - "Limited direct consulting brand and classic case-team experience"
+

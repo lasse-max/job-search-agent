@@ -1,0 +1,17 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.sqlite
+*.sqlite3
+*.db
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+data/private/
+output/*
+!output/source_coverage.csv
+

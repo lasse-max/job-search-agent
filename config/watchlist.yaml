@@ -1,0 +1,1469 @@
+# Generated Stage 0 watchlist from the tracker and public feed probes.
+# Private job-search configuration; sanitize before publishing.
+metadata:
+  generated_at: "2026-06-23"
+  tracker_source: "sanitized_tracker_reference"
+  coverage_status_counts:
+    needs_configuration: 30
+    supported: 44
+    manual_fallback: 17
+companies:
+  - name: "Google"
+    tier: 1
+    enabled: false
+    careers_url: "https://careers.google.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London", "Munich", "US"]
+    target_role_family_notes: "Commercial S&O; Product Strategy; Business Operations"
+    warm_path: true
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Databricks"
+    tier: 1
+    enabled: true
+    careers_url: "https://www.databricks.com/company/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "databricks"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/databricks/jobs"
+    job_count_at_audit: 757
+    target_locations: ["Sydney", "London"]
+    target_role_family_notes: "Deployment Strategy; Professional Services Strategy"
+    warm_path: true
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "OpenAI"
+    tier: 1
+    enabled: true
+    careers_url: "https://openai.com/careers/"
+    current_role_url: "https://openai.com/careers/sales-strategy-and-operations-anz-sydney-australia/"
+    ats_type: "ashby"
+    source_key: "openai"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=false"
+    job_count_at_audit: 709
+    target_locations: ["Sydney", "Singapore", "London"]
+    target_role_family_notes: "Sales S&O; GTM Strategy; Business Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Stripe"
+    tier: 1
+    enabled: true
+    careers_url: "https://stripe.com/jobs"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "stripe"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/stripe/jobs"
+    job_count_at_audit: 496
+    target_locations: ["Sydney", "Melbourne", "Singapore", "London"]
+    target_role_family_notes: "Strategy & Operations; Partnerships; Program Management"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Airbnb"
+    tier: 1
+    enabled: true
+    careers_url: "https://careers.airbnb.com/"
+    current_role_url: "https://careers.airbnb.com/positions/7999656/"
+    ats_type: "greenhouse"
+    source_key: "airbnb"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs"
+    job_count_at_audit: 218
+    target_locations: ["Sydney", "London", "Singapore"]
+    target_role_family_notes: "Business Operations; Growth Strategy; Strategy & Analytics"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "DoorDash"
+    tier: 1
+    enabled: false
+    careers_url: "https://careersatdoordash.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Melbourne", "London"]
+    target_role_family_notes: "Strategy & Operations; New Verticals; Ads"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Uber"
+    tier: 1
+    enabled: false
+    careers_url: "https://www.uber.com/global/en/careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "London", "Singapore"]
+    target_role_family_notes: "Strategy & Operations; Growth; New Business"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Canva"
+    tier: 1
+    enabled: false
+    careers_url: "https://www.lifeatcanva.com/en/jobs/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney"]
+    target_role_family_notes: "Business Operations; Product Operations; Growth Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Atlassian"
+    tier: 1
+    enabled: false
+    careers_url: "https://www.atlassian.com/company/careers"
+    current_role_url: null
+    ats_type: "lever"
+    source_key: "atlassian"
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: "https://api.lever.co/v0/postings/atlassian?mode=json"
+    job_count_at_audit: 0
+    target_locations: ["Sydney", "London"]
+    target_role_family_notes: "Enterprise Product Strategy; Business Operations; Product Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+    notes: "Feed endpoint responded with zero jobs; verify expected volume before enabling."
+  - name: "Airwallex"
+    tier: 1
+    enabled: true
+    careers_url: "https://careers.airwallex.com/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "airwallex"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/airwallex?includeCompensation=false"
+    job_count_at_audit: 582
+    target_locations: ["Sydney", "Singapore", "London"]
+    target_role_family_notes: "Operations Strategy; Revenue Operations; AI Enablement"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Sierra"
+    tier: 1
+    enabled: true
+    careers_url: "https://sierra.ai/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "sierra"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/sierra?includeCompensation=false"
+    job_count_at_audit: 135
+    target_locations: ["London", "Sydney", "Singapore", "Munich"]
+    target_role_family_notes: "Agent Strategy; Customer Deployment"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Mistral AI"
+    tier: 1
+    enabled: true
+    careers_url: "https://jobs.lever.co/mistral"
+    current_role_url: null
+    ats_type: "lever"
+    source_key: "mistral"
+    supported_adapter: "lever"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.lever.co/v0/postings/mistral?mode=json"
+    job_count_at_audit: 172
+    target_locations: ["Munich", "London", "Singapore"]
+    target_role_family_notes: "AI Deployment; Solution Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Palantir"
+    tier: 1
+    enabled: true
+    careers_url: "https://www.palantir.com/careers/"
+    current_role_url: null
+    ats_type: "lever"
+    source_key: "palantir"
+    supported_adapter: "lever"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.lever.co/v0/postings/palantir?mode=json"
+    job_count_at_audit: 237
+    target_locations: ["London", "Sydney / Canberra"]
+    target_role_family_notes: "Deployment Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Amazon / AWS"
+    tier: 1
+    enabled: false
+    careers_url: "https://www.amazon.jobs/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London"]
+    target_role_family_notes: "Business Operations; Sales S&O; GenAI Programs"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Apple"
+    tier: 1
+    enabled: false
+    careers_url: "https://jobs.apple.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London", "Munich"]
+    target_role_family_notes: "Business Process Re-engineering; Channel Strategy; Program Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Netflix"
+    tier: 1
+    enabled: false
+    careers_url: "https://jobs.netflix.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London"]
+    target_role_family_notes: "Business Operations; Strategy & Analysis; Product Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "SafetyCulture"
+    tier: 1
+    enabled: false
+    careers_url: "https://safetyculture.com/careers/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "safetyculture"
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/safetyculture?includeCompensation=false"
+    job_count_at_audit: 0
+    target_locations: ["Sydney"]
+    target_role_family_notes: "AI Operations; Business Operations; Strategic Programs"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+    notes: "Feed endpoint responded with zero jobs; verify expected volume before enabling."
+  - name: "NEURA Robotics"
+    tier: 1
+    enabled: false
+    careers_url: "https://jobs.neura-robotics.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Metzingen", "Munich area"]
+    target_role_family_notes: "AI Business Transformation; Robotics Programs"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Helsing"
+    tier: 1
+    enabled: true
+    careers_url: "https://helsing.ai/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "helsing"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/helsing/jobs"
+    job_count_at_audit: 132
+    target_locations: ["Munich", "Berlin", "London"]
+    target_role_family_notes: "Programme Management; Commercial Strategy; Deployed Products"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Anthropic"
+    tier: 1
+    enabled: true
+    careers_url: "https://www.anthropic.com/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "anthropic"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs"
+    job_count_at_audit: 375
+    target_locations: ["London", "Singapore"]
+    target_role_family_notes: "Partnership Strategy; Revenue Strategy & Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Xero"
+    tier: 2
+    enabled: true
+    careers_url: "https://careers.xero.com/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "xero"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/xero?includeCompensation=false"
+    job_count_at_audit: 104
+    target_locations: ["Sydney", "Melbourne", "London"]
+    target_role_family_notes: "Business Operations; Product Operations; Commercialisation"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Rokt"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.rokt.com/company/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "New York", "London"]
+    target_role_family_notes: "Revenue Operations; GTM Strategy; Business Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Wise"
+    tier: 2
+    enabled: false
+    careers_url: "https://wise.jobs/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore"]
+    target_role_family_notes: "Product Operations; Revenue Operations; Platform Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Spotify"
+    tier: 2
+    enabled: true
+    careers_url: "https://www.lifeatspotify.com/jobs"
+    current_role_url: null
+    ats_type: "lever"
+    source_key: "spotify"
+    supported_adapter: "lever"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.lever.co/v0/postings/spotify?mode=json"
+    job_count_at_audit: 134
+    target_locations: ["London"]
+    target_role_family_notes: "Markets S&O; Business Operations; Advertising Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Checkout.com"
+    tier: 2
+    enabled: true
+    careers_url: "https://jobs.ashbyhq.com/checkout.com"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "checkout.com"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/checkout.com?includeCompensation=false"
+    job_count_at_audit: 208
+    target_locations: ["London"]
+    target_role_family_notes: "CEO Office Operations; AI Accelerator; Strategy & Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Grab"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.grab.careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Singapore"]
+    target_role_family_notes: "Strategy & Programs; Business Operations; New Mobility"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Salesforce"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.salesforce.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Sydney", "Singapore"]
+    target_role_family_notes: "Sales S&O; Business Operations; Transformation"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Snowflake"
+    tier: 2
+    enabled: true
+    careers_url: "https://careers.snowflake.com/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "snowflake"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/snowflake?includeCompensation=false"
+    job_count_at_audit: 413
+    target_locations: ["London", "Sydney", "Singapore"]
+    target_role_family_notes: "Business Operations; Customer Strategy; Professional Services"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "ServiceNow / Moveworks"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.servicenow.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Sydney", "Singapore"]
+    target_role_family_notes: "AI Adoption; Customer Transformation; Business Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Meta"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.metacareers.com/jobs/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore", "Sydney"]
+    target_role_family_notes: "Business Planning & Operations; Product Operations; Partnerships"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Microsoft"
+    tier: 2
+    enabled: false
+    careers_url: "https://jobs.careers.microsoft.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London", "Munich"]
+    target_role_family_notes: "Business Program Management; GTM Strategy; AI Adoption"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "LinkedIn"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.linkedin.com/"
+    current_role_url: null
+    ats_type: "lever"
+    source_key: "linkedin"
+    supported_adapter: "lever"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.lever.co/v0/postings/linkedin?mode=json"
+    job_count_at_audit: 20
+    target_locations: ["London", "Singapore", "Sydney"]
+    target_role_family_notes: "Business Operations; Sales Strategy; Product Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Disney"
+    tier: 2
+    enabled: false
+    careers_url: "https://jobs.disneycareers.com/"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "disney"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/disney/jobs"
+    job_count_at_audit: 1
+    target_locations: ["London", "Singapore", "Sydney / Melbourne"]
+    target_role_family_notes: "Disney+ Product Operations; DTC Strategy; Engagement"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "OutSystems"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.outsystems.com/careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore", "Germany", "remote Europe"]
+    target_role_family_notes: "Professional Services; Value Consulting; AI Adoption"
+    warm_path: true
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Celonis"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.celonis.com/"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "celonis"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/celonis/jobs"
+    job_count_at_audit: 201
+    target_locations: ["Munich", "London"]
+    target_role_family_notes: "Value Engineering; Transformation Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Harvey"
+    tier: 2
+    enabled: true
+    careers_url: "https://www.harvey.ai/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "harvey"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/harvey?includeCompensation=false"
+    job_count_at_audit: 292
+    target_locations: ["London"]
+    target_role_family_notes: "Customer Strategy; Deployment; Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: true
+  - name: "Glean"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.glean.com/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore", "Sydney"]
+    target_role_family_notes: "Customer Strategy; Value Consulting; Business Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Cohere"
+    tier: 2
+    enabled: false
+    careers_url: "https://cohere.com/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "cohere"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false"
+    job_count_at_audit: 132
+    target_locations: ["London", "remote Europe"]
+    target_role_family_notes: "Customer Deployment; Business Operations; Partnerships"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "ElevenLabs"
+    tier: 2
+    enabled: false
+    careers_url: "https://elevenlabs.io/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "elevenlabs"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false"
+    job_count_at_audit: 153
+    target_locations: ["London", "remote Europe"]
+    target_role_family_notes: "GTM Strategy; Customer Operations; Partnerships"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Pigment"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.pigment.com/careers"
+    current_role_url: null
+    ats_type: "lever"
+    source_key: "pigment"
+    supported_adapter: "lever"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.lever.co/v0/postings/pigment?mode=json"
+    job_count_at_audit: 95
+    target_locations: ["London"]
+    target_role_family_notes: "Business Operations; Customer Strategy; Revenue Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Personio"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.personio.com/careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Munich", "London"]
+    target_role_family_notes: "Revenue Operations; GTM Systems; Business Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "N26"
+    tier: 2
+    enabled: false
+    careers_url: "https://n26.com/en-eu/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "n26"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/n26/jobs"
+    job_count_at_audit: 65
+    target_locations: ["Berlin", "Barcelona"]
+    target_role_family_notes: "Strategy & Operations; Product Operations; Business Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "TikTok"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.tiktok.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Singapore", "London", "Sydney"]
+    target_role_family_notes: "APAC Strategy & Operations; Industry Operations; GTM"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Booking.com"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.booking.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore", "Amsterdam"]
+    target_role_family_notes: "Commercial Strategy; Partner Operations; FinTech Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Deliveroo"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.deliveroo.co.uk/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "deliveroo"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false"
+    job_count_at_audit: 206
+    target_locations: ["London"]
+    target_role_family_notes: "Strategy & Operations; Product Operations; Advertising"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Block"
+    tier: 2
+    enabled: false
+    careers_url: "https://block.xyz/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "block"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/block/jobs"
+    job_count_at_audit: 210
+    target_locations: ["London", "Australia", "remote"]
+    target_role_family_notes: "Business Operations; Product Strategy; Partnerships"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "DeepL"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.deepl.com/en/jobs"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "deepl"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/deepl?includeCompensation=false"
+    job_count_at_audit: 22
+    target_locations: ["Germany", "London"]
+    target_role_family_notes: "Business Operations; GTM Strategy; AI Programs"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Parloa"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.parloa.com/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "parloa"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/parloa/jobs"
+    job_count_at_audit: 54
+    target_locations: ["Berlin", "Munich"]
+    target_role_family_notes: "Deployment Strategy; Customer Transformation"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "SAP"
+    tier: 2
+    enabled: false
+    careers_url: "https://jobs.sap.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Germany", "London", "Singapore", "Sydney"]
+    target_role_family_notes: "Customer Transformation; AI Adoption; Business Operations"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Expedia Group"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.expediagroup.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore"]
+    target_role_family_notes: "Partner Operations; Product Operations; Strategy"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Adobe"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.adobe.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore", "Sydney"]
+    target_role_family_notes: "Partner S&O; GTM Strategy; Strategic Programs"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Visa"
+    tier: 2
+    enabled: false
+    careers_url: "https://corporate.visa.com/en/jobs/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Singapore", "London", "Sydney"]
+    target_role_family_notes: "Strategy & Operations; Partnerships; Product Commercialization"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Mastercard"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.mastercard.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Singapore", "London", "Sydney"]
+    target_role_family_notes: "Strategy; Product Commercialization; Advisors"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Revolut"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.revolut.com/careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Singapore"]
+    target_role_family_notes: "Strategy & Operations; New Product Launches"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Vercel"
+    tier: 2
+    enabled: false
+    careers_url: "https://vercel.com/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "vercel"
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/vercel?includeCompensation=false"
+    job_count_at_audit: 0
+    target_locations: ["London", "remote Europe"]
+    target_role_family_notes: "GTM Strategy; Customer Operations; Partnerships"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+    notes: "Feed endpoint responded with zero jobs; verify expected volume before enabling."
+  - name: "Quantexa"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.quantexa.com/careers/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "quantexa"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/quantexa?includeCompensation=false"
+    job_count_at_audit: 25
+    target_locations: ["London", "Singapore", "Sydney"]
+    target_role_family_notes: "Customer Transformation; Delivery Strategy; AI Programs"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Synthesia"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.synthesia.io/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "synthesia"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false"
+    job_count_at_audit: 80
+    target_locations: ["London"]
+    target_role_family_notes: "Customer Strategy; Business Operations; GTM"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Encord"
+    tier: 2
+    enabled: false
+    careers_url: "https://encord.com/careers/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "encord"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/encord?includeCompensation=false"
+    job_count_at_audit: 48
+    target_locations: ["London"]
+    target_role_family_notes: "Customer Operations; Business Operations; GTM Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Lovable"
+    tier: 2
+    enabled: false
+    careers_url: "https://lovable.dev/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "lovable"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/lovable?includeCompensation=false"
+    job_count_at_audit: 79
+    target_locations: ["Stockholm", "London / remote Europe"]
+    target_role_family_notes: "Business Operations; GTM Strategy; Customer Programs"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Magentic"
+    tier: 2
+    enabled: false
+    careers_url: "https://www.magentic.ai/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "magentic"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/magentic?includeCompensation=false"
+    job_count_at_audit: 9
+    target_locations: ["London"]
+    target_role_family_notes: "Deployment Strategy; Enterprise AI Delivery"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Aleph Alpha"
+    tier: 2
+    enabled: false
+    careers_url: "https://aleph-alpha.com/careers/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "alephalpha"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/alephalpha?includeCompensation=false"
+    job_count_at_audit: 10
+    target_locations: ["Heidelberg", "Berlin"]
+    target_role_family_notes: "AI Transformation; Customer Programs; Public Sector"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Decagon"
+    tier: 2
+    enabled: false
+    careers_url: "https://jobs.ashbyhq.com/decagon"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "decagon"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/decagon?includeCompensation=false"
+    job_count_at_audit: 108
+    target_locations: ["London"]
+    target_role_family_notes: "Agent Strategy; Customer Deployment"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Cognition"
+    tier: 2
+    enabled: false
+    careers_url: "https://cognition.ai/careers"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "cognition"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/cognition?includeCompensation=false"
+    job_count_at_audit: 68
+    target_locations: ["Singapore", "London / remote"]
+    target_role_family_notes: "GTM Operations; Business Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Fortescue"
+    tier: 2
+    enabled: false
+    careers_url: "https://careers.fortescue.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Needs configuration"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Perth"]
+    target_role_family_notes: "AI Programs; Technology Transformation; Green Energy Strategy"
+    warm_path: false
+    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    selected_for_initial_coverage: false
+  - name: "Zendesk"
+    tier: 3
+    enabled: false
+    careers_url: "https://jobs.zendesk.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London"]
+    target_role_family_notes: "AI Success; Customer Adoption; Product Operations"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Deputy"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.deputy.com/careers"
+    current_role_url: null
+    ats_type: "lever"
+    source_key: "deputy"
+    supported_adapter: "lever"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.lever.co/v0/postings/deputy?mode=json"
+    job_count_at_audit: 11
+    target_locations: ["Sydney"]
+    target_role_family_notes: "Strategic Finance & Operations; Business Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Culture Amp"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.cultureamp.com/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "cultureamp"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/cultureamp/jobs"
+    job_count_at_audit: 13
+    target_locations: ["Sydney", "Melbourne", "London"]
+    target_role_family_notes: "Business Operations; Product Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Harrison.ai"
+    tier: 3
+    enabled: false
+    careers_url: "https://harrison.ai/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney"]
+    target_role_family_notes: "AI Programs; Commercial Operations; Product Operations"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Quantium"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.quantium.com/careers/"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "quantium"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/quantium/jobs"
+    job_count_at_audit: 25
+    target_locations: ["Sydney"]
+    target_role_family_notes: "AI Transformation; Enterprise Solutions; Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Nearmap"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.nearmap.com/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney"]
+    target_role_family_notes: "Product Operations; AI/ML Program Delivery"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Macquarie Group"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.macquarie.com/au/en/careers.html"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney"]
+    target_role_family_notes: "AI Transformation; Business Transformation; Strategy"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Woodside Energy"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.woodside.com/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Perth"]
+    target_role_family_notes: "Digital Transformation; AI Programs; Commercial Strategy"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "BHP"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.bhp.com/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Perth", "Brisbane", "Melbourne"]
+    target_role_family_notes: "Digital Transformation; Commercial Strategy; Technology Programs"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Rio Tinto"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.riotinto.com/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Perth", "Brisbane", "London"]
+    target_role_family_notes: "Technology Transformation; Commercial Strategy"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Wesfarmers"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.wesfarmers.com.au/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Perth", "Melbourne"]
+    target_role_family_notes: "Digital Strategy; Transformation; Portfolio Operations"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Klarna"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.klarna.com/careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["London", "Berlin"]
+    target_role_family_notes: "Strategy & Operations; Product Operations"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Zalando"
+    tier: 3
+    enabled: false
+    careers_url: "https://jobs.zalando.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Berlin"]
+    target_role_family_notes: "Strategy & Operations; Product Operations; Commercial Strategy"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Trade Republic"
+    tier: 3
+    enabled: false
+    careers_url: "https://traderepublic.com/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "traderepublic"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/traderepublic/jobs"
+    job_count_at_audit: 1
+    target_locations: ["Berlin"]
+    target_role_family_notes: "Business Operations; Product Operations; Growth Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Delivery Hero"
+    tier: 3
+    enabled: false
+    careers_url: "https://careers.deliveryhero.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Berlin", "Singapore"]
+    target_role_family_notes: "Strategy & Operations; Product Operations; New Verticals"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "HelloFresh"
+    tier: 3
+    enabled: false
+    careers_url: "https://careers.hellofresh.com/"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "hellofresh"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/hellofresh/jobs"
+    job_count_at_audit: 369
+    target_locations: ["Berlin"]
+    target_role_family_notes: "Strategy & Operations; Business Transformation"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Flix"
+    tier: 3
+    enabled: false
+    careers_url: "https://flix.careers/"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "flix"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/flix/jobs"
+    job_count_at_audit: 138
+    target_locations: ["Munich", "Berlin"]
+    target_role_family_notes: "Strategy & Operations; Expansion; Business Transformation"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Skyscanner"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.skyscanner.net/jobs"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "skyscanner"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/skyscanner?includeCompensation=false"
+    job_count_at_audit: 18
+    target_locations: ["London", "Singapore"]
+    target_role_family_notes: "Business Operations; Commercial Strategy; Product Operations"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Plaid"
+    tier: 3
+    enabled: false
+    careers_url: "https://plaid.com/careers/"
+    current_role_url: null
+    ats_type: "ashby"
+    source_key: "plaid"
+    supported_adapter: "ashby"
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=false"
+    job_count_at_audit: 105
+    target_locations: ["London"]
+    target_role_family_notes: "Business Operations; Partnerships Strategy; GTM Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "Waymo"
+    tier: 3
+    enabled: false
+    careers_url: "https://waymo.com/joinus/"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "waymo"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/waymo/jobs"
+    job_count_at_audit: 398
+    target_locations: ["US", "potential international future"]
+    target_role_family_notes: "Business Operations; Partner Operations; Commercialization"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "X, the Moonshot Factory"
+    tier: 3
+    enabled: false
+    careers_url: "https://x.company/careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["United States"]
+    target_role_family_notes: "Partner Operations; Program Operations"
+    warm_path: true
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Noah Labs"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.noah-labs.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Berlin"]
+    target_role_family_notes: "Business Operations; Partnerships; Generalist"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Roblox"
+    tier: 3
+    enabled: false
+    careers_url: "https://careers.roblox.com/"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "roblox"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/roblox/jobs"
+    job_count_at_audit: 229
+    target_locations: ["London"]
+    target_role_family_notes: "Business Operations; International Strategy"
+    warm_path: false
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    selected_for_initial_coverage: false
+  - name: "BCG / BCG X"
+    tier: 3
+    enabled: false
+    careers_url: "https://careers.bcg.com/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London", "Perth"]
+    target_role_family_notes: "Digital Strategy; AI Transformation; Generalist Consulting"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "McKinsey / QuantumBlack"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.mckinsey.com/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London", "Munich"]
+    target_role_family_notes: "AI Transformation; Implementation; Business Building"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Bain / Vector"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.bain.com/careers/"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London", "Munich"]
+    target_role_family_notes: "Digital Transformation; Strategy; Product"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false
+  - name: "Accenture"
+    tier: 3
+    enabled: false
+    careers_url: "https://www.accenture.com/us-en/careers"
+    current_role_url: null
+    ats_type: "unknown"
+    source_key: null
+    supported_adapter: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: null
+    job_count_at_audit: null
+    target_locations: ["Sydney", "Singapore", "London", "Germany"]
+    target_role_family_notes: "AI Transformation; Technology Strategy; Program Delivery"
+    warm_path: false
+    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    selected_for_initial_coverage: false

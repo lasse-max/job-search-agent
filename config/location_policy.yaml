@@ -1,0 +1,39 @@
+version: "location_policy_v1"
+active: true
+markets:
+  EU:
+    current_authorization: "authorized"
+    sponsorship_required: false
+    expected_availability_date: null
+    confidence: "high"
+    last_verified_at: "2026-06-23"
+    notes: "German citizenship."
+  UK:
+    current_authorization: "verify"
+    sponsorship_required: null
+    expected_availability_date: null
+    confidence: "medium"
+    last_verified_at: "2026-06-23"
+    notes: "Possible prior status/pathway; do not assume authorization until owner confirms."
+  Australia:
+    current_authorization: "pathway_not_assumed_current_authorization"
+    sponsorship_required: null
+    expected_availability_date: null
+    confidence: "medium"
+    last_verified_at: "2026-06-23"
+    notes: "Partner-visa route; record expected timing and current status explicitly."
+  Singapore:
+    current_authorization: "not_authorized"
+    sponsorship_required: true
+    expected_availability_date: null
+    confidence: "medium"
+    last_verified_at: "2026-06-23"
+    notes: "Viable when employer sponsors; mark as sponsorship required, not blocked."
+  United States:
+    current_authorization: "not_authorized_high_friction"
+    sponsorship_required: true
+    expected_availability_date: null
+    confidence: "medium"
+    last_verified_at: "2026-06-23"
+    notes: "No assumed ongoing work authorization; require credible sponsorship, transfer path, or warm route."
+
