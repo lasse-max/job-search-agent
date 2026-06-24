@@ -1,0 +1,48 @@
+{
+  "jobs": [
+    {
+      "applyUrl": "https://jobs.ashbyhq.com/example/ashby-secondary-location/application",
+      "department": "Strategy & Operations",
+      "descriptionPlain": "Lead strategy operations programs across ANZ.",
+      "employmentType": "FullTime",
+      "id": "ashby-secondary-location",
+      "jobUrl": "https://jobs.ashbyhq.com/example/ashby-secondary-location",
+      "location": "AU - Melbourne",
+      "publishedAt": "2026-06-20T00:00:00.000+00:00",
+      "secondaryLocations": [
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Australia",
+              "addressLocality": "Sydney",
+              "addressRegion": "New South Wales"
+            }
+          },
+          "location": "AU - Sydney"
+        }
+      ],
+      "team": "Revenue Strategy",
+      "title": "Strategy Operations Lead, ANZ"
+    },
+    {
+      "address": {
+        "postalAddress": {
+          "addressCountry": "United Kingdom",
+          "addressLocality": "London",
+          "addressRegion": "England"
+        }
+      },
+      "applyUrl": "https://jobs.ashbyhq.com/example/ashby-postal-only/application",
+      "department": "Business Operations",
+      "descriptionPlain": "Own business operations and executive rhythm.",
+      "employmentType": "FullTime",
+      "id": "ashby-postal-only",
+      "jobUrl": "https://jobs.ashbyhq.com/example/ashby-postal-only",
+      "location": null,
+      "publishedAt": "2026-06-21T00:00:00.000+00:00",
+      "secondaryLocations": [],
+      "team": "BizOps",
+      "title": "Business Operations Manager"
+    }
+  ]
+}

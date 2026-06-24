@@ -16,10 +16,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="job-agent")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    scan_parser = subparsers.add_parser("scan", help="Run the one-source Databricks scan")
+    scan_parser = subparsers.add_parser("scan", help="Run a configured source scan")
     scan_parser.add_argument("--company", default="Databricks")
     scan_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
-    scan_parser.add_argument("--fixture", type=Path, help="Use a local Greenhouse fixture")
+    scan_parser.add_argument("--fixture", type=Path, help="Use a local adapter fixture")
 
     review_parser = subparsers.add_parser("review", help="Inspect new evaluated opportunities")
     review_subparsers = review_parser.add_subparsers(dest="review_command", required=True)

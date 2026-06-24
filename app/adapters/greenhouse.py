@@ -3,31 +3,14 @@
 from __future__ import annotations
 
 import hashlib
-import html
 import json
-import re
 import time
 import urllib.error
 import urllib.request
 from typing import Any
 
+from app.adapters.utils import clean_html, normal_key
 from app.models import CompanyConfig, FetchResult, JobPosting, SourceHealth
-
-
-TAG_RE = re.compile(r"<[^>]+>")
-SPACE_RE = re.compile(r"\s+")
-
-
-def _clean_html(value: str | None) -> str:
-    if not value:
-        return ""
-    text = html.unescape(value)
-    text = TAG_RE.sub(" ", text)
-    return SPACE_RE.sub(" ", text).strip()
-
-
-def _normal_key(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
 
 
 class GreenhouseAdapter:
@@ -111,6 +94,8 @@ class GreenhouseAdapter:
         jobs = payload.get("jobs")
         if not isinstance(jobs, list):
             return SourceHealth("failing", 0, "payload missing jobs array")
+        if any(not isinstance(job, dict) or not job.get("id") for job in jobs):
+            return SourceHealth("failing", 0, "jobs array contains invalid posting")
         return SourceHealth("healthy", len(jobs))
 
     def normalize(self, result: FetchResult, company: CompanyConfig) -> list[JobPosting]:
@@ -134,7 +119,7 @@ class GreenhouseAdapter:
         requisition_id = str(
             job.get("requisition_id") or job.get("internal_job_id") or source_job_id
         )
-        canonical_key = _normal_key(
+        canonical_key = normal_key(
             "|".join([company.name, title, department or "", requisition_id])
         )
 
@@ -144,7 +129,7 @@ class GreenhouseAdapter:
             locations=locations,
             department=department,
             employment_type=None,
-            description_text=_clean_html(job.get("content")),
+            description_text=clean_html(job.get("content")),
             source_type=self.source_type,
             source_url=str(job.get("absolute_url") or ""),
             source_job_id=source_job_id,

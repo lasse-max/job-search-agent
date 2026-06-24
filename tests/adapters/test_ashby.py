@@ -65,6 +65,26 @@ class AshbyAdapterTest(unittest.TestCase):
         self.assertEqual(health.status, "failing")
         self.assertIn("jobs array", health.error_summary or "")
 
+    def test_normalizes_secondary_and_postal_locations(self) -> None:
+        company = load_company_config("Airwallex")
+        adapter = AshbyAdapter()
+        result = adapter.fetch_from_file(
+            company.source_key,
+            str(FIXTURE_DIR / "location_variants.json"),
+        )
+
+        postings = adapter.normalize(result, company)
+        by_id = {posting.source_job_id: posting for posting in postings}
+
+        self.assertEqual(
+            by_id["ashby-secondary-location"].locations,
+            ["AU - Melbourne", "AU - Sydney"],
+        )
+        self.assertEqual(
+            by_id["ashby-postal-only"].locations,
+            ["London, England, United Kingdom"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

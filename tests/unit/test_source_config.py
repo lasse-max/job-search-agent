@@ -27,23 +27,35 @@ class SourceConfigTest(unittest.TestCase):
         )
         self.assertEqual(parser_version("lever"), "lever_v1")
 
-    def test_ashby_companies_enabled_and_lever_companies_disabled(self) -> None:
+    def test_built_adapter_companies_are_enabled_only_when_supported(self) -> None:
         companies = load_watchlist()
         ashby_companies = {
             str(company["name"]): bool(company["enabled"])
             for company in companies
             if company.get("ats_type") == "ashby"
         }
-        lever_companies = [
+        disabled_greenhouse = [
             str(company["name"])
             for company in companies
-            if company.get("ats_type") == "lever" and bool(company["enabled"])
+            if company.get("ats_type") == "greenhouse" and not bool(company["enabled"])
+        ]
+        disabled_lever = [
+            str(company["name"])
+            for company in companies
+            if company.get("ats_type") == "lever" and not bool(company["enabled"])
+        ]
+        enabled_unsupported = [
+            str(company["name"])
+            for company in companies
+            if bool(company["enabled"]) and company.get("ats_type") not in {"greenhouse", "ashby", "lever"}
         ]
 
         self.assertTrue(ashby_companies["OpenAI"])
         self.assertTrue(ashby_companies["Airwallex"])
         self.assertTrue(ashby_companies["Sierra"])
-        self.assertEqual(lever_companies, [])
+        self.assertEqual(disabled_greenhouse, [])
+        self.assertEqual(disabled_lever, [])
+        self.assertEqual(enabled_unsupported, [])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "title": "Strategy Operations Lead",
+      "location": {"name": "London, United Kingdom"},
+      "departments": [{"name": "Business Operations"}]
+    }
+  ],
+  "meta": {"total": 1}
+}

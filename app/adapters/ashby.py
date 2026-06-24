@@ -3,31 +3,14 @@
 from __future__ import annotations
 
 import hashlib
-import html
 import json
-import re
 import time
 import urllib.error
 import urllib.request
 from typing import Any
 
+from app.adapters.utils import clean_html, compact_text, normal_key
 from app.models import CompanyConfig, FetchResult, JobPosting, SourceHealth
-
-
-TAG_RE = re.compile(r"<[^>]+>")
-SPACE_RE = re.compile(r"\s+")
-
-
-def _clean_html(value: str | None) -> str:
-    if not value:
-        return ""
-    text = html.unescape(value)
-    text = TAG_RE.sub(" ", text)
-    return SPACE_RE.sub(" ", text).strip()
-
-
-def _normal_key(value: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
 
 
 class AshbyAdapter:
@@ -139,7 +122,7 @@ class AshbyAdapter:
         locations = _locations(job)
         raw = json.dumps(job, sort_keys=True)
         raw_hash = hashlib.sha256(raw.encode("utf-8")).hexdigest()
-        canonical_key = _normal_key(
+        canonical_key = normal_key(
             "|".join([company.name, title, department or "", source_job_id])
         )
 
@@ -166,8 +149,8 @@ def _department(job: dict[str, Any]) -> str | None:
 def _description(job: dict[str, Any]) -> str:
     plain = _optional_str(job.get("descriptionPlain"))
     if plain:
-        return SPACE_RE.sub(" ", plain).strip()
-    return _clean_html(_optional_str(job.get("descriptionHtml")))
+        return compact_text(plain)
+    return clean_html(_optional_str(job.get("descriptionHtml")))
 
 
 def _locations(job: dict[str, Any]) -> list[str]:

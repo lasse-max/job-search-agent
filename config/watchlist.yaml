@@ -138,13 +138,13 @@ companies:
     selected_for_initial_coverage: false
   - name: "Atlassian"
     tier: 1
-    enabled: false
+    enabled: true
     careers_url: "https://www.atlassian.com/company/careers"
     current_role_url: null
     ats_type: "lever"
     source_key: "atlassian"
-    supported_adapter: null
-    coverage_state: "Needs configuration"
+    supported_adapter: "lever"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.lever.co/v0/postings/atlassian?mode=json"
     job_count_at_audit: 0
     target_locations: ["Sydney", "London"]
@@ -152,7 +152,7 @@ companies:
     warm_path: false
     manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
     selected_for_initial_coverage: false
-    notes: "Feed endpoint responded with zero jobs; verify expected volume before enabling."
+    notes: "Feed endpoint responded with zero jobs at audit; expected-volume detection is deferred."
   - name: "Airwallex"
     tier: 1
     enabled: true
@@ -187,7 +187,7 @@ companies:
     selected_for_initial_coverage: true
   - name: "Mistral AI"
     tier: 1
-    enabled: false
+    enabled: true
     careers_url: "https://jobs.lever.co/mistral"
     current_role_url: null
     ats_type: "lever"
@@ -203,7 +203,7 @@ companies:
     selected_for_initial_coverage: true
   - name: "Palantir"
     tier: 1
-    enabled: false
+    enabled: true
     careers_url: "https://www.palantir.com/careers/"
     current_role_url: null
     ats_type: "lever"
@@ -380,7 +380,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Spotify"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.lifeatspotify.com/jobs"
     current_role_url: null
     ats_type: "lever"
@@ -508,7 +508,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "LinkedIn"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://careers.linkedin.com/"
     current_role_url: null
     ats_type: "lever"
@@ -524,7 +524,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Disney"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://jobs.disneycareers.com/"
     current_role_url: null
     ats_type: "greenhouse"
@@ -556,7 +556,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Celonis"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://careers.celonis.com/"
     current_role_url: null
     ats_type: "greenhouse"
@@ -636,7 +636,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Pigment"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.pigment.com/careers"
     current_role_url: null
     ats_type: "lever"
@@ -668,7 +668,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "N26"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://n26.com/en-eu/careers"
     current_role_url: null
     ats_type: "greenhouse"
@@ -732,7 +732,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Block"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://block.xyz/careers"
     current_role_url: null
     ats_type: "greenhouse"
@@ -764,7 +764,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Parloa"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.parloa.com/careers"
     current_role_url: null
     ats_type: "greenhouse"
@@ -1053,7 +1053,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Deputy"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://www.deputy.com/careers"
     current_role_url: null
     ats_type: "lever"
@@ -1069,7 +1069,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Culture Amp"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://www.cultureamp.com/careers"
     current_role_url: null
     ats_type: "greenhouse"
@@ -1101,7 +1101,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Quantium"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://www.quantium.com/careers/"
     current_role_url: null
     ats_type: "greenhouse"
@@ -1245,7 +1245,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Trade Republic"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://traderepublic.com/careers"
     current_role_url: null
     ats_type: "greenhouse"
@@ -1277,7 +1277,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "HelloFresh"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://careers.hellofresh.com/"
     current_role_url: null
     ats_type: "greenhouse"
@@ -1293,7 +1293,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Flix"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://flix.careers/"
     current_role_url: null
     ats_type: "greenhouse"
@@ -1341,7 +1341,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Waymo"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://waymo.com/joinus/"
     current_role_url: null
     ats_type: "greenhouse"
@@ -1389,7 +1389,7 @@ companies:
     selected_for_initial_coverage: false
   - name: "Roblox"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://careers.roblox.com/"
     current_role_url: null
     ats_type: "greenhouse"
