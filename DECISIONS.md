@@ -1,44 +1,29 @@
-# Decisions
+# Decision Log (ADR-style)
 
-## 2026-06-23
+Each entry: decision, alternatives, reason, reversibility. New non-blocking assumptions made during the build are appended here rather than expanding scope. Consequential or blocking decisions are escalated to the owner.
 
-### Create the project under the current writable workspace
+| # | Date | Decision | Alternatives | Reason | Reversible? |
+|---|------|----------|--------------|--------|-------------|
+| 1 | 2026-06-23 | **Deterministic-first; LLM only for semantics** (interpretation, evidence mapping, gaps, summary). | Pure agentic loop. | Reliability + cost; normalization/diffing/blocking must not depend on a model. | Yes |
+| 2 | 2026-06-23 | **ATS public APIs before scraping** (Greenhouse, Lever, Ashby). | Browser scraping everywhere. | ~80% coverage with no brittle automation; publish unsupported coverage instead of faking it. | Yes |
+| 3 | 2026-06-23 | **Stage 1 is headless Python; SQLite state.** Web app deferred to Stage 2. | Build the Next.js + Supabase app first. | Right-sizes v1 to the builder (owner + coding agent, basic Python); ships value in days, not weeks. | Yes — repo/ORM boundaries keep a Postgres migration cheap. |
+| 4 | 2026-06-23 | **Never write to the source spreadsheet in Stage 1.** | Two-way sync. | Avoids fragile sync; one-way controlled migration happens in Stage 2. | Yes |
+| 5 | 2026-06-23 | **Human approval gates every consequential action.** No auto-add, auto-status, outreach, or submission. | Auto-add above a score threshold; auto-status from email. | Misclassification is costly; control is the product boundary. | No (core principle) |
+| 6 | 2026-06-23 | **Four separate evaluation outputs** (fit · feasibility · strategic priority · recommendation). | One blended score. | Stops company prestige or location from hiding weak role fit. | Yes |
+| 7 | 2026-06-23 | **Narrow true blockers; everything else is a penalty.** | Hard title-based exclusions. | Title-only blocks hide good roles with unusual titles; use penalties + the review queue. | Yes |
+| 8 | 2026-06-23 | **Status from email, never from a dead URL.** | Infer "closed/rejected" when a posting 404s. | Postings get reposted and URLs persist; the inbox is the real signal (Stage 3). | No |
+| 9 | 2026-06-23 | **No multi-agent framework.** A scheduled workflow + narrow services. | CrewAI / LangGraph multi-agent. | Simpler, cheaper, testable; avoids a novelty demo. | Yes |
+| 10 | 2026-06-23 | **Benchmark calibrated on owner-labelled history** (~30 roles). | Trust the prompt as-is. | The differentiator is encoding the owner's judgment; measure it, don't assume it. | Yes |
+| 11 | 2026-06-23 | **Email via a transactional provider; Gmail is read-only (Stage 3).** | Gmail app-password/SMTP to send. | Never request Gmail write scopes just to send a digest; least-privilege. | Yes |
+| 12 | 2026-06-23 | **Supabase Cron for production scheduling (Stage 2); GitHub Actions only for CI + Stage 1.** | GitHub Actions as the production scheduler. | Scheduled GH runs can be delayed/dropped and disabled on inactive repos. | Yes |
 
-- Decision: Created `job-search-agent/` under the current workspace rather than a sibling folder.
-- Alternatives: Request broader filesystem access and create `owner_home/PM Projects/Job Search Agent`.
-- Reason: The current sandbox allows writes inside the existing workspace, and this is reversible.
-- Reversibility: Move the folder into a standalone repository later.
-- Owner approval: Not required for Stage 0.
+> Template for new entries: **Decision · Alternatives · Reason · Reversibility · Owner approval (if needed).**
 
-### Treat `Owner_Tracker.xlsx` as the current master tracker
+## Stage 0 import addendum
 
-- Decision: Used `sanitized_tracker_reference` for Stage 0 inspection.
-- Alternatives: Use `Job_Search_Tracker_Master.xlsx` or `Job_Search_Tracker_Master (1).xlsx`.
-- Reason: It is the most recent and richest workbook found, with Dashboard, Pipeline, Company Watchlist, and History sheets.
-- Reversibility: Re-run the Stage 0 import against another workbook.
-- Owner approval: Needed only if this assumption is wrong.
-
-### Limit source audit probes to public Greenhouse, Lever, and Ashby feeds
-
-- Decision: Checked only the three Stage 1 approved adapter families.
-- Alternatives: Probe Workday, SmartRecruiters, custom search APIs, or browser-rendered sites.
-- Reason: The PRD explicitly says to avoid brittle scraping and publish unsupported coverage before adding custom exceptions.
-- Reversibility: Add approved high-value exceptions later.
-- Owner approval: Required before any browser automation or unsupported custom connector.
-
-### Keep benchmark labels as a draft until owner confirmation
-
-- Decision: Created `data/evaluation_set/initial_benchmark.yaml` from Pipeline rows with draft labels inferred from tracker status and priority score.
-- Alternatives: Block Stage 0 until 20-30 owner-labelled examples are manually supplied.
-- Reason: The tracker has enough signal to create a useful placeholder, but the PRD requires owner-labelled benchmark roles before acceptance tests.
-- Reversibility: Replace inferred labels with confirmed labels.
-- Owner approval: Required before using these labels as acceptance criteria.
-
-### Treat generated audit/config files as private
-
-- Decision: Keep the current Stage 0 audit and watchlist as private job-search artifacts.
-- Alternatives: Sanitize immediately for a public GitHub demo.
-- Reason: The PRD warns against leaking private application data, contacts, or real job-search details.
-- Reversibility: Create a sanitized demo dataset before publishing.
-- Owner approval: Required before public release.
-
+| # | Date | Decision | Alternatives | Reason | Reversible? |
+|---|------|----------|--------------|--------|-------------|
+| 13 | 2026-06-23 | **Use the earlier scaffold docs/data as the source for README, roadmap, decision log, architecture, evaluation docs, benchmark set, and tracker snapshot.** | Keep the generated Stage 0 docs only. | The owner identified these files as prior work that cannot be regenerated. | Yes |
+| 14 | 2026-06-23 | **Keep generated code/config/audit files from the current Stage 0 build.** | Replace the whole repository with the earlier scaffold. | The owner asked to use prior versions only for specific files and keep the current code. | Yes |
+| 15 | 2026-06-23 | **Include the authoritative PRD as `docs/PRD.md`.** | Leave the README link broken or point to Downloads. | The repo should be self-contained before pushing. | Yes |
+| 16 | 2026-06-23 | **Push only to a private GitHub repository.** | Public portfolio repo immediately. | The current repo contains private tracker-derived strategy, warm-path indicators, and real job-search data. | Yes, after creating a sanitized demo dataset |

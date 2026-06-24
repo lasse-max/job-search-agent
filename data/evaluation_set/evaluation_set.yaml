@@ -1,0 +1,493 @@
+# ============================================================================
+# Labelled Evaluation Set — Automated Job Search System
+# Owner: Owner  ·  Generated 23 June 2026
+# Drop into: data/evaluation_set/
+# ----------------------------------------------------------------------------
+# Purpose: ground-truth benchmark for the role evaluator (PRD §5, §10.1).
+# Each entry is the OWNER'S judgment of how the system SHOULD classify the role.
+#
+# How the harness should use this:
+#   1. Fetch the real job description from `jd_source` (URL) or paste it.
+#   2. Run the evaluator to produce role_fit_score / feasibility /
+#      strategic_priority / recommendation (PRD §5.6).
+#   3. Compare the model output to `expected_*` and `label` here.
+#   4. Score: Apply/Consider recall, digest precision, blocker accuracy,
+#      fit-band agreement. Weight false positives heavily for urgent alerts.
+#
+# IMPORTANT distinctions baked into the labels:
+#   - `label` = the owner's strategic judgment about whether to surface/pursue
+#     the role. It is NOT the real-world outcome.
+#   - `actual_outcome` = what actually happened (separate field). A role can be
+#     a correct "apply_now" even though it was later rejected (e.g. Google APAC).
+#   - Warm path can lift a STRETCH role to apply_now (e.g. Databricks).
+#   - A strong role can still be `blocked` purely on visa (e.g. Disney).
+#   - A clean-fit, visa-OK role can still be `skip` on brand/trajectory
+#     (e.g. AutoScout24) — this is the hardest case to calibrate.
+#
+# Label categories: clean_apply | consider | stretch_fds | reach |
+#   cs_deprioritize | below_level | visa_blocked | technical_blocker |
+#   brand_deprioritize
+# ============================================================================
+
+evaluation_set:
+
+  # ---------- CLEAN — APPLY NOW (right level, strong fit) ----------
+  - id: EV-01
+    company: OpenAI
+    role_title: Sales Strategy and Operations, ANZ
+    location: Sydney
+    jd_source: https://openai.com/careers/sales-strategy-and-operations-anz-sydney-australia/
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Frontier-AI brand; clean GTM S&O lane; Sydney = partner-visa, no sponsorship. Top priority despite competitive bar.
+    actual_outcome: n/a
+
+  - id: EV-02
+    company: SafetyCulture
+    role_title: Strategic Project Lead, AI Operations
+    location: Sydney
+    jd_source: https://jobs.lever.co/safetyculture-2
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Internal AI-Ops build (operating cadence, cross-functional, exec reporting) = closest match to the Zenith / governance work. No external-deployment pretence needed.
+    actual_outcome: n/a
+
+  - id: EV-03
+    company: Canva
+    role_title: Operations Business Partner (Growth / Tech)
+    location: Sydney
+    jd_source: https://www.lifeatcanva.com/en/jobs/
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Chief-of-Staff / BizOps team that builds operating rhythms and owns cross-functional programs — a direct hit on the candidate's governance strength.
+    actual_outcome: n/a
+
+  - id: EV-04
+    company: Uber
+    role_title: Senior Strategy & Operations Manager
+    location: Sydney
+    jd_source: https://www.uber.com/global/en/careers/
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Gold-standard S&O brand; Senior level matches seniority; marketplace domain is learnable, not a blocker. Analytics-heavy loop.
+    actual_outcome: n/a
+
+  - id: EV-05
+    company: Airwallex
+    role_title: Senior Manager, Operations Strategy
+    location: London
+    jd_source: https://careers.airwallex.com/job/dc863c3d-b6b3-4dea-8dd0-5e404080a09c/senior-manager-operations-strategy/
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: uncertain   # UK status to verify
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Strongest pure generalist-strategy fit — meets level, preferred track, no niche screen.
+    actual_outcome: n/a
+
+  - id: EV-06
+    company: DoorDash
+    role_title: Manager, Strategy & Operations
+    location: Sydney / Melbourne
+    jd_source: https://job-boards.greenhouse.io/doordashaustralia
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: One of the cleanest experience + seniority matches; 6+ yrs required and met; respected S&O org; Sydney visa-free.
+    actual_outcome: n/a
+
+  - id: EV-07
+    company: Airbnb
+    role_title: Business Operations and Growth Lead
+    location: Sydney
+    jd_source: https://careers.airbnb.com/
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Market strategy + business reviews + cross-functional execution — very clean fit, strong brand, free visa.
+    actual_outcome: n/a
+
+  - id: EV-08
+    company: Wise
+    role_title: Senior Revenue Operations Manager, Wise Platform
+    location: London
+    jd_source: https://jobs.smartrecruiters.com/Wise/744000125183298-senior-revenue-operations-manager-wise-platform
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Explicit 8+ yrs RevOps/S&O — meets tenure; forecasting, GTM execution, build-phase, ambiguity all map.
+    actual_outcome: n/a
+
+  - id: EV-09
+    company: Spotify
+    role_title: Markets Strategy & Operations Manager
+    location: London
+    jd_source: https://www.lifeatspotify.com/jobs
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Planning cadence, market strategy, exec alignment — squarely the candidate's lane; strong brand.
+    actual_outcome: n/a
+
+  - id: EV-10
+    company: Personio
+    role_title: Senior Revenue Operations & Strategy Manager
+    location: Munich
+    jd_source: https://www.personio.com/about-personio/careers/
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: viable     # EU / German citizen
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: Direct RevOps/S&O hit at a credible EU SaaS; zero visa friction (German citizen).
+    actual_outcome: n/a
+
+  - id: EV-11
+    company: Google
+    role_title: Commercial Strategy & Operations
+    location: Sydney / Singapore / London (role-dependent)
+    jd_source: https://www.google.com/about/careers/applications/jobs/results/?q=strategy%20operations
+    label: clean_apply
+    expected_recommendation: apply_now
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Strongest domain credibility and lowest narrative risk. NOTE label is "good role to pursue" regardless of outcome.
+    actual_outcome: APAC S&O rejected after final round 2026-05-29; a new Commercial S&O process is active (interview upcoming).
+
+  # ---------- CONSIDER (credible fit, one manageable gap) ----------
+  - id: EV-12
+    company: Rokt
+    role_title: Revenue Operations & Strategy Lead
+    location: Sydney
+    jd_source: https://www.rokt.com/careers/
+    label: consider
+    expected_recommendation: consider
+    expected_feasibility: viable
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: RevOps fit but forecasting / compensation-modeling heavy — partial fit; free-visa Sydney is the upside.
+    actual_outcome: n/a
+
+  - id: EV-13
+    company: Grab
+    role_title: Manager, Strategy & Programs (Autonomous Vehicle)
+    location: Singapore
+    jd_source: https://jobs.smartrecruiters.com/Grab/744000121979117-manager-strategy-programs-autonomous-vehicle
+    label: consider
+    expected_recommendation: consider
+    expected_feasibility: sponsorship_required
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: OKR/MBR/QBR governance + partner integration & deployment = Fitbit-cutover + RIB shape. AV domain new; Singapore COMPASS friction.
+    actual_outcome: n/a
+
+  - id: EV-14
+    company: Checkout.com
+    role_title: Strategy, CEO Office
+    location: London
+    jd_source: https://www.checkout.com/careers
+    label: consider
+    expected_recommendation: consider
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: Chief-of-staff / strategy: CEO-office initiatives, cross-functional, process optimization — strong fit at a scaled fintech.
+    actual_outcome: n/a
+
+  - id: EV-15
+    company: Salesforce
+    role_title: Senior Manager, Sales Strategy & Operations
+    location: London / Sydney
+    jd_source: https://careers.salesforce.com/en/jobs/
+    label: consider
+    expected_recommendation: consider
+    expected_feasibility: viable
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: Clean commercial S&O at a scaled brand; must target Manager+ (analyst titles would be below-level).
+    actual_outcome: n/a
+
+  # ---------- STRETCH — Deployment Strategist / Forward-Deployed ----------
+  - id: EV-16
+    company: Databricks
+    role_title: Deployment Strategist
+    location: Sydney
+    jd_source: https://www.databricks.com/company/careers/professional-services-operations/deployment-strategist-8516118002
+    label: stretch_fds
+    expected_recommendation: apply_now   # warm path lifts the stretch
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: FDS = stretch motion (external value-scoping is the weak spot), BUT a warm HM intro overrides it to apply_now. Demonstrates warm_path logic.
+    actual_outcome: In progress — two-way team screen being scheduled.
+
+  - id: EV-17
+    company: Sierra
+    role_title: Strategist, Agent Development
+    location: Munich / Sydney
+    jd_source: https://sierra.ai/careers
+    label: stretch_fds
+    expected_recommendation: consider
+    expected_feasibility: viable
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: FDS stretch, but elite frontier brand + visa-free locations (Munich/Sydney) + German-speaking variant make it the stretch most worth taking.
+    actual_outcome: n/a
+
+  - id: EV-18
+    company: Mistral
+    role_title: AI Deployment Strategist
+    location: Munich
+    jd_source: https://jobs.lever.co/mistral
+    label: stretch_fds
+    expected_recommendation: consider
+    expected_feasibility: viable
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: Frontier-AI brand, visa-free EU; technical fluency is the stretch. Brand justifies the reach.
+    actual_outcome: Applied.
+
+  - id: EV-19
+    company: Palantir
+    role_title: Deployment Strategist
+    location: London
+    jd_source: https://jobs.lever.co/palantir
+    label: stretch_fds
+    expected_recommendation: stretch
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: Canonical DS path + elite brand, but very high / technical bar; UK status to verify, gov roles may need clearance.
+    actual_outcome: n/a
+
+  # ---------- REACH (elite brand, real fit gap) ----------
+  - id: EV-20
+    company: Stripe
+    role_title: Strategy & Operations, Global Partnerships
+    location: Singapore / London
+    jd_source: https://stripe.com/jobs/search
+    label: reach
+    expected_recommendation: stretch
+    expected_feasibility: sponsorship_required
+    expected_strategic_tier: tier_1
+    hard_blockers: []
+    key_reason: Elite fintech brand but wants card-networks/banking knowledge AND is partnership-flavored = double gap. High bar; apply with eyes open, do not over-rank on brand alone.
+    actual_outcome: n/a
+
+  # ---------- CUSTOMER SUCCESS — deprioritize (wrong function) ----------
+  - id: EV-21
+    company: ServiceNow / Moveworks
+    role_title: Senior Customer Success Manager, Enterprise
+    location: London
+    jd_source: https://careers.servicenow.com/jobs/
+    label: cs_deprioritize
+    expected_recommendation: skip
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_3
+    hard_blockers: []
+    key_reason: Customer Success = account management / renewals, not the candidate's S&O/BizOps lane. Strong penalty, not a hard title block.
+    actual_outcome: n/a
+
+  - id: EV-22
+    company: Harvey
+    role_title: Majors Customer Success Manager
+    location: London
+    jd_source: https://www.harvey.ai/company/careers
+    label: cs_deprioritize
+    expected_recommendation: skip
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_3
+    hard_blockers: []
+    key_reason: CS role. NOTE Harvey's Partner Operations Manager (EMEA) WOULD be a clean fit — same company, different function. Tests function-level discrimination.
+    actual_outcome: n/a
+
+  - id: EV-23
+    company: Glean
+    role_title: Enterprise Customer Success
+    location: London / Singapore
+    jd_source: https://www.glean.com/careers
+    label: cs_deprioritize
+    expected_recommendation: skip
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_3
+    hard_blockers: []
+    key_reason: CS function. A GTM Strategy & Operations role at Glean would instead be a consider.
+    actual_outcome: n/a
+
+  # ---------- BELOW-LEVEL (good company, junior scope) ----------
+  - id: EV-24
+    company: Cognition (Devin)
+    role_title: GTM Operations Associate
+    location: Singapore
+    jd_source: https://cognition.ai/careers
+    label: below_level
+    expected_recommendation: skip
+    expected_feasibility: sponsorship_required
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: Associate scope below an ~8-yr leader. Strong penalty on seniority, not a title block. Real rejection confirms the call.
+    actual_outcome: Applied — rejected.
+
+  - id: EV-25
+    company: Airwallex
+    role_title: Manager, Revenue Operations
+    location: Singapore
+    jd_source: https://careers.airwallex.com/
+    label: below_level
+    expected_recommendation: skip
+    expected_feasibility: sponsorship_required
+    expected_strategic_tier: tier_2
+    hard_blockers: []
+    key_reason: Reads junior in scope despite "Manager" title; same company's Senior Manager Operations Strategy (London) is the right-level bet. Tests title-vs-scope.
+    actual_outcome: Applied — rejected.
+
+  - id: EV-26
+    company: Datadog
+    role_title: GTM Strategy & Operations Analyst
+    location: London
+    jd_source: https://careers.datadoghq.com/
+    label: below_level
+    expected_recommendation: skip
+    expected_feasibility: uncertain
+    expected_strategic_tier: tier_3
+    hard_blockers: []
+    key_reason: Analyst level below seniority. The Manager, GTM Strategy/Operations at Datadog would instead be a consider.
+    actual_outcome: n/a
+
+  # ---------- VISA-BLOCKED (strong role, infeasible location) ----------
+  - id: EV-27
+    company: Disney
+    role_title: Principal, Streaming Strategy & Operations
+    location: San Francisco / Glendale (US)
+    jd_source: https://www.disneycareers.com/en/job/-/-/391/95260581776
+    label: visa_blocked
+    expected_recommendation: blocked
+    expected_feasibility: blocked
+    expected_strategic_tier: tier_2
+    hard_blockers:
+      - type: location_work_authorization
+        evidence: US-only role, no sponsorship indicated; candidate has no US work authorization.
+    key_reason: Role is a bullseye on OKR/governance evidence, but US-only with no sponsorship path = blocked on feasibility. Tests that a high fit score does NOT override a visa blocker.
+    actual_outcome: n/a
+
+  - id: EV-28
+    company: Plaid
+    role_title: Integration Operations Program Manager
+    location: San Francisco (US)
+    jd_source: https://plaid.com/careers/openings/executive/san-francisco-hq/integration-operations-program-manager/
+    label: visa_blocked
+    expected_recommendation: blocked
+    expected_feasibility: blocked
+    expected_strategic_tier: tier_3
+    hard_blockers:
+      - type: location_work_authorization
+        evidence: US-only; no sponsorship path.
+    key_reason: Program-management fit (Fitbit migration anchor) but US visa-hard. Blocked on feasibility despite good fit.
+    actual_outcome: n/a
+
+  - id: EV-29
+    company: Roblox
+    role_title: Lead, Strategic Initiatives
+    location: San Mateo (US)
+    jd_source: https://careers.roblox.com/jobs/7441863
+    label: visa_blocked
+    expected_recommendation: stretch    # warm referral partially offsets US friction
+    expected_feasibility: sponsorship_required
+    expected_strategic_tier: tier_3
+    hard_blockers: []
+    key_reason: US role but candidate has a warm internal referral — warm_path softens (do not hard-block); still high friction. Tests warm_path vs US-friction interaction.
+    actual_outcome: n/a
+
+  # ---------- TECHNICAL / ELIGIBILITY BLOCKER ----------
+  - id: EV-30
+    company: Roblox
+    role_title: Product Manager, Consumer Payments and Subscriptions
+    location: San Mateo (US)
+    jd_source: https://careers.roblox.com/jobs/8009151
+    label: technical_blocker
+    expected_recommendation: blocked
+    expected_feasibility: blocked
+    expected_strategic_tier: tier_3
+    hard_blockers:
+      - type: technical_pm_depth
+        evidence: Requires 3-6 yrs PM + implementation/technical product specs; candidate is not a PM and lacks SDLC depth.
+      - type: location_work_authorization
+        evidence: US-only, no sponsorship.
+    key_reason: Double block — technical/native-PM requirement (the April-interview failure mode) plus US visa. Clear skip.
+    actual_outcome: n/a
+
+  - id: EV-31
+    company: Arondite
+    role_title: Deployment Strategist
+    location: London
+    jd_source: https://apply.workable.com/arondite/
+    label: technical_blocker
+    expected_recommendation: blocked
+    expected_feasibility: blocked
+    expected_strategic_tier: tier_3
+    hard_blockers:
+      - type: security_clearance
+        evidence: Requires UK security clearance (SC) needing 5 yrs continuous UK residency, which the candidate does not have.
+    key_reason: Hard eligibility blocker (clearance). Tests clearance detection even when role family looks relevant.
+    actual_outcome: n/a
+
+  # ---------- BRAND / TRAJECTORY DEPRIORITIZE (feasible + fits, still skip) ----------
+  - id: EV-32
+    company: AutoScout24
+    role_title: AI Process Transformation Lead
+    location: Munich
+    jd_source: https://www.autoscout24.com/as24-career-pages/
+    label: brand_deprioritize
+    expected_recommendation: skip
+    expected_feasibility: viable     # German citizen, zero visa
+    expected_strategic_tier: tier_3
+    hard_blockers: []
+    key_reason: HARDEST case — role content fits the Zenith/transformation work AND visa is free, but the company is a brand/trajectory step-down from Google. Owner skips on company-priority despite high fit + feasibility. Tests that company_priority can outweigh fit.
+    actual_outcome: Dropped by owner.
+
+  - id: EV-33
+    company: OutSystems
+    role_title: Lead Customer Success Manager
+    location: Singapore / London
+    jd_source: https://www.outsystems.com/careers/
+    label: brand_deprioritize
+    expected_recommendation: skip
+    expected_feasibility: sponsorship_required
+    expected_strategic_tier: tier_3
+    hard_blockers: []
+    key_reason: Double deprioritize — CS function AND weak brand/trajectory (low-code under AI pressure). Even a warm referral does not lift it.
+    actual_outcome: Dropped by owner.
+
+# ============================================================================
+# Calibration notes for the harness (PRD §10.1):
+#   - Apply/Consider recall target >= 95% on EV-01..EV-15.
+#   - Blocker detection must catch EV-27..EV-31 (visa + clearance + technical).
+#   - The model must NOT mark EV-32 (AutoScout) as apply_now despite high fit +
+#     free visa — company_priority/brand is the deciding signal.
+#   - The model must distinguish same-company function (EV-22 Harvey CS = skip
+#     vs Harvey Partner Ops = consider) — function over title.
+#   - warm_path must lift EV-16 (Databricks) to apply_now and soften EV-29.
+#   - Review and edit these labels yourself before trusting the benchmark;
+#     they encode the owner's judgment and should be owner-confirmed.
+# ============================================================================

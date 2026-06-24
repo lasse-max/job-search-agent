@@ -1,54 +1,98 @@
-# Automated Job Search System
+# Job Search Agent
 
-Stage 0 repository scaffold for a private, human-in-the-loop job search agent.
+A single-user system that detects strong, freshly-posted roles at a fixed company watchlist within hours, evaluates each one against a real, encoded career strategy, and keeps an accurate application pipeline — **without taking any consequential action silently.**
 
-The product goal is to find strong roles at an approved company watchlist within hours of publication, evaluate them against the candidate profile and location policy, and keep the application pipeline accurate without silent consequential actions.
+> **Status:** Stage 0 (audit & scaffold). Stage 1 (discovery MVP) is the next approved build. See [ROADMAP.md](./ROADMAP.md).
 
-## Current Stage
+---
 
-Stage 0 only:
+## Why this exists
 
-- Repository structure created.
-- Current tracker inspected read-only.
-- Company source-coverage audit produced.
-- Candidate profile, location policy, scoring policy, and draft benchmark configuration added.
-- No broad adapter implementation, Gmail integration, web app, document generation, or tracker mutation has started.
+High-quality roles at a finite set of target companies appear irregularly, use inconsistent titles, and close quickly. Manual career-page checks are repetitive and generic job alerts are noise. This system detects roles early, explains fit with evidence from the candidate's actual background, and reduces tracker maintenance while keeping the human in control of every decision that matters.
 
-## Stage 0 Artifacts
+## What makes it different
 
-- `docs/source_coverage_audit.md`: readable audit summary, selected first coverage candidates, and proposed first vertical slice.
-- `output/source_coverage.csv`: full source-coverage matrix.
-- `config/watchlist.yaml`: private watchlist config generated from the tracker and public feed probes.
-- `config/candidate_profile.yaml`: candidate positioning and evidence config.
-- `config/location_policy.yaml`: explicit market authorization policy.
-- `config/scoring_policy.yaml`: recommendation and blocker rules.
-- `data/evaluation_set/initial_benchmark.yaml`: draft benchmark labels inferred from the tracker. These require owner confirmation before acceptance testing.
+It is **not** a generic CV-to-JD matcher. Its value is that it encodes and *tests* a specific decision logic, benchmarked against ~30 historically-labelled roles ([`data/evaluation_set/`](./data/evaluation_set/evaluation_set.yaml)):
 
-## Proposed First Vertical Slice
+- Clean fit vs. strategic stretch (e.g. Deployment Strategist is a *stretch*, not core)
+- Strategy/operations work vs. Customer Success (a different career, deprioritized)
+- Right seniority and ownership (associate-scope roles are penalized regardless of title)
+- Location/work-authorization feasibility (a strong role can still be `blocked` on visa)
+- Company priority and warm-path value (a warm intro can lift a stretch to `apply_now`)
+- Honest technical and domain gaps
 
-Recommended first slice: Databricks via the Greenhouse feed.
+Crucially, fit, feasibility, and company priority are scored **separately**, so brand or location can never hide a weak role fit.
 
-Why: Databricks is Tier 1, has a warm path in the tracker, has active Deployment Strategist roles in target geographies, and exposes a supported public feed. The first slice should fetch one company, normalize postings, deduplicate, apply deterministic blockers, evaluate one eligible role, persist it, and write a local digest.
+## How it works (Stage 1)
 
-Backup if the Databricks feed is too noisy: Mistral AI via Lever.
+```
+ scheduler (every 6h)
+        │
+        ▼
+ [adapters] Greenhouse · Lever · Ashby  +  manual URL/text intake
+        │  fetch → normalize → dedupe (idempotent)
+        ▼
+ [source health]  fail loudly: a broken connector ≠ a zero-job success
+        │
+        ▼
+ [deterministic blockers + feasibility policy]   ← code, not the LLM
+        │
+        ▼
+ [LLM evaluator]  4 outputs: fit · feasibility · strategic priority · recommendation
+        │  (structured JSON, schema-validated)
+        ▼
+ [SQLite state]  postings · evaluations · review decisions · runs
+        │
+        ▼
+ [morning digest]  Apply now / Consider / Stretch / Low / Source failures  → email
+```
 
-## Local Setup
+The existing spreadsheet remains the manually-maintained tracker during Stage 1; the system never writes to it. Stage 2 migrates state into a web app + Postgres.
 
-This is not fully implemented yet. Stage 1 will add runnable services after owner approval.
+## Repository layout
+
+```
+docs/        PRD (authoritative spec), architecture, evaluation guide
+config/      watchlist · candidate_profile · location_policy · scoring_policy (YAML, versioned)
+data/        evaluation_set (benchmark labels) · fixtures (saved ATS payloads)
+app/         adapters · services · models · prompts · templates · cli
+tests/       unit · integration · adapters · evaluation benchmark
+scripts/     tracker import · CSV export
+.github/     CI, scheduled-scan workflow, issue/PR templates
+```
+
+## Quickstart
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
+cp .env.example .env          # fill locally; never commit .env
+
+job-agent scan                # run a discovery scan (writes a local digest)
+job-agent review list         # review surfaced opportunities
+job-agent add-url <job-url>   # manually evaluate any role
 ```
 
-Read-only tracker inspection:
+Development sends no email by default — the digest is written to `output/latest_digest.html`.
 
-```bash
-python scripts/import_tracker.py "/path/to/tracker.xlsx"
-```
+## Documentation
 
-## Privacy Note
+| Doc | Purpose |
+|-----|---------|
+| [`docs/PRD.md`](./docs/PRD.md) | Authoritative product & build spec (the source of truth). |
+| [`ROADMAP.md`](./ROADMAP.md) | Staged delivery, checkpoints, and exit criteria. |
+| [`DECISIONS.md`](./DECISIONS.md) | Architecture decision log (ADR-style). |
+| [`docs/architecture.md`](./docs/architecture.md) | System design and data flow. |
+| [`docs/evaluation.md`](./docs/evaluation.md) | How the fit benchmark works. |
 
-This repository currently contains private job-search configuration. Before publishing any portfolio version, sanitize company priorities, active pipeline data, warm-path indicators, contacts, and real application details.
+## Guardrails (non-negotiable)
 
+- Nothing consequential happens silently — no application creation, status change, outreach, or submission without explicit approval.
+- Deterministic logic first; the LLM only interprets, maps evidence, and explains.
+- ATS APIs before scraping; unsupported coverage is published, not faked.
+- Secrets stay server-side; no real application or email data in the repo.
+- The system serves the job search — it must not become the job search.
+
+## License
+
+Private, single-user project. Not for redistribution.
