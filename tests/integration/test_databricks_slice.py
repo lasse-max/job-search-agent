@@ -8,7 +8,10 @@ import unittest
 from unittest.mock import patch
 
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
+from app.db import wake_due_snoozes
+from app.services.digest import write_digest
 from app.services.ingest import run_scan
+from app.services.review import approve_review, dismiss_review, snooze_review
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -139,6 +142,104 @@ class DatabricksSliceTest(unittest.TestCase):
                 evaluation["provenance"]["scoring_policy_version"],
                 load_scoring_policy().version,
             )
+
+    def test_under_volume_feed_is_degraded_and_does_not_count_absences(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            partial_fixture = Path(directory) / "partial.json"
+            payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
+            payload["jobs"] = payload["jobs"][:1]
+            partial_fixture.write_text(json.dumps(payload), encoding="utf-8")
+
+            run_scan(db_path=db_path, fixture_path=FIXTURE)
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            source = conn.execute("SELECT id FROM job_sources").fetchone()
+            conn.execute(
+                "UPDATE job_sources SET expected_volume_min = 5 WHERE id = ?",
+                (source["id"],),
+            )
+            conn.commit()
+
+            degraded = run_scan(db_path=db_path, fixture_path=partial_fixture)
+
+            self.assertEqual(degraded.status, "degraded")
+            self.assertIn("expected_volume_degraded", degraded.error_summary or "")
+
+            source = conn.execute("SELECT * FROM job_sources").fetchone()
+            run = conn.execute("SELECT * FROM source_runs ORDER BY id DESC LIMIT 1").fetchone()
+            missing_counts = [
+                row[0]
+                for row in conn.execute(
+                    "SELECT missing_successful_scan_count FROM job_postings ORDER BY id"
+                )
+            ]
+
+            self.assertEqual(source["health_status"], "degraded")
+            self.assertEqual(run["status"], "degraded")
+            self.assertEqual(missing_counts, [0, 0, 0])
+
+            _, text_path, _ = write_digest(conn, Path(directory) / "output")
+            digest = text_path.read_text(encoding="utf-8")
+            self.assertIn("degraded - Databricks", digest)
+            self.assertIn("expected_volume_degraded", digest)
+
+    def test_material_change_reopens_approved_and_dismissed_reviews(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            changed_fixture = Path(directory) / "changed.json"
+
+            run_scan(db_path=db_path, fixture_path=FIXTURE)
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            job_rows = conn.execute(
+                "SELECT id, source_job_id FROM job_postings ORDER BY id LIMIT 2"
+            ).fetchall()
+            approve_review(conn, int(job_rows[0]["id"]))
+            dismiss_review(conn, int(job_rows[1]["id"]), "already reviewed")
+
+            payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
+            for job in payload["jobs"][:2]:
+                job["content"] += "<p>Materially updated scope.</p>"
+            changed_fixture.write_text(json.dumps(payload), encoding="utf-8")
+
+            changed = run_scan(db_path=db_path, fixture_path=changed_fixture)
+
+            self.assertEqual(changed.changed_count, 2)
+            states = [
+                row[0]
+                for row in conn.execute(
+                    """
+                    SELECT orev.state
+                    FROM opportunity_reviews orev
+                    WHERE orev.job_posting_id IN (?, ?)
+                    ORDER BY orev.job_posting_id
+                    """,
+                    (int(job_rows[0]["id"]), int(job_rows[1]["id"])),
+                )
+            ]
+            self.assertEqual(states, ["new", "new"])
+
+    def test_snoozed_role_resurfaces_after_snooze_until_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+
+            run_scan(db_path=db_path, fixture_path=FIXTURE)
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            job = conn.execute("SELECT id FROM job_postings ORDER BY id LIMIT 1").fetchone()
+            snooze_review(conn, int(job["id"]), "2026-07-01")
+
+            changed = wake_due_snoozes(conn, "2026-07-02")
+            conn.commit()
+            state = conn.execute(
+                "SELECT state, snooze_until FROM opportunity_reviews WHERE job_posting_id = ?",
+                (int(job["id"]),),
+            ).fetchone()
+
+            self.assertEqual(changed, 1)
+            self.assertEqual(state["state"], "new")
+            self.assertIsNone(state["snooze_until"])
 
 
 def _count(conn: sqlite3.Connection, table: str) -> int:

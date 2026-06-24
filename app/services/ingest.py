@@ -9,11 +9,13 @@ from app.adapters import get_adapter
 from app.config import DEFAULT_DB_PATH, OUTPUT_DIR, load_company_config
 from app.db import (
     connect,
+    get_expected_volume_min,
     init_db,
     persist_evaluation,
     record_evaluation_skip,
     record_source_run,
     set_source_health,
+    update_expected_volume_min,
     upsert_company,
     upsert_postings,
     upsert_source,
@@ -55,7 +57,12 @@ def run_scan(
     init_db(conn)
     started_at = utc_now()
     company_id = upsert_company(conn, company)
-    source_id = upsert_source(conn, company_id, company)
+    source_id = upsert_source(
+        conn,
+        company_id,
+        company,
+        seed_expected_volume=fixture_path is None,
+    )
     conn.commit()
 
     if fixture_path:
@@ -100,7 +107,18 @@ def run_scan(
     try:
         postings = adapter.normalize(result, company)
         seen_at = utc_now()
-        upsert_result = upsert_postings(conn, company_id, source_id, postings, seen_at)
+        degraded_reason = _degraded_reason(
+            fetched_count=health.fetched_count,
+            expected_volume_min=get_expected_volume_min(conn, source_id),
+        )
+        upsert_result = upsert_postings(
+            conn,
+            company_id,
+            source_id,
+            postings,
+            seen_at,
+            count_absences=degraded_reason is None,
+        )
         candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
         evaluated_count = 0
         for row in get_postings_by_ids(conn, candidate_ids):
@@ -148,19 +166,26 @@ def run_scan(
         )
 
     finished_at = utc_now()
+    degraded_reason = _degraded_reason(
+        fetched_count=health.fetched_count,
+        expected_volume_min=get_expected_volume_min(conn, source_id),
+    )
+    if degraded_reason is None and fixture_path is None:
+        update_expected_volume_min(conn, source_id, health.fetched_count)
+
     _record_run(
         conn,
         source_id,
         started_at=started_at,
         finished_at=finished_at,
-        status="success",
+        status="degraded" if degraded_reason else "success",
         http_status=result.http_status,
         fetched_count=health.fetched_count,
         new_count=len(upsert_result.new_posting_ids),
         changed_count=len(upsert_result.changed_posting_ids),
-        error_summary=None,
-        health_status="healthy",
-        last_success_at=finished_at,
+        error_summary=degraded_reason,
+        health_status="degraded" if degraded_reason else "healthy",
+        last_success_at=None if degraded_reason else finished_at,
     )
     conn.commit()
     html_path, text_path, digest_count, digest_error = _safe_write_digest(conn)
@@ -168,7 +193,7 @@ def run_scan(
         company=company.name,
         source_type=adapter.source_type,
         source_key=company.source_key,
-        status="failure" if digest_error else "success",
+        status="failure" if digest_error else "degraded" if degraded_reason else "success",
         fetched_count=health.fetched_count,
         new_count=len(upsert_result.new_posting_ids),
         changed_count=len(upsert_result.changed_posting_ids),
@@ -176,7 +201,7 @@ def run_scan(
         digest_count=digest_count,
         digest_html=html_path,
         digest_text=text_path,
-        error_summary=digest_error,
+        error_summary=_join_errors(degraded_reason, digest_error),
     )
 
 
@@ -224,3 +249,14 @@ def _join_errors(primary: str | None, secondary: str | None) -> str | None:
     if primary and secondary:
         return f"{primary}; {secondary}"
     return primary or secondary
+
+
+def _degraded_reason(*, fetched_count: int, expected_volume_min: int | None) -> str | None:
+    if expected_volume_min is None or expected_volume_min <= 0:
+        return None
+    if fetched_count >= expected_volume_min:
+        return None
+    return (
+        "expected_volume_degraded: "
+        f"fetched {fetched_count} below expected minimum {expected_volume_min}"
+    )

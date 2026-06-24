@@ -7,6 +7,7 @@ import sqlite3
 from dataclasses import dataclass
 from datetime import date
 
+from app.db import wake_due_snoozes
 from app.models import ReviewState, utc_now
 
 
@@ -20,6 +21,8 @@ class ReviewUpdate:
 
 
 def list_reviews(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+    wake_due_snoozes(conn, utc_now()[:10])
+    conn.commit()
     return conn.execute(
         """
         SELECT

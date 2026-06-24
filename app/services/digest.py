@@ -23,6 +23,7 @@ RECOMMENDATION_SECTIONS = [
 def write_digest(conn: sqlite3.Connection, output_dir: Path) -> tuple[Path, Path, int]:
     output_dir.mkdir(parents=True, exist_ok=True)
     rows = get_digest_rows(conn)
+    conn.commit()
     failures = latest_source_failures(conn)
     html_path = output_dir / "latest_digest.html"
     text_path = output_dir / "latest_digest.txt"
@@ -54,10 +55,13 @@ def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
     if failures:
         parts.append("<ul>")
         for failure in failures:
+            status = failure["status"] or failure["health_status"]
             parts.append(
                 "<li>"
-                f"{html.escape(failure['source_type'])}:{html.escape(failure['source_key'])} "
-                f"{html.escape(failure['status'])} - {html.escape(failure['error_summary'] or '')}"
+                f"<strong>{html.escape(status)}</strong> - "
+                f"{html.escape(failure['company'])} "
+                f"({html.escape(failure['source_type'])}:{html.escape(failure['source_key'])}) "
+                f"{html.escape(failure['error_summary'] or '')}"
                 "</li>"
             )
         parts.append("</ul>")
@@ -89,9 +93,11 @@ def render_text(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
     parts.append("Source failures and coverage gaps")
     if failures:
         for failure in failures:
+            status = failure["status"] or failure["health_status"]
             parts.append(
-                f"- {failure['source_type']}:{failure['source_key']} "
-                f"{failure['status']} - {failure['error_summary'] or ''}"
+                f"- {status} - {failure['company']} "
+                f"({failure['source_type']}:{failure['source_key']}) "
+                f"{failure['error_summary'] or ''}"
             )
     else:
         parts.append("- None recorded")

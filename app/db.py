@@ -162,18 +162,27 @@ def upsert_company(conn: sqlite3.Connection, company: CompanyConfig) -> int:
     )
 
 
-def upsert_source(conn: sqlite3.Connection, company_id: int, company: CompanyConfig) -> int:
+def upsert_source(
+    conn: sqlite3.Connection,
+    company_id: int,
+    company: CompanyConfig,
+    *,
+    seed_expected_volume: bool = True,
+) -> int:
     source_url = source_endpoint(company.ats_type, company.source_key)
     source_parser_version = parser_version(company.ats_type)
+    expected_volume_min = company.expected_volume_min if seed_expected_volume else None
     conn.execute(
         """
         INSERT INTO job_sources (
-          company_id, source_type, source_key, source_url, parser_version, health_status
+          company_id, source_type, source_key, source_url, parser_version, health_status,
+          expected_volume_min
         )
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(company_id, source_type, source_key) DO UPDATE SET
           source_url=excluded.source_url,
-          parser_version=excluded.parser_version
+          parser_version=excluded.parser_version,
+          expected_volume_min=COALESCE(job_sources.expected_volume_min, excluded.expected_volume_min)
         """,
         (
             company_id,
@@ -182,6 +191,7 @@ def upsert_source(conn: sqlite3.Connection, company_id: int, company: CompanyCon
             source_url,
             source_parser_version,
             "healthy",
+            expected_volume_min,
         ),
     )
     return int(
@@ -211,12 +221,46 @@ def set_source_health(
     )
 
 
+def get_expected_volume_min(conn: sqlite3.Connection, source_id: int) -> int | None:
+    row = conn.execute(
+        """
+        SELECT expected_volume_min
+        FROM job_sources
+        WHERE id = ?
+        """,
+        (source_id,),
+    ).fetchone()
+    if row is None or row["expected_volume_min"] is None:
+        return None
+    return int(row["expected_volume_min"])
+
+
+def update_expected_volume_min(
+    conn: sqlite3.Connection,
+    source_id: int,
+    fetched_count: int,
+) -> None:
+    if fetched_count <= 0:
+        return
+    learned_minimum = max(1, fetched_count // 5)
+    conn.execute(
+        """
+        UPDATE job_sources
+        SET expected_volume_min = MAX(COALESCE(expected_volume_min, 0), ?)
+        WHERE id = ?
+        """,
+        (learned_minimum, source_id),
+    )
+
+
 def upsert_postings(
     conn: sqlite3.Connection,
     company_id: int,
     source_id: int,
     postings: list[JobPosting],
     seen_at: str,
+    *,
+    count_absences: bool = True,
 ) -> UpsertResult:
     new_ids: list[int] = []
     changed_ids: list[int] = []
@@ -286,7 +330,7 @@ def upsert_postings(
                 ),
             )
             changed_ids.append(job_id)
-            ensure_review(conn, job_id)
+            resurface_review_on_material_change(conn, job_id)
         else:
             conn.execute(
                 """
@@ -297,7 +341,9 @@ def upsert_postings(
                 (seen_at, job_id),
             )
 
-    unavailable_count = mark_absences(conn, source_id, seen_source_job_ids)
+    unavailable_count = (
+        mark_absences(conn, source_id, seen_source_job_ids) if count_absences else 0
+    )
     return UpsertResult(new_ids, changed_ids, unavailable_count)
 
 
@@ -341,6 +387,38 @@ def ensure_review(conn: sqlite3.Connection, job_posting_id: int) -> None:
         """,
         (job_posting_id,),
     )
+
+
+def resurface_review_on_material_change(conn: sqlite3.Connection, job_posting_id: int) -> None:
+    conn.execute(
+        """
+        UPDATE opportunity_reviews
+        SET state = 'new',
+            decision_reason = NULL,
+            reviewed_at = NULL,
+            snooze_until = NULL
+        WHERE job_posting_id = ?
+          AND state IN ('approved', 'dismissed', 'snoozed')
+        """,
+        (job_posting_id,),
+    )
+
+
+def wake_due_snoozes(conn: sqlite3.Connection, today: str) -> int:
+    cursor = conn.execute(
+        """
+        UPDATE opportunity_reviews
+        SET state = 'new',
+            decision_reason = NULL,
+            reviewed_at = NULL,
+            snooze_until = NULL
+        WHERE state = 'snoozed'
+          AND snooze_until IS NOT NULL
+          AND snooze_until <= ?
+        """,
+        (today,),
+    )
+    return cursor.rowcount
 
 
 def record_source_run(
@@ -435,6 +513,7 @@ def record_evaluation_skip(
 
 
 def get_digest_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+    wake_due_snoozes(conn, utc_now()[:10])
     return conn.execute(
         """
         SELECT
@@ -467,11 +546,29 @@ def get_digest_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
 def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sqlite3.Row]:
     return conn.execute(
         """
-        SELECT js.source_type, js.source_key, sr.status, sr.error_summary, sr.finished_at
-        FROM source_runs sr
-        JOIN job_sources js ON js.id = sr.job_source_id
-        WHERE sr.status != 'success'
-        ORDER BY sr.id DESC
+        SELECT
+          c.name AS company,
+          js.source_type,
+          js.source_key,
+          js.health_status,
+          latest.status,
+          latest.error_summary,
+          latest.finished_at,
+          js.expected_volume_min
+        FROM job_sources js
+        JOIN companies c ON c.id = js.company_id
+        LEFT JOIN (
+          SELECT sr.*
+          FROM source_runs sr
+          WHERE sr.id = (
+            SELECT MAX(newer.id)
+            FROM source_runs newer
+            WHERE newer.job_source_id = sr.job_source_id
+          )
+        ) latest ON latest.job_source_id = js.id
+        WHERE js.health_status IN ('degraded', 'failing', 'unsupported')
+           OR latest.status != 'success'
+        ORDER BY COALESCE(latest.id, 0) DESC, c.tier, c.name
         LIMIT ?
         """,
         (limit,),

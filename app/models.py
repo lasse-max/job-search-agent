@@ -35,6 +35,7 @@ class CompanyConfig:
     target_locations: list[str]
     target_role_family_notes: str
     warm_path: bool
+    expected_volume_min: int | None = None
 
 
 @dataclass(frozen=True)

@@ -138,8 +138,17 @@ def load_company_config(company_name: str = "Databricks") -> CompanyConfig:
                 target_locations=list(company.get("target_locations", [])),
                 target_role_family_notes=str(company.get("target_role_family_notes", "")),
                 warm_path=bool(company.get("warm_path", False)),
+                expected_volume_min=_expected_volume_min(company.get("job_count_at_audit")),
             )
     raise ValueError(f"Company not found in watchlist: {company_name}")
+
+
+def load_enabled_company_configs() -> list[CompanyConfig]:
+    return [
+        load_company_config(str(company["name"]))
+        for company in load_watchlist()
+        if bool(company.get("enabled"))
+    ]
 
 
 @lru_cache(maxsize=1)
@@ -312,3 +321,11 @@ def _int_threshold(thresholds: dict[object, object], key: str) -> int:
     if not isinstance(value, int):
         raise ValueError(f"Invalid recommendation threshold: {key}")
     return value
+
+
+def _expected_volume_min(audit_count: object) -> int | None:
+    if not isinstance(audit_count, int):
+        return None
+    if audit_count <= 0:
+        return 1
+    return max(1, audit_count // 5)
