@@ -91,7 +91,7 @@ evaluation_set:
     jd_source: https://careers.airwallex.com/job/dc863c3d-b6b3-4dea-8dd0-5e404080a09c/senior-manager-operations-strategy/
     label: clean_apply
     expected_recommendation: apply_now
-    expected_feasibility: uncertain   # UK status to verify
+    expected_feasibility: viable
     expected_strategic_tier: tier_1
     hard_blockers: []
     key_reason: Strongest pure generalist-strategy fit — meets level, preferred track, no niche screen.
@@ -130,7 +130,7 @@ evaluation_set:
     jd_source: https://jobs.smartrecruiters.com/Wise/744000125183298-senior-revenue-operations-manager-wise-platform
     label: clean_apply
     expected_recommendation: apply_now
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_1
     hard_blockers: []
     key_reason: Explicit 8+ yrs RevOps/S&O — meets tenure; forecasting, GTM execution, build-phase, ambiguity all map.
@@ -143,7 +143,7 @@ evaluation_set:
     jd_source: https://www.lifeatspotify.com/jobs
     label: clean_apply
     expected_recommendation: apply_now
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_1
     hard_blockers: []
     key_reason: Planning cadence, market strategy, exec alignment — squarely the candidate's lane; strong brand.
@@ -169,7 +169,7 @@ evaluation_set:
     jd_source: https://www.google.com/about/careers/applications/jobs/results/?q=strategy%20operations
     label: clean_apply
     expected_recommendation: apply_now
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_1
     hard_blockers: []
     key_reason: Strongest domain credibility and lowest narrative risk. NOTE label is "good role to pursue" regardless of outcome.
@@ -196,10 +196,10 @@ evaluation_set:
     jd_source: https://jobs.smartrecruiters.com/Grab/744000121979117-manager-strategy-programs-autonomous-vehicle
     label: consider
     expected_recommendation: consider
-    expected_feasibility: sponsorship_required
+    expected_feasibility: viable
     expected_strategic_tier: tier_2
     hard_blockers: []
-    key_reason: OKR/MBR/QBR governance + partner integration & deployment = Fitbit-cutover + RIB shape. AV domain new; Singapore COMPASS friction.
+    key_reason: OKR/MBR/QBR governance + partner integration & deployment = Fitbit-cutover + RIB shape. AV domain new; Singapore sponsorship is viable under the current policy.
     actual_outcome: n/a
 
   - id: EV-14
@@ -209,7 +209,7 @@ evaluation_set:
     jd_source: https://www.checkout.com/careers
     label: consider
     expected_recommendation: consider
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_2
     hard_blockers: []
     key_reason: Chief-of-staff / strategy: CEO-office initiatives, cross-functional, process optimization — strong fit at a scaled fintech.
@@ -238,6 +238,7 @@ evaluation_set:
     expected_recommendation: apply_now   # warm path lifts the stretch
     expected_feasibility: viable
     expected_strategic_tier: tier_1
+    warm_path: true
     hard_blockers: []
     key_reason: FDS = stretch motion (external value-scoping is the weak spot), BUT a warm HM intro overrides it to apply_now. Demonstrates warm_path logic.
     actual_outcome: In progress — two-way team screen being scheduled.
@@ -275,10 +276,10 @@ evaluation_set:
     jd_source: https://jobs.lever.co/palantir
     label: stretch_fds
     expected_recommendation: stretch
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_2
     hard_blockers: []
-    key_reason: Canonical DS path + elite brand, but very high / technical bar; UK status to verify, gov roles may need clearance.
+    key_reason: Canonical DS path + elite brand, but very high / technical bar; UK sponsorship is viable under the current policy, while gov roles may still need clearance.
     actual_outcome: n/a
 
   # ---------- REACH (elite brand, real fit gap) ----------
@@ -289,7 +290,7 @@ evaluation_set:
     jd_source: https://stripe.com/jobs/search
     label: reach
     expected_recommendation: stretch
-    expected_feasibility: sponsorship_required
+    expected_feasibility: viable
     expected_strategic_tier: tier_1
     hard_blockers: []
     key_reason: Elite fintech brand but wants card-networks/banking knowledge AND is partnership-flavored = double gap. High bar; apply with eyes open, do not over-rank on brand alone.
@@ -303,7 +304,7 @@ evaluation_set:
     jd_source: https://careers.servicenow.com/jobs/
     label: cs_deprioritize
     expected_recommendation: skip
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_3
     hard_blockers: []
     key_reason: Customer Success = account management / renewals, not the candidate's S&O/BizOps lane. Strong penalty, not a hard title block.
@@ -316,7 +317,7 @@ evaluation_set:
     jd_source: https://www.harvey.ai/company/careers
     label: cs_deprioritize
     expected_recommendation: skip
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_3
     hard_blockers: []
     key_reason: CS role. NOTE Harvey's Partner Operations Manager (EMEA) WOULD be a clean fit — same company, different function. Tests function-level discrimination.
@@ -329,7 +330,7 @@ evaluation_set:
     jd_source: https://www.glean.com/careers
     label: cs_deprioritize
     expected_recommendation: skip
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_3
     hard_blockers: []
     key_reason: CS function. A GTM Strategy & Operations role at Glean would instead be a consider.
@@ -343,7 +344,7 @@ evaluation_set:
     jd_source: https://cognition.ai/careers
     label: below_level_by_scope_not_title
     expected_recommendation: skip
-    expected_feasibility: sponsorship_required
+    expected_feasibility: viable
     expected_strategic_tier: tier_2
     hard_blockers: []
     key_reason: Below-level by scope, not title alone; the responsibilities read below an ~8-yr leader. Real rejection confirms the call.
@@ -356,7 +357,7 @@ evaluation_set:
     jd_source: https://careers.airwallex.com/
     label: below_level_by_scope_not_title
     expected_recommendation: skip
-    expected_feasibility: sponsorship_required
+    expected_feasibility: viable
     expected_strategic_tier: tier_2
     hard_blockers: []
     key_reason: Below-level by scope, not title; reads junior despite "Manager" title. Same company's Senior Manager Operations Strategy (London) is the right-level bet.
@@ -369,7 +370,7 @@ evaluation_set:
     jd_source: https://careers.datadoghq.com/
     label: below_level
     expected_recommendation: skip
-    expected_feasibility: uncertain
+    expected_feasibility: viable
     expected_strategic_tier: tier_3
     hard_blockers: []
     key_reason: Analyst level below seniority. The Manager, GTM Strategy/Operations at Datadog would instead be a consider.
@@ -415,6 +416,7 @@ evaluation_set:
     expected_recommendation: stretch    # warm referral partially offsets US friction
     expected_feasibility: sponsorship_required
     expected_strategic_tier: tier_3
+    warm_path: true
     hard_blockers: []
     key_reason: US role but candidate has a warm internal referral — warm_path softens (do not hard-block); still high friction. Tests warm_path vs US-friction interaction.
     actual_outcome: n/a
@@ -441,7 +443,7 @@ evaluation_set:
     company: Arondite
     role_title: Deployment Strategist
     location: London
-    jd_source: https://apply.workable.com/arondite/
+    jd_source: https://apply.workable.com/arondite/jobs/view/80E01A876A.md
     label: technical_blocker
     expected_recommendation: blocked
     expected_feasibility: blocked
@@ -473,7 +475,7 @@ evaluation_set:
     jd_source: https://www.outsystems.com/careers/
     label: brand_deprioritize
     expected_recommendation: skip
-    expected_feasibility: sponsorship_required
+    expected_feasibility: viable
     expected_strategic_tier: tier_3
     hard_blockers: []
     key_reason: Double deprioritize — CS function AND weak brand/trajectory (low-code under AI pressure). Even a warm referral does not lift it.

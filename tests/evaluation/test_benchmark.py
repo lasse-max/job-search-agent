@@ -11,6 +11,7 @@ class BenchmarkCalibrationTest(unittest.TestCase):
 
         self.assertGreaterEqual(run.metrics.apply_consider_recall, 0.95)
         self.assertTrue(run.metrics.recall_passes)
+        self.assertEqual(run.metrics.exact_recommendation_matches, 22)
         self.assertEqual(run.metrics.blocker_accuracy, 1.0)
         self.assertEqual(run.metrics.feasibility_correctness, 1.0)
 
@@ -28,6 +29,9 @@ class BenchmarkCalibrationTest(unittest.TestCase):
                 )
 
         self.assertEqual(results_by_id["EV-29"].actual_recommendation, "stretch")
+        ev31_cache = (DEFAULT_JD_CACHE_DIR / "EV-31.txt").read_text(encoding="utf-8")
+        self.assertIn("Security clearance", ev31_cache)
+        self.assertIn("continuous residency in the UK for at least 5 years", ev31_cache)
 
 
 if __name__ == "__main__":

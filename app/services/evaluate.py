@@ -292,22 +292,30 @@ def _market_for_location(
         "Australia": ("sydney", "melbourne", "australia"),
         "UK": ("london", "united kingdom", "uk"),
         "Singapore": ("singapore",),
-        "United States": (
-            "united states",
-            "california",
-            "new york",
-            "san francisco",
-            "san mateo",
-            "glendale",
-            "(us)",
-        ),
         "EU": ("germany", "munich", "berlin", "paris", "amsterdam", "madrid", "europe"),
     }
+    us_market = location_policy.markets.get("United States")
+    if us_market and _matches_us_location(joined_location):
+        return us_market
     for market_name, aliases in market_aliases.items():
         market = location_policy.markets.get(market_name)
         if market and any(alias in joined_location for alias in aliases):
             return market
     return None
+
+
+def _matches_us_location(joined_location: str) -> bool:
+    if (
+        re.search(r"\b(?:united states|california|new york|san francisco|san mateo)\b", joined_location)
+        or "(us)" in joined_location
+    ):
+        return True
+    # Glendale exists outside the US, so only use it when the location also
+    # carries an explicit US/California signal.
+    return bool(
+        re.search(r"\bglendale\b", joined_location)
+        and re.search(r"\b(?:california|ca)\b|\(us\)", joined_location)
+    )
 
 
 def _recommendation(
@@ -385,7 +393,7 @@ def _hard_blockers(
                 ),
             )
         )
-    if _security_clearance_required(text, company):
+    if _security_clearance_required(text):
         blockers.append(
             HardBlocker(
                 type="security_clearance",
@@ -447,12 +455,16 @@ def _work_authorization_blocker(
     return None
 
 
-def _security_clearance_required(text: str, company: CompanyConfig) -> bool:
-    if company.name.lower() == "arondite":
-        return True
+def _security_clearance_required(text: str) -> bool:
     return bool(
         re.search(
-            r"\b(?:security|sc|dv)\s+clearance\b|developed vetting|continuous uk residency",
+            (
+                r"\b(?:security|sc|dv)\s+clearance\b"
+                r"|\bsecurity vetting\b"
+                r"|\bsecurity check\s*\(sc\)"
+                r"|developed vetting"
+                r"|continuous (?:uk )?residency"
+            ),
             text,
             flags=re.IGNORECASE,
         )

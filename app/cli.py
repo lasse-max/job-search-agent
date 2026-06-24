@@ -225,6 +225,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         metrics = run.metrics
         print(f"roles={metrics.total_roles}")
+        print(f"exact_recommendation_match={metrics.exact_recommendation_match_rate:.3f}")
         print(f"apply_consider_recall={metrics.apply_consider_recall:.3f}")
         print(f"digest_precision={metrics.digest_precision:.3f}")
         print(f"blocker_accuracy={metrics.blocker_accuracy:.3f}")

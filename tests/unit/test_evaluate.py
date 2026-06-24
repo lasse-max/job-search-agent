@@ -137,6 +137,19 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             "security_clearance",
             [blocker.type for blocker in clearance.hard_blockers],
         )
+        no_clearance = evaluate_role(
+            _row(
+                "Deployment Strategist",
+                ["London, United Kingdom"],
+                department="Professional Services Operations",
+                description="lead customer deployment strategy and operational planning",
+            ),
+            _company(name="Arondite", tier=3),
+        )
+        self.assertNotIn(
+            "security_clearance",
+            [blocker.type for blocker in no_clearance.hard_blockers],
+        )
         self.assertEqual(technical_pm.recommendation, "blocked")
         self.assertIn(
             "technical_pm_depth",
@@ -174,6 +187,9 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             (["Singapore"], "viable"),
             (["Munich, Germany"], "viable"),
             (["San Francisco, California, United States"], "sponsorship_required"),
+            (["San Mateo (US)"], "sponsorship_required"),
+            (["Glendale (US)"], "sponsorship_required"),
+            (["Glendale, Scotland"], "uncertain"),
             (["Toronto, Canada"], "uncertain"),
         )
 
@@ -441,12 +457,13 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
 
 def _company(
     *,
+    name: str = "ExampleCo",
     tier: int = 1,
     warm_path: bool = False,
     target_locations: list[str] | None = None,
 ) -> CompanyConfig:
     return CompanyConfig(
-        name="ExampleCo",
+        name=name,
         tier=tier,
         enabled=True,
         ats_type="greenhouse",

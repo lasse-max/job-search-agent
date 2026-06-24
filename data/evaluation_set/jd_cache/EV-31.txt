@@ -1,8 +1,100 @@
 Cached JD snapshot for EV-31
-Source URL: https://apply.workable.com/arondite/
-Fetch status: fetched: HTTP 200
+Source URL: https://apply.workable.com/arondite/jobs/view/80E01A876A.md
+Fetch status: fetched: HTTP 200 markdown
 Company: Arondite
 Role title: Deployment Strategist
 Location: London
 
-Arondite - Current Openings :root { --color-caution: #1A1B21; --brand-color-2: #444444; --brand-color-3: #232323; --brand-color-4: #FFFFFF; --heading-family: Lato, sans-serif; --body-family: Open Sans, sans-serif; --heading-size: 32px; --body-size: 16px; --subheading-size: 18px; --small-size: 14px; } window.careers = {"features":{"smartSEODescription":true,"talentPoolToggleOnACPSave":true,"acpi18n":true,"recaptcha":false,"prerender":true,"site_editor_copilot_enabled":false,"llm_link_header_enabled":true,"surveys":false,"acp_new_cookie_consent_enabled":true,"apply_with_indeed_job_sync_api_enabled":true,"featured-postings":true,"admin-company-tab-featured-jobs":true,"wjb_personalization_enabled":true,"wjb_weekly_job_digest_enabled":true,"disallow_rejected_job_for_publish":false,"wjb_acp_turnstile_captcha_enabled":true,"wjb_allow_daily_job_suggestions_enabled":true,"wjb_complete_profile_prompt_enabled":true,"wjb_google_drive_upload_enabled":false,"wjb_atlas_enabled":true},"dimensions":{"i18n":false,"advanced":true,"hasCustomDomain":false,"cookieConsentDisabled":false},"config":{"turnstileWidgetSiteKey":"0x4AAAAAAAVY8hH3nz6RxaK0"}}; (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a109b8136a05ed3e',t:'MTc4MjI4Mjk5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
+# Deployment Strategist
+
+> Arondite · London, United Kingdom (Hybrid) · Full-time · Posted 2026-05-26
+
+**Workplace:** hybrid
+
+## Description
+
+### About Arondite
+
+Arondite enables organisations to wield autonomy, data and AI at scale. We equip operators with the foundational software to orchestrate their mix of platforms and capabilities, and then take mission-critical decisions faster than their adversaries.
+
+We exist to ensure the UK and its allies out-think, out-pace and out-adapt those who seek to threaten our values and way of life. Our technology is designed for deployment in the world's most austere environments, and is relied upon by the world's most demanding operators. We deploy alongside them, bringing our technical expertise wherever it is needed.
+
+**You will join Arondite at a pivotal moment in the company's journey.** We are ambitious, building for the long-term and backed by globally renowned investors including Index Ventures (Anthropic, Wiz, Figma, Revolut). Our company is being built by exceptional engineers - people who find high-impact and technically challenging work engaging and exciting, and who consistently deliver outsized impact. You will collaborate with other brilliant minds to solve some of the world's hardest and most important problems.
+
+**You will have ownership and autonomy from Day One.** There is no corporate ladder at Arondite. From your first day, you will directly influence the design, functionality, and direction of Arondite's product offering. We hire the best people and give them extremely high levels of autonomy; the sky is the limit for an individual with the right ambition.
+
+If you are motivated by our mission and if you want to be part of a growing team of outstanding people, then we want to hear from you.
+
+### About the role
+
+Arondite is looking for mission-driven **Deployment Strategists** to lead the planning and execution of implementing our technology with customers. You'll be responsible, end-to-end, for making sure we are solving customers' real-world problems. You will work closely with frontline users to ensure our systems are deployed effectively, safely, and with maximum operational impact.
+
+This role requires significant travel, often in challenging environments. You will need to be adaptable, resilient, and comfortable working under pressure. You will need a deep understanding of both technical systems and operational realities. You'll have the opportunity to shape our product offering and to directly impact the lives of end users.
+
+**Your responsibilities will include:**
+
+- Engaging with users to map workflows, pain points, and operational constraints
+- Identifying and framing customer problems that align with our product vision for Cobalt
+- Collaborating with customers to prioritise the highest-value problems to solve
+- Designing and guiding iterative delivery plans that alleviate user pain and demonstrate value quickly
+- Acting as the bridge between users, product, and engineering to ensure solutions remain aligned with operational realities
+- Leading the technical delivery across interconnected workstreams
+- Translating business goals into a structured roadmap with milestones, dependencies, and acceptance criteria
+- Championing a user-centric approach across the deployment and wider company
+
+## Requirements
+
+**You should have:**
+
+- Have strong technical fluency and sharp sequencing instincts
+- Strong customer-facing communication and stakeholder management skills
+- Independent decision-making under pressure
+- Willingness to travel and work on-site with customers for a significant proportion of your time
+
+**Ideally, you would also have:**
+
+- Experience in defence or defence technology
+- Basic programming ability, such as python or bash scripts, or command-line / terminal familiarity
+
+_Note: We want Arondite to bring together individuals from diverse backgrounds and perspectives. We don't expect everyone to have experience across each of these areas. Please apply even if you only partially fulfil this list._
+
+### **Deployed work at Arondite**
+
+All 'deployed' roles at Arondite involve working closely with customers at their UK locations, and when they go abroad. This can mean being away from our office for between 1 and 4 days a week on a regular basis, or going abroad for up to 2 or 3 weeks every few months. As this is a big commitment, we endeavour to maintain flexibility in resourcing to support people's personal circumstances.
+
+### **Right to Work**
+
+We require that all candidates have an existing Right to Work in the UK at the time of application.
+
+### **Security clearance**
+
+We believe in working closely with defence customers. As a result, this role requires undergoing UK security vetting to Security Check (SC) or above. This normally requires having continuous residency in the UK for at least 5 years.
+
+### **Office vs Hybrid working**
+
+We are focused on building a positive, collaborative engineering-driven culture. We therefore believe in making the office a friendly, comfortable and fun place to be, and we try to work from the office where possible. Of course, there are times when it makes sense for you to work from home and that's OK. As a Deployment Strategist you will also need to travel to visit customers. But in general you should only apply to join Arondite if you're excited to come into the office and work in person by default.
+
+### **Application process**
+
+Generally, our interview process is comprised of the following stages:
+
+1. CV submission with initial questions
+2. Introductory Teams call (30-45 mins)
+3. In-person technical interview (1-2 hours)
+4. Final interview with one of Arondite's Founders (30 mins)
+
+## Benefits
+
+- Highly competitive base salary
+- Generous equity in EMI share options in a well-funded and growing startup
+- 7% employer pension contribution
+- Free meals in the office every day
+- Private health and dental insurance, with opt-in cover for dependents
+- Cycle to work scheme
+- Relocation support
+- Access to any resources, equipment and training that you need to do your job in a world-class way
+- The opportunity to work with and learn from exceptional colleagues with excellent academic experience and deep industry knowledge
+
+## Apply
+
+Apply at Arondite: https://apply.workable.com/arondite/j/80E01A876A/apply

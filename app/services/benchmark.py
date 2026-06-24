@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -49,6 +50,8 @@ class BenchmarkResult:
 @dataclass(frozen=True)
 class BenchmarkMetrics:
     total_roles: int
+    exact_recommendation_matches: int
+    exact_recommendation_match_rate: float
     apply_consider_expected: int
     apply_consider_recalled: int
     apply_consider_recall: float
@@ -152,6 +155,8 @@ def _clean_scalar(value: str) -> str:
         value.startswith("'") and value.endswith("'")
     ):
         value = value[1:-1]
+    if value.lower() in {"true", "false"}:
+        return value.lower() == "true"
     return value
 
 
@@ -180,12 +185,13 @@ def _evaluate_example(example: dict[str, Any], cache_path: Path) -> BenchmarkRes
         raise FileNotFoundError(
             f"Missing cached JD snapshot for {example['id']}: {cache_path}"
         )
+    description_text = cache_path.read_text(encoding="utf-8")
     row = {
         "title": str(example["role_title"]),
         "locations_json": json.dumps([str(example["location"])]),
-        "department": _department_hint(example),
+        "department": _department_hint(str(example["role_title"]), description_text),
         "employment_type": "",
-        "description_text": cache_path.read_text(encoding="utf-8"),
+        "description_text": description_text,
     }
     company = _company_config(example)
     evaluation = evaluate_role(row, company)
@@ -236,6 +242,13 @@ def _metrics(results: list[BenchmarkResult]) -> BenchmarkMetrics:
     ]
     return BenchmarkMetrics(
         total_roles=len(results),
+        exact_recommendation_matches=sum(
+            1 for result in results if result.recommendation_match
+        ),
+        exact_recommendation_match_rate=_ratio(
+            sum(1 for result in results if result.recommendation_match),
+            len(results),
+        ),
         apply_consider_expected=len(expected_surface),
         apply_consider_recalled=len(recalled),
         apply_consider_recall=_ratio(len(recalled), len(expected_surface)),
@@ -259,7 +272,11 @@ def _metrics(results: list[BenchmarkResult]) -> BenchmarkMetrics:
 
 def _write_csv(path: Path, results: list[BenchmarkResult]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(results[0].__dict__.keys()))
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=list(results[0].__dict__.keys()),
+            lineterminator="\n",
+        )
         writer.writeheader()
         for result in results:
             writer.writerow(result.__dict__)
@@ -278,6 +295,16 @@ def _write_markdown(
         "## Aggregate Metrics",
         "",
         f"- Roles: {metrics.total_roles}",
+        (
+            "- Exact-recommendation match: "
+            f"{metrics.exact_recommendation_matches}/{metrics.total_roles} "
+            f"({metrics.exact_recommendation_match_rate:.1%})"
+        ),
+        (
+            "  - Note: `apply_now` vs `consider` is approximate in the deterministic "
+            "evaluator because many fit scores cluster near the threshold; fine "
+            "ranking is deferred to the LLM evaluator."
+        ),
         (
             "- Apply/Consider recall: "
             f"{metrics.apply_consider_recalled}/{metrics.apply_consider_expected} "
@@ -324,8 +351,8 @@ def _company_config(example: dict[str, Any]) -> CompanyConfig:
         source_key=role_id.lower(),
         careers_url=str(example["jd_source"]),
         target_locations=[str(example["location"])],
-        target_role_family_notes=str(example["label"]),
-        warm_path=role_id in {"EV-16", "EV-29"},
+        target_role_family_notes="Benchmark role family notes are intentionally withheld.",
+        warm_path=bool(example.get("warm_path", False)),
     )
 
 
@@ -376,26 +403,29 @@ def _cache_document(example: dict[str, Any], text: str, status: str) -> str:
     )
 
 
-def _department_hint(example: dict[str, Any]) -> str:
-    label = str(example["label"])
-    title = str(example["role_title"]).lower()
-    if "customer success" in title or "customer success" in label:
+def _department_hint(title: str, jd_text: str) -> str:
+    title_lower = title.lower()
+    if "customer success" in title_lower:
         return "Customer Success"
-    if "deployment" in title or label == "stretch_fds":
+    if "deployment" in title_lower:
         return "Professional Services Operations"
-    if "revenue" in title:
+    if "revenue" in title_lower:
         return "Revenue Operations"
-    if "product manager" in title:
+    if "product manager" in title_lower:
         return "Product"
+    if re.search(r"\b(?:strategy|strategic|business|gtm)\b.*\boperations\b", title_lower):
+        return "Strategy & Operations"
+
+    leading_text = jd_text[:1200].lower()
+    if re.search(r"\bdepartment:\s*customer success\b", leading_text):
+        return "Customer Success"
+    if re.search(r"\bdepartment:\s*(?:deployment|professional services)\b", leading_text):
+        return "Professional Services Operations"
     return "Strategy & Operations"
 
 
 def _feasibility_matches(expected: str, actual: str) -> bool:
-    if expected == actual:
-        return True
-    # Labels created before the C3 visa-policy correction still mark some
-    # sponsorable UK/Singapore roles as uncertain/sponsorship_required.
-    return expected in {"uncertain", "sponsorship_required"} and actual == "viable"
+    return expected == actual
 
 
 def _fit_band(recommendation: str) -> str:
