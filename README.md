@@ -69,13 +69,17 @@ pip install -e ".[dev]"
 cp .env.example .env          # fill locally; never commit .env
 
 job-agent scan                # run a discovery scan (writes a local digest)
+job-agent scan-all            # scheduled-style scan + digest notification/fallback
 job-agent review list         # review surfaced opportunities
 job-agent add-url <job-url>   # manually evaluate any role
 ```
 
-Development sends no email by default — the digest is written to `output/latest_digest.html`.
+Development sends no email by default — the digest is written to
+`output/latest_digest.html`. Live delivery uses Resend when `RESEND_API_KEY` is
+set. Required for live delivery: `DIGEST_RECIPIENT_EMAIL` (for example,
+`you@example.com`). Optional: `DIGEST_FROM_EMAIL`.
 
-### Current Checkpoint B commands
+### MVP commands
 
 Run the deterministic fixture slice:
 

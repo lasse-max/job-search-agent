@@ -244,6 +244,8 @@ class OperabilityTest(unittest.TestCase):
         self.assertIn('cron: "0 */6 * * *"', workflow)
         self.assertIn("workflow_dispatch:", workflow)
         self.assertIn("job-agent scan-all", workflow)
+        self.assertIn("RESEND_API_KEY", workflow)
+        self.assertIn("DIGEST_RECIPIENT_EMAIL", workflow)
 
 
 def _add_job(db_path: Path) -> int:

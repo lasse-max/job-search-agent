@@ -555,12 +555,25 @@ def record_evaluation_skip(
     return cursor.rowcount > 0
 
 
-def get_digest_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+def get_digest_rows(
+    conn: sqlite3.Connection,
+    *,
+    since: str | None = None,
+) -> list[sqlite3.Row]:
     wake_due_snoozes(conn, utc_now()[:10])
+    since_clause = ""
+    params: tuple[str, ...] = ()
+    if since is not None:
+        since_clause = "AND re.created_at >= ?"
+        params = (since,)
     return conn.execute(
-        """
+        f"""
         SELECT
           jp.id AS job_id,
+          js.source_type,
+          js.source_key,
+          jp.source_job_id,
+          jp.canonical_key,
           c.name AS company,
           c.tier AS company_tier,
           jp.title,
@@ -569,21 +582,81 @@ def get_digest_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
           jp.source_url,
           jp.first_seen_at,
           jp.posted_at,
+          re.created_at AS evaluated_at,
           re.evaluation_json,
           orev.state AS review_state
         FROM job_postings jp
+        JOIN job_sources js ON js.id = jp.source_id
         JOIN companies c ON c.id = jp.company_id
         JOIN opportunity_reviews orev ON orev.job_posting_id = jp.id
         JOIN role_evaluations re ON re.job_posting_id = jp.id
         WHERE orev.state = 'new'
           AND jp.availability_state = 'open'
+          {since_clause}
           AND re.id = (
             SELECT MAX(id) FROM role_evaluations latest
             WHERE latest.job_posting_id = jp.id
           )
         ORDER BY c.tier, jp.first_seen_at DESC
-        """
+        """,
+        params,
     ).fetchall()
+
+
+def latest_delivered_notification_at(
+    conn: sqlite3.Connection,
+    notification_type: str = "digest",
+) -> str | None:
+    row = conn.execute(
+        """
+        SELECT MAX(sent_at) AS sent_at
+        FROM notifications
+        WHERE type = ?
+          AND status IN ('sent', 'fallback')
+        """,
+        (notification_type,),
+    ).fetchone()
+    if row is None:
+        return None
+    return row["sent_at"]
+
+
+def has_delivered_payload(
+    conn: sqlite3.Connection,
+    payload_hash: str,
+    notification_type: str = "digest",
+) -> bool:
+    row = conn.execute(
+        """
+        SELECT 1
+        FROM notifications
+        WHERE type = ?
+          AND payload_hash = ?
+          AND status IN ('sent', 'fallback')
+        LIMIT 1
+        """,
+        (notification_type, payload_hash),
+    ).fetchone()
+    return row is not None
+
+
+def record_notification(
+    conn: sqlite3.Connection,
+    *,
+    notification_type: str,
+    payload_hash: str,
+    status: str,
+    error_summary: str | None = None,
+    sent_at: str | None = None,
+) -> int:
+    cursor = conn.execute(
+        """
+        INSERT INTO notifications (type, payload_hash, sent_at, status, error_summary)
+        VALUES (?, ?, ?, ?, ?)
+        """,
+        (notification_type, payload_hash, sent_at or utc_now(), status, error_summary),
+    )
+    return int(cursor.lastrowid)
 
 
 def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sqlite3.Row]:

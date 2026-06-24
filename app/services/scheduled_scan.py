@@ -11,8 +11,10 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from app.config import DEFAULT_DB_PATH, load_enabled_company_configs
+from app.db import connect, init_db
 from app.models import CompanyConfig
 from app.services.ingest import ScanSummary, run_scan
+from app.services.notifications import DigestDeliveryResult, deliver_digest
 
 
 @dataclass(frozen=True)
@@ -20,6 +22,7 @@ class ScheduledScanResult:
     summaries: list[ScanSummary]
     skipped: list[str]
     failures: list[str]
+    notification: DigestDeliveryResult | None = None
 
     @property
     def status(self) -> str:
@@ -34,6 +37,7 @@ def run_scheduled_scan(
     *,
     db_path: Path = DEFAULT_DB_PATH,
     companies: list[CompanyConfig] | None = None,
+    send_digest: bool = False,
 ) -> ScheduledScanResult:
     summaries: list[ScanSummary] = []
     skipped: list[str] = []
@@ -52,4 +56,17 @@ def run_scheduled_scan(
         if summary.status == "failure":
             failures.append(f"{company.name}: {summary.error_summary or 'scan failed'}")
 
-    return ScheduledScanResult(summaries=summaries, skipped=skipped, failures=failures)
+    notification = None
+    if send_digest:
+        conn = connect(db_path)
+        init_db(conn)
+        notification = deliver_digest(conn)
+        if notification.status == "failed":
+            failures.append(notification.error_summary or "digest email failed")
+
+    return ScheduledScanResult(
+        summaries=summaries,
+        skipped=skipped,
+        failures=failures,
+        notification=notification,
+    )

@@ -123,7 +123,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "scan-all":
-        result = run_scheduled_scan(db_path=args.db)
+        result = run_scheduled_scan(db_path=args.db, send_digest=True)
         print(f"status={result.status}")
         print(f"scanned={len(result.summaries)}")
         print(f"skipped={len(result.skipped)}")
@@ -138,6 +138,13 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"source_error={summary.company}: {summary.error_summary}")
         for failure in result.failures:
             print(f"failure={failure}")
+        if result.notification is not None:
+            print(f"notification_status={result.notification.status}")
+            print(f"notification_roles={result.notification.role_count}")
+            print(f"notification_failures={result.notification.failure_count}")
+            print(f"notification_html={result.notification.html_path}")
+            if result.notification.error_summary:
+                print(f"notification_error={result.notification.error_summary}")
         return 1 if result.failures else 0
 
     if args.command == "review":
