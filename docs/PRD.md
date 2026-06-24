@@ -249,14 +249,15 @@ Deployment Strategist, Forward-Deployed Strategy, or implementation-heavy AI tra
 
 ## 4.8 Location and work-authorization policy
 
-This policy must be editable and must not be inferred by the LLM.
+This policy must be editable and must not be inferred by the LLM. The table
+below reflects the owner-approved correction recorded in DECISIONS #24.
 
 | Market | Default state | Rule |
 |---|---|---|
 | EU | Authorized | German citizenship; high feasibility |
-| UK | Verify | Possible prior status/pathway; do not assume authorization until owner confirms |
-| Australia | Pathway, not assumed current authorization | Partner-visa route; record expected timing and current status explicitly |
-| Singapore | Sponsorship required | Viable when employer sponsors; mark as sponsorship required, not blocked |
+| UK | Viable | Skilled Worker sponsorship needed, but routine for a German candidate at sponsoring employers; do not down-rank |
+| Australia | Viable after spousal-visa lead time | Work eligibility expected roughly three months after arrival; treat as an inconvenience flag, not a down-rank |
+| Singapore | Viable with sponsorship | Sponsorship is available through ample sponsoring employers; COMPASS noted, not penalized |
 | United States | Sponsorship required / high friction | No assumed ongoing work authorization; require credible sponsorship, transfer path, or warm route |
 
 Store for each market:
