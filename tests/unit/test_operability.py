@@ -246,8 +246,15 @@ class OperabilityTest(unittest.TestCase):
         self.assertIn('cron: "0 */6 * * *"', workflow)
         self.assertIn("workflow_dispatch:", workflow)
         self.assertIn("job-agent scan-all", workflow)
-        self.assertNotIn("RESEND_API_KEY", workflow)
-        self.assertNotIn("DIGEST_RECIPIENT_EMAIL", workflow)
+        self.assertIn("ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}", workflow)
+        self.assertIn("ANTHROPIC_MODEL: claude-haiku-4-5", workflow)
+        self.assertIn("RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}", workflow)
+        self.assertIn(
+            "DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}",
+            workflow,
+        )
+        self.assertIn('MONTHLY_MODEL_SPEND_CAP_USD: "15"', workflow)
+        self.assertNotIn("echo ${{ secrets.", workflow)
 
     def test_sample_live_noise_cli_writes_label_template(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

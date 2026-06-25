@@ -34,6 +34,12 @@ jobs:
           python -m pip install -e ".[dev]"
 
       - name: Run scheduled scan
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: claude-haiku-4-5
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}
+          MONTHLY_MODEL_SPEND_CAP_USD: "15"
         run: job-agent scan-all
 
       - name: Upload local outputs
