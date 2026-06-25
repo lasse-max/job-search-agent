@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in global commercial operations, transformation programs, and working with technical stakeholders; however, background is in strategy/operations and business transformation rather than pre-sales, solutions architecture, or customer-facing technical advisory",
+        "evidence_strength": "medium",
+        "job_requirement": "5+ years in customer-facing, pre-sales or consulting role influencing technical executives and driving product adoption"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience scaling global commercial operations and leading transformation programs at Google, indicating ability to work with cross-functional teams and execute strategic initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with GTM leadership and account teams to design and execute high-impact engagement strategies"
+      },
+      {
+        "candidate_evidence": "No evidence of cybersecurity, SIEM, security operations, or security telemetry expertise in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong understanding of security telemetry landscape and cybersecurity operations"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No cybersecurity or security operations background; role requires 5+ years of cybersecurity engineering, security architecture, or SecOps expertise",
+        "mitigation": "Candidate would need to complete formal cybersecurity certifications, SIEM training (Splunk, Sentinel, QRadar), and significant hands-on security operations upskilling before credibly advising CISOs and SOC leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated technical depth in security-specific tools (SIEM, SOAR, EDR/XDR, detection-as-code workflows, MITRE ATT&CK); role requires deep familiarity across these areas",
+        "mitigation": "Substantial ramp required in specialized security tooling and frameworks; not achievable through brief onboarding given the tier-3 escalation and CISO advisory expectations",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on data engineering or cloud security logging experience; role requires hands-on experience building solutions in AWS/Azure/GCP security contexts",
+        "mitigation": "Candidate's Python and ML readiness are basic; security-focused cloud-native projects would require dedicated technical enablement",
+        "severity": "high"
+      },
+      {
+        "gap": "Solutions architecture and pre-sales technical positioning differ from strategy/operations and transformation leadership; role demands deep customer-facing technical credibility with security analysts and architects",
+        "mitigation": "Career pivot would require proof-of-concept delivery, hands-on security solution builds, and direct CISO/SOC relationships\u2014not feasible within normal ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is a core GTM/field technical delivery position, not a strategy or operations role; candidate profile targets strategy, transformation, and business operations families",
+        "mitigation": "No mitigation: this is a function-family mismatch, not a skill gap",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: '5+ years of cybersecurity engineering, security operations (SecOps), or security architecture expertise, with a proven track record of designing and delivering customer-facing security solutions (of which 3+ years are in a customer-facing, pre-sales or consulting role).' Candidate has zero cybersecurity or security operations background; entire expertise is in strategy/operations and business transformation at Google Devices and Services. This is a hard domain requirement that cannot be bridged.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires: 'Undergraduate degree (or higher) in a technical field such as Computer Science, Cybersecurity, Applied Mathematics, Engineering or similar.' Candidate profile does not specify degree or field; no evidence of technical degree provided. Uncertain whether candidate meets this formal requirement.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 65,
+    "summary": "This is a cybersecurity-domain solutions architecture and pre-sales technical advisory role (Lakewatch SIEM/SecOps focus). Candidate is a strategy and operations/business transformation leader from Google Devices with eight years of scope in commercial operations and program execution, but zero cybersecurity, SIEM, security operations, or customer-facing technical advisory background. The role requires 5+ years of SecOps/security architecture expertise with hands-on SIEM, detection engineering, and CISO/SOC credibility\u2014a non-negotiable hard requirement. Function family is a clear mismatch: this is field technical delivery, not strategy or operations. Recommend skip.",
+    "uncertainties": [
+      "Candidate's formal educational background and degree field not provided; unable to confirm whether they meet the stated technical degree requirement",
+      "Unclear whether any of the candidate's transformation or commercial operations work involved security-adjacent or data governance domains that could provide tangential exposure",
+      "No information on whether candidate has pursued any security certifications, cloud security training, or SIEM exposure outside of stated profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,73 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations, handling cross-functional transformation programs, and managing complex multi-stakeholder initiatives across product, sales, and customer teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Be a trusted advisor to our customers and drive their AI strategies; coordinate across technical and non-technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and strategic initiatives at Google Devices and Services; demonstrated ability to own and execute multi-phase projects end-to-end including requirements, design, UAT, and rollout",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with experience translating customer needs into product logic, designing processes, and driving evidence-based decision-making across commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute data-driven, strategic insights to customers and internal team decisions; strong analytical and critical thinking skills"
+      },
+      {
+        "candidate_evidence": "Product operations background with ownership of requirements, logic design, and transformation work; has engaged deeply with engineering and product teams but lacks native PM or production software development experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of software development, product management and engineering principles, enabling you to act as a strategic partner"
+      },
+      {
+        "candidate_evidence": "No prior conversational AI or agent-specific experience; transformation and strategy background provides foundation for learning but no direct exposure to AI agent design or development",
+        "evidence_strength": "weak",
+        "job_requirement": "Build, design and refine conversational AI agents, gaining direct exposure to how these products are developed and improved"
+      },
+      {
+        "candidate_evidence": "Eight years managing stakeholders across technical and business functions; fluent English and native German speaker demonstrating strong communication in multilingual environments",
+        "evidence_strength": "strong",
+        "job_requirement": "Outstanding communication skills to convey complex technical information to non-technical stakeholders"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 65,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No conversational AI or agent-specific product experience; background is in commercial operations and transformation rather than AI/ML product development",
+        "mitigation": "Strong strategic operator foundation can learn agent design through mentorship from product and engineering teams; proven ability to own complex product development lifecycles in new domains",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited native product management background; product experience derives from requirements, UAT, and rollout ownership rather than full SDLC product discovery and strategy",
+        "mitigation": "Role emphasizes partnership with Agent PMs and engineers rather than solo PM ownership; candidate's cross-functional coordination skills translate well to that embedded strategist model",
+        "severity": "medium"
+      },
+      {
+        "gap": "Job description mentions 'Italian speaking' in title but candidate profile lists English (professional/fluent) and German (native) only; no Italian language capability confirmed",
+        "mitigation": "Clarify with hiring team whether Italian is a hard requirement or a nice-to-have for customer engagement in specific regions",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct consulting or customer-facing strategy background; experience is primarily internal transformation and operations",
+        "mitigation": "Strategist role requires customer advisory capability; candidate's transformation leadership and stakeholder management provide foundation, but customer-facing advisory requires ramping",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 70,
+    "summary": "Strong Strategic Operations and Product Operations leader with eight years at Google driving transformation and multi-stakeholder execution, but no conversational AI or agent-specific product experience. Excellent cross-functional communication, analytical rigor, and ability to own complex projects end-to-end align well with the Strategist role's coordination and execution demands. Key gaps are unfamiliarity with AI agent design and limited native PM depth; both manageable given the embedded partnership model. Confirmation needed on Italian language requirement.",
+    "uncertainties": [
+      "Italian language requirement stated in title but not confirmed in candidate profile; unclear if this is a hard blocker or preferred skill for customer segments",
+      "Depth of conversational AI domain knowledge candidate can acquire on ramp; unclear how quickly learning curve converts to strategic value",
+      "Whether 'Agent Strategist' role expects deeper familiarity with LLM/agent architecture than typical business strategist would need"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; demonstrated ability to work across stakeholder levels and drive strategic initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Engage with customers at all levels, discover requirements, and shape product roadmap based on customer needs"
+      },
+      {
+        "candidate_evidence": "Product operations and business transformation background indicates cross-functional communication and stakeholder management experience; however, no specific evidence of articulating AI/ML or deeply technical product concepts",
+        "evidence_strength": "weak",
+        "job_requirement": "Communicate highly technical concepts to both non-technical and technical audiences"
+      },
+      {
+        "candidate_evidence": "Transformation and program leadership experience with requirements, logic design, UAT, and rollout; operations background suggests cross-functional execution rather than native product-engineering partnerships",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with engineers to scope and implement new features"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No native Product Management experience or SDLC ownership; background is operations and transformation, not product strategy or feature development",
+        "mitigation": "Candidate's requirements-to-rollout experience and stakeholder management could translate to PM fundamentals with structured onboarding, but ramp would be steep in a fast-moving, highly technical AI/agent environment",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited AI/ML domain knowledge; JD emphasizes AI agents and recent AI developments as core to the role",
+        "mitigation": "Candidate would need rapid upskilling in AI agent architecture, capabilities, and limitations; no evidence of product experience in AI-native or highly technical ML-powered systems",
+        "severity": "high"
+      },
+      {
+        "gap": "No coding experience (Python basic and actively learning); JD lists React, Typescript, and Go as 'even better' but assumes technical fluency with highly technical products",
+        "mitigation": "Coding is listed as bonus, not must-have; however, lack of hands-on technical depth may hinder communication with engineers and customer technical troubleshooting",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of customer advisory or strategic technical consulting; role requires becoming 'trusted advisor' and driving technical strategies for customers",
+        "mitigation": "Commercial operations and transformation experience may include customer engagement, but no explicit evidence of deep technical advisory relationships or pre-sales/post-sales strategic consulting",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 45,
+    "scope_seniority": 70,
+    "summary": "This is a native Product Manager role for enterprise AI agents at a well-funded, founder-led AI platform company. The candidate brings eight years of strategy, operations, and transformation experience at Google with strong seniority and stakeholder scope, but lacks native PM experience, AI/ML domain knowledge, and technical product development background. The role explicitly requires 5\u20137+ years in product development of highly technical products and Senior PM or equivalent level; the candidate's positioning is operations and transformation, not product. While the customer engagement and program leadership skills are valuable, the gap between operations-led transformation and product-led AI agent development is substantial and would require significant domain and function ramp.",
+    "uncertainties": [
+      "Unclear how much of the candidate's Google experience involved product feedback loops, feature prioritization, or roadmap ownership versus operational execution",
+      "No detail on depth of customer technical advisory relationships or frequency of direct customer engagement in transformation programs",
+      "Unclear whether 'Product experience comes from ownership, requirements, logic design, UAT' involved defining product strategy or was primarily implementation-focused"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

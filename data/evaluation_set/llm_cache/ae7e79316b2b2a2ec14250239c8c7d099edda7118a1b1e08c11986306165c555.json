@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with experience scaling global commercial operations and transformation programs, with two promotions",
+        "evidence_strength": "strong",
+        "job_requirement": "Business Operations and Growth role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with experience scaling global commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Growth leadership and operational scaling"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs, process design, and stakeholder management across large organizations",
+        "evidence_strength": "medium",
+        "job_requirement": "Transformation and cross-functional program work"
+      },
+      {
+        "candidate_evidence": "Background in commercial operations, GTM, and business transformation at a tech company rather than pure engineering",
+        "evidence_strength": "strong",
+        "job_requirement": "Commercial / business-focused operations (not purely technical)"
+      }
+    ],
+    "confidence": 0.55,
+    "evidence_strength": 45,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "JD lacks detail on specific scope, mandate, and success metrics for the Business Operations and Growth Lead role",
+        "mitigation": "Request fuller JD or speaking opportunity to clarify stakeholder scope, P&L responsibility, team size, and growth KPIs before advancing",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit Airbnb-specific marketplace, supply-side, or host ecosystem experience mentioned",
+        "mitigation": "Transferable GTM and commercial ops experience is relevant; domain ramp would be standard for any external hire, mitigated by strategic operations depth",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited demonstrated consulting or case-team brand experience if role expects formal strategy consulting background",
+        "mitigation": "Internal Google transformation and program work may offset; clarify if formal consulting pedigree is preferred vs. execution-heavy ops credibility",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 92,
+    "scope_seniority": 78,
+    "summary": "Strong alignment to Business Operations and Strategy function based on 8 years scaling global commercial operations and transformation programs at Google. However, JD is severely incomplete\u2014missing scope, team size, P&L mandate, growth metrics, and geographic/domain specifics\u2014making confidence moderate. Role family fit is high; seniority appears appropriate for L4-L5 manager; readiness depends on JD clarity.",
+    "uncertainties": [
+      "JD provided is mostly technical markup and metadata with no substantive role description, objectives, or explicit requirements visible",
+      "Cannot assess whether role is individual contributor, manager, or multi-team lead without full scope",
+      "Unknown if Sydney location or APAC region requires visa sponsorship or relocation tolerance",
+      "Unclear if Airbnb-specific domain knowledge (marketplace, supply-side, host operations) is a must-have or learned on job"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

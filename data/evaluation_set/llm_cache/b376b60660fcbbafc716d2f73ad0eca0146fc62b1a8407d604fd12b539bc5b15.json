@@ -1,0 +1,39 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Strategy and Operations leader with eight years at Google Devices and Services; no security, protection, or safety program background evident",
+        "evidence_strength": "weak",
+        "job_requirement": "Executive Protection Specialist focused on protecting Spotify leadership and enabling safe global operations"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 0,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No executive protection, corporate security, or physical/personal safety expertise",
+        "mitigation": "Would require foundational reskilling in threat assessment, protective services, international security protocols, and crisis management\u2014not a typical career transition from strategy and operations",
+        "severity": "high"
+      },
+      {
+        "gap": "No background in Business Protection, security programs, or risk management functions",
+        "mitigation": "Core domain knowledge in executive protection and workplace security is essential to this role and cannot be quickly acquired through on-the-job learning",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate profile lists deprioritized function: role is specialist-level support/operational security, not strategy, transformation, or program leadership",
+        "mitigation": "Role does not match target or stretch family definitions, which require strategic scope and business problem-solving at L4\u2013L5 level",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 5,
+    "scope_seniority": 0,
+    "summary": "Executive Protection Specialist is a security and operational protection role outside candidate's target families of strategy, operations, and transformation. No security, threat assessment, or corporate protection background evident. Recommend skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,79 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in a global commercial operations and transformation programs role, with demonstrated ability to scale operations and lead cross-functional initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and lead a cross-functional industry team across Value Engineering, Sales, AI Builders and define the processes/structure required"
+      },
+      {
+        "candidate_evidence": "Proven experience in requirements gathering, logic design, UAT, and rollout across transformation programs; background in business operations and product operations indicates stakeholder management capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Work side-by-side with customers to align manufacturing solutions against their business strategy and translate complex concepts into actionable insights"
+      },
+      {
+        "candidate_evidence": "Positioning as Strategy and Operations leader with experience scaling global commercial operations and strategic programs; demonstrates strategic thinking across transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Define the vision for Celonis Manufacturing industry practice and translate this into strategy and prioritized set of actions"
+      },
+      {
+        "candidate_evidence": "Product operations background with ownership of requirements, design, UAT, and rollout; however, experience is transformation and operations-driven rather than native product or manufacturing domain-specific",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven record of building software solutions against strategic manufacturing problems and successful use cases solving real-world problems"
+      },
+      {
+        "candidate_evidence": "No explicit evidence of 0-to-1 startup or venture founding experience provided; background is scaled operations at established company (Google)",
+        "evidence_strength": "weak",
+        "job_requirement": "High degree of entrepreneurship with experience building in a 0 \u2192 1 environment"
+      },
+      {
+        "candidate_evidence": "No explicit evidence of speaking, presentation, or external-facing leadership provided in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Excellence in public speaking and external presentation and ability to be the face of manufacturing industry internally and externally"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 65,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Head of Industry title signals VP/Director-level scope at a mature SaaS company (Celonis is a unicorn with 20+ offices). This exceeds L4-L5 target seniority ceiling. Candidate has eight years at Google with two promotions but no evidence of head-of or director-equivalent leadership of a discrete business unit, practice, or P&L",
+        "mitigation": "If Celonis is willing to hire at manager/senior manager scope rather than true head-of/director scope, clarify the role's actual budget, headcount, P&L authority, and external representation requirements. Otherwise this is a stretch beyond target seniority",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit manufacturing or process mining domain expertise. Celonis is enterprise process intelligence; the role owns the manufacturing industry practice and must speak credibly to manufacturing-specific challenges, use cases, and product-fit",
+        "mitigation": "Candidate would require steep domain ramp in manufacturing ops, process mining, and Celonis platform. Recommend pairing with manufacturing product lead or customer advisory board during first 6-12 months",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of 0-to-1 or greenfield entrepreneurship. Background is scaling and optimizing existing operations at Google, not launching new products, practices, or ventures from scratch",
+        "mitigation": "If the role's primary accountability is scaling an existing practice (not launching entirely new offering), this gap is manageable. Clarify scope with hiring manager",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit external speaking, thought leadership, or public-facing leadership track record. Role requires being 'the face of manufacturing industry internally and externally'",
+        "mitigation": "If candidate has presentation or conference experience not detailed in profile, request examples. Otherwise, recommend executive coaching and structured customer advisory board engagement",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or systems integration background. Role may benefit from experience scoping, selling, and deploying enterprise solutions across customer contexts",
+        "mitigation": "Product operations and transformation background includes scoping and UAT; may be sufficient if role is product and strategy-driven rather than pure services/consulting",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 75,
+    "scope_seniority": 35,
+    "summary": "Candidate is a strong cultural fit for strategy, operations, and cross-functional program leadership\u2014core competencies required for the role. However, the \"Head of Industry\" title at a mature SaaS unicorn (Celonis, 20+ offices) signals VP/Director-level scope that exceeds the L4-L5 target seniority ceiling. Candidate has eight years and two promotions at Google but no evidence of leading a discrete business unit, practice, or P&L at that level. Additionally, manufacturing domain expertise and process mining platform fluency are completely absent; ramp would be steep. Strong operations and transformation background may close some gaps, but the seniority, domain, and external leadership requirements make this a significant stretch.",
+    "uncertainties": [
+      "Actual scope of 'Head of Industry' role: is it a true VP/director-equivalent with P&L and budget authority, or a senior manager title with cross-functional leadership scope? This determines seniority fit",
+      "Candidate's public speaking, thought leadership, or external presentation experience not detailed; request examples or clarify whether external-facing role is primary accountability",
+      "Whether candidate has any manufacturing operations, supply chain, or process mining exposure not captured in profile; domain gap may be addressable with rapid learning",
+      "Google scope details: size of team led, budget, P&L, external stakeholder engagement\u2014needed to assess true leadership scope vs. title alone"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "blocked",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; product operations background suggests some exposure to roadmapping.",
+        "evidence_strength": "weak",
+        "job_requirement": "Assist in AI application roadmapping and strategy"
+      },
+      {
+        "candidate_evidence": "Global commercial operations and transformation experience typically involves cross-functional stakeholder engagement.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate effectively with a diverse, cross-functional team"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "No backend software-development experience; candidate is a strategy and operations leader, not a production engineer",
+        "mitigation": "This gap is not mitigatable through onboarding or ramp time at Staff level. The role is fundamentally engineering-focused; strategy/operations background does not substitute for 10+ years of backend systems engineering.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python and TypeScript/JavaScript proficiency is stated as basic/learning; JD requires proficiency",
+        "mitigation": "A Staff Engineer is expected to be deeply proficient immediately; learning-mode proficiency is a disqualifier at this seniority.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with vector databases or distributed systems design",
+        "mitigation": "Core Staff-level technical depth required; candidate's operations background does not include this scope.",
+        "severity": "high"
+      },
+      {
+        "gap": "No CS, Mathematics, or related engineering degree mentioned in profile",
+        "mitigation": "Minimum qualification stated explicitly in JD; absence of evidence is disqualifying for Staff-level technical role.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'MINIMUM QUALIFICATIONS: 10+ years in backend software development' and 'Proficiency in Python, Typescript or Javascript.' Candidate has strategy and operations background with basic Python learning and no production software-engineering development history. This is a Staff-level production engineering role requiring deep engineering depth, not a strategy/operations/transformation role.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires 'A relevant degree in Computer Science, Mathematics or related fields' as a minimum qualification. Candidate profile does not specify degree; absent evidence of CS/Mathematics degree is a hard blocker for a Staff Engineer role requiring advanced technical credentials.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD: 'Experience in design and development of large-scale distributed, high concurrency, high load, high availability systems.' Candidate's eight years at Google Devices and Services in strategy, operations, and transformation roles do not constitute production systems architecture and engineering experience at Staff level.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a Staff-level backend software engineering role requiring 10+ years of production systems development, Python/TypeScript proficiency, CS/Mathematics degree, and expertise in distributed systems and vector databases. The candidate is a Strategy and Operations / Product Operations leader with Google scaling and transformation experience but explicitly lacks production software-engineering background, engineering credentials, and the technical depth required at Staff level. Role family fit is out of target (engineering vs. strategy/ops); this is a hard-blocker mismatch.",
+    "uncertainties": [
+      "Candidate's specific educational background not provided; unclear if CS/Math degree exists.",
+      "Role is described as 'new Generative AI department,' but JD clearly expects backend engineering depth (distributed systems, high-concurrency architecture, vector databases), not transformation or AI strategy consulting.",
+      "Whether candidate has any AI/ML production experience beyond strategic exposure is not stated."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

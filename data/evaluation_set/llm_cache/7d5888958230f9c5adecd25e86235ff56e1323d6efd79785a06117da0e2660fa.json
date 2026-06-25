@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; demonstrated ability to manage complex stakeholder environments in strategic operations roles",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management and credible engagement with senior internal stakeholders and external partners"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs, process design, and execution at scale; background in requirements logic design, UAT, and rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Process design, controls uplift, and governance across complex multi-stakeholder environments"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No financial crime, AML/CTF, or compliance background; candidate's expertise is in business strategy and operations, not regulatory or legal risk management",
+        "mitigation": "Role is disqualifying without foundational compliance domain knowledge. Extensive ramp-up on AML/CTF law, AUSTRAC frameworks, and financial crime investigation would be required, but candidate lacks the regulatory audit or legal foundation the role expects.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct exposure to SMR investigation, filing, or equivalent STR/SAR processes; no hands-on transaction-monitoring or name-screening escalation management",
+        "mitigation": "These are core operational responsibilities in the role. Candidate's process-design and transformation skills do not substitute for financial crime investigation methodology and compliance reporting expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated background in payments, fintech, or financial services compliance; candidate's fintech exposure is at Google (infrastructure), not in compliance or risk functions",
+        "mitigation": "While Google is a strong brand, candidate's domain is device and services operations, not payment systems or regulatory compliance for financial institutions.",
+        "severity": "high"
+      },
+      {
+        "gap": "No auditing, assurance, or regulator-interaction experience; role requires demonstrated history of engaging AUSTRAC, banking partners, and audit bodies",
+        "mitigation": "Candidate's transformation and operations background does not include second-line assurance, audit coordination, or regulatory inspection readiness.",
+        "severity": "high"
+      },
+      {
+        "gap": "Bachelor's degree requirement in Law, Finance, or Business not verified in candidate profile",
+        "mitigation": "Candidate profile does not provide educational credentials; assume met, but lack of Law or Finance degree would further weaken fit.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Minimum qualifications: '5+ years of financial crime compliance experience in a financial institution or payment services / fintech environment, with direct exposure to AML/CTF program execution' and 'Demonstrated auditing or assurance background and prior experience interacting with regulators, ideally including AUSTRAC.' Candidate has no stated financial crime, AML/CTF, regulatory compliance, auditing, or AUSTRAC experience. Candidate background is business strategy and operations at Google Devices and Services, not compliance or financial crime risk management.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a specialist financial crime compliance and regulatory role requiring 5+ years of direct AML/CTF program execution, SMR investigation, auditing, and AUSTRAC engagement. Candidate is a Strategy and Operations leader with strong execution and stakeholder-management skills but zero background in compliance, financial crime, regulatory audit, or payments/fintech risk functions. The domain gap is disqualifying; this role is not a fit for the candidate's profile regardless of operational excellence.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,65 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs suggests team and organizational leadership.",
+        "evidence_strength": "medium",
+        "job_requirement": "4+ years leading and scaling field-based teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations / Product Operations positioning indicates data-driven strategic planning; transformation programs and commercial operations scaling suggest portfolio/program-level thinking.",
+        "evidence_strength": "medium",
+        "job_requirement": "Analytical and strategic thinker who uses data and market insights to shape portfolio strategies"
+      },
+      {
+        "candidate_evidence": "Eight-year career with promotions at Google and experience scaling operations implies people leadership; positioning as strategy leader suggests management scope.",
+        "evidence_strength": "medium",
+        "job_requirement": "Team leadership, coaching, and development; building high-performing teams"
+      },
+      {
+        "candidate_evidence": "Languages list: English (professional/fluent), German (native). No travel restrictions mentioned in profile.",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to travel up to 50% of year across EMEA and APAC; English proficiency required"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Core experience is in product operations, business operations, and global commercial transformation\u2014not luxury hospitality, marketplace supply management, or field-based enterprise sales.",
+        "mitigation": "Luxury travel/hospitality domain can be learned on-the-job; candidate's operations and scaling background is transferable to supply strategy and team leadership. Marketplace and host-relationship fundamentals require ramp, but coaching/mentoring capability is demonstrated.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with CRM tools, pipeline rigor, or quota-driven supply acquisition and revenue management in a sales or BD context.",
+        "mitigation": "Data-informed operations background suggests readiness to adopt CRM and performance dashboards; analytical mindset likely transfers, but hands-on BD/sales metrics discipline is unproven.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of direct high-value partnership building with luxury real estate professionals, property managers, or estate operators; no luxury market or real estate background stated.",
+        "mitigation": "Team leadership and stakeholder management from global operations roles may bridge some of this; relationship-building skills are generalizable, but luxury real estate domain knowledge and networks are absent.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires up to 50% travel across EMEA and APAC; no visa sponsorship or mobility details provided in candidate profile.",
+        "mitigation": "German native + English fluent suggests European base; travel logistics unknown but critical for role execution.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 45,
+    "scope_seniority": 65,
+    "summary": "Candidate is a strategy and operations leader with eight years and two promotions at Google, demonstrating team leadership, global commercial scaling, and data-driven strategic planning\u2014core competencies for managing regional supply growth and team coaching. However, the role is deeply rooted in luxury hospitality, marketplace supply acquisition, and field-based enterprise sales\u2014domains the candidate lacks direct experience in. This is a stretch move from B2B/product operations into luxury B2C hospitality and sales leadership; while the operations and people leadership transfer, domain knowledge, CRM/sales rigor, and high-net-worth relationship management are material gaps. Recommend advising a stretch assessment pending deeper portfolio and market familiarity signals.",
+    "uncertainties": [
+      "No explicit evidence of sales, BD, or revenue-driven culture; candidate profile emphasizes operations and transformation rather than commercial/quota accountability.",
+      "Google Devices and Services commercial operations scope is not detailed; unclear whether 'global commercial operations' includes supply growth, partner ecosystems, or primarily internal systems/process.",
+      "No mention of luxury market exposure, high-net-worth relationship networks, or real estate industry familiarity.",
+      "Travel and visa eligibility for EMEA/APAC roles not addressed in profile.",
+      "Degree, visa status, and visa sponsorship requirement unknown."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

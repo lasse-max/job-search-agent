@@ -1,0 +1,73 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioned as Strategy and Operations / Product Operations leader with scaling experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead and empower a team, hire, mentor, and manage Enterprise Architects"
+      },
+      {
+        "candidate_evidence": "Experience in Strategy and Operations with stated cross-functional scope at Google; transformation program leadership suggests stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional leadership and partnership with Sales, Product, Engineering, and Security teams"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Transformation background; product experience from ownership and requirements logic design rather than native PM",
+        "evidence_strength": "weak",
+        "job_requirement": "Strategic vision and connecting technical solutions to business value"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Over-leveled seniority: Director role at established company (Celonis, Tier 2) exceeds target L4-L5 scope; candidate is L4-L5 equivalent",
+        "mitigation": "Candidate could pivot to Senior Manager or Lead-level architect or strategy roles at comparable companies, or move to early-stage where Head of title is appropriately scoped",
+        "severity": "high"
+      },
+      {
+        "gap": "Enterprise Architecture depth: JD explicitly requires 'deep understanding of Capability Mapping, Enterprise Modernization, and Agentic AI' and 'strong background in Data Architecture, system integrations, data operations'; candidate background is Strategy and Operations, not native Enterprise Architecture",
+        "mitigation": "Would require 1-2 years of hands-on Enterprise Architecture exposure, likely in a supporting or IC role first",
+        "severity": "high"
+      },
+      {
+        "gap": "Required education: JD states 'MSc degree in Computer Science or equivalent in an Information Technology-related field'; candidate profile does not list this credential",
+        "mitigation": "Verify education history; if not met, this is a disqualifying gap unless hiring manager waives it",
+        "severity": "high"
+      },
+      {
+        "gap": "Technical foundation and hands-on depth: JD requires 'strong background in Data Architecture, system integrations, data operations, automation' and 'comfortably switch from high-level strategy to hands-on demo environments'; candidate has basic Python and product-ownership-driven experience, not technical hands-on depth",
+        "mitigation": "Would require significant upskilling in data tools, cloud architectures, and system integrations; not a short-term gap",
+        "severity": "high"
+      },
+      {
+        "gap": "Consulting or software vendor leadership brand: JD specifies '20+ years of relevant experience, including a proven track record of managing Enterprise Architects at a top consulting firm or software vendor'; candidate background is Google internal, lacks classic consulting case-team experience and external vendor architecture leadership",
+        "mitigation": "Candidate's Google pedigree and transformation scope offer partial credit; however, direct consulting firm or software vendor Enterprise Architect team leadership is a weak spot",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Education: MSc degree in Computer Science or an equivalent in an Information Technology-related field.' Candidate profile does not list a CS, IT, or engineering degree. This is an explicit education requirement that is not marked as 'preferred' or 'nice to have.'",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD states 'Experience: 20+ years of relevant experience, including a proven track record of managing Enterprise Architects or technical teams at a top consulting firm or software vendor.' Candidate has ~8 years at Google in Strategy and Operations, not 20+ years, and no documented Enterprise Architect team leadership at a consulting firm or software vendor. This is a stated experience floor.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 15,
+    "summary": "Enterprise Architect Director is over-leveled and functionally misaligned. Candidate is a Strategy and Operations / Product Operations leader (~L4-L5 equivalent, 8 years at Google) with scaling and transformation experience, but lacks the required 20+ years, Enterprise Architecture depth, MSc in CS/IT, consulting or software vendor brand, and technical hands-on foundation in Data Architecture, system integrations, and data operations. Director role at established Celonis exceeds seniority ceiling. Role requires native Enterprise Architect expertise and leadership brand; candidate's strength is product-centric business transformation, not technical architecture.",
+    "uncertainties": [
+      "Candidate's exact educational background (degree field and level) not provided in profile; unclear if MSc in IT-related field is held",
+      "Depth of 'scaling global commercial operations' experience at Google not detailed; unclear if this included technical architecture or pure BizOps scope",
+      "Candidate's hands-on comfort with data tools, cloud integrations, and system architecture not specified; only 'basic Python and actively learning' noted",
+      "Whether Google internal transformation programs included enterprise-scale architecture design for external enterprise clients"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

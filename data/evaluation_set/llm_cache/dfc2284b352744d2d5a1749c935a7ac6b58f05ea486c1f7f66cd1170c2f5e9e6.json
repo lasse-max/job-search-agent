@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, scaling global commercial operations and transformation programs\u2014directly aligned to strategic project leadership at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic Project Lead role in AI Operations at a Tier 1 company"
+      },
+      {
+        "candidate_evidence": "Demonstrated ownership in scaling global commercial operations and leading transformation programs; product experience grounded in requirements, logic design, UAT, rollout, and transformation execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations and transformation program leadership with cross-functional stakeholder management"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background provides enterprise-scale product/services strategy experience; AI Operations role is emerging tech context, though JD lacks detail on AI-specific depth expected",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic problem-solving and business acumen in emerging technology contexts"
+      }
+    ],
+    "confidence": 0.55,
+    "evidence_strength": 45,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "JD truncated and incomplete\u2014missing core responsibilities, success metrics, AI domain depth expectations, and stakeholder scope details",
+        "mitigation": "Request full JD from SafetyCulture. Conduct deep-dive interview on AI Operations strategy, product vision, and candidate's learning velocity in AI/ML contexts",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit AI product operations, ML systems transformation, or data infrastructure experience documented",
+        "mitigation": "Assess candidate's ability to rapidly learn AI/ML operational challenges (model governance, retraining pipelines, deployment cadence, MLOps tooling) through case discussion and reference calls with Google peers",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting brand or case-team experience; transformation expertise grounded in internal product/operations context, not external advisory",
+        "mitigation": "Not critical if role is internal transformation lead; clarify stakeholder level and whether external advisory experience is preferred",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 68,
+    "summary": "Strong role-family fit for Strategy and Operations; eight years at Google with proven global ops and transformation leadership map well to a Strategic Project Lead profile. However, the JD is severely truncated (HTML formatting artifact), obscuring AI Operations specifics, scope definition, and stakeholder landscape. Scope_seniority is estimated at 68 (likely L4\u2013L5 based on title and tier-1 company context), but confidence is low. No hard blockers detected. Recommend sourcing complete JD and conducting AI-domain readiness assessment before final decision.",
+    "uncertainties": [
+      "JD text is corrupted/incomplete (HTML boilerplate dominates payload); cannot assess AI Operations depth, product vision, or required domain expertise",
+      "Scope of AI Operations mandate unclear\u2014is this a small strategic initiative, a pillar of company transformation, or a scaling operation? Title suggests strategic but missing context",
+      "No detail on stakeholder level (product, engineering, exec, board) or cross-functional span of control",
+      "Unclear whether role expects hands-on ML/data infrastructure knowledge, vendor evaluation, or pure strategic/program leadership"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

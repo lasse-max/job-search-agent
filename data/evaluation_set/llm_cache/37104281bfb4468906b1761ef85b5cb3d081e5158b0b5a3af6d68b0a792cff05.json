@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services managing global commercial operations and transformation programs; demonstrated ability to bridge internal and external stakeholders at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Govern stakeholder interactions across internal engineering teams, supply chain partners, overseas manufacturers and military customers, ensuring decision-making is structured, traceable and aligned with contractual and strategic commitments"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and process scaling in commercial operations; product ownership experience includes requirements definition, process design, UAT, and rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Identify and implement continuous improvement initiatives across physical product delivery processes, translating lessons learned into scalable practices"
+      },
+      {
+        "candidate_evidence": "Google operations background implies exposure to complex cross-functional metrics and visibility; however, no specific evidence of dashboard design or KPI governance in physical product contexts",
+        "evidence_strength": "weak",
+        "job_requirement": "Build and maintain a programme steering dashboard that tracks KPIs spanning supply chain performance, engineering milestones and contractual commitments"
+      },
+      {
+        "candidate_evidence": "Career at Google Devices and Services (consumer electronics); no stated experience in defence, military procurement, or government contract environments",
+        "evidence_strength": "weak",
+        "job_requirement": "Work in defence, military, or government contract environments with hands-on experience managing land domain products through development, manufacturing and fielding"
+      }
+    ],
+    "confidence": 0.65,
+    "evidence_strength": 55,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No demonstrated experience in defence, military, or government contracting contexts. JD explicitly requires 'delivered large-scale physical product programmes as a project or delivery lead within military or defence contexts'",
+        "mitigation": "Candidate's cross-functional stakeholder management and transformation leadership could transfer, but would require significant ramp on defence procurement, contract structures, security protocols, and military product lifecycle. Early-stage onboarding risk is high given defence-specific complexity.",
+        "severity": "high"
+      },
+      {
+        "gap": "Missing formal project management certification (PMP or equivalent). JD states 'Hold a PMP certification or equivalent'",
+        "mitigation": "Candidate could pursue PMP certification; however, lack of prior certification suggests PM methodology training may not be a core part of background. Helsing appears willing to invest in development ('Infraduction' onboarding), but certification is listed as a required qualification.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience managing physical product supply chains, manufacturing coordination, or overseas manufacturer relationships. JD requires hands-on experience 'coordinating across design teams, supply chains, engineering functions and overseas manufacturers'",
+        "mitigation": "Google Devices and Services may have involved supply chain exposure, but candidate profile does not articulate specific ownership of manufacturing, supplier coordination, or physical product delivery. This is a core day-to-day responsibility.",
+        "severity": "high"
+      },
+      {
+        "gap": "No background in engineering, political science, or defence-related domain (listed as 'Nice to Have' but indicates expected familiarity with defence technical and geopolitical context)",
+        "mitigation": "Candidate's consulting-like transformation skills and operations depth could provide a foundation, but domain fluency in defence systems, threat models, and ethical AI deployment would need to be built from scratch.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD requires 'Have delivered large-scale physical product programmes as a project or delivery lead within military or defence contexts, with direct, hands-on experience managing land domain products through development, manufacturing and fielding.' Candidate profile shows zero defence, military, or government contract experience; all background is Google consumer electronics and commercial operations.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires 'Hold a PMP certification or equivalent, and have applied structured project management methodologies to govern roadmaps, risk registers and KPI frameworks across complex, multi-stakeholder defence programmes.' No evidence of PMP, PRINCE2, or equivalent certification in candidate profile.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 42,
+    "scope_seniority": 72,
+    "summary": "Candidate brings eight years of Google operations and transformation leadership with strong cross-functional stakeholder management and process design capability. However, the role requires deep defence/military physical product delivery expertise, PMP certification, supply chain and manufacturing coordination hands-on experience, and national security clearance eligibility. Candidate lacks demonstrated experience in all four of these critical areas. While scope and seniority are broadly aligned (L4-L5 equivalent), the domain-specific gaps and explicit hard requirements (defence context, PMP or equivalent, manufacturing coordination) make this a poor functional fit despite strong operational leadership background.",
+    "uncertainties": [
+      "Extent of supply chain and manufacturing coordination in Google Devices and Services role is unclear from candidate profile; could be higher than stated, but must assume honest gap disclosure",
+      "Whether candidate's Google operations background included any exposure to defence, government, or security-cleared work (unlikely but not explicitly stated)",
+      "Clarity on German language fluency requirement: candidate is native German speaker (meets requirement), but JD specifies 'communicate with full fluency in both English and German'\u2014no evidence of professional communication in German across technical/defence contexts"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

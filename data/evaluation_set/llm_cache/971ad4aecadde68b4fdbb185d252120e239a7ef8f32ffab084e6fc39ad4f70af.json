@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs, with experience guiding business stakeholders through strategic transformations and defining requirements",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with senior business stakeholders to understand pre-sales needs, guide AI strategy, and identify highest value use cases"
+      },
+      {
+        "candidate_evidence": "Cross-functional program leadership experience at Google involving Sales, CS, Product, and Security teams; proven ability to synthesize feedback and drive organizational alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Sales, Customer Success, Security, and Product teams; gather and relay customer feedback to inform product planning"
+      },
+      {
+        "candidate_evidence": "Led compliance and security considerations in API rollouts and transformation programs; acted as trusted advisor on security themes with enterprise customers",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrate thorough understanding of IT security principles and customer requirements for technical B2B SaaS products"
+      },
+      {
+        "candidate_evidence": "Eight years leading global transformation initiatives with ownership across design, UAT, rollout, and scaling; actively learning Python and emerging technologies",
+        "evidence_strength": "strong",
+        "job_requirement": "Own problems end-to-end and willingly pick up knowledge needed to get the job done"
+      },
+      {
+        "candidate_evidence": "Eight years at Google managing technical and commercial relationships with enterprise partners; two promotions indicate progressive seniority and stakeholder management capability",
+        "evidence_strength": "medium",
+        "job_requirement": "5+ years experience in technical pre-sales role managing C-level technical and business relationships with complex global organizations"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 55,
+    "gap_manageability": 48,
+    "gaps": [
+      {
+        "gap": "Pre-sales solutions engineering background; candidate's experience is primarily product operations, transformation, and business strategy rather than dedicated pre-sales role with customer-facing solution selling",
+        "mitigation": "Strong cross-functional and customer stakeholder experience from transformation work translates to understanding customer needs and value articulation; can ramp pre-sales methodology and sales motion with onboarding, though first customer cycle will be a steeper learning curve",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on technical depth in Python, JavaScript, REST APIs, and cloud/network architecture; JD emphasizes demonstrating prototypes and guiding architecture",
+        "mitigation": "Candidate is actively learning Python and has UAT and technical rollout experience; can work with technical partners on demos and leverage strong communication skills to translate architect recommendations; may need backend engineering collaboration on prototype depth",
+        "severity": "high"
+      },
+      {
+        "gap": "No fluency in Spanish; role is based in Madrid and JD lists full professional fluency in both English and Spanish as a requirement",
+        "mitigation": "German native and professional English fluency; would need to rapidly acquire Spanish language skills or accept working primarily through English with translators/local support\u2014material friction for Madrid-based customer-facing role",
+        "severity": "high"
+      },
+      {
+        "gap": "Generative AI and LLM product knowledge is not evidenced in profile; candidate's AI experience appears limited to transformation context",
+        "mitigation": "Acute ramp time on ChatGPT, OpenAI API, and LLM fundamentals; strong learner profile and cross-functional skills suggest manageable but requires immediate focused preparation",
+        "severity": "medium"
+      },
+      {
+        "gap": "No dedicated customer success, account management, or quota-bearing sales background; role requires pre-sales acumen and customer intimacy skills that differ from operations-heavy transformation work",
+        "mitigation": "Customer advisory and feedback synthesis experience from transformation programs provides partial foundation; would benefit from mentorship on customer sales psychology and pipeline management",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 42,
+    "scope_seniority": 65,
+    "summary": "Candidate is a strategic operations and transformation leader with eight years at Google and proven cross-functional stakeholder management, but lacks dedicated pre-sales solutions engineering experience, hands-on technical depth in Python/APIs/cloud architecture, Spanish fluency (critical for Madrid-based role), and specific GenAI/LLM product knowledge. Strong on ownership, learning agility, and customer advocacy; high risk on pre-sales motion and immediate technical contribution.",
+    "uncertainties": [
+      "Depth and recency of candidate's customer-facing pre-sales interactions and deal-cycle involvement at Google unclear from profile",
+      "Extent of hands-on architecture recommendation and prototyping in prior transformation work not specified",
+      "Willingness and ability to acquire Spanish fluency in a reasonable timeframe unknown; role is Madrid-based and JD lists bilingual as a requirement",
+      "Candidate's familiarity with REST APIs, cloud/network architecture, and modern SaaS infrastructure practices not detailed",
+      "Prior experience building or evaluating AI/ML solutions or understanding LLM deployment trade-offs not indicated"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

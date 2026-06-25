@@ -1,0 +1,44 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate positioned as Strategy and Operations / Product Operations leader with eight years at Google Devices and Services with two promotions, including scaling global commercial operations and transformation programs.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy & Operations department role with CEO Office context"
+      }
+    ],
+    "confidence": 0.2,
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "JD is corrupted, incomplete, and unintelligible. No actual job responsibilities, requirements, scope, reporting structure, or business context are discernible.",
+        "mitigation": "Request uncorrupted, full JD text. Cannot assess fit without knowing what the role actually entails.",
+        "severity": "high"
+      },
+      {
+        "gap": "Title 'Strategy, CEO Office' suggests potential over-leveling (CEO Office / Chief of Staff equivalent). Candidate's seniority ceiling rules typically target L4\u2013L5 (Manager, Senior Manager, Lead), not C-suite support unless startup or very early-stage.",
+        "mitigation": "Clarify company stage and whether this is a strategic cross-functional coordinator role (L4) or a senior advisory/CoS role requiring VP+ context.",
+        "severity": "high"
+      },
+      {
+        "gap": "No clarity on whether role is core strategy & operations execution (candidate-aligned) versus political/advisory C-suite support or investor/board relations.",
+        "mitigation": "JD must specify scope: business unit strategy? transformation program leadership? functional operations? or senior staff/advisory?",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 20,
+    "summary": "JD is corrupted and unreadable\u2014only title \"Strategy, CEO Office\" and company context visible. Cannot evaluate role fit, scope, or requirements without a clean, full job description. Title suggests potential over-leveling (CEO Office roles often L5+ or equivalent). Recommend obtaining uncorrupted JD and clarifying reporting structure, team scope, and core responsibilities before proceeding.",
+    "uncertainties": [
+      "JD snapshot is HTML/CSS/JS garbage with no readable job description content",
+      "Checkout.com stage, size, and organization structure not provided; cannot assess CEO Office role seniority anchor",
+      "No information on whether role reports to CEO, CFO, COO, or other executive; critical for level calibration",
+      "Cannot distinguish between strategic execution, functional operations, program leadership, and advisory/staff duties"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

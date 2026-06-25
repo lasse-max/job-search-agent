@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs, suggesting multi-year track record of owning and leading strategic initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Scope and lead technical initiatives end-to-end: identify problems worth solving, propose the right solution approach, and deliver on that solution"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations indicates ability to juggle multiple workstreams and priorities in complex, fast-paced environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage multiple projects simultaneously and prioritize tasks effectively in a fast-paced setting"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations role typically requires cross-functional stakeholder management and communication across technical and business teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent written and verbal communication across technical and non-technical audiences"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No software engineering or production code background; profile explicitly states no production software-engineering background and Python only basic/actively learning",
+        "mitigation": "Role requires writing high-quality production code at scale, reading/writing code, SQL expertise, and technical debugging. While strong operational thinking can accelerate technical learning, the code-writing and SQL-heavy nature of the role and three-year minimum technical role requirement are core to the job, not nice-to-have",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated SQL or data pipeline expertise; candidate background is in operations and transformation, not data engineering or analytics",
+        "mitigation": "JD requires 'Expertise in SQL and data visualization, proven experience analyzing complex datasets' as a minimum requirement. No evidence of this in profile",
+        "severity": "high"
+      },
+      {
+        "gap": "No financial services, accounting, compliance, or payments domain experience mentioned; Google Devices is hardware/consumer tech, not fintech",
+        "mitigation": "Preferred qualification, but understanding financial data quality, anomaly detection, and regulatory context is core to TechOps role. Candidate would require significant domain ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated experience in Technical Operations, Technical Support, Solutions Architecture, or Integration Engineering roles; background is pure Strategy/Operations",
+        "mitigation": "JD explicitly requires 3+ years in 'a technical role (e.g., Technical Operations, Software Engineer, etc.) or a technical user facing role (e.g., Solutions Architecture, Integration Engineer).' Candidate does not meet this minimum requirement",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Minimum requirement: 'Have 3+ years professional experience in a technical role (eg: Technical Operations, Software Engineer, etc.) or a technical user facing role (e.g. Solutions Architecture, Integration Engineer).' Candidate's background is Strategy and Operations at Google, with no technical role experience, software engineering, or solutions architecture documented.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "Minimum requirement: 'Write high-quality code that scales effectively.' Candidate profile explicitly states 'No production software-engineering background' and 'Python basic and actively learning,' failing the core code-writing requirement.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "Minimum requirement: 'Expertise in SQL and data visualization, proven experience analyzing complex datasets.' No evidence of SQL expertise, data pipeline analysis, or data visualization experience in candidate profile.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "Integration Reliability Engineer is a technical operations and payments engineering role requiring 3+ years hands-on technical experience (code, SQL, debugging systems), high-quality production code, and SQL/data expertise. Candidate is a Strategy and Operations leader with Google scaling and transformation experience but no software engineering, SQL, technical operations, or fintech background. Misalignment is fundamental and disqualifying on three separate minimum requirements.",
+    "uncertainties": [
+      "Whether candidate has any undocumented SQL, data engineering, or technical tooling experience from operations or transformation work at Google",
+      "Degree of technical depth in 'systems work' during Devices/Services transformation programs\u2014whether this included code-level debugging or purely architectural oversight",
+      "Candidate's current pace and depth of Python learning; whether this could accelerate to 'high-quality production code' standard within onboarding",
+      "Whether 'financial data quality' exposure in commercial operations scaling translates to payments/fintech domain knowledge"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

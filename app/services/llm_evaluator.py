@@ -11,14 +11,14 @@ from pathlib import Path
 from typing import Any, Literal, Protocol
 
 import httpx
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.config import DATA_DIR, CandidateProfileConfig
 from app.models import CompanyConfig
 from app.services.material import material_hash_for_row
 
 
-PROMPT_VERSION = "role_evaluation_v1"
+PROMPT_VERSION = "role_evaluation_v2"
 DEFAULT_CLAUDE_MODEL = "claude-haiku-4-5"
 PROMPT_PATH = Path(__file__).resolve().parents[1] / "prompts" / "role_evaluation_v1.md"
 DEFAULT_LLM_CACHE_DIR = DATA_DIR / "evaluation_set" / "llm_cache"
@@ -46,7 +46,7 @@ class LLMHardBlockerModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     type: Literal["disqualifying_hard_requirement"]
-    evidence: str = Field(min_length=1, max_length=600)
+    evidence: str = Field(min_length=1, max_length=1200)
 
 
 class LLMEvaluationOutput(BaseModel):
@@ -58,11 +58,18 @@ class LLMEvaluationOutput(BaseModel):
     gap_manageability: int = Field(ge=0, le=100)
     confidence: float = Field(ge=0, le=1)
     advisory_recommendation: Literal["apply_now", "consider", "stretch", "skip", "blocked"]
-    alignments: list[LLMAlignmentModel] = Field(min_length=1, max_length=4)
-    gaps: list[LLMGapModel] = Field(min_length=1, max_length=4)
+    alignments: list[LLMAlignmentModel] = Field(min_length=1, max_length=6)
+    gaps: list[LLMGapModel] = Field(min_length=1, max_length=6)
     hard_blockers: list[LLMHardBlockerModel] = Field(default_factory=list, max_length=4)
     uncertainties: list[str] = Field(default_factory=list, max_length=5)
-    summary: str = Field(min_length=1, max_length=600)
+    summary: str = Field(min_length=1, max_length=2400)
+
+    @field_validator("hard_blockers", mode="before")
+    @classmethod
+    def _empty_string_means_no_blockers(cls, value: object) -> object:
+        if value == "":
+            return []
+        return value
 
     @property
     def dimensions(self) -> dict[str, int]:

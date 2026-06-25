@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in commercial operations and transformation programs, demonstrating analytical capability and data-driven decision-making",
+        "evidence_strength": "medium",
+        "job_requirement": "Problem Solving \u2013 Evaluating facts and data to inform recommendations based on customer objectives"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and leading transformation programs requires cross-functional stakeholder coordination and management",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder Management \u2013 Fosters positive relationships, clear communication, and collaboration across teams"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Role is pure Customer Experience / Billing Operations with no strategic, transformation, or product-oriented scope. Candidate is positioned as a Strategy and Operations / Product Operations leader, not a billing specialist or front-line CS operator.",
+        "mitigation": "This is a fundamental misalignment. The candidate should pursue strategic billing transformation, revenue operations, or customer insights strategy roles rather than execution-focused billing support.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in billing, finance operations, or revenue cycle management. Candidate's background is in commercial operations and transformation, not billing systems or payment reconciliation.",
+        "mitigation": "Candidate would require significant domain ramp-up in Zuora, payment flows, subscription billing, and billing compliance\u2014skills beyond the scope of a strategic operator moving into this specialist role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires proficiency in Zuora, Salesforce, and Intercom. Candidate background does not indicate hands-on experience with these billing and CX platforms.",
+        "mitigation": "Systems proficiency can be learned, but combined with the strategic mismatch, this adds unnecessary friction for a candidate overqualified in strategy and underqualified in billing domain.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Scope is individual-contributor or junior team player in a small, distributed operation. Candidate has two promotions and scaled global operations\u2014a significant scope and seniority mismatch in the wrong direction for engagement.",
+        "mitigation": "Role is too junior for the candidate's demonstrated scope and seniority. Candidate should target manager-level, strategic operations, or program leadership positions.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 10,
+    "summary": "This is a Customer Experience Billing Specialist role\u2014a tactical, execution-focused customer support and billing operations position with no strategic or transformation scope. The candidate is a Strategy and Operations / Product Operations leader with eight years at Google, two promotions, and experience scaling global commercial operations and transformation programs. The role family fit is very low: this is pure CS operations and billing specialist work, not a target or stretch family. Scope is also misaligned\u2014the candidate's demonstrated level is far above this individual-contributor or junior team position. Advisory recommendation is skip.",
+    "uncertainties": [
+      "Job description uses 'CX Billing Specialist' and emphasizes operational detail and customer education; no mention of strategic billing transformation, revenue optimization, or process innovation work that might elevate scope.",
+      "Candidate's specific billing domain experience is not detailed; if candidate has tacit revenue-cycle knowledge from Google Devices commercial operations, it is not explicit in the profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

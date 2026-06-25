@@ -1,0 +1,151 @@
+role_id,company,role_title,expected_recommendation,expected_should_pass_gate,actual_passed_gate,gate_reason
+LN-001,Checkout.com,"Analyst II, Transaction Monitoring and Screening",skip,False,False,location_filter_not_allowed
+LN-002,Stripe,Implementation Consultant,skip,False,False,location_filter_skipped_market
+LN-003,Databricks,"Staff Software Engineer, Observability",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-004,Snowflake,"Sr. Sales Ops Analyst, Observability",skip,False,False,location_filter_not_allowed
+LN-005,OpenAI,"AI Deployment Engineer, Messenger Integrations",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-006,Stripe,"Engineering Manager, HADR",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-007,Mistral AI,Enterprise Sales Leader,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-008,Sierra,"Software Engineer, Agent Builder",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-009,Airbnb,"Market Lead, Experiences",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-010,OpenAI,Manufacturing Test Engineer,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-011,N26,ESG Analyst,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-012,Anthropic,"Enterprise Account Executive, State & Local Sales - North East",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-013,Mistral AI,Partner Solution Architect - EMEA,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-014,OpenAI,"Data Scientist, Financial Engineering",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-015,HelloFresh,Schichtleiter Haustechnik (all genders),skip,False,False,location_filter_not_allowed
+LN-016,N26,ICT GRC – ICT Governance Manager,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-017,OpenAI,"AI Deployment Engineer, Startups",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-018,Palantir,Systems Engineer - Business Systems,skip,False,False,location_filter_not_allowed
+LN-019,Airwallex,"Senior Manager, Operations Strategy",apply_now,True,True,matched_title_department_role_family
+LN-020,Helsing,"Software Engineer, Platform Engineering",skip,False,False,location_filter_not_allowed
+LN-021,Celonis,Applied Engineer (Solution Consultant) - Supply Chain,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-022,Mistral AI,Research Engineer - Robotics,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-023,Helsing,Avionics Systems Engineer - Safety Critical Systems,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-024,Airwallex,"Manager, Technical SEO Marketing",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-025,HelloFresh,Transport Assistant,skip,False,False,location_filter_not_allowed
+LN-026,Stripe,"Product Support, Bridge",skip,False,True,matched_title_department_role_family
+LN-027,Snowflake,Senior PS Sales Solutions Architect,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-028,Celonis,Lead Value Engineering - Consumer Packaged Good and Retail,skip,False,False,location_filter_skipped_market
+LN-029,Airbnb,"Senior Full-Stack Engineer, App Experience and Frameworks (Frontend-Heavy)",skip,False,False,location_filter_not_allowed
+LN-030,OpenAI,"Distributed Training Engineer, Sora",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-031,OpenAI,"Security Engineer, Application Security",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-032,Databricks,Staff Software Engineer - Machine Learning (Search),skip,False,False,location_filter_skipped_market
+LN-033,Databricks,Strategic Core Account Executive,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-034,Roblox,Developer Relations Manager - Middle East,skip,False,False,location_filter_not_allowed
+LN-035,Airwallex,"Sales Development Representative, SME & Growth",skip,False,False,location_filter_skipped_market
+LN-036,Snowflake,Principal Software Engineer II - Next-Gen Data Transformations,skip,False,False,location_filter_not_allowed
+LN-037,Palantir,Global Benefits Specialist,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-038,Celonis,Senior/Lead Value Engineer - Public Sector & Defense,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-039,Block,Mid-Market Account Manager,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-040,Databricks,Senior Staff Software Engineer - Security Infrastructure,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-041,Airwallex,"Engineering Lead / Manager, KYC (Relocation to Singapore)",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-042,Checkout.com,Enterprise Sales Executive,skip,False,False,location_filter_not_allowed
+LN-043,Celonis,Engineering Manager - Celonis Process Management,skip,False,False,excluded_title_department_function
+LN-044,Snowflake,Account Executive - Federal Civilian (Federal Financials),skip,False,False,location_filter_not_allowed
+LN-045,Xero,Senior Engineer - AI Workflows,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-046,Databricks,"Senior Software Engineer, Compute Infrastructure",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-047,Deputy,Technical Support Engineer - Tier 3,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-048,Flix,Strategic Partnerships Associate,skip,False,False,location_filter_skipped_market
+LN-049,Databricks,Systems PhD - Software Engineer,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-050,Snowflake,"RVP, Priority Support Engineering",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-051,Mistral AI,Lead Documentation Engineer,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-052,OpenAI,Market Research Lead,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-053,Airbnb,Acquisition Manager,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-054,Waymo,"Technical Program Manager, Onboard Systems",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-055,OpenAI,"Partnerships Deal Lead - Search, Commerce",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-056,Block,"Mid-Market Account Manager, Services",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-057,Waymo,Charging Automation Lead,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-058,OpenAI,Corporate Business Development Lead,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-059,OpenAI,Forward Deployed Engineer - Madrid,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-060,Waymo,"Staff Software Engineer, Chassis",skip,False,False,location_filter_not_allowed
+LN-061,HelloFresh,Production Shift Supervisor (all genders),skip,False,False,location_filter_not_allowed
+LN-062,Palantir,Web Application Developer - Defense,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-063,Anthropic,"Manager of Applied AI Architecture, Startups",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-064,OpenAI,"Enterprise Systems Manager, Recruiting Systems",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-065,Sierra,"Strategist, Agent Development - Financial Services",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-066,HelloFresh,FSQA Manager (x/f/m),skip,False,True,ambiguous_title_department_routed_to_llm
+LN-067,Sierra,Sales Engineer,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-068,Airwallex,"Senior Mobile Engineer, iOS or Android (Relocation to Melbourne)",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-069,Palantir,"Forward Deployed Software Engineer, Internship - US Government",skip,False,False,location_filter_not_allowed
+LN-070,Airbnb,"Specialist, Premium Support",skip,False,False,location_filter_skipped_market
+LN-071,Spotify,Senior Product Manager – Partner Growth,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-072,Sierra,Presentation Designer,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-073,Checkout.com,Staff Software Engineer - Streaming,skip,False,False,excluded_title_department_function
+LN-074,Anthropic,"Director, Revenue Accounting",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-075,Checkout.com,"Senior Associate, Technical Accounting",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-076,Block,"Territory Account Executive, Riverside",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-077,Checkout.com,Integration Manager,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-078,Roblox,"Senior Product Policy Manager, Regional Policy (Europe)",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-079,Block,Head of Sales - Japan,skip,False,False,location_filter_skipped_market
+LN-080,Stripe,Customer Success Manager (Spanish speaking),skip,False,True,ambiguous_title_department_routed_to_llm
+LN-081,Harvey,Field Marketing Manager,skip,False,False,excluded_title_department_function
+LN-082,Anthropic,"Manager of Applied AI Architecture, Enterprise Tech (Cyber)",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-083,Palantir,Forward Deployed Software Engineer - Warp Speed,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-084,Spotify,Senior Machine Learning Engineer - Content Intelligence,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-085,OpenAI,"Principal Software Engineer, Infrastructure Security",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-086,OpenAI,"Firmware Engineer, RTOS, Consumer Devices",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-087,OpenAI,Forward Deployed Software Engineer - Munich,skip,False,False,excluded_title_department_function
+LN-088,N26,Senior Finance Tech Specialist,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-089,Airwallex,Technical Support Lead (Asia Pacific incl. China coverage),skip,False,True,ambiguous_title_department_routed_to_llm
+LN-090,LinkedIn,SJ TEST E2E Bug Bash Job 2,skip,False,False,location_filter_skipped_market
+LN-091,Waymo,"Product Marketing Manager, Market Growth & Expansion",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-092,Snowflake,Senior Solution Engineer - Observe by Snowflake,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-093,Stripe,"Operations Associate, New Grad (Mexico)",skip,False,False,location_filter_skipped_market
+LN-094,Airwallex,"Staff Software Engineer, Productivity",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-095,Anthropic,Corporate Communication Lead,skip,False,False,location_filter_skipped_market
+LN-096,Palantir,Technical Accounting Manager,skip,False,False,location_filter_not_allowed
+LN-097,Celonis,Principal Digital Transformation & Process Optimisation Consultant - Manufacturing/Production,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-098,Palantir,Deployment Strategist,stretch,True,True,matched_title_department_role_family
+LN-099,Roblox,"Scientist / Senior Scientist, Ads Systems",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-100,Xero,"Manager, Senior Partner Sales",skip,False,False,location_filter_not_allowed
+LN-101,OpenAI,"Data Scientist, GTM Growth Products",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-102,Waymo,"Software Engineer, Trip Platform",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-103,Airwallex,"Engineering Lead, Payments Platform",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-104,Deputy,Software Engineer 3: Backend - 12 Month Fixed Term Contract,skip,False,False,excluded_title_department_function
+LN-105,Airwallex,"Strategic Sales, Enterprise",skip,False,False,location_filter_skipped_market
+LN-106,Databricks,"Manager, Delivery Solutions Architects - Toronto, ON",skip,False,False,location_filter_skipped_market
+LN-107,Databricks,Sr.Staff Software Engineer- Network Platform,skip,False,False,location_filter_skipped_market
+LN-108,OpenAI,Business Affairs Manager,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-109,Pigment,Engineering Manager Lead,skip,False,False,excluded_title_department_function
+LN-110,Celonis,Senior Value Engineer,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-111,Airwallex,"Account Manager, SME & Growth",skip,False,False,location_filter_not_allowed
+LN-112,Spotify,Staff Machine Learning Engineer - Content Intelligence,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-113,Waymo,AMER West Commercial Ops Planning,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-114,Flix,Qualifizierte:r Zugchef:in (m/w/d) FlixTrain,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-115,OpenAI,"System Software Engineer, Consumer Devices",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-116,Block,"Staff Data Analyst, Block Compliance",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-117,Sierra,Sales Compensation Lead,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-118,Mistral AI,"AI Deployment Strategist, Cybersecurity - EMEA",consider,True,True,matched_title_department_role_family
+LN-119,Palantir,Information Security Engineer - Insider Risk,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-120,Stripe,"Partner Development Manager, Global Networks",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-121,Snowflake,AI Solutions Specialist,skip,False,False,location_filter_not_allowed
+LN-122,Databricks,"Director, Field Engineering",skip,False,False,location_filter_skipped_market
+LN-123,Snowflake,Business Development Lead for Snowflake for Startups,skip,False,False,location_filter_not_allowed
+LN-124,Roblox,"Senior Frontend/Fullstack Software Engineer, Social Graph",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-125,Anthropic,"Product Manager, Claude Code Model Performance",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-126,Waymo,Planning Manager - GOC,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-127,Stripe,"Technical Program Manager,  Identity and Access Management Programs",skip,False,False,location_filter_not_allowed
+LN-128,Airbnb,"Senior Staff Machine Learning Engineer, Post Training",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-129,Block,SMB Sales Account Executive,skip,False,False,excluded_title_department_function
+LN-130,Snowflake,Senior Engineering Manager - Postgres,skip,False,False,location_filter_not_allowed
+LN-131,OpenAI,"Engineering Manager, Cooperative Systems",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-132,OpenAI,"Corporate Security Operations Manager, London",skip,False,True,ambiguous_title_department_routed_to_llm
+LN-133,Sierra,Sales Engineer (German speaking),skip,False,True,ambiguous_title_department_routed_to_llm
+LN-134,Airwallex,Head of Account Management,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-135,OpenAI,Strategic Business Development Representative,skip,False,False,location_filter_skipped_market
+LN-136,Stripe,Marketing Operations Manager,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-137,Pigment,Front-end Engineer,skip,False,False,location_filter_skipped_market
+LN-138,Harvey,Enterprise Account Executive,skip,False,False,excluded_title_department_function
+LN-139,Flix,Senior Data Analyst - CRM (m/f/d),skip,False,False,excluded_title_department_function
+LN-140,Spotify,Product Manager - Data Platform,skip,False,False,location_filter_skipped_market
+LN-141,Roblox,"[2026] Data Scientist, Social",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-142,Airbnb,"Senior Analyst, Treasury Operations",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-143,Stripe,Monetization Operations Analyst,skip,False,False,location_filter_skipped_market
+LN-144,Roblox,"Marketing Manager, Europe",skip,False,False,excluded_title_department_function
+LN-145,OpenAI,AI Support Engineer - Dublin,skip,False,True,ambiguous_title_department_routed_to_llm
+LN-146,Celonis,Salesforce Software Engineer,skip,False,False,location_filter_skipped_market
+LN-147,OpenAI,"Software Engineer, Compute - Storage",skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-148,Databricks,Specialist Solutions Architect - AI/ML,skip,False,False,location_filter_us_requires_tier1_sponsorship_exceptional_role
+LN-149,Airbnb,"Engineering Manager, Community Support Engineering (Routing and Data Services)",skip,False,False,location_filter_not_allowed
+LN-150,Airbnb,Partner Operations Manager,consider,True,True,ambiguous_title_department_routed_to_llm

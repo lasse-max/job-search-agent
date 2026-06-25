@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate has ~8 years at Google Devices and Services with two promotions in Strategy and Operations / Product Operations, but not in product design or consumer-facing design leadership roles",
+        "evidence_strength": "weak",
+        "job_requirement": "8+ years of experience in product design with a proven track record in consumer-facing products, including two years in a lead capacity"
+      },
+      {
+        "candidate_evidence": "Candidate demonstrates end-to-end ownership and program leadership through transformation initiatives and global commercial operations at Google, but ownership is in operations and transformation execution, not product design",
+        "evidence_strength": "medium",
+        "job_requirement": "Take end-to-end ownership of design in your product team, shaping direction and delivering high-quality, hands-on work"
+      },
+      {
+        "candidate_evidence": "Cross-functional collaboration is core to candidate's Strategy and Operations background, though experience is with business stakeholders and operations partners rather than product design teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with product managers, engineers, and AI specialists to align on priorities, user needs, technical feasibility, and business impact"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Core expertise in product design, UX/UI, interaction design, and visual design. Role requires 8+ years of product design experience; candidate background is Strategy and Operations / Product Operations with no demonstrated product design portfolio, design system work, or visual/interaction design credentials",
+        "mitigation": "Candidate would need to demonstrate a portfolio of consumer-facing product design work or begin a major career transition into product design, which is not feasible for a Staff-level design leadership role",
+        "severity": "high"
+      },
+      {
+        "gap": "Multimodal experience design (voice, chat, graphical interfaces). Role explicitly requires strong expertise in designing across voice, chat, and mobile; candidate's background is operations and business transformation, not multimodal UX design",
+        "mitigation": "No clear mitigation path without substantial hands-on design experience in conversational AI or multimodal interfaces",
+        "severity": "high"
+      },
+      {
+        "gap": "Design research and usability testing leadership. Role requires research-driven mindset with user research, usability testing, and data-informed design decisions; candidate's expertise is in operational metrics and transformation, not design validation",
+        "mitigation": "Would require building entirely new competency area in design research methodologies",
+        "severity": "high"
+      },
+      {
+        "gap": "Consumer product design portfolio and track record. Staff-level design role requires a strong portfolio demonstrating elegant, user-centered consumer-facing solutions; no evidence of this in candidate profile",
+        "mitigation": "Portfolio is essential for Staff designer roles and cannot be quickly acquired",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a Staff Product Designer role requiring 8+ years of product design expertise, multimodal UX/UI specialization, and consumer-facing design leadership. Candidate is a Strategy and Operations leader from Google with transformation and program ownership scope, but has no product design background, design portfolio, or multimodal experience design credentials. Function fit is fundamentally misaligned; this is not a viable transition path.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

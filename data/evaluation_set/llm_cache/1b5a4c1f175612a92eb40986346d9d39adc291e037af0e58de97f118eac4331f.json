@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices building commercial operations and transformation programs; experience with requirements, logic design, UAT, rollout, and process design\u2014primarily business operations and strategic program leadership, not empirical AI research or ML experimentation.",
+        "evidence_strength": "weak",
+        "job_requirement": "Contribute to exploratory experimental research on AI safety and run multi-agent reinforcement learning experiments"
+      },
+      {
+        "candidate_evidence": "No production software engineering background; Python basic and actively learning; experience is in strategy, operations, and transformation, not ML or research engineering.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have significant software, ML, or research engineering experience"
+      },
+      {
+        "candidate_evidence": "No empirical AI research, ML experimentation, or academic research project experience documented. Background is in business operations and commercial transformation at scale.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have some experience contributing to empirical AI research projects"
+      },
+      {
+        "candidate_evidence": "Python basic proficiency and actively learning; no demonstrated ability to design, build, or maintain ML research infrastructure, evaluation pipelines, or safety-testing codebases.",
+        "evidence_strength": "weak",
+        "job_requirement": "Conduct all interviews in Python; representative projects include writing scripts, tooling, and evaluation frameworks for LLM-safety testing"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Fundamental mismatch in role family: this is a deep ML/AI research-engineering role requiring significant software engineering, ML experimentation, and empirical AI safety research expertise. Candidate background is Strategy & Operations / Business Transformation with no AI research, ML, or research engineering credentials.",
+        "mitigation": "Not mitigable without substantial retraining in ML fundamentals, empirical research methodology, and software engineering. This is a career transition, not a fit optimization.",
+        "severity": "high"
+      },
+      {
+        "gap": "No empirical AI safety or alignment research experience. JD emphasizes AI Control, alignment stress-testing, model organisms of misalignment, and safety technique robustness\u2014all core research contributions. Candidate has zero documented background in these domains.",
+        "mitigation": "Not mitigable short of multi-year research training and hands-on AI safety project work.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python proficiency is basic and actively being learned; role requires fluency for interview coding, building evaluation scripts, safety testing frameworks, and contributing to shared research codebases. Candidate cannot credibly conduct the Python coding interviews required by the role.",
+        "mitigation": "Would require 6+ months of intensive Python and research engineering skill-building before candidacy.",
+        "severity": "high"
+      },
+      {
+        "gap": "No experience with reinforcement learning, Kubernetes clusters, complex shared codebases, or LLM-specific tooling. These are listed as strong-candidate qualifiers and necessary for day-one contribution.",
+        "mitigation": "Partial: collaborative learning on RL and tooling is possible, but Kubernetes and codebase complexity management require hands-on engineering experience candidate does not have.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role explicitly requires 'significant software, ML, or research engineering experience' and conducts 'all interviews in Python.' Candidate's background is exclusively Strategy & Operations / Business Transformation with basic Python proficiency and no ML or research engineering experience. This is a hard-science research role at Anthropic, not a business operations or program management role, and the core duties center on building, running, and contributing to ML safety experiments\u2014not business problem-solving or transformation program delivery.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a deep ML/AI research-engineering role requiring significant software engineering, ML experimentation, and empirical AI safety expertise. Candidate is a Strategy & Operations / Business Transformation leader with eight years at Google building commercial programs and processes\u2014a fundamentally different skill set. While the candidate demonstrates strong scope, ownership, and stakeholder management at the manager/senior-manager level, the role family fit is negligible (target: AI Research & Engineering; candidate: Strategy & Operations). Core gaps are non-mitigable: no empirical AI research, ML, or research engineering credentials; basic Python proficiency; and no experience with RL, safety testing, or research infrastructure. This is a career-level mismatch, not a skill gap. Recommend skip.",
+    "uncertainties": [
+      "Unclear whether candidate has any side projects, academic coursework, or informal AI safety research interests not captured in the profile.",
+      "Unclear whether the candidate's 'actively learning Python' indicates a structured, time-bound upskilling plan or general exploration.",
+      "No detail on depth of candidate's understanding of Anthropic's AI safety mission or whether prior research reading/engagement with the field exists."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; leadership scope suggests capability to mentor and lead projects",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrate leadership potential, including the ability and drive to lead a team, mentor colleagues, and autonomously manage initiatives"
+      },
+      {
+        "candidate_evidence": "Product operations and strategic programs background indicates cross-functional collaboration; transformation program leadership typically requires stakeholder management across teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborative mindset with a track record of building strong working relationships across functions"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Bachelor's degree in Computer Science, Information Technology, or related technical field\u2014JD states as core qualification; candidate profile provides no degree verification",
+        "mitigation": "Request official transcript or degree verification during hiring process; candidate may hold the required degree",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years in technical support or customer-facing engineering role; candidate background is strategy, operations, and product transformation rather than customer support engineering",
+        "mitigation": "Role is fundamentally a technical support function; strategy/ops background does not substitute for hands-on support troubleshooting at this seniority level",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep familiarity with operating systems (Linux, Unix, macOS, Windows) and modern networking concepts; no evidence in candidate profile",
+        "mitigation": "None credible; this is a core technical requirement for a Senior Technical Support Engineer role",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficient in scripting languages (Python or Bash); candidate has only basic Python knowledge and is actively learning",
+        "mitigation": "Insufficient proficiency for a senior support engineer troubleshooting distributed systems; would require significant ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience with cloud platforms (AWS, Azure, GCP), Kubernetes, and distributed systems troubleshooting; no evidence in candidate profile",
+        "mitigation": "These are core technical competencies for supporting cloud-native observability platform; candidate has no demonstrated hands-on depth",
+        "severity": "high"
+      },
+      {
+        "gap": "No customer support or customer-facing technical engineering experience; background is internal operations and product transformation",
+        "mitigation": "Role requires customer-first troubleshooting mindset and escalation management; ops/strategy experience does not transfer to this context",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Bachelor's degree in Computer Science, Information Technology, or a related technical field. 5+ years in a technical support or customer-facing engineering role. Proficient in scripting languages such as Python or Bash. Experience with cloud platforms like AWS, Azure, or Google Cloud Platform. Working knowledge of Kubernetes. Strong diagnostic and debugging skills across complex distributed systems.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is a hands-on technical support engineering role requiring deep cloud, OS, scripting, and distributed-systems troubleshooting expertise\u2014not a strategy, operations, or transformation leadership function. The candidate is a Strategy/Ops and Product Operations leader with eight years at Google in commercial transformation, fundamentally misaligned with a customer-facing technical support mission. Required qualifications (CS degree, 5+ support/engineering, Python/Bash proficiency, cloud/Kubernetes/distributed-systems depth) are absent or insufficient.",
+    "uncertainties": [
+      "Whether candidate holds a CS or related technical degree (not stated in profile)",
+      "Whether candidate has any hands-on cloud platform experience beyond product operations context",
+      "Whether candidate has any customer support or customer-escalation management experience"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

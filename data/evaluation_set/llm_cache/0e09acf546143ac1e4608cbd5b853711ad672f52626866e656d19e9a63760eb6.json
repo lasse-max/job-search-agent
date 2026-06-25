@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with transformation program leadership and scaling commercial operations; no computational modeling, behavioral science, or research background evident",
+        "evidence_strength": "weak",
+        "job_requirement": "Be a technical leader in computational modeling and behavior research"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation experience with cross-team coordination, but no simulation infrastructure, AI foundations, or technical modeling experience documented",
+        "evidence_strength": "weak",
+        "job_requirement": "Work closely with Simulation and AI Foundations teams to productionize behavioral metrics/models"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader managing global commercial operations and scaling programs, implying cross-functional collaboration; no evidence of scientific communication or academic conference publishing",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong collaboration and communication skills"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Doctoral degree in computational/mathematical modeling and cognitive/behavioral science\u2014required. Candidate has ~8 years ops/strategy background with no advanced degree in physics, mathematics, cognitive science, neuroscience, or psychology mentioned.",
+        "mitigation": "None without returning to school; this is a research scientist role, not a strategy or ops role.",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years of computational behavior modeling research with strong publication record. Candidate is a Strategy and Operations leader with no publications, no behavioral science research, and no modeling background.",
+        "mitigation": "Cannot be mitigated; research track record and domain expertise are core to the role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Strong coding and mathematical skills in service of computational modeling. Candidate notes Python is basic and actively learning; no advanced mathematics (linear algebra, differential equations, probability theory in behavioral modeling context) evident.",
+        "mitigation": "Training could help coding but cannot substitute for mathematical modeling experience or research methodology background.",
+        "severity": "high"
+      },
+      {
+        "gap": "Computational road user behavior modeling, active inference, or modern AI-based modeling (world models, learning paradigms). Candidate's experience is in commercial operations and transformation, not computational or behavioral science.",
+        "mitigation": "Not manageable without foundational retraining; this is a specialized research domain.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'A doctoral degree in a field that involves a combination of computational/mathematical modeling and cognitive science/ behavioral science' and 'At least 5 years of experience, and a strong publication record, in computational modeling of human and/or animal cognition and behavior.' The candidate's profile is Strategy and Operations (eight years at Google Devices) with no doctoral degree, no cognitive/behavioral science training, no computational modeling background, and no publication record. This is a research scientist role; the candidate is an operations and strategy leader.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "This is a fundamental role-family mismatch. The position is a Senior Safety Researcher requiring a doctoral degree in computational/behavioral science, 5+ years of research publication record in behavior modeling, and strong mathematical and coding skills applied to computational modeling. The candidate is a Strategy and Operations leader with eight years of commercial scaling and transformation experience but no research background, no advanced degree in a relevant science field, no publications, and basic-level Python knowledge. The role belongs to the research scientist / technical specialist family, not Strategy and Operations or Business Transformation. Advisory: Skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; demonstrated experience managing ambiguous, cross-functional transformation work",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to work at both strategic and tactical levels, with a proven track record to execute in ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership at Google with cross-company peers; track record of partnering across teams in global commercial operations contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience working cross-functionally"
+      },
+      {
+        "candidate_evidence": "Operations leadership background typically involves data-driven decision-making and analysis to optimize processes and drive business outcomes",
+        "evidence_strength": "medium",
+        "job_requirement": "Proficient quantitative skills and proven ability to interpret and apply data throughout your day-to-day work"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales and account management execution\u2014JD is fundamentally an account-management and sales-growth role (\"directly manage top-tier accounts to meet and exceed quarterly/annual sales goals,\" \"proven track record of being able to effectively work a leads pipeline or book of business,\" \"proven skillsets at delivering sales growth\"). Candidate background is Strategy and Operations / transformation, not quota-driven client management.",
+        "mitigation": "If the candidate has managed professional accounts or hosted optimization calls with stakeholders in previous roles, emphasize structured account-management experience. However, quota and pipeline management are core to this role and require applied sales discipline, not just strategic account awareness.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hospitality and travel industry domain knowledge. JD lists \"2+ years of hospitality/travel industry experience is a plus,\" and the role requires deep knowledge of \"assigned geographic markets\" and local host/supplier dynamics. Candidate background is in consumer hardware and services, not hospitality.",
+        "mitigation": "Domain can be learned on the job, especially if the candidate demonstrates strong market research, stakeholder engagement, and commercial acumen. Airbnb's onboarding and support systems can close this gap in the first 6 months.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Salesforce and CRM proficiency. JD requires \"highly proficient in using CRM software, specifically in working with leads, opportunities, and other core objects\u2014Salesforce experience is a plus.\" No evidence of Salesforce or CRM system expertise in candidate profile.",
+        "mitigation": "Salesforce and CRM fundamentals are trainable for a strategic operator. Candidate's quantitative and analytical background suggests quick ramp-up on system mechanics.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Travel market representation and host relationship management at scale. JD requires representing Airbnb externally at industry conferences and building long-lasting partnerships with hundreds of professional hosts. Candidate's transformation and operations background does not evidence deep experience managing large, diverse external stakeholder bases or host/supplier relationship building.",
+        "mitigation": "Stakeholder-management skills from transformation programs may transfer if the candidate has directly managed partner relationships or community engagement. However, the scale (hundreds of accounts) and hospitality-specific relationship dynamics are specialized.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 28,
+    "scope_seniority": 62,
+    "summary": "This is a quota-carrying account management and sales-growth role in hospitality, positioned in Sales & Partnerships. The candidate is a Strategy and Operations / transformation leader with no evidence of quota-driven sales execution, hospitality domain expertise, or professional-host account management at scale. While scope_seniority (L4 equivalent) and cross-functional working align, the core function\u2014building and managing a pipeline of hundreds of professional hosts to meet quarterly sales targets\u2014is outside the candidate's primary expertise. Recommend skip.",
+    "uncertainties": [
+      "Unclear whether candidate has managed large external stakeholder bases (e.g., hundreds of professional accounts or suppliers) in transformation work; if so, would strengthen gap_manageability",
+      "No detail on candidate's sales acumen, quota familiarity, or pipeline management from ops/transformation background\u2014critical for this role",
+      "Unclear if candidate has any travel, hospitality, or marketplace experience; none mentioned in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

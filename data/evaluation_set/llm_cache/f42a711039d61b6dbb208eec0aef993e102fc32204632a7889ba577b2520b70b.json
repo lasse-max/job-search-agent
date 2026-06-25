@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; direct alignment with RevOps and strategy scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue Operations & Strategy Lead title and function"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with experience in transformation programs and global commercial operations scaling",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic program leadership and cross-functional stakeholder management (inferred from Lead title)"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions at Google suggests manager or senior manager scope; primary family fit is Revenue Operations at appropriate seniority",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue Operations function at appropriate seniority (L4-L5 equivalent)"
+      }
+    ],
+    "confidence": 0.4,
+    "evidence_strength": 35,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "JD explicitly flags forecasting and compensation-modeling as heavy components; candidate background emphasizes commercial operations, transformation, and strategic programs but does not detail forecasting or comp-modeling experience",
+        "mitigation": "Forecasting and comp-modeling are learnable technical skills; if candidate has analytical foundation and stakeholder management in a commercial/revenue context, ramp can be managed with onboarding and domain expertise from team",
+        "severity": "medium"
+      },
+      {
+        "gap": "Location is Sydney; candidate location not specified in profile",
+        "mitigation": "Profile notes 'free-visa Sydney is the upside'\u2014if candidate is visa-eligible or willing to relocate, gap is resolved; confirm visa/relocation feasibility before final offer",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD snapshot is incomplete (fetch_failed: TooManyRedirects); critical details on required compensation knowledge, forecasting depth, systems expertise (Salesforce, Tableau, etc.), and revenue-cycle scope are unknown",
+        "mitigation": "Obtain full, current JD to map candidate's forecasting, analytics, and revenue-systems experience against explicit requirements. Low confidence reflects incomplete job context.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 65,
+    "scope_seniority": 70,
+    "summary": "Revenue Operations is a target fit, and candidate's eight-year Google tenure with strategy and operations leadership suggests L4-L5 scope. However, the JD snapshot is incomplete (fetch failed), and context flags forecasting and compensation-modeling as heavy\u2014areas not detailed in candidate evidence. Confidence is low; obtain full JD and probe forecasting/comp-modeling depth before proceeding.",
+    "uncertainties": [
+      "Full JD text unavailable; critical scope details on forecasting depth, compensation-modeling expectations, and required systems knowledge (Salesforce, Tableau, analytics platforms) are missing",
+      "Candidate location and visa status not specified; Sydney location fit is uncertain",
+      "Extent of candidate's forecasting and compensation-modeling experience not described in profile",
+      "Specific revenue-cycle and GTM ownership scope at Google not detailed; cannot confirm L4-L5 equivalent seniority with precision"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

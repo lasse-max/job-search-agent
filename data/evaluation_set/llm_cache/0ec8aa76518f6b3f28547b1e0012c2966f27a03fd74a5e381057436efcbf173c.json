@@ -1,0 +1,44 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight-year Google career with documented execution capability, requirements design, UAT, rollout, and transformation leadership; bilingual (English professional/fluent, German native)",
+        "evidence_strength": "medium",
+        "job_requirement": "Build systems and own features from idea to release with clear written and spoken English communication"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Role is a production software engineering position requiring 3\u20134 years building backend/full-stack applications with 2+ years commercial Kotlin experience; candidate has no production software-engineering background and only basic Python knowledge actively being learned",
+        "mitigation": "Candidate is a strategy-operations leader, not a software engineer. No credible mitigation for core engineering skill gap at this level.",
+        "severity": "high"
+      },
+      {
+        "gap": "Full-stack engineering responsibilities (design, shipping features, writing clean tested code, database work, CI/CD, automated testing) are outside strategy-operations and transformation domains",
+        "mitigation": "None. Core role responsibilities do not align with candidate's professional background.",
+        "severity": "high"
+      },
+      {
+        "gap": "No Kotlin, Spring Boot, TypeScript, React.js, or relational database engineering experience; candidate's product experience is from ownership, requirements, and process design rather than native engineering product management",
+        "mitigation": "Learning from zero would require 6\u201312 months of foundational training before productive contribution. Not a realistic onboarding path for a role responsible for payment systems at scale.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Build the systems that move money fast, safely, and at scale... Write clean, tested, production-ready code... Own features from idea to release.' This is production software engineering. Candidate has no production software-engineering background, no Kotlin, no backend framework experience, and no relational database engineering work. The JD explicitly requires '3\u20134 years of experience building backend or full-stack web applications, including at least 2 years working with Kotlin in a commercial setup' \u2014 a hard minimum qualification that candidate does not meet and cannot acquire through the stretch mandate.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 5,
+    "scope_seniority": 20,
+    "summary": "This is a production software engineering role (Full-stack Kotlin engineer on a payments team) that explicitly requires 3\u20134 years of backend/full-stack development with 2+ years commercial Kotlin experience. The candidate is a Strategy and Operations / Product Operations leader with no software-engineering background, no production coding experience, and only basic Python knowledge. The role is fundamentally misaligned with the candidate's professional family and disqualifies for the seniority ceiling reasons and hard production-engineering requirement.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

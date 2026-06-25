@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and driving transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "AI Process Transformation Lead role in Strategy & Operations focused on transformation and process change"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in commercial operations scaling and transformation program leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Process transformation and operational scaling responsibilities"
+      },
+      {
+        "candidate_evidence": "Strategic Programs / Program Leadership positioning with experience managing complex transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management and program leadership"
+      },
+      {
+        "candidate_evidence": "Product operations and strategy background combining requirements logic, UAT, rollout, and transformation execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Business problem-solving and process design in operations context"
+      }
+    ],
+    "confidence": 0.55,
+    "evidence_strength": 45,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "JD snapshot is heavily corrupted; actual role scope, AI/automation focus, seniority level, and specific accountabilities cannot be determined from provided text",
+        "mitigation": "Request clean JD from source. Current evaluation based on title and department metadata alone; final assessment requires full scope clarity",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated AI or automation domain expertise or transformation background in candidate profile",
+        "mitigation": "Clarify whether role requires deep AI/ML technical expertise or business-driven process automation framing; candidate excels at latter if required",
+        "severity": "medium"
+      },
+      {
+        "gap": "Candidate's transformation experience is product-operations-rooted; Munich-based automotive transformation context is new domain",
+        "mitigation": "Assess transferability of transformation methodology and stakeholder management skills; no auto industry required, but domain learning curve should be factored",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 78,
+    "scope_seniority": 72,
+    "summary": "Strong role-family alignment: AI Process Transformation Lead sits in Strategy & Operations, matching candidate's transformation, operations scaling, and program leadership background at Google. Critical blocker: provided JD is corrupted and unintelligible; full scope, seniority, and AI/automation requirements cannot be assessed. Recommend fetching clean JD before proceeding. If role emphasizes business-driven process transformation and stakeholder execution over ML/AI engineering, candidate is well-positioned; if heavy AI/technical depth is required, gap is material.",
+    "uncertainties": [
+      "JD text is corrupted (appears to be cookie consent code injection); actual role scope, title accuracy, seniority, and AI requirements unknown",
+      "Whether 'AI' in title denotes AI engineering/ML depth requirement or business AI transformation/automation process redesign",
+      "Whether automotive industry domain experience is required or transferability from Google Devices is sufficient",
+      "Candidate's Python learning stage and no production software engineering background\u2014impact depends on JD's technical vs. strategic emphasis"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

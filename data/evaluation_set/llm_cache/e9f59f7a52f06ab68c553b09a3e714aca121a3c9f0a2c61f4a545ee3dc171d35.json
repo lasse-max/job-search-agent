@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs; experience with requirements, logic design, UAT, rollout, and cross-functional stakeholder orchestration",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead post-technical win technical account strategy and execution plan; be the accountable technical leader for use cases and customers across multiple stakeholders"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background with responsibility for requirements definition, logic design, and execution planning; experience managing complex programs and rollouts",
+        "evidence_strength": "medium",
+        "job_requirement": "Create, own and execute point-of-view on how key use cases can be accelerated into production; conduct discovery workshops and create strategic roadmaps"
+      },
+      {
+        "candidate_evidence": "Global operations scaling at Google with cross-functional stakeholder management and executive-level engagement; limited direct consulting brand and case-team experience per candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience in customer-facing pre-sales, technical architecture, customer success, or consulting role; resolving complex escalations with senior customer executives"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and commercial operations scaling with multi-stakeholder coordination; product experience from ownership and rollout rather than native program management",
+        "evidence_strength": "medium",
+        "job_requirement": "Technical program and project management including account, stakeholder and resource management accountability"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 45,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No production software engineering or deep technical platform expertise; Python basic and actively learning; role requires contributing to technical debate and design choices with customers on Spark, data platforms, and distributed systems",
+        "mitigation": "Candidate has eight years of technical product operations and transformation leadership; could rapidly acquire platform-specific knowledge through onboarding, but starting from significant technical credibility gap vs. role's expectation to 'contribute to technical debate.' May struggle in technical design discussions with sophisticated data engineering customers.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited consulting experience and classic case-team background; JD emphasizes customer-facing pre-sales, technical architecture consultation, and business analysis\u2014hallmarks of consulting or solution architecture roles",
+        "mitigation": "Candidate's BizOps background includes stakeholder discovery and roadmap creation; with structured consulting onboarding, could transition, but lacks the proven consulting problem-solving track record the role appears designed for.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated quota attainment or OTE-carrying revenue accountability; JD calls for 'track record of overachievement against quota, goals or similar objective targets'",
+        "mitigation": "Candidate has transformation and operational delivery metrics; could interpret growth/adoption targets analogously, but not direct revenue/quota accountability in traditional sales or CSM sense.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience with Databricks, Spark, or distributed data platforms; role requires immediate technical fluency on core product to engage customers",
+        "mitigation": "Candidate demonstrates strong learning capability and technical operations background; platform-specific ramp could be 3\u20136 months depending on intensity of onboarding and mentorship.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 60,
+    "summary": "Databricks DSA is a hybrid customer-facing technical and commercial role requiring strong technical platform expertise (Spark, distributed systems, Python) and consulting/pre-sales experience. Candidate has solid BizOps and transformation program leadership at Google with cross-functional stakeholder management, but lacks consulting background, deep technical platform knowledge, and proven quota/sales accountability. Role requires immediate technical credibility with customers; candidate's basic Python and product-operations-via-ownership background create significant gaps in the technical-lead aspect of the role. While scope seniority aligns (manager-level complexity), role-family fit is weak: this is a customer-facing technical delivery and pre-sales function, not strategy/operations or product operations as traditionally understood.",
+    "uncertainties": [
+      "Degree verification: JD lists 'Bachelor's degree in Computer Science, Information Systems, Engineering, or equivalent experience through work experience'\u2014candidate profile does not specify degree; unclear if this is met or waived by work equivalency.",
+      "Depth of technical product operations: unclear whether candidate's 'logic design' and 'UAT' experience includes hands-on technical system design or was more business/requirements-focused.",
+      "Consulting readiness: profile notes 'limited direct consulting brand'; unclear whether candidate has conducted discovery workshops, developed strategic roadmaps for external customers, or primarily internal stakeholders.",
+      "Spark/platform knowledge: no mention of any data platform, distributed systems, or Spark exposure; unclear if candidate has adjacent technical foundation that would accelerate learning."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

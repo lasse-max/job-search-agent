@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations, including pricing and revenue strategy work as part of broader product operations and transformation leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Commercial Steering: support pricing, revenue management, sales, and marketing levers to achieve targets"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation background with responsibility for requirements, logic design, UAT, rollout, and measurable execution; skilled in analytics and data-driven decision-making",
+        "evidence_strength": "strong",
+        "job_requirement": "Performance & Insights: track demand, competition, and KPIs; deliver clear, data-driven recommendations"
+      },
+      {
+        "candidate_evidence": "Eight years scaling operations across global teams with demonstrated stakeholder management across multiple functional areas",
+        "evidence_strength": "strong",
+        "job_requirement": "Cross-Functional Collaboration: align with Revenue Management, Marketing, Sales, Network Planning, and Product teams"
+      },
+      {
+        "candidate_evidence": "Product Operations background requires strong analytics and BI tool proficiency; SQL experience noted as potentially useful but not deeply detailed",
+        "evidence_strength": "medium",
+        "job_requirement": "Advanced Excel skills; experience with Power BI or similar tools"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 68,
+    "gap_manageability": 70,
+    "gaps": [
+      {
+        "gap": "Domain expertise in Transportation/Mobility/Hospitality sectors: candidate background is consumer technology (Google Devices) rather than travel, mobility, or pricing-focused commercial roles",
+        "mitigation": "Commercial and operational principles transfer across sectors; candidate has proven ability to master multi-stakeholder revenue and commercial strategy in a complex organization. Market-specific knowledge can be built on-the-job.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Dedicated Revenue Management or Pricing specialization: role emphasizes 2+ years in Revenue Management/Pricing; candidate's expertise is broader Product Operations and transformation leadership rather than core pricing mechanics",
+        "mitigation": "Candidate's analytical and operational foundation is strong; pricing and revenue steering are subsets of broader commercial strategy work candidate has executed at scale. Hands-on pricing depth would develop rapidly.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Scope level clarity: title 'Commercial Market Manager/Specialist' suggests IC or junior manager scope; candidate is positioned as senior IC/manager-track after two promotions at a tier-1 company, risking over-leveling or misalignment on day-to-day tactical execution expectations",
+        "mitigation": "Clarify during interview whether role expects primarily individual-contributor analytics and execution or broader strategic/operational leadership. If latter, candidate seniority aligns well; if former, may be over-qualified or frustrated.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 65,
+    "summary": "Candidate brings eight years of strategy and operations leadership at Google with strong cross-functional collaboration, commercial acumen, and analytical execution\u2014core fit for Pricing & Yield Management. Key gaps are domain expertise (consumer tech vs. travel/mobility) and specialized revenue management depth; both are manageable given candidate's proven ability to master complex commercial environments. Scope alignment requires clarification to ensure role expectations match candidate's seniority level.",
+    "uncertainties": [
+      "Depth of hands-on Excel/SQL/BI tool proficiency not explicitly detailed; strong hypothesis based on Product Operations background, but level of advanced technical analytics not confirmed",
+      "Specific familiarity with pricing mechanics, yield optimization, or demand forecasting models in a commercial/revenue context not evident from positioning",
+      "Whether role is primarily IC execution (market briefings, analytics, reporting) or strategy-leadership level; title ambiguity ('Specialist' vs. 'Manager') creates seniority match uncertainty",
+      "Candidate's interest in or openness to travel/mobility sector after consumer tech tenure at Google\u2014sector transition motivation not documented"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

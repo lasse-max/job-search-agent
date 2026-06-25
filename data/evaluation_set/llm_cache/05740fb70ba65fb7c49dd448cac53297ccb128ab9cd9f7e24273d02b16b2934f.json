@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions scaling global commercial operations and executing transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Deployment Strategist role focused on professional services operations transformation and scaling delivery"
+      },
+      {
+        "candidate_evidence": "Demonstrated scope in transformation program leadership, scaling operations globally, and managing stakeholder alignment across business units",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic stakeholder engagement, program leadership, and cross-functional execution in Professional Services context"
+      },
+      {
+        "candidate_evidence": "Product Operations background with ownership over requirements, logic design, UAT, rollout, and business transformation execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Business problem-solving, process design, and operational execution"
+      },
+      {
+        "candidate_evidence": "Positioning as Strategy and Operations / Product Operations leader with seniority ceiling at L4-L5 (Manager, Senior Manager, Lead)",
+        "evidence_strength": "strong",
+        "job_requirement": "Candidate positioned for Strategy and Operations or Product Operations roles at manager/lead level"
+      }
+    ],
+    "confidence": 0.65,
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "JD snapshot is incomplete / truncated HTML; detailed role scope, specific technical or domain requirements not clearly stated",
+        "mitigation": "Request full, clean JD text. Confidence remains moderate pending full requirements clarity.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit consulting, implementation, or professional services delivery experience mentioned; Databricks role may expect direct PS or customer deployment leadership",
+        "mitigation": "Highlight transformation and rollout execution, cross-functional stakeholder management, and process design capability as translatable to PS delivery context.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct Databricks, data platform, or analytics domain knowledge",
+        "mitigation": "Domain onboarding is standard for strategy and operations hires; core capability (business operations, transformation, execution) transfers readily.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 92,
+    "scope_seniority": 75,
+    "summary": "Candidate is a strong fit for an implementation-heavy, forward-deployed strategy role in Professional Services at Databricks. Eight years of transformation and operations scaling at a tier-1 tech company, with demonstrated ability to lead cross-functional programs, design processes, and execute at global scale, directly align with Deployment Strategist scope. JD is incomplete (truncated HTML), limiting confidence in full requirement match; gaps in direct PS delivery experience and domain knowledge are manageable for a strategy and operations leader at this seniority level.",
+    "uncertainties": [
+      "JD snapshot is heavily truncated HTML / includes page styling debris; specific responsibilities, required qualifications, and success metrics are not legible",
+      "Unknown whether role requires hands-on technical delivery (coding, configuration, tool-building) versus pure strategy, program, and stakeholder leadership",
+      "Unknown if Databricks expects prior data platform, Spark, or analytics domain experience versus general operations leadership",
+      "Unknown reporting line, team size, and strategic scope (e.g., global PS transformation vs. individual project delivery)"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

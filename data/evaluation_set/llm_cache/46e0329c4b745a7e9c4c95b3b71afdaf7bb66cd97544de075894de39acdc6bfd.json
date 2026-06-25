@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations with multiple promotions, indicating demonstrated cross-functional stakeholder management and team collaboration at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong communication and collaboration skills, with ability to work effectively across cross-functional teams"
+      },
+      {
+        "candidate_evidence": "Background in global operations at a large fintech-aligned organization with transformation programs; however, direct IAM/security compliance experience not documented",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience operating within regulated environments (e.g., Finance, Banking, Insurance), ensuring compliance with standards and frameworks"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 8,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "Hands-on Okta, Okta Identity Engine, Okta Org-to-Org, Okta Workflows, and Okta Device Access experience \u2013 core technical requirement",
+        "mitigation": "Candidate has no documented IAM or Okta platform experience; this is a specialized technical domain that would require significant ramp-up and formal training",
+        "severity": "high"
+      },
+      {
+        "gap": "Strong background integrating identity applications using SAML, OIDC/OAuth, SCIM protocols and cloud IAM (AWS IAM, GCP IAM)",
+        "mitigation": "No evidence of identity platform integration, SSO protocol experience, or cloud identity and access management technical work in candidate profile",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficiency in scripting and automation with Node.js, Python, or PowerShell; config-as-code and policy-as-code (Terraform, CI/CD)",
+        "mitigation": "Candidate has basic Python (actively learning) but no demonstrated production scripting, automation engineering, infrastructure-as-code, or CI/CD pipeline expertise",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep IAM, security operations, and incident response expertise \u2013 role requires proactive threat monitoring, forensic investigation, and security control design",
+        "mitigation": "Candidate background is strategy and operations; no security operations, InfoSec, or incident response experience documented",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD explicitly requires 'Hands-on experience with Okta, including Okta Identity Engine, Okta Org-to-Org, Okta Workflows, and Okta Device Access' and 'Strong background in integrating identity applications using protocols such as SAML, OIDC/OAuth, and SCIM.' Candidate has no documented IAM, identity platform, or protocol integration experience. This is a specialized technical engineering role requiring production-level IAM expertise, not a strategy or operations leadership function.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "This is a Senior Engineer, Workplace Technology (Okta) role \u2013 a specialized infrastructure and security engineering position requiring hands-on IAM expertise (Okta, SAML/OIDC/OAuth, cloud IAM), scripting/automation (Python, PowerShell, Terraform), and security operations depth. The candidate is a Strategy and Operations / Product Operations leader with transformation experience at Google, not an IAM engineer or infrastructure specialist. The function, domain, and technical skill set are fundamentally misaligned with the candidate's career track.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

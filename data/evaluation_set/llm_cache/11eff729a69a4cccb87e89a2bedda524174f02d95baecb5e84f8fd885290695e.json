@@ -1,0 +1,55 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years scaling global commercial operations at Google Devices and Services, including transformation programs and cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "GTM Operations role (inferred responsibility: support commercial/GTM function)"
+      },
+      {
+        "candidate_evidence": "Product operations experience with UAT, rollout, and requirements logic design; transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations and process execution (inferred)"
+      }
+    ],
+    "confidence": 0.25,
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Title is 'Associate'\u2014significantly below candidate's L4\u2013L5 seniority and eight years of managerial scope. Candidate has owned commercial operations at global scale; this role appears to be individual-contributor associate-level.",
+        "mitigation": "Candidate should pursue manager-level or senior operations roles. Verify actual scope and decision rights of the role before deprioritizing.",
+        "severity": "high"
+      },
+      {
+        "gap": "JD is incomplete (cached snapshot is malformed HTML/JavaScript). No explicit requirements, responsibilities, or scope details provided. Cannot assess fit to specific GTM operations mandate, stakeholder scope, or strategic vs. tactical balance.",
+        "mitigation": "Fetch complete JD directly from source URL or request full role description before final evaluation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of GTM or sales operations domain depth. Candidate's commercial operations experience at Google likely spans broader strategy and business operations, not narrowly GTM execution or sales ops methodology.",
+        "mitigation": "If role is tactical sales-ops or GTM execution focused, candidate may lack domain credibility despite ops background. If role has strategy/transformation elements, fit improves significantly.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No mention of APAC market, Singapore operations, or regional go-to-market experience. Google Devices global scope does not confirm localized GTM execution capability.",
+        "mitigation": "Candidate likely adaptable; geographic gap is less critical than seniority/scope mismatch and JD clarity.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 15,
+    "summary": "Associate-level GTM Operations role at a tier-2 AI company in Singapore. Candidate is L4\u2013L5 Strategy & Operations leader with ~8 years at Google; title mismatch alone suggests significant over-qualification. JD is corrupted (malformed HTML/JS snapshot) and contains no substantive role description, requirements, or scope details. Cannot fairly assess fit without complete JD. Advisory: skip pending JD refresh and confirmation of actual role level and GTM operations mandate.",
+    "uncertainties": [
+      "JD is incomplete (cached snapshot is HTML/JavaScript boilerplate, not role description). Actual responsibilities, scope, decision rights, and GTM operations mandate are unknown.",
+      "Candidate's 'commercial operations' scope at Google Devices is not fully detailed\u2014unclear whether this is broad strategy/ops (strong fit for GTM) or narrower ops execution (potential over-qualification).",
+      "Associate title does not reveal whether this is truly entry-level or a company-specific leveling quirk. Verification needed.",
+      "No clarity on whether role is strategic/transformational GTM (stretch-family eligible) or tactical sales-ops execution (lower-priority deprioritize bucket).",
+      "Candidate's GTM/sales operations domain depth unknown; may lack credibility in sales ops methodology even if operations background is strong."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

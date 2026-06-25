@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years in global commercial operations and transformation programs with cross-functional leadership across engineering, product, and operational teams at Google Devices and Services",
+        "evidence_strength": "medium",
+        "job_requirement": "End-to-end ownership of nutrition across product, operations, and compliance"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with track record scaling commercial operations; profile emphasizes transformation program execution and cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Work in a small, fast-moving team with entrepreneurial ownership of new opportunities"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "Required Registered Dietitian certification/license with 3+ years practicing as a dietitian\u2014candidate has no clinical nutrition, dietetics training, or professional dietitian credentials",
+        "mitigation": "None feasible without pursuing formal dietitian registration (typically 2\u20134 years of study and supervised practice). This is a disqualifying hard requirement.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep domain knowledge in nutrition science, dietary lifestyles (GLP-1, ketogenic, low-carb, vegan), pan-European dietary regulations, and food labeling compliance\u2014candidate background is in tech operations, not nutrition or food science",
+        "mitigation": "Transferable skills in product standards and cross-functional coordination exist, but the nutritional expertise and regulatory knowledge specific to food and dietetics cannot be acquired on the job.",
+        "severity": "high"
+      },
+      {
+        "gap": "Client-facing role requiring trust-building, coaching, and guidance as central duties\u2014candidate's background emphasizes operational transformation and program leadership rather than direct clinical or nutrition counseling",
+        "mitigation": "Stakeholder management and communication skills from ops background may apply, but the clinical and dietary guidance expertise required is fundamentally different.",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience in recipe development or new product development with culinary/food industry context\u2014candidate has product ownership experience in tech (requirements, UAT, rollout) but not in food, culinary, or ingredient formulation",
+        "mitigation": "Product development process skills could transfer, but food-product-specific domain knowledge is absent and essential to the role.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: '3+ years practising as a Registered Dietitian, with an active certification/licence in the EU.' Candidate has no registered dietitian credential, clinical nutrition training, or food-science background. This is a mandatory professional qualification, not a preference or nice-to-have.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "This is a specialist food and nutrition role requiring a Registered Dietitian (RD) license, clinical nutrition expertise, and domain knowledge in food science, dietary regulations, and recipe formulation\u2014none of which the candidate possesses. While the candidate brings strong cross-functional leadership, program management, and operational transformation experience from eight years in tech (Strategy and Operations at Google), the role is fundamentally a clinical and domain-expert position, not a strategy or operations role. The JD's core accountabilities\u2014nutritional database integrity, recipe approval, running a dietitian consultation program, and leading nutrition content\u2014all depend on professional dietitian credentials and food-science expertise that cannot be substituted by ops or strategy skills. This is a mismatch on both role family and core requirements.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs, including requirements design, logic design, and rollout execution across global product suites",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and design pricing strategy and frameworks covering the whole product suite by utilising different pricing methodologies"
+      },
+      {
+        "candidate_evidence": "Background in Business Operations and Strategy with analytical rigor; experience with data-driven decision-making and transformation programs suggests capability to manage benchmarking and data analysis, though specific pricing or financial modeling depth is unclear",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyse internal and external data and maintain up to date pricing benchmarks, using this data to enhance our pricing philosophy and strategy"
+      },
+      {
+        "candidate_evidence": "Global commercial operations experience at Google Devices and Services with cross-region transformation scope aligns with multi-region strategy definition; market research and competitive analysis capability inferred from strategic operations background",
+        "evidence_strength": "medium",
+        "job_requirement": "Be instrumental in defining pricing strategy across different regions, and perform market research and competitor analysis"
+      },
+      {
+        "candidate_evidence": "Strategic operations leader with eight years at Google across two promotions; experience working with Product, Finance, Commercial teams on transformation programs demonstrates stakeholder management and executive communication capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Prepare and present the pricing proposals to key individuals across the organisation"
+      },
+      {
+        "candidate_evidence": "Eight years in transformation programs with cross-functional collaboration across commercial and operations teams; experience designing and rolling out global strategies indicates ability to work collaboratively on collateral and go-to-market enablement",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with the commercial and marketing department to create all the vital pricing collateral"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy leader positioned as capable of ownership and execution within transformation contexts; language of positioning emphasizes scaling operations and program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "A self-starter capable of building strong collaborative working relationships with business partners"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 65,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No direct pricing strategy or pricing project experience in payment processors, schemes, or card issuing banks; background is general commercial operations and transformation, not pricing-specialized",
+        "mitigation": "Pricing strategy methodologies (cost-plus, value-based) are learnable frameworks; candidate's analytical rigor and cross-functional strategy experience provide foundation. Domain-specific (payments, schemes) knowledge can be acquired on the job.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of financial modeling, profitability analysis, or product-cost accounting experience; role requires analysing product costs and future profitability based on strategy",
+        "mitigation": "Operations background suggests familiarity with P&L logic and financial trade-offs; financial modeling skills can be developed through on-the-job training and collaboration with Finance partners.",
+        "severity": "medium"
+      },
+      {
+        "gap": "SQL and BI tools experience not mentioned in candidate profile; JD lists this as a plus, but pricing benchmarking and analysis typically benefit from direct query and visualization capability",
+        "mitigation": "Listed as a plus, not required. Candidate can work with analytics partners or upskill quickly if needed; strategic framing does not require deep SQL.",
+        "severity": "low"
+      },
+      {
+        "gap": "No explicit payments or fintech domain experience; role sits within a payments platform (Checkout.com) and requires understanding of processor, scheme, and issuing bank dynamics",
+        "mitigation": "Payments fundamentals (schemes, processor models, issuing banks) are teachable; candidate's global commercial operations experience and ability to learn complex business models provide a foundation for rapid domain onboarding.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 68,
+    "summary": "Eight-year Google commercial operations leader with global transformation and cross-functional strategy experience aligns moderately with the Strategic Pricing role's operational rigor, stakeholder management, and strategy-design demands. However, lack of direct pricing strategy or payments domain experience, combined with unclear financial modeling and analytics depth, creates moderate execution risk. Role is appropriate seniority and function (Strategy/Operations stretch into pricing strategy) but domain and pricing specialization gaps require managed onboarding.",
+    "uncertainties": [
+      "Depth of financial modeling, P&L analysis, and product-cost accounting experience not detailed in candidate profile; critical to pricing strategy execution",
+      "Specific scope and autonomy level of 'global commercial operations' at Google Devices not fully specified; may span pricing or may be pure go-to-market operations",
+      "No indication of familiarity with payment processor, scheme, or card issuing bank business models and dynamics",
+      "Analytics and SQL/BI tool capability not mentioned; level of hands-on data work expected vs. strategic oversight role unclear from JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Google Operations experience with commercial scaling, process optimization, and analytical work; German language fluency benefits European market understanding",
+        "evidence_strength": "medium",
+        "job_requirement": "Conduct detailed spend analysis and benchmarking, evaluate market conditions, and create data-based category strategies"
+      },
+      {
+        "candidate_evidence": "Google scale background with demonstrated stakeholder management across global teams and transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead stakeholder management and serve as central point of contact for cross-functional operations partners"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and strategic operations experience suggests project governance and change capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrated change management and project management knowledge"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 32,
+    "gaps": [
+      {
+        "gap": "No direct procurement, category management, or strategic sourcing background; candidate's experience is in operations scaling and transformation, not supplier/vendor management or spend analysis in procurement context",
+        "mitigation": "Analytical foundation and stakeholder management could transfer, but 7-year procurement minimum is a hard floor and candidate lacks it entirely",
+        "severity": "high"
+      },
+      {
+        "gap": "No CapEx, Material Handling Equipment, Utilities, MRO, or Facilities Management category experience; JD requires hands-on experience in at least some of these specific categories",
+        "mitigation": "Candidate would require substantial domain ramp-up in indirect procurement categories and supply-chain specifics",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited European market sourcing and procurement experience; JD states 'Experience within European markets is a key requirement' and focus on benchmarking european markets",
+        "mitigation": "German fluency and potential EU familiarity help, but no documented procurement activity in European supply chains",
+        "severity": "high"
+      },
+      {
+        "gap": "No proven track record in supplier portfolio development, vendor relationship management at senior/C-level, or procurement negotiation",
+        "mitigation": "Stakeholder management skills exist but in a different domain; procurement vendor relationships are a distinct discipline",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 28,
+    "scope_seniority": 62,
+    "summary": "This is a specialist procurement role (Sr. Category Manager, Indirect Procurement) requiring 7+ years of hands-on category management, strategic sourcing, supplier portfolio oversight, and European market procurement experience. The candidate is a Strategy and Operations leader from Google with scaling and transformation expertise, but has no procurement background, no hands-on category or supplier management experience, and no documented European sourcing work. While analytical and stakeholder skills partially align, the role requires deep procurement domain expertise and specific category exposure that the candidate does not possess. This is a functional mismatch, not a stretch.",
+    "uncertainties": [
+      "Whether candidate's 'operations' experience included any vendor management, cost negotiations, or supply-chain engagement beyond internal process design",
+      "Depth of candidate's analytical work on spend and benchmarking vs. higher-level strategic program ownership",
+      "Whether any Google Devices/Services work touched procurement, logistics, or supply-chain optimization decisions"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

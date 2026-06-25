@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google managing cross-functional stakeholder communication and transformation programs, with professional fluency in English and native German",
+        "evidence_strength": "medium",
+        "job_requirement": "Handle all incoming and outgoing communications (email, Slack, calls) with clarity, confidentiality, and strong judgment"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with experience scaling global operations and managing strategic programs in a fast-moving environment",
+        "evidence_strength": "medium",
+        "job_requirement": "Comfortable managing shifting priorities and multiple time zones in a fast-paced, high-ambiguity environment"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No demonstrated Executive Assistant experience supporting C-level leaders; background is strategy and operations leadership, not executive support",
+        "mitigation": "Candidate has operated in high-ambiguity cross-functional environments and managed leadership coordination, but would require significant role reorientation from strategic decision-making to tactical executive support",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of calendar management, travel coordination, or administrative operations at scale",
+        "mitigation": "Role requires mastery of operational logistics and scheduling; candidate's experience is in business strategy and transformation, not administrative operations",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated proficiency in Google Suite, Microsoft Office, or productivity/CRM tools mentioned in JD",
+        "mitigation": "Tools are learnable, but not evidenced in candidate profile",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role family is administrative support; candidate positioned in Strategy and Operations leadership, not operations support functions",
+        "mitigation": "This represents a fundamental mismatch in career direction and scope seniority downward",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "This is an Executive Assistant role\u2014administrative support for a C-level leader requiring calendar management, travel coordination, and operational logistics at a startup. The candidate is a Strategy and Operations leader with eight years at Google and transformation program experience. The function family (executive support / administrative coordination) is entirely outside the target families, and the scope is a substantial step backward from strategic leadership. No evidence of EA experience, calendar/travel management, or administrative operations tooling. Recommend skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

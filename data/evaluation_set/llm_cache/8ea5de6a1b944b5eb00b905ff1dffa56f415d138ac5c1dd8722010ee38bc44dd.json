@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in strategy and operations roles; demonstrated ability to lead cross-functional transformation programs and scale global commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead complex matrix teams and executive stakeholder alignment; mentor and uplevel junior buyers and regional teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background typically involves quantitative analysis, business case development, and data-driven decision-making at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Data-driven mindset; ability to synthesize complex macro-data into strategic roadmaps and business cases"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership experience; however, no direct evidence of procurement, supply chain, or sourcing strategy execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Design and execute multi-year category strategies and transforming supply chains"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No procurement, sourcing, or category management background. JD requires 6\u20138+ years of strategic procurement or sourcing experience, specifically in fresh produce, agriculture, or perishable food categories.",
+        "mitigation": "Would require 12\u201318 months of steep domain ramp-up in agricultural supply chains, cold-chain logistics, agronomic risk, and produce sourcing dynamics. Candidate's operations and transformation background could accelerate some elements (negotiation, matrix leadership, strategic design), but core category and agricultural expertise is absent.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct experience with fresh produce, agriculture, or perishable food supply chains. JD emphasizes deep, systemic understanding of global agricultural supply chains, cold-chain logistics, agronomic risk management, and market economics as essential.",
+        "mitigation": "Domain knowledge would need to be built from scratch. While the candidate's product operations and transformation experience transfers to process design and stakeholder alignment, agricultural and produce-specific risk, seasonality, and supplier dynamics require hands-on sourcing experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in Direct-to-Grower model design, cross-docking optimization, or agricultural supply chain transformation. This is a core pillar of the role.",
+        "mitigation": "Not transferable from operations consulting or product operations without direct produce or food sourcing exposure.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of managing multi-million-euro supplier portfolios or negotiating complex, long-term agricultural or food-industry contracts at scale.",
+        "mitigation": "Negotiation and contract leadership skills may transfer, but the agricultural and food-sector context is required for credibility and execution.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "This is a specialized procurement and agricultural supply chain leadership role (Tier 3 company, Berlin-based). The candidate is a strong strategy and operations leader with eight years at Google and proven transformation and global operations experience, placing them well above junior scope. However, the role requires 6\u20138+ years of direct strategic procurement or sourcing experience in fresh produce, agriculture, or perishable food categories\u2014expertise the candidate does not possess. The JD emphasizes deep, systemic agricultural supply chain knowledge, Direct-to-Grower transformation, agronomic risk, and cold-chain logistics as core expectations. While the candidate's operations, negotiation, and matrix leadership skills are relevant, this is fundamentally a procurement domain role, not a strategy or operations transformation role. This is a skip: misaligned family and too high a domain/category ramp cost for the seniority level.",
+    "uncertainties": [
+      "Candidate's exact scope and P&L ownership at Google Devices and Services not detailed; could influence scope_seniority calibration.",
+      "No information on candidate's familiarity with food/beverage supply chains or FMCG sectors outside of Google context.",
+      "JD does not clarify whether a non-produce procurement background (e.g., industrial, tech supply chain) would be acceptable as a starting point; interpreted as requires produce/agriculture specificity based on explicit language."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

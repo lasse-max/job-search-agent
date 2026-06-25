@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and partnering with senior stakeholders across Product, Engineering, and cross-functional teams; demonstrated ability to influence executives and advise on strategic decisions",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and maintain relationships with senior-level advertising decision-makers, delivering strategic guidance"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and commercial scaling initiatives, developing strategic plans and execution roadmaps; however, experience is operations and transformation-focused, not advertising or client revenue growth optimization",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop and execute structured account plans to drive advertiser ROI and long-term revenue growth"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background suggests analytical capability and business case development; no specific evidence of sales narrative or advertising ROI modeling presented",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate analytical insights into compelling commercial narratives and quantify opportunities through clear, data-driven business cases"
+      },
+      {
+        "candidate_evidence": "Eight years of transformation and commercial scaling work demonstrates comfort with ambiguity and cross-functional leadership; proven ability to partner across Product, Engineering, Marketing, Policy, and Operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Operate in ambiguous, fast-changing environments and lead cross-functional collaboration"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales experience and full sales cycle ownership (prospecting, qualification, closing, revenue target accountability)",
+        "mitigation": "Candidate's strategy, operations, and transformation background provides structured business thinking and stakeholder management, but lacks hands-on sales execution and personal revenue responsibility; could require 6\u20139 months of sales onboarding to build pipeline and closing competency",
+        "severity": "high"
+      },
+      {
+        "gap": "Advertising and performance marketing domain expertise; no demonstrated background in digital ads, advertiser success metrics, or ad platform economics",
+        "mitigation": "Domain is learnable with mentorship and product knowledge transfer, but represents a meaningful ramp-up cost; candidate would benefit from early immersion with existing ads sellers and customer portfolio",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited client-facing sales consulting background; experience is internal transformation and operations rather than external client advisory relationships",
+        "mitigation": "Senior stakeholder management and advisory skills transfer from internal cross-functional work, but external client sales cycles and negotiation dynamics differ; role requires immediate credibility with C-suite advertising buyers",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated experience closing complex commercial agreements or negotiating high-stakes ad contracts",
+        "mitigation": "Structured operations and strategy background suggests contract literacy, but deal-closing and negotiation confidence and patterns are unproven in a quota-carrying context",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "This is a pure quota-carrying sales role (prospecting, closing, revenue target ownership) in the advertising domain. The candidate is a Strategy and Operations / Product Operations leader with strong cross-functional and stakeholder leadership, but lacks direct sales cycle execution, advertising domain expertise, and personal revenue responsibility. Role-family fit is low because the core function is sales, not strategy, ops, or transformation. While seniority appears appropriate (8 years, L4-L5 scope), the functional mismatch and gap in sales execution make this a poor fit. Advisory: skip.",
+    "uncertainties": [
+      "Extent of the candidate's exposure to advertising or performance marketing concepts in Google Devices and Services operations",
+      "Whether any of the transformation or commercial scaling work involved customer-facing sales cycles or revenue negotiation",
+      "Candidate's appetite and readiness to transition from strategy/ops into a revenue-focused sales role",
+      "Singapore relocation feasibility and visa considerations"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

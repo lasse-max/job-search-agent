@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with full responsibility for translating requirements into business outcomes, scaling global commercial operations, and execution of transformation programs; roles requiring data-driven decision-making and software-enabled operational scaling",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience in an analytical role with the objective to demonstrate or secure value through business data analysis, business process improvement and respective Software deployment, ideally in a customer-facing role in Solution Consulting or Management Consulting with a Business Software / SaaS Provider"
+      },
+      {
+        "candidate_evidence": "Product Operations background with ownership of requirements, logic design, UAT, rollout, and transformation initiatives; direct experience translating business needs into process improvements and managing end-to-end deployment",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience in identifying use cases for business process improvement and deploying improvement measures, being a change agent and training users/process owners to realize value"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services experience includes commercial operations and global scaling; positioned as strategic business operations leader with transformation program experience, though specific Finance or Supply Chain domain expertise not explicitly stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Understanding of Finance and/or Supply Chain domain as well as strategic transformation initiatives (e.g. Shared Services Transformation or System Transformation)"
+      },
+      {
+        "candidate_evidence": "Confirmed experience collaborating with technical teams; Python basic and actively learning; honest gap in production software-engineering background indicates cross-functional technical collaboration rather than deep hands-on tool-building capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in collaborating with IT teams and knowledge of Business Software / SaaS applications, implementing RPA and/or BI Tools, building Dashboards and Apps"
+      },
+      {
+        "candidate_evidence": "Eight-year career in Strategy and Operations at large enterprise with two promotions suggests program and project leadership experience; Product Operations background typically involves ownership of complex, multi-stakeholder initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in planning and managing project scopes, expectations and timelines, managing multiple projects across aligned accounts at different stages"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader at Google with seniority sufficient for C-level stakeholder engagement; professional English fluency confirmed; no explicit evidence of boardroom-level executive communication volume or style provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Executive Stakeholder Management with excellent communication and presentation skills in English and sovereign appearance, preparing and communicating value roadmaps and results to C-level stakeholders"
+      }
+    ],
+    "confidence": 0.77,
+    "evidence_strength": 68,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Finance and Supply Chain domain expertise not explicitly demonstrated; JD emphasizes CPG, Manufacturing, and Automotive verticals with back-office Finance/Supply Chain mastery as core trust-builder with customer C-suite",
+        "mitigation": "Strong analytical and process-improvement foundation with demonstrated transformation track record provides a bridge; domain expertise is typically built through customer immersion and ramp-in; Celonis likely has enablement and can leverage domain-expert resources in early engagements",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on depth in business software applications (SAP, ERP systems) and data tools (BI, RPA, Dashboards); relies on team collaboration rather than independent tool expertise",
+        "mitigation": "Role prioritizes business case-building, value framing, and stakeholder alignment over tool administration; Python/SQL learning and demonstrated ability to work with technical teams is sufficient for intake; tools expertise can be deepened via product training and pairing",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit consulting-brand experience or classic case-team background; background is in-house operations at Google rather than external advisory consulting",
+        "mitigation": "Customer-facing value engineering in SaaS is distinct from traditional consulting; Product Operations experience translates directly to customer value discovery, requirements translation, and cross-functional delivery; customer advisory skills are trainable",
+        "severity": "medium"
+      },
+      {
+        "gap": "Seniority trajectory and scope at Google Devices (internal operations at 8+ years, 2 promotions) suggests L4\u2013L5 level; Lead Value Engineer at a mid-stage SaaS vendor (Tier 2, circa 20 offices) may be closer to L4.5\u2013L5 depending on customer account scope and team size under candidate's influence",
+        "mitigation": "Responsibility for end-to-end customer value journey and partnership with sales suggests meaningful scope; not an over-leveled VP or Director role; reasonable fit for L4\u2013L5 operations-to-customer-facing transition",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 71,
+    "summary": "Strong operations and transformation leader with eight years at Google, two promotions, and direct experience translating requirements into business impact and managing complex deployments. Clear alignment with value realization, process improvement, and stakeholder management; significant gap in Finance/Supply Chain domain expertise and hands-on business-software depth. Role fits Strategy and Operations family and is a credible customer-facing deployment; ramp requires industry immersion and tool enablement but is well-managed by a process-minded operator.",
+    "uncertainties": [
+      "Specific vertical expertise (Manufacturing, Automotive, CPG) and depth of Finance/Supply Chain system knowledge not detailed in candidate profile; domain ramp timeline unclear",
+      "Celonis customer account structure, team size under Lead Value Engineer, and geographic scope not specified; difficult to confirm exact L4/L5 scope match without territory and quota data",
+      "Extent of customer-facing executive engagement volume and boardroom presence in Google role not quantified; communication and presence assertions inferred from seniority, not explicitly demonstrated",
+      "Nature and outcome of transformation programs at Google Devices not specified; clarification on scale, stakeholder complexity, and measurable value delivery would strengthen Process Improvement alignment"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

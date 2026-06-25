@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions, positioning as Strategy and Operations / Product Operations leader with experience in scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "8+ years of progressive experience in a customer service or operations role, with 5 years directly managing staff & employee lifecycle"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader background suggests cross-functional stakeholder management and organizational change experience, but specific direct people management and team coaching expertise not explicitly detailed",
+        "evidence_strength": "weak",
+        "job_requirement": "Exceptional leadership and team management skills; comfort with conflict, giving/receiving feedback, handling employee/Talent issues"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English confirmed; native German speaker but Italian fluency not mentioned in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in English and Italian; strong communication skills in both languages"
+      }
+    ],
+    "confidence": 0.8,
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Role is Customer Success / Premium Support operations\u2014a deprioritized category unless clear strategic transformation scope. This is a standard CS management role overseeing a team of 10-15 ambassadors on case handling, escalations, and performance metrics, not a strategy or transformation function.",
+        "mitigation": "Candidate could apply if prior experience included strategic redesign of CS operations, process transformation, or cross-functional improvement initiatives at scale, but the JD reads as operational CS management rather than strategic transformation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of Italian language fluency; JD explicitly requires fluency in both English and Italian as a core competency.",
+        "mitigation": "If candidate has conversational or intermediate Italian, certification or immersion could close this; however, fluency is a hard operational requirement for managing Italian-speaking ambassadors and handling customer cases.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background is product operations, business transformation, and strategy execution\u2014not direct people leadership and CS team coaching. CS manager role requires demonstrated excellence in coaching, performance feedback, conflict management, and talent development in a customer service context.",
+        "mitigation": "If candidate has led and coached customer-facing or operations teams (not just cross-functional product/strategy teams), this gap narrows significantly. Otherwise, functional fit remains weak.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of data analysis and reporting tool proficiency (Tableau, SQL, Excel, Google Sheets). Strategy and operations roles may use these, but CS operations role places heavy emphasis on real-time performance tracking, trend reporting, and data-driven coaching.",
+        "mitigation": "Quick upskilling in Tableau/SQL if foundational Excel and Google Sheets skills exist; not a blocker if candidate demonstrates analytical mindset and willingness to learn CS-specific reporting tools.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 65,
+    "summary": "This is a Customer Support operations management role at a Tier-1 company (Airbnb), which falls outside the target strategy/ops family without clear transformation scope. The candidate's background is Strategy and Operations / Product Operations with ~8 years at Google and demonstrated transformation and program leadership, which does not align well with a classic CS team management, coaching, and case-escalation function. Italian fluency is explicitly required but not confirmed in the candidate profile. While seniority level (Manager) is age-appropriate, the functional fit and language requirement create disqualifying gaps.",
+    "uncertainties": [
+      "Whether candidate has direct CS or customer-facing team management experience (profile emphasizes strategy/product operations, not CS operations leadership)",
+      "Italian language proficiency level (native German, professional English stated, but no Italian mentioned)",
+      "Whether product operations transformation experience at Google included substantive people leadership, coaching, and performance management",
+      "Extent of data analysis and reporting tool expertise (Tableau, SQL, Excel) in candidate's prior roles"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

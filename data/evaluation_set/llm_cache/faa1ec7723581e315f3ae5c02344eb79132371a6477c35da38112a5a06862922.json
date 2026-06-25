@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; demonstrated ability to work across cross-functional stakeholder groups",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop customer relationships and build internal partnerships with account executives and teams"
+      },
+      {
+        "candidate_evidence": "Product operations leader with experience in requirements design, UAT, rollout, and transformation program execution; able to operate at multiple stakeholder levels",
+        "evidence_strength": "medium",
+        "job_requirement": "Experienced in use case discovery, scoping, and delivering complex solution architecture designs to multiple audiences requiring context switching in levels of technical depth"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs and scaling operations; no explicit evidence of creating technical reference architectures or demo applications",
+        "evidence_strength": "weak",
+        "job_requirement": "Scale best practices in your field and support customers by authoring reference architectures, how-tos, and demo applications"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Core programming language proficiency (Python, Java, Scala) is a stated requirement; candidate has basic Python and is actively learning, not production proficiency",
+        "mitigation": "Intensive self-directed learning in Python and Apache Spark; pairing with senior engineers; structured coursework on Spark fundamentals and big data analytics",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on expertise with Big Data Analytics technologies or complex proofs-of-concept delivery; background is operations and transformation, not data platform implementation",
+        "mitigation": "Dedicated onboarding to Databricks platform, Spark, and big data use cases; customer shadowing; building proof-of-concept experience in a non-customer-facing capacity",
+        "severity": "high"
+      },
+      {
+        "gap": "Vietnamese language proficiency is required for direct customer communications; no evidence candidate speaks Vietnamese",
+        "mitigation": "If candidate does not speak Vietnamese, role is disqualifying. If language proficiency exists but not documented, verify immediately before proceeding",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited field engineering, solutions architecture, or sales engineering background; positioning is strategy and operations, not customer-facing technical sales",
+        "mitigation": "Formal solutions architect training; mentoring from experienced SAs; gradual customer exposure with strong internal support",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit public cloud platform (AWS, Azure, GCP) experience documented; role requires hands-on expertise",
+        "mitigation": "Cloud certification program; cloud platform fundamentals courses; lab-based learning in major cloud environments",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 28,
+    "scope_seniority": 55,
+    "summary": "This candidate is a Strategy and Operations leader with ~8 years of transformation and commercial scaling experience at Google, but the Solutions Architect role is a field engineering / technical sales position requiring hands-on proficiency in Python, Apache Spark, big data analytics, and public cloud platforms\u2014none of which align with the candidate's background. Vietnamese language is a stated requirement and is not documented. The role family fit is low; the technical and domain gaps are severe and would require substantial ramp time, and the function (solutions architecture / field engineering) falls outside the target and approved-stretch families. Advisory recommendation is skip unless Vietnamese fluency and prior big data platform experience can be confirmed.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

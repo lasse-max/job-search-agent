@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Strategy and Operations leader with eight years at Google Devices and Services; no stated SAR drafting, regulatory compliance, or financial crime investigation experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Act as D\u00e9clarant Tracfin and review/submit SARs ensuring quality according to Tracfin and ACPR expectations"
+      },
+      {
+        "candidate_evidence": "Positioning states approximately eight years at Google in commercial operations and transformation\u2014no legal education, financial crime, AML-CFT, or compliance background mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Background in law (\u00c9cole de droit/Master II) or Grande \u00c9cole; at least 3 years anti-financial crime operational experience"
+      },
+      {
+        "candidate_evidence": "No evidence of regulatory compliance knowledge, financial crime investigation, transaction monitoring, sanctions screening, or adverse media screening experience",
+        "evidence_strength": "weak",
+        "job_requirement": "In-depth knowledge of European and French regulations on KYC, AML, terrorism financing, fraud, sanctions; deep investigation skills"
+      },
+      {
+        "candidate_evidence": "Languages include German (native) and English (professional/fluent); no French language proficiency stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in French and English (spoken and written)"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No anti-financial crime, AML-CFT, SAR drafting, or financial compliance background; entire career at Google in commercial/operations domain",
+        "mitigation": "This is a specialist compliance role; domain expertise in financial crime is non-negotiable and typically requires 2\u20135 years of prior AFC/MLRO experience. Transitioning from tech operations to regulated financial crime requires foundational knowledge that cannot be acquired on the job in a 6-month fixed-term role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated legal education (\u00c9cole de droit, Master II, or Grande \u00c9cole); JD explicitly requires legal background or equivalent",
+        "mitigation": "JD specifies law degree or Grande \u00c9cole as a foundational requirement. Candidate's background is operational/commercial, not legal or regulatory. This is unlikely to be waived for a fixed-term compliance-critical role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No French language fluency; role requires native or fluent French and English, with responsibility for French regulatory submissions (Tracfin, ACPR) and customer communication",
+        "mitigation": "Fluency in French is a hard requirement for legal/compliance communications and regulatory submissions. Basic learning is insufficient for a 6-month SAR Delegate role covering French market operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "No transaction monitoring, sanctions screening, adverse media review, or investigation experience; role requires 'proven experience in operational functions, including investigation, and SAR drafting'",
+        "mitigation": "These are core operational competencies in compliance. Absence of any prior AFC/KYC/sanctions experience is disqualifying for an associate-level role that must act independently as D\u00e9clarant Tracfin.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "Candidate is a Strategy and Operations leader with eight years of commercial operations and transformation experience at Google\u2014a strong fit for target role families in tech and consumer. However, this is an Anti-Financial Crime (AFC) Associate and Tracfin SAR Delegate role requiring 3+ years of regulated financial crime compliance, legal education, French fluency, SAR drafting expertise, and investigation skills. Candidate has none of these: no AFC/AML-CFT background, no legal credentials, no French language, and no regulatory compliance experience. Domain, linguistic, educational, and specialist operational gaps are all disqualifying for a 6-month fixed-term compliance role in a regulated bank.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

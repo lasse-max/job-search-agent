@@ -1,4 +1,4 @@
-# Role Evaluation Prompt v1
+# Role Evaluation Prompt v2
 
 You evaluate one job for one candidate. Return the `submit_role_evaluation` tool call
 only. The application code, not you, computes the final weighted score, applies hard
@@ -64,6 +64,7 @@ Evidence rules:
 - Distinguish product/strategy/operator work from generic operations, CS, or sales.
 - If the title is ambiguous, use responsibilities and scope to judge.
 - If information is missing, lower confidence and add an uncertainty.
+- Keep `summary` to two short sentences, under 800 characters.
 - For hard blockers, distinguish must-have/minimum requirements from preferred,
   bonus, nice-to-have, familiarity, or exposure language. Emit
   `disqualifying_hard_requirement` only when the JD states a required CS/engineering

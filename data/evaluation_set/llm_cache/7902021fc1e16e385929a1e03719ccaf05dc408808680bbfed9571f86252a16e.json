@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs; experience with ownership, requirements, logic design, and rollout",
+        "evidence_strength": "strong",
+        "job_requirement": "synthesise disconnected streams of thought into a cohesive understanding of what the most important problem is"
+      },
+      {
+        "candidate_evidence": "Product experience grounded in transformation and UAT; demonstrated ability to work across stakeholder groups and design processes, though not in a traditional consulting brand engagement model",
+        "evidence_strength": "medium",
+        "job_requirement": "immerse themselves in our customers' most intricate workflows, partner with customer teams and explore the data"
+      },
+      {
+        "candidate_evidence": "Product operations and product strategy background at scale within Google; experience with requirements logic design and product-level problem solving",
+        "evidence_strength": "strong",
+        "job_requirement": "dive into the product landscape to enable us to scale"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with transformation and scaling experience; product experience rooted in ownership and business problem solving",
+        "evidence_strength": "medium",
+        "job_requirement": "curious and analytical mindset, a sharp intuition for product, and a strong degree of user empathy"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and commercial operations scaling suggest cross-functional stakeholder management, though prior experience is internal Google-scale rather than external customer deployment",
+        "evidence_strength": "medium",
+        "job_requirement": "partner with customer teams to understand the most important problem"
+      }
+    ],
+    "confidence": 0.78,
+    "evidence_strength": 75,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No direct experience as a Deployment Strategist or in a forward-deployed consulting/customer-engagement model; background is internal product operations and transformation at Google rather than external customer deployment",
+        "mitigation": "Eight years of product operations and transformation leadership demonstrates core analytical, process design, and stakeholder management capabilities transferable to customer-facing deployment work. Training and mentoring by experienced deployment teams could accelerate ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited classic consulting brand and case-team background; no demonstrated experience in rapid-iteration customer engagements or external advisory delivery",
+        "mitigation": "Product operations transformation and UAT experience show ability to iterate and deliver across complex stakeholder environments. Palantir's internal deployment training and apprenticeship model could bridge this",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD does not explicitly specify Australia government domain or deep public-sector experience; candidate background is Google commercial products",
+        "mitigation": "Analytical mindset and product operations rigor are domain-portable; government sector domain knowledge can be acquired through onboarding and team mentorship",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 72,
+    "summary": "Strong role-family fit for Deployment Strategist (approved stretch family). Candidate's eight years of product operations, transformation program leadership, and cross-functional scaling at Google demonstrate core analytical, stakeholder management, and process design capabilities. Primary gaps are lack of direct customer-facing deployment experience and consulting-style engagement model; these are manageable with onboarding and mentoring. Confidence moderated by unclear JD scope definition and limited explicit data exploration evidence.",
+    "uncertainties": [
+      "Extent of hands-on data exploration and technical data fluency beyond product logic; JD emphasizes 'explore the data' and Python basic may limit depth in early deployment phases",
+      "How 'immerse in customer workflows' will translate from internal transformation work at scale to external government customer engagements",
+      "Whether Deployment Strategist scope at Palantir is L4-L5 or spans higher IC/leadership levels; title is listed as approved stretch but role ambiguity remains"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

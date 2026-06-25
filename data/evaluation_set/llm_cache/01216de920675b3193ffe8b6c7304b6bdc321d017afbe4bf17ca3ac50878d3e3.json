@@ -1,0 +1,43 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Strategy and Operations, Product Operations, and Business Transformation with ownership of global commercial operations and programs; demonstrated stakeholder management and cross-functional leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Manager role in Government Affairs with strategic policy impact and regulatory advocacy"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Government Affairs, public policy, regulatory affairs, or legislative advocacy experience; no background in EU policy, Brussels ecosystem, or regulator/legislator engagement",
+        "mitigation": "Candidate has deep stakeholder management and transformation experience that could transfer to policy environment, but would require significant onboarding to policy domain, EU regulatory landscape, and advocacy playbooks",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in EU law, competition policy, music industry regulation, digital services directives, copyright frameworks, or other Spotify-critical policy domains",
+        "mitigation": "Policy domain knowledge and industry expertise are typically acquired over years of government affairs or regulatory practice; candidate would enter as a learner in a senior management role",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of civil society, industry coalition, legislator, or regulator relationships in Europe or elsewhere; no track record of external advocacy or policy representation",
+        "mitigation": "Relationship-building is central to government affairs; candidate's stakeholder background does not substitute for policy network and credibility with government actors",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 50,
+    "summary": "Candidate is a strong Strategy and Operations leader with eight years at Google and proven ownership of global programs and transformation\u2014core competencies in scope_seniority and stakeholder management. However, this is a specialized Government Affairs / public policy role requiring deep regulatory advocacy experience, EU policy domain expertise, and established legislator/regulator relationships. Candidate's background in product operations and commercial transformation does not align with the policy advocacy and regulatory representation core of this Senior Manager position. Gap is fundamental, not managerial or upskilling.",
+    "uncertainties": [
+      "Extent of candidate's experience with public-facing advocacy, external representation, or stakeholder influence at regulatory/legislative level not detailed in profile",
+      "Depth of candidate's exposure to policy, compliance, legal, or regulatory strategy through Google work not specified",
+      "Whether candidate has interest in or appetite for policy domain shift from product/operations"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,45 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Work with management team to shape the future"
+      }
+    ],
+    "confidence": 0.15,
+    "evidence_strength": 5,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Job description is extremely vague: 'Customer Council' with only one sentence ('Work together with our Management Team to shape the future of Trade Republic'). No explicit responsibilities, scope, seniority level, domain focus, or functional requirements are provided.",
+        "mitigation": "Request detailed JD clarifying role scope, whether this is customer engagement, product strategy, business development, or something else; confirm seniority level and reporting structure.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of fintech, investment/trading platform, or retail investing domain experience in candidate profile.",
+        "mitigation": "If domain expertise is required, assess candidate's ability to learn Trade Republic's market, product, and regulatory context quickly through onboarding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Unclear whether role is strategy-and-operations focused (candidate's strength) or customer-success/relationship-management focused (deprioritized unless strategic scope).",
+        "mitigation": "Clarify in JD whether primary accountability is customer voice / product input, commercial strategy execution, customer retention, or something else.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "Job description is too sparse to evaluate fairly. 'Customer Council' with one vague sentence provides no functional, seniority, scope, or domain detail. Candidate's Strategy and Operations background at Google is relevant *if* the role is strategic; unclear if it is customer-success or business-development focused instead. Request full JD before proceeding.",
+    "uncertainties": [
+      "Is this a customer advisory board / customer council (CS-focused) or an internal strategy council?",
+      "What is the actual scope: customer feedback loops, product input, commercial strategy, organizational design, or something else?",
+      "What is the reporting line and seniority level?",
+      "Is domain expertise in fintech / trading platforms required or desirable?",
+      "Why is the description only a single sentence?"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,44 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Strategy and Operations leader with eight years at Google scaling global commercial operations and transformation programs; experience with multi-stakeholder program delivery and execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner Excellence Manager \u2013 professional services delivery and customer success leadership"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and stakeholder management at scale; no explicit partner account management or channel/partner revenue responsibility documented.",
+        "evidence_strength": "weak",
+        "job_requirement": "Build and manage partner relationships; drive partner success and revenue outcomes"
+      }
+    ],
+    "confidence": 0.4,
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Partner Excellence Manager is a professional services / customer success account leadership role; candidate's background is strategy and operations transformation, not customer-facing account or partner management.",
+        "mitigation": "If the role's core accountability is actually internal transformation, process design, or implementation strategy rather than partner relationship ownership and revenue management, consider reframing or pairing with a partner account leader.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented partner channel, reseller, or strategic account management experience; no evidence of driving revenue through partner relationships or managing partner success metrics.",
+        "mitigation": "Candidate would need onboarding in partner lifecycle, deal structuring, and partner revenue accountability\u2014steep learning curve for a manager-level role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Professional Services at Pigment typically owns customer implementation, adoption, and success outcomes; candidate's transformation and operations expertise does not map to hands-on PS delivery or customer success leadership.",
+        "mitigation": "Clarify whether the role includes strategic program or process improvement components that would leverage strategy/ops background.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 28,
+    "scope_seniority": 65,
+    "summary": "The candidate is a strong Strategy and Operations leader with eight years at Google and proven program delivery and stakeholder management. However, this is a Partner Excellence Manager role in Professional Services\u2014a customer success and partner account leadership position fundamentally misaligned with strategy/transformation scope. Without documented partner relationship, channel management, or customer success leadership experience, the functional fit is weak and the learning curve steep. Recommend skip unless the role has substantial hidden strategic or implementation-process improvement scope.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

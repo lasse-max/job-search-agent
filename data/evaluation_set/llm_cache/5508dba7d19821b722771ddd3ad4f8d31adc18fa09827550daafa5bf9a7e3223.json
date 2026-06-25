@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; however, no explicit evidence of direct people management experience or technical support team leadership.",
+        "evidence_strength": "weak",
+        "job_requirement": "3+ years people management, directly managing Technical Support Engineers in APAC and China region"
+      },
+      {
+        "candidate_evidence": "No customer-facing technical support background evident. Background is in strategy, operations, and transformation at Google, not frontline customer support.",
+        "evidence_strength": "weak",
+        "job_requirement": "5+ years customer-facing technical support experience"
+      },
+      {
+        "candidate_evidence": "Candidate has experience in product ownership, requirements, logic design, and coordination with internal teams. However, Python is only basic and actively learning; limited deep technical foundation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Must have sufficient technical knowledge to communicate with software development teams"
+      },
+      {
+        "candidate_evidence": "No explicit evidence of hands-on API, HTTP, or SQL experience. Background is operations and strategy, not technical support or engineering.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with REST, JSON, HTTP, HTTPS and SQL. Must be familiar with common HTTP errors and resolutions."
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No direct technical support or customer support background. Role is a technical support leadership position; candidate is a strategy and operations leader.",
+        "mitigation": "Candidate's internal stakeholder coordination and incident management experience in transformation programs could transfer to escalation and incident coordination, but would require significant onboarding to support mechanics, APAC/China regional context, and frontline support operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit people management or technical support team leadership experience mentioned in profile.",
+        "mitigation": "Candidate's transformation program leadership may have involved cross-functional coordination, but no evidence of direct management of technical support engineers or CS teams.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on technical depth. REST, JSON, HTTP, SQL, and common HTTP error resolution require direct technical support or engineering foundation that candidate lacks.",
+        "mitigation": "Candidate has communication capability with dev teams from product ownership work, but this is not equivalent to debugging logs, troubleshooting APIs, or resolving HTTP/SQL issues at support scale.",
+        "severity": "high"
+      },
+      {
+        "gap": "No fin-tech, payments, or e-commerce platform experience evident in profile.",
+        "mitigation": "Candidate's Google background and transformation scope suggest ability to learn complex domains, but Airwallex's payment infrastructure requires domain familiarity to support customers effectively.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: 'Bachelor degree or above in Computer Science or relevant majors.' Candidate profile does not mention degree or field of study. Additionally, JD requires '5+ years experience in customer-facing technical support'\u2014a foundational requirement for the role. Candidate's background is strategy and operations at Google with no technical support experience.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a Technical Support Lead role at a fintech platform requiring 5+ years of customer-facing technical support, 3+ years of people management of support engineers, hands-on technical troubleshooting (REST, JSON, HTTP, SQL), and regional expertise in APAC/China. The candidate is a strategy and operations leader from Google with transformation and program leadership experience, but lacks any technical support background, explicit people management experience, foundational technical troubleshooting skills, and fintech domain knowledge. Role family fit is poor; this is not a strategy, operations, or transformation leadership role but rather a technical support management position with distinct career and skill requirements.",
+    "uncertainties": [
+      "Candidate's educational background and degree field not specified in profile.",
+      "Extent of any people management or team leadership experience not detailed; profile mentions 'scaling global commercial operations' but does not clarify direct management scope.",
+      "Degree field and specific technical coursework not provided; cannot assess Computer Science or relevant major requirement.",
+      "APAC and China regional experience not mentioned; role emphasizes APAC and China coverage as a core requirement."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

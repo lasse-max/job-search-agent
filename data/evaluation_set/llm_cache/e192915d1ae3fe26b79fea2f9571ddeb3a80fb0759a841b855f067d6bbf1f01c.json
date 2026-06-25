@@ -1,0 +1,39 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions; experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations Business Partner role in Strategy & Operations department"
+      }
+    ],
+    "confidence": 0.25,
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No job description provided\u2014only role title, company, and department cached from careers page. No access to actual role responsibilities, required skills, growth/tech-specific mandates, or seniority level.",
+        "mitigation": "Obtain full job description. Assess whether the role is Growth product ops, Tech infrastructure ops, or commercial ops; confirm L4\u2013L5 scope and specific transformation or strategic focus.",
+        "severity": "high"
+      },
+      {
+        "gap": "Geographic mismatch: role is Sydney-based; candidate location unknown. If relocation is required and candidate is unwilling or unable, this is a blocker.",
+        "mitigation": "Confirm candidate willingness and ability to relocate to Sydney.",
+        "severity": "high"
+      },
+      {
+        "gap": "Canva is a growth-stage, design-first consumer tech company; candidate's Google Devices and Services background may not directly translate to Canva's product, market, or operational model.",
+        "mitigation": "Identify specific operational or transformation projects from candidate's Google work that apply to a design/creator platform scaling in consumer markets.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "Insufficient job description makes role assessment impossible. Candidate's Google Ops & Strategy background aligns with the Operations Business Partner title and department, but without actual JD scope, responsibilities, and growth/tech focus, alignment cannot be evaluated. Geographic location and Canva domain fit are also unknown unknowns. Request full job description and confirm relocation willingness before proceeding.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

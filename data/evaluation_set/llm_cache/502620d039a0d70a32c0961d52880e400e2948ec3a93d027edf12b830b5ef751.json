@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions scaling global commercial operations and transformation programs; however, candidate background is in strategy and operations rather than enterprise sales team leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience directly managing high-performing enterprise sales or specialist teams"
+      },
+      {
+        "candidate_evidence": "Transformation programs experience and global commercial operations scaling suggest GTM execution capability, but product operations context differs substantially from sales specialist motion execution and quota-bearing specialization",
+        "evidence_strength": "weak",
+        "job_requirement": "Demonstrated success in executing specialised GTM motions or scaling new product lines within a larger matrixed organisation"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background implies technical translational ability; however, no demonstrated track record of selling complex technical platforms into CIO/CTO/architecture buyer centers",
+        "evidence_strength": "weak",
+        "job_requirement": "Ability to translate complex technical platform capabilities into tangible business value for both executives and developers"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Pure sales leadership and team management experience. Candidate is a strategy and operations leader, not a sales leader with direct quota accountability or enterprise sales team coaching experience.",
+        "mitigation": "Would require substantive onboarding in sales management, pipeline development, and quota execution discipline; fundamentally different domain from strategy/ops",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is explicitly Director-level (over-leveled for L4-L5 target scope). At Tier 1 company (Databricks, well-established), Director titles map to L5+ seniority, exceeding target band.",
+        "mitigation": "None; seniority mismatch is structural",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct selling experience and track record in enterprise SaaS, cloud platforms, or database sales. Candidate background is global operations and product ops, not revenue-facing sales or GTM execution.",
+        "mitigation": "Would require career-pivot into new domain; limited transferability",
+        "severity": "high"
+      },
+      {
+        "gap": "Proven revenue targets and deal-closing track record in competitive markets. No quota or booking target accountability evident in ops-focused background.",
+        "mitigation": "No direct pathway; ops achievements do not substitute for sales performance history",
+        "severity": "high"
+      },
+      {
+        "gap": "Specialised sales motion expertise (application modernisation, database consolidation, operational workload positioning). Candidate domain is transformation programs and operations, not specialized product sales positioning.",
+        "mitigation": "Product training possible, but would require on-the-job learning against revenue targets; high business risk",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "Director-level sales leader role at Tier 1 SaaS company (Databricks). Candidate is a strategy and operations leader with eight years at Google scaling transformation programs and global commercial ops. Role requires direct enterprise sales team leadership, quota ownership, specialized Lakebase sales motion execution, and CIO/CTO buyer engagement. Candidate's background is fundamentally misaligned: pure strategy/ops vs. pure sales leadership domain, no sales team management or quota track record, and Director title exceeds target L4-L5 scope. While transformation and ops experience shows execution capability, this is a different buyer cycle, sales discipline, and seniority level. Not a viable move.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

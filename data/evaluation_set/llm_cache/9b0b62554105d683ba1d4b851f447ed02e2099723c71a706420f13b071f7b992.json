@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy & Operations; positioned as Strategy and Operations / Product Operations leader scaling global commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Manager, Strategy & Operations role in global operations at a Tier 1 company (DoorDash)"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience with transformation programs and scaling global commercial operations; core function aligns with Strategic Programs / Program Leadership primary role family",
+        "evidence_strength": "strong",
+        "job_requirement": "Business transformation and program leadership across cross-functional stakeholders"
+      },
+      {
+        "candidate_evidence": "Google experience in global commercial operations; product operations background indicates process design, requirements logic, UAT, and rollout execution experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations, process design, and execution at scale"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions suggests expanded scope and stakeholder influence; Strategy & Operations discipline implies strategic influence across functions",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic stakeholder management and cross-functional scope"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 78,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "DoorDash-specific domain expertise (marketplace operations, merchant/consumer logistics, advertising networks) not evident from Google Devices background",
+        "mitigation": "Core strategy and operations fundamentals are portable; onboarding and domain ramp-up typical for manager-level hires moving between Tier 1 companies",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD lacks detail on specific responsibilities, scope, and success metrics; unclear whether role is GTM-focused, marketplace optimization, new verticals, or ads strategy",
+        "mitigation": "Candidate's broad background across global ops, transformation, and program leadership provides flexibility; clarify scope expectations during interviews",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit evidence of sales operations, revenue operations, or GTM strategy execution if role skews toward those functions",
+        "mitigation": "GTM/Sales Strategy and Operations is a primary role family; Google commercial ops experience likely includes GTM components, but explicit GTM track record not confirmed",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 92,
+    "scope_seniority": 82,
+    "summary": "Strong role-family fit: candidate is a Google Strategy & Operations leader with eight years of tenure, two promotions, and demonstrated global commercial operations and transformation experience\u2014a direct match to DoorDash's Manager, Strategy & Operations target family. Seniority is appropriate for L4-equivalent scope. Primary gap is lack of DoorDash domain expertise and JD vagueness on specific mandate; both are manageable through standard onboarding and interview clarity.",
+    "uncertainties": [
+      "JD sourced from job board listing page without full role description; specific responsibilities, success metrics, and sub-function (GTM, marketplace, ads, new verticals, or ops excellence) not fully detailed",
+      "Candidate's Google experience in Devices & Services implies commercial operations, but explicit GTM, sales operations, or revenue operations track record not confirmed in positioning",
+      "Visa/work authorization status for Sydney/Melbourne role not provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

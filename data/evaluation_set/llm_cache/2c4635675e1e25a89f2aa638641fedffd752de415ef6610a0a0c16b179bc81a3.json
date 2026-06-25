@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in a Strategy and Operations leadership role. Experience scaling global commercial operations and leading transformation programs indicates senior IC or management-level responsibilities.",
+        "evidence_strength": "medium",
+        "job_requirement": "People Leadership Experience: 5+ years managing, mentoring, and developing a high performing enterprise sales team."
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background typically involves data-driven decision making and trend analysis, though specific examples of market analysis or GTM analytical work are not detailed.",
+        "evidence_strength": "medium",
+        "job_requirement": "Analytical Mindset: Ability to analyze market trends, identify opportunities, and make data-driven decisions."
+      },
+      {
+        "candidate_evidence": "Native German speaker, professional fluency in English; leadership roles at scale typically require strong communication, though no specific public speaking or communication examples provided.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong Communication Skills: Exceptional verbal and written communication abilities."
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Core Role Family Mismatch: Candidate is a Strategy and Operations / Product Operations leader, not an Enterprise Sales leader. No evidence of quota management, pipeline building, direct customer prospecting, or deal-closing experience.",
+        "mitigation": "While sales leadership requires fundamentally different skills (prospecting, objection handling, deal closure, quota accountability), a candidate with strong team-building and analytics background could theoretically transition with significant ramp time and hands-on mentoring. Feasibility depends on candidate's openness to pure sales and comfort with quota ownership.",
+        "severity": "high"
+      },
+      {
+        "gap": "10\u201315+ years Enterprise Sales Experience: Candidate background is in operations, strategy, and transformation\u2014not customer-facing sales. No evidence of managing $1M+ quota or closing large enterprise deals.",
+        "mitigation": "Candidate's commercial operations experience (scaling global operations, transformation programs) provides process rigor and stakeholder management skills, but does not substitute for direct sales execution and closing experience. A bootstrapping period of weeks to months is likely necessary.",
+        "severity": "high"
+      },
+      {
+        "gap": "ANZ Regional Presence and Market Familiarity: No indication of prior work in Australia/New Zealand, ANZ regulatory familiarity, or regional commercial network.",
+        "mitigation": "Sierra has offices in Sydney, so relocation support and regional onboarding would be expected. Candidate's international experience at Google may help, but lack of ANZ market knowledge is a ramp factor.",
+        "severity": "medium"
+      },
+      {
+        "gap": "GTM and Sales Motion Building Experience: JD notes 'Building sales teams and sales motions from scratch, or from early stage growth' as a nice-to-have. Candidate's experience is transformation and program leadership, not greenfield GTM or sales-motion design.",
+        "mitigation": "Transformation program leadership involves process design and execution, which overlaps with GTM architecture. Candidate could apply these skills to sales operations and strategy, but direct sales motion-building experience is absent.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 65,
+    "summary": "This is an Enterprise Sales Leader role requiring 10\u201315+ years of direct quota-carrying customer-facing sales, pipeline management, and deal closure in large accounts. The candidate is a Strategy and Operations / Product Operations leader with eight years at Google and zero quoted sales leadership, prospecting, or quota management experience. While the candidate has strong analytical, team-building, and program-execution capabilities\u2014and the role does include a strategic GTM and RevOps component\u2014the core function is pure enterprise sales leadership. This is fundamentally misaligned with the candidate's career trajectory and is a role to skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

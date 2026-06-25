@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions, scaling global commercial operations and leading transformation programs; positioning as Strategy and Operations / Product Operations leader with cross-functional stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Define and execute GTM partnerships strategy, operating model, and business objectives across EMEA"
+      },
+      {
+        "candidate_evidence": "Experience designing processes, frameworks, and operating models for complex transformation initiatives; product operations background includes requirements definition, UAT, and rollout design",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and manage portfolio of strategic partnerships; develop partner segmentation, investment frameworks, and governance models"
+      },
+      {
+        "candidate_evidence": "Google Devices & Services involves ecosystem partnerships and customer adoption at scale; positioning emphasizes commercial operations scaling and transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Own partner-sourced, partner-influenced, and partner-delivered business outcomes; partner with sales to create scalable co-sell and co-delivery motions"
+      },
+      {
+        "candidate_evidence": "Native German speaker, professional/fluent English; global operations experience at Google suggests multi-market exposure",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead distributed teams across Europe; understand regional market dynamics and cultural nuances"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and requirements logic design indicate problem-solving under uncertainty; cross-functional stakeholder management core to Strategy and Operations role family",
+        "evidence_strength": "strong",
+        "job_requirement": "Excel in ambiguous environments; balance strategic thinking with operational execution; influence cross-functional stakeholders without direct authority"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google indicate proven leadership capability; Strategy and Operations background typically involves cross-functional team influence and org development",
+        "evidence_strength": "medium",
+        "job_requirement": "Recruit, develop, and lead high-performing teams; build culture centered on accountability, operational rigor, and customer outcomes"
+      }
+    ],
+    "confidence": 0.78,
+    "evidence_strength": 65,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Limited direct consulting brand and ecosystem/alliance management experience; no evidence of building large-scale strategic alliance programs or managing consulting firm relationships",
+        "mitigation": "Consulting economics and delivery models can be learned quickly with structured onboarding; strong operations and transformation background provides foundation for understanding how services organizations drive adoption",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated enterprise partnership revenue ownership; role requires carrying and measuring partner-sourced/-influenced/-attributed revenue outcomes",
+        "mitigation": "Commercial operations background and Google ecosystem experience suggest understanding of how partnerships drive growth; revenue responsibility can be learned with executive sponsorship and clear metrics setup",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct AI or cloud platform company experience; JD emphasizes AI adoption familiarity and hyperscaler/platform ecosystem context",
+        "mitigation": "Eight years in commercial operations and transformation provides transferable skills; AI adoption fundamentals and OpenAI platform training can close domain gap within first 90 days",
+        "severity": "low"
+      },
+      {
+        "gap": "Title 'Head of' and scope indicate Director/VP-equivalent seniority; candidate profile targets L4-L5 Manager/Senior Manager/Lead/Principal IC",
+        "mitigation": "Evaluate whether candidate's actual scope, ownership breadth, and stakeholder management at Google align with VP-equivalent responsibility despite title inflation; scope-seniority assessment suggests moderate over-leveling risk",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 68,
+    "summary": "Candidate has strong alignment with GTM Strategy and Operations family and deep experience in transformation, commercial scaling, and cross-functional stakeholder leadership at a scaled company. Gaps in direct consulting ecosystem/alliance management, partner revenue ownership, and AI platform context are manageable with structured onboarding. Primary concern is role title and seniority ceiling: \"Head of GTM Partnerships, EMEA\" at a Tier 1 company likely maps to Director/VP-equivalent scope, above target L4-L5 band despite candidate's strategic and operational fit to the function.",
+    "uncertainties": [
+      "Actual scope and team size of candidate's Google Devices & Services role unclear; ambiguity on whether current/most recent responsibility aligns with VP-equivalent strategic ownership or sits at L4-L5 level",
+      "Extent of direct customer-facing partnership management at Google Devices & Services not specified; unclear how much direct consulting firm and GSI relationship-building is in background",
+      "Geographic scope and number of direct reports managed unclear; relevant for assessing readiness for leading distributed EMEA team",
+      "No explicit revenue target or P&L ownership mentioned; unclear if commercial operations experience included carrying formal revenue responsibility"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

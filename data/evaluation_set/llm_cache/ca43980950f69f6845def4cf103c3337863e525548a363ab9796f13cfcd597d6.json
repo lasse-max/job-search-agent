@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; actively learning Python",
+        "evidence_strength": "medium",
+        "job_requirement": "Actively help yourself (and others) be successful; continuously learn and challenge the status quo; strong bias for action"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader managing cross-functional transformation at scale; experience rolling out changes and stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Good communication skills and the ability to work autonomously within a fast-paced environment"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Production AWS expertise with IAM, Organizations, and Multi-account security is a core SRE requirement; candidate background is business operations and transformation, not cloud infrastructure or security engineering",
+        "mitigation": "Ramp on AWS-specific IAM and multi-account architecture through guided training and mentorship; prior systems-operations experience may transfer, but this is still 6\u201312 month learning curve",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on Teleport or PAM/JIT access management experience is expected; candidate has no stated infrastructure-access or privileged-access-management background",
+        "mitigation": "Teleport and JIT concepts can be learned on-the-job if candidate has strong Linux and networking fundamentals; candidate profile does not confirm these",
+        "severity": "high"
+      },
+      {
+        "gap": "Strong Terraform expertise for managing cloud resources and security policies; candidate background is business transformation and operations, not IaC or infrastructure automation",
+        "mitigation": "Terraform can be learned, but this is a hands-on tool that SREs use daily; no evidence of prior IaC authoring",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficient programming in Go and/or Python to automate security workflows; candidate profile notes 'Python basic and actively learning,' not production-ready automation coding",
+        "mitigation": "Python can improve with time, but Go expertise is not mentioned; automating security workflows requires solid fundamentals beyond basic learning",
+        "severity": "high"
+      },
+      {
+        "gap": "Kubernetes and Docker from an access/RBAC perspective; candidate has transformation and operations background, not container orchestration engineering",
+        "mitigation": "RBAC and container concepts can be learned in a platform-engineering or SRE onboarding, but requires hands-on exposure",
+        "severity": "medium"
+      },
+      {
+        "gap": "Solid understanding of Linux systems and networking fundamentals (OIDC, SAML, SSH, TLS, TCP/IP); not stated in candidate profile",
+        "mitigation": "These are learnable, but baseline networking knowledge is typically expected for SRE onboarding",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD core responsibilities: 'Be responsible for designing and maintaining the systems that govern how humans and services access our AWS environment.' 'Manage and scale our Teleport infrastructure,' 'Develop and maintain automated Identity and Access Management (IAM) workflows,' 'Implement and improve Just-In-Time (JIT) access solutions,' 'Maintain and improve our Infrastructure-as-Code (Terraform) for all access-related components.' Candidate profile explicitly states 'No production software-engineering background,' 'Python basic and actively learning,' and has strategy/operations background, not cloud infrastructure, security engineering, or SRE experience. This is a deeply technical infrastructure and security engineering role requiring hands-on AWS, Terraform, and automation coding; it is outside the approved Strategy and Operations, Business Operations, and transformation families and outside the candidate's core competencies.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "This is a production-focused Site Reliability Engineer and cloud-security role requiring hands-on AWS IAM, Teleport, Terraform, Linux, and Go/Python automation. The candidate is a Strategy and Operations leader from Google Devices with business transformation experience, not infrastructure, cloud security, or systems engineering background. Despite strong leadership and learning orientation, the JD demands infrastructure engineering depth (Teleport, IAM, Terraform, IaC, RBAC, networking) that sits far outside both the candidate's primary and approved-stretch families. This role is deeply technical infrastructure\u2014not implementation-heavy business-problem-solving or transformation leadership.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

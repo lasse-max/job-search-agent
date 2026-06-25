@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; led global commercial operations and transformation programs, scaling organizations with senior stakeholder engagement",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead executive-level workshops to identify business challenges and opportunities where AI can drive improvements; co-create AI adoption roadmaps with customers"
+      },
+      {
+        "candidate_evidence": "Google transformation program leadership demonstrates strategic advisory capability, stakeholder management, and metrics-driven execution at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Serve as trusted advisor to customers, guiding AI strategy and ensuring ROI maximization; monitor KPIs tied to business outcomes and communicate to executive sponsors"
+      },
+      {
+        "candidate_evidence": "Cross-functional transformation program experience indicates ability to synthesize feedback, influence roadmaps, and operationalize best practices across organizations",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as bridge between customers and internal teams, developing reusable assets, best practices, and playbooks to scale go-to-market efforts"
+      },
+      {
+        "candidate_evidence": "Eight-year track record scaling global commercial operations and leading transformation programs demonstrates complex problem-solving and business acumen",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong business acumen and problem-solving skills to structure ambiguous challenges into actionable solutions"
+      },
+      {
+        "candidate_evidence": "Currently learning and developing Python skills; can speak to AI fundamentals but lacks deep ML/data science engineering background and enterprise AI deployment experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Foundational knowledge of AI/ML/Data Science with credibility to advise both technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Eight years of product operations and transformation with ownership of requirements, logic design, UAT, rollout; no native software development or production AI/ML engineering experience; limited consulting brand or case-team background",
+        "evidence_strength": "medium",
+        "job_requirement": "2+ years in client-facing strategic and technical role (data science consulting, value engineering, or technical sales); hands-on experience building and deploying AI applications"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 62,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Limited hands-on AI/ML engineering and production deployment experience. JD requires demonstrable capability building and deploying AI applications in Python to advise customers; candidate is actively learning Python and has no production software development background.",
+        "mitigation": "Intensive bootcamp on Mistral's platform, models, and applied AI deployment patterns before customer-facing strategic work. Partner closely with Applied AI team early to build credibility. Consider 6-month runway for technical depth-building before leading independent customer AI architecture decisions.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct consulting or technical sales background. JD emphasizes 2+ years in data science consulting, value engineering, or technical sales. Candidate's background is internal transformation and product operations rather than external customer advisory or presales.",
+        "mitigation": "Structured mentorship from experienced customer-facing strategist or FDE. Early engagement with Account Executives and presales workflows to build external advisory muscle. Ride-alongs and shadowing to learn customer discovery and qualification frameworks (MEDDPICC, etc.).",
+        "severity": "medium"
+      },
+      {
+        "gap": "Lack of AI/ML domain depth and credibility for technical audiences. Candidate has operational and transformation expertise but limited exposure to AI/ML fundamentals, enterprise data strategy, or AI architecture conversations.",
+        "mitigation": "Formal AI/ML fundamentals training; deep dive into Mistral's model capabilities, use cases, and technical architecture. Pair with Applied AI team for customer calls until technical credibility is established. Build knowledge of common enterprise AI challenges (RAG, fine-tuning, inference optimization, etc.).",
+        "severity": "high"
+      },
+      {
+        "gap": "Unfamiliar with AI application patterns, MLOps, and production deployment. JD expects hands-on prototyping and pilot ownership; candidate's experience is in operational transformation and product requirements, not software release cycles or model deployment.",
+        "mitigation": "Embedded learning with Applied AI team. Lead one or two internal/partner pilot projects under close technical supervision before owning customer deployments. Build fluency in Mistral's deployment architecture and tooling.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 75,
+    "scope_seniority": 72,
+    "summary": "Strong strategic operator with proven executive stakeholder management and transformation program leadership at Google scale; excellent business acumen and roadmap design capability. Material gaps in hands-on AI/ML engineering, production software deployment, and external consulting/presales experience\u2014critical for the hands-on technical credibility and customer-facing advisory scope this role demands. Candidate is an approved stretch family (Deployment Strategist, Implementation-heavy AI transformation) but requires significant technical onboarding and mentorship to deliver credibly on the technical and customer-advisory dimensions.",
+    "uncertainties": [
+      "Depth of candidate's current AI/ML learning and timeline to functional fluency in Mistral's platform and AI/ML deployment concepts",
+      "Ability to quickly build technical credibility with enterprise customers and C-level technologists given no ML engineering or AI application development background",
+      "Clarity on whether 'Python basic and actively learning' includes any hands-on deployment, debugging, or MLOps exposure versus language syntax only",
+      "Whether candidate's transformation program experience included data engineering, analytics, or ML infrastructure work that could transfer to AI deployment contexts"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

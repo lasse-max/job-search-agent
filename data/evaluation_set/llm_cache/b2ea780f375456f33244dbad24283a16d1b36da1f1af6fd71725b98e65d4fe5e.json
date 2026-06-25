@@ -1,0 +1,44 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years of strategy and operations work at Google Devices with demonstrated ability to research markets and identify strategic opportunities. However, this was at enterprise scale and executive level, not cold-calling prospecting or BDR-focused research.",
+        "evidence_strength": "medium",
+        "job_requirement": "Account research, sourcing, and prospecting to identify and surface opportunities"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Intern/graduate entry-level sales development role fundamentally mismatched to eight-year senior strategy leader with multiple promotions. Candidate profile targets L4\u2013L5 Manager, Senior Manager, or Principal IC scope; this is entry-level quota-less SDR internship.",
+        "mitigation": "None; this is a career-backward move. Candidate should pursue early-career or mid-market strategy operations or transformation roles at comparable seniority.",
+        "severity": "high"
+      },
+      {
+        "gap": "No quota-carrying sales, cold-calling, or BDR experience. Role emphasizes pure prospecting, cold calls, and monthly targets\u2014outside candidate's strategic operations and transformation background.",
+        "mitigation": "Candidate has not pursued sales development roles and lacks evidence of interest in tactical sales execution.",
+        "severity": "high"
+      },
+      {
+        "gap": "Required Nordic language proficiency (Swedish, Finnish, or Danish) plus English. Candidate demonstrates fluent English and native German; no mention of Nordic languages.",
+        "mitigation": "Unless candidate has unreported Nordic fluency, this is a disqualifying language requirement.",
+        "severity": "high"
+      },
+      {
+        "gap": "Business student background or comparable program. Candidate profile does not specify degree field; unclear if they meet the stated qualification.",
+        "mitigation": "Request education history to confirm.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 5,
+    "summary": "This intern sales development program is a junior entry-level BDR role requiring cold-calling, prospecting, and Nordic language fluency. The candidate is a senior strategy and operations leader with ~8 years at Google and multiple promotions, targeting Manager\u2013Principal IC scope. This is fundamentally mismatched: wrong career direction (tactical sales vs. strategic operations), wrong seniority (intern vs. senior), and likely missing required Nordic language. Skip unless candidate is making a deliberate early-career pivot into sales and has undisclosed Nordic fluency.\",antml:parameter>\n<parameter name=\"uncertainties\">[\n  \"Candidate education background (degree field) not specified in profile.\",\n  \"Presence or fluency of Nordic languages (Swedish, Finnish, Danish) not disclosed; only German (native) and English (professional/fluent) listed.\",\n  \"Candidate's explicit interest in tactical sales development or BDR roles not mentioned; profile indicates strategy and operations positioning.\"\n]",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

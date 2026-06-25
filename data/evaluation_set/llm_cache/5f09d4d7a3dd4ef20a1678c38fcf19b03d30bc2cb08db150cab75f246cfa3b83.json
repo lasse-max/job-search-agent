@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate has demonstrated large-scale systems experience at Google (Devices & Services) and scaling global commercial operations, suggesting execution and complexity management skills.",
+        "evidence_strength": "weak",
+        "job_requirement": "Design, prototype and scale up new architectures to improve model intelligence"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 8,
+    "gap_manageability": 5,
+    "gaps": [
+      {
+        "gap": "No demonstrated contribution to major LLM training runs or model architecture development. Role requires hands-on deep learning expertise and state-of-the-art transformer modification knowledge.",
+        "mitigation": "None practical. This gap reflects a fundamental mismatch between a strategy/operations background and deep ML research role requirements.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited production software engineering or ML engineering experience. Candidate has basic Python actively being learned but no research-level deep learning framework expertise or model development background.",
+        "mitigation": "None. The role explicitly requires autonomous empirical experimentation with deep learning architectures, infrastructure optimization, and debugging at scale.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of state-of-the-art transformer architecture knowledge, efficient attention mechanisms, scaling science, or inference optimization\u2014all core to the role's technical scope.",
+        "mitigation": "None. This is specialized research expertise that cannot be acquired in role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Background is in strategy, operations, and business transformation, not research or ML engineering. Role is explicitly a Research department Researcher position requiring deep technical autonomy.",
+        "mitigation": "None. Fundamental functional misalignment.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role requires \"deep understanding of LLM architectures, sophisticated understanding of model inference\" and core duties include \"Design, prototype and scale up new architectures,\" \"Study, debug, and optimize model performance,\" and \"Contribute to training and inference infrastructure.\" Candidate profile states no production software-engineering background and Python is basic/actively learning. This is a dedicated ML research role requiring hands-on deep learning development expertise. The candidate's background is strategy/operations, not research or ML engineering.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is an OpenAI Research department Researcher position in LLM training requiring deep expertise in transformer architecture, model optimization, and hands-on deep learning development. The candidate is a Strategy and Operations leader with ~8 years in Google commercial operations and transformation. Role family fit is very low (strategy/ops vs. ML research), evidence strength is minimal (no LLM training or architecture background), and hard blockers apply: the role is fundamentally a dedicated research position requiring deep technical ML expertise, not a strategy, operations, or business transformation role. Skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

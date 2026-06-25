@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations with two promotions, including transformation program leadership and cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead customer success management role with responsibility for customer relationships and retention"
+      },
+      {
+        "candidate_evidence": "Program leadership experience with strategic scope and cross-functional stakeholder management, though primary background is operations and product-driven transformation rather than customer success team management",
+        "evidence_strength": "weak",
+        "job_requirement": "Team leadership and mentoring in customer-facing function"
+      }
+    ],
+    "confidence": 0.25,
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No direct customer success, account management, or quota-carrying customer retention experience; background is internal operations and transformation, not customer-facing account leadership",
+        "mitigation": "Internal transfer could include on-the-job training in CS processes, retention metrics, and account relationship management, but requires ramp time and shift from product-operations to customer-retention focus",
+        "severity": "high"
+      },
+      {
+        "gap": "JD snapshot is incomplete\u2014cached page contains navigation markup, scripts, and boilerplate rather than full role description; responsibilities, scope, team size, and specific CS qualifications are not visible",
+        "mitigation": "Evaluation confidence is very low; cannot assess fit against actual CS requirements, scope level, or domain-specific needs without complete JD",
+        "severity": "high"
+      },
+      {
+        "gap": "Customer Success is explicitly listed in usually-deprioritize families unless role has meaningful strategy or transformation scope; no evidence in available text that this role carries strategic/transformation mandate",
+        "mitigation": "Candidate is a strong strategic and operations leader, but this role appears to be pure account leadership and customer retention, not strategy-enabled CS",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 45,
+    "summary": "Lead Customer Success Manager at OutSystems is a pure customer-facing account and retention role. Candidate is a Strategy and Operations leader with strong Google commercial-operations and transformation program experience, but lacks direct CS, account management, or quota-bearing customer-retention background. JD snapshot is incomplete (contains boilerplate HTML/scripts rather than full role description), making detailed evaluation impossible. This role falls into the deprioritize-unless-strategic category, and the candidate's expertise is orthogonal to traditional CS leadership.",
+    "uncertainties": [
+      "Full JD description is not available; cached snapshot contains only navigation, scripts, and schema markup, not actual role responsibilities or scope",
+      "Cannot assess whether this Lead CSM role includes strategic, transformation, or operational leadership scope that would change the deprioritize guidance",
+      "Team size, reporting structure, and seniority level (L4 vs. L5 equivalent) cannot be determined from available text",
+      "Customer success domain depth, SaaS experience requirements, and specific product/industry context are not visible in the JD snapshot"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

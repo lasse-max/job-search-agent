@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with global commercial operations and transformation programs; however, background is Strategy and Operations / Product Operations, not technical customer-facing or solutions engineering roles.",
+        "evidence_strength": "weak",
+        "job_requirement": "8+ years in technical customer-facing roles (partner engineering, solutions architecture, sales engineering)"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience scaling global commercial operations and transformation programs at Google with multiple promotions, indicating cross-functional and stakeholder leadership; however, no evidence of leading technical projects specifically.",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven success leading technical projects or initiatives end-to-end in globally distributed, multicultural teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader role typically requires stakeholder management and communication across functions; candidate profile emphasizes transformation and operations leadership, but no explicit evidence of bridging technical-to-non-technical translation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong communication skills, with the ability to bridge technical and non-technical audiences and influence senior stakeholders"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Not a technical customer-facing professional: role requires 8+ years in partner engineering, solutions architecture, or sales engineering. Candidate background is Strategy and Operations / Product Operations, not solutions or presales engineering.",
+        "mitigation": "Candidate would require significant ramp into solutions engineering discipline, including hands-on API design, proof-of-concept delivery, and developer-facing architecture. This represents a substantial career pivot, not an extension of existing expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep hands-on technical expertise required: must be comfortable building with APIs, debugging integrations, and guiding developers. Candidate has 'Python basic and actively learning' and 'no production software-engineering background'; does not meet the 'deep hands-on technical expertise' threshold.",
+        "mitigation": "Candidate would need to rapidly develop production-level API and integration debugging skills. Current learning phase is insufficient for a senior individual contributor role at Block.",
+        "severity": "high"
+      },
+      {
+        "gap": "Full-stack development and proficiency in at least one programming language required. Candidate profile explicitly states basic Python and active learning, not professional-grade proficiency in any language.",
+        "mitigation": "No realistic path to meet this requirement without significant engineering skill investment and hands-on experience building production integrations.",
+        "severity": "high"
+      },
+      {
+        "gap": "Fintech and payments platform domain expertise. Candidate background is Google Devices and Services; no evidence of payments, fintech, or commerce platform experience.",
+        "mitigation": "Domain can be learned on the job if technical fundamentals are strong, but candidate lacks both domain and core technical prerequisites.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD: 'Deep hands-on technical expertise \u2013 comfortable building with APIs, debugging integrations, and guiding developers through complex implementations.' and 'Prior professional experience with full-stack development and proficiency in at least one programming language.' Candidate: 'Python basic and actively learning' with 'no production software-engineering background'. Candidate does not meet the core technical requirement.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "Staff Solutions Engineer at Block is a senior technical IC role requiring 8+ years in solutions architecture, partner engineering, or sales engineering with deep hands-on API and integration expertise. Candidate is a Strategy and Operations / Product Operations leader from Google with strong organizational and transformation leadership but lacks production software-engineering background, technical customer-facing experience, and fintech domain knowledge. This is a technical specialty role requiring engineering depth that extends beyond the candidate's core competencies.",
+    "uncertainties": [
+      "Whether candidate has any undisclosed API or integration design experience beyond the stated 'Python basic and actively learning'",
+      "Depth of candidate's involvement in technical design decisions within Google's transformation programs (product-side technical work vs. pure operations)",
+      "Whether candidate has led developer-facing initiatives or created technical documentation/demos as part of product operations work"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

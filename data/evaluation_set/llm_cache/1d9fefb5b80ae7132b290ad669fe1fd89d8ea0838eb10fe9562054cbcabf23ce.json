@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services in Strategy and Operations with global commercial operations scaling; positioned for strategy and operations leadership, not transactional lead qualification",
+        "evidence_strength": "weak",
+        "job_requirement": "Manage inbound and outbound activity, vetting and qualifying prospects"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background involving requirements analysis, UAT, and rollout; does not demonstrate phone-based discovery, objection handling, or consultative sales qualification experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong discovery and qualification capabilities to assess partner needs and fit"
+      },
+      {
+        "candidate_evidence": "Demonstrated ownership in strategic programs and transformation initiatives; however, this reflects program-scale responsibility, not individual-contributor lead-management execution",
+        "evidence_strength": "medium",
+        "job_requirement": "High ownership and process-driven mindset with strong attention to detail"
+      },
+      {
+        "candidate_evidence": "Profile does not mention CRM or Salesforce experience; no evidence provided of transactional system proficiency",
+        "evidence_strength": "weak",
+        "job_requirement": "Comfort with Salesforce, dashboards, and structured CRM systems"
+      }
+    ],
+    "confidence": 0.92,
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Phone-based business development or consultative sales qualification experience",
+        "mitigation": "Candidate's background is strategic and operational, not sales or BD-facing. Phone qualification skills are not evident and would require significant training in discovery, objection handling, and deal mechanics.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct CRM and Salesforce experience",
+        "mitigation": "While Salesforce training is standard and learnable, no experience is documented. Could be acquired on the job but adds onboarding risk.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Partner channel or channel sales ecosystem experience",
+        "mitigation": "Role requires understanding of partner readiness, fit, and activation. Candidate's background is internal product operations and transformation, not partner or channel operations.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Seniority misalignment: role scope is individual-contributor lead qualification, significantly below candidate's prior operating level",
+        "mitigation": "Candidate is positioned for L4\u2013L5 manager or program lead roles. This Partner Development Representative role is quota-adjacent IC work without strategic or transformation scope, representing a substantial step backward in scope and responsibility.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 18,
+    "scope_seniority": 15,
+    "summary": "Partner Development Representative is a quota-adjacent, phone-based lead qualification role requiring consultative sales, discovery, and CRM execution\u2014a functional and seniority mismatch for a Strategy and Operations leader with eight years at Google and L4\u2013L5 program ownership scope. Strong character and process alignment do not offset the absence of BD/sales qualification experience and the downward scope shift.",
+    "uncertainties": [
+      "Whether candidate has informal or part-time business development or inside sales experience not documented in the provided profile",
+      "Candidate's actual interest in an individual-contributor, quota-adjacent role after strategic program leadership experience"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

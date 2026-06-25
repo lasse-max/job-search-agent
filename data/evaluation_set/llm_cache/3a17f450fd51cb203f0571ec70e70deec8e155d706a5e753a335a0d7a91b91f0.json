@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices; experience in design, UAT, rollout, and transformation execution across customer-facing implementations",
+        "evidence_strength": "medium",
+        "job_requirement": "Scope and implement AI Agent deployments, providing strategic advice and execution support to customers and partners"
+      },
+      {
+        "candidate_evidence": "Demonstrated stakeholder management and program leadership in transformation initiatives; track record of scaling operations across multiple geographies",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong project and stakeholder management skills, with passion for meeting milestones and effective communication"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with focus on process design and operational transformation, indicating analytical and problem-solving capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Analytical and critical thinker with expertise in risk assessment, problem-solving, and strategy"
+      }
+    ],
+    "confidence": 0.6,
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No demonstrated expertise in conversational design, NLP/NLU, or prompt engineering for LLMs\u2014core technical foundations of the role",
+        "mitigation": "Role offers opportunity to learn LLM-specific disciplines from domain expertise; candidate's analytical and process-design background may accelerate learning of prompt engineering and conversational flows, though foundational knowledge is absent",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited API integration and enterprise SaaS integration experience; no evidence of REST API design, OAuth/JWT patterns, or API testing workflows (Postman, etc.)",
+        "mitigation": "Integration configuration is a core ownership area; candidate's lack of hands-on API experience and data structure familiarity creates execution risk. Training in Parloa's integration platform could help, but gap is structural",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with enterprise customer-facing AI or conversational-AI implementations; background is in commercial operations transformation, not AI/agent rollout",
+        "mitigation": "Candidate's experience in transformation and rollout execution is relevant, but absence of AI-specific customer engagement and UAT in LLM-driven products is a significant domain gap",
+        "severity": "high"
+      },
+      {
+        "gap": "French language requirement stated as 'required'; candidate profile does not list French proficiency",
+        "mitigation": "No clear path to mitigation; language requirement is likely non-negotiable for France-based role unless candidate has undocumented fluency",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Excellent written and spoken French and English skills are required. Candidate profile lists English (professional/fluent) and German (native) with no French proficiency stated.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "Candidate is a Strategy and Operations leader with strong execution, stakeholder management, and transformation scaling expertise\u2014a good fit for implementation-heavy roles. However, this Senior Agent Architect role requires deep conversational-AI, LLM prompt engineering, NLP/NLU, and enterprise API integration expertise that candidate does not possess. Additionally, French fluency is stated as required and candidate lists only English and German. Role is implementation-heavy but heavily weighted toward AI-agent technical depth rather than business transformation, placing it outside the candidate's core family and stretch scope.",
+    "uncertainties": [
+      "Candidate's Python learning may extend to API consumption and data structure work; depth unknown",
+      "Product experience may include some API/integration exposure not detailed in profile; unclear whether transformation programs involved enterprise system integrations",
+      "Whether candidate has unpublished conversational-design or LLM exposure from Google role; profile focuses on commercial operations and transformation rather than AI/agent work"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

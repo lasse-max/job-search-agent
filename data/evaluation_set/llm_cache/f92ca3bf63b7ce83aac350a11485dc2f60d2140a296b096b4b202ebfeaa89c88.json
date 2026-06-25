@@ -1,0 +1,65 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, demonstrating progression into leadership; positioned as 'Strategy and Operations / Product Operations leader' with program and transformation ownership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Provide technical leadership and direction to a team of engineers"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs indicates cross-functional collaboration and delivery focus, though in ops and product context, not engineering infrastructure.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate effectively with cross-functional teams to ensure project alignment and timely delivery"
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No computer science or engineering degree; candidate is an ops and product strategist by training and career.",
+        "mitigation": "Not realistic to mitigate for an engineering lead role requiring CS/engineering fundamentals and hands-on infrastructure work.",
+        "severity": "high"
+      },
+      {
+        "gap": "Zero demonstrated Kubernetes, Terraform, GitOps, or infrastructure-as-code expertise. Role requires 'Demonstrated expertise'\u2014core to the job.",
+        "mitigation": "Would require months of dedicated hands-on learning in a specialized domain. Misaligned with on-the-job expectations for an Engineering Lead.",
+        "severity": "high"
+      },
+      {
+        "gap": "Basic Python proficiency 'actively learning' does not meet 'hands-on experience with at least one programming language' for infrastructure engineering and platform development.",
+        "mitigation": "Insufficient for technical leadership of a data DevOps team designing scalable systems and self-service platforms.",
+        "severity": "high"
+      },
+      {
+        "gap": "Product operations and transformation experience, not data streaming (Kafka, Flink, Spark) or data infrastructure. Bonus skill listed but relevant to team scope.",
+        "mitigation": "Could acquire through mentoring and on-the-job exposure, but represents a knowledge gap for infrastructure platform design.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Bachelor degree or above in computer science or engineering related majors' as a hard qualification. Candidate profile lists 'No production software-engineering background' and describes experience as 'Strategy and Operations / Product Operations leader' at Google\u2014domain expertise in commercial operations and transformation, not computer science or engineering degree.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires '6+ years of engineering experience' and 'Demonstrated expertise in Kubernetes, Terraform, and GitOps.' Candidate is a Strategy and Operations leader with product ownership, requirements design, UAT, and transformation experience\u2014not infrastructure engineering, DevOps, or Kubernetes/Terraform expertise. The gap is core, not trainable in scope.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD states 'Hands-on experience with at least one programming language' as a core responsibility. Candidate profile notes 'Python basic and actively learning'\u2014not hands-on proficiency required for infrastructure engineering and self-service platform development.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is a specialized infrastructure engineering leadership role requiring CS/engineering degree, Kubernetes/Terraform/GitOps expertise, hands-on programming, and data DevOps experience. The candidate is a Strategy and Operations leader with strong product transformation and program delivery skills but no software engineering background, no infrastructure-as-code expertise, and basic Python proficiency. The gap is not a seniority or soft-skills issue but a fundamental domain mismatch. The role does not fit target or approved-stretch families; it is deep infrastructure engineering requiring specific technical foundations the candidate lacks.",
+    "uncertainties": [
+      "Candidate profile does not specify depth of technical collaboration with engineering at Google\u2014could there be more hands-on infrastructure or platform exposure than ops title suggests? Unlikely given explicit 'No production software-engineering background' honest gap.",
+      "Unclear if candidate has any side experience or personal projects in DevOps, infrastructure automation, or data platforms\u2014profile does not mention these."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

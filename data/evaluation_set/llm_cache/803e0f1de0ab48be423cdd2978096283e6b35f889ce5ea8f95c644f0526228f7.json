@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, leading global commercial operations and transformation programs, demonstrating execution capability and stakeholder communication across international teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Can implement ideas quickly and communicate clearly"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and leading transformation programs at Google, suggesting comfort in dynamic, cross-functional settings.",
+        "evidence_strength": "medium",
+        "job_requirement": "Thrive in fast-paced, collaborative environments"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 8,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Core role is ML Systems & Performance technical engineering work: CPU simulators, distributed systems, LLM training debugging, accelerator backends. Candidate has strategy/operations background, not systems engineering or ML infrastructure expertise.",
+        "mitigation": "Candidate would need to transition from strategy/ops to hands-on ML engineering during the four-month program\u2014a steep learning curve even with strong Python fundamentals. Mentorship and compute budget alone cannot bridge deep systems engineering and ML infrastructure gaps.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python is basic and actively learning. Role requires rapid implementation of complex ML systems code, model training/fine-tuning, and distributed systems work.",
+        "mitigation": "Four-month program timeline assumes strong pre-existing systems-engineering chops. Basic Python fundamentals would significantly limit project output in this workstream.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated background in large-scale distributed systems, HPC, or model training/evaluation engineering.",
+        "mitigation": "While mentorship provides structure, ML Systems & Performance is not an entry-level technical workstream. Candidates should show prior experience with training, fine-tuning, or evaluating LLMs, or systems-level work.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of experience building complex ML systems or working with accelerators, infrastructure, or synthetic data pipelines.",
+        "mitigation": "The past project example (blockchain smart contract analysis) and listed workstreams (CPU simulators, training infrastructure, model debugging) require engineering depth that strategy/ops experience does not provide.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Fluent in Python programming\" is a must-have requirement. Candidate's profile states \"Python basic and actively learning,\" which does not meet fluency. This is an explicit gate in the Logistics Requirements section.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"Have strong software engineering skills with experience building complex ML systems\" is a core unique criterion for ML Systems & Performance workstream. Candidate has no production software-engineering background and product experience comes from \"ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management.\"",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a research engineering fellowship focused on ML systems, distributed infrastructure, and model training\u2014a deeply technical, hands-on environment requiring fluent Python and demonstrable systems-engineering or ML infrastructure experience. The candidate is a strategy-and-operations leader with strong business-transformation and program-leadership chops at Google, but lacks the pre-requisite technical depth (basic Python, no ML systems or HPC background). While the candidate's communication and execution skills align broadly with the collaborative environment expectation, the core technical gates and workstream-specific engineering requirements create disqualifying gaps. This is a poor fit for a four-month intensive technical fellowship.",
+    "uncertainties": [
+      "Whether candidate has any hands-on experience with model training, inference optimization, or accelerator performance outside the described product/operations roles.",
+      "Whether 'actively learning Python' includes systems-level or ML-focused Python (NumPy, PyTorch, distributed frameworks) or only basic scripting.",
+      "Whether prior transformation programs involved ML infrastructure, data pipelines, or training operations (unlikely given strategy/ops positioning, but worth clarifying)."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

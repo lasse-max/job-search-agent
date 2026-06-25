@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs with two promotions",
+        "evidence_strength": "strong",
+        "job_requirement": "Demonstrated ability to own a programme workstream independently, from planning through to delivery"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with experience in stakeholder management and cross-functional program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Clear written and verbal communication; translate compliance requirements or risk findings for technical and business stakeholders"
+      },
+      {
+        "candidate_evidence": "Product Operations background with experience embedding requirements into processes and driving transformation",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborative and pragmatic; security and compliance must work with the business, not against it"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No demonstrated GRC, information security compliance, or IT audit background. Role explicitly requires 2\u20134 years in GRC, compliance, or closely related function.",
+        "mitigation": "Candidate would require structured onboarding and mentoring in GRC fundamentals, frameworks (PCI DSS, ISO 27001, SOC 2, DORA, EU AI Act), and audit processes. Substantial domain knowledge gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No practical working knowledge of PCI DSS, ISO 27001, SOC 2, NIST CSF, DORA, or EU AI Act. These are core to daily work.",
+        "mitigation": "Domain-specific training and certification pathways (CISA, CISM, PCIP, ISO 27001 Lead Implementer) would take 6\u201312 months to develop competency.",
+        "severity": "high"
+      },
+      {
+        "gap": "No experience supporting or managing external audits, evidence collation, or liaison with QSAs and assessors.",
+        "mitigation": "Close pairing with senior GRC staff on audit cycles required; significant ramp time before independent ownership.",
+        "severity": "high"
+      },
+      {
+        "gap": "No payments, financial services, or fintech domain experience. Checkout.com operates globally across heavily regulated markets (Europe, MENA, APAC, Americas).",
+        "mitigation": "Fintech compliance landscape differs materially from consumer tech; domain immersion period necessary.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product Operations background does not translate to GRC or information security work. Role is specialist compliance/audit, not strategy or transformation.",
+        "mitigation": "This is a functional pivot, not a stretch. Candidate's core expertise (commercial operations, product strategy) is not directly applicable.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role explicitly requires '2 to 4 years of experience in GRC, information security compliance, IT audit, or a closely related function, ideally within payments, financial services, or fintech.' Candidate has zero documented GRC, compliance, audit, or information security background. This is a hard minimum requirement stated unambiguously in the JD.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 75,
+    "summary": "This is a specialist Information Security Analyst role in GRC requiring 2\u20134 years of direct compliance, audit, or information security experience. Candidate is a Strategy and Operations leader from Google Devices with strong scope ownership and cross-functional execution skills, but zero GRC, compliance, IT audit, or information security background. The role demands practical working knowledge of PCI DSS, ISO 27001, SOC 2, DORA, and EU AI Act\u2014none of which align with candidate's product and commercial operations experience. This is a functional mismatch and hard minimum requirement gap, not a stretch opportunity.",
+    "uncertainties": [
+      "Whether candidate has any informal exposure to compliance, risk, or regulatory frameworks through Google's operations (not stated in profile).",
+      "Whether candidate's transformation and program-management skills could accelerate GRC process improvement initiatives post-ramp.",
+      "Specific depth of candidate's process design and stakeholder management capabilities within regulated or high-compliance environments."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

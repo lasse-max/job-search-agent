@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; two promotions and demonstrated track record managing complex stakeholder environments.",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven ability to work cross-functionally with Risk, Compliance, Operations, Data, and Engineering teams."
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background with requirements definition, logic design, UAT, rollout, and business transformation scope; experience in regulated or operationally complex environments implied by global commercial operations scaling.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong stakeholder management skills and the ability to translate regulatory and risk requirements into scalable product solutions."
+      },
+      {
+        "candidate_evidence": "Transformation program and commercial operations background suggests exposure to operational systems and process design; no explicit evidence of regulated environment or risk/compliance system ownership.",
+        "evidence_strength": "weak",
+        "job_requirement": "Build scalable, automated systems in regulated environments while balancing risk, operational efficiency, and customer experience."
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 25,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No product management experience in payments, fintech, or financial crime prevention. Candidate background is Google Devices and Services operations, not financial services or payments product.",
+        "mitigation": "Domain onboarding would be significant; candidate would need to learn AML, fraud, compliance frameworks, and fintech product conventions from scratch. Six+ years of fintech PM experience is a core minimum qualification.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with transaction monitoring, fraud detection, AML systems, or case management tooling. This is a disqualifying minimum qualification.",
+        "mitigation": "Candidate has no evidence of owning or building any financial crime or monitoring systems. Transformation and operations background does not substitute for product ownership in this specific domain.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated SQL or advanced data analysis capability. Candidate has only 'basic' Python and is actively learning; JD expects 'comfortable working with SQL and data tools to investigate signals, optimise rules, and evaluate monitoring performance.'",
+        "mitigation": "Candidate would need to rapidly develop SQL and data query skills; this is a minimum qualification and core daily duty in the role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of defining risk detection logic, monitoring rules, or thresholds in any domain. Candidate's product work is in requirements, UAT, and rollout, not risk/fraud rule design.",
+        "mitigation": "This is a core minimum qualification. Candidate's background in transformation and operations does not overlap with rule design or detection logic.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct consulting or strategy brand experience. Candidate's positioning is Google-internal operations and transformation, not external strategy consulting or advisory.",
+        "mitigation": "While not strictly required, the fintech PM role expects pattern recognition from diverse customer and fraud scenarios; candidate's internal-only background limits that exposure.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 70,
+    "summary": "This is a Senior Product Manager role in payments fraud and transaction monitoring at a tier-1 fintech company\u2014a highly specialized domain requiring 6+ years of fintech/payments PM experience and hands-on ownership of fraud detection, AML, or transaction monitoring systems. The candidate's background is Google Devices and Services global commercial operations and transformation, with strengths in stakeholder management and scaled program delivery but no financial services, payments, or financial crime domain expertise. Core gaps include: no fintech PM or fraud/AML/monitoring system ownership; no SQL or advanced data analysis capability; and no experience with risk detection logic or rule design. While the candidate demonstrates scope-seniority alignment and strong cross-functional collaboration skills, the high-severity, disqualifying gaps in domain expertise, SQL/data capability, and specific product system experience make this role a poor fit.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

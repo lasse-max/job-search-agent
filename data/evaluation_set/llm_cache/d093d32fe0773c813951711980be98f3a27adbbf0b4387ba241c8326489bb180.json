@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in a Strategy and Operations leadership track, demonstrating progression and ability to operate at scale, though not specifically in product design team management or design leadership",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead and grow a high-performing design team managing senior and staff-level product designers"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs suggests cross-functional coordination and program leadership, but scope and nature of these programs not detailed",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven ability to set vision, align stakeholders, and lead multi-quarter initiatives across multiple domains and teams"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 8,
+    "gap_manageability": 5,
+    "gaps": [
+      {
+        "gap": "No product design background, design craft, UX expertise, or interaction design experience. Role requires 12+ years in product/UX design with deep strengths in interaction design and information architecture; candidate is a strategy and operations leader",
+        "mitigation": "Candidate cannot be credibly onboarded into design craft, design systems thinking, or design leadership. This is a disqualifying domain mismatch, not a skill gap",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct experience leading product designers, design teams, or design organizations. Role explicitly requires 4+ years leading designers including managing senior designers or design managers",
+        "mitigation": "Strategy leader management experience does not transfer to design team leadership, design mentorship, or design craft development",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with developer platforms, APIs, SDKs, technical tooling, or embedded finance domain knowledge required by the role",
+        "mitigation": "Fintech/payments domain exposure and developer platform experience are core to the position; strategy background does not substitute",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is Director level at a Tier 1 fintech company with significant regional scope (London and Singapore studios), substantially over the L4\u2013L5 target ceiling",
+        "mitigation": "Candidate is positioned for Manager/Senior Manager scope; this role is VP-equivalent in responsibility and seniority",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Experience: 12+ years in product / UX design' and 'Deep strengths in interaction design, information architecture, and UX for complex workflows.' Candidate background is Strategy and Operations at Google, not product design, UX design, or interaction design. This is a required domain qualification with no candidate evidence.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires '4+ years leading designers, including managing senior designers or design managers.' Candidate has strategy and operations leadership experience, not design team leadership or design management. No evidence of leading, mentoring, or developing product designers.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 72,
+    "summary": "This is a specialized Director of Product Design role requiring 12+ years of product/UX design expertise, deep design craft in complex systems, and 4+ years of design team leadership. The candidate is a Strategy and Operations leader from Google with strong program and transformation leadership but no product design background, design craft, UX expertise, design team management, or developer platform and fintech domain knowledge. The role is also substantially over-leveled (Director at Tier 1 fintech vs. L4\u2013L5 target scope). This is a fundamental domain mismatch, not a developmental gap. Skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

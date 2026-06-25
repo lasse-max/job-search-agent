@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioned as Strategy and Operations / Product Operations leader with experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Senior Manager role in Sales Strategy & Operations"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs at Google; primary role families include Strategy and Operations, Business Operations, Product Operations, and Product Strategy",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations leadership with global commercial scope"
+      },
+      {
+        "candidate_evidence": "Experience in transformation programs; GTM / Sales Strategy and Operations and Revenue Operations at appropriate seniority are listed primary role families",
+        "evidence_strength": "medium",
+        "job_requirement": "Sales transformation and operational efficiency scope"
+      },
+      {
+        "candidate_evidence": "Transformation programs at scale typically require multi-stakeholder coordination; candidate's positioning emphasizes program leadership and scaling initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management and execution"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 75,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Limited visibility into Salesforce ecosystem, Sales Cloud product depth, and Salesforce-specific sales operations practices",
+        "mitigation": "Product operations and transformation background transfers well; onboarding and mentorship from Salesforce Sales org can close domain knowledge quickly given strategy and ops foundation",
+        "severity": "medium"
+      },
+      {
+        "gap": "Consulting or case-team sales strategy experience not evident; background is product operations and transformation rather than native sales strategy consulting",
+        "mitigation": "Candidate's transformation and commercial operations experience addresses the core operations and execution scope; consulting brand is nice-to-have, not essential for execution-heavy ops role",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD does not provide explicit detail on seniority ceiling, specific GTM/revenue targets, or stakeholder landscape clarity",
+        "mitigation": "Candidate's L4-L5 equivalent scope at Google and two promotions align with typical Senior Manager range; confidence moderately reduced due to JD fragment",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 75,
+    "summary": "Strong role-family fit for Sales Strategy & Operations at L4-L5 seniority. Candidate has eight years in global commercial operations, transformation, and program leadership at Google with proven scaling experience and two promotions. Gap: limited visibility into Salesforce ecosystem and native sales consulting background, though ops execution and transformation depth are strong transferable assets.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

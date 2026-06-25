@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions, positioning as Strategy and Operations / Product Operations leader with experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "5+ years of sales leadership experience leading teams"
+      },
+      {
+        "candidate_evidence": "Candidate profile positions as Strategy and Operations leader with scaling and transformation experience, but no explicit sales team leadership, AE coaching, or quota-driving sales management evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Build and lead a high-performing team of Account Executives; develop people, coaching and mentorship"
+      },
+      {
+        "candidate_evidence": "Candidate has product experience from ownership, requirements, logic design, UAT, rollout, and transformation; German native speaker and professional English fluency; no evidence of AI systems knowledge or deep technical enablement of salespeople on emerging technology",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical acumen and ability to understand complex AI solutions and enable credible technical conversations with CTOs and technical founders"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Career background is Strategy and Operations / Product Operations at Google, not enterprise sales leadership or quota-carrying sales management",
+        "mitigation": "Candidate's transformation and commercial operations scaling experience could transfer to building sales processes and methodologies, but lacks direct AE team leadership, pipeline forecasting accountability, and quota execution responsibility",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience selling into digital-native businesses, technology-first companies, or SaaS/API-first platforms as a sales leader",
+        "mitigation": "Product operations exposure may include cross-functional work with GTM teams, but no evidence of leading sales motions, developing DNB-specific sales strategies, or mentoring AEs on technology-buyer personas",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of AI/ML technology knowledge, AI product adoption expertise, or ability to enable sales teams on emerging AI solutions and CTOconversations",
+        "mitigation": "Candidate's technical acumen is described as limited (basic Python, learning actively); no background in AI systems, safety, or responsible AI that Anthropic values",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct consulting brand or classic case-team experience; not a traditional quota-carrying enterprise salesperson",
+        "mitigation": "Could develop sales leadership skills through enablement and mentorship, but fundamentally misaligned with a role requiring 10+ years of enterprise sales experience",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a pure enterprise sales leadership role at Anthropic requiring 10+ years of quota-driven enterprise sales experience and 5+ years of sales team leadership. The candidate is a Strategy and Operations / Product Operations leader from Google with transformation and scaling expertise but zero sales management background, no AE coaching experience, no proven track record building sales teams or driving revenue quotas, and no AI technology knowledge. The role's core responsibility\u2014building and leading a revenue-accountable team of Account Executives\u2014is orthogonal to the candidate's expertise.",
+    "uncertainties": [
+      "Whether candidate has any hidden sales leadership or revenue management experience not reflected in profile",
+      "Whether candidate's 'commercial operations scaling' at Google included revenue forecasting or sales operations responsibility",
+      "Degree of technical depth in AI/ML that candidate may have developed since basic Python proficiency noted"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

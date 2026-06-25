@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "GTM Strategy & Operations Analyst role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Google Devices experience includes commercial operations and go-to-market transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "GTM and Sales Strategy & Operations focus"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership with global scope demonstrates multi-stakeholder coordination and execution ownership",
+        "evidence_strength": "strong",
+        "job_requirement": "Cross-functional stakeholder management and program execution"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations indicates hands-on process design and operational improvement experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations scaling and process optimization"
+      }
+    ],
+    "confidence": 0.6,
+    "evidence_strength": 65,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "JD lacks detail on scope, responsibilities, and seniority level\u2014unclear if this is analyst-track entry-level, individual contributor growth role, or cross-functional strategy leadership",
+        "mitigation": "Request detailed JD with explicit scope (e.g., headcount, budget, org reporting lines, project scope) and functional clarity to determine if candidate's senior/manager-track background aligns with intended role level",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct GTM/Sales operations and revenue operations background\u2014primary experience is commercial operations and transformation rather than quota-facing sales process, pipeline, or revenue metrics",
+        "mitigation": "Assess whether role emphasizes strategic program design and cross-functional coordination (strength) versus hands-on sales ops execution and revenue metrics (potential weak spot)",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit Datadog product, observability platform, or B2B SaaS GTM experience mentioned",
+        "mitigation": "Product domain and customer context learnable; domain knowledge is typically not a disqualifier for strategy and operations roles at analyst/early strategic level",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 72,
+    "summary": "Eight-year Google Strategy and Operations leader with commercial operations and transformation program ownership aligns well with GTM Strategy & Operations family. However, the JD is extremely sparse\u2014no explicit scope, reporting line, seniority level, or functional depth is stated. Candidate's profile suggests manager/senior-IC readiness; unclear if analyst role is entry-level or strategic individual contributor. Direct GTM/sales operations experience is limited (commercial operations focus), though stakeholder coordination and program execution are strong.",
+    "uncertainties": [
+      "JD provides almost no functional detail, scope description, reporting structure, or seniority context\u2014confidence significantly limited by vague sourcing",
+      "Datadog's definition of 'Analyst' role unknown\u2014could be entry-level analyst track or strategic individual contributor; candidate background suggests L4+ readiness",
+      "Extent of direct sales operations, revenue operations, or quota-facing GTM process experience not specified in candidate profile",
+      "London location and visa sponsorship needs not addressed in candidate profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

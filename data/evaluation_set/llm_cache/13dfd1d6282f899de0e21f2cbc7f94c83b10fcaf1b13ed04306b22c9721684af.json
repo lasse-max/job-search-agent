@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, demonstrating self-direction and ownership of global commercial operations and transformation programs at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Act decisively with minimal guidance, own outcomes end-to-end and initiate solutions without waiting for direction"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 8,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No technical documentation authoring experience in aerospace, defence, robotics, or UAV programmes",
+        "mitigation": "Candidate could potentially learn structured authoring tools and domain fundamentals with extended onboarding, but lacks the required multidisciplinary engineering documentation background entirely",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated proficiency in MadCap Flare, Adobe FrameMaker, LaTeX, Confluence, or PLM/version control systems (Windchill, Arena, Git)",
+        "mitigation": "These are core job tools listed as requirements; while learnable, absence suggests candidate is not a fit for immediate contribution",
+        "severity": "high"
+      },
+      {
+        "gap": "Cannot read or interpret CAD assemblies, electrical schematics, PCB layouts, or software API documentation",
+        "mitigation": "Role explicitly requires first-principles ability to extract knowledge from these artefacts without intermediaries; candidate background is commercial operations, not engineering or technical architecture",
+        "severity": "high"
+      },
+      {
+        "gap": "No experience translating complex engineering architectures into operator manuals or user procedures",
+        "mitigation": "Transformation and operations experience does not substitute for technical writing and documentation discipline specific to hardware/software integration",
+        "severity": "high"
+      },
+      {
+        "gap": "Strategy and Operations background does not overlap with systems technical writing, aerospace/defence domain, or aerodynamic/flight documentation",
+        "mitigation": "Role family mismatch is fundamental; candidate is not positioned for specialist technical documentation work",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD requires: 'Have authored structured technical documentation across multidisciplinary engineering domains, including mechanical, electrical, software and aerodynamic systems, within aerospace, defence, robotics or UAV programmes' and 'Can read and interpret 3D CAD assemblies, electrical wire harness schematics, PCB layouts and software API documentation to produce accurate, first-principles technical content without requiring intermediaries.' Candidate has no technical documentation background, no CAD/schematic literacy, and no aerospace/defence domain experience.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 50,
+    "summary": "This is a specialist Systems Technical Writer role requiring deep expertise in aerospace/defence technical documentation, CAD/electrical schematic interpretation, and structured authoring tools. The candidate is a Strategy and Operations leader from Google with no background in technical writing, engineering documentation, CAD literacy, or aerospace/defence domain knowledge. This is a fundamental role-family mismatch and hard blocker: the role requires demonstrated ability to extract engineering knowledge from hardware/software/aerodynamic systems and produce first-principles technical content, whereas the candidate's expertise is in commercial operations transformation.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

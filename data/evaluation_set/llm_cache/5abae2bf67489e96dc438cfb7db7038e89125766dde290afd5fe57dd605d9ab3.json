@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions in Strategy and Operations, including global commercial operations scaling and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations Manager role in markets context"
+      },
+      {
+        "candidate_evidence": "Led transformation programs with global scope and commercial operations scaling, indicating multi-stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional program leadership and stakeholder management"
+      },
+      {
+        "candidate_evidence": "Background in commercial operations scaling and process transformation at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations and business problem-solving capability"
+      }
+    ],
+    "confidence": 0.35,
+    "evidence_strength": 45,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "JD lacks sufficient detail on required scope, domain expertise, and specific market operations skills",
+        "mitigation": "Request full job description with explicit accountability scope, markets domain experience expected, and key deliverables to assess domain fit and seniority alignment",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of Spotify-adjacent markets, music/audio industry, or regional go-to-market operations experience",
+        "mitigation": "Assess whether candidate's Google Devices & Services global commercial ops translate to streaming/markets context; domain learning curve is manageable but not demonstrated",
+        "severity": "medium"
+      },
+      {
+        "gap": "Ambiguity on whether role emphasizes GTM/sales strategy, regional market expansion, or internal market operations",
+        "mitigation": "Clarify scope: if GTM/sales-strategy heavy, candidate's transformation and commercial ops background strengthens fit; if pure sales operations or quota-carrying, deprioritize",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 75,
+    "scope_seniority": 70,
+    "summary": "Strong role-family fit for Strategy & Operations, and candidate's eight-year Google tenure with two promotions and global commercial scaling suggests L4 scope alignment. However, the cached JD is severely incomplete\u2014missing role scope, market strategy specifics, and key requirements\u2014preventing confident evidence mapping. Recommend requesting full JD before final screening decision.",
+    "uncertainties": [
+      "JD snapshot is cached and lacks detailed role responsibilities, key deliverables, and scope definition",
+      "Markets Strategy & Operations scope is ambiguous: could span GTM/sales strategy, regional market expansion, or internal operations",
+      "No evidence of streaming, music, or audio industry background; domain transferability unclear",
+      "Manager-level seniority appropriate if role is L4-equivalent, but JD title and context do not clarify peer/stakeholder level"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

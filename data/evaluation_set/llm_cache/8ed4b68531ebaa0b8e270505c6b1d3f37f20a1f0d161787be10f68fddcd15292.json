@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, demonstrating sustained ownership and autonomous leadership in scaling global commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive outcomes through autonomy and take independent responsibility for projects"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader experienced in transformation programs and stakeholder management across technical and non-technical teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as high-agency specialist providing expert guidance to cross-functional teams"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 5,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No export control, trade law, or regulatory compliance domain expertise. Role requires deep operational expertise in BAFA, ITAR/EAR, and national/international trade regulations.",
+        "mitigation": "Candidate would require substantial domain ramp-up (12\u201318+ months) to independently manage complex licensing applications. Relevant regulatory or legal background not evident.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with German Federal Office of Economics and Export Control (BAFA) or U.S. export control regimes (ITAR/EAR).",
+        "mitigation": "These are core technical requirements for the role; expertise cannot be quickly acquired through operational skill transfer alone.",
+        "severity": "high"
+      },
+      {
+        "gap": "No technical literacy in goods classification under national and international export control regulations (CCL, ECCN, TARIC, etc.).",
+        "mitigation": "Would require specialized training and hands-on mentorship; not a skills area typical to business operations or product operations backgrounds.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience in defence, aerospace, hardware, or regulated/high-stakes government contracting environments.",
+        "mitigation": "Helsing operates in a unique, high-stakes domain; cultural and operational context differs significantly from consumer-facing commercial operations.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "Candidate is a Strategy and Operations leader with strong execution and cross-functional ownership skills, but the Expert Export Control role is a specialist compliance and regulatory function requiring deep domain expertise in BAFA, ITAR/EAR, trade law, and goods classification. This is a domain mismatch, not a level or operations fit issue. The role sits within Helsing's Core Operations but is fundamentally a regulatory specialist position, not a strategic or transformational operations role.",
+    "uncertainties": [
+      "Candidate's exposure to or interest in defence, aerospace, or regulated government contracting not documented",
+      "Depth of knowledge around German legal/regulatory frameworks or language fluency advantage (candidate is native German speaker) for BAFA interactions not quantified",
+      "Whether candidate has any incidental compliance, audit, or legal review experience that might accelerate learning curve"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

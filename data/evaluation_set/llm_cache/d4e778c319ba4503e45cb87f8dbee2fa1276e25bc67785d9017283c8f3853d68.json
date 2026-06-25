@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience with customer-facing transformation and scaling",
+        "evidence_strength": "medium",
+        "job_requirement": "Work directly with enterprise customers to understand strategic priorities and operational challenges, identifying where AI can deliver measurable business value"
+      },
+      {
+        "candidate_evidence": "Scaling global operations and running transformation programs implies stakeholder management and cross-functional coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Facilitate workshops, hackathons, and innovation sessions with customers to explore new ways AI can transform their operations"
+      },
+      {
+        "candidate_evidence": "Global commercial operations and transformation program leadership suggests executive communication and stakeholder management experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrate strong presentation skills to both internal and external stakeholders, including executives"
+      },
+      {
+        "candidate_evidence": "Product operations and strategy background with transformation program ownership; no explicit supply chain, finance, or domain-specific case evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Have a good understanding of business processes across sectors (such as Supply Chain or Finance) with the ability to translate high-level business needs into specific AI use cases"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 40,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Native-level French language proficiency explicitly required for customer workshops, executive presentations, and stakeholder management. Candidate shows professional English and native German, but French proficiency not indicated.",
+        "mitigation": "If candidate has native or near-native French, this is immediately resolvable; otherwise, requires language acquisition or role relocation outside Paris/French-speaking client base.",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years in solutions consulting, data/AI consulting, technical pre-sales, sales engineering, or customer-facing solution architecture. Candidate background is product operations and strategy at Google, not consulting or pre-sales verticals.",
+        "mitigation": "Consulting-style delivery, client engagement models, and technical pre-sales credibility differ from product operations; significant onboarding and skill transfer required.",
+        "severity": "high"
+      },
+      {
+        "gap": "Some experience prototyping solutions with Python and modern AI frameworks. Candidate notes Python is basic and actively learning; no production AI/ML prototyping or GenAI application build experience evident.",
+        "mitigation": "Rapid upskilling on Python, LangChain, RAG, and AI orchestration frameworks; reliance on engineering partners for prototyping depth.",
+        "severity": "high"
+      },
+      {
+        "gap": "Generative AI, LLM orchestration (LangChain, LlamaIndex), and modern AI architecture familiarity. Not mentioned in candidate profile.",
+        "mitigation": "Self-directed learning and mentorship from Celonis AI/ML team; customer-facing role allows co-learning with partners like OpenAI, Microsoft, Databricks.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Industry domain expertise in supply chain, finance, or operations required to build credibility with strategic customers. Candidate background is Google consumer/device operations, not enterprise supply chain or finance.",
+        "mitigation": "Domain expertise can be developed through customer engagement and mentorship; Google operations experience provides adjacent foundation.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Native-level or near-native French language skills (written and spoken), with the ability to confidently engage French-speaking customers, facilitate workshops, and present to executive stakeholders.\" Role location is Paris, France, and French is explicitly required for customer-facing workshops and executive engagement. No French proficiency indicated in candidate profile.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "Candidate's eight-year Strategy and Operations background at Google aligns with Value Engineering's customer-facing transformation and stakeholder-management scope, placing her at an appropriate senior IC/manager level. However, the role is a poor fit: it requires 5+ years in solutions consulting, technical pre-sales, or AI consulting\u2014verticals distinct from product operations\u2014plus Python prototyping and GenAI/LLM expertise that the candidate is still developing. Most critically, native-level French is a hard requirement for Paris-based customer workshops and executive presentations; no French fluency is indicated. The combination of language barrier, lack of consulting/pre-sales background, and limited AI/Python depth makes this a skip despite strong operational leadership pedigree.",
+    "uncertainties": [
+      "French language proficiency not stated in candidate profile; if candidate is fluent, this removes the hard blocker",
+      "Depth of customer engagement and pre-sales experience at Google unclear; may have done more consulting-style work than profile suggests",
+      "Supply chain and finance domain familiarity at Google not specified; may have relevant context",
+      "AI/GenAI learning trajectory and pace not detailed; time-to-productivity on Python and LLM frameworks unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

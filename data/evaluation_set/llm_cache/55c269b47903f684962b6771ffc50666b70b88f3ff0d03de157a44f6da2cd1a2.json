@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs with demonstrated ability to drive complex cross-functional initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Turn ambiguous problems into clear and actionable deliverables, aligning internal and external leaders on a shared, ambitious vision"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Transformation background with experience owning strategic programs and scaling operations globally",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop long-term vision and strategy for pillar, create and execute on multi-quarter roadmap"
+      },
+      {
+        "candidate_evidence": "Google background includes cross-functional collaboration with engineering, product, and operations teams on complex platform initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Stripe and partner product/engineering organizations to define valuable investments, factoring distribution potential, performance, costs, and risks"
+      },
+      {
+        "candidate_evidence": "Operations and transformation leader at scale would have worked with data-driven approaches, but candidate profile does not detail direct experimentation or metrics design experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong analytical capabilities with experience defining metrics, running experiments, and using data to measure product impact"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 45,
+    "gap_manageability": 38,
+    "gaps": [
+      {
+        "gap": "Role is native Product Manager for a payments platform; candidate background is Strategy and Operations / Product Operations, not product management with SDLC ownership",
+        "mitigation": "Candidate's transformation and strategic program leadership could accelerate learning of PM fundamentals if paired with strong mentorship, but represents a career-stage pivot rather than natural progression",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated deep expertise in online payments, conversion optimization, payment method ecosystems, or revenue/margin trade-offs in fintech",
+        "mitigation": "Domain expertise is learnable, but JD emphasizes 'experience with online payments' and 'deep understanding of conversion, costs, and risk trade-offs' as preferred. Candidate would require substantial onboarding in payments fundamentals",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of directly defining and tracking product success metrics, running experimentation frameworks (holdback tests), or measuring product impact on revenue and conversion",
+        "mitigation": "Operations background may include analytics literacy, but JD explicitly calls for 'strong analytical capabilities' and hands-on metrics/experiment design. Candidate's evidence does not map clearly to this requirement",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of building or owning marketplace or platform products with multi-stakeholder ecosystem balancing",
+        "mitigation": "Google scale suggests exposure to platform problems, but candidate profile emphasizes operational transformation rather than product architecture or ecosystem design ownership",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Stripe's EMEA Local Payment Methods PM role requires deep native product management in fintech payments with 5+ years PM track record, metrics/experimentation rigor, and payments domain expertise. The candidate is a Strategy and Operations / Product Operations leader with strong strategic vision, transformation execution, and cross-functional leadership at Google, but their background is anchored in operations and business transformation rather than product management, and they lack demonstrated payments or fintech experience. While the candidate's scope and seniority align well (L4-L5 equivalent), the role family fit is poor due to the native PM requirement and payments domain gap. This is a fundamental fit mismatch, not a skill gap.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

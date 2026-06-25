@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Scaled global commercial operations and transformation programs at Google Devices and Services, working across engineering, product, policy, and business teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Multi-stakeholder agreement navigation with technical and policy considerations"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, managing complex transformation programs at global scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Fast-paced environment with shifting priorities and willingness to roll up sleeves"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "No active U.S. state bar membership or JD required for Commercial Counsel role",
+        "mitigation": "Would require obtaining JD and bar admission, a multi-year commitment incompatible with immediate role readiness",
+        "severity": "high"
+      },
+      {
+        "gap": "No commercial legal transactions experience; background is in product operations and business transformation, not law",
+        "mitigation": "Commercial contracts, SaaS agreements, and enterprise negotiation expertise are core to the role and not transferable from operations experience",
+        "severity": "high"
+      },
+      {
+        "gap": "Not a practicing attorney; no legal drafting, review, or negotiation experience",
+        "mitigation": "Role requires immediate contribution in legal document drafting and deal support, core legal competencies not present",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states \"A JD and active membership in at least one U.S. state bar (California preferred)\" and \"At least 3-5 years of legal experience, with exposure to commercial contracts, SaaS agreements, or technology transactions.\" Candidate has neither a law degree nor bar membership; background is exclusively in product operations and business transformation at Google, not legal practice.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 70,
+    "summary": "This is a specialized in-house counsel role requiring a practicing attorney with commercial transactions expertise and active bar membership. The candidate is a strategy and operations leader with strong multi-stakeholder management skills, but lacks the foundational legal credentials (JD, bar admission) and commercial legal transactions experience that are disqualifying hard requirements. No amount of business operations acumen can substitute for the required legal qualifications.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

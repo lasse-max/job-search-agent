@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs, demonstrating independent ownership and execution at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Operate independently while leveraging internal building blocks and frameworks"
+      },
+      {
+        "candidate_evidence": "Product Operations background with experience in rollout and transformation program execution, indicating delivery-focused mindset",
+        "evidence_strength": "medium",
+        "job_requirement": "Ship fast, with a bias toward action and delivery"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with transformation program experience and cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong problem-solving abilities and excellent communication skills"
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No hands-on applied AI engineering experience building agents, LLM orchestration, context engineering, evals, or RAG systems",
+        "mitigation": "Candidate would need significant upskilling in applied AI systems and agent frameworks; this is a core technical requirement, not a nice-to-have",
+        "severity": "high"
+      },
+      {
+        "gap": "No cybersecurity or pentest domain knowledge or background",
+        "mitigation": "While JD states 'not mandatory' and offers pairing with pentesters, the role requires translating security requirements into agentic solutions and domain-specific context engineering; light domain knowledge is insufficient without applied AI fundamentals",
+        "severity": "high"
+      },
+      {
+        "gap": "No production AI systems experience, evals/benchmarking, or security tooling familiarity",
+        "mitigation": "Role explicitly expects hands-on experience building agentic systems end-to-end and operating production AI; candidate's background is business operations and transformation, not applied AI engineering",
+        "severity": "high"
+      },
+      {
+        "gap": "Career trajectory is Strategy/Operations/Product leadership, not applied AI engineering or software development",
+        "mitigation": "Fundamental role-family mismatch; would require a major technical pivot away from eight-year specialization",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a hands-on Applied AI Engineer role requiring core competencies in agent development, LLM orchestration, evals, and RAG systems. The candidate brings strong Strategy and Operations leadership, independent execution, and transformation program delivery, but has no applied AI engineering background, no cybersecurity domain knowledge, and no production AI systems experience. The role is outside target and approved-stretch families and represents a fundamental technical pivot rather than a meaningful lever from the candidate's core expertise.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

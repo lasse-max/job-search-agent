@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioned as Strategy and Operations / Product Operations leader with experience scaling global commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Commercial Strategy & Operations role at Google (Strategy & Operations department)"
+      },
+      {
+        "candidate_evidence": "Background explicitly includes transformation programs and commercial operations scaling; primary role family includes Strategy and Operations, Product Operations, Business Transformation, and Strategic Programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and Operations function leadership and transformation program execution"
+      },
+      {
+        "candidate_evidence": "Eight years of internal Google experience spanning global commercial operations suggests multi-stakeholder, cross-functional context; two promotions indicate progressive scope ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Complex, ambiguous scope requiring stakeholder management and cross-functional coordination"
+      }
+    ],
+    "confidence": 0.35,
+    "evidence_strength": 45,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "JD lacks detail on specific scope, accountabilities, and seniority level; unable to assess exact role-function fit or whether candidate's eight-year scope aligns with actual L4/L5 responsibility or higher-level expectations",
+        "mitigation": "Request detailed JD scope statement covering strategic priorities, team structure, P&L, and stakeholder scope; clarify whether role is IC-track or management-track to confirm seniority calibration",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's product operations and transformation experience comes from ownership, requirements, logic design, UAT, and rollout rather than native business operations or commercial finance/analytics expertise",
+        "mitigation": "Probe candidate's depth in commercial metrics (CAC, LTV, pipeline, quota, margin), pricing strategy, and revenue operations; assess whether product-operations mindset translates to commercial domain",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting background and classic case-team experience; internal Google tenure may not have exposed candidate to external commercial frameworks, benchmarking, or best-practice synthesis",
+        "mitigation": "Interview for commercial business acumen, competitive knowledge, and ability to abstract learnings from internal context to new commercial domains (e.g., if role involves commercial product strategy)",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 75,
+    "summary": "Strong role-family fit for Strategy & Operations within candidate's target function; eight years at Google in commercial operations and transformation programs align directly with department and positioning. However, JD contains minimal substantive detail\u2014no scope, accountabilities, seniority level, or deliverables\u2014making confidence low and creating risk of over-leveling or domain mismatch. Candidate's background is product-operations-strong but lacks explicit commercial finance, GTM, or revenue-operations depth; worth pursuing with detailed JD clarification.",
+    "uncertainties": [
+      "JD is heavily obfuscated by frontend code and metadata; unable to extract substantive role scope, team size, P&L, or strategic priorities",
+      "Unclear whether role is L4-level manager/senior IC or higher (Head of, Director) at Google, which affects seniority ceiling assessment",
+      "No detail on whether role is GTM-strategy, product-strategy, business-operations-analytics, or revenue-operations; candidate's product-ops background may or may not transfer",
+      "Candidate's exact scope and ownership at Google Devices & Services (e.g., team size, P&L, geographic reach, function) not stated, limiting seniority triangulation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

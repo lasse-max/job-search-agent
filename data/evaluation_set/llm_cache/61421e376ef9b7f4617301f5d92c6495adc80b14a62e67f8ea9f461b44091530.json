@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs, two promotions, positioning as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "AI Deployment Strategist role focused on strategy, business problem-solving, and transformation"
+      },
+      {
+        "candidate_evidence": "Product operations experience with ownership of requirements, logic design, UAT, rollout, and transformation execution suggests multi-stakeholder coordination and process design capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management and cross-functional collaboration in deployment or implementation-heavy AI context"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations and led transformation programs at Google, indicating large-scope strategic program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic programs and business transformation execution"
+      }
+    ],
+    "confidence": 0.55,
+    "evidence_strength": 45,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "JD lacks concrete detail on scope, function, and AI-specific context\u2014unable to assess whether role requires deep LLM/AI product knowledge, customer-facing deployment leadership, or internal transformation",
+        "mitigation": "Request detailed JD with role responsibilities, team scope, stakeholder types, and AI problem domain to clarify fit",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct experience deploying AI systems, LLM applications, or managing AI transformation programs",
+        "mitigation": "Candidate's transformation and commercial operations background transfers to process design and execution; AI-specific domain knowledge can be developed with structured onboarding and AI-savvy mentorship",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited visibility into whether role prioritizes strategy/business problem-solving or requires production engineering and technical depth",
+        "mitigation": "Clarify engineering vs. business operations balance in JD to confirm fit within approved stretch family",
+        "severity": "medium"
+      },
+      {
+        "gap": "Munich location specified; candidate location and German-language fluency not confirmed in profile",
+        "mitigation": "Verify candidate relocation readiness and confirm German language capability (profile shows native German, likely positive signal)",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 72,
+    "summary": "Candidate's Strategy and Operations background with global commercial transformation at Google aligns with \"Deployment Strategist\" approved stretch family. Strong foundational scope and stakeholder-management capability, but JD lacks sufficient detail to assess AI-specific domain requirements, customer-facing vs. internal transformation balance, or engineering depth needed. Recommend clarifying role scope, AI problem context, and team structure before final decision.",
+    "uncertainties": [
+      "JD description is truncated/incomplete\u2014missing actual job responsibilities, required qualifications, team scope, and AI-specific context",
+      "Unclear whether role requires direct AI/LLM product or technical knowledge, or is primarily strategic/operational transformation",
+      "Candidate's German fluency and Munich location fit not explicitly confirmed",
+      "Scope of customer-facing deployment vs. internal transformation not specified in JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

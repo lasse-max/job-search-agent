@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations with proven cross-functional collaboration across product, engineering, policy, user operations, and finance teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate with a wide range of stakeholders, including teams in product, finance, operations and engineering"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google Devices and Services with demonstrated leadership in transformation programs and scaling operations at global scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong leadership, organizational, and execution skills, along with proven communication abilities"
+      },
+      {
+        "candidate_evidence": "Product operations background with experience in requirements definition, logic design, UAT, and rollout informed by data-driven decision-making in transformation contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Use data to better understand user needs and guide future product development"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 42,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Native Product Manager experience required: JD explicitly asks for 10+ years of product management or related industry experience, with proven experience in technical product environments driving product vision and requirements definition. Candidate's background is product operations, commercial operations, and transformation\u2014distinct from pure PM responsibilities like feature roadmap ownership, user story definition, or iterative product discovery cycles.",
+        "mitigation": "Candidate's eight years at scale with ownership over requirements, logic design, and rollout across products shows depth in working with product teams and defining solutions. Cross-training and close partnership with experienced PMs on ChatGPT/API/Sora product surfaces could accelerate domain learning, but this represents a meaningful career transition rather than a lateral move.",
+        "severity": "high"
+      },
+      {
+        "gap": "Abuse detection, safety, and fraud-prevention domain expertise: JD focuses on building sophisticated protections against scaled abuse, detecting misuse, and preventing policy violations. Candidate's background does not explicitly mention abuse, fraud, safety, or trust & safety work.",
+        "mitigation": "Core competencies in stakeholder management, process design, and execution are transferable. Domain education in abuse patterns, OpenAI's policy landscape, and detection systems would require onboarding investment. Candidate's transformation and scaling experience is relevant to building new systems, but lack of prior T&S work is a material gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "Computer Science or related quantitative degree not confirmed: JD states 'Obtained a bachelor's degree in Computer Science, Engineering, Information Systems, Analytics, Mathematics, Physics, Applied Sciences, or a related field.' Candidate profile does not provide educational background.",
+        "mitigation": "If degree is in a related quantitative or technical field, gap is minimal. If degree is non-technical, this is a preferred requirement mismatch and may affect hiring decision at a tier-1 company with this explicit language.",
+        "severity": "medium"
+      },
+      {
+        "gap": "London location and relocation: Role is based in London, England, with 3 days/week in-office requirement. Candidate location and relocation willingness not stated in profile.",
+        "mitigation": "Clarify candidate's location and willingness to relocate to London. OpenAI offers relocation assistance, but this is a material operational constraint.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "This is a native Product Manager role in Trust & Safety at a tier-1 company, requiring 10+ years of PM experience and a technical quantitative degree. Candidate brings strong strategic operations and cross-functional leadership from eight years at Google, but lacks native PM experience (feature discovery, roadmap ownership, SDLC), abuse/safety domain expertise, and confirmed educational background. Role family fit is weak because this is core PM, not BizOps or transformation. Candidate's seniority and execution ability are solid, but functional mismatch and material domain gaps make this a difficult transition despite strong operational fundamentals.",
+    "uncertainties": [
+      "Candidate's educational background and degree field not provided; JD lists specific required fields (CS, Engineering, Math, Physics, etc.)",
+      "Candidate's current location and willingness to relocate to London not stated",
+      "Depth of candidate's exposure to AI safety, abuse detection, or policy enforcement not evident in profile",
+      "Whether candidate has managed product roadmaps, feature definition, or user-facing discovery cycles in any prior role"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

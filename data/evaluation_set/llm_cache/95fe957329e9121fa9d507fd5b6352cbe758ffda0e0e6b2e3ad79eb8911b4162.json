@@ -1,0 +1,60 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions; direct experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and Operations role focused on agent development (implied from title and Sierra's agent-centric product)"
+      },
+      {
+        "candidate_evidence": "Track record of scaling global commercial operations and leading transformation programs; experience with requirements, logic design, UAT, rollout, and change management",
+        "evidence_strength": "strong",
+        "job_requirement": "Transformation and program leadership capability (role appears to involve guiding customer/internal strategies around AI agents)"
+      },
+      {
+        "candidate_evidence": "Product operations experience based on ownership, requirements definition, and rollout execution; global commercial operations scaling suggests multi-stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder and customer engagement (implied in strategist role for product adoption)"
+      },
+      {
+        "candidate_evidence": "Native German speaker and professional English fluency; flexible to either location",
+        "evidence_strength": "strong",
+        "job_requirement": "Location fit (Munich or Sydney posting)"
+      }
+    ],
+    "confidence": 0.35,
+    "evidence_strength": 45,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "JD is extremely light on specifics\u2014no published job description text beyond title and locations. Cannot verify exact strategic scope, customer/product context, AI/agent domain depth required, or seniority level",
+        "mitigation": "Request detailed JD or conduct discovery call to clarify agent development strategy domain, stakeholder scope, and whether this is customer-facing deployment strategy, internal product strategy, or GTM transformation work",
+        "severity": "high"
+      },
+      {
+        "gap": "No AI/conversational agent product experience mentioned in candidate profile. Candidate's background is commercial operations and transformation at hardware/services, not AI product or agent ecosystems",
+        "mitigation": "Assess willingness and speed to learn AI agent product domain. If role emphasizes transformation and stakeholder problem-solving over agent technical depth, learning curve is manageable",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting or classic case-team strategy experience; career has been internal Google operations and transformation rather than external strategic advisory",
+        "mitigation": "Depends on whether Sierra expects external consulting background. If internal product-operations strategy and change leadership suffice, this gap is minor",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 68,
+    "summary": "Candidate's eight-year Google Strategy and Operations tenure with transformation and program leadership experience maps reasonably to the title \"Strategist, Agent Development\" and target family fit. However, the JD snapshot provides no actual job description\u2014only title and locations\u2014preventing verification of required strategic scope, agent domain depth, or seniority level. No AI product background is evident. Recommendation hinges on whether the role prioritizes transformation, stakeholder management, and process design (candidate strength) versus deep agent product or technical expertise (unknown candidate capability).",
+    "uncertainties": [
+      "Full job description text missing; only title, company, and locations present. Cannot assess actual scope, responsibilities, or hard/soft requirements",
+      "Sierra 'Strategist, Agent Development' scope unclear\u2014customer-facing deployment strategy, internal product strategy, GTM transformation, or agent architecture design strategy?",
+      "Seniority anchor unknown; cannot determine if L4-L5 appropriate or if role is over-leveled at a Tier-1 startup",
+      "AI/agent product domain experience not mentioned; unclear if candidate can ramp quickly or if domain expertise is disqualifying",
+      "Whether consulting or external strategy advisory background is required or preferred"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

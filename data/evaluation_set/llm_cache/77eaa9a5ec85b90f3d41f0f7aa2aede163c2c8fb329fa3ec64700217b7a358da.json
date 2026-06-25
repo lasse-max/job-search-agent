@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs, demonstrating cross-functional stakeholder management and strategic advisory capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to build deep, lasting relationships with key decision-makers and become their trusted advisor"
+      },
+      {
+        "candidate_evidence": "Background in transformation programs and commercial operations scaling indicates process design and execution capability in solving organizational challenges",
+        "evidence_strength": "medium",
+        "job_requirement": "Solutions-oriented problem-solver who can identify needs and offer practical solutions"
+      },
+      {
+        "candidate_evidence": "Product operations and business transformation experience with ownership of requirements, logic design, UAT, and rollout demonstrates process and operational insight",
+        "evidence_strength": "medium",
+        "job_requirement": "Understanding of business operations, workflows, and potential for technology to transform processes"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No accounting or CPA qualification; JD explicitly emphasizes CPA-qualified or significant accounting practice experience as core foundation",
+        "mitigation": "Could acquire accounting domain knowledge through immersion, but this is a career-transition role primarily designed for current/former accounting professionals; candidate lacks the domain credibility the role leverages",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated history of quota-carrying or enterprise sales; role sits in Revenue and emphasizes earning potential and partner outcomes, signaling sales-driven metrics and expectations",
+        "mitigation": "Candidate's background is operations and strategy, not revenue generation or client acquisition; would require significant sales training and cultural shift",
+        "severity": "high"
+      },
+      {
+        "gap": "No track record in relationship-driven advisory selling to mid-market or SMB accounting practices; this is a land-and-expand, trusted-advisor sales motion",
+        "mitigation": "Could develop relationship-building skills, but lacks industry relationships, accounting firm operating model knowledge, and sales cycle experience",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited exposure to Fintech, cloud accounting platforms, and the accounting software market; JD positions product knowledge as a hiring advantage",
+        "mitigation": "Can be learned, but represents a knowledge gap at entry versus a CPA transitioning into SaaS with native market context",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "This is a career-transition sales advisory role designed for CPAs or accounting practitioners pivoting to SaaS; it sits in the Revenue department with quota and earning-potential emphasis. Candidate's Google Ops & Strategy background brings strong stakeholder management and transformation execution but lacks the accounting domain, CPA credential, and sales motion the role requires. No hard blockers, but role-family fit is poor and gap severity is high.",
+    "uncertainties": [
+      "Unclear whether candidate has any personal interest in or exposure to accounting or Fintech markets",
+      "Unknown whether candidate's Google roles included any direct revenue metrics, client acquisition, or sales-stage advisory experience",
+      "Not specified whether the role's 'accounting professional' requirement is strict (must-have CPA) or flexible to adjacent finance/ops experience",
+      "Unclear whether Xero would consider Google Ops/Strategy experience as equivalent to accounting practice experience for advisory credibility"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

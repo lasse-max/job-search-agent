@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and managing transformation programs with cross-functional ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Global cross-functional partnership and stakeholder management across governments and regulators"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy Operations background with transformation program leadership, not government affairs, public policy, regulatory, or advocacy experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Voice representation on industry-shaping issues and policy landscape"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No government affairs, public policy, regulatory affairs, or legislative advocacy background; candidate is ops/strategy from technology product side",
+        "mitigation": "Government affairs is a specialized function requiring domain expertise in policy frameworks, regulatory strategy, and advocacy\u2014areas not present in candidate's operations-focused background",
+        "severity": "high"
+      },
+      {
+        "gap": "Head of title and regional P&L ownership scope exceed L4\u2013L5 target; established company tier-2 headship roles are over-leveled",
+        "mitigation": "Candidate's scope ceiling is Manager to Senior Manager / Lead level; this is a country/region leadership role",
+        "severity": "high"
+      },
+      {
+        "gap": "No creatives/music industry, media policy, competition law, online safety, or AI regulation domain knowledge",
+        "mitigation": "Role requires deep familiarity with Spotify's creator ecosystem, music licensing, and regulatory landscape\u2014candidate's expertise is in device/services operations",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated external affairs, lobbyying, or regulatory liaison experience",
+        "mitigation": "External stakeholder management differs materially from internal cross-functional operations and program leadership",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "Candidate is a Strategy and Operations leader with strong global commercial-operations and transformation-program experience at Google, but this role is a Government Affairs regional headship\u2014a specialized policy and advocacy function completely outside the candidate's domain. Title scope (Head of) and company tier exceed the L4\u2013L5 ceiling, and there is no government affairs, regulatory, public policy, or music-industry background. This is a domain mismatch and over-leveled role; skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

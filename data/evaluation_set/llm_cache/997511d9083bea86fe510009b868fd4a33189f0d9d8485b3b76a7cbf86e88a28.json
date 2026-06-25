@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, demonstrating ability to lead cross-functional transformation programs and work with engineering teams on scaling commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead technical discussions and solution deep dives with users on the value Stripe can provide; engage with engineering leads and technical leads at key users"
+      },
+      {
+        "candidate_evidence": "Product Operations experience with ownership of requirements, logic design, and UAT indicates familiarity with translating customer needs into product changes and cross-functional advocacy",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as an advocate for customers internally, to ensure their needs are represented with product engineering and to influence product direction"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations positioning with experience scaling global commercial operations and leading transformation programs shows strategic thinking capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Think strategically about the art of the possible and clearly articulate solutions in complex, mission-critical environments"
+      }
+    ],
+    "confidence": 0.65,
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Pre-sales or technical architecture consulting experience explicitly required (4+ years including minimum 1 year customer-facing pre-sales). Candidate background is Google-internal ops, not external customer-facing technical presales",
+        "mitigation": "Candidate's Google scope and stakeholder management could transfer, but would require onboarding on presales motion, Stripe product depth, and customer engagement patterns",
+        "severity": "high"
+      },
+      {
+        "gap": "Payments systems and fintech domain knowledge absent. Role requires credible technical conversations about payment architecture, API design, money movement, and financial operations at enterprise scale",
+        "mitigation": "Domain can be learned, but ramp time on payments fundamentals, Stripe's platform specifics, and enterprise fintech requirements would be substantial",
+        "severity": "high"
+      },
+      {
+        "gap": "Production software development and code-writing capability. JD states 'You can write code' as baseline; candidate has basic Python and is actively learning, not production-ready",
+        "mitigation": "Candidate can likely write simple demos or pseudocode for architecture discussions, but depth in software architecture hands-on skills is below role expectations",
+        "severity": "medium"
+      },
+      {
+        "gap": "Bilingual Italian-English requirement stated. Candidate is fluent in English and German, no Italian mentioned",
+        "mitigation": "If Dublin-based role does not strictly enforce Italian, this becomes low; otherwise candidate cannot meet minimum communication requirement",
+        "severity": "medium"
+      },
+      {
+        "gap": "Enterprise/large customer sales cycle and competitive positioning experience. Background is Google-internal operations transformation, not managing multiple parallel customer deals or navigating competitive presales",
+        "mitigation": "Strategic skills transfer, but presales rhythm, deal closure accountability, and customer procurement cycles would be new context",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD minimum requirement: 'Strong verbal and written communication abilities, including presenting to large audiences in both Italian and English.' Candidate profile lists English (professional/fluent) and German (native), with no Italian proficiency mentioned. This is stated as a minimum requirement, not preferred.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 42,
+    "scope_seniority": 68,
+    "summary": "Candidate has strong Strategy and Operations / Product Operations positioning and strategic communication skills from eight years at Google with demonstrated cross-functional and stakeholder leadership. However, the role is a pre-sales technical architecture function\u2014not a target family for this candidate profile. Critical misalignments: (1) no pre-sales or customer-facing technical consulting background (minimum 1 year explicitly required); (2) no payments/fintech domain; (3) production code depth below expectations ('you can write code' baseline); (4) Italian language requirement (stated minimum) not met. While strategic thinking and program leadership transfer conceptually, the presales motion, payment systems depth, and sales cycle accountability represent a significant functional pivot with extended ramp time. Recommend skip.\"",
+    "uncertainties": [
+      "Whether the Dublin location strictly enforces the Italian language requirement or if it is pragmatically waived for strong English-only candidates",
+      "Depth of candidate's technical credibility with engineering teams on financial systems and API architecture\u2014unclear whether 'technical depth' in Google ops translates to Stripe-level fintech architecture discussions",
+      "Whether Stripe's startup/SMB segment (vs. enterprise) lowers presales intensity or domain depth expectations relative to the full JD language"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

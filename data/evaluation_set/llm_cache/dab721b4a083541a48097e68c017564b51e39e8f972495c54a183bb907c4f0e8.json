@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations and transformation program experience; proven ability to work cross-functionally with multiple stakeholder levels",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with account executives and serve as primary technical advisor to enterprise customers throughout Claude adoption journey"
+      },
+      {
+        "candidate_evidence": "Demonstrated ownership in requirements definition, logic design, and technical rollout as part of product operations and transformation work",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate customer requirements into technical solutions and guide technical architecture decisions"
+      },
+      {
+        "candidate_evidence": "Strategy and operations background with experience communicating across organizational levels and translation between technical and business contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Create compelling technical content for diverse audiences from engineering teams to C-suite executives"
+      },
+      {
+        "candidate_evidence": "No evidence provided in candidate profile regarding travel willingness or customer-facing site engagement",
+        "evidence_strength": "weak",
+        "job_requirement": "Travel occasionally to customer sites for technical deep dives and relationship building"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 42,
+    "gap_manageability": 28,
+    "gaps": [
+      {
+        "gap": "No pre-sales, solutions architect, or direct customer-advisory background; candidate experience is internal transformation and operations, not external enterprise customer technical advisory",
+        "mitigation": "Would require significant ramp on enterprise pre-sales methodology, customer discovery frameworks, and external relationship management patterns; extended onboarding in customer-facing consultative sales",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited LLM framework and machine learning depth; candidate is actively learning Python at a basic level",
+        "mitigation": "Training on LLM architecture, Claude capabilities, and common integration patterns could address surface knowledge, but technical credibility with engineering and ML-focused customers would be weak during critical discovery and architecture phases",
+        "severity": "high"
+      },
+      {
+        "gap": "Product operations experience differs from applied AI solutions architecture; no demonstrated background designing or architecting LLM solutions, evaluating AI models, or guiding enterprise AI adoption",
+        "mitigation": "Would require pairing with experienced solutions architects; mentoring ramp could extend several months, with risk of customer confidence gaps in early technical engagements",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of design or deployment of scalable cloud architectures or enterprise system integrations",
+        "mitigation": "Could be learned on the job with support, but limits immediate ability to guide architectural trade-offs with customers",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Candidate brings strong strategic and cross-functional operations experience from Google with proven L4/L5 scope and business transformation leadership. However, this role requires 5+ years of pre-sales, solutions architecture, or technical account management in enterprise customer advisory\u2014a fundamentally different function from internal product operations. Candidate lacks LLM/AI technical depth, enterprise customer-facing technical advisory experience, and demonstrated AI solution architecture background. The role's core value is positioning the candidate as a trusted technical advisor to enterprises on Claude integration; candidate's background does not credibly support this positioning.",
+    "uncertainties": [
+      "Candidate's exact AI/LLM learning trajectory and depth is unclear; profile states 'Python basic and actively learning' but does not specify LLM framework familiarity or prior AI project exposure",
+      "Degree field of study not provided; role requires 'a field relevant to the role as demonstrated through coursework, training, or professional experience' and candidate profile does not detail educational background",
+      "Willingness and ability to pivot from internal operations to external customer-advisory role not assessed",
+      "Candidate's experience with enterprise customer discovery, complex buying cycles, and multi-stakeholder navigation is inferred from 'global commercial operations' but not explicitly detailed"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

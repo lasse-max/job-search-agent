@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling commercial operations and transformation programs with cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with data analysts and business teams to understand business requirements and provide data ready for analysis and reporting"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Core role is Analytics Engineer / Data Warehousing, requiring hands-on dbt, Snowflake, and advanced SQL\u2014candidate has no production data engineering, analytics engineering, or BI background",
+        "mitigation": "Would require full reskilling in data modeling, ETL, dbt, and warehousing; not viable for immediate impact",
+        "severity": "high"
+      },
+      {
+        "gap": "Proven delivery as data, BI, or analytics engineer is a core requirement; candidate's background is strategy, operations, and transformation program leadership, not analytics engineering",
+        "mitigation": "No direct path from operations background to hands-on analytics engineering role without significant technical ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires proficiency in dbt, Snowflake, SQL, and modern data stack tooling; candidate's technical depth is Python basics and actively learning",
+        "mitigation": "Skills gap is too large for a hands-on engineering role at this scope",
+        "severity": "high"
+      },
+      {
+        "gap": "No mention of analytics, BI platform experience, or Looker/reporting tool design in candidate background",
+        "mitigation": "Platform learning could be secondary; primary gap is core data engineering skills",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Job description states 'Proven delivery experience as a data, business intelligence or analytics engineer' and 'Hands-on proven data modeling and data warehousing skills demonstrated in large-scale data environments' with 'Excellent SQL and data transformation skills (e.g. ideally proficient in dbt or similar)'. Candidate has no analytics engineering, BI, data warehousing, or production SQL/dbt background. This is a hands-on technical engineering role, not a strategy or operations role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 40,
+    "summary": "Analytics Engineer is a hands-on data/BI engineering role requiring dbt, Snowflake, SQL, and data modeling expertise. Candidate is a Strategy and Operations leader with eight years at Google but no analytics engineering, BI, or data warehousing background. This is outside target and approved-stretch families, and the core technical requirements represent a disqualifying gap.",
+    "uncertainties": [
+      "Candidate's Python learning trajectory and hands-on technical ambitions are not detailed; unclear if career pivot to analytics engineering is intended",
+      "Depth of candidate's involvement in data governance, metrics definition, or analytics strategy at Google is not specified"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

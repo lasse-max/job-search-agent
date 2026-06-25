@@ -1,0 +1,43 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years in commercial operations, scaling at Google Devices and Services with two promotions; experience in customer-facing transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Customer Success Manager role in enterprise software context"
+      }
+    ],
+    "confidence": 0.15,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Role is core Customer Success account management, not strategic or transformation-focused operations work. Candidate profile lists CS as usually deprioritized without meaningful strategy or transformation scope.",
+        "mitigation": "Only viable if JD reveals strategic programs, business transformation, or GTM-operations components within the CS function\u2014but the fetched JD is largely unreadable (HTML rendering artifacts and navigation structure, not actual job content).",
+        "severity": "high"
+      },
+      {
+        "gap": "No visible job description content to assess actual scope, responsibilities, or strategic elements. JD appears to be a broken/cached page fetch with no substantive role details.",
+        "mitigation": "Request clean, full JD text to evaluate whether this is a pure CS retention-focused account manager role or a strategic/transformation-heavy CS leader position.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's core experience is strategy/operations and product transformation, not CS playbook, retention metrics, expansion pipeline, or account health management.",
+        "mitigation": "If role requires deep CS expertise, this is a significant domain mismatch.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "Customer Success account management role in Customer Success department\u2014outside candidate's target and approved families. Fetched JD is unreadable (HTML artifacts), preventing scope assessment. Even if Senior scope qualifies seniority-wise, core CS domain without strategic/transformation framing is explicitly deprioritized in candidate profile.",
+    "uncertainties": [
+      "JD is largely unreadable; unable to extract actual role responsibilities, scope, or whether strategic/transformation components exist.",
+      "Unclear whether this is pure account management or whether it includes business transformation, GTM operations, or program leadership scope.",
+      "Cannot confirm whether ServiceNow/Moveworks structure places this role as strategic operations or quota/retention-focused CS."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Professional/fluent English and native German; eight years at Google Devices scaling global operations and transformation programs; experience in cross-functional product/business leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Fluent in English with excellent communication skills; explaining complex technical concepts to technical and non-technical audiences"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No production software-engineering background; not an expert in PyTorch or JAX",
+        "mitigation": "Candidate has Python basics and is actively learning, but the JD requires expert-level proficiency in production ML frameworks as a core duty\u2014not a learnable stretch for strategy operations background",
+        "severity": "high"
+      },
+      {
+        "gap": "No track record of state-of-the-art model development, pre-training, post-training, or GPU cluster scale work",
+        "mitigation": "Candidate's ML experience is operations/transformation-focused, not research engineering or applied science; cannot credibly handle model development, NCCL debugging, or data curation at the required level",
+        "severity": "high"
+      },
+      {
+        "gap": "No research publication record or academic credentials in ML, Physics, or Mathematics",
+        "mitigation": "JD prefers PhD/Master in relevant field; even with 'exceptional candidate' exception language, eight years in ops/strategy does not substitute for demonstrated research depth or publication track record",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with large production codebases, open-source contributions, or software engineering craft depth",
+        "mitigation": "JD emphasizes independent navigation of large codebases, clean high-performance Python, and CI/CD improvements; candidate's strength is in business problem-solving and process design, not code ownership",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'You're an expert with PyTorch or JAX,' 'You write clean, readable, high-performance, fault-tolerant Python code,' and 'Run pre-training, post-training and deploy state of the art models on clusters with thousands of GPUs.' These are core duties, not nice-to-haves. Candidate has basic Python and operations background, not expert ML engineering. The role is fundamentally a research engineering / applied scientist position requiring advanced Python and deep ML engineering skills.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "Applied Scientist / Research Engineer is a deep ML engineering and research role requiring expert PyTorch/JAX, production code ownership, and SOTA model development. Candidate is a Strategy and Operations leader with eight years at Google Devices\u2014strong scope and positioning, but no research engineering, publication track record, or advanced ML coding background. This is a fundamental function mismatch, not a seniority or skill-building gap.",
+    "uncertainties": [
+      "Candidate's exact depth with Python\u2014actively learning but baseline not quantified",
+      "Whether any ML or AI transformation exposure at Google Devices included hands-on research or solely strategic oversight",
+      "Specific tooling or framework exposure beyond Google-internal platforms"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

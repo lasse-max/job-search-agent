@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions, extensive experience scaling global commercial operations and transformation programs; demonstrates team leadership and operational scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead and scale a high-performing team of TAMs, setting standards for strategic user partnership and support"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with cross-functional collaboration experience; transformation programs require stakeholder management across multiple organizational functions.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with senior stakeholders across product, engineering, go-to-market, and support; manage across complex environments"
+      },
+      {
+        "candidate_evidence": "Candidate positioning as Strategy and Operations leader with commercial operations scale experience; however, limited explicit fintech/payments revenue P&L ownership evidence in profile.",
+        "evidence_strength": "medium",
+        "job_requirement": "Own the P&L, deliver revenue and operational results, make data-driven decisions; run the business to deliver revenue, user experience, and scalability goals"
+      },
+      {
+        "candidate_evidence": "Two internal promotions at Google suggest demonstrated leadership and growth trajectory; profile emphasizes transformation and operational leadership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build coaching culture, unlock team potential, invest in leading and growing great team"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 68,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "No explicit fintech, payments, or financial services industry background; role requires deep domain knowledge of payments infrastructure and fintech SaaS",
+        "mitigation": "Candidate's commercial operations and GTM experience transfers to B2B software; fintech/payments domain can be learned by experienced operations leader, but represents material ramp-up time.",
+        "severity": "high"
+      },
+      {
+        "gap": "Product Operations and customer-facing TAM/CSM leadership experience not clearly documented; role requires leading technical account managers and owning enterprise customer strategy",
+        "mitigation": "Candidate's transformation and program leadership background suggests ability to manage complex stakeholder environments, but direct TAM or customer success leadership experience is unclear from profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of API-first product domain or technical product expertise; JD mentions explaining API concepts to large customers and SQL familiarity as preferred",
+        "mitigation": "Candidate profile notes basic Python and active learning; SQL is learnable skill. Technical product understanding can grow with fintech immersion.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Seniority ceiling concern: JD specifies minimum 15 years professional experience with at least 1 year management. Candidate has ~8 years at Google with 2 promotions, likely L4-L5 equivalent.",
+        "mitigation": "Candidate may be under-leveled in absolute tenure, but Google seniority levels and track record may offset; hiring manager assessment of equivalent experience required.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 65,
+    "summary": "Candidate has strong Strategy and Operations and program leadership background aligned with the transformation and operational excellence aspects of the role, plus demonstrated team leadership and global scale at Google. However, material gaps exist: no fintech/payments domain experience (high severity), unclear customer-facing TAM/CSM leadership (high severity), and likely under-leveled on 15-year minimum tenure expectation. Domain ramp and customer-success leadership clarity are the primary uncertainties.",
+    "uncertainties": [
+      "Depth of customer-facing TAM or CSM leadership experience not explicitly stated in profile; transformation/program roles may be internal-facing",
+      "Whether candidate's 8 years at Google with 2 promotions meets Stripe's expectation of 15 years minimum professional experience",
+      "Fintech/payments product domain can be acquired by strong operator, but ramp-time and learning curve unclear",
+      "Direct revenue P&L ownership scope at Google not detailed; 'scaling commercial operations' may be support/enablement rather than revenue-owning P&L"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

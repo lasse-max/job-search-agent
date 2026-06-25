@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs, requiring stakeholder alignment across technical and business functions",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional leadership and partnership with Solutions Engineering, Underwriting, and Product teams"
+      },
+      {
+        "candidate_evidence": "Transformation programs and operational scaling experience at Google suggests familiarity with structured processes and data rigor, though not explicitly confirmed in sales operations context",
+        "evidence_strength": "weak",
+        "job_requirement": "Data-backed approach to territory using qualification frameworks and CRM as source of truth"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales development role\u2014candidate profile explicitly deprioritizes junior analyst scope and sales roles without strategic/transformation scope",
+        "mitigation": "Role requires mastering payments industry as a strategic consultant, but primary accountability is territory pipeline, lead generation, and sales cycle support. This is fundamentally a sales development function, not strategy or business operations leadership. Candidate's background is strategy-and-operations, not commercial sales execution.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated sales development, account-based marketing, or commercial sales background",
+        "mitigation": "Candidate has no evidence of prospecting, lead qualification (MEDDIC), CRM management, or sales velocity experience. Eight years in Google operations and transformation is misaligned with outbound-driven sales development fundamentals.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep technical and payments industry expertise is required but candidate lacks fintech/payments domain knowledge",
+        "mitigation": "JD expects rapid mastery of global payments landscape and technical product suite to consult merchants on complex solutions. Candidate would enter as a learner rather than a credible consultant, creating extended ramp time in a quota-bearing role.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Operating rhythm and daily outreach velocity\u2014sales development role requires consistent high-volume prospecting cadence",
+        "mitigation": "Candidate's background is transformation and strategic program leadership, not daily prospecting execution and territory pipeline discipline. Role requires high-frequency outreach and MEDDIC qualification discipline distinct from strategy-operations work.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "Checkout.com's Commercial role is a quota-bearing sales development function focused on outbound prospecting, lead qualification, and payment-industry technical fluency. The candidate is a strategy-and-operations leader with eight years at Google in transformation and global commercial scaling\u2014not a sales development background. Role family fit is poor (this is pure sales, not strategy, operations, or transformation), and the core scope mismatch (daily prospecting cadence vs. strategic program ownership) makes this a poor advisory fit despite the candidate's strong general capabilities in complex stakeholder alignment.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

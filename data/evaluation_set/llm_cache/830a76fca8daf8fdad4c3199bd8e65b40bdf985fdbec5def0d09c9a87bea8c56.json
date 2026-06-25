@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs, including stakeholder management across multiple teams and organizations",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to influence decision-makers and C-level executives by developing relationships and orchestrating teams"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google Devices and Services; likely mentored or led teams, though no explicit detail on technical coaching or architect development",
+        "evidence_strength": "weak",
+        "job_requirement": "Coach junior Solutions Architects and teams on use case prioritization and building technical champions"
+      },
+      {
+        "candidate_evidence": "Commercial operations and transformation background suggests GTM and customer strategy exposure, but no specific evidence of pre-sales or solutions architecture strategy development",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop customer engagement strategies in partnership with Account Executive(s)"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No demonstrated technical pre-sales or Solutions Architect background. Role requires hands-on proof-of-concept leadership, cloud platform expertise, and Spark/Python depth.",
+        "mitigation": "Role includes willingness to learn Spark; Python is listed as basic/actively learning. However, pre-sales customer engagement and technical architecture validation cannot be quickly upskilled in a customer-facing capacity.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited coding and hands-on data platform experience. JD requires prior coding in core languages (Python, Java, Scala) and hands-on expertise with complex PoCs and cloud platforms.",
+        "mitigation": "Candidate has no production software-engineering background. While Python learning is underway, reaching PoC-leadership competency alongside customer escalations is a multiyear gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No consulting or solutions-architecture background evident. Role demands navigating complex customer technical landscapes, orchestrating cloud ecosystem partnerships, and architecting data analytics solutions.",
+        "mitigation": "Limited direct consulting brand and classic case-team experience per candidate profile. Google DevOps/ops background differs substantially from external technical advisory and multi-stakeholder solution design.",
+        "severity": "high"
+      },
+      {
+        "gap": "Product Operations and transformation experience does not transfer to technical pre-sales architecture. This is a field-facing, customer-engagement, hands-on technical role.",
+        "mitigation": "Candidate strength is internal transformation and operations; this role requires external customer-facing technical leadership and PoC ownership in a competitive sales context.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Prior experience with coding in a core programming language (i.e., Python, Java, Scala) and willingness to learn a base level of Spark. Hands-on expertise with complex proofs-of-concept and public cloud platform(s).",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "This is a Senior Solutions Architect role requiring deep hands-on technical pre-sales expertise, Python/Spark/cloud platform fluency, and proof-of-concept leadership in a customer-facing context. The candidate brings eight years of Google commercial operations and transformation strength with strong stakeholder management, but lacks the technical pre-sales background, programming depth, and public cloud/data platform architecture experience essential for this role. The function is not a strategic operations, business transformation, or internal program leadership fit; it is a technically deep field-engineering customer engagement role.",
+    "uncertainties": [
+      "Depth of cloud platform hands-on experience at Google Devices and Services not specified; may have indirect exposure but not the primary domain",
+      "Exact nature of customer interactions in commercial operations role; could range from internal-only to some field-facing exposure, but unclear if pre-sales or solutions architecture",
+      "Whether Google transformation programs included technical solution design or primarily process/organizational transformation",
+      "Visa or relocation status relative to Sydney, Australia location not provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; direct RevOps and Strategy & Operations positioning",
+        "evidence_strength": "strong",
+        "job_requirement": "Revenue Operations & Strategy Manager role at SaaS company"
+      },
+      {
+        "candidate_evidence": "L4-equivalent scope at Google with ownership of global commercial operations and transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior-level scope in RevOps / Sales Strategy domain"
+      },
+      {
+        "candidate_evidence": "German citizen with native German language proficiency",
+        "evidence_strength": "strong",
+        "job_requirement": "No visa friction in Munich location"
+      }
+    ],
+    "confidence": 0.35,
+    "evidence_strength": 45,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Missing SaaS B2B revenue operations domain experience; Google background is primarily B2C/enterprise devices and services",
+        "mitigation": "Core RevOps and transformation leadership skills are transferable; SaaS motions can be learned; EU tech sector context is familiar",
+        "severity": "medium"
+      },
+      {
+        "gap": "No detailed job description available to assess alignment on specific sales process, expansion strategy, or revenue platform requirements",
+        "mitigation": "Request full JD; candidate's transformation and global scaling experience likely covers typical RevOps scope",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or case-team background may reduce familiarity with typical SaaS scaling playbooks if role requires that context",
+        "mitigation": "Direct operational experience at scale can substitute for consulting exposure in many RevOps scenarios",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 85,
+    "scope_seniority": 75,
+    "summary": "Strong strategic operations and transformation fit with eight years at Google, two promotions, and global commercial operations ownership. Critical gap is missing full JD to validate specific SaaS B2B revenue operations requirements and scope; candidate's domain is primarily B2C/enterprise devices. German citizenship removes visa friction. Recommend requesting detailed JD before final assessment.",
+    "uncertainties": [
+      "Full job description unavailable (fetch failed); cannot assess specific sales process, revenue platform, or expansion scope requirements",
+      "Unclear if 'Senior' level at Personio maps to L4 or higher; company tier and team size not provided",
+      "No detail on whether Google commercial operations role included SaaS-specific pricing, packaging, or expansion revenue motions",
+      "Candidate's transformation program experience scope and P&L ownership not fully specified in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

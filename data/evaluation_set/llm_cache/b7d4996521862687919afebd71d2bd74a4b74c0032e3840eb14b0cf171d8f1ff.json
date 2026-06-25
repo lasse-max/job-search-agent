@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and leading transformation programs; demonstrated strategic ownership and cross-functional execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead the long term strategy for subscriptions including growing subscriber base, increasing retention, and international growth."
+      },
+      {
+        "candidate_evidence": "Proven ability to align teams and drive cross-functional transformation programs at Google's scale; stakeholder management across multiple functions.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work across the company to galvanize support from different teams to deliver exceptional value propositions."
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background typically includes metrics design and data-driven decision-making, though specific experimentation depth is not detailed.",
+        "evidence_strength": "weak",
+        "job_requirement": "Data-driven approach: proficiency identifying, defining, tracking and acting upon metrics; familiarity with experimentation and A/B testing."
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "This is a pure native Product Manager role requiring deep consumer payments/fintech/subscription product expertise and end-to-end product lifecycle ownership (planning, development, launch). Candidate's background is Strategy and Operations with product ownership rooted in transformation, requirements logic, UAT, and rollout\u2014not native PM or SDLC depth.",
+        "mitigation": "Would require significant ramp-up in native product management discipline, payments/fintech domain, and hands-on engineering collaboration for product design and feature development.",
+        "severity": "high"
+      },
+      {
+        "gap": "JD emphasizes 'delving into the product, platform and implementation details' and 'strong opinions on technical approach.' Candidate lacks demonstrated deep technical product thinking or hands-on design of scalable/extensible technical solutions.",
+        "mitigation": "Could pair with strong technical partner or mentor; however, JD expects this from the PM directly.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit monetization, payments, subscriptions, or fintech experience detailed. JD requires 'expertise in consumer product offerings' and 'track record in monetization, payments, subscriptions or related fintech space.'",
+        "mitigation": "Strategic and operational skills could transfer, but domain expertise and tactical product experience in this vertical are absent.",
+        "severity": "medium"
+      },
+      {
+        "gap": "This is an L4 individual-contributor PM role at a large established company (Roblox, tier 3), reporting to Sr. Director. Candidate's scope at Google\u2014while strategic and senior\u2014may not have been PM-track at equivalent level, creating seniority/function mismatch rather than over-level concern.",
+        "mitigation": "Clarify whether candidate was PM or Ops/Strategy IC at similar scope; if Operations/Ops, this is a function pivot downward into pure PM, not a seniority fit.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader with strong Google scaling and transformation credentials, but this is a pure native Product Manager role in payments/subscriptions requiring deep fintech expertise, technical product design, and hands-on SDLC ownership\u2014a function and domain departure from the candidate's background. Not a target family fit.",
+    "uncertainties": [
+      "Unclear whether candidate's product ownership at Google was native PM-track or Ops/Strategy-track; if the latter, this is a deeper function pivot.",
+      "No detail on candidate's depth in metrics design, experimentation methodology, or data instrumentation\u2014JD emphasizes these heavily.",
+      "Consumer payments/fintech domain expertise is not documented; cannot assess whether candidate has adjacent experience (e.g., B2B payments, developer monetization).",
+      "Candidate's 'product experience comes from ownership, requirements, logic design, UAT, rollout' suggests transformation/delivery bias rather than strategic product leadership from conception through launch."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

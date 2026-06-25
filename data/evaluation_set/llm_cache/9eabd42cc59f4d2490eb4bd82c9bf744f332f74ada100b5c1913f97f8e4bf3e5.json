@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in strategy, operations, and transformation programs; experience managing cross-functional stakeholders and program teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Leitung und Motivation eines Teams von Montagearbeitern (Team leadership in assembly/production environment)"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with documented experience in global commercial operations, transformation programs, and cross-functional coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Kommunikations- und Organisationsf\u00e4higkeiten (Communication and organizational skills)"
+      },
+      {
+        "candidate_evidence": "Native German speaker",
+        "evidence_strength": "strong",
+        "job_requirement": "Gute Deutschkenntnisse in Wort und Schrift (German language proficiency)"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 20,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No production, assembly, or manufacturing operations experience. Candidate background is strategy and operations at Google, not shift-floor or shift-leadership roles.",
+        "mitigation": "Significant retraining and domain onboarding required; production operations fundamentals and assembly-line processes must be learned from ground up.",
+        "severity": "high"
+      },
+      {
+        "gap": "No technical manufacturing or assembly training (technische Ausbildung im Produktions- und Montageumfeld). JD requires completed technical training in production/assembly; candidate has strategy and operations background.",
+        "mitigation": "Formal technical manufacturing training or apprenticeship would be needed; cannot be mitigated by general operations experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "Seniority ceiling: Role is shift-supervisor level (junior-to-mid team-lead scope), well below L4 target seniority. Candidate is L4\u2013L5 strategy leader; significant over-qualification and role mismatch.",
+        "mitigation": "None. Candidate is positioned for strategy and transformation leadership, not hands-on production floor supervision.",
+        "severity": "high"
+      },
+      {
+        "gap": "No shift-work or assembly-environment operational experience. Role requires daily assembly activities and real-time production floor coordination; candidate experience is strategic program delivery and business operations.",
+        "mitigation": "Fundamental shift in work style and daily responsibilities would require substantial cultural and operational reset.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "Helsing's Production Shift Supervisor (Schichtleiter) is a hands-on assembly-floor team-lead role requiring technical manufacturing training, assembly-environment experience, and daily shift operations. Candidate is an L4\u2013L5 strategy and operations leader with eight years at Google in transformation and global commercial operations\u2014fundamentally misaligned in function, seniority, domain, and daily work. German fluency and general team leadership are the only overlaps; all core production, assembly, and shift-specific requirements are absent.",
+    "uncertainties": [
+      "Whether candidate has any prior hands-on manufacturing, supply-chain operations, or assembly experience not captured in the positioning statement.",
+      "Whether candidate would consider a significant seniority step-down and domain pivot away from strategy."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

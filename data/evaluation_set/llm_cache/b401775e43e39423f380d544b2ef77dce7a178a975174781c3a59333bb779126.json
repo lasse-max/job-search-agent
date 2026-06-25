@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with demonstrated ownership of complex transformation programs and global commercial operations; experience scaling operations through execution and stakeholder coordination.",
+        "evidence_strength": "strong",
+        "job_requirement": "Manage and execute end-to-end merchant assurance requests, security questionnaires, and due diligence inquiries from enterprise prospects and existing customers"
+      },
+      {
+        "candidate_evidence": "Product Operations background with experience translating requirements and designing processes; UAT rollout responsibility and transformation work require multi-stakeholder coordination across technical and non-technical teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with Subject Matter Experts (SMEs) across Information Security, Data Protection, Legal, and Compliance to extract highly technical data and translate it into clear, commercial-ready responses"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google and positioning as Strategy and Operations leader indicate demonstrated judgment and cross-functional leadership at scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Navigate competing priorities and constructively challenge stakeholders to ensure market positioning remains operationally sound"
+      },
+      {
+        "candidate_evidence": "Direct experience scaling global commercial operations and leading transformation programs align with operational optimization and workflow design.",
+        "evidence_strength": "medium",
+        "job_requirement": "Continuously review and refine the assurance response engine; identify bottlenecks and design scalable workflows"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 68,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No direct bid management, proposal writing, or RFP response ownership experience explicitly mentioned",
+        "mitigation": "The core responsibility\u2014managing enterprise due diligence and assurance responses\u2014shares operational and cross-functional elements with commercial enablement. Candidate's transformation and operations background suggests ability to learn proposal structures and RFP workflows quickly.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited demonstrated experience with Information Security, Data Protection, Compliance domain expertise or fluency",
+        "mitigation": "JD emphasizes translating technical expertise rather than being the expert. Candidate's history of partnering across technical teams and requirements translation suggests capability to build rapid domain fluency with SME partnerships.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Experience with AI-powered tools and technology adoption is not evidenced in candidate profile",
+        "mitigation": "JD seeks proactive mindset toward AI adoption and tool optimization, not deep AI engineering. Candidate's operations and transformation background suggests comfort with tooling and process innovation; specific AI tools can be learned on the job.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 65,
+    "summary": "Candidate's Strategy and Operations leadership at Google, with eight years scaling commercial operations and transformation programs, aligns well with the core operational, cross-functional, and execution demands of building and scaling an assurance response function. Gaps in direct bid management and compliance domain expertise are manageable given strong foundational operations, judgment, and stakeholder management. Scope is appropriate but not perfectly aligned to core operations; confidence limited by lack of direct proposal/RFP and fintech/compliance exposure.",
+    "uncertainties": [
+      "Depth of candidate's exposure to compliance, data protection, or information security practices not explicit in profile",
+      "No evidence of prior experience with fintech, payments, or regulated industries",
+      "Specific tools, platforms, or technologies used in transformation and operations work not detailed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

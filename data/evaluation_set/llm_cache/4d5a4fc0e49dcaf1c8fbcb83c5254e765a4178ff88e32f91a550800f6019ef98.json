@@ -1,0 +1,44 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in global commercial operations and transformation programs, including scaling operations and leading program execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead the build of key technical projects that keeps Deputy's production platform reliable, safe and recoverable"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Deep software engineering, production systems, platform reliability, and infrastructure expertise required for lead-level platform security engineering role",
+        "mitigation": "This candidate's background is operations and transformation-focused, not platform engineering. The platform security/reliability engineering scope is fundamentally misaligned with strategy and operations career path.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of production software development, systems architecture, or infrastructure/reliability engineering experience",
+        "mitigation": "Candidate has explicitly noted 'no production software-engineering background' and 'Python basic and actively learning.' This is disqualifying for a lead platform engineer role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Security engineering and platform reliability expertise not demonstrated in candidate profile",
+        "mitigation": "Role explicitly requires technical leadership in platform security and reliability. Candidate's expertise is in business operations and transformation, not security or reliability engineering.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role is 'Lead Software Engineer (Platform, Reliability)' in the Engineering department with core duties including 'lead the build of key technical projects,' 'reliability and security aspects of system services and infrastructure,' and 'foundational and reusable systems, services and architecture.' This is a deep software engineering and production systems role requiring advanced technical expertise and production engineering as core duties. Candidate has no production software-engineering background and is only 'Python basic and actively learning.'",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "This is a lead-level platform security and reliability engineering role requiring deep SWE/infrastructure expertise. The candidate is a strategy and operations leader with eight years at Google in commercial operations and transformation\u2014a fundamentally mismatched function family. No production software engineering, platform reliability, security infrastructure, or systems architecture background. Hard blocker: production engineering is a core duty; candidate has none.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

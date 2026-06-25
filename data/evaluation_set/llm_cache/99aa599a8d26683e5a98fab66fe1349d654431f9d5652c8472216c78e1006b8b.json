@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience scaling global commercial operations and transformation programs; background in leadership and team development within operations context",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead and grow a team of FDE delivering production systems with frontier models"
+      },
+      {
+        "candidate_evidence": "Owns end-to-end transformation program delivery through requirements, logic design, UAT, rollout, and production deployment; demonstrates coordinated stakeholder management and delivery execution at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Own end-to-end delivery outcomes through clarity, speed, tight coordination, and technical quality"
+      },
+      {
+        "candidate_evidence": "Strategic Operations and Product Operations background with direct cross-functional partnership with Product and Research teams on transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate field experience into sharp, actionable feedback for Product and Research"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 42,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Production software engineering and code review expertise. JD explicitly requires ability to 'write and review production-grade code across frontend and backend using Javascript or Python' as a core competency for an FDE manager role.",
+        "mitigation": "Candidate has basic Python (actively learning) and no production engineering background. FDE management at OpenAI requires hands-on technical credibility with code; this gap cannot be fully bridged through operational leadership alone, though team mentorship and rapid learning could help over time.",
+        "severity": "high"
+      },
+      {
+        "gap": "Field Deployment Engineering (FDE) or forward-deployed customer-facing engineering team management. JD requires '2+ years managing high-performing FDE or customer-facing engineers' as a stated criterion.",
+        "mitigation": "Candidate background is in Strategy/Operations transformation and commercial scaling, not FDE or technical field deployment. While stakeholder management and delivery discipline transfer, the specialized domain of engineering-led customer deployment is not demonstrated.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep technical foundation in frontier model deployment and production systems. FDE roles operate 'at the intersection of customer delivery and core platform development' requiring hands-on architecture, debugging, and technical troubleshooting of LLM systems.",
+        "mitigation": "Candidate's AI transformation experience is business-problem and process-focused, not deep technical platform work. Onboarding curve would be steep and require significant mentorship from Research and Product.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on project leadership from prototype through production in a software/ML engineering context. JD states 'led high-pressure technical projects from prototype to production'\u2014candidate's projects are transformation and commercial operations, not technical system builds.",
+        "mitigation": "Candidate demonstrates program leadership and high-pressure delivery in non-technical domain. Technical project leadership would require foundational ramp on OpenAI's platform and deployment tooling.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Write and review production-grade code across frontend and backend using Javascript or Python' as a core responsibility for FDE manager. Candidate profile documents 'No production software-engineering background' and 'Python basic and actively learning.' This is a production engineering requirement, not a nice-to-have or preferred skill. For an FDE manager at a tier-1 AI company, inability to review and write production code is disqualifying.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 35,
+    "scope_seniority": 62,
+    "summary": "Manager, Forward Deployed Engineering at OpenAI is a highly technical leadership role requiring hands-on production software engineering expertise and 2+ years managing FDE teams. Candidate brings eight years of Strategy/Operations leadership, transformation program delivery, and stakeholder management\u2014strong for *implementation-heavy* business roles\u2014but lacks the disqualifying production code expertise, FDE team management background, and deep technical foundation required for this specialist engineering-led deployment role. Strong operations leader, wrong technical specialization.",
+    "uncertainties": [
+      "Extent of candidate's exposure to LLM deployment systems and frontier AI products beyond business transformation framing",
+      "Depth of stakeholder and technical coordination skills when partnering directly with Research and Product on core platform decisions",
+      "Feasibility of rapid upskilling in production software engineering given candidate's current Python level and engineering background gap",
+      "Whether hybrid work model and London location create relocation or visa complications"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

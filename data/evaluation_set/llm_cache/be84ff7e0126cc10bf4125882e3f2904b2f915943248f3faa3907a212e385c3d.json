@@ -1,0 +1,60 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioned as Strategy and Operations / Product Operations leader with experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Senior Strategy & Operations Manager role in gold-standard S&O function at Tier 1 company"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in business transformation programs, global commercial operations scaling, and strategic program leadership across multiple promotions at established tech company",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations discipline with transformation and scaling scope"
+      },
+      {
+        "candidate_evidence": "Product Operations background with UAT, rollout, and transformation execution experience; global scope indicates multi-stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management and execution capability expected at senior S&O level"
+      },
+      {
+        "candidate_evidence": "Commercial operations scaling experience, but no explicit analytics engineering, quantitative modeling, or data science background mentioned; Python actively learning, not production-grade",
+        "evidence_strength": "medium",
+        "job_requirement": "Analytics-heavy loop in marketplace/operations domain"
+      }
+    ],
+    "confidence": 0.45,
+    "evidence_strength": 55,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "JD unavailable due to fetch failure; only role title, level, company tier, and analytics-heavy context provided. No explicit requirements, domain scope, or business problem statement visible.",
+        "mitigation": "Request full JD text or detailed scope summary from recruiter. Assess candidate against actual Uber S&O framework requirements once available. Seniority and function fit are evident but specific problem/domain fit cannot be evaluated.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit marketplace, rider/driver dynamics, or regional operations (Sydney context) experience documented. Uber's core business model differs materially from Google's hardware/services commercialization.",
+        "mitigation": "Marketplace domain expertise is learnable per role context; prioritize assessing analytical rigor, stakeholder influence, and regional execution capability during interviews. Google's global ops experience may transfer to cross-region coordination.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Analytics-heavy loop flagged in JD context; candidate background emphasizes transformation, process design, and execution rather than quantitative modeling or data-driven decision architecture.",
+        "mitigation": "Clarify depth of analytics ownership: does candidate own end-to-end metric strategy, modeling, or primarily drive execution from analytics insights? Assess SQL, BI tool, and statistical rigor during technical screen.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 85,
+    "scope_seniority": 80,
+    "summary": "Candidate is a strong cultural and functional fit for S&O given eight years at Google with two promotions and positioned expertise in global operations scaling and transformation. However, the JD is unavailable (fetch failed), severely limiting evaluation to seniority-level and department alignment only. Analytics-heavy context and marketplace domain are learnable but unvalidated. Request full JD and clarify analytics depth, marketplace exposure expectations, and Sydney regional scope before final progression.",
+    "uncertainties": [
+      "Full JD text unavailable; evaluation based on title, company tier, department, and sparse context only. Specific responsibilities, team scope, and success metrics unknown.",
+      "Analytics-heavy emphasis in role context undefined: unclear whether this requires advanced analytics engineering, BI/SQL fluency, or strong business analytics interpretation.",
+      "Sydney location and regional marketplace specifics not addressed in candidate profile; unclear if relocation or regional ops experience required.",
+      "Seniority ceiling at Uber (T1 company, Senior Manager title) may differ from Google L-level equivalent; internal leveling and scope not specified.",
+      "Google Devices experience domain transferability to Uber marketplace and regional operations unknown without deeper JD scope."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

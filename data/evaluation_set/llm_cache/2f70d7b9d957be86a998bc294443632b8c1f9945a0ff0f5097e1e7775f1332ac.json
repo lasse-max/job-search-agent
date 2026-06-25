@@ -1,0 +1,55 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8-year tenure at Google Devices and Services with two promotions in scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead, Strategic Initiatives role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs and commercial operations scaling, positioning indicates Strategic Programs / Program Leadership capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic scope and cross-functional program leadership"
+      }
+    ],
+    "confidence": 0.25,
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No actual job description available \u2014 fetched JD returned 404 error; evaluation based only on role title and metadata",
+        "mitigation": "Request full, current JD directly from Roblox recruiter or careers portal; re-evaluate once explicit requirements, scope, domain focus, and success metrics are provided",
+        "severity": "high"
+      },
+      {
+        "gap": "Unknown scope of 'Lead, Strategic Initiatives' \u2014 title alone does not clarify whether role is transformation-heavy, GTM, RevOps, product-adjacent, or platform/ecosystem strategy",
+        "mitigation": "Obtain JD to distinguish whether role is within candidate's core families (Strategy & Operations, Product Operations, Business Transformation) or requires domain-specific expertise (e.g., gaming, live services, platform economics)",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of gaming industry, live-services economics, platform/ecosystem strategy, or Roblox-specific domain knowledge",
+        "mitigation": "If role requires gaming or platform-specific expertise, assess candidate's ability to learn domain; if role is pure operational transformation, domain gap is lower friction",
+        "severity": "medium"
+      },
+      {
+        "gap": "Warm internal referral softens visa/location friction but does not replace missing JD clarity",
+        "mitigation": "Confirm with referrer what scope and requirements the role actually entails; use that context to assess candidate fit more precisely",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 55,
+    "summary": "No actual job description is available (404 error); evaluation is based only on role title and that it sits in Strategy & Operations at Roblox. Candidate has strong Strategy & Operations positioning and 8-year Google tenure, but without explicit scope, requirements, and domain context, confidence is very low. Warm referral is a positive signal but does not replace missing JD clarity. Recommend obtaining full JD before proceeding.",
+    "uncertainties": [
+      "JD was not successfully retrieved; all evaluation rests on title and metadata alone",
+      "Unknown whether 'Strategic Initiatives' refers to transformation, GTM, product strategy, platform economics, or another domain within Strategy & Operations",
+      "Unclear whether role requires gaming industry experience, live-services knowledge, or platform-specific domain depth",
+      "Cannot assess scope seniority (L4 vs. over-leveled Director/Head) without explicit ownership, ambiguity level, and stakeholder scope from JD",
+      "Warm referral context and internal signal strength are unknown; referrer alignment on fit and role scope would significantly improve evaluation confidence"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Define and own end-to-end transformation roadmap for Finance, covering systems and processes"
+      },
+      {
+        "candidate_evidence": "Product operations background with requirements logic design, rollout, and transformation program delivery experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Architect the future finance systems landscape, mapping current vs. future state and planning the transition"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling and process transformation experience at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Redesign core finance processes to be IPO ready by increasing efficiency, control, and scalability"
+      },
+      {
+        "candidate_evidence": "Cross-functional transformation program leadership with stakeholder alignment and team enablement scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead change management and upskilling initiatives to enable adoption of new tools and processes across global teams"
+      },
+      {
+        "candidate_evidence": "Product operations ownership including UAT, rollout, and cross-functional integration; exposure to automation and process tools",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Finance, Technology, and Business teams to evaluate, select, and implement systems and automation solutions"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations positioning with eight years at large tech company, senior stakeholder engagement experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as strategic advisor to broader leadership team on how to elevate Finance into competitive advantage"
+      }
+    ],
+    "confidence": 0.78,
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Limited direct hands-on experience with enterprise finance systems (SAP, Oracle, NetSuite) and finance domain expertise",
+        "mitigation": "Finance systems knowledge is learnable; candidate's architecture and systems-integration thinking from product operations can transfer. Onboarding with finance leaders and systems documentation can close domain gaps.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No top-tier management consulting or systems-integration firm background to lean on for playbooks and methodologies",
+        "mitigation": "Candidate has proven ability to deliver large-scale transformation in high-growth context; coaching from Head of Strategic Finance and external advisory can fill methodological gaps.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited exposure to IPO-readiness requirements, SOX compliance, and regulated cross-border finance operations",
+        "mitigation": "Candidate has global operations experience; SOX and compliance requirements are stakeholder-driven and can be embedded through structured learning and subject-matter expert partnerships.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 78,
+    "scope_seniority": 75,
+    "summary": "Google Devices and Services Strategy and Operations leader with eight years and two promotions delivering global transformation programs; strong fit for Finance Technology & Architecture role on transformation roadmap ownership, systems architecture thinking, and cross-functional change leadership. Meaningful gaps in finance-domain expertise, enterprise systems hands-on knowledge, and consulting methodology, but all manageable through structured onboarding and stakeholder partnership given scope-appropriate seniority and proven delivery at scale.",
+    "uncertainties": [
+      "Specific hands-on platform exposure (ERP, workflow tools) beyond product operations context unclear",
+      "Depth of quantified business-case methodology for transformation investment decisions not detailed in candidate profile",
+      "Direct experience with SOX, audit readiness, and cross-border regulatory complexity not confirmed",
+      "Whether candidate has led teams through complex system cutover or dual-run scenarios"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

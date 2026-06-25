@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; strategic program leadership and transformation execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Work on systems and escalations, building and implementing solutions; collaborate across teams"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No production IT engineering, infrastructure, or SRE background; role explicitly requires IT infrastructure, identity standards (SAML, OAuth, SSO), orchestration tools (Workato), cloud infrastructure (GCP/AWS), MDM systems, and API integration expertise",
+        "mitigation": "Candidate could hire or partner with IT engineering staff; learning curve on infrastructure and identity standards would be steep and consume 6-12 months",
+        "severity": "high"
+      },
+      {
+        "gap": "No programming or infrastructure-as-code experience beyond basic Python learning; role requires Python and Terraform for automation and infrastructure",
+        "mitigation": "Structured technical bootcamp or mentorship on Python/Terraform; hiring or co-owning with a strong engineer would be more practical",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct experience with legal-tech tools (Ironclad, Auditboard), SaaS admin/security, or LRC-specific domain knowledge",
+        "mitigation": "Domain learning is faster than infrastructure skills; vendor partnerships and product documentation can accelerate onboarding",
+        "severity": "medium"
+      },
+      {
+        "gap": "Strategy and Operations background does not map to hands-on IT systems engineering, on-call incident response, or technical troubleshooting at the scale required",
+        "mitigation": "Would need to transition career trajectory into engineering; this is a hard pivot, not an adjacent move",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Bachelor's degree in Information Technology, Computer Science, or a related field, 5+ years of relevant experience in a similar role' and explicitly requires 'Expert level understanding of common identity standards, including SAML, OAuth, SSO, etc.' and 'Expert knowledge of workflows and common orchestration tools (workato, etc.)' and 'Experience with a programming language, such as python, and infrastructure as code (i.e. Terraform)' and 'Strong understanding of MDM systems (macOS, windows; kandji, JAMF, intune, etc.)'. Candidate has none of these IT engineering, identity, orchestration, or infrastructure-as-code qualifications. This is a specialized IT systems role, not a business operations or strategy role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "This is a hands-on Senior IT Engineer role requiring deep expertise in identity standards, orchestration tools, Python/Terraform, cloud infrastructure, MDM, and on-call incident response. The candidate is a Strategy and Operations leader from Google with transformation and program leadership experience, not an IT infrastructure engineer. The role falls outside the target and approved-stretch families (no business problem-solving, stakeholder management, or transformation scope\u2014this is core infrastructure engineering). Core hard blockers: no IT/SRE/infrastructure background, no identity/SAML/OAuth/orchestration expertise, no Python or Terraform. Recommend skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

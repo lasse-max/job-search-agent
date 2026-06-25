@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices with two promotions, scaling global commercial operations and leading transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead cross-functional teams at project sites to shape culture, approach, and outcomes"
+      },
+      {
+        "candidate_evidence": "Experience with requirements, UAT, rollout, and transformation requiring stakeholder coordination across technical and business teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate complex stakeholder relationships and serve as primary point of contact between internal and external partners"
+      },
+      {
+        "candidate_evidence": "Background in product operations and transformation programs suggests process design capability, though not explicitly in construction or facility delivery context",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop and refine standardized processes and playbooks for delivery, driving continuous improvement"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No demonstrated experience in data center capacity delivery, site-based construction project management, or physical infrastructure deployment at scale",
+        "mitigation": "Candidate could leverage stakeholder coordination and program leadership skills to ramp on data center-specific domain knowledge, but the 8+ years of required site leadership in Australia data center context is a fundamental mismatch",
+        "severity": "high"
+      },
+      {
+        "gap": "No background in lease negotiations, real estate development, construction contracts, or EPC/GC project leadership as required or strongly preferred",
+        "mitigation": "Could be acquired through domain immersion, but represents a significant knowledge gap for a senior leadership role where this expertise is core to decision-making",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of Australia-specific knowledge of data center development, construction industry norms, or local contractual and regulatory landscape",
+        "mitigation": "Location-specific expertise cannot be quickly developed; role explicitly requires deep familiarity with Australian data center market",
+        "severity": "high"
+      },
+      {
+        "gap": "Product operations and transformation background differs significantly from on-site construction leadership, active hands-on decision-making in field conditions, and extreme ownership of physical delivery timelines",
+        "mitigation": "Leadership principles transfer, but day-to-day execution environment and technical domain are substantially different",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a domain mismatch. The candidate is a Strategy and Operations / Product Operations leader with eight years at Google scaling commercial programs and transformation\u2014a strong fit for target role families. However, the Senior Data Center Capacity Delivery Manager role is a site-based construction project leadership position requiring 8+ years of data center delivery, real estate development, construction contracts, and Australia-specific infrastructure expertise. The candidate has no demonstrated construction, facility delivery, or real estate background; this role sits firmly outside target and approved-stretch families and demands specialized domain knowledge the candidate cannot transfer from product operations. Scope seniority is reasonable but function fit is fundamentally misaligned.",
+    "uncertainties": [
+      "Whether candidate has any hidden construction, real estate, or facility development experience not captured in the profile",
+      "Whether Google Devices experience included any infrastructure procurement or facility-related responsibilities",
+      "Candidate's willingness to relocate to Sydney and engage in on-site construction site work full-time",
+      "Whether AI/ML infrastructure knowledge from Google Devices translates to useful facility delivery perspective"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

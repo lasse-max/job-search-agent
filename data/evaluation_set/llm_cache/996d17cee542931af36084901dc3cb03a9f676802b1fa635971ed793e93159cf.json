@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs; positioning as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "Manager, Strategy & Programs role overseeing autonomous vehicle initiatives at Grab (Strategy & Operations department)"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience with transformation programs, global commercial operations scaling, and cross-functional ownership at Google; active in requirements, logic design, UAT, rollout, and transformation work",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and transformation scope requiring cross-functional stakeholder management and program execution"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations at Google Devices; experience in operational transformation and program leadership at established tech company",
+        "evidence_strength": "medium",
+        "job_requirement": "Business operations and process design at scale in complex, multinational environment"
+      },
+      {
+        "candidate_evidence": "Two promotions and sustained leadership scope at Google; positioning emphasizes strategic programs and business transformation track record",
+        "evidence_strength": "medium",
+        "job_requirement": "Ownership and accountability for strategic program success"
+      }
+    ],
+    "confidence": 0.62,
+    "evidence_strength": 65,
+    "gap_manageability": 70,
+    "gaps": [
+      {
+        "gap": "No demonstrated experience in autonomous vehicle, mobility, or transportation domain; Grab's AV initiatives require industry or adjacent (e.g., robotics, logistics, automotive) context",
+        "mitigation": "AV domain knowledge is learnable for a strategic leader; transferable skills in operations transformation, stakeholder alignment, and program execution apply across domains. Onboarding and mentorship from Grab's AV technical leaders mitigates risk.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited visibility into depth of consulting or large-scale program management methodology; classic case-team and formal consulting brand experience not evident",
+        "mitigation": "Program leadership and transformation experience at Google compensates; consulting methodology is a skill set, not a blocker for internal ops and strategy roles.",
+        "severity": "low"
+      },
+      {
+        "gap": "No stated regulatory, policy, or government relations experience; AV programs often intersect with transport regulation, licensing, and public affairs",
+        "mitigation": "Policy and regulatory engagement can be developed through partnership with Grab's legal, public affairs, and regional teams. Strategic program execution skills transfer, though this is a capability gap to address early.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 78,
+    "scope_seniority": 72,
+    "summary": "Strategy and Operations leader with eight years at Google scaling global commercial operations and transformation programs, aligned to target family. Strong role-family fit and appropriate L4\u2013L5 manager scope. Medium risk: no AV domain or regulatory background; gaps are manageable with mentorship and cross-functional alignment at Grab.",
+    "uncertainties": [
+      "JD snapshot is malformed (contains heavy HTML/JavaScript debris); actual responsibilities, stakeholder scope, and specific success metrics for AV programs are unclear",
+      "Unclear whether AV program is greenfield, scaling existing capabilities, or integrating with broader Grab operations; scope ambiguity affects seniority assessment",
+      "No information on whether candidate has worked in Southeast Asia or with regional/local regulatory ecosystems (relevant for Grab's geographic footprint)"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

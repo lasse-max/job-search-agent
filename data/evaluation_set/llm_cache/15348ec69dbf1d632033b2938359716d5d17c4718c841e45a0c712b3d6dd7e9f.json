@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs with cross-functional coordination and stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate across technical and non-technical stakeholders through the full agent development lifecycle process"
+      },
+      {
+        "candidate_evidence": "Demonstrated product-transformation execution through requirements definition, logic design, UAT, rollout ownership, and program leadership spanning global scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects"
+      },
+      {
+        "candidate_evidence": "Strategic program leadership and transformation background with analytical problem-solving skills in operations at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute data-driven, strategic insights to customers and internal team decisions"
+      },
+      {
+        "candidate_evidence": "Positioning as Strategy and Operations leader with eight years scaling commercial operations and transformation; customer collaboration evident in product execution experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Be a trusted advisor to our customers and drive their AI strategies"
+      },
+      {
+        "candidate_evidence": "Product ownership including requirements, design, and UAT demonstrates product-development lifecycle exposure; conversational AI/agent-specific domain exposure not mentioned",
+        "evidence_strength": "medium",
+        "job_requirement": "Build, design and refine conversational AI agents, gaining direct exposure to how these products are developed and improved"
+      },
+      {
+        "candidate_evidence": "Product-transformation background with logic design and UAT indicates product-engineering collaboration; native software-engineering or PM depth not explicitly detailed",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of software development, product management and engineering principles"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 68,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No conversational AI, agent development, or LLM/gen-AI product domain experience mentioned",
+        "mitigation": "Domain ramp-on board experience from internal eng/PM team; customer exposure and product-execution skills transfer; AI transformation background (if applicable) accelerates learning",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product experience rooted in transformation and operations execution rather than native product management or SDLC depth",
+        "mitigation": "Transformation/execution strength aligns with role's focus on agent delivery and stakeholder coordination; partnerships with Agent PMs can offset PM-methodology gaps",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting or classic case-team strategy background; brand strategy presence unclear",
+        "mitigation": "Customer advisory and product strategy skills from Ops/transformation experience; internal customer partnership model may not require traditional consulting brand",
+        "severity": "low"
+      },
+      {
+        "gap": "Degree requirement states 'Computer Science, Engineering, Mathematics, or equivalent practical experience'; educational background not provided",
+        "mitigation": "If practical experience in product/tech operations at Google Devices demonstrates equivalent technical grounding, satisfies 'equivalent' language; otherwise, clarify credentials",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 75,
+    "summary": "Strategy and Operations leader with eight years at Google scaling global commercial ops and transformation programs. Strong cross-functional coordination, execution delivery, and analytical skills align with agent development strategist scope. Gaps: no conversational AI/agent domain exposure, product experience emphasizes transformation execution over native PM depth, and educational background not confirmed\u2014though Google Devices tenure likely satisfies \"equivalent practical experience\" for technical grounding. Role family fit is solid (Strategist, Program Leadership approved families); manageable gaps assume quick domain onboarding and collaborative partnerships with Agent PMs and Engineers.",
+    "uncertainties": [
+      "Candidate's educational background (degree field) not provided; JD states 'degree in CS/Engineering/Math or equivalent practical experience' with Google tenure likely meeting equivalent threshold, but unclear",
+      "Specific conversational AI, LLM, or agent product exposure not mentioned; ramp time and learning curve unknown",
+      "Native product management methodology depth (roadmaps, user research, feature prioritization) not detailed; execution/transformation focus suggests different skill emphasis",
+      "Degree/MBA status unknown; JD lists 'MBA or comparable tech+ops experience' as strong plus, unclear if candidate meets this",
+      "Arabic language requirement in title not addressed in candidate profile; whether candidate possesses Arabic proficiency unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

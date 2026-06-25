@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions in Strategy and Operations role, demonstrating proven ability to scale global commercial operations and build high-performing teams.",
+        "evidence_strength": "strong",
+        "job_requirement": "Build, lead, and scale the pre-sales (Solutions Architect) team for Strategic Manufacturing and Energy customers in Germany, including hiring, coaching, performance management, and career development"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs and scaling operations suggests hands-on execution blended with process design and team leadership at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as a player-coach in strategic opportunities by balancing hands-on involvement in the most critical customer engagements with building repeatable motions"
+      },
+      {
+        "candidate_evidence": "Eight years in commercial operations at Google (consumption-driven platform business) with demonstrated experience scaling operations, though specifics of SaaS/consumption modeling are not detailed.",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrated success in consumption-based or SaaS business models, including forecasting, expansion, and customer adoption"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with cross-functional program leadership indicates experience working with sales and revenue stakeholders, though depth in sales partnership unclear.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with Sales leadership to support forecast accuracy, pipeline quality, and consumption growth"
+      },
+      {
+        "candidate_evidence": "Native German speaker and professional/fluent English speaker.",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluent German (highly preferred) and fluent English (required)"
+      },
+      {
+        "candidate_evidence": "Eight years at strategic scale and two promotions suggest executive engagement capability; explicit evidence of C-level relationship-building not provided.",
+        "evidence_strength": "medium",
+        "job_requirement": "Executive presence with the ability to influence and communicate confidently at C-level"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 68,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No demonstrated pre-sales, Solutions Architecture, or technical field engineering background. Role requires 'strong background in data engineering, analytics platforms, databases, or data science, gained through engineering, consulting, or technical leadership roles.'",
+        "mitigation": "Candidate's product operations and transformation experience suggests ability to learn platform concepts and translate technical value to business outcomes. Ramp requires structured onboarding and mentorship from data/analytics experts and existing Databricks SA leadership to develop credibility in data platform domain.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited explicit consulting or technical field team leadership experience. JD emphasizes 'consulting' as a key background route for platform expertise.",
+        "mitigation": "Strategy and Operations background with cross-functional work may provide foundational team leadership and stakeholder management skills. Early-career mentorship and exposure to Databricks' technical positioning and customer use cases can bridge domain gap.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience with German Manufacturing or Energy sector verticals, or with industrial/OT AI transformation at scale.",
+        "mitigation": "Native German language fluency and cultural familiarity are assets. Customer-facing learning and collaboration with regional stakeholders can accelerate vertical knowledge. Strategic program execution background is transferable.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Scope seniority may be at lower end of role expectation. JD requires 'player-coach' leadership at strategic account level with P&L and adoption ROI ownership\u2014a strong L5 scope. Candidate's eight-year tenure suggests L4-L5 boundary, not established L5.",
+        "mitigation": "Two promotions and demonstrated scaling experience at Google indicate upward trajectory. Fit depends on whether Databricks' regional team structure and account portfolio support a high-leverage L4/L5-boundary scope or require seasoned L5+ depth.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 75,
+    "summary": "Manager, Field Engineering - Strategic Accounts at Databricks is a player-coach pre-sales leadership role in data/AI platform selling to German industrial customers. Candidate brings eight years of Strategy &amp; Operations experience with proven team building, transformation execution, and cross-functional GTM partnership at Google, plus native German fluency. Critical gap: no pre-sales, Solutions Architecture, or technical field engineering background in data platforms, analytics, or consulting. Ramp requires structured domain knowledge transfer and technical credibility building. Seniority and execution rigor align; platform expertise and field-engineering context are material risks.",
+    "uncertainties": [
+      "Depth of candidate's exposure to data engineering, analytics platforms, and databases domain\u2014critical for credibility with Solutions Architects and C-level customers.",
+      "Specificity of candidate's consumption-based SaaS experience at Google (platform model, forecasting rigor, expansion mechanics).",
+      "Extent of candidate's direct pre-sales, customer ROI modeling, or win-rate/adoption metrics ownership.",
+      "Whether candidate's transformation and program leadership translates to field-engineering team building and SA coaching at scale.",
+      "Company tier: Databricks tier 1 may expect more seasoned L5+ pre-sales leadership; role seniority ceiling applicability unclear."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

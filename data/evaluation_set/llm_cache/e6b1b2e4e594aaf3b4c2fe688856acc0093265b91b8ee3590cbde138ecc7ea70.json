@@ -1,0 +1,45 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with commercial operations and scaling experience; experience with transformation programs and cross-functional stakeholder management",
+        "evidence_strength": "weak",
+        "job_requirement": "Customer Success Manager role managing major accounts"
+      }
+    ],
+    "confidence": 0.25,
+    "evidence_strength": 5,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Role is pure quota-carrying or account-focused Customer Success without strategic or transformation scope; candidate's background is strategy, operations, and business transformation rather than customer success or account management",
+        "mitigation": "Consider Harvey's Partner Operations Manager (EMEA) role at same company, which tests function-level discrimination and may align better with candidate's strategy and operations background",
+        "severity": "high"
+      },
+      {
+        "gap": "No Job Description provided; JD fetch failed (404 error). Cannot assess specific role requirements, account portfolio, CS methodologies, or success metrics required",
+        "mitigation": "Obtain full, current JD with explicit role scope, account portfolio size, and CS KPIs before re-evaluation",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's experience centers on product operations, commercial transformation, and business operations\u2014not customer success, account management, or quota-driven revenue retention",
+        "mitigation": "Role is typically deprioritized for strategy/operations leaders unless JD clearly embeds strategic or transformation scope (not evident from available data)",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "No full JD available for evaluation; fetch failed. Role is titled Majors Customer Success Manager (London, Harvey), a pure CS function that is usually deprioritized for a Strategy and Operations / Product Operations leader. Candidate's eight-year Google background centers on commercial operations and transformation, not customer success or account management. Advisory: skip unless the actual JD reveals unexpected strategic or transformation scope, or pivot to Harvey's Partner Operations Manager (EMEA) role instead.",
+    "uncertainties": [
+      "Full JD content unavailable due to fetch failure; evaluation based on role title and department classification alone",
+      "Cannot assess whether the CS Manager role includes strategic accounts, transformation responsibilities, or operational scope that might elevate fit",
+      "Candidate's seniority level and scope match unknown without JD; Google Devices L4/L5 placement may or may not align with Harvey CS manager expectations",
+      "Company tier 3 and early-stage context unknown; if Harvey is early-stage, L4-equivalent 'Majors' scope could differ from typical mature-company CS role",
+      "Partner Operations Manager (EMEA) mentioned as better fit\u2014recommend exploring that alternative internally at Harvey"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

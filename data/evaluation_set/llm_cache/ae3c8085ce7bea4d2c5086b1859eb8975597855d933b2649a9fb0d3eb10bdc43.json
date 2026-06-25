@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate has approximately eight years at Google Devices and Services with two promotions and experience scaling global commercial operations and transformation programs, indicating team leadership and operational scaling capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and lead a high-performing, sustainable enterprise sales team and motion across Australia and New Zealand"
+      },
+      {
+        "candidate_evidence": "Product Operations experience with ownership over requirements, logic design, UAT, rollout, and transformation demonstrates cross-functional collaboration capability with product teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with Product, Marketing, and Customer Success teams to adapt offerings for the ANZ market"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with transformation programs indicates GTM strategy experience, though candidate background is not explicitly ANZ-focused or enterprise sales-driven.",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop and execute a comprehensive ANZ go-to-market strategy for enterprise customers"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Over-leveled seniority: 'Head of Enterprise Sales' is a Director/VP-level role at an established Tier-1 company (Anthropic). Candidate's eight years at Google, while substantial, does not clearly establish head-of-region or equivalent P&L leadership at enterprise sales scale.",
+        "mitigation": "Candidate would need to demonstrate prior regional head or equivalent revenue responsibility at an enterprise software/SaaS company, which is not evident in positioning.",
+        "severity": "high"
+      },
+      {
+        "gap": "Pure enterprise sales leadership experience: Candidate background is Strategy and Operations / Product Operations, not quota-carrying or direct enterprise sales leadership. Role explicitly requires '15+ years enterprise sales, 5+ years leadership managing large-scale sales operations.'",
+        "mitigation": "Candidate would need to show direct enterprise sales team building, quota management, and deal closure track record, which is absent from profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated ANZ market knowledge or regional expansion experience: Role requires navigation of Australian and New Zealand regulatory, commercial, and cultural landscape and prior success 'sold into Australia's and New Zealand's leading enterprises.'",
+        "mitigation": "Candidate would need prior ANZ region experience or multi-region expansion leadership; positioning shows only Google global operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented enterprise sales technical product expertise: Role emphasizes 'selling technical API products, cloud services, or SaaS solutions' and 'experience with AI technologies.' Candidate background is in operations and transformation, not sales motion.",
+        "mitigation": "AI exposure could be developed, but lack of prior enterprise sales motion for technical/API products is a structural gap.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role title is 'Head of Enterprise Sales' at Anthropic (Tier-1, established company). This is a Director/VP-equivalent position well above target L4-L5 scope. Seniority ceiling rule: 'at established companies, Head of, Director, VP, and C-suite roles are over-leveled. Score scope_seniority low and use skip as the advisory band even when the function is otherwise relevant.'",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 30,
+    "summary": "This is a Director-level regional enterprise sales head role at a Tier-1 company, significantly over-leveled for an L4-L5 candidate. Candidate has strong Strategy and Operations / Product Operations credentials with eight years at Google and transformation expertise, but lacks the 15+ year enterprise sales career, 5+ years of large-scale sales team leadership, quota accountability, and ANZ regional market knowledge that the role explicitly requires. While cross-functional and operational scaling skills are present, the function fit is poor: this is a pure enterprise sales P&L leadership role, not a strategy, product operations, or transformation role. Recommend skip.",
+    "uncertainties": [
+      "Whether candidate has any prior quota-carrying or direct enterprise sales team building experience not captured in the positioning statement.",
+      "Whether candidate has prior Australia or New Zealand market exposure or regional expansion leadership.",
+      "Whether candidate's Google experience included enterprise sales team scaling or only operational/strategy scaling."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

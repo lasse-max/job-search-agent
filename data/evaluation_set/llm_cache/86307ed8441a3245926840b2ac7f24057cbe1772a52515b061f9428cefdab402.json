@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "blocked",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global operations and leading transformation programs suggests leadership capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead technical teams of Applied AI Engineers, providing mentorship and technical guidance"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with experience translating business problems into solutions; German and English fluency supports communication across distributed teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Excel in technical communication and articulate complex concepts to technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Experience in transformation programs and scaling global commercial operations suggests customer engagement and end-to-end solution ownership",
+        "evidence_strength": "weak",
+        "job_requirement": "Act as primary technical point of contact guiding customers through entire lifecycle from pre-sales to post-implementation"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No demonstrated production software engineering, coding, or ML engineering background. Candidate's product experience comes from ownership, requirements, UAT, and transformation rather than native engineering product management or hands-on ML development.",
+        "mitigation": "Role requires delivering 'critical lines of codes' and deep hands-on AI development (fine-tuning, RAG, agentic workflows). Candidate would need to rapidly upskill in Python production engineering, PyTorch, and LLM fine-tuning, but the role is not structured as a learning opportunity.",
+        "severity": "high"
+      },
+      {
+        "gap": "Missing required educational foundation: JD explicitly requires PhD or Master's degree in AI, Machine Learning, Computer Science, or related field. No evidence of qualifying degree provided.",
+        "mitigation": "This is a hard requirement stated in the JD. No workaround available.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with core AI/ML technical stack: Python (candidate reports basic level and actively learning), PyTorch, LangChain, Hugging Face, fine-tuning, RAG, agentic systems, or deploying NLP at scale.",
+        "mitigation": "7\u20138 years of AI/ML experience with deep expertise in these tools is a must-have requirement. Candidate's 8 years at Google were in Operations and Services, not AI/ML engineering or research.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited or no experience in customer-facing technical roles (Solutions Architect, Customer Engineer, Technical Product Manager). Background is Strategy and Operations, not field engineering or enterprise AI adoption.",
+        "mitigation": "JD lists this as 'Ideally' preferred, but the core role requires being primary technical point of contact and leading deployment of complex AI systems. Candidate lacks this domain foundation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of contributing to open-source AI/LLM projects or involvement in AI research community.",
+        "mitigation": "Listed as 'Ideally' preferred; not a hard blocker. However, given the role's focus on staying at the frontier of LLM tooling and open-source initiatives, this gap reinforces technical depth mismatch.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: 'You hold a PhD or Master's degree in AI, Machine Learning, Computer Science, or a related field.' Candidate profile provides no evidence of a Master's or PhD in any of these fields. This is a hard minimum qualification explicitly required in the 'About you' section.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD states: 'Deliver as an IC the critical lines of codes of our complex projects, you'll be hands-on and de-risk the critical parts... You'll stay deeply involved in coding, reviewing, and optimizing AI solutions.' Candidate has no production software engineering background and is learning Python at a basic level. The role requires hands-on delivery of production AI code; this is a core duty, not a nice-to-have.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires: '7/8+ years of experience in AI/ML, with at least 2+ years in a technical leadership role (e.g., Tech Lead, Engineering Manager, or Solutions Architect) focused on AI products or enterprise solutions.' Candidate's 8 years at Google Devices and Services were in Strategy and Operations, not AI/ML engineering or research. Leadership experience is in operations transformation, not technical AI product teams.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 45,
+    "summary": "This role requires a deep AI/ML engineer with hands-on coding, team leadership, and enterprise customer deployment expertise. The candidate is a Strategy and Operations leader with no production software engineering, AI/ML technical background, or required Master's/PhD in a relevant field. The three hard blockers\u2014missing required degree, no hands-on coding ability, and zero AI/ML engineering experience despite 8 years in the field\u2014disqualify candidacy. While leadership and communication skills transfer, the core technical scope is incompatible.",
+    "uncertainties": [
+      "Candidate's exact educational background not fully specified; assumed no Master's or PhD in AI/ML/CS based on 'positioning' language focusing on Strategy and Operations",
+      "Depth of Python experience and learning trajectory unclear; reported as 'basic and actively learning' but unknown whether candidate is pursuing formal ML coursework or certifications",
+      "Extent of customer-facing engagement at Google Devices unclear; may have had some pre-sales exposure, but no explicit mention of Solutions Architecture or technical account management",
+      "Possible overlap between 'transformation programs' and AI solution implementation not explored; unknown whether any AI/ML transformation work was included"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

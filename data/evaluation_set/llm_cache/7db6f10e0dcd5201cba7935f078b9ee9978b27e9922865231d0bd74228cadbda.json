@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations; partnership and stakeholder management across product, sales, and customer success teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with customers to uncover core business challenges and determine how Celonis Process Intelligence can help achieve business objectives"
+      },
+      {
+        "candidate_evidence": "Led transformation programs involving UAT, rollout, and change management; experience presenting to leadership and influencing decision-makers",
+        "evidence_strength": "medium",
+        "job_requirement": "Execute proof projects and deliver presentations to senior executives to drive investment decisions"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and requirements/logic design with focus on business impact and adoption; trusted advisor positioning at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive change management and value realisation, build trust through technical and business acumen as trusted advisor"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no production AI/ML engineering background or hands-on experience building AI solutions",
+        "evidence_strength": "weak",
+        "job_requirement": "Prototype and develop AI solutions tailored to customer needs, including machine learning and LLM-based solutions"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Orbit is a 12-month graduate/early-career program explicitly for launching careers in enterprise SaaS; candidate has ~8 years experience and is over-leveled for junior onboarding and mentorship-heavy curriculum",
+        "mitigation": "Candidate could transition into a mid-market or enterprise VE role at Celonis outside the Orbit program if technical AI/ML depth is developed and process mining expertise is built",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on experience with SQL, Python, or process mining; role requires basic-to-applied knowledge of these technologies for proof-of-concept development",
+        "mitigation": "Self-directed learning in Python and SQL feasible over weeks; process mining (Celonis Rising Star modules) can be learned on-the-job, but starting knowledge is minimal",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated AI/ML engineering or solution prototyping background; role explicitly requires prototyping AI solutions, including machine learning and LLM-based solutions",
+        "mitigation": "Technical product operations and requirements expertise could support ideation; however, hands-on prototyping and development execution would require close mentorship and likely extended timeline",
+        "severity": "high"
+      },
+      {
+        "gap": "Visa/relocation constraint: role requires Japanese citizenship or visa holder, fluent in Japanese, willing to stay in Madrid 12 months then relocate to Tokyo; candidate languages are English (fluent) and German (native), no mention of Japanese",
+        "mitigation": "No mitigation; this is a disqualifying legal and operational requirement for the role",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Looking for Japanese citizens / visa holders, fluent in Japanese, willing to stay in Madrid for 12 months before having the view to relocate to Tokyo.\" Candidate profile lists English (professional/fluent) and German (native) only; no Japanese language capability or Japan visa eligibility indicated.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 28,
+    "scope_seniority": 20,
+    "summary": "This is an entry-to-mid-level Value Engineer program role at Celonis requiring Japanese citizenship/visa, Japanese fluency, and hands-on AI/ML prototyping skills. Candidate brings strong strategic operations and transformation leadership from Google (8 years, multiple promotions, L4-equivalent scope) but is significantly over-leveled for a 12-month graduate program, lacks Japanese language and visa eligibility, has minimal SQL/Python/process-mining depth, and no AI solution prototyping experience. Role family overlap exists in customer problem-solving and stakeholder management, but the hard visa/language requirement and steep technical learning curve make this a poor fit. Skip for advisory band; hard blocker on visa/language requirement.",
+    "uncertainties": [
+      "Candidate's current visa status and ability or willingness to obtain Japan work visa not disclosed",
+      "Depth of business problem-solving vs. hands-on technical execution required from Value Engineer in practice at Celonis unclear from JD",
+      "Whether Celonis would consider over-leveled candidates for Orbit program or only entry-level/recent-graduate cohorts",
+      "Candidate's appetite for returning to junior/structured learning role after 8 years of senior scope not stated"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

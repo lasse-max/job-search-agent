@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services spanning global commercial operations and transformation programs, demonstrating experience coordinating across technical and business functions",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional collaboration with research, engineering, and customer-facing teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with experience in requirements, design, and stakeholder rollout in transformation contexts suggests communication capability across audiences",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to explain complex technical concepts in simple terms to technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation experience indicates familiarity with defining and measuring business outcomes",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience understanding customer requirements and success criteria"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "3+ years of ML evaluation, benchmarking for LLMs or agentic systems\u2014core technical specialty required. Candidate has zero stated experience in evaluation frameworks, benchmarking, or LLM evaluation methodology.",
+        "mitigation": "Would require 12\u201318 months of focused learning on evaluation design, LLM capabilities assessment, and benchmarking practices. Possible only if deep ML fundamentals are present, which candidate profile does not establish.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep understanding of concepts and algorithms underlying machine learning and LLMs. Candidate profile indicates Python is basic and actively learning; no ML coursework, research, or engineering background mentioned.",
+        "mitigation": "Would require structured ML fundamentals study (ML algorithms, neural networks, transformer architecture). Timeline incompatible with immediate technical contribution to evaluation design.",
+        "severity": "high"
+      },
+      {
+        "gap": "Strong technical coding skills in Python. Candidate profile explicitly states 'Python basic and actively learning.'",
+        "mitigation": "Candidate would need to reach intermediate-to-advanced Python proficiency for production evaluation pipelines and infrastructure. Estimated 6\u201312 months of hands-on development practice.",
+        "severity": "high"
+      },
+      {
+        "gap": "Proven experience in AI or machine learning product implementation with APIs and back-end systems. Candidate background is in operations, transformation, and requirements definition, not ML product engineering.",
+        "mitigation": "No direct path; this requires hands-on ML stack exposure and API/back-end product work that operations roles do not typically provide.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role emphasizes building 'scalable evaluation infrastructure and pipelines' and working with ML frameworks (PyTorch, HuggingFace). Candidate has no stated infrastructure, ML framework, or software architecture experience.",
+        "mitigation": "Would require ramp on distributed systems, ML ops practices, and framework internals\u2014outside candidate's current skill foundation.",
+        "severity": "high"
+      },
+      {
+        "gap": "Location: Role is in Paris; candidate profile does not specify relocation willingness or current location. Visa sponsorship unknown.",
+        "mitigation": "Clarify relocation and visa sponsorship capability before advancing.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Required: '3+ years of experience in ML evaluation, benchmarking for LLM or agentic systems' and 'deep understanding of concepts and algorithms underlying machine learning and LLMs' and 'strong technical coding skills in Python' and 'proven experience in AI or machine learning product implementation with APIs, back-end.' Candidate profile explicitly states: 'No production software-engineering background,' 'Python basic and actively learning,' and background is in operations and transformation, not ML or AI product engineering. These are stated minimum qualifications, not preferred. Candidate does not meet the minimum technical bar.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "This role is a specialized technical position requiring 3+ years of ML evaluation expertise, deep LLM algorithms knowledge, strong Python coding, and ML frameworks experience\u2014none of which are present in the candidate's profile. The candidate is a Strategy and Operations / Product Operations leader with transformation and commercial execution experience, which does not overlap with the core technical, research-adjacent, and infrastructure-heavy demands of an Evaluation Engineer role. The gap is not a seniority mismatch or a \"nice-to-have\" missing skill; it is a fundamental domain and technical capability mismatch unsuitable for onboarding within a reasonable timeframe.",
+    "uncertainties": [
+      "Candidate's current location and relocation willingness for Paris role not specified.",
+      "Depth of candidate's ML fundamentals understanding (linear algebra, probability, neural networks) not provided; only Python proficiency explicitly noted as basic.",
+      "Whether candidate has engaged with any evaluation frameworks, metrics, or benchmarking even at a non-engineering level during transformation or product operations work.",
+      "Timeline and intensity of Python learning trajectory\u2014whether 'actively learning' suggests structured coursework or self-directed hobby-level study."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

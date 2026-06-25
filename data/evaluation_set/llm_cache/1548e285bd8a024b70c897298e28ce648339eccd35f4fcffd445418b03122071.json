@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; led global commercial operations and transformation programs; owns processes and stakeholder management across cross-functional teams",
+        "evidence_strength": "medium",
+        "job_requirement": "End-to-end sales execution: Manage the full sales cycle from initial contact through discovery, proposal, negotiation, and close, delivering against revenue targets"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations and led transformation programs; demonstrated cross-functional stakeholder management and process design",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborative selling: Work closely with category leads and internal stakeholders to develop tailored propositions"
+      },
+      {
+        "candidate_evidence": "Strategic and operations leader with eight years leading transformation programs; able to interface across technical and business audiences",
+        "evidence_strength": "medium",
+        "job_requirement": "Communication skills: Excellent presentation and persuasion skills with the ability to adapt your style for both analytical and commercial audiences"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales background: JD requires 5+ years direct sales with revenue targets and deal-closing. Candidate's background is in operations, transformation, and process scaling, not consultative enterprise sales or account ownership.",
+        "mitigation": "Sales fundamentals (prospecting, discovery, pipeline management, forecasting) could be learned with strong mentorship and onboarding in a quota role, but this is a career pivot from strategy to direct sales, not a natural progression.",
+        "severity": "high"
+      },
+      {
+        "gap": "FMCG commercial acumen and sector expertise: JD requires solid understanding of how FMCG organisations use data and analytics, with ability to build compelling value propositions. Candidate's experience is with Google Devices and Services, not consumer packaged goods or retail.",
+        "mitigation": "FMCG market knowledge and commercial patterns can be acquired through study and early-cycle mentoring, but it requires active learning and time in market to build credibility with senior FMCG stakeholders.",
+        "severity": "high"
+      },
+      {
+        "gap": "CRM and sales operations proficiency: JD asks for experience using CRM systems (HubSpot) for pipeline management, forecasting, and reporting. Candidate profile does not mention CRM system expertise.",
+        "mitigation": "CRM systems like HubSpot are learnable tools; candidates can ramp on the platform quickly if they have strong sales discipline and process orientation.",
+        "severity": "low"
+      },
+      {
+        "gap": "Limited sector consulting or FMCG insight consulting background: JD background preference includes retail, CPG, or consumer insights consulting. Candidate comes from Google operations, not consulting or FMCG verticals.",
+        "mitigation": "Consultative skills and operations rigour transfer; sector knowledge must be built through market research and stakeholder immersion.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 18,
+    "scope_seniority": 45,
+    "summary": "Business Development Manager is a pure quota-carrying sales role with 5+ years direct sales experience and FMCG sector expertise as core requirements. Candidate is a Strategy and Operations leader with global commercial transformation experience but lacks enterprise sales track record, quota-carrying background, and FMCG commercial acumen. Role function and seniority ceiling are misaligned with candidate positioning and profile.",
+    "uncertainties": [
+      "Unclear whether candidate has ever carried a personal sales quota or owned revenue targets directly",
+      "No visibility into candidate's experience pitching and selling solutions to FMCG decision-makers or building commercial value propositions in that sector",
+      "JD title 'Business Development Lead' is ambiguous; not clear if this is L4-equivalent manager scope or individual contributor sales rep with lead title"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

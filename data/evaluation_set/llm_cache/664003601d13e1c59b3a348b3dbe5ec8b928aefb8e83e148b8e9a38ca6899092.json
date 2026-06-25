@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations; experience in requirements definition, stakeholder engagement, and translating business needs into operational solutions",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with customers to uncover business challenges and determine how solutions can help achieve business objectives"
+      },
+      {
+        "candidate_evidence": "Led transformation programs at Google with cross-functional ownership; demonstrated ability to influence senior stakeholders and manage complex operational change",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive change management and value realization; build strong relationships with customers as a trusted advisor"
+      },
+      {
+        "candidate_evidence": "Background in scaling operations and transformation at high-growth company; experience designing processes and solutions, though primarily business/operational rather than AI/technical",
+        "evidence_strength": "medium",
+        "job_requirement": "Work in fast-paced environment, think analytically and creatively, apply technology solutions to business problems"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Role requires bachelors/masters in Engineering, Computer Science, Data Science, AI/ML, or Mathematics; candidate background is operations/strategy without disclosed formal degree in these fields",
+        "mitigation": "Candidate has demonstrated analytical and operational learning capability; could rapidly develop domain knowledge through Celonis enablement program, but lacks foundational technical credentialing the role explicitly values",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires hands-on SQL and/or Python experience; candidate has only basic Python and is actively learning",
+        "mitigation": "Graduate program includes training, but entering with below-baseline technical competency for a role focused on prototyping and developing AI solutions",
+        "severity": "high"
+      },
+      {
+        "gap": "Role emphasizes prototyping, developing AI/ML and LLM-based solutions; candidate's experience is in business operations and transformation, not solution design or technical implementation",
+        "mitigation": "Orbit program is structured for enablement, but this is a fundamentally different skill axis from candidate's core background",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires fluency in Dutch and English; candidate is fluent in English and German but Dutch not mentioned",
+        "mitigation": "Dutch can be acquired, but is an explicit requirement for customer-facing Benelux engagements",
+        "severity": "medium"
+      },
+      {
+        "gap": "Associate/entry-level scope misaligned with candidate's eight-year senior experience and demonstrated L4-equivalent ownership; overqualified by seniority but underqualified by technical domain",
+        "mitigation": "None\u2014this is a structural mismatch. Candidate should target mid-level VE or business-focused roles, not a graduate program",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: 'You have a bachelors and/or masters degree in (Industrial) Engineering, Computer Science, Data Science / Business Analytics, AI/ML, Mathematics or other related fields.' Candidate profile does not disclose a degree in any of these fields; background is described as strategy and operations at Google.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD states: 'An effective communicator and fluent in Dutch and English.' Candidate is fluent in English and German but Dutch proficiency is not mentioned in the profile. Customer-facing Benelux role explicitly requires Dutch.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 15,
+    "summary": "This is a junior/graduate-level technical engineer role requiring a CS/Engineering/Data Science degree, SQL/Python proficiency, and Dutch language fluency. The candidate is a senior strategy and operations leader (L4-equivalent) with eight years at Google in transformation and commercial scaling\u2014fundamentally misaligned by both domain (AI/technical prototyping vs. business operations) and seniority (over-qualified for Orbit Program but under-qualified technically). Hard blockers: no disclosed technical degree and no Dutch fluency. Skip this role and pursue mid-level Value Engineering, Product Operations, or business-facing strategy roles.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

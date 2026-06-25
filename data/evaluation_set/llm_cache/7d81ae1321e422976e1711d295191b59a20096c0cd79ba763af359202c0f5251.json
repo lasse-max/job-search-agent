@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs, demonstrating multi-stakeholder negotiation and partnership scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Own, negotiate, and scale strategic agreements with partners to accelerate subscriber and engagement growth"
+      },
+      {
+        "candidate_evidence": "Two promotions and track record in scaling global commercial operations indicate drive and progression, though specific partnership or BD experience not detailed in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Multi-talented self-starter with ambition and drive to grow Premium distribution partnerships"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with appropriate seniority level (L4-L5 equivalent) and cross-functional leadership experience in transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Report to APAC Director and operate as Senior Manager in business development"
+      }
+    ],
+    "confidence": 0.65,
+    "evidence_strength": 25,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No evident business development, partnership strategy, or vendor/partner management background; candidate's experience is in commercial operations and transformation within Google product ecosystem, not external partnership negotiation or BD at Spotify or similar",
+        "mitigation": "Rapid domain onboarding if core partnership playbook and strategy framework can transfer from Google commercial ops; however, BD-specific skills (vendor pipeline, deal structure, partnership lifecycle) would require significant ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited or no APAC-specific market experience, regional P&L ownership, or localization expertise for Singapore/Seoul markets; profile shows Google global experience but not regional BD focus",
+        "mitigation": "APAC hiring manager or mentor pairing could offset if candidate shows rapid market learning; however, premium partnership strategy in APAC requires some regional context",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct quota or revenue responsibility, subscriber growth metrics, or streaming/media industry experience evident in profile",
+        "mitigation": "Limited; this is a revenue-driven BD role, and lack of direct P&L or growth ownership represents a fundamental mismatch to role intent",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Candidate's strategy-and-operations background and appropriate seniority level show leadership capability, but this role requires BD-specific partnership negotiation, vendor pipeline management, and revenue ownership\u2014functions outside candidate's Google commercial-operations and transformation domain. High-severity gaps in BD experience, subscriber-growth accountability, and APAC market knowledge make this a structural mismatch despite seniority fit.",
+    "uncertainties": [
+      "JD does not detail whether 'Premium distribution partnerships' means platform partnerships (e.g., telco bundles, device OEMs) or third-party content/licensing; candidate's ops background may have some relevance if partnerships are infrastructure-focused, but this is unclear",
+      "Extent of candidate's 'global commercial operations' at Google and its overlap with external-facing vendor/partner negotiations is ambiguous from profile alone",
+      "APAC hiring market and team context for this role is unknown; if this is a small startup-like BD cell, seniority and ops background may carry more weight than standard Spotify expectations"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

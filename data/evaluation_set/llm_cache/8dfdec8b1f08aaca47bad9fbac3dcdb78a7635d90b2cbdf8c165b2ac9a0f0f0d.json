@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs, with two promotions; experience setting objectives, measuring performance, and conducting leadership reviews on strategic initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive the OKR-setting process for Streaming Product & Technology leadership; partnering with team leads to set objectives, using informed analysis to define measurable targets, and managing recurring leadership reviews"
+      },
+      {
+        "candidate_evidence": "Product Operations background with requirements logic design, UAT, rollout, and transformation execution; proven ability to work cross-functionally with technical and product teams to measure and drive outcomes",
+        "evidence_strength": "medium",
+        "job_requirement": "Be the analytical backbone for key metrics; understand data sets, identify trends, surface insights, and work with Product, Engineering, and Data Science to optimize performance"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership experience with ownership of commercial operations scaling; demonstrated ability to manage multiple workstreams with high attention to detail and executive visibility at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Support leadership review forums and proactively identify opportunities to improve velocity and impact through operational rigor"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling at Google demonstrates experience with cross-functional stakeholder management and large-scale program coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner on Cultural Transformation; plan town halls, offsites/summits, and represent Streaming Product and Technology at large-scale events"
+      }
+    ],
+    "confidence": 0.82,
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "BI tool proficiency (Tableau, Looker) listed as 'highly preferred' but not confirmed in candidate profile; hands-on SQL and advanced spreadsheet skills not explicitly documented",
+        "mitigation": "These are technical tools learnable within 4\u20138 weeks for a candidate with strategic ops and data-fluency background; not a core blocker for strategy and execution capability",
+        "severity": "medium"
+      },
+      {
+        "gap": "10+ years in 'ProdOps, Strategy, or Analytics roles' is stated requirement; candidate background is ~8 years in Google Devices operations and transformation with product component, but framed primarily as strategy and ops rather than native analytics or business intelligence",
+        "mitigation": "Candidate meets seniority and cross-functional scope expectations; the exact functional labeling (ProdOps vs. commercial operations + product transformation) is a title/label gap rather than capability gap",
+        "severity": "medium"
+      },
+      {
+        "gap": "Disney streaming/media industry and OKR/KPI measurement in high-velocity consumer product environment may be new domain; no explicit streaming or entertainment product ops background documented",
+        "mitigation": "Strategic ops principles, cross-functional collaboration, and performance measurement are domain-agnostic; ramp-in time expected but not disqualifying",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 78,
+    "scope_seniority": 65,
+    "summary": "Strong functional and seniority alignment: candidate's 8-year Google Devices and Services background with two promotions directly matches Strategy & Operations scope\u2014OKR-setting, performance measurement, cross-functional leadership, and operational transformation. Medium-confidence role fit due to: (1) BI tool skills not confirmed (medium gap); (2) 2-year shortfall on stated 10+ ProdOps requirement, though candidate has equivalent strategic ops seniority; (3) no Disney streaming/entertainment vertical experience, but strategy/ops principles transfer. Principal title at Disney is top-tier IC (~L5\u2013L6) at established company; candidate's L4\u2013L5 eight-year scope is slightly below ceiling but defensible given strategic breadth. Recommend consideration pending BI/SQL depth verification.",
+    "uncertainties": [
+      "Candidate's actual SQL proficiency and BI tool experience (Tableau/Looker) not explicitly stated in profile; critical for analytical backbone role",
+      "Extent of OKR/KPI measurement and performance-analytics work at Google Devices ops; was this core vs. supporting function?",
+      "Why candidate is positioned as 8 years rather than 10+ in the qualifications: whether gap is intentional (different role family) or simple recency",
+      "Candidate's familiarity with streaming/entertainment vertical and high-velocity consumer product culture; degree of onboarding required"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

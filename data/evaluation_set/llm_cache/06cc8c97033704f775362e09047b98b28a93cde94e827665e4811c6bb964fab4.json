@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioned as Strategy and Operations / Product Operations leader; no explicit pricing strategy background mentioned",
+        "evidence_strength": "medium",
+        "job_requirement": "8\u201310 years' experience in GTM, product or strategy roles in deep\u2010tech or SaaS companies, with at least 5 years pricing experience"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs indicates cross-functional stakeholder engagement; strategy and operations experience typically requires broad influence",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent stakeholder management and communication skills; able to influence without authority"
+      },
+      {
+        "candidate_evidence": "Product operations experience with requirements, logic design, and transformation scope suggests process and commercial design capability; no direct pricing model design evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Design charge metrics and pricing tiers (usage, seats, subscriptions) for new and existing products"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background typically involves analytics and financial analysis; no specific modeling or A/B testing experience documented",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical and financial modelling skills; comfortable with data-driven experiments"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation experience in a tech company; no explicit record of pricing strategy design for developer tools, APIs, or cloud products",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven record designing pricing strategies for technical products (APIs, cloud or developer tools)"
+      },
+      {
+        "candidate_evidence": "No documented exposure to PLG, pricing model design, or monetization strategy; gaps in both SaaS commercial model depth and pricing mechanics",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep understanding of usage\u2010, seat\u2010 and license\u2010based pricing models; familiarity with PLG and enterprise motions"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 48,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "No explicit pricing strategy or monetization design experience; JD requires 5+ years minimum",
+        "mitigation": "Candidate's analytics, process design, and stakeholder management from Ops roles could translate if coached; strong learner profile with Python actively being developed suggests ability to acquire domain quickly",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented experience with usage-, seat-, or license-based pricing models or PLG/enterprise commercial mechanics",
+        "mitigation": "Product Operations background with global commercial scaling is adjacent; on-the-job ramp with mentorship from Finance and Revenue Operations stakeholders listed in interview panel",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited deep-tech or SaaS pricing case studies for developer tools, APIs, or cloud platforms",
+        "mitigation": "Google Devices and Services experience includes scale and global distribution; AI/LLM domain familiarity may be learnable given Mistral's product footprint",
+        "severity": "medium"
+      },
+      {
+        "gap": "No documented financial modeling or A/B testing background; role requires strong comfort with data-driven experiments",
+        "mitigation": "Strategy and operations foundation implies analytical capability; specific experimental design and causal inference training could close quickly",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 62,
+    "scope_seniority": 72,
+    "summary": "Candidate is a Strategy and Operations leader with 8 years at Google and appropriate tenure/seniority for the level. Strong in stakeholder management and process design, but lacks the required 5+ years of explicit pricing strategy and monetization design experience\u2014the core domain of this role. Role-family fit is moderate (Ops/GTM alignment), but evidence of actual pricing model design, PLG/enterprise commercial mechanics, and financial modeling is absent. Gaps are manageable with structured ramp and mentorship, but candidate represents a career-pivot hire rather than a direct-skill match.",
+    "uncertainties": [
+      "Whether Google Devices and Services experience included pricing model decisions or only operational scaling",
+      "Depth of financial modeling skills\u2014title suggests strategic planning, but technical finance rigor level unclear",
+      "Actual exposure to SaaS PLG or enterprise multi-motion go-to-market; positioning emphasizes ops and transformation but not GTM execution",
+      "AI/LLM domain familiarity level beyond general product knowledge"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

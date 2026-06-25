@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs with two promotions; positioning as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Sales Strategy and Operations role in GTM function"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs and commercial operations scaling at Google, positioning emphasizes strategic program leadership capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy and transformation program leadership"
+      }
+    ],
+    "confidence": 0.25,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No explicit sales or revenue operations background provided; candidate profile emphasizes product operations and commercial operations without clear GTM or sales-specific execution evidence",
+        "mitigation": "Clarify whether commercial operations scaling at Google included direct sales strategy, revenue forecasting, sales enablement, or compensation plan design",
+        "severity": "high"
+      },
+      {
+        "gap": "ANZ location requires partner visa sponsorship waiver; candidate visa sponsorship status not disclosed",
+        "mitigation": "Confirm visa eligibility before proceeding; if sponsorship required, role becomes unavailable",
+        "severity": "high"
+      },
+      {
+        "gap": "No JD text available; cannot assess domain-specific requirements for OpenAI's sales function, customer segments, or operational priorities",
+        "mitigation": "Retrieve full job description to validate functional fit against explicit role accountabilities and success metrics",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 75,
+    "scope_seniority": 75,
+    "summary": "Candidate has strong positioning in Strategy and Operations and transformation leadership at scale (eight years, two promotions at Google), squarely fitting target family GTM/Sales Strategy and Operations. However, critical gaps block evaluation: (1) no JD text available to assess OpenAI's specific revenue ops, sales enablement, or GTM requirements; (2) no evidence of direct sales strategy or revenue operations background vs. product operations; (3) no visa sponsorship clarity for Sydney role marked as partner-visa-only. Without JD text and visa confirmation, confidence is too low to proceed; recommend retrieval of full JD and visa eligibility check before reconsidering.",
+    "uncertainties": [
+      "Full job description unavailable (403 Forbidden); cannot map candidate evidence to explicit role requirements or assess domain fit for OpenAI's sales function",
+      "Candidate's 'commercial operations' background not defined as sales operations, revenue operations, or GTM-specific vs. product-adjacent operations",
+      "Visa sponsorship eligibility for Australia partner-visa-only role not documented in candidate profile",
+      "Scope of candidate's transformation programs and their sales/revenue component unclear without details"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

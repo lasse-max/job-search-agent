@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; demonstrates end-to-end ownership and integration across multiple teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Own the end-to-end EMI/EMC engineering for an airborne platform, including the control plan, compliance roadmap, and integration strategy across all subsystems."
+      },
+      {
+        "candidate_evidence": "Transformation program leadership with stakeholder management across global cross-functional teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate cross-functional design decisions with airframe, avionics, EW, comms, propulsion, power, and mission computing; manage EM trade-offs."
+      },
+      {
+        "candidate_evidence": "Experience managing transformation programs and cross-functional coordination suggests supplier/vendor engagement capability.",
+        "evidence_strength": "weak",
+        "job_requirement": "Manage supplier technical governance for EMI/EMC compliance and non-conformance closure."
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No electrical engineering, aerospace engineering, or related degree; candidate background is operations and business transformation.",
+        "mitigation": "Would require substantial foundational technical ramp-up in electromagnetic theory, transmission lines, antenna design, and shielding principles\u2014likely 12+ months of intensive study and mentorship.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on EMI/EMC engineering experience or airborne platform systems work; no exposure to EM simulation tools (CST, FEKO, HFSS) or electromagnetic modeling.",
+        "mitigation": "No practical mitigation; this is domain-specific technical expertise that cannot be quickly acquired through operations or strategy experience alone.",
+        "severity": "high"
+      },
+      {
+        "gap": "No experience with military standards (MIL-STD-461, MIL-STD-464, DO-160, STANAG) or defense airworthiness certification frameworks.",
+        "mitigation": "Standards knowledge is learnable but requires years of hands-on certification work in defense aerospace; not a substitute for baseline EM engineering capability.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated grounding, bonding, shielding, filtering, or cable segregation design experience; no lightning protection or composite structure analysis background.",
+        "mitigation": "These are specialized subsystem-level technical skills that require deep electrical engineering knowledge; cannot be acquired through operations leadership alone.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: 'Hold a relevant degree in Electrical Engineering, Aerospace Engineering, or a related field' and 'Have proven experience in EMI/EMC engineering for airborne platforms with end-to-end ownership from requirements to certification.' These are explicitly positioned as required qualifications ('should apply if you'). Candidate has no electrical or aerospace engineering degree and zero EMI/EMC or airborne systems experience. The role is pure systems engineering requiring deep technical domain expertise in electromagnetic theory, simulation tools, and defense certification\u2014fundamentally misaligned with a Strategy and Operations background.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 8,
+    "scope_seniority": 45,
+    "summary": "This is a specialist Systems Engineer role in electromagnetic interference for defense airborne platforms\u2014a deep technical domain requiring an electrical or aerospace engineering degree, hands-on EMI/EMC certification experience, proficiency with EM modeling tools, and knowledge of military standards. The candidate is a Strategy and Operations leader with transformation and cross-functional leadership experience, but has no electrical engineering foundation, no EMI/EMC domain expertise, and no airborne systems background. The role is outside the target and approved-stretch families and presents hard blockers on both education and required technical experience.",
+    "uncertainties": [
+      "Whether candidate has any hidden electrical engineering coursework or self-directed EM learning not captured in the profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

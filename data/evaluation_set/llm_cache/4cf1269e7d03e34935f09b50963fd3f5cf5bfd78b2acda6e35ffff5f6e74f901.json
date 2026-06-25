@@ -1,0 +1,42 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Strategy and Operations leader with approximately eight years at Google Devices and Services with two promotions\u2014well beyond student or early-career pathways",
+        "evidence_strength": "strong",
+        "job_requirement": "Current Formula Student Germany participant or approaching/planning transition from study to full-time employment"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "Candidate is a mid-to-senior career professional (L4\u2013L5 Strategy & Operations leader post eight years at Google with two promotions), but role explicitly targets current Formula Student Germany participants or students transitioning to full-time employment",
+        "mitigation": "None\u2014this is a student-exclusive and early-career pipeline programme. Candidate is far beyond the intended cohort and ineligible by design.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role focuses on technical engineering disciplines (autonomous systems, aerodynamics, mechatronics, AI & software development). Candidate background is strategy, operations, and business transformation\u2014not native engineering or production software development",
+        "mitigation": "None\u2014the role requires deep technical engineering competency in specialized domains; candidate's strength is business-side strategy and programme leadership.",
+        "severity": "high"
+      },
+      {
+        "gap": "Closed advertisement explicitly available only to Formula Student Germany programme members. Candidate is not a participant",
+        "mitigation": "None\u2014candidate is ineligible by eligibility criteria.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 5,
+    "summary": "This is a closed, student-exclusive engineering pipeline programme (Formula Student Germany) targeting current participants or those in active study-to-work transition. The candidate is a mid-to-senior Strategy & Operations leader post eight years at Google\u2014far outside the intended cohort and ineligible by design. The role focuses on deep technical engineering (autonomous systems, aerodynamics, mechatronics, AI/software), not strategy or business transformation. This is a fundamental mismatch in seniority, eligibility, and function.",
+    "uncertainties": [
+      "Exact current employment status of candidate unclear, but positioning indicates active Google tenure or recent departure as an experienced leader",
+      "Whether candidate has any Formula Student Germany affiliation or is a current participant\u2014not indicated in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

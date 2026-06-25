@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate is a Strategy and Operations / Product Operations leader with eight years at Google Devices and Services, focused on scaling global commercial operations and transformation programs, not product design, brand systems, or design leadership.",
+        "evidence_strength": "weak",
+        "job_requirement": "Principal Product Designer to set vision and quality bar across TIDAL's product and brand ecosystem"
+      },
+      {
+        "candidate_evidence": "Candidate's experience centers on transformation programs, global commercial operations, and process design. No portfolio evidence or background in leading visual design, UX, or brand projects from concept to ship.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead the most complex, ambiguous design initiatives end-to-end\u2014from early exploration through shipped experiences"
+      },
+      {
+        "candidate_evidence": "No evidence of graphic design, brand extension, social activations, or 360 brand cohesion work. Candidate's background is operations and transformation, not design craft.",
+        "evidence_strength": "weak",
+        "job_requirement": "Graphic design skills, working with building and extending brand for 360 activations and social to have cohesion across brand and product"
+      },
+      {
+        "candidate_evidence": "Candidate may have process-design and systems-thinking skills from transformation work, but no evidence of shipping design systems, visual standards, or UX/UI cohesion frameworks.",
+        "evidence_strength": "weak",
+        "job_requirement": "Expertise defining design systems and standards that promote cohesive experiences at scale"
+      },
+      {
+        "candidate_evidence": "Candidate has 8+ years, but in Strategy and Operations / Product Operations roles, not Product Design. No portfolio of design work mentioned.",
+        "evidence_strength": "weak",
+        "job_requirement": "8+ years of Product Design experience with a portfolio demonstrating high craft and systems thinking"
+      },
+      {
+        "candidate_evidence": "No evidence provided of passion for music, artists, or the creative economy in candidate profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "A passion for music, artists, and the creative economy"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Role is Principal Product Designer requiring deep craft in visual design, UX, brand systems, and product design leadership. Candidate is a Strategy and Operations / Product Operations leader with no portfolio, design systems experience, or graphic design background.",
+        "mitigation": "This gap is not readily mitigated. The role is a design-centric position, not a strategic operations or transformation role. A fundamental career pivot into design is required.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of brand-building, 360 activations, social cohesion, or graphic design work. Role explicitly requires graphic design skills and brand extension experience.",
+        "mitigation": "No practical mitigation. This is a core, non-negotiable skill set for the role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native product design or design leadership.",
+        "mitigation": "The role requires native design craft and design-led product vision, not operations-led transformation. Not mitigable without a substantial design background.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated passion for music, artists, or the creative economy. TIDAL culture and mission are deeply rooted in music and creator empowerment.",
+        "mitigation": "Could potentially develop over time if hired, but no baseline evidence of alignment with company mission.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 5,
+    "scope_seniority": 25,
+    "summary": "This is a Principal Product Designer role requiring 8+ years of visual design craft, brand systems expertise, graphic design, and design leadership. The candidate is a Strategy and Operations / Product Operations leader with transformation and commercial operations background, no design portfolio, no brand or graphic design experience, and no evidence of design-centric product leadership. Role family fit is misaligned; the position is design-led, not strategy/operations-led. Recommend skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

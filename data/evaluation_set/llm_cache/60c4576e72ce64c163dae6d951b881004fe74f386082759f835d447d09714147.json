@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and leading transformation programs with strategic scope and cross-functional influence",
+        "evidence_strength": "medium",
+        "job_requirement": "Define go-to-market strategy, influence cross-functional teams, coach a high-performing team"
+      },
+      {
+        "candidate_evidence": "Experience building and scaling teams in operations and transformation contexts, with two promotions demonstrating leadership progression",
+        "evidence_strength": "medium",
+        "job_requirement": "Build, mentor, and scale a team of experienced Account Executives and Solution Strategists"
+      },
+      {
+        "candidate_evidence": "Google background in commercial operations and scaling global programs suggests operational discipline and resource planning exposure",
+        "evidence_strength": "weak",
+        "job_requirement": "Drive forecast accuracy, resource planning, and sustainable growth through disciplined execution"
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "10+ years direct quota-carrying sales leadership in telco vertical",
+        "mitigation": "Candidate has operations and strategy experience but no demonstrated sales leadership, telco industry expertise, or quota management background. This is a pure sales leadership role requiring deep telco relationships and revenue ownership.",
+        "severity": "high"
+      },
+      {
+        "gap": "Established relationships with major Australian telcos and service providers",
+        "mitigation": "Candidate's background is Google Devices and Services operations, not telco sales ecosystem. Building these relationships would require significant time and lacks warm network advantage.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep understanding of Australia's telco ecosystem, procurement frameworks, and wholesaler structure",
+        "mitigation": "No telco industry domain knowledge evident. Candidate is positioned as ops/strategy leader, not telco sector expert.",
+        "severity": "high"
+      },
+      {
+        "gap": "Proven sales leadership delivering double-digit growth in complex, high-stakes sales cycles",
+        "mitigation": "Candidate's transformation and operations background differs fundamentally from enterprise sales cycle management, deal pipeline ownership, and quota attainment focus required here.",
+        "severity": "high"
+      },
+      {
+        "gap": "Location: Sydney, Australia",
+        "mitigation": "No location information provided for candidate. Relocation to Sydney and work authorization in Australia are not confirmed.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 20,
+    "summary": "This is a pure enterprise quota-carrying sales leadership role (Sales Director, telco vertical) requiring 10+ years of direct sales leadership, established telco relationships, and deep Australian telco/procurement expertise. Candidate is a Strategy and Operations leader from Google with transformation and commercial operations background\u2014a fundamentally different function. Despite strong operational and strategic capabilities, the role falls squarely in the \"deprioritize\" category (pure quota-carrying sales with no strategic transformation scope). Role-family fit is critically low, and the seniority ceiling (Sales Director at Tier 1 company) is appropriate only for revenue-focused leaders, not ops/strategy talent.",
+    "uncertainties": [
+      "No explicit information on candidate's location or work authorization status in Australia",
+      "No indication of sales leadership experience or track record managing quota and sales teams",
+      "No telco industry knowledge or domain expertise mentioned in candidate profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

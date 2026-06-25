@@ -225,7 +225,12 @@ def _role_evaluation_from_llm(
     profile: CandidateProfileConfig,
 ) -> RoleEvaluation:
     locations = json.loads(row["locations_json"])
-    fit_score = _weighted_fit_score(dimensions, scoring_policy)
+    calibrated_dimensions = _calibrated_llm_dimensions(
+        row,
+        dimensions,
+        profile,
+    )
+    fit_score = _weighted_fit_score(calibrated_dimensions, scoring_policy)
     feasibility_state, feasibility_reason = _feasibility(locations, location_policy)
     recommendation = _final_recommendation(
         row,
@@ -242,7 +247,7 @@ def _role_evaluation_from_llm(
     return RoleEvaluation(
         role_fit_score=fit_score,
         confidence=llm_confidence,
-        dimensions=dimensions,
+        dimensions=calibrated_dimensions,
         feasibility={
             "state": "blocked" if hard_blockers else feasibility_state,
             "reason": "Hard blocker overrides feasibility."
@@ -308,8 +313,49 @@ def _final_recommendation(
             _role_text(row),
             profile,
         ),
+        surface_capped=_is_low_priority_surface_function(
+            row["title"],
+            row["department"] or "",
+            _role_text(row),
+            profile,
+        ),
         scoring_policy=scoring_policy,
     )
+
+
+def _calibrated_llm_dimensions(
+    row: sqlite3.Row,
+    dimensions: dict[str, int],
+    profile: CandidateProfileConfig,
+) -> dict[str, int]:
+    """Apply conservative calibration floors to LLM scores.
+
+    Claude Haiku is useful for comparing responsibilities, but on the labelled
+    set it underrates obvious target-family title/department matches. These
+    floors keep the model's relative judgment while preventing core S&O/BizOps
+    roles from falling below the digest surface solely because of conservative
+    evidence scoring.
+    """
+
+    calibrated = {dimension: int(score) for dimension, score in dimensions.items()}
+    title = row["title"]
+    title_lower = title.lower()
+    text = _role_text(row)
+    title_department = _title_department_text(row)
+    if (
+        _matches_any(title_department, profile.primary_role_family_patterns)
+        and not _is_plain_revenue_ops_manager(title_lower)
+        and not _partnership_domain_gap(text)
+    ):
+        floors = {
+            "role_family_fit": 82,
+            "evidence_strength": 62,
+            "scope_seniority": 70,
+            "gap_manageability": 65,
+        }
+        for dimension, floor in floors.items():
+            calibrated[dimension] = max(calibrated[dimension], floor)
+    return calibrated
 
 
 def _role_family_fit(
@@ -499,6 +545,7 @@ def _recommendation(
     overleveled: bool = False,
     stretch_family: bool = False,
     exceptional_upside: bool = False,
+    surface_capped: bool = False,
     scoring_policy: ScoringPolicyConfig | None = None,
 ) -> str:
     scoring_policy = scoring_policy or load_scoring_policy()
@@ -506,6 +553,13 @@ def _recommendation(
     if hard_blockers or feasibility_state == "blocked":
         return "blocked"
     if overleveled:
+        return "skip"
+    if surface_capped:
+        if (
+            fit_score >= thresholds.stretch_min_fit
+            and company.tier <= thresholds.max_stretch_tier
+        ):
+            return "stretch"
         return "skip"
     if company.tier >= 3:
         if company.warm_path and fit_score >= thresholds.stretch_min_fit:
@@ -547,6 +601,48 @@ def _recommendation(
     ):
         return "stretch"
     return "skip"
+
+
+def _is_low_priority_surface_function(
+    title: str,
+    department: str,
+    text: str,
+    profile: CandidateProfileConfig,
+) -> bool:
+    title_lower = title.lower()
+    title_department = f"{title} {department}".lower()
+    if _is_plain_revenue_ops_manager(title_lower):
+        return True
+    if _partnership_domain_gap(text):
+        return True
+    if _is_stretch_family(title, department, text, profile) and re.search(
+        r"\b(?:government|public sector|defen[cs]e)\b",
+        title_department,
+        flags=re.IGNORECASE,
+    ):
+        return True
+    if re.search(
+        (
+            r"\btechnical account management\b"
+            r"|\btechnical account manager\b"
+            r"|\bsupport\s*&\s*services\b"
+            r"|\bproposals?\s*(?:&|and)\s*assurance\b"
+            r"|\bassurance manager\b"
+            r"|\bstrategic finance\b"
+            r"|\bfinance technology\b"
+            r"|\bcorporate development\b"
+            r"|\bstrategic pricing\b"
+            r"|\bchannel sales\b"
+            r"|\btalent acquisition\b"
+            r"|\blegal\b"
+            r"|\brisk,\s*ethics\b"
+            r"|\bethics,\s*advocacy\b"
+        ),
+        title_department,
+        flags=re.IGNORECASE,
+    ):
+        return True
+    return False
 
 
 def _hard_blockers(

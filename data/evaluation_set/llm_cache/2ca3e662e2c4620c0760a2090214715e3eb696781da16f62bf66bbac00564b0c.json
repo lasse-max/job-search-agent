@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs; experience with requirements, logic design, UAT, rollout, and coordinating cross-functional teams",
+        "evidence_strength": "medium",
+        "job_requirement": "End-to-end product management process: gather customer requirements, design features, collaborate with engineering, coordinate launches"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with transformation program leadership experience; scaling commercial operations requires broad stakeholder alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional coordination and stakeholder management across product, engineering, marketing, and operations"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background typically involves metric-driven prioritization and program-level success measurement",
+        "evidence_strength": "weak",
+        "job_requirement": "Drive OKRs and measurable impact on product success"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Native Product Management experience. Candidate's product exposure comes from transformation ownership and requirements rather than core PM disciplines: roadmapping, inbound/outbound processes, feature design, or user research.",
+        "mitigation": "Candidate could ramp through shadowing, PM training, or mentorship on feature design and customer discovery workflows, but this represents material reskilling from Ops/Transformation to native PM.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep technical skills in cloud infrastructure (AWS, Azure), data systems, and SQL. Candidate is described as basic Python with active learning; no explicit evidence of cloud platform operations, data governance, or SQL proficiency.",
+        "mitigation": "Technical curriculum exists (cloud fundamentals, SQL, data platform architecture), but product decisions on query processing, storage, and infrastructure governance require working knowledge not just coursework.",
+        "severity": "high"
+      },
+      {
+        "gap": "Data-intelligence platform domain expertise. Databricks product spans query processing, storage, infrastructure, data governance, and open-source components. Candidate background is Google Devices/commercial ops, not data/analytics/AI platforms.",
+        "mitigation": "Domain learning curve is steep and role demands immediate technical and customer credibility in a specialized market. Hiring timeline and team structure should be evaluated.",
+        "severity": "high"
+      },
+      {
+        "gap": "Amsterdam-based role with EMEA scope. No visa sponsorship or relocation history mentioned in profile.",
+        "mitigation": "Confirm visa and relocation eligibility; if sponsorship required, assess company appetite and timeline.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Bachelors degree in Computer Science or similar field' and 'Technical skills: Solid understanding of cloud infrastructure (AWS, Azure), Strong data analysis and operationalization skills (SQL, rollups, building operational dashboards).' These are listed under 'What we look for' in the core requirements section. Candidate profile indicates no formal CS degree, basic Python, and no explicit SQL, cloud infrastructure, or data-analytics tooling evidence.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "This is a native Product Manager role in a specialized data-platform domain requiring deep technical skills (cloud infra, SQL, data governance) and CS/engineering background. Candidate is a Strategy and Operations leader with transformation and commercial-scaling expertise\u2014different discipline than PM. Role-family misalignment is structural (Ops vs. PM), not remediable by ramp time. Hard blocker: JD requires CS degree and technical skills (cloud, SQL, analytics); candidate lacks both.",
+    "uncertainties": [
+      "Candidate's exact familiarity with SQL, cloud platforms (AWS/Azure), and data governance tooling\u2014only 'basic Python' explicitly mentioned",
+      "Whether candidate holds a Bachelor's degree in Computer Science or 'similar field' and which field if so",
+      "Depth of product strategy experience: whether candidate led roadmapping, feature prioritization, or market positioning vs. operational transformation execution",
+      "Visa/relocation status and whether company will sponsor work authorization for Amsterdam"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

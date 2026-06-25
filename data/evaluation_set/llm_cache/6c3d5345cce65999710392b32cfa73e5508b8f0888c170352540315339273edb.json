@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8+ years scaling global commercial operations and transformation programmes at Google Devices and Services with cross-functional stakeholder management experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate internal and external delivery across complex, high-stakes defence programme, ensuring milestones are met and stakeholders remain aligned"
+      },
+      {
+        "candidate_evidence": "Transformation programme leadership with UAT, rollout, and programme tracking experience; however, no explicit mention of building dashboards or formal project tracking infrastructure",
+        "evidence_strength": "weak",
+        "job_requirement": "Build and maintain project tracking tools, dashboards or risk registers, and present programme status clearly to senior stakeholders"
+      },
+      {
+        "candidate_evidence": "Google commercial operations scaling and transformation delivery experience suggests structured execution capability, though scope appears business operations rather than formal project management",
+        "evidence_strength": "medium",
+        "job_requirement": "Apply structured project management methodologies in fast-moving, high-accountability environments"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 25,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No explicit PMP certification or equivalent project management credential mentioned; JD states 'Hold a PMP certification or equivalent, or are actively working towards one' as a core requirement",
+        "mitigation": "Candidate could pursue PMP certification, though this is a stated requirement for the role",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated defence, aerospace, automotive or engineering programme delivery experience; JD explicitly requires 'hands-on experience supporting cross-functional teams across technical and commercial milestones' in these domains",
+        "mitigation": "Candidate's Google consumer operations background does not directly transfer to defence procurement, classified environments, or military programme contexts",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is a tactical project coordination function rather than strategic transformation leadership; candidate profile emphasizes strategy and operations leadership rather than programme execution and administrative coordination",
+        "mitigation": "This is a structural mismatch: the role focuses on roadmap maintenance, dashboard tracking, and stakeholder documentation, not business transformation or strategic programme leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No mentioned experience with defence procurement structures, government contracts, classified programme environments, or security clearance requirements",
+        "mitigation": "Defence procurement and government contract familiarity is listed as 'Nice to Have' but security clearance is mandatory; candidate would require sponsorship",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit engineering or related background; JD notes 'Nice to Have: A background in engineering, political science or a related discipline' to support engagement with technical and operational complexity",
+        "mitigation": "This is preferred rather than required; candidate's transformation and commercial operations background may partially compensate",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 55,
+    "summary": "Candidate is a Strategy and Operations leader with strong cross-functional stakeholder management at scale, but this is a tactical project management role in a defence context requiring PMP certification, defence/aerospace programme delivery experience, and government security clearance\u2014none of which the candidate demonstrates. The role is a functional mismatch: it emphasizes roadmap maintenance, dashboard reporting, and administrative coordination rather than strategic transformation leadership where the candidate excels. Recommend skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

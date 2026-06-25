@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations, managing stakeholder engagement, and driving transformation programs with cross-functional teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Account Executives to drive technical sales cycles and customer outcomes; act as a trusted advisor"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with responsibility for requirements definition, logic design, and transformation rollout that requires translating between stakeholder expectations and practical execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Communicate complex topics to both technical and non-technical audiences; lead discovery sessions connecting business goals to technical decisions"
+      },
+      {
+        "candidate_evidence": "Experience building requirements, designing processes, executing rollouts, and driving UAT and transformation\u2014demonstrates hands-on execution but primarily in operations and product transformation, not data engineering or technical prototyping",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on technical foundation; ability to work practically with data, build PoCs, explore datasets, troubleshoot"
+      },
+      {
+        "candidate_evidence": "No stated experience with analytics workflows, ML/AI use cases, data platforms, or data-centric solution design",
+        "evidence_strength": "weak",
+        "job_requirement": "Familiarity with analytics, data science, or machine learning workflows; understanding of how data platforms support AI use cases"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 45,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Production data engineering and hands-on Python proficiency. Role requires writing and reasoning through code in PoCs and customer environments; candidate has basic Python and no stated data engineering background",
+        "mitigation": "Solutions Architect roles often provide on-the-job technical ramp in their first months. Candidate's Google scale background and transformation execution could provide foundation for learning data pipelines and modern data architectures if paired with structured technical onboarding and mentoring",
+        "severity": "high"
+      },
+      {
+        "gap": "Lack of direct data platform, analytics, data science, or ML domain knowledge. Role presales work centers on data and AI use cases; candidate's experience is in Google Devices/Services commercial operations and transformation",
+        "mitigation": "Domain expertise is learnable with dedicated focus and customer exposure. Candidate's stakeholder-translation and solution-design skills are transferable, but ramp time to credible customer dialogue on data architectures and AI platforms would be substantial",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited presales or consulting engagement background. Role requires leading customer technical workshops and discovery alongside Account Executives; candidate's background is primarily internal operations and transformation execution",
+        "mitigation": "Customer-facing skills from transformation work (stakeholder management, translating requirements) are present. Presales-specific techniques and customer sales-cycle rhythms would require training and support",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated hands-on cloud platform architecture or distributed data systems experience. Role requires designing solutions considering scalability, performance, reliability, and trade-offs in cloud data technologies",
+        "mitigation": "Cloud familiarity and data architecture thinking are taught in presales programs, but candidate enters without this foundation and would require extended mentoring before being independently credible",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "This Solutions Architect role requires hands-on Python proficiency, data engineering fundamentals, cloud platform architecture knowledge, and deep data/AI domain expertise to lead customer PoCs and presales cycles. The candidate is a seasoned Google strategy and operations leader with strong stakeholder management and transformation execution skills, but lacks the production data engineering background, analytics/ML domain knowledge, and presales customer-engagement experience the role demands. While the candidate's scope and commercial acumen are relevant to presales work, the technical depth and data-platform specificity required in this role exceed what a customer-facing operations-transformation background provides. This is a technical presales role, not a strategic operations or business-transformation role.",
+    "uncertainties": [
+      "Unclear whether candidate has any hands-on experience with cloud platforms (AWS, Azure, GCP) or data tooling beyond theoretical exposure",
+      "Unknown whether candidate has participated in or led technical proof-of-concepts in any domain",
+      "Degree and educational background not provided; unknown if candidate has formal technical training in computer science or data engineering",
+      "Unknown whether candidate has worked in or with data science, analytics, or ML teams in any capacity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

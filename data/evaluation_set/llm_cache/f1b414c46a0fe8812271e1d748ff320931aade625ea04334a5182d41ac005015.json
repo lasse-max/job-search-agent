@@ -1,0 +1,48 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years of Google Devices operations and transformation program leadership with global commercial scope and stakeholder management across multiple functions",
+        "evidence_strength": "medium",
+        "job_requirement": "Enterprise Customer Success role requiring account/customer relationship management"
+      },
+      {
+        "candidate_evidence": "Led scaling of global commercial operations and strategic transformation programs, demonstrating ability to manage complex stakeholder environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management and cross-functional coordination (implicit in enterprise CS)"
+      }
+    ],
+    "confidence": 0.3,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Customer Success or account management background. Candidate's experience is strategy, operations, and transformation\u2014not revenue retention, churn management, or account growth.",
+        "mitigation": "Gaps in core CS function typically require domain transfer or on-the-job learning; transferable stakeholder/program management skills could accelerate onboarding, but core CS playbook experience is absent.",
+        "severity": "high"
+      },
+      {
+        "gap": "No clear evidence of quota-carrying, revenue-related, or account expansion responsibility",
+        "mitigation": "Enterprise CS often has indirect or direct revenue accountability; candidate's background is cost/efficiency/transformation focused, not revenue generation.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited visibility into product/GTM domain. Glean is an AI enterprise search/knowledge management platform; no indication candidate has worked in SaaS, AI, or knowledge work tooling.",
+        "mitigation": "Domain knowledge can be learned, but candidate may face ramp time on product, vertical, and use-case understanding.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 45,
+    "summary": "Enterprise Customer Success at Glean is a core CS role focused on account retention, growth, and customer health\u2014not transformation or strategy. Candidate's eight years of Google operations and transformation leadership show strong stakeholder and program management chops, but the role family mismatch is fundamental: no CS, account management, or SaaS experience evident. Even with operational excellence, this represents a domain pivot that falls outside target or stretch families.",
+    "uncertainties": [
+      "JD text is corrupted/partial (mostly website code)\u2014unable to confirm exact scope, seniority level, revenue targets, or key responsibilities",
+      "Unclear if 'Enterprise CS' is a manager-level or IC role; scope and seniority cannot be fully assessed",
+      "No visibility into whether Glean is early-stage (which might broaden scope) or established (which would enforce standard CS function)"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

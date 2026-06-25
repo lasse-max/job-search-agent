@@ -1,0 +1,151 @@
+role_id,company,role_title,expected_recommendation,actual_recommendation,fit_score,surface_match,evaluator_version
+LNP-001,Spotify,Executive Protection Specialist,skip,skip,4,True,claude-haiku-4-5
+LNP-002,Spotify,"Business Development Senior Manager, APAC",skip,skip,42,True,claude-haiku-4-5
+LNP-003,Helsing,(Senior) Expert Export Control,skip,skip,20,True,claude-haiku-4-5
+LNP-004,Parloa,Senior Agent Architect (France),skip,blocked,39,True,claude-haiku-4-5
+LNP-005,Spotify,"Senior Manager, EU Government Affairs",skip,skip,23,True,claude-haiku-4-5
+LNP-006,Stripe,"Manager, Technical Account Management",skip,stretch,66,True,claude-haiku-4-5
+LNP-007,Helsing,Quality Assurance Engineer - Development,skip,blocked,37,True,claude-haiku-4-5
+LNP-008,Pigment,Global Total Rewards Manager,skip,skip,20,True,claude-haiku-4-5
+LNP-009,Databricks,Delivery Solutions Architect,skip,blocked,46,True,claude-haiku-4-5
+LNP-010,Checkout.com,Proposals & Assurance Manager,skip,stretch,68,True,claude-haiku-4-5
+LNP-011,Airwallex,"Senior Partnerships Manager, Startup and VC Ecosystem, France",skip,skip,38,True,claude-haiku-4-5
+LNP-012,Anthropic,"Enterprise Sales Manager, Digital Native Business",skip,skip,31,True,claude-haiku-4-5
+LNP-013,Snowflake,Global Account Manager - HSBC,skip,skip,38,True,claude-haiku-4-5
+LNP-014,Flix,Commercial Market Specialist/Manager (m/f/d),skip,skip,69,True,claude-haiku-4-5
+LNP-015,Celonis,Associate Applied AI Engineer (Japan) - Orbit Program,skip,blocked,28,True,claude-haiku-4-5
+LNP-016,Snowflake,"Senior Technical Support Engineer, Observe by Snowflake",skip,blocked,18,True,claude-haiku-4-5
+LNP-017,Databricks,Staff Product Manager,skip,blocked,40,True,claude-haiku-4-5
+LNP-018,Xero,Senior Engineer,skip,blocked,12,True,claude-haiku-4-5
+LNP-019,Helsing,Avionics Systems Engineer - Safety Critical Systems,skip,blocked,12,True,claude-haiku-4-5
+LNP-020,Pigment,AI Deployment Strategist,consider,blocked,69,False,claude-haiku-4-5
+LNP-021,Mistral AI,"CyberSecurity Engineer, Incident Response Lead",skip,blocked,16,True,claude-haiku-4-5
+LNP-022,Xero,Partner Development Representative,skip,skip,22,True,claude-haiku-4-5
+LNP-023,OpenAI,Forward Deployed Engineer - London,skip,blocked,40,True,claude-haiku-4-5
+LNP-024,HelloFresh,Sr. Category Manager - Indirect Procurement CapEx (all genders),skip,skip,39,True,claude-haiku-4-5
+LNP-025,Stripe,"Integration Engineer (Client facing), Professional Services",skip,blocked,36,True,claude-haiku-4-5
+LNP-026,Parloa,Staff Product Designer - Consumer Experience,skip,skip,23,True,claude-haiku-4-5
+LNP-027,Airwallex,"Director, Product Strategy",skip,skip,62,True,claude-haiku-4-5
+LNP-028,OpenAI,"Consumer & Product Communications Lead, APAC",skip,skip,33,True,claude-haiku-4-5
+LNP-029,Mistral AI,"Applied AI, Technical Lead, Forward Deployed AI Engineer - EMEA",skip,blocked,26,True,claude-haiku-4-5
+LNP-030,Mistral AI,AI Deployment Strategist - UK,consider,consider,68,True,claude-haiku-4-5
+LNP-031,Sierra,"Strategist, Agent Development (Dutch speaking)",consider,consider,67,True,claude-haiku-4-5
+LNP-032,OpenAI,"Researcher, Training - London",skip,blocked,24,True,claude-haiku-4-5
+LNP-033,Snowflake,"RVP, APJ Partner SE",skip,blocked,25,True,claude-haiku-4-5
+LNP-034,Databricks,"Sales Director, Enterprise - Telco",skip,skip,22,True,claude-haiku-4-5
+LNP-035,Spotify,Head of Government Affairs Australia New Zealand,skip,skip,15,True,claude-haiku-4-5
+LNP-036,Flix,Betriebskontrolleur (m/w/d),skip,blocked,13,True,claude-haiku-4-5
+LNP-037,Block,Staff Solutions Engineer,skip,blocked,37,True,claude-haiku-4-5
+LNP-038,Sierra,"Strategist, Agent Development (German speaking)",consider,consider,73,True,claude-haiku-4-5
+LNP-039,Airwallex,"Manager, Internal Audit (Compliance)",skip,blocked,29,True,claude-haiku-4-5
+LNP-040,Sierra,"Strategist, Agent Development (Arabic speaking)",consider,consider,70,True,claude-haiku-4-5
+LNP-041,Xero,Customer Experience Billing Specialist,skip,skip,19,True,claude-haiku-4-5
+LNP-042,Airwallex,"Senior Product Manager, Transaction Risk",skip,skip,47,True,claude-haiku-4-5
+LNP-043,Stripe,"Integration Reliability Engineer, Technical Operations",skip,blocked,38,True,claude-haiku-4-5
+LNP-044,Airbnb,"Manager, Premium Support (Italian/English)",skip,skip,42,True,claude-haiku-4-5
+LNP-045,Quantium,Business Development Lead | FMCG,skip,skip,29,True,claude-haiku-4-5
+LNP-046,Checkout.com,Analytics Engineer,skip,blocked,20,True,claude-haiku-4-5
+LNP-047,Flix,Full-stack (Kotlin) Engineer (m/f/d) - Team Payments,skip,blocked,12,True,claude-haiku-4-5
+LNP-048,Databricks,Sr. Solutions Architect,skip,blocked,39,True,claude-haiku-4-5
+LNP-049,Xero,"Senior Business Operations Manager - Risk, Ethics, Advocacy & Legal (12 month Contract)",skip,stretch,70,True,claude-haiku-4-5
+LNP-050,Block,"Senior Manager, Strategic Finance, Channel Sales",skip,stretch,77,True,claude-haiku-4-5
+LNP-051,Anthropic,"Research Engineer / Scientist, Alignment Science - London",skip,blocked,28,True,claude-haiku-4-5
+LNP-052,Airwallex,Senior Director of Operational Risk (Framework & Governance),skip,blocked,19,True,claude-haiku-4-5
+LNP-053,OpenAI,"Manager, Forward Deployed Engineering - London",skip,blocked,42,True,claude-haiku-4-5
+LNP-054,Stripe,"Solutions Architect, Startups and SMB",skip,blocked,48,True,claude-haiku-4-5
+LNP-055,Anthropic,"Commercial Counsel, GTM",skip,blocked,25,True,claude-haiku-4-5
+LNP-056,N26,KYCO Intern,skip,skip,12,True,claude-haiku-4-5
+LNP-057,OpenAI,"Head of GTM Partnerships, EMEA",skip,skip,72,True,claude-haiku-4-5
+LNP-058,Helsing,Senior Project Manager – Physical Products,skip,blocked,52,True,claude-haiku-4-5
+LNP-059,Waymo,"Senior Safety Researcher, Computational Behavior Modeling",skip,blocked,26,True,claude-haiku-4-5
+LNP-060,Celonis,Enterprise Architect Director,skip,blocked,26,True,claude-haiku-4-5
+LNP-061,Mistral AI,Product Monetisation & Pricing Lead,consider,stretch,58,False,claude-haiku-4-5
+LNP-062,Checkout.com,"Senior Associate, Strategic Pricing",skip,stretch,67,True,claude-haiku-4-5
+LNP-063,Parloa,Working Student - AI Agent Architecture,skip,blocked,10,True,claude-haiku-4-5
+LNP-064,Stripe,"Product Designer, Risk",skip,skip,24,True,claude-haiku-4-5
+LNP-065,Checkout.com,"Senior Specialist, Benefits",skip,skip,19,True,claude-haiku-4-5
+LNP-066,Pigment,Partner Excellence Manager - London,skip,skip,37,True,claude-haiku-4-5
+LNP-067,Helsing,Systems Technical Writer,skip,blocked,22,True,claude-haiku-4-5
+LNP-068,Mistral AI,Applied Scientist / Research Engineer - Singapore,skip,blocked,27,True,claude-haiku-4-5
+LNP-069,Flix,Qualifizierte:r Zugchef:in (m/w/d) FlixTrain,skip,blocked,7,True,claude-haiku-4-5
+LNP-070,Helsing,Project Manager,skip,blocked,38,True,claude-haiku-4-5
+LNP-071,HelloFresh,Senior International Category Manager (m/f/x),skip,skip,30,True,claude-haiku-4-5
+LNP-072,Deputy,Lead Platform Security Engineer,skip,blocked,17,True,claude-haiku-4-5
+LNP-073,Xero,Accounting Professional? Discover a new career in SaaS Sales with Xero,skip,skip,30,True,claude-haiku-4-5
+LNP-074,Waymo,International Operations Safety & Readiness Manager,skip,skip,68,True,claude-haiku-4-5
+LNP-075,Checkout.com,Incident Response Engineer,skip,blocked,18,True,claude-haiku-4-5
+LNP-076,Airwallex,"Staff Product Manager, Yield",skip,stretch,54,True,claude-haiku-4-5
+LNP-077,Airwallex,"Staff/Senior Data Scientist, Analytics (Payments)",skip,blocked,24,True,claude-haiku-4-5
+LNP-078,Sierra,"Sales Director, Spain",skip,skip,28,True,claude-haiku-4-5
+LNP-079,Celonis,Lead Value Engineer,skip,blocked,70,True,claude-haiku-4-5
+LNP-080,Airwallex,"Staff Data Scientist, Algorithm (Payments Fraud & Optimization)",skip,blocked,29,True,claude-haiku-4-5
+LNP-081,Airwallex,"Engineering Lead, Infrastructure (Data & AI)",skip,blocked,23,True,claude-haiku-4-5
+LNP-082,Helsing,Helsing – Formula Student Programme | Closed Opportunity,skip,skip,9,True,claude-haiku-4-5
+LNP-083,Airwallex,Director of Product Design - Developer Platform,skip,blocked,26,True,claude-haiku-4-5
+LNP-084,Sierra,"Product Manager, Agent Development (Italian speaking)",stretch,stretch,54,True,claude-haiku-4-5
+LNP-085,Databricks,"Manager, Field Engineering Italy",skip,blocked,55,True,claude-haiku-4-5
+LNP-086,Celonis,Senior/Lead Value Engineer - Public Sector & Defense,skip,blocked,43,True,claude-haiku-4-5
+LNP-087,OpenAI,"Product Manager, Integrity",skip,skip,44,True,claude-haiku-4-5
+LNP-088,Helsing,Schichtleiter in der Produktion,skip,skip,21,True,claude-haiku-4-5
+LNP-089,Mistral AI,Executive Assistant to the CRO,skip,skip,11,True,claude-haiku-4-5
+LNP-090,Airwallex,"Senior Manager, Revenue Strategy & Operations",apply_now,stretch,82,False,claude-haiku-4-5
+LNP-091,Airwallex,Staff AI Engineer,skip,blocked,24,True,claude-haiku-4-5
+LNP-092,Airwallex,Senior Compliance Manager & Deputy MLRO,skip,blocked,25,True,claude-haiku-4-5
+LNP-093,Snowflake,Senior Partner Solution Engineer,skip,blocked,29,True,claude-haiku-4-5
+LNP-094,HelloFresh,Intern Menu Planning & Ingredients (f/m/x),skip,blocked,14,True,claude-haiku-4-5
+LNP-095,Mistral AI,"Applied AI Engineer, CyberSecurity",skip,blocked,30,True,claude-haiku-4-5
+LNP-096,Airwallex,"Senior IT Engineer, Financial System",skip,blocked,30,True,claude-haiku-4-5
+LNP-097,Airwallex,Technical Support Lead (Asia Pacific incl. China coverage),skip,blocked,31,True,claude-haiku-4-5
+LNP-098,HelloFresh,Field Talent Community,skip,blocked,12,True,claude-haiku-4-5
+LNP-099,Xero,Head of Technical Innovation (APAC),skip,skip,71,True,claude-haiku-4-5
+LNP-100,Databricks,Delivery Solutions Architect,skip,skip,45,True,claude-haiku-4-5
+LNP-101,Sierra,"Strategist, Agent Development (Italian speaking)",consider,consider,68,True,claude-haiku-4-5
+LNP-102,Databricks,"Manager, Field Engineering - Strategic Accounts Germany",skip,blocked,70,True,claude-haiku-4-5
+LNP-103,N26,AFC Associate - SAR Delegate (CDD / Fixed-term contract),skip,skip,18,True,claude-haiku-4-5
+LNP-104,Anthropic,"Senior Data Center Capacity Delivery Manager, AUS",skip,skip,29,True,claude-haiku-4-5
+LNP-105,Airwallex,"Senior IT Engineer, LRC",skip,blocked,17,True,claude-haiku-4-5
+LNP-106,Airwallex,"Senior Manager, Finance Technology & Architecture",skip,stretch,74,True,claude-haiku-4-5
+LNP-107,Airbnb,"Market Lead, Experiences",skip,skip,38,True,claude-haiku-4-5
+LNP-108,Airwallex,"Senior Product Manager, Identity & Authentication",skip,skip,39,True,claude-haiku-4-5
+LNP-109,Block,"Principal Designer, TIDAL",skip,skip,13,True,claude-haiku-4-5
+LNP-110,Databricks,Senior Solutions Architect - Lakewatch,skip,blocked,31,True,claude-haiku-4-5
+LNP-111,Sierra,"Product Manager, Agent Development",stretch,skip,48,True,claude-haiku-4-5
+LNP-112,Pigment,Talent Acquisition Manager GTM - Paris,skip,stretch,70,True,claude-haiku-4-5
+LNP-113,Helsing,Systems Engineer - Electromagnetic Interference (EMI),skip,blocked,17,True,claude-haiku-4-5
+LNP-114,Anthropic,"Head of Enterprise Sales - Industries, ANZ",skip,blocked,22,True,claude-haiku-4-5
+LNP-115,HelloFresh,Nutrition Manager (all genders),skip,blocked,19,True,claude-haiku-4-5
+LNP-116,Mistral AI,Data Annotation Quality Specialist,skip,skip,12,True,claude-haiku-4-5
+LNP-117,Sierra,Enterprise Sales Leader (ANZ),skip,skip,37,True,claude-haiku-4-5
+LNP-118,Airbnb,"Manager, Luxe Supply",skip,skip,46,True,claude-haiku-4-5
+LNP-119,Airwallex,"Senior Manager, Enterprise Strategy & GTM, APAC",consider,stretch,77,False,claude-haiku-4-5
+LNP-120,Checkout.com,"Manager, Fraud and Risk Strategist",skip,blocked,28,True,claude-haiku-4-5
+LNP-121,Databricks,"Director, Lakebase Sales Specialists (Central region)",skip,skip,25,True,claude-haiku-4-5
+LNP-122,Flix,Partner Manager (m/w/d) - DACH Region,skip,skip,52,True,claude-haiku-4-5
+LNP-123,OpenAI,"Solutions Engineer, Large Enterprise",skip,blocked,53,True,claude-haiku-4-5
+LNP-124,Airwallex,"Product Director, Financial Markets & Financial Platform",skip,blocked,34,True,claude-haiku-4-5
+LNP-125,Mistral AI,Senior Technical Writer / Developer Educator,skip,blocked,23,True,claude-haiku-4-5
+LNP-126,OpenAI,"Regional Client Partner, Ads Solutions",skip,skip,39,True,claude-haiku-4-5
+LNP-127,Databricks,Senior Forward Deployed Engineer - Full stack,skip,blocked,30,True,claude-haiku-4-5
+LNP-128,Checkout.com,"Senior Specialist , Technical Account Management - Crypto & iGaming",skip,skip,36,True,claude-haiku-4-5
+LNP-129,Checkout.com,"Senior Engineer, Workplace Technology (Okta)",skip,blocked,9,True,claude-haiku-4-5
+LNP-130,Mistral AI,"Applied AI, Evaluation Engineer",skip,blocked,29,True,claude-haiku-4-5
+LNP-131,Airwallex,"Senior Product Manager, Transaction Monitoring",skip,skip,42,True,claude-haiku-4-5
+LNP-132,Anthropic,"Anthropic Fellows Program, ML Systems & Performance",skip,blocked,27,True,claude-haiku-4-5
+LNP-133,Stripe,"Product Manager, EMEA Local Payment Methods",skip,skip,48,True,claude-haiku-4-5
+LNP-134,Anthropic,"Anthropic Fellows Program, The Anthropic Institute (Economics & Policy)",skip,blocked,18,True,claude-haiku-4-5
+LNP-135,Databricks,Solutions Architect (Vietnam),skip,skip,36,True,claude-haiku-4-5
+LNP-136,Checkout.com,[Commercial] Standard,skip,skip,24,True,claude-haiku-4-5
+LNP-137,Mistral AI,"Product Manager, Mistral Vibe",skip,blocked,37,True,claude-haiku-4-5
+LNP-138,Airbnb,Acquisition Manager,skip,skip,38,True,claude-haiku-4-5
+LNP-139,Celonis,Associate Applied AI Engineer (Benelux) - Orbit Program,skip,blocked,26,True,claude-haiku-4-5
+LNP-140,Checkout.com,Information Security Analyst II (GRC),skip,blocked,33,True,claude-haiku-4-5
+LNP-141,Celonis,Intern Sales Development Program (Nordic Market),skip,skip,10,True,claude-haiku-4-5
+LNP-142,Palantir,Deployment Strategist - AUS Government,skip,stretch,75,True,claude-haiku-4-5
+LNP-143,Snowflake,Partner Solution Engineer,skip,blocked,39,True,claude-haiku-4-5
+LNP-144,N26,Site Reliability Engineer - Access Team,skip,blocked,20,True,claude-haiku-4-5
+LNP-145,Databricks,Solutions Architect,skip,skip,46,True,claude-haiku-4-5
+LNP-146,Celonis,Head of Industry - Manufacturing,skip,skip,59,True,claude-haiku-4-5
+LNP-147,Anthropic,"Applied AI Architect, Industries",skip,skip,45,True,claude-haiku-4-5
+LNP-148,Xero,Lead Technical Product Manager,skip,skip,46,True,claude-haiku-4-5
+LNP-149,Trade Republic,Customer Council,skip,skip,17,True,claude-haiku-4-5
+LNP-150,Mistral AI,AI Deployment Strategist - Paris,consider,consider,67,True,claude-haiku-4-5

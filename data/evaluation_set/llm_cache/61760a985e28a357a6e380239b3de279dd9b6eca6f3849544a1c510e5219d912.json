@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; demonstrated experience scaling global commercial operations and transformation programs; product ownership spanning requirements, logic design, UAT, and rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Own, develop, and institutionalize the multi-year global product strategy, translating executive vision into clear, actionable product roadmap and strategic priorities"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations / Product Operations leader; experience in transformation programs and scaling global commercial operations; background in operationalization and process design",
+        "evidence_strength": "medium",
+        "job_requirement": "Design, implement, and govern robust Product Development Life Cycle (PDLC) frameworks, OKR tracking, and product prioritization processes to embed operational excellence across product teams globally"
+      },
+      {
+        "candidate_evidence": "Eight years in Strategy and Operations with cross-functional stakeholder management; experience with transformation programs requiring coordination across multiple functions",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as key strategic bridge between Product, Engineering, Commercial, Finance, and Legal, ensuring consistent alignment on strategic goals and resource allocation"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google suggest demonstrated executive communication and escalation capability; Strategy and Operations background implies C-level exposure",
+        "evidence_strength": "weak",
+        "job_requirement": "Prepare and deliver high-stakes strategic reviews and proposals to the C-Suite, synthesizing complex strategic challenges into concise, compelling recommendations"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and strategic programs experience; product ownership involving requirements definition, logic design, and rollout execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Run high-priority, zero-to-one strategic initiatives and manage cross-functional teams to prove commercial viability before transitioning to established product groups"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling; transformation programs with multi-product or cross-functional scope; positioned as transformation and strategic programs leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrated experience driving strategy formulation and operational change management across a global, multi-product organization"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 65,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Director-level scope at established company (Tier 1 fintech): Candidate eight-year L4-equivalent tenure at Google versus role's C-suite-reporting executive scope with multi-year strategy institutionalization accountability",
+        "mitigation": "Candidate's two promotions, global scaling achievements, and demonstrated transformation leadership show strong trajectory; Director-level scope requires demonstrated P&L ownership or board-level visibility not explicitly confirmed in profile",
+        "severity": "high"
+      },
+      {
+        "gap": "Top-tier strategy consulting background not evident: JD emphasizes 'ideally with leadership experience in a top-tier strategy consulting firm' as preference; candidate background is direct ops/strategy in tech",
+        "mitigation": "Google's Devices and Services strategy environment may provide comparable rigor; M&A/PMI participation and first-principles thinking capability can offset consulting brand gap; consulting background is preferred, not required",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited explicit fintech domain expertise: Role specifies 'Deep domain expertise in global technology, financial services, or payments is a significant advantage'; candidate background is Devices and Services (consumer hardware), not payments",
+        "mitigation": "B2B fintech and payments domain can be onboarded given strong analytical and operational foundation; Airwallex values builders and learning over narrow domain experience",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product management background differs from classic PM/SDLC: Candidate's product experience is ownership-led (requirements, logic design, UAT, rollout) rather than native product manager with PM tooling, roadmapping, and SDLC depth",
+        "mitigation": "Role requires Product Strategy & Operations governance and PDLC design, not hands-on PM execution; candidate's transformation and operationalization background directly maps to these governance responsibilities",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 58,
+    "summary": "Strong role-family fit in Strategy and Operations / Product Strategy with demonstrable global scale and transformation leadership at Google, but Director-level scope at established fintech company exceeds verified L4-equivalent tenure and P&L accountability. Candidate's eight-year ops and strategy background, two promotions, and cross-functional execution capability are compelling; however, lack of explicit top-tier consulting background and fintech domain expertise\u2014both preferred in JD\u2014plus gap between transformation-driven product ownership and classic Product Strategy leadership create moderate seniority and domain risk. Recommend stretch only if growth trajectory, analytical rigor, and builder energy offset title-level gap and domain onboarding curve.",
+    "uncertainties": [
+      "P&L ownership scope and P&L size at Google Devices and Services not specified",
+      "Explicit C-level interaction frequency and executive communication context insufficient to judge seniority ceiling",
+      "First-principles analytical rigor and data-modeling capability not directly evidenced",
+      "Geographic relocation willingness and Singapore role-specific context unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

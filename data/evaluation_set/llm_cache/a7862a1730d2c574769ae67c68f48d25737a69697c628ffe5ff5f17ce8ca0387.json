@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate scaled global commercial operations and transformation programs at Google Devices and Services over eight years with two promotions, demonstrating capability in dynamic, fast-paced settings.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to thrive in a fast-paced work environment"
+      },
+      {
+        "candidate_evidence": "Candidate's positioning highlights transformation program leadership requiring stakeholder management and cross-functional collaboration, suggesting strong communication ability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication and presentation skills to articulate complex information"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 5,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "Extensive end-to-end benefits program management and UK/Ireland benefits administration expertise. Role requires in-depth knowledge of health, welfare, retirement benefits, vendor coordination, qualifying life events, appeals, and annual enrollment\u2014none of which appear in the candidate profile.",
+        "mitigation": "Candidate could upskill through formal benefits administration training, but this is domain-specific expertise typically requiring years of hands-on experience in HR/benefits operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "Advanced Workday and benefits platform experience (AON, etc.). JD explicitly requires proficiency with Workday, Open Enrollment, benefits plan updates, and reporting.",
+        "mitigation": "Candidate would need platform-specific training and on-the-job learning; platform expertise takes weeks to months to build.",
+        "severity": "high"
+      },
+      {
+        "gap": "Advanced Microsoft Excel skills (PivotTables, VLOOKUP). While this may be learnable, no evidence of data analysis tool proficiency in candidate profile.",
+        "mitigation": "Excel skills can be self-taught or trained in weeks; less critical than benefits domain knowledge.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Vendor management and contract negotiation specific to benefits, health insurance, retirement plan providers. Candidate's background is in commercial operations and product transformation, not HR vendor ecosystems.",
+        "mitigation": "Vendor relationships and procurement fundamentals differ significantly from benefits vendor management; cross-domain learning required.",
+        "severity": "high"
+      },
+      {
+        "gap": "HR Specialist/People Operations background. This is an HR-owned benefits role; candidate's experience is in Product, Commercial Operations, and Strategy\u2014not HR organizational functions.",
+        "mitigation": "Function shift from Strategy/Product to HR requires ramp on HR processes, employee relations, compliance, and organizational dynamics.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "This role is a specialist HR/Benefits Administration position, not a Strategy and Operations, Product Operations, or Business Transformation role. The JD requires extensive, hands-on UK/Ireland benefits program management expertise, Workday proficiency, health and retirement benefits domain knowledge, vendor management, and Excel fluency\u2014none of which are evident in the candidate's Google Devices and Services background in commercial operations and transformation. While the candidate excels in fast-paced, cross-functional strategy environments, this role is fundamentally an HR specialist function falling outside target role families and requiring domain expertise the candidate does not possess.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

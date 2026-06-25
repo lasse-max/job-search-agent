@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs at executive partnership level.",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience operating at exec level and advising leaders in high-profile, ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Transformation background includes requirements design, UAT, rollout, and cross-functional transformation work.",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience partnering closely with product, marketing, legal, policy, and research teams"
+      },
+      {
+        "candidate_evidence": "Strategic Programs and Product Operations experience demonstrates ability to own ambiguous, multi-stakeholder initiatives across functional boundaries.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to flex confidently across product, consumer, corporate, and policy topics with sound judgement"
+      }
+    ],
+    "confidence": 0.92,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No demonstrated consumer communications, narrative development, or earned media strategy experience. Role requires 12+ years in consumer/product communications with deep media relationships and storytelling expertise.",
+        "mitigation": "Could learn narrative frameworks and media strategy in 12\u201318 months with a strong comms mentor, but would enter well below baseline for a regional lead role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Operations and product background does not translate directly to consumer-facing communications or helping audiences understand everyday product value and adoption drivers.",
+        "mitigation": "Would require significant retraining in communications craft, audience psychology, and media dynamics; unlikely to accelerate quickly.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience in international communications strategy, regional go-to-market narrative design, or working across multiple markets with culturally localized messaging.",
+        "mitigation": "Regional collaboration experience exists, but consumer comms localization and market-specific narrative adaptation are specialized skills not evident in profile.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited visibility into technology communications, AI/ML ethics narrative, or how to explain emerging technology risks and benefits to non-expert audiences.",
+        "mitigation": "Could develop quickly given technology background, but earned media relationships in AI/tech space appear absent.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 72,
+    "summary": "Candidate is a Strategy and Operations leader with appropriate seniority scope (L4\u2013L5 equivalent) and cross-functional executive partnership experience. However, this is a specialist communications role requiring 12+ years of consumer and product communications, earned media strategy, and narrative expertise. Candidate's background is operations/product, not communications; lacks demonstrated consumer storytelling, media relationships, or technology communications experience. Function fit is fundamentally misaligned.",
+    "uncertainties": [
+      "No explicit statement of whether candidate has informal communications exposure or storytelling interest outside formal comms roles.",
+      "Unclear whether 'transformation programs' involved external narrative, thought leadership, or stakeholder communication at scale.",
+      "No visibility into candidate's familiarity with AI/emerging-tech communications landscape or public-facing policy/trust narrative.",
+      "Degree of executive-level exposure in communications-adjacent roles not specified."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

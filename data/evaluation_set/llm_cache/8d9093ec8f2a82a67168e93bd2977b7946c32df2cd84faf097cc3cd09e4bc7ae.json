@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google; experience rolling out capabilities and working cross-functionally with business and technical teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work directly with consulting & SI partners, enabling them on key platform features and their business benefits"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with experience in requirements logic design and cross-team transformation work; comfortable translating between stakeholder levels.",
+        "evidence_strength": "medium",
+        "job_requirement": "Equally comfortable in both a business and technical context, interacting with executives and inspiring technical audiences"
+      },
+      {
+        "candidate_evidence": "Product Operations experience designing and executing transformation programs; background in understanding business drivers and linking them to technical execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to connect specific business problems and Snowflake's solutions"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No direct pre-sales or sales engineering background; role requires minimum 2 years working directly with GSI/RSI partners in a pre-sales environment.",
+        "mitigation": "Candidate's transformation program delivery and stakeholder management could transfer to partner enablement, but lack of proven pre-sales cycle expertise and partner-vendor relationship building is a material gap. Training on Snowflake product and pre-sales methodology would be required.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on technical depth in data warehouse, ETL, and analytics technologies. Candidate's Python is basic and actively learning; hands-on SQL expertise not evidenced.",
+        "mitigation": "While candidate has owned product requirements and UAT, native technical depth in data platforms is not demonstrated. Self-directed upskilling on SQL, ETL, and warehouse architecture would be needed to credibly present to technical audiences.",
+        "severity": "high"
+      },
+      {
+        "gap": "No data science background; JD states data science experience is 'highly desirable.'",
+        "mitigation": "Not a blocker, but candidates with data science exposure would have a material advantage in positioning Snowflake's analytics and AI capabilities to partners and customers.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No consulting or classic case-team experience; role requires extensive interaction with external consulting partners and systems integrators.",
+        "mitigation": "Internal transformation work is distinct from external partner enablement and vendor relationship dynamics. Onboarding would require cultural and stakeholder-model adaptation.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "Candidate's background is Strategy and Operations / Product Operations at scale, not sales engineering or pre-sales consulting. While stakeholder management and transformation execution skills have some transferability, this role requires 2+ years of direct pre-sales partner enablement experience, hands-on SQL and data-warehouse technical depth, and a consulting or vendor-partnership mindset. These are material functional gaps rather than stretch opportunities. The candidate is over-experienced in strategic program ownership but under-experienced in pre-sales cycles and technical data platforms.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

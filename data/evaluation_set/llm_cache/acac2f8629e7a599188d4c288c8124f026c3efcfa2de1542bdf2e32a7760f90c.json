@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and executing transformation programs with proven ability to design and structure complex initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic and structured, able to turn broad goals into clear strategy, priorities and operating rhythm"
+      },
+      {
+        "candidate_evidence": "Demonstrated ownership and hands-on execution across requirements design, UAT, rollout and transformation rather than delegating; comfortable operating without standard templates",
+        "evidence_strength": "medium",
+        "job_requirement": "Hands-on, low-ego and creative, happy to do the work yourself and design compelling value propositions with limited playbooks"
+      },
+      {
+        "candidate_evidence": "Transformation program experience requires metrics-driven decision making and iterative optimization, typical of operations and strategy work",
+        "evidence_strength": "medium",
+        "job_requirement": "Data-driven and resilient, using metrics to prioritise and iterate"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Core gap in partnerships, ecosystem and business development domain: Candidate has strategy and operations background, not partnerships management, VC/startup ecosystem strategy, or partner-sourced revenue model execution",
+        "mitigation": "Would require significant domain ramp on partnership contracting, VC ecosystem dynamics, and ecosystem-to-pipeline conversion mechanics; achievable over 6\u20139 months but not immediate contributor",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience building or scaling partner programmes end-to-end or driving partner-sourced commercial revenue; role explicitly requires 3+ years directly in partnerships/ecosystem",
+        "mitigation": "Candidate's transformation and operations background does not transfer directly to partnership sourcing, contracting, activation and partner success; would need to learn fintech partner dynamics from scratch",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of France VC/startup ecosystem network or track record leveraging it; role requires existing network with VCs, accelerators and startup communities in France",
+        "mitigation": "Network building in France would require time; candidate's Google experience is global, not France-specific",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience or fluency in fintech, payments, FX or multi-currency products; role explicitly requires strong interest and ability to understand startup use cases in these domains",
+        "mitigation": "Candidate can learn payments domain, but role needs someone who already has relevant fintech or payments product knowledge to be credible with VCs and accelerators on day one",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 60,
+    "summary": "Candidate is a strong Strategy and Operations leader with 8 years at Google and demonstrated capability to design strategy and execute complex programs at scale. However, this is fundamentally a partnerships and business-development role requiring 3+ years directly in partnership management, existing France VC/startup ecosystem network, end-to-end partner programme execution, and fintech/payments domain fluency. Candidate's background in transformation and operations does not provide the required partnerships, ecosystem or business-development experience; the domain and motion mismatch is too significant despite seniority fit.",
+    "uncertainties": [
+      "Unclear whether candidate has any exposure to partnership models, VC relationships or accelerator programmes during Google tenure",
+      "No information on candidate's location or visa status relative to Paris role requirement",
+      "Profile does not indicate whether candidate has worked on customer acquisition through ecosystem or channel partnerships in any capacity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

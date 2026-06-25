@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs. Background in Strategy and Operations / Product Operations with experience in GTM and revenue-related domains.",
+        "evidence_strength": "medium",
+        "job_requirement": "8+ years in strategic or corporate finance, investment banking, private equity, or management consulting; GTM experience is a plus"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy and Operations background involves partnering with leadership on strategic decisions, scaling operating models, and driving transformation. Experience in requirements, logic design, and rollout demonstrates structured business problem-solving and stakeholder management.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience serving as a trusted advisor to senior leaders, using financial analysis and strategic judgment to inform investment decisions and business strategy"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and leading transformation programs requires executive communication and stakeholder influence. Product Operations work inherently involves translating data into actionable insights for leadership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven ability to influence senior stakeholders through crisp storytelling and data-driven recommendations"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and commercial operations scaling at Google demonstrates autonomous problem-definition and execution in ambiguous contexts. Product ownership and UAT/rollout responsibility show ability to drive outcomes independently.",
+        "evidence_strength": "medium",
+        "job_requirement": "Track record of operating autonomously: defining problems, structuring analyses, and driving to outcomes without clear precedent or a defined playbook"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling involves process design and execution. Transformation program leadership indicates experience with planning cycles and operational frameworks, though explicit quota-setting and financial modeling experience is not stated.",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead and execute financial, strategic, and planning processes supporting business activities, including monthly/quarterly performance reviews, annual planning, and quota-setting"
+      },
+      {
+        "candidate_evidence": "No explicit evidence of Excel, SQL, or analytics tool proficiency provided in profile. Python listed as basic and actively learning, suggesting developing but not mastered analytical tool fluency.",
+        "evidence_strength": "weak",
+        "job_requirement": "Mastery of Excel / Google Sheets and comfort with SQL and modern AI-assisted analytics tools"
+      }
+    ],
+    "confidence": 0.82,
+    "evidence_strength": 75,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No stated background in formal corporate finance, investment banking, or private equity. Candidate experience is in Product Operations / Strategy and Operations rather than traditional finance roles.",
+        "mitigation": "Eight years at tier-one tech company with transformation and scaling scope may provide equivalent financial decision-making and business judgment. Strategic Finance relies on structure and storytelling; product operations experience in building frameworks and guiding decisions transfers meaningfully. Coaching on finance domain tools and terminology is feasible.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Excel, SQL, and analytics tool mastery not explicitly demonstrated. Candidate has basic Python and is actively learning, suggesting analytical capability but not proven fluency in finance-standard tools.",
+        "mitigation": "Analytical mindset and structured problem-solving are core. Product operations background likely involves spreadsheet and analytics work. On-the-job ramp on Excel, SQL, and BI tools is standard for strong operators transitioning into finance.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited explicit consulting or investment-banking brand and case-team experience. Strategic Finance roles often value structured case methodology and client advisory experience.",
+        "mitigation": "Autonomous problem-solving, stakeholder influence, and transformation execution from tech experience may offset consulting credential. Structured thinking can be reinforced through onboarding.",
+        "severity": "low"
+      },
+      {
+        "gap": "No explicit unit economics modeling, pricing strategy, or customer acquisition financial analysis mentioned. JD calls for scenario analyses on pricing, incentives, and headcount investment.",
+        "mitigation": "Product Operations and commercial operations scaling experience involve similar trade-off analysis and investment prioritization logic. Financial modeling syntax and tools are learnable; conceptual rigor in scenario testing is the harder skill.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 78,
+    "summary": "Strong role-family fit: eight-year background in Strategy and Operations / Product Operations with global scaling and transformation scope aligns well with Strategic Finance's requirement for autonomous, cross-functional problem-solving and senior stakeholder influence. Medium gaps in formal finance domain (Excel/SQL mastery, unit economics modeling, consulting experience) are manageable for a structurally minded operator, but require substantive technical and analytical onboarding. Recommend \"consider\" with emphasis on candidate's ability to learn finance tools and methodologies quickly.",
+    "uncertainties": [
+      "Degree in finance, business, or engineering not specified; role JD does not list education as a hard requirement, but unknown background may signal missing context.",
+      "Specific experience with financial modeling, scenario analysis, or pricing strategy not detailed; unclear how deep candidate's analytical toolkit is beyond problem-structuring.",
+      "Block/Strategic Finance hiring bar for Excel, SQL, and BI tool fluency not stated in JD; candidate may face steeper ramp than assumed if tools are non-negotiable on day one.",
+      "Candidate's experience in 'requirements, logic design, UAT, rollout' is product-adjacent; unclear whether this involved P&L ownership or financial accountability structures typical of Strategic Finance roles.",
+      "Whether candidate has operated in GTM or Revenue functions explicitly, vs. broader product/operations scope, is ambiguous; JD calls out GTM as a plus, and this gap may lower relative competitiveness."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,55 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs; core positioning in Strategy and Operations and Business Transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "Integration Operations Program Manager role in Strategy & Operations department at Plaid"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in transformation programs and scaling global commercial operations, with UAT, rollout, and process design responsibilities",
+        "evidence_strength": "medium",
+        "job_requirement": "Program management and operational execution across complex, cross-functional initiatives"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with experience in global commercial operations scaling",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations and commercial strategy leadership"
+      }
+    ],
+    "confidence": 0.45,
+    "evidence_strength": 45,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "JD snapshot severely truncated with CSS/JavaScript artifacts; substantive role scope, success metrics, technical integrations, and stakeholder expectations are not legible",
+        "mitigation": "Request full, clean JD text directly from Plaid careers page or hiring manager to assess true responsibilities, required integrations knowledge, and seniority level",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of fintech, payments, API, or banking integration domain experience; Plaid's core value is integration and data accuracy in financial workflows",
+        "mitigation": "Assess whether candidate's Google commercial operations and transformation experience\u2014particularly around cross-system integration, data consistency, and vendor/partner management\u2014transfers to financial integrations context",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product operations background stated as non-native PM (requirements, logic design, UAT, rollout) rather than core feature shipping or native product management discipline",
+        "mitigation": "Clarify whether role requires deeper product strategy and roadmap ownership or is primarily operational/program execution; candidate's strength is execution and transformation, not PM methodology",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 68,
+    "summary": "Strong positioning in Strategy and Operations and transformation programs with eight years at Google, but JD is severely corrupted and illegible, preventing meaningful scope/requirement mapping. Domain fit (fintech/API integrations) and specific program scope remain unknown. Recommend requesting clean JD and fintech/Plaid-context validation before proceeding.",
+    "uncertainties": [
+      "JD snapshot is corrupted with CSS and JavaScript; substantive role responsibilities and success criteria cannot be assessed",
+      "No visibility into whether role is primarily operational execution, strategic program leadership, or product operations",
+      "Fintech and API/integration domain experience not evident in candidate profile",
+      "Seniority level and stakeholder scope unclear from truncated JD",
+      "Functional fit to integration operations specifically (versus general program management) cannot be validated without readable JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

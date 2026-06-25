@@ -1,0 +1,48 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Google Devices and Services background demonstrates strong technology platform experience and learning agility",
+        "evidence_strength": "medium",
+        "job_requirement": "Comfortable utilizing technology, collaboration suites and learning specialized compliance software"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Intern-level scope and seniority; JD explicitly targets student or recent graduate with no strategic, transformation, or operational leadership responsibility",
+        "mitigation": "Candidate is an experienced L4-equivalent operations leader; this role is below target seniority ceiling",
+        "severity": "high"
+      },
+      {
+        "gap": "No AML/KYC/financial crime compliance background; no stated knowledge of Spanish regulatory framework (Law 10/2010, Sepblac)",
+        "mitigation": "Candidate would need to pursue dedicated compliance certifications and domain onboarding; compliance expertise is mission-critical in this role",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is a pure compliance and operational intake function, not strategy, transformation, product operations, or business operations leadership",
+        "mitigation": "Does not align with Strategy and Operations or Product Operations career trajectory; represents a downward seniority and scope move",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited fintech or regulated financial services operations experience stated in profile",
+        "mitigation": "N26 fintech context is learnable but requires regulatory domain depth not evident in candidate profile",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 5,
+    "summary": "This is an intern-level compliance intake role at N26's KYC Operations team, targeting a student or recent graduate with academic or practical AML/KYC knowledge. The candidate is an eight-year, two-promotion Strategy and Operations leader with global program execution scope\u2014significantly over-leveled in seniority and misaligned in function. No hard blockers apply; however, the role falls firmly outside target and stretch families and represents a career step backward. Compliance domain expertise is not evident in the candidate profile, and the position offers no strategic, transformation, or operational leadership responsibility matching the candidate's positioning.",
+    "uncertainties": [
+      "Whether candidate has any unpublished compliance certifications or fintech regulatory exposure",
+      "Whether candidate would consider a downward seniority move for domain learning in compliance",
+      "Location flexibility (role is Madrid-based; candidate location not specified)"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,65 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, leading scaling of global commercial operations and transformation programs in complex, autonomous environments",
+        "evidence_strength": "strong",
+        "job_requirement": "operating independently in ambiguous environments, making confident decisions without a clear-cut path forward"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader experienced in translating complex business requirements and transformation logic to cross-functional stakeholders",
+        "evidence_strength": "medium",
+        "job_requirement": "communicate sophisticated data concepts clearly to senior leadership and non-technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Commercial operations scaling experience bridging internal teams and stakeholder requirements at global level",
+        "evidence_strength": "medium",
+        "job_requirement": "managing conflicting priorities from demanding business units such as marketing and sales"
+      },
+      {
+        "candidate_evidence": "Product operations background involving requirements logic design, UAT, and rollout with engineering teams; limited deep data science or big-data engineering partnership depth",
+        "evidence_strength": "medium",
+        "job_requirement": "partnering closely with cross-functional engineering and data science panels to assess technical feasibility"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 35,
+    "gap_manageability": 38,
+    "gaps": [
+      {
+        "gap": "Native product management depth and SDLC/PM methodology experience; candidate background is transformation and operations, not PM-track product ownership",
+        "mitigation": "Candidate can learn PM frameworks and tools within 3\u20136 months; strategic and cross-functional capabilities are transferable. However, ramp on data-product PM best practices will extend first-quarter productivity.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep technical familiarity with complex, large-scale big data systems and real-time data products; candidate has no stated data engineering, data science, or analytics infrastructure background",
+        "mitigation": "Candidate can acquire data platform literacy through collaborative partnership with data engineers and applied scientists. However, this gaps the core technical judgment required for architectural modernization decisions without heavy reliance on data engineering leads.",
+        "severity": "high"
+      },
+      {
+        "gap": "Marketing and sales data portfolio ownership or analytics experience; candidate's data exposure is operational and commercial, not marketing-tech or data-product specific",
+        "mitigation": "Domain learning is feasible; stakeholder management and commercial acumen transfer from operations background. Ramp on marketing data nuances (measurement, attribution, customer journey) will require 2\u20134 months.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Australia/NZ location preference and visa sponsorship not confirmed; role explicitly prioritizes Melbourne proximity",
+        "mitigation": "Clarify visa eligibility and willingness to relocate or work hybrid on East Coast Australia before proceeding.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 42,
+    "scope_seniority": 68,
+    "summary": "Candidate has strong autonomy, stakeholder management, and global commercial operations scaling fit but lacks native product management depth, big-data systems expertise, and marketing/analytics data portfolio background required for this Lead Technical PM role. The position demands deep technical judgment on large-scale data architecture and real-time products\u2014areas where the candidate's operations and transformation focus do not provide sufficient evidence. While strategic and cross-functional capabilities transfer, the gap in data-product PM and data engineering literacy is substantial and would require a longer ramp than typical L4 PM placement. Role family fit is in borderline stretch (Product Operations) rather than core target. Confidence tempered by lack of data-product and big-data system evidence.",
+    "uncertainties": [
+      "Candidate's actual hands-on data literacy: no evidence of data modeling, ETL, analytics platforms, or real-time data systems exposure",
+      "Depth of PM methodology experience: candidate's product work emerges from ownership/transformation context, not native PM/SDLC track",
+      "Marketing and sales data domain knowledge: operations background may not translate to measurement, attribution, or go-to-market analytics depth",
+      "Australia work eligibility and relocation willingness not stated",
+      "Whether candidate has collaborated with data scientists or data engineers on substantive, architecture-level decisions"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs in a scale-tech environment",
+        "evidence_strength": "strong",
+        "job_requirement": "Senior Revenue Operations Manager role\u2014managing commercial operations, strategy, and process optimization for a fintech platform"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with transformation program leadership and process-design responsibility",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue Operations function typically requires cross-functional GTM and operations leadership, stakeholder management, and process design"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google and stated leadership of global commercial operations and transformation initiatives suggests manager-level scope and autonomy",
+        "evidence_strength": "medium",
+        "job_requirement": "Seniority level: Senior Manager or equivalent scope managing team, strategy, and operational delivery"
+      }
+    ],
+    "confidence": 0.55,
+    "evidence_strength": 65,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "Job description is a cached snapshot with minimal substantive detail\u2014no explicit scope of team size, reporting line, P&L ownership, or specific Revenue Ops metrics (ARR, pipeline, churn, quota attainment)",
+        "mitigation": "Confirm in interview the role's core Revenue Ops responsibilities (quota management, pipeline analytics, sales process design, CRM/data infrastructure) and whether candidate's Google transformation and operations scope directly transfers",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background emphasizes transformation, process design, and requirements ownership rather than deep revenue analytics, quota attainment accountability, or Salesforce/data-warehouse management",
+        "mitigation": "During technical screen, probe familiarity with revenue analytics tools, pipeline metrics, and quota-management cadences; assess whether product-operations transformation experience translates to pure RevOps data and sales-ops workflows",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited explicit consulting or fintech brand experience; Google's commercial ops may differ from fintech payment-platform dynamics, customer segmentation, and go-to-market urgency",
+        "mitigation": "Ask for examples of GTM strategy shifts, pricing model changes, or customer-lifecycle automation; probe ability to learn fintech GTM in ramp time",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 70,
+    "summary": "Google-trained Strategy &amp; Operations leader with eight years' scaling global commercial operations and transformation programs; alignment is strong for RevOps function fit and seniority scope, but job description lacks specifics on team size, quota accountability, and revenue-analytics ownership. Medium confidence due to sparse JD and candidate's product-operations positioning versus pure sales-operations background.",
+    "uncertainties": [
+      "JD snapshot lacks substantive role description, team scope, and explicit RevOps responsibilities\u2014difficult to assess fit beyond title",
+      "Candidate's transformation and process-design focus may not map directly to quota-management, pipeline-analytics, and CRM-driven RevOps workflows",
+      "No explicit fintech or payment-platform experience mentioned; ramp time and domain learning curve unclear",
+      "Seniority ceiling depends on Wise company stage and team structure; unclear if 'Senior' is L4 or L5+ at this fintech scale"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

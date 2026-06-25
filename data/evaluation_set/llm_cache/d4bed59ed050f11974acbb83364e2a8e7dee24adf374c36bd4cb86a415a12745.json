@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with proven ability to coordinate cross-functional stakeholders and lead transformation programs, including global commercial operations scaling.",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as incident commander, coordinating technical teams and key stakeholders during complex security incidents."
+      },
+      {
+        "candidate_evidence": "Led global transformation programs and scaling initiatives requiring stakeholder coordination and execution under ambiguous conditions; two promotions indicate proven leadership capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrate ability to take command during critical incidents and coordinate multidisciplinary teams under pressure."
+      },
+      {
+        "candidate_evidence": "Professional fluency in English and native German; experience coordinating across engineering, legal, and leadership at Google indicates cross-functional communication capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent written and verbal communication skills, with the ability to communicate clearly with engineers, legal teams, executives, and other stakeholders."
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "No incident response or digital forensics domain expertise. Role requires 'significant experience leading complex incident response and digital forensics investigations'; candidate has zero background in cybersecurity, incident investigation, or forensic analysis.",
+        "mitigation": "Specialist incident response training and mentorship would be required, but this is a hands-on senior/staff-level role that assumes deep operational incident response mastery from day one. A multi-month ramp is unworkable.",
+        "severity": "high"
+      },
+      {
+        "gap": "No cloud/container/endpoint forensics technical depth. JD requires hands-on knowledge of AWS, GCP, Kubernetes forensics and endpoint forensics (including macOS). Candidate's cloud exposure is through product operations/strategy, not forensic investigation.",
+        "mitigation": "Would require deep technical specialist training in forensic methodologies and tools. Not feasible for a senior/staff hire expected to own complex investigations immediately.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited production software engineering and automation. JD requires ability to 'automate investigative or response workflows using Python, Go, or similar languages.' Candidate's Python is 'basic and actively learning'; no production code or automation background.",
+        "mitigation": "Building automation proficiency while leading complex forensic investigations is incompatible with the hands-on, player-coach nature of the role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No MITRE ATT&CK framework or attacker behavior expertise. JD requires 'strong understanding of attacker behaviors, investigation methodologies, evidence handling, and the MITRE ATT&CK framework.' Candidate has no cybersecurity threat modeling or attack analysis background.",
+        "mitigation": "This specialized domain knowledge cannot be quickly acquired while operating as incident commander and primary investigator.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence handling or forensic methodology rigor. JD emphasizes 'rigorous and repeatable forensic methodologies' and proper evidence preservation/collection. Candidate's expertise is in business transformation and product operations, not forensic chain-of-custody or investigation protocols.",
+        "mitigation": "Digital forensics is a specialized discipline with legal and technical rigor requirements. Onboarding a practitioner without this foundation into a lead role is impractical.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role requires 'Significant experience leading complex incident response and digital forensics investigations' with 'strong knowledge of cloud and container forensics,' 'hands-on experience with endpoint forensics,' and 'ability to automate investigative or response workflows using Python, Go, or similar languages.' Candidate's background is Strategy and Operations / Product Operations at Google Devices with no incident response, digital forensics, cybersecurity, or production software engineering experience. Python is 'basic and actively learning.' This is a hands-on cybersecurity engineering role requiring specialized domain expertise entirely outside candidate's profile.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is a hands-on cybersecurity incident response and digital forensics lead role requiring deep specialist expertise in investigations, cloud/endpoint forensics, attacker behavior, evidence handling, and Python automation\u2014areas where the candidate has no background. While the candidate demonstrates strong cross-functional leadership, stakeholder coordination, and communication skills from Google Devices operations work, the role's core requirement for immediate operational incident investigation mastery is entirely outside the target and approved-stretch role families. This is a deep technical cybersecurity position, not a strategy, operations, or transformation role.",
+    "uncertainties": [
+      "Whether candidate has any informal incident response or security operations exposure not captured in the positioned profile.",
+      "Depth of Google Devices infrastructure/DevOps exposure that could support forensics learning, if any."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

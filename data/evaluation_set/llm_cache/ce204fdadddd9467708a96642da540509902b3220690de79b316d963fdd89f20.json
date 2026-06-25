@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with scaling global commercial operations and transformation programs; strategic and ops background positions candidate to learn safety-critical operations frameworks.",
+        "evidence_strength": "medium",
+        "job_requirement": "7+ years in operations with safety criticality"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation program leadership experience directly involves designing and scaling operational frameworks and standardized processes globally.",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven ability to build systems, frameworks, and standardized processes from scratch"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations positioning indicates cross-functional stakeholder management and communication capability expected at this seniority; specific evidence of documentation or technical writing not provided.",
+        "evidence_strength": "medium",
+        "job_requirement": "Exceptional presence and communication skills, with ability to distill complex data into clear, actionable documentation"
+      },
+      {
+        "candidate_evidence": "Transformation and operations scaling experience includes process design and rollout; no direct evidence of safety manual or playbook authorship in provided profile.",
+        "evidence_strength": "medium",
+        "job_requirement": "Author and publish local market playbooks covering operations and safety-specific protocols"
+      },
+      {
+        "candidate_evidence": "Global commercial operations and strategic program leadership background; autonomous vehicles safety readiness is specialized domain not directly evidenced.",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate critical readiness programs including Line-checks, ORVs, Retrospectives, and BCP"
+      },
+      {
+        "candidate_evidence": "Operations and transformation experience includes risk identification and mitigation in scaling programs; depth in safety-critical risk frameworks not evident.",
+        "evidence_strength": "medium",
+        "job_requirement": "Risk Management & Mitigation: ensure operational risks are deeply understood with active, validated mitigation plans"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 65,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "Safety-critical operations domain expertise: candidate background is Strategy and Operations at Google, not safety-critical environments (aviation, nuclear, oil & gas, transportation) that JD prefers.",
+        "mitigation": "Candidate's operations scaling and framework architecture skills are highly transferable; safety-critical operations practices can be learned through onboarding, mentorship from operations safety manager, and domain-specific training. Core operational rigor from Google Devices carries over.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Technical documentation and operations manual authorship: no specific evidence of writing safety manuals, technical playbooks, or regulatory documentation in profile.",
+        "mitigation": "Strong communication skills and process design experience form a foundation; manual development and technical writing can be developed quickly with guidance, especially within a structured program framework. This is learnable.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Road safety, transportation, or autonomous vehicle domain familiarity: candidate's background does not demonstrate exposure to AV safety, transportation planning, or regulatory requirements.",
+        "mitigation": "Candidate's transformation and operational scaling skills are foundational; AV safety domain knowledge is preferential, not required. Ramp-in timeline should account for domain learning curve, but core competencies align.",
+        "severity": "medium"
+      },
+      {
+        "gap": "UK and European market operations experience: no explicit evidence of international expansion, regulatory navigation in UK/Europe, or international team leadership.",
+        "mitigation": "Global operations at Google likely included international considerations; role is a growth opportunity. Some travel is required and candidate should be prepared for market-specific learning.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 70,
+    "summary": "Candidate brings eight years of Strategy and Operations leadership at Google Devices with proven ability to build operational frameworks and scale programs globally\u2014core strengths for this Program Manager role. However, significant gaps exist: no safety-critical operations background (aviation, nuclear, oil & gas), no direct experience with autonomous vehicle safety or regulatory readiness programs, and no demonstrated technical documentation or safety manual authorship. Role family fit is strong (Business Operations/Product Operations) but domain specificity (AV safety readiness orchestration) requires learning. Scope and seniority align well; confidence is moderate due to domain unfamiliarity and lack of safety-critical evidence.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

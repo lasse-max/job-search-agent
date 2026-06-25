@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in global commercial operations and transformation programs, implying stakeholder management and cross-functional influence experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Good interpersonal skills with the ability to present complex and sensitive issues to senior management and influence change"
+      },
+      {
+        "candidate_evidence": "Positioning emphasizes transformation and operational execution, suggesting hands-on execution capability",
+        "evidence_strength": "weak",
+        "job_requirement": "Detail-oriented, positive attitude, and self-motivated with a willingness to be hands-on"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No professional audit background or certification (CIA, CPA, CAMS, FRM)",
+        "mitigation": "Would require significant reskilling in audit methodology, risk assessment frameworks, and audit fieldwork. Possible but lengthy.",
+        "severity": "high"
+      },
+      {
+        "gap": "No financial crime compliance, fraud investigation, or banking regulatory experience",
+        "mitigation": "MAS, APRA, DNB, FCA regulatory knowledge and card-scheme compliance are core competencies. Unlikely to transfer from Google commercial ops.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated banking, fintech, card-scheme, or electronic money institution experience",
+        "mitigation": "Fintech listed as preferred, not minimum; however, 5\u20138 years as 'professional auditor' in banking is minimum. This is a domain and functional gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of data analytics tool expertise (Python, Databricks, Looker)",
+        "mitigation": "Candidate notes Python is 'basic and actively learning.' Role emphasizes 'develop and implement data analysis tools.' Feasible to upskill but currently weak.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Scope is operations and transformation strategy, not audit or compliance",
+        "mitigation": "Audit and compliance require domain-specific judgment, methodology, and stakeholder relationships. Strategy/ops scope does not bridge this gap.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD requires 'at least 5-8 years of solid working experience as a professional auditor and/or financial industry practitioner (e.g., at a bank, card scheme, or electronic money institution)' and 'Core audit and business skills, particularly in Financial Crime Compliance, Fraud, Card Scheme Compliance (Issuing and Acquiring), and Enterprise Risk Management.' Candidate background is internal operations, transformation, and commercial strategy at Google Devices, with no stated audit, compliance, banking, card-scheme, or financial crime expertise.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 22,
+    "scope_seniority": 55,
+    "summary": "This is an Internal Audit (Compliance) Manager role requiring 5\u20138 years as a professional auditor in banking, financial crime compliance, and regulatory experience. The candidate's background is Google commercial operations and transformation strategy\u2014a fundamentally different function. Hard blockers on minimum audit, banking, and compliance expertise disqualify the fit. Advisory: skip.",
+    "uncertainties": [
+      "No detail on candidate's experience with regulatory bodies (MAS, APRA, DNB, FCA) or banking compliance frameworks",
+      "Unclear whether operations and transformation work included any risk or control assessment components",
+      "No indication of financial crime or fraud investigation exposure"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

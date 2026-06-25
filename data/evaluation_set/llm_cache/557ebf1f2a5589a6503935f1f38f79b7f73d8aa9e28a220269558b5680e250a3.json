@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices; experience with contractual/compliance complexity in regulated environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Navigate complex contractual and regulatory quality requirements, translate them into practical quality plans"
+      },
+      {
+        "candidate_evidence": "Native German speaker, professional English fluency; extensive experience engaging global stakeholders and formal interfaces at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate with precision and confidence in both English and German; engage with multicultural teams and formal customer interfaces"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability managing complex cross-functional transformation programs and operational scaling at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage competing priorities across QMS and programme workstreams; navigate ambiguity without losing focus"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No aerospace, defence, or regulated-industry quality assurance background. Candidate background is commercial operations and transformation, not quality systems or compliance function.",
+        "mitigation": "Candidate could transition into QA function if willing to undergo formal EN 9100, AQAP, and audit training; however, this would require significant domain ramp-up in a mission-critical role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with EN 9100, ISO 9001, AQAP 2110/2210/2310, quality management systems, or audit planning/execution.",
+        "mitigation": "Could acquire these through structured training and mentorship, but role requires hands-on competency from day one in a regulated defence context.",
+        "severity": "high"
+      },
+      {
+        "gap": "No software development assurance, SDLC quality embedding, or software-intensive programme quality oversight experience.",
+        "mitigation": "Candidate has transformation and program leadership skills, not deep software quality or development assurance expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is specialist quality function; candidate is generalist strategy and operations leader. Function mismatch, not just seniority or domain gap.",
+        "mitigation": "Would require fundamental career pivot from strategy/transformation to specialized quality engineering discipline.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 28,
+    "scope_seniority": 65,
+    "summary": "Strategy and operations leader with strong scope, bilingual fluency, and stakeholder management skills, but no aerospace/defence, quality systems, EN 9100/AQAP, development assurance, or QA function experience. Role requires specialist QA competency in a regulated defence context; candidate's background is commercial transformation, not quality engineering. High-severity function mismatch outweighs seniority alignment.",
+    "uncertainties": [
+      "Unclear whether candidate has any exposure to quality management systems, auditing frameworks, or regulated-industry compliance as a secondary responsibility during transformation work",
+      "Unclear if candidate's 'transformation programs' included software-intensive initiatives with embedded quality or assurance oversight",
+      "Role level appears L4-L5 scope; unclear if this is a specialist IC track or manager-track, which affects seniority matching"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

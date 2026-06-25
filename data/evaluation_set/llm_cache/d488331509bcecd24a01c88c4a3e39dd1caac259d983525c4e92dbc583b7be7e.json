@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; led transformation initiatives with cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead impactful customer technical projects and design end-to-end systems spanning data engineering, AI, and application development"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with demonstrated experience in cross-functional collaboration and transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Work cross-functionally with engineering, product, and developer relations to shape long-term strategic priorities"
+      },
+      {
+        "candidate_evidence": "Transformation program experience with ownership of end-to-end delivery, requirements, logic design, UAT, and rollout; strong process design and execution capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Technical project delivery\u2014managing scope, timelines and measurable outcomes, translating complex concepts into actionable solutions"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Core technical requirement: extensive production software engineering, data engineering, or data platform experience with hands-on code ownership. Candidate has basic Python skills and is actively learning; no production software-engineering background.",
+        "mitigation": "Role requires 'extensive experience in data engineering, data platforms & analytics, or software engineering' and 'comfortable writing code in Python, Scala, JavaScript/TypeScript.' Candidate's profile is strategy/operations-focused, not engineering-focused. This gap is not remediable in an FDE role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Apache Spark expertise and distributed computing fundamentals. JD emphasizes 'deep experience with distributed computing with Apache Spark and knowledge of Spark runtime internals.' Candidate has transformation and process experience, not Spark/big-data platform depth.",
+        "mitigation": "This is a core technical requirement for hands-on solution delivery. No evidence of Spark, data platform, or distributed systems engineering in candidate profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "Cloud ecosystem and CI/CD production deployment expertise. JD requires 'working knowledge of two or more common Cloud ecosystems (AWS, Azure, GCP) with expertise in at least one' and 'familiarity with CI/CD for production deployments.' Candidate background is ops and transformation, not cloud infrastructure or deployment engineering.",
+        "mitigation": "Hands-on cloud and deployment experience is essential for an FDE role. Candidate lacks this technical foundation.",
+        "severity": "high"
+      },
+      {
+        "gap": "MLOps and ML/AI model integration experience. JD lists 'working knowledge of MLOps, ML/AI models and AI APIs' and emphasizes 'design and deployment of performant production end-to-end data architectures and applications that combine data pipelines, ML/AI models, and user-facing interfaces.' Candidate has no ML platform or MLOps background.",
+        "mitigation": "Core technical requirement for FDE role. Not present in candidate profile.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD: 'Lead impactful customer technical projects by delivering production-grade systems, designing and building reference architectures, custom applications and data ingestion and ML/AI model integration' and 'Design and deployment of performant production end-to-end data architectures and applications that combine data pipelines, ML/AI models, and user-facing interfaces.' Candidate has no production software-engineering background and is at basic Python level. Role requires hands-on production engineering and data architecture implementation, not operations leadership.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD: 'Extensive experience in data engineering, data platforms & analytics, or software engineering' and 'Deep experience with distributed computing with Apache Spark and knowledge of Spark runtime internals.' Candidate has transformation and operations background with no data engineering, data platform, or Apache Spark expertise.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "This is an implementation-heavy technical FDE role requiring extensive hands-on software engineering, data engineering, Spark, cloud infrastructure, and MLOps expertise. The candidate is a Strategy and Operations leader with eight years at Google in commercial transformation and program leadership\u2014a strong fit for strategy, operations, and business transformation families, but fundamentally misaligned with the engineering-centric nature of Forward Deployed Engineer. Core disqualifications include no production software-engineering background, basic-level Python, no Spark or distributed systems knowledge, no cloud platform or CI/CD deployment experience, and no ML/AI or MLOps expertise. While the candidate has relevant cross-functional collaboration and technical project delivery skills, the JD is explicit that FDEs must \"own the architecture, lead design decisions, and implement end-to-end systems\" with hands-on technical execution\u2014not a strategy or operations leadership role.",
+    "uncertainties": [
+      "Whether the candidate has any hands-on cloud infrastructure deployment or CI/CD experience not captured in the profile summary",
+      "Depth of technical collaboration experience with data engineers or ML engineers during transformation programs\u2014could signal some adjacency to FDE work, but JD is explicit on hands-on ownership and implementation",
+      "Whether the London location is the candidate's current location or a constraint; the role involves 20% customer travel"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

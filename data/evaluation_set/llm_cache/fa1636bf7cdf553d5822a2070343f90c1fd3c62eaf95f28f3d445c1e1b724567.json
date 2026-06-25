@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with scaling of global commercial operations and transformation programs; experience with transformation programs and commercial operations scaling suggests portfolio and multi-stakeholder management capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Verantwortung f\u00fcr vertragliche und kommerzielle Gesch\u00e4ftsbeziehung eines Portfolios von Partner-Busunternehmen"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with ownership and stakeholder management experience; however, no specific evidence of contract negotiation or vendor/partner management in the provided profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Zentrale Ansprechperson f\u00fcr die Gesch\u00e4ftsf\u00fchrung unserer Buspartner inkl. Vertragsverhandlungen"
+      },
+      {
+        "candidate_evidence": "Experience as cross-functional orchestrator in transformation programs and global commercial operations suggests internal coordination and project steering capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Schnittstelle zwischen Buspartnern und internen Abteilungen zur Steuerung von Projekten und Abstimmungsprozessen"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background implies analytics capability; honest gap notes limited specific evidence of financial/cost analysis work",
+        "evidence_strength": "medium",
+        "job_requirement": "Erstellung von Entscheidungsvorlagen auf Basis von Kosten- und Performanceanalysen"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership experience and eight-year career at Google Devices indicate project ownership and delivery discipline",
+        "evidence_strength": "medium",
+        "job_requirement": "Leitung kleinerer Projekte von der Konzeption bis zum Abschluss; Sicherstellung der Einhaltung von Zielen, Timelines und Budgets"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations profile indicates analytical capability; no specific Excel or technical proficiency mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Ausgepr\u00e4\u200bgte analytische F\u00e4higkeiten und sehr gute Excel-Kenntnisse; Erfahrung im Projektmanagement"
+      }
+    ],
+    "confidence": 0.7,
+    "evidence_strength": 55,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "No direct partner/vendor management, contract negotiation, or commercial partnership experience mentioned; role centers heavily on bus operator partner relationships",
+        "mitigation": "Candidate's cross-functional orchestration, negotiation readiness, and stakeholder management from Google scale-up work could transfer; Flix role spans from partner ops to commercial strategy, where ops discipline applies broadly",
+        "severity": "high"
+      },
+      {
+        "gap": "Transportation, logistics, or bus industry domain expertise absent; JD lists 'Verkehrswesen' or equivalent transport sector background as preferred",
+        "mitigation": "Flix's JD acknowledges candidates without perfect fit ('auch wenn du nicht alle Anforderungen zu 100% erf\u00fcllst'); strong operations fundamentals and learning agility can bridge domain",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit financial analysis, cost modeling, or P&L responsibility mentioned; role requires cost/performance analysis and budget tracking",
+        "mitigation": "Strategy and Operations roles typically include metric and performance ownership; candidate's transformation program background likely involved budgeting and cost optimization",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of independent hands-on project leadership at comparable scope; 'kleine Projekte' (small projects) leadership may underestimate or overestimate candidate seniority",
+        "mitigation": "Eight-year career with two promotions and global program experience suggests project leadership capability; Flix is mid-market SaaS, not Google scale",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 45,
+    "scope_seniority": 60,
+    "summary": "This is a Partner Manager role at Flix (Business Development, DACH-focused) requiring contract negotiation, partner portfolio management, and cost/performance analysis in the bus operator space. Candidate is a Google-trained Strat & Ops leader with eight years, global transformation, and stakeholder management experience, but lacks direct vendor/partner management, transportation domain expertise, and explicit contract/financial analysis evidence. Cross-functional orchestration and operational discipline are transferable; domain and partnership gap are material and not easily covered by operational background alone.",
+    "uncertainties": [
+      "Candidate's 'commercial operations scaling' at Google Devices is not detailed; unclear whether it included vendor/partner management, pricing, or cost optimization",
+      "No information on candidate's location flexibility or German language proficiency level; JD requires 'verhandlungssicheres Deutsch' and is Berlin-based hybrid",
+      "Partner vs. customer management scope undefined; unclear if candidate has account management or vendor relationship experience at Google",
+      "Transformation program nature unknown; unclear if programs involved cost models, procurement, logistics, or partner coordination"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

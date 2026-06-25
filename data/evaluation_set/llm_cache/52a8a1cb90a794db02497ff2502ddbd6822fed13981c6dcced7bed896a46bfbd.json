@@ -1,0 +1,39 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and leading transformation programs with demonstrated ability to navigate ambiguity and stakeholder complexity",
+        "evidence_strength": "medium",
+        "job_requirement": "Hands-on problem solver; resilient and comfortable with re-prioritization"
+      }
+    ],
+    "confidence": 0.3,
+    "evidence_strength": 10,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Role is an unscoped talent community pipeline, not a defined operational or strategic position. No explicit job duties, success metrics, scope, or reporting structure provided.",
+        "mitigation": "Cannot reliably assess fit without clarity on actual role, team, reporting line, and strategic vs. operational scope. Request detailed role specification before proceeding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background is Strategy and Operations / Product Operations at a technology company; this role is People/HR-adjacent at a supply-chain logistics company with no indication of strategic transformation or operational scope.",
+        "mitigation": "Confirm whether the ultimate placement will involve business operations, supply-chain optimization, or distribution strategy. If it is pure HR/talent operations, this is deprioritized function.",
+        "severity": "high"
+      },
+      {
+        "gap": "Job description reads as a generic talent-acquisition funnel message, not a role specification. No requirements, responsibilities, seniority, or department context beyond 'distribution and fulfillment centers.'",
+        "mitigation": "Obtain actual role spec before evaluation can proceed meaningfully.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 5,
+    "summary": "This is a talent-community landing page, not a defined role. No job duties, scope, seniority, or strategic/operational context are provided. Without clarity on actual placement, function (HR, supply-chain ops, fulfillment strategy, etc.), and reporting scope, fit cannot be reliably assessed. Candidate's Strategy &amp; Ops background at Google may or may not align depending on hidden role scope. Request a detailed role specification.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

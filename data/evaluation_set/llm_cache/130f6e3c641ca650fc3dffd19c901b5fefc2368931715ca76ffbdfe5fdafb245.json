@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioning as Strategy and Operations / Product Operations leader with experience in global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy & Operations, Global Partnerships role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Candidate has scaled global commercial operations; however, the JD snapshot is truncated and does not specify partnership business model, partner ecosystem work, or GTM partnership requirements",
+        "evidence_strength": "weak",
+        "job_requirement": "Global scale and partnership experience"
+      },
+      {
+        "candidate_evidence": "Candidate demonstrates transformation program experience and cross-functional execution; however, lack of detail in JD prevents specificity on partnership-focused stakeholder requirements",
+        "evidence_strength": "weak",
+        "job_requirement": "Cross-functional stakeholder management and transformation execution"
+      }
+    ],
+    "confidence": 0.35,
+    "evidence_strength": 35,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Truncated JD: The role description is severely incomplete and does not clearly articulate scope, success metrics, partnership strategy framework, or key responsibilities. Cannot assess true strategic scope or specific partnership domain requirements",
+        "mitigation": "Request complete, untruncated job description. Cannot confidently evaluate fit without clear scope of partnership responsibilities",
+        "severity": "high"
+      },
+      {
+        "gap": "Partnership domain experience unclear: Candidate background emphasizes operations and transformation at a product/platform company (Google Devices); Stripe's Global Partnerships role likely requires direct partnership business development, partner program design, or ecosystem monetization experience, which is not evident",
+        "mitigation": "Clarify candidate's hands-on partnership strategy work, partner relationship ownership, or go-to-market partnership execution in prior roles",
+        "severity": "medium"
+      },
+      {
+        "gap": "Fintech/payments domain: Candidate background is in Google Devices and Services; no explicit financial services, payments, or B2B fintech operations experience noted",
+        "mitigation": "Assess depth of fintech domain learning and adaptability; Stripe's context is highly specialized",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 65,
+    "scope_seniority": 55,
+    "summary": "Role family fit is moderate\u2014Strategy & Operations at Stripe aligns with target function\u2014but the JD snapshot is severely truncated, preventing clear assessment of Global Partnerships scope, partner ecosystem strategy, and success criteria. Candidate's Google Devices and Services background covers operations and transformation but lacks evident partnership business-model or ecosystem work. Missing JD clarity and potential partnership domain gap argue for skip pending complete role description.",
+    "uncertainties": [
+      "JD is truncated mid-content; cannot assess true scope, seniority, or specific partnership strategy responsibilities",
+      "Unclear whether role emphasizes partner acquisition, partner enablement, partner monetization, or strategic ecosystem development",
+      "No evidence of candidate's partnership business development or partner program design experience",
+      "Stripe's fintech/payments domain and potential partnership with financial institutions not addressed in candidate background"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

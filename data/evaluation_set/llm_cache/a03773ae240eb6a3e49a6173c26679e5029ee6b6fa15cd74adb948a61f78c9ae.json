@@ -1,0 +1,39 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices and Services with two promotions",
+        "evidence_strength": "medium",
+        "job_requirement": "Managing compensation & benefits strategy and execution for 600+ global team"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "HR specialist domain: no demonstrated compensation, benefits, payroll, or total rewards expertise",
+        "mitigation": "Candidate could transition from operations into HR/rewards with upskilling, but this is a specialist function requiring domain knowledge, not a strategy or transformation role",
+        "severity": "high"
+      },
+      {
+        "gap": "Function misalignment: HR/payroll/benefits is explicitly listed under 'usually deprioritize' in target profile",
+        "mitigation": "This role lacks strategic transformation, cross-functional business problem-solving, or implementation-heavy AI scope that would justify exception",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in compensation, benefits, payroll, or people operations",
+        "mitigation": "Profile shows no background in this specialist domain; candidate strength is in commercial, product, and business operations",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "Candidate is a strategy and operations leader with eight years at Google scaling global commercial operations, but this is a specialist HR/Total Rewards role outside the target strategy and transformation families. No compensation, benefits, or people operations background is evident; HR is explicitly deprioritized in the candidate profile unless the role has clear strategic or transformation scope, which this role does not.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

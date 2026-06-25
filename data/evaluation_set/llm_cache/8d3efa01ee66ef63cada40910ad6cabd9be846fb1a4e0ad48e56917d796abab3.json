@@ -1,0 +1,85 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; product experience from ownership, requirements, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "Own end-to-end implementation of Pigment for key customers, translating complex business problems into scalable models"
+      },
+      {
+        "candidate_evidence": "Cross-functional strategy and operations background with demonstrated stakeholder management and program leadership across global teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Work directly with customers as trusted advisor, guiding them on best practices and driving adoption"
+      },
+      {
+        "candidate_evidence": "Two promotions and transformation program experience indicate ability to operate across functions and communicate across technical and business stakeholders",
+        "evidence_strength": "medium",
+        "job_requirement": "Bridge product, engineering, and customers; translate customer feedback into product requirements and specifications"
+      },
+      {
+        "candidate_evidence": "Product operations background with logic design, requirements definition, and UAT experience; scope seniority and strategic program leadership suggest analytical capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical and problem-solving skills with experience in data modeling, analytics, or business logic design"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling and transformation program leadership demonstrate cross-functional collaboration and organizational scaling experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate closely with Customer Success, Solutions Architects, and Product teams; enable and scale through training and framework definition"
+      },
+      {
+        "candidate_evidence": "Logic design and structured modeling from product operations work; limited direct evidence of hands-on technical proficiency or SaaS platform depth",
+        "evidence_strength": "medium",
+        "job_requirement": "Proficiency with formulas, logic, and structured modeling; familiarity with SaaS platforms and system integration concepts"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 65,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "Required engineering or computer science degree from top-tier institution; candidate background is Strategy and Operations, not CS/engineering",
+        "mitigation": "Candidate's eight years of product operations, logic design, requirements, and transformation program ownership may functionally compensate for missing formal CS credential in an implementation-heavy role. However, this is a stated requirement and represents a meaningful qualification gap. Consider screening decision based on hiring team's flexibility on this credential.",
+        "severity": "high"
+      },
+      {
+        "gap": "2\u20135 years in technical, client-facing, or implementation role (FDE, Data Scientist, Solutions Architect, Technical Consultant); candidate background is strategy and operations leadership, not classic technical implementation",
+        "mitigation": "Eight years of global operations scaling, transformation program leadership, and product logic/requirements ownership provide analogous cross-functional and problem-solving depth. However, lack of direct FDE, consulting, or solutions engineering track record is a meaningful fit gap. On-the-job ramp may be required.",
+        "severity": "high"
+      },
+      {
+        "gap": "Programming proficiency (Python, SQL); candidate has basic Python and is actively learning",
+        "mitigation": "Python is listed as a 'plus,' not required. Candidate's active learning and logic/structured-modeling background provide foundation. Pair with technical resources or invest in upskilling early in role.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct Pigment or similar SaaS planning platform experience; no stated background in FP&A, financial modeling, or business planning workflows",
+        "mitigation": "These are listed as 'nice to have' or 'background' preferences. Candidate's product operations and transformation program experience provide transferable problem-solving and stakeholder management. Platform-specific and domain training will be necessary.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting brand experience or classic case-team background; role expects forward-deployed or solutions-engineering mindset",
+        "mitigation": "Transformation program leadership and global operations scaling demonstrate consulting-adjacent stakeholder management and process design. However, may lack traditional consulting credibility or rapid customer problem diagnosis patterns. Consider pairing with experienced solutions architect mentor.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Required Engineering or computer science degree from top tier institution.' Candidate background is Strategy and Operations with no stated computer science or engineering degree. This is a stated minimum qualification that does not appear to be met.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 72,
+    "scope_seniority": 75,
+    "summary": "AI Deployment Strategist is an approved-stretch implementation-heavy transformation role that aligns well with candidate's eight years of product operations, transformation program leadership, and cross-functional stakeholder management at Google. However, JD explicitly requires an engineering or CS degree from a top-tier institution, which candidate does not possess. Additionally, role expects 2\u20135 years in technical/implementation functions (FDE, Solutions Architect, Data Scientist, Technical Consultant), while candidate's background is strategy and operations leadership rather than hands-on technical implementation. Gaps in formal CS credential, direct implementation experience, and production Python proficiency are manageable through on-the-job learning and mentorship if hiring team can waive the hard degree requirement; otherwise, candidate is disqualified.",
+    "uncertainties": [
+      "JD does not clarify whether 'top tier institution' degree requirement is strictly enforced or flexible for equivalent professional experience in technical roles.",
+      "Extent to which candidate's logic design, requirements, and UAT work from product operations translates to hands-on Pigment modeling and agent configuration is unclear without more detail on technical depth.",
+      "No evidence of direct customer-facing technical implementation (FDE, Solutions Engineer, or Consultant track record) makes ramp time and on-the-job success unpredictable.",
+      "Candidate's Python skill level ('basic, actively learning') and willingness to upskill under implementation deadline pressures are not explicitly validated.",
+      "Role's 'customer success' vs. 'technical innovation' balance is not clearly scoped, which affects whether strategy/operations leadership or implementation engineering is the primary driver."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

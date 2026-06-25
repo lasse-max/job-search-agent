@@ -1,0 +1,65 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations, with demonstrated experience in requirements gathering, UAT, rollout planning, and understanding operational realities across complex multi-stakeholder environments",
+        "evidence_strength": "strong",
+        "job_requirement": "Engaging with users to map workflows, pain points, and operational constraints; identifying and framing customer problems"
+      },
+      {
+        "candidate_evidence": "Product operations experience built on ownership of transformation programs, process design, and cross-functional execution rather than native PM/SDLC; track record translating operational problems into structured solutions and managing delivery workstreams",
+        "evidence_strength": "strong",
+        "job_requirement": "Designing and guiding iterative delivery plans that alleviate user pain and demonstrate value quickly; acting as bridge between users, product, and engineering"
+      },
+      {
+        "candidate_evidence": "Two promotions and ~L4-L5 scope at Google indicate proven ability to own complex, ambiguous programs, make independent technical and operational decisions, and prioritise workstreams; Python actively learning (not expert-level)",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical fluency and sharp sequencing instincts; independent decision-making under pressure"
+      },
+      {
+        "candidate_evidence": "Eight-year history of cross-functional stakeholder management at scale, requirement translation, and customer-facing transformation work suggests strong communication foundation, though depth in defence/austere-environment context unknown",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong customer-facing communication and stakeholder management skills; championing user-centric approach"
+      }
+    ],
+    "confidence": 0.78,
+    "evidence_strength": 75,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No stated defence, defence technology, or austere/deployed-environment operational experience; Arondite's mission, customer base, and deployment context (1\u20134 days/week travel, overseas deployments, security-critical environments) are entirely new domains",
+        "mitigation": "Defence domain knowledge and deployed-ops mindset are learnable; the JD frames these as 'ideally' and explicitly invites cross-functional backgrounds ('we don't expect everyone to have experience across each of these areas'). Candidate's transformation program execution, stakeholder resilience, and ability to learn complex operational systems under pressure are directly transferable. Early structured mentoring on defence context and customer base would mitigate.",
+        "severity": "high"
+      },
+      {
+        "gap": "UK Right to Work and Security Check (SC) vetting requirement; candidate profile does not state UK residency, visa status, or ability to obtain SC clearance (normally requires 5 years continuous UK residency)",
+        "mitigation": "Must be confirmed in conversation. If candidate does not have existing Right to Work in UK or SC-eligible residency history, this becomes a hard blocker. If eligible, processing time for SC is not a technical barrier.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python and programming fluency are listed as 'ideally' preferred; candidate is 'basic and actively learning' rather than proficient. No bash/command-line scripting background stated",
+        "mitigation": "JD labels this as 'ideally' and 'nice to have.' Candidate's operations background and willingness to learn reduce friction; pairing with engineering partners during deployment can bridge gaps in day-to-day scripting needs.",
+        "severity": "low"
+      },
+      {
+        "gap": "No stated consulting brand, case-team experience, or prior deployment/on-site customer engagement at scale; unfamiliar with typical deployment strategist career arc",
+        "mitigation": "Role emphasises problem-framing, cross-functional collaboration, and iterative delivery\u2014all present in candidate's transformation work. Customer-facing presence and remote/on-site fluency are learnable through first 2\u20133 deployments; pairing with experienced deployors reduces initial friction.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 72,
+    "summary": "Deployment Strategist (approved stretch family) at an early-stage defence-tech startup. Candidate has strong operational transformation, cross-functional execution, and stakeholder-management foundation from eight years at Google, but lacks defence/austere-environment domain knowledge and has unconfirmed UK Right to Work and SC clearance eligibility. Role is within candidate's seniority band and strategic scope, but domain and visa unknowns create material risk.",
+    "uncertainties": [
+      "UK Right to Work status and eligibility for SC security vetting (5-year UK residency requirement); not stated in profile",
+      "Depth of customer-facing and on-site engagement experience; Google role responsibilities do not specify hands-on customer presence or field deployment involvement",
+      "Willingness and ability to commit to 1\u20134 days/week travel and regular overseas deployments; no information on personal or family circumstances",
+      "Familiarity with defence, national security, or operator-focused technology contexts; career has been civilian commercial",
+      "Arondite's early-stage maturity and 'no corporate ladder' culture fit for candidate's L4-L5 seniority expectations and autonomy needs"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

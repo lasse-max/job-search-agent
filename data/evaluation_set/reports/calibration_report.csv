@@ -1,34 +1,34 @@
-role_id,company,role_title,label,expected_recommendation,actual_recommendation,expected_feasibility,actual_feasibility,expected_tier,actual_tier,expected_blocked,actual_blocked,fit_score,recommendation_match,surface_match,blocker_match,feasibility_match,fit_band_match
-EV-01,OpenAI,"Sales Strategy and Operations, ANZ",clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,77,False,True,True,True,True
-EV-02,SafetyCulture,"Strategic Project Lead, AI Operations",clean_apply,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,80,True,True,True,True,True
-EV-03,Canva,Operations Business Partner (Growth / Tech),clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,76,False,True,True,True,True
-EV-04,Uber,Senior Strategy & Operations Manager,clean_apply,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,80,True,True,True,True,True
-EV-05,Airwallex,"Senior Manager, Operations Strategy",clean_apply,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,80,True,True,True,True,True
-EV-06,DoorDash,"Manager, Strategy & Operations",clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,78,False,True,True,True,True
-EV-07,Airbnb,Business Operations and Growth Lead,clean_apply,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,80,True,True,True,True,True
-EV-08,Wise,"Senior Revenue Operations Manager, Wise Platform",clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,77,False,True,True,True,True
-EV-09,Spotify,Markets Strategy & Operations Manager,clean_apply,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,83,True,True,True,True,True
-EV-10,Personio,Senior Revenue Operations & Strategy Manager,clean_apply,apply_now,apply_now,viable,viable,tier_2,tier_2,False,False,80,True,True,True,True,True
-EV-11,Google,Commercial Strategy & Operations,clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,77,False,True,True,True,True
-EV-12,Rokt,Revenue Operations & Strategy Lead,consider,consider,apply_now,viable,viable,tier_2,tier_2,False,False,80,False,True,True,True,True
-EV-13,Grab,"Manager, Strategy & Programs (Autonomous Vehicle)",consider,consider,apply_now,viable,viable,tier_2,tier_2,False,False,81,False,True,True,True,True
-EV-14,Checkout.com,"Strategy, CEO Office",consider,consider,apply_now,viable,viable,tier_2,tier_2,False,False,80,False,True,True,True,True
-EV-15,Salesforce,"Senior Manager, Sales Strategy & Operations",consider,consider,consider,viable,viable,tier_2,tier_2,False,False,78,True,True,True,True,True
-EV-16,Databricks,Deployment Strategist,stretch_fds,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,75,True,True,True,True,True
-EV-17,Sierra,"Strategist, Agent Development",stretch_fds,consider,apply_now,viable,viable,tier_1,tier_1,False,False,84,False,True,True,True,True
-EV-18,Mistral,AI Deployment Strategist,stretch_fds,consider,consider,viable,viable,tier_2,tier_2,False,False,75,True,True,True,True,True
-EV-19,Palantir,Deployment Strategist,stretch_fds,stretch,consider,viable,viable,tier_2,tier_2,False,False,75,False,False,True,True,False
-EV-20,Stripe,"Strategy & Operations, Global Partnerships",reach,stretch,consider,viable,viable,tier_1,tier_1,False,False,77,False,False,True,True,False
-EV-21,ServiceNow / Moveworks,"Senior Customer Success Manager, Enterprise",cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,63,True,True,True,True,True
-EV-22,Harvey,Majors Customer Success Manager,cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,58,True,True,True,True,True
-EV-23,Glean,Enterprise Customer Success,cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,53,True,True,True,True,True
-EV-24,Cognition (Devin),GTM Operations Associate,below_level_by_scope_not_title,skip,skip,viable,viable,tier_2,tier_2,False,False,48,True,True,True,True,True
-EV-25,Airwallex,"Manager, Revenue Operations",below_level_by_scope_not_title,skip,skip,viable,viable,tier_2,tier_2,False,False,48,True,True,True,True,True
-EV-26,Datadog,GTM Strategy & Operations Analyst,below_level,skip,skip,viable,viable,tier_3,tier_3,False,False,48,True,True,True,True,True
-EV-27,Disney,"Principal, Streaming Strategy & Operations",visa_blocked,blocked,blocked,blocked,blocked,tier_2,tier_2,True,True,79,True,True,True,True,True
-EV-28,Plaid,Integration Operations Program Manager,visa_blocked,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,77,True,True,True,True,True
-EV-29,Roblox,"Lead, Strategic Initiatives",visa_blocked,stretch,stretch,sponsorship_required,sponsorship_required,tier_3,tier_3,False,False,80,True,True,True,True,True
-EV-30,Roblox,"Product Manager, Consumer Payments and Subscriptions",technical_blocker,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,61,True,True,True,True,True
-EV-31,Arondite,Deployment Strategist,technical_blocker,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,75,True,True,True,True,True
-EV-32,AutoScout24,AI Process Transformation Lead,brand_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,82,True,True,True,True,True
-EV-33,OutSystems,Lead Customer Success Manager,brand_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,56,True,True,True,True,True
+role_id,company,role_title,label,expected_recommendation,actual_recommendation,expected_feasibility,actual_feasibility,expected_tier,actual_tier,expected_blocked,actual_blocked,fit_score,recommendation_match,surface_match,blocker_match,feasibility_match,fit_band_match,evaluator_version
+EV-01,OpenAI,"Sales Strategy and Operations, ANZ",clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,72,False,True,True,True,True,claude-haiku-4-5
+EV-02,SafetyCulture,"Strategic Project Lead, AI Operations",clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,70,False,True,True,True,True,claude-haiku-4-5
+EV-03,Canva,Operations Business Partner (Growth / Tech),clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,70,False,True,True,True,True,claude-haiku-4-5
+EV-04,Uber,Senior Strategy & Operations Manager,clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,74,False,True,True,True,True,claude-haiku-4-5
+EV-05,Airwallex,"Senior Manager, Operations Strategy",clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,70,False,True,True,True,True,claude-haiku-4-5
+EV-06,DoorDash,"Manager, Strategy & Operations",clean_apply,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,83,True,True,True,True,True,claude-haiku-4-5
+EV-07,Airbnb,Business Operations and Growth Lead,clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,75,False,True,True,True,True,claude-haiku-4-5
+EV-08,Wise,"Senior Revenue Operations Manager, Wise Platform",clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,71,False,True,True,True,True,claude-haiku-4-5
+EV-09,Spotify,Markets Strategy & Operations Manager,clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,70,False,True,True,True,True,claude-haiku-4-5
+EV-10,Personio,Senior Revenue Operations & Strategy Manager,clean_apply,apply_now,consider,viable,viable,tier_2,tier_2,False,False,73,False,True,True,True,True,claude-haiku-4-5
+EV-11,Google,Commercial Strategy & Operations,clean_apply,apply_now,consider,viable,viable,tier_1,tier_1,False,False,72,False,True,True,True,True,claude-haiku-4-5
+EV-12,Rokt,Revenue Operations & Strategy Lead,consider,consider,consider,viable,viable,tier_2,tier_2,False,False,70,True,True,True,True,True,claude-haiku-4-5
+EV-13,Grab,"Manager, Strategy & Programs (Autonomous Vehicle)",consider,consider,consider,viable,viable,tier_2,tier_2,False,False,73,True,True,True,True,True,claude-haiku-4-5
+EV-14,Checkout.com,"Strategy, CEO Office",consider,consider,consider,viable,viable,tier_2,tier_2,False,False,70,True,True,True,True,True,claude-haiku-4-5
+EV-15,Salesforce,"Senior Manager, Sales Strategy & Operations",consider,consider,consider,viable,viable,tier_2,tier_2,False,False,77,True,True,True,True,True,claude-haiku-4-5
+EV-16,Databricks,Deployment Strategist,stretch_fds,apply_now,apply_now,viable,viable,tier_1,tier_1,False,False,81,True,True,True,True,True,claude-haiku-4-5
+EV-17,Sierra,"Strategist, Agent Development",stretch_fds,consider,consider,viable,viable,tier_1,tier_1,False,False,70,True,True,True,True,True,claude-haiku-4-5
+EV-18,Mistral,AI Deployment Strategist,stretch_fds,consider,consider,viable,viable,tier_2,tier_2,False,False,65,True,True,True,True,True,claude-haiku-4-5
+EV-19,Palantir,Deployment Strategist,stretch_fds,stretch,consider,viable,viable,tier_2,tier_2,False,False,67,False,False,True,True,False,claude-haiku-4-5
+EV-20,Stripe,"Strategy & Operations, Global Partnerships",reach,stretch,stretch,viable,viable,tier_1,tier_1,False,False,50,True,True,True,True,True,claude-haiku-4-5
+EV-21,ServiceNow / Moveworks,"Senior Customer Success Manager, Enterprise",cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,23,True,True,True,True,True,claude-haiku-4-5
+EV-22,Harvey,Majors Customer Success Manager,cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,21,True,True,True,True,True,claude-haiku-4-5
+EV-23,Glean,Enterprise Customer Success,cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,26,True,True,True,True,True,claude-haiku-4-5
+EV-24,Cognition (Devin),GTM Operations Associate,below_level_by_scope_not_title,skip,consider,viable,viable,tier_2,tier_2,False,False,70,False,False,True,True,False,claude-haiku-4-5
+EV-25,Airwallex,"Manager, Revenue Operations",below_level_by_scope_not_title,skip,stretch,viable,viable,tier_2,tier_2,False,False,68,False,True,True,True,False,claude-haiku-4-5
+EV-26,Datadog,GTM Strategy & Operations Analyst,below_level,skip,skip,viable,viable,tier_3,tier_3,False,False,73,True,True,True,True,True,claude-haiku-4-5
+EV-27,Disney,"Principal, Streaming Strategy & Operations",visa_blocked,blocked,blocked,blocked,blocked,tier_2,tier_2,True,True,74,True,True,True,True,True,claude-haiku-4-5
+EV-28,Plaid,Integration Operations Program Manager,visa_blocked,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,70,True,True,True,True,True,claude-haiku-4-5
+EV-29,Roblox,"Lead, Strategic Initiatives",visa_blocked,stretch,stretch,sponsorship_required,sponsorship_required,tier_3,tier_3,False,False,70,True,True,True,True,True,claude-haiku-4-5
+EV-30,Roblox,"Product Manager, Consumer Payments and Subscriptions",technical_blocker,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,38,True,True,True,True,True,claude-haiku-4-5
+EV-31,Arondite,Deployment Strategist,technical_blocker,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,75,True,True,True,True,True,claude-haiku-4-5
+EV-32,AutoScout24,AI Process Transformation Lead,brand_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,71,True,True,True,True,True,claude-haiku-4-5
+EV-33,OutSystems,Lead Customer Success Manager,brand_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,28,True,True,True,True,True,claude-haiku-4-5

@@ -1,0 +1,49 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google across multiple promotions managing transformation programs and global commercial operations scaling, demonstrating structured problem-solving at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Structured, analytical thinker who enjoys breaking down complex problems into clear, actionable steps"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Student role requires current Bachelor's or Master's enrollment in CS, Computational Linguistics, Cognitive Science, or related field; candidate is not currently enrolled in an academic program.",
+        "mitigation": "Not applicable. This is a structural barrier to employment for a Working Student position.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires hands-on AI/LLM experimentation and conversational design work; candidate background is strategy and operations at enterprise scale, not conversational AI, prompt engineering, or agent architecture.",
+        "mitigation": "Candidate could acquire some LLM familiarity through self-study, but lacks the domain expertise and practical conversational design foundation the role expects from day one.",
+        "severity": "high"
+      },
+      {
+        "gap": "Part-time availability (16\u201320 hours/week) is incompatible with candidate's career stage and expectations as an L4-equivalent strategy leader.",
+        "mitigation": "Not applicable. This role is explicitly designed for students balancing university commitments.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's Python and scripting skills are basic and actively being developed; role expects comfort with APIs and scripting as a plus, but candidate is not yet proficient.",
+        "mitigation": "Could improve with structured learning, but role is not primarily a technical development opportunity for coding skills.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Currently enrolled in a Bachelor's or Master's program in Computer Science, Computational Linguistics, Cognitive Science, Business Informatics, or a related field\" \u2013 Candidate is not currently enrolled in an academic program. This is an explicit minimum qualification and a structural requirement for a Working Student position.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 5,
+    "scope_seniority": 2,
+    "summary": "This is a Working Student role requiring current university enrollment in CS or a related discipline; candidate is a post-university L4-equivalent Strategy and Operations leader with eight years at Google and no active degree enrollment. The role focuses on conversational AI, prompt engineering, and LLM experimentation at 16\u201320 hours/week alongside studies\u2014a fundamentally misaligned level and structure. Candidate's strength in structured problem-solving and transformation does not offset the disqualifying hard requirement of enrollment or the domain gap in conversational AI and agent architecture.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

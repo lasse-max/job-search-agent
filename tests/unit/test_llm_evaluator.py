@@ -116,6 +116,58 @@ class LlmEvaluatorTest(unittest.TestCase):
             [blocker.type for blocker in evaluation.hard_blockers],
         )
 
+    def test_core_role_family_calibration_surfaces_conservative_llm_score(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload.update(
+            {
+                "role_family_fit": 75,
+                "evidence_strength": 35,
+                "scope_seniority": 75,
+                "gap_manageability": 40,
+                "confidence": 0.25,
+                "advisory_recommendation": "skip",
+            }
+        )
+        provider = FakeProvider(LLMEvaluationOutput.model_validate(output_payload))
+
+        evaluation = evaluate_role(
+            _row("Sales Strategy and Operations, ANZ"),
+            _company(),
+            llm_provider=provider,
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertIn(evaluation.recommendation, {"apply_now", "consider"})
+        self.assertGreaterEqual(evaluation.dimensions["evidence_strength"], 62)
+
+    def test_low_priority_adjacent_function_is_capped_out_of_digest_surface(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload.update(
+            {
+                "role_family_fit": 82,
+                "evidence_strength": 75,
+                "scope_seniority": 78,
+                "gap_manageability": 72,
+                "confidence": 0.82,
+                "advisory_recommendation": "consider",
+            }
+        )
+        row = _row("Senior Manager, Strategic Finance, Channel Sales")
+        row["department"] = "Strategic Finance"
+        row["description_text"] = (
+            "Lead strategic finance and channel sales planning with finance technology "
+            "stakeholders."
+        )
+
+        evaluation = evaluate_role(
+            row,
+            _company(),
+            llm_provider=FakeProvider(LLMEvaluationOutput.model_validate(output_payload)),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertNotIn(evaluation.recommendation, {"apply_now", "consider"})
+
     def test_claude_provider_rejects_malformed_structured_output(self) -> None:
         provider = ClaudeLLMProvider(api_key="test-key", model="fake-model")
         request = LLMRoleRequest(
@@ -141,6 +193,50 @@ class LlmEvaluatorTest(unittest.TestCase):
         with patch("app.services.llm_evaluator.httpx.post", return_value=FakeHttpResponse(payload)):
             with self.assertRaises(ValidationError):
                 provider.evaluate(request)
+
+    def test_validates_summary_with_realistic_verbose_bound(self) -> None:
+        payload = _valid_output().model_dump()
+        payload["summary"] = "A" * 1800
+
+        output = LLMEvaluationOutput.model_validate(payload)
+
+        self.assertEqual(len(output.summary), 1800)
+
+    def test_validates_verbose_hard_blocker_evidence(self) -> None:
+        payload = _valid_output().model_dump()
+        payload["hard_blockers"] = [
+            {
+                "type": "disqualifying_hard_requirement",
+                "evidence": "Bachelor's degree in Computer Science required. " * 15,
+            }
+        ]
+
+        output = LLMEvaluationOutput.model_validate(payload)
+
+        self.assertEqual(output.hard_blockers[0].type, "disqualifying_hard_requirement")
+
+    def test_validates_five_gap_model_output(self) -> None:
+        payload = _valid_output().model_dump()
+        payload["gaps"] = [
+            {
+                "gap": f"Gap {index}",
+                "severity": "medium",
+                "mitigation": "Use adjacent strategy and operations evidence.",
+            }
+            for index in range(5)
+        ]
+
+        output = LLMEvaluationOutput.model_validate(payload)
+
+        self.assertEqual(len(output.gaps), 5)
+
+    def test_normalizes_empty_string_hard_blockers(self) -> None:
+        payload = _valid_output().model_dump()
+        payload["hard_blockers"] = ""
+
+        output = LLMEvaluationOutput.model_validate(payload)
+
+        self.assertEqual(output.hard_blockers, [])
 
     def test_claude_provider_caches_valid_response_by_material_hash(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

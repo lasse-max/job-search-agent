@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs; background in product ownership, requirements logic design, UAT, rollout, and transformation",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic Tech PM Leadership with 6+ years owning complex, scalable platform/B2B products from discovery to rollout"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation experience with UAT and rollout ownership; however, Python is basic and actively being learned; no native engineering PM or deep software architecture background",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven technical fluency to debate architecture, APIs, and data pipelines with engineering"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations suggests stakeholder management; specific compliance and regulatory-environment track record not detailed in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Risk & Compliance Navigation in regulated, policy-heavy environments; cross-functional alignment across Engineering, Risk, Compliance, and Legal"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Native Product Manager experience: Background is product operations and transformation ownership rather than native PM with SDLC, feature discovery, and market-driven product definition",
+        "mitigation": "Candidate could ramp if hired with structured PM mentorship and pairing with senior PM, but hiring risk is moderate; learning curve on PM practices and customer discovery is real",
+        "severity": "high"
+      },
+      {
+        "gap": "Identity, Authentication (IAM), or security/fraud domain expertise: JD emphasizes identity verification, authentication, roles & permissions, fraud prevention, account abuse as core platform DNA; no evidence of this domain in profile",
+        "mitigation": "Candidate would require significant domain onboarding; expertise in fintech/payments identity, SMS pumping, phishing vectors, and policy engines is missing",
+        "severity": "high"
+      },
+      {
+        "gap": "Technical depth in identity and access management systems: JD requires expertise in IAM, authN/authZ, policy engines, and scalable identity services; candidate background is operations and transformation, not platform infrastructure or security systems",
+        "mitigation": "Ramp time and external expertise would be needed; not a short-term backfill",
+        "severity": "high"
+      },
+      {
+        "gap": "Fintech, banking, or payments-regulated environment specificity: While Google Devices may involve some policy, no evidence of banking, fintech, or payments compliance/risk leadership",
+        "mitigation": "Candidate may transfer risk and compliance thinking from Google scale; however, fintech compliance depth is not shown",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 35,
+    "scope_seniority": 75,
+    "summary": "This is a Senior Product Manager role for identity and user security at a fintech payments platform, requiring 6+ years of native PM experience with strategic tech leadership in regulated environments and hands-on expertise in IAM, authentication, fraud prevention, and compliance. The candidate is a Strategy and Operations / Product Operations leader with eight years at Google scaling global operations and transformation programs, strong scope and seniority, but lacks both native PM experience and the specialized identity/security/fintech domain expertise this role demands. The gap is fundamental and would require substantial ramp time and domain learning.",
+    "uncertainties": [
+      "Depth of candidate's compliance and risk navigation experience beyond 'global commercial operations'\u2014no regulatory or fintech detail provided",
+      "Extent of candidate's technical fluency with APIs and data pipelines; Python is basic and actively learning, so debate-level architecture fluency is unclear",
+      "Whether candidate has worked on customer-facing identity, authentication, or notification systems (even outside fintech); profile emphasizes operations and transformation, not user-facing product features"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

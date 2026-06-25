@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in strategy and operations roles involving data-driven decision-making and commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Data analysis, working with spreadsheets (Excel/Google Sheets), drawing conclusions from data"
+      },
+      {
+        "candidate_evidence": "Positioning mentions Product Operations as a primary role family and eight years scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Product Operations exposure and understanding how product comes to life"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 20,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Seniority mismatch: candidate is L4/Manager-level with eight years at a tier-1 company; role is a 5\u20136 month paid internship for currently-enrolled students",
+        "mitigation": "Candidate is overqualified and this role offers no meaningful career development for someone at this seniority level",
+        "severity": "high"
+      },
+      {
+        "gap": "No food industry, food technology, culinary, or menu-planning domain background mentioned",
+        "mitigation": "Role requires sensory evaluation, ingredient knowledge, and food/recipe context; candidate's background is in commercial operations and strategy at a consumer hardware/services company",
+        "severity": "high"
+      },
+      {
+        "gap": "Role scope is operational and transactional (recipe swaps, stock tracking, pricing updates); candidate background is strategic transformation and program leadership",
+        "mitigation": "Function mismatch: role is execution-focused internship work, not strategic or transformation-oriented",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with HelloFresh Market operations, supply-chain ingredient logistics, or food-industry vendor/supplier dynamics",
+        "mitigation": "Would require domain onboarding unrelated to candidate's core competencies",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "The internship explicitly states 'The internship is suitable for students or recent graduates whose educational requirements allow them to complete an internship during the proposed period' and 'You are currently enrolled in an HBO/WO program.' The candidate is a mid-level professional with 8+ years post-university experience at a FAANG company, not a current student.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 5,
+    "summary": "This internship is a junior operational role for enrolled students with food/food-tech background, based in Amsterdam for 5\u20136 months. The candidate is an L4 Strategy and Operations leader with eight years at Google\u2014overqualified by seniority, misaligned in function (execution vs. transformation), and lacks food-industry domain expertise. This does not fit target or stretch families and represents a severe career regression.",
+    "uncertainties": [
+      "No information on whether candidate has any secondary interest in food, food technology, culinary science, or supply-chain operations",
+      "Unclear whether candidate would consider a significant step backward in seniority and scope for reasons outside the role itself (e.g., relocation, career pivot)",
+      "No clarity on visa/work-authorization status in Netherlands, though candidate profile lists German as native language"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

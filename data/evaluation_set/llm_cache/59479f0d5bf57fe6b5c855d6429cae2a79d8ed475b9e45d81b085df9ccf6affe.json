@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs demonstrates proven ability to own complex initiatives and drive results in dynamic, fast-moving contexts.",
+        "evidence_strength": "medium",
+        "job_requirement": "Navigate ambiguity in high-growth environment and take ownership to drive results"
+      },
+      {
+        "candidate_evidence": "Product operations experience includes cross-functional stakeholder management, requirements definition, and rollout execution across transformation programs, indicating capability in multi-team collaboration.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with partners, sales, and solutions engineering teams on strategic engagements"
+      },
+      {
+        "candidate_evidence": "Strategic program leadership and transformation role implies executive communication and stakeholder influence, though no explicit public speaking, event, or thought-leadership evidence provided.",
+        "evidence_strength": "weak",
+        "job_requirement": "Present to technical and executive audiences and cultivate thought leadership"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No hands-on technical depth in data engineering, SQL, data warehousing, or cloud data platforms (Spark, Kafka, Snowflake, Azure Data Factory, AWS Glue, DevOps/CI-CD tooling)",
+        "mitigation": "Rapid technical ramp-up on Snowflake and partner ecosystem would be required; this is a technical expert role, not an operator role. Candidate background is in operations and product, not data engineering or solutions architecture.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented experience engaging with System Integrators, regional SIs, CSPs, or technology partners; no partner ecosystem or partner revenue model experience",
+        "mitigation": "Partner engagement model and dynamics are distinct from internal product operations. Would require substantial reorientation to partner go-to-market and incentive structures.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated data domain thought leadership or data platform domain expertise",
+        "mitigation": "Role requires credibility as a trusted technical advisor on data architecture and platform capabilities to partners. Candidate's background is in operations and transformation, not data platform expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "No cloud platform or DevOps/CI-CD hands-on experience; Python only basic and actively learning",
+        "mitigation": "JD explicitly requires strong hands-on experience with Azure, AWS, GCP, and DevOps/CI-CD tools. Not a learning-on-the-job domain for this seniority level and technical advisory role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Solution Engineering and technical presales are distinct from product operations and transformation; no field engineering, technical account management, or solutions architecture experience documented",
+        "mitigation": "SE is a different career track requiring deep product technical knowledge, customer use-case translation, and hands-on PoC execution. Candidate has not worked in this domain.",
+        "severity": "high"
+      },
+      {
+        "gap": "No quota-bearing or partner revenue accountability; no sales enablement or GTM delivery evidence",
+        "mitigation": "Role requires alignment with partner sales metrics and deal support. Candidate's background is operations-focused, not revenue-driven or sales-aligned.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Proven experience in designing and building highly scalable data pipelines using Spark, Kafka to ingest data from various systems' and 'Hands-on technical experience with DevOps and CI/CD processes and tools, such as Azure DevOps, Jenkins, AWS CodePipeline, and Google Cloud Build.' Candidate has 'No production software-engineering background' and 'Python basic and actively learning.' The role is fundamentally a hands-on technical expert and trusted data-platform advisor to engineering-heavy partner organizations; candidate lacks the required data engineering and DevOps technical foundation.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Candidate is a Strategy and Operations leader with proven ability to own complex transformation programs at scale and drive cross-functional collaboration. However, this is a hands-on technical Partner Solution Engineer role requiring deep data engineering, DevOps, and cloud-platform hands-on expertise (Spark, Kafka, SQL, Azure/AWS/GCP, CI-CD tooling) and partner ecosystem domain knowledge. Candidate's background is operations and transformation, not solutions engineering, data platform architecture, or partner sales/enablement. The technical foundation gaps\u2014particularly hands-on data pipeline design, DevOps, and data domain thought leadership\u2014are disqualifying for a role requiring credibility as a trusted technical advisor to engineering-heavy System Integrators and CSPs.",
+    "uncertainties": [
+      "Candidate profile does not explicitly state whether Google Devices and Services role included any partner ecosystem, partner revenue, or solutions engineering responsibilities; unclear if any data platform or cloud data warehouse exposure exists.",
+      "No explicit evidence of technical depth or hands-on platform experience beyond transformation and operational scope; cannot assess whether candidate has strong SQL, data pipeline, or cloud infrastructure knowledge gained implicitly.",
+      "JD emphasizes 'AI-native thinkers' and experimental mindset; unclear if candidate's transformation background includes AI/ML use-case design or if this is purely an aspirational company-wide posture.",
+      "No geographic or visa information for ASEAN-based role; unclear if relocation feasibility exists.",
+      "Scope seniority judgment assumes 'Senior Partner Solution Engineer' is a field SE role; at Snowflake (Tier 2 / high-growth), this may map to L5-L6, potentially over-leveled for typical L4-L5 candidate ceiling."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

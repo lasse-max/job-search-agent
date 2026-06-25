@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Led technical design and requirements definition for global commercial operations transformation programs at Google, with stakeholder alignment and scope definition",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead the technical development of system architectures and define requirements for Safety Critical Systems"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations with cross-functional stakeholder management, executive reporting, and program delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with internal and external stakeholders; provide regular reporting on project status to Chief Engineering and Programme Management"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No aerospace engineering degree; candidate background is Strategy and Operations, not Aerospace or Electrical Engineering",
+        "mitigation": "Role description encourages applying without all qualifications; however, avionics safety-critical systems engineering requires domain-specific technical foundation unlikely to transfer from ops leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in safety-critical hardware and software development for airborne platforms",
+        "mitigation": "Candidate's transformation and operations work does not include avionics systems design, flight control architectures, or vehicle management systems engineering",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented knowledge of ARP4754, ARP4761, DO-178C, or DO-254 standards; no civil or military aviation authority relationships",
+        "mitigation": "These are specialized certification and compliance standards for aviation systems; candidate has no indicated exposure",
+        "severity": "high"
+      },
+      {
+        "gap": "No deep technical knowledge of Guidance Navigation & Control (GNC) or air vehicle management systems",
+        "mitigation": "Candidate has no background in avionics, aeronautical engineering, or GNC discipline",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's technical depth is in business operations transformation and strategic program execution, not systems engineering or avionics integration",
+        "mitigation": "Role requires lead technical ownership of HW/SW integration and certification; candidate's expertise is organizational and strategic, not engineering-technical",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 5,
+    "scope_seniority": 25,
+    "summary": "This is a deeply technical avionics systems engineering role requiring aerospace/electrical engineering credentials, hands-on safety-critical HW/SW development experience, and domain mastery of aviation certification standards (ARP4754, ARP4761, DO-178C, DO-254). The candidate is a Strategy and Operations leader with no demonstrated aerospace, avionics, or safety-critical systems background. While stakeholder management and program leadership translate partially, the core technical and domain requirements are disqualifying. Role is outside target and stretch families.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

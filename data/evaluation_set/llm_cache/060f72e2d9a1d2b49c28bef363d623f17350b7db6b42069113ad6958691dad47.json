@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; Revenue Operations is a target family",
+        "evidence_strength": "strong",
+        "job_requirement": "Revenue Operations management role at a fintech/payments company"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience with transformation programs, scaling global operations, and process design from Google tenure",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic operations and transformation execution"
+      },
+      {
+        "candidate_evidence": "Positioning emphasizes strategic program leadership and commercial operations scaling, implying stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management"
+      }
+    ],
+    "confidence": 0.45,
+    "evidence_strength": 55,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No fintech, payments, or B2B SaaS specific domain experience evident; Airwallex is a high-growth fintech platform requiring rapid RevOps maturity",
+        "mitigation": "Domain transfer is common for strong operators; candidate's Google scale experience and transformation background provide a foundation for learning fintech dynamics quickly",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited visibility into revenue-specific ownership: quota tracking, sales enablement, compensation design, or revenue forecasting",
+        "mitigation": "Revenue Operations subsumes multiple operational domains; prior transformation and commercial scaling at Google may cover some components, but depth is unclear",
+        "severity": "medium"
+      },
+      {
+        "gap": "Insufficient JD detail prevents verification of required tools, systems, or regional/Asia-Pacific operations experience",
+        "mitigation": "Assume standard RevOps tech stack (Salesforce, analytics, BI); candidate's proven ability to scale global operations at Google suggests adaptability",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 78,
+    "scope_seniority": 72,
+    "summary": "Strong functional fit: Revenue Operations is a core target family and Manager level aligns with candidate's ~8-year scope at Google with two promotions. Critical gaps are domain (fintech/payments and B2B SaaS specificity), visibility into revenue-specific processes (sales comp, forecasting, enablement), and insufficient JD detail to confirm exact scope and required systems expertise. Candidate's transformation and global scaling background supports manageability. Recommend proceeding with structured domain and revenue-specific questioning before advancing.",
+    "uncertainties": [
+      "JD snapshot appears to be malformed HTML/metadata only; actual full role scope, reporting structure, team size, and specific revenue processes (compensation, forecasting, sales systems) are not available",
+      "Candidate's 'commercial operations' at Google may or may not include direct revenue-function ownership; extent of sales enablement, forecasting, or compensation experience is not specified",
+      "No indication of candidate's systems experience (Salesforce, Looker, Tableau, Marketo, etc.) or data-driven decision-making in revenue contexts",
+      "Fintech/payments domain experience is absent; unclear whether candidate has B2B SaaS or subscription-model RevOps experience"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

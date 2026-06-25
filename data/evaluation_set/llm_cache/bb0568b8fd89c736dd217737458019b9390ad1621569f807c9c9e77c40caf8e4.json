@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "~8 years at Google Devices and Services with global commercial operations and transformation programs; positioning as Strategy and Operations / Product Operations leader with two promotions",
+        "evidence_strength": "medium",
+        "job_requirement": "6+ years of Product Management experience, ideally in payments, fintech, or financial crime prevention"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs implies cross-functional stakeholder management; honest gaps note limited consulting/case-team experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven ability to work cross-functionally with Risk, Compliance, Operations, Data, and Engineering teams"
+      },
+      {
+        "candidate_evidence": "Positioning emphasizes transformation programs and operations scaling; no explicit evidence of regulatory translation or risk/compliance domain work",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong stakeholder management skills and ability to translate regulatory and risk requirements into scalable product solutions"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 35,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Native Product Manager background differs from Transaction Risk/Fraud/AML domain expertise. Candidate's PM experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management, and no demonstrated fraud, AML, or transaction-monitoring product ownership.",
+        "mitigation": "Candidate could learn domain fundamentals through ramp, but requires mentoring from risk/compliance experts and must quickly absorb AML, fraud, and transaction-monitoring rule frameworks. Success depends on pairing with experienced Risk/Compliance partners and structured onboarding.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience building, owning, or optimising transaction monitoring, fraud detection, or AML systems\u2014a core minimum qualification for this role.",
+        "mitigation": "Candidate's transformation and operations background provides process-design and workflow-automation skills that could transfer, but domain knowledge gap is substantial. Requires hands-on collaboration with Risk and Compliance teams and possibly external training in fraud/AML fundamentals.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of SQL, data-analysis, and rule-performance evaluation skills. Candidate profile notes basic Python actively being learned; no mention of SQL or financial/transactional data analysis.",
+        "mitigation": "Candidate would need to develop SQL and financial-data analysis skills on the job, delaying independent rule optimisation and signal investigation. May rely on Data/Engineering team longer than desired.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in regulated financial services, payments, fintech, or financial crime prevention\u2014domain context that underpins AML, fraud, and compliance understanding.",
+        "mitigation": "Candidate's operations and transformation background provides process-design transferable skills, but regulatory/compliance familiarity must be built during ramp. Requires structured compliance training and close Risk/Compliance partnership.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated exposure to machine learning, AI-driven risk systems, or advanced analytics for detection\u2014preferred qualifications that are increasingly important for modern fraud/AML detection.",
+        "mitigation": "Candidate uses AI to work smarter and has basic Python skills; could participate in ML-driven initiatives with Data Science partnership but would not lead algorithm design or model evaluation independently.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 42,
+    "scope_seniority": 68,
+    "summary": "Candidate is a Strategy & Operations leader with 8 years at Google and strong cross-functional and transformation expertise, but lacks native Product Manager background, fraud/AML/transaction-monitoring domain experience, SQL/financial-data analysis skills, and regulated fintech exposure\u2014all core to this Senior PM Transaction Risk role. Role-family fit is low (42) due to domain/PM-style mismatch; gaps are substantial and difficult to close rapidly in a complex risk-compliance function.",
+    "uncertainties": [
+      "Extent of candidate's actual SQL capability and financial-data analysis experience; profile only mentions basic Python",
+      "Degree of candidate's familiarity with regulatory requirements, compliance frameworks, or financial crime concepts from Google operations work",
+      "Whether candidate's 'transformation programs' involved process automation, rule design, or workflow logic relevant to monitoring/case-management systems",
+      "Candidate's actual product management depth (e.g., roadmap ownership, user research, release management) vs. operations/program leadership focus"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

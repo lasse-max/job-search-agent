@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Strategy and Operations leader at Google with approximately eight years, two promotions, and experience scaling global commercial operations and transformation programs, demonstrating execution, judgment, and end-to-end ownership.",
+        "evidence_strength": "medium",
+        "job_requirement": "You move fast with good judgment, dig deep with curiosity, and make decisions from first principles, balancing speed and rigor; You \u201cget stuff done\u201d end-to-end."
+      },
+      {
+        "candidate_evidence": "Positioned as a Strategy and Operations leader with experience in global commercial operations and transformation programs, implying cross-functional and executive engagement, though no direct regulator, auditor, or compliance-specific stakeholder evidence.",
+        "evidence_strength": "weak",
+        "job_requirement": "Engage credibly with senior executives, regulators, auditors, and cross-functional stakeholders, and know how to challenge constructively in a fast-moving environment."
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Zero operational risk, enterprise risk, technology risk, or operational resilience background. JD requires 12\u201315+ years in these disciplines; candidate has eight years in Google commercial operations and transformation.",
+        "mitigation": "None feasible. This is a domain-specific leadership role in financial services risk governance, not a general strategy-and-operations transfer.",
+        "severity": "high"
+      },
+      {
+        "gap": "No second-line risk and control management experience. JD requires 5+ years leading risk and control teams in a second-line governance environment; candidate background is commercial operations transformation.",
+        "mitigation": "None feasible without external financial services risk experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated end-to-end operational risk framework design, risk control self-assessments, key risk indicators, loss event management, or escalation governance experience.",
+        "mitigation": "None feasible. Framework architecture and operational risk methodologies require domain expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "No financial services, banking, payments, or fintech industry experience. JD requires this as a minimum qualification context.",
+        "mitigation": "Limited. Airwallex is a fintech; regulatory, compliance, and operational risk practices differ significantly from technology or consumer-focused commercial operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "No regulator, auditor, or compliance-facing background. Role requires 'produce high-quality operational risk reporting and documentation for executive leadership, governance forums, regulators, auditors, and bank partners.'",
+        "mitigation": "Learning curve possible but would require external mentorship and regulatory exposure during onboarding.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'minimum qualifications: You have 12 to 15+ years of experience across operational risk, enterprise risk, technology risk, operational resilience, or related control disciplines within financial services, banking, payments, or fintech.' Candidate has ~8 years at Google Devices and Services in strategy and operations, with no disclosed background in financial services, banking, payments, fintech, operational risk, enterprise risk, technology risk, or operational resilience.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD states 'minimum qualifications: You have at least 5+ years of senior leadership experience managing global or multi-regional risk and control teams in a second-line environment.' Candidate's leadership experience is in commercial operations and transformation programs at Google, not in risk management, controls, or second-line governance.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD states 'minimum qualifications: You have built and scaled end-to-end operational risk frameworks, including risk and control self-assessments, key risk indicators, loss event management, issue management, and escalation governance.' No evidence in candidate profile of building or scaling operational risk frameworks, risk control self-assessments, key risk indicators, loss event management, or escalation governance.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 15,
+    "summary": "This is a Senior Director (over-leveled seniority) role in operational risk governance at a regulated fintech, requiring 12\u201315+ years in financial services risk, enterprise risk, or operational resilience disciplines and 5+ years of second-line risk and control team leadership. Candidate is a Strategy and Operations leader from Google with ~8 years in commercial operations and transformation, with no disclosed operational risk, banking, fintech, or regulatory compliance background. Role family is Regulatory & Compliance, which is explicitly not a target or approved-stretch family. Multiple hard blockers on domain experience, seniority, and industry context make this a clear skip.",
+    "uncertainties": [
+      "Whether candidate's 'transformation programs' at Google included any risk, control, or resilience components; profile does not specify.",
+      "Depth of candidate's exposure to cross-functional governance forums, escalation protocols, or second-line oversight structures at Google.",
+      "Whether candidate has any fintech, payments, or financial services network or advisors that could accelerate domain onboarding."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

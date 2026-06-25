@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; product experience from ownership, requirements, UAT, rollout, and transformation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Builder mindset with demonstrated experience launching new products, driving 0 to 1 initiatives, finding product-market fit, building and scaling go-to-market motions"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with cross-functional transformation program leadership; experience managing complex stakeholder alignment in global commercial operations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Align stakeholders: Rally science, engineering, design and business teams around priorities, trade-offs and timelines"
+      },
+      {
+        "candidate_evidence": "Experience with commercial operations and transformation programs that likely involved GTM elements; specific evidence of pricing strategy, positioning, and adoption execution not explicitly stated.",
+        "evidence_strength": "weak",
+        "job_requirement": "Go-to-market: Collaborate with marketing and sales to launch products successfully, including positioning, pricing, and adoption strategies"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Native Product Manager role requiring extensive PM/SDLC depth and best-in-class PM practices. Candidate background is Strategy and Operations with product ownership via requirements and transformation, not native PM discipline with product strategy, roadmap, market research, A/B testing, and performance metrics expertise.",
+        "mitigation": "Candidate could accelerate PM fundamentals through structured mentorship and ramp on Mistral's PM practices, but the gap is substantial for a strategic PM hire.",
+        "severity": "high"
+      },
+      {
+        "gap": "Developer product expertise and deep understanding of developer-facing products and developer tools. Candidate's domain has been Google Devices and Services (hardware/cloud operations), not developer tools or coding assistants.",
+        "mitigation": "Candidate would need significant time to build empathy for developer workflows, coding patterns, and how developers integrate tools into their daily work.",
+        "severity": "high"
+      },
+      {
+        "gap": "Generative AI and science collaboration experience. JD requires solid understanding of how GenAI and LLMs are built, trained, and deployed, and proven ability to work closely with AI/science teams. No evidence of AI/ML product or science collaboration in candidate profile.",
+        "mitigation": "Learning curve exists; candidate's lack of AI background makes this a significant ramp risk for a GenAI-native product role.",
+        "severity": "high"
+      },
+      {
+        "gap": "LLM product experience (stated as 'now would be ideal'). Candidate has no direct experience building or scaling LLM-powered products or understanding how generative AI impacts product discovery, roadmapping, and iteration cycles.",
+        "mitigation": "Nice-to-have, not required, but absence limits candidate's ability to hit the ground running on Mistral Vibe.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Engineering background or hands-on coding experience. JD notes 'now would be ideal' for previous SWE experience and passion for building/coding. Candidate has no production software engineering background and Python at basic level.",
+        "mitigation": "Nice-to-have, but candidate's lack of hands-on technical depth may limit appreciation for technical constraints and developer tool trade-offs.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 28,
+    "scope_seniority": 75,
+    "summary": "Candidate is a strong Strategy and Operations / transformation leader with eight years at Google and appropriate scope seniority for L4-L5, but this role is a pure native Product Manager position requiring deep PM discipline, developer product expertise, and GenAI/LLM domain knowledge. The candidate's background is operations and transformation-driven, not PM-native, and lacks developer tools, AI/ML, and coding assistant domain exposure. This is a fundamental function mismatch with compounding domain and discipline gaps; deprioritize per scope.",
+    "uncertainties": [
+      "Extent of candidate's hands-on coding involvement in transformation projects at Google; may have deeper technical exposure than profile indicates.",
+      "Depth of candidate's 'product experience' from requirements, UAT, and rollout: unclear whether this included strategic roadmapping, market research, or data-driven PM discipline.",
+      "Candidate's exposure to enterprise customer engagement and GTM strategy in commercial operations; may have indirect GTM experience not fully detailed.",
+      "Whether candidate has worked with ML/science teams in any capacity during transformation programs."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

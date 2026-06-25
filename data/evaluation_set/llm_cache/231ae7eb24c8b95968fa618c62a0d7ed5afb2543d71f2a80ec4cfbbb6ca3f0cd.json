@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices & Services with two promotions, scaling global commercial operations and transformation programs; experience in requirements definition, logic design, UAT, rollout, and transformation\u2014demonstrating ability to bridge product strategy and cross-functional execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner with Product Managers and Engineers to scope, build, and ship AI agents; play a central role in agent development, combining product strategy, conversational design, and customer insight"
+      },
+      {
+        "candidate_evidence": "Led transformation programs at Google with responsibility for ownership, stakeholder management, and execution across multiple workstreams; proven ability to coordinate complex projects",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects; manage stakeholders through the full development lifecycle"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader managing global commercial operations; must communicate across technical and non-technical teams in transformation contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding communication skills; convey complex technical information to non-technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Transformation and program leadership background typically requires strong analytical and problem-solving capability in ambiguous, cross-functional environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Problem-solving and analytical skills to grasp complex concepts, identify risks, develop mitigation strategies"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations discipline implies data-informed decision-making; commercial operations scaling suggests quantitative rigor",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute data-driven, strategic insights to customers and internal team decisions"
+      },
+      {
+        "candidate_evidence": "Product Operations and GTM strategy background suggests customer-facing advisory experience, though AI-specific strategy depth is unclear",
+        "evidence_strength": "medium",
+        "job_requirement": "Be a trusted advisor to customers and drive their AI strategies"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No explicit AI agent or conversational AI design experience mentioned; candidate background is Google Devices & Services commercial operations, not AI product or agent development",
+        "mitigation": "Strong program leadership and cross-functional product strategy experience translates well to agent development contexts. On-the-job learning in conversational design and agent-specific best practices is feasible given hands-on role scope and Sierra's mentorship culture.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or classic case-team experience; candidate profile emphasizes internal product operations and transformation rather than external advisory or fractional advisory roles",
+        "mitigation": "Role is internal-facing with customer partnership, not pure consulting. Transformation program leadership provides relevant stakeholder management and advisory framing skills; customer-facing advisory can be developed through onboarding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product experience derived from requirements, design, UAT, and rollout rather than native PM/SDLC depth or product management frameworks; unclear exposure to user research, feature prioritization, or roadmap ownership",
+        "mitigation": "Agent Strategist role emphasizes execution, design, and delivery coordination over PM methodology depth. Candidate's transformation and operational excellence background is well-suited; gaps in PM-specific practices are secondary.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Technical depth in software development and engineering principles not explicitly documented; candidate has basic Python and is actively learning, but not a strong technical foundation",
+        "mitigation": "JD specifies 'strong understanding' of software development and engineering principles as 'technical expertise' (not a must-have). Candidate's program leadership and cross-functional coordination experience demonstrate ability to work effectively with engineers; hands-on exposure in the role will accelerate technical fluency.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 78,
+    "scope_seniority": 73,
+    "summary": "Google Strategy & Operations leader (8 years, 2 promotions) with strong commercial transformation, program execution, and cross-functional stakeholder management experience. Role family fit is solid for Agent Strategist\u2014combining product strategy, execution, and customer partnership\u2014but conversational AI and agent-specific expertise are absent. Gaps are learnable given hands-on scope and mentorship; technical depth is supplementary to the execution, design, and advisory focus of the role.",
+    "uncertainties": [
+      "Depth of customer advisory experience and familiarity with external advisory or forward-deployed strategy models unclear from profile",
+      "Specific technical depth in software development and engineering principles not detailed; only basic Python mentioned",
+      "Conversational design and AI agent domain knowledge entirely absent\u2014unclear if candidate has any adjacent experience (e.g., NLP, chatbots, voice products)",
+      "MBA or equivalent technology + operations credential not mentioned; unclear if candidate meets the 'strong plus' qualification",
+      "German language fluency stated as 'native,' but unclear if candidate meets London-based role location expectation or visa/mobility situation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

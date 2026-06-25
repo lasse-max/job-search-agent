@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations, with documented experience in product strategy, localization, and cross-functional GTM execution including UAT and rollout ownership.",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive revenue growth by optimizing go-to-market strategy for products and channels with detailed local market knowledge"
+      },
+      {
+        "candidate_evidence": "Managed transformation programs and strategic initiatives across Google with demonstrated influence across Sales, Product, Operations, Engineering, and Compliance functions; two promotions showing progression in stakeholder leadership.",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead expansion projects by partnering with wide range of stakeholders throughout the business"
+      },
+      {
+        "candidate_evidence": "Demonstrated analytical and data-driven approach in scaling operations; experience with requirements design, logic modeling, and data-informed decision-making in commercial contexts.",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and maintain operational and financial models to support business operations, including revenue forecasting, reporting and ad hoc analyses"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services experience spans global transformation, multiple commercial operations workflows, and cross-functional program execution at scale; positioned as a Strategy and Operations leader comfortable with complexity.",
+        "evidence_strength": "strong",
+        "job_requirement": "Confidently navigate ambiguity and context-switch across multiple workstreams in fast-paced environment"
+      },
+      {
+        "candidate_evidence": "Profile emphasizes analytical thinking and data-driven approach; no explicit mention of Looker/Tableau proficiency, though operations and financial modeling background implies familiarity with BI tooling.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical skills including data modelling and working with data reporting tools (Looker, Tableau)"
+      },
+      {
+        "candidate_evidence": "Eight years at Google (high-growth tech) with product strategy and transformation execution; no explicit fintech or financial services domain experience stated.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in high-growth fintech, financial services, or technology environments with prior exposure to product roadmaps and cross-functional processes"
+      }
+    ],
+    "confidence": 0.82,
+    "evidence_strength": 82,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "No documented direct experience in fintech, financial services, or payments domain; Airwallex context and competitive dynamics differ significantly from Google Devices consumer/hardware focus.",
+        "mitigation": "Strong cross-functional and GTM framework experience is transferable; onboarding and business immersion will close domain knowledge gap. Fintech complexity is high but not uniquely technical.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Explicit proficiency with Looker/Tableau or equivalent BI tools not stated in profile; data modeling approach and tools used at Google unspecified.",
+        "mitigation": "Analytical and operations modeling background suggests quick adoption; BI tool proficiency is learnable for a strong analytical operator.",
+        "severity": "low"
+      },
+      {
+        "gap": "Profile emphasizes product ownership and transformation execution over classic commercial/sales strategy consulting (e.g., McKinsey, BCG case-team rigor); consulting brand and frameworks not highlighted.",
+        "mitigation": "Role asks for 'mix' of consulting, startup, and leadership experience, not consulting exclusively. Candidate's Google tenure and strategic program execution may substitute for consulting methodologies.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 87,
+    "scope_seniority": 79,
+    "summary": "Strong match to Revenue Strategy & Operations family. Eight years of Google Devices and Services scaling global commercial operations, transformation programs, and product strategy with cross-functional leadership of Sales, Product, Operations, and Compliance aligns well with driving EMEA GTM optimization, product localization, and expansion projects. Analytical and stakeholder management strengths demonstrated. Primary gaps: no direct fintech/payments domain experience (learnable) and unspecified BI tool proficiency. Confidence strong; role clarity is high.",
+    "uncertainties": [
+      "Specific BI tools (Looker, Tableau) proficiency not stated; extent of hands-on financial/revenue modeling detail at Google unclear.",
+      "No explicit fintech, payments, or financial services background; pace of domain ramp-up and competitive nuance familiarity unknown.",
+      "Consulting methodologies and case rigor not highlighted; whether candidate's framework thinking aligns with Airwallex problem-solving approach unclear."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

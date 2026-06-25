@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Led transformation programs and commercial operations strategy at Google across global teams and scaling initiatives, demonstrating ability to own strategic execution and drive adoption at organizational level",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead the post-technical win technical account strategy and execution plan for majority of Databricks use cases within most strategic accounts"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google with experience in requirements definition, UAT, rollout, and program delivery across complex internal and partner stakeholder groups",
+        "evidence_strength": "medium",
+        "job_requirement": "Be the accountable technical leader assigned to specific use cases and customers across multiple selling teams and internal stakeholders, creating certainty from uncertainty and driving onboarding and go-live"
+      },
+      {
+        "candidate_evidence": "Background in product operations and business transformation with program leadership experience managing cross-functional delivery, though primarily within internal operations rather than customer-facing context",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop an execution plan covering all activities of customer-facing technical roles and teams including use cases, enablement, product adoption, and governance"
+      },
+      {
+        "candidate_evidence": "Limited evidence of direct customer-facing executive relationship management or consulting brand; primary experience is internal stakeholder management and transformation program execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience resolving complex and important escalations with senior customer executives"
+      }
+    ],
+    "confidence": 0.65,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No demonstrated customer-facing pre-sales, technical architecture, customer success, or consulting role experience; background is entirely internal operations and transformation at Google",
+        "mitigation": "Candidate's program management, stakeholder orchestration, and technical accountability skills are transferable, but would require substantial ramp on customer engagement models, account strategy, and external technical sales dynamics",
+        "severity": "high"
+      },
+      {
+        "gap": "No production Python, Spark, or Databricks platform experience required for technical credibility; candidate is actively learning Python at a basic level",
+        "mitigation": "Role demands post-sale technical leadership and ability to engage in technical debate with customers on distributed data systems; candidate's lack of hands-on data platform experience creates significant credibility risk in this technical leadership position",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited consulting or technical architecture background; product experience comes from ownership and transformation rather than native solution architecture or pre-sales technical design",
+        "mitigation": "Candidate can learn distributed systems concepts and architecture patterns, but lacks the consulting case-team and solution design foundation typically expected for this role",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of quota attainment, overachievement against targets, or commercial growth accountability; experience is primarily program and operations leadership",
+        "mitigation": "Role has explicit commercial growth expectation; candidate's value-driven mindset and program execution are relevant but do not demonstrate sales velocity or growth target focus",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD requires 'Programming experience in Python, Spark and Databricks (or similar data platform)' as a core qualification, and role emphasizes being 'the post-sale technical lead across all Databricks products' requiring 'technical credibility to engage and communicate at all levels.' Candidate profile explicitly states 'Python basic and actively learning' with no production data platform experience, which disqualifies from the technical leadership accountability expected in this customer-facing technical architecture role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 45,
+    "scope_seniority": 65,
+    "summary": "Databricks DSA is a customer-facing technical leadership role requiring hands-on Python/Spark/Databricks expertise, consulting or pre-sales architecture experience, and proven quota/growth accountability. Candidate brings relevant strategic program execution, stakeholder management, and transformation leadership from eight years at Google, but lacks the essential customer-facing presales/CSM background, hands-on data platform technical credibility (Python/Spark), and commercial growth track record the role explicitly demands. The technical leadership accountability and consulting skillset required are too specialized and hands-on for a candidate whose product experience is operationally driven rather than technically architected.",
+    "uncertainties": [
+      "Clarity needed on depth of candidate's transformation program scope vs. hands-on technical design involvement\u2014may overlap more with solution architecture than stated",
+      "Extent of customer-facing work through Google transformation programs unclear; internal-only or included external stakeholder/partner engagement",
+      "Timeline and roadmap for candidate's Python skill progression and data platform learning not provided; current 'basic' level and ramp potential unknown",
+      "Whether candidate has any exposure to distributed systems, cloud architectures, or data infrastructure concepts through transformation work is not detailed"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

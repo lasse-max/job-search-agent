@@ -1,0 +1,73 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years scaling global commercial operations and transformation programs at Google Devices; experience with process design, requirements logic, and rollout execution in operational contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and maintain data-driven risk identification processes"
+      },
+      {
+        "candidate_evidence": "Data-driven operations background at Google; however, no explicit evidence of advanced statistical modeling, anomaly detection, or analytical methods development specific to fraud or risk domains",
+        "evidence_strength": "weak",
+        "job_requirement": "Devise advanced analytical methods to identify anomalies and patterns within large data sets"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services scaling experience implies exposure to large datasets; specific technical depth or SQL proficiency not documented",
+        "evidence_strength": "medium",
+        "job_requirement": "Work with large data sets in a data-driven environment"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Credit risk domain expertise: No demonstrated background in credit risk principles, PD/LGD/EAD modeling, or ECL measurement frameworks required for core role responsibilities",
+        "mitigation": "Domain-specific training and mentorship; however, this is a technical specialist role, not a transformational operations role where domain can be acquired on the job",
+        "severity": "high"
+      },
+      {
+        "gap": "Payments and lending environment experience: Candidate has no background in payments processing, lending, or risk-adjacent fintech domains; role explicitly requires prior payments or lending experience",
+        "mitigation": "Industry context can be learned, but role's deep technical modeling requirements (PD/LGD/EAD) are not easily acquired without hands-on fintech experience",
+        "severity": "high"
+      },
+      {
+        "gap": "Programming proficiency for data work: Python described as 'basic and actively learning'; role requires advanced SQL and applied programming for model building and maintenance",
+        "mitigation": "Continued self-study, but core technical coding is a must-have for day-one productivity in model development and optimization",
+        "severity": "high"
+      },
+      {
+        "gap": "Specialized modeling skills: No evidence of Rating Scorecards, PD/LGD/EAD model development, or credit risk reporting system optimization",
+        "mitigation": "Not manageable without substantial ramp-up; these are core deliverables of the role, not optional stretch projects",
+        "severity": "high"
+      },
+      {
+        "gap": "Function family mismatch: Role is a specialist Risk Data Scientist (technical data science / quant modeling), not Strategy and Operations or Product Operations transformation work",
+        "mitigation": "No mitigation; role's primary focus is technical modeling and risk analytics, not strategic operations or business transformation",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Programming language knowledge or experience (e.g. Python, R, Javascript) is essential' and 'Used SQL skills to extract and model data from a variety of data sources.' Candidate profile documents 'Python basic and actively learning' with no SQL background. Role requires advanced applied programming for model building, optimization, and data pipeline development\u2014not introductory-level coding.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD states 'Strong understanding of credit risk principles and has worked in either payments or lending environments previously.' Candidate has no documented credit risk, payments, or lending background. This is a must-have minimum qualification for a risk data scientist role focused on PD/LGD/EAD modeling in fintech.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a specialized technical Risk Data Scientist role requiring expert-level credit risk modeling, advanced SQL/Python proficiency, and payments or lending domain experience. The candidate is a Strategy and Operations leader with transformation and process design expertise, but lacks the technical data science, credit risk domain knowledge, and programming depth this role demands. While the candidate's operational and analytical foundation is strong, the gap between strategic operations and specialist quantitative modeling is disqualifying.",
+    "uncertainties": [
+      "Extent of candidate's SQL experience not documented; JD requires SQL as core extraction and modeling skill",
+      "Specific analytical methods used in Google Devices operations (e.g., statistical models, forecasting) not detailed; unclear if experience transfers to credit risk anomaly detection",
+      "Level of interaction with data science or modeling teams at Google not specified; candidate may have indirect exposure to advanced analytics",
+      "Whether candidate has pursued formal training in credit risk, fintech, or quantitative finance since leaving Google not documented"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

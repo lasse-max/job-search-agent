@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs suggests management scope, but no explicit team-building or people-leadership evidence provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and lead a team of Partner Solution Engineers; 4+ years direct line management experience"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations / Product Operations background with transformation program experience; however, evidence is rooted in internal Google operations and product rollout rather than external partner/customer-facing GTM leadership",
+        "evidence_strength": "weak",
+        "job_requirement": "Drive strategic customer and partner engagements in partnership with Sales, Solution Engineering and GTM teams"
+      },
+      {
+        "candidate_evidence": "No evidence of SQL expertise, data warehouse background, or analytics platform experience mentioned in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on expertise with SQL and SQL analytics; experience with large-scale database or data warehouse technologies"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy roles typically involve cross-functional communication, but no explicit evidence of technical presenting or whiteboard leadership to executive audiences in data/engineering contexts",
+        "evidence_strength": "weak",
+        "job_requirement": "Outstanding presenting skills to both technical and executive audiences"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Regional VP title and P&L ownership. Role is a Regional Vice President reporting to VP of APJ SE; candidate background is Strategy and Operations / Product Operations at L4\u2013L5 scope, not VP-level P&L or large-scale regional team leadership.",
+        "mitigation": "This role is over-leveled for a typical L4\u2013L5 candidate profile. Only viable if Snowflake explicitly treats this as a high-growth, foundational build-out equivalent to an L4 manager scope at a startup, which is not indicated.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep data warehouse and SQL analytics expertise. Role requires hands-on SQL expertise and familiarity with large-scale database technologies (Snowflake, Tableau, Informatica, etc.). Candidate has no indicated background in data engineering, analytics, or BI platforms.",
+        "mitigation": "Candidate would need to rapidly self-educate on Snowflake architecture and SQL-based solutions. Feasible via hands-on learning and mentorship, but represents a significant ramp-up in a senior role managing external partners.",
+        "severity": "high"
+      },
+      {
+        "gap": "External partner and customer-facing GTM leadership. Role requires driving technical strategy and go-to-market execution across GSIs, CSPs, DCPs, and Strategic Alliances. Candidate's experience is internal transformation and product operations, not external ecosystem or partner management.",
+        "mitigation": "Partner ecosystem dynamics and external relationship management differ from internal product rollout. Candidate would need to learn partner incentives, co-selling models, and vendor ecosystem strategy.",
+        "severity": "high"
+      },
+      {
+        "gap": "Pre-sales and solution architecture breadth. Role expects experience architecting solutions with multi-vendor platforms and connecting business problems to technical solutions in a pre-sales context. Candidate background is product ownership and transformation, not pre-sales or customer solution architecture.",
+        "mitigation": "Transferable strategic thinking and problem-solving; however, pre-sales methodology, RFP response, and solution architecture frameworks are distinct disciplines requiring ramp-up.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role requires 'Hands-on expertise with SQL and SQL analytics' and 'Broad range of experience with large-scale database or data warehouse technologies.' Candidate has no indicated SQL, data warehouse, or analytics platform background. This is a core technical requirement for leading a Partner Solution Engineering organization.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 15,
+    "summary": "This is a Regional VP, Partner Solution Engineering role\u2014significantly over-leveled for the candidate's L4\u2013L5 Strategy and Operations profile. While the candidate brings transformation program execution and cross-functional leadership from Google, the role requires deep data warehouse and SQL expertise, external partner-facing GTM leadership, pre-sales solution architecture, and VP-scale P&L ownership. The candidate's experience is internal product operations and business transformation, not external ecosystem or data platform strategy. Multiple high-severity gaps make this a structural misalignment.",
+    "uncertainties": [
+      "No explicit evidence of team size, P&L budget, or people-leadership scope at Google; cannot confirm if candidate's scope is L4, L5, or aspiring to VP",
+      "Candidate's 'transformation programs' at Google Devices and Services could include partner/ecosystem work, but profile does not specify",
+      "No indication of whether candidate has presented to external technical or executive audiences in data/cloud/SaaS contexts",
+      "Role JD emphasizes AI-native thinking and experimental mindset; unclear if candidate's transformation background aligns with AI/agentic enterprise positioning"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

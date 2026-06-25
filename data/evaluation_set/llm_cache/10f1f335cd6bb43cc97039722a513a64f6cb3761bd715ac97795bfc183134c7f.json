@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations at Google Devices and Services with stakeholder management across multiple teams; experience owning end-to-end technical transformations and rollouts",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as primary technical point of contact for large users' technical teams, resolving integration issues and owning escalations"
+      },
+      {
+        "candidate_evidence": "Led business transformation programs requiring technical requirements definition, solution design, and stakeholder alignment; demonstrated ability to translate business needs to technical specifications",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead strategic technical conversations, articulating how products work from product feature and architecture perspective"
+      },
+      {
+        "candidate_evidence": "Managed cross-functional programs across Google commercial operations, working with multiple internal teams on delivery and outcomes",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with Sales, Solution Architecture, and Implementation teams to drive user engagement and commercial outcomes"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No production software engineering background; candidate is not a software engineer and does not write production code",
+        "mitigation": "Role explicitly requires 4+ years software/integration engineering experience with code-level debugging, writing Go/Java/C++, and hands-on keyboard implementation. This is a core responsibility, not a nice-to-have. Candidate's transformation and operations background cannot substitute for engineering fundamentals.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python basic and actively learning; JD requires proficiency in Go, Java, C/C++, or similar for debugging and implementation",
+        "mitigation": "Minimal programming language overlap. Role demands comfortable code-level debugging of Stripe and user code as a practical problem-solving tool. Ramp time would be substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited payments domain expertise; JD requires understanding of payments domain and API security principles",
+        "mitigation": "While candidate has transformation experience, specific payments/fintech domain knowledge is absent. This would require domain onboarding alongside technical ramp.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No customer-facing technical consulting or solutions engineering background; preferred qualification but reinforces engineering-first positioning",
+        "mitigation": "Candidate background is operations and transformation leadership, not technical advisory. Customer engagement model is fundamentally different from strategic ops work.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Minimum requirements state '4+ years of experience in a software engineering or integration engineering role' and 'Ability to write and debug code in languages such as Go, Java, C/C++, or similar' and 'Lead hands-on keyboard implementations where required.' Candidate has no software engineering background, Python basic and actively learning, and product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than engineering.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "This is a senior technical integration engineering role requiring 4+ years of production software engineering, code-level debugging proficiency in Go/Java/C++, and hands-on implementation responsibility. The candidate is a Strategy and Operations leader with transformation expertise but lacks the software engineering foundation, programming language proficiency, and payments domain knowledge this role demands. The function is outside approved target and stretch families; this is technical delivery, not business transformation or strategic operations.",
+    "uncertainties": [
+      "Candidate's exact depth of technical requirements definition and architecture guidance unclear from profile\u2014could span narrow specifications to deep technical design",
+      "Whether candidate has any hands-on integration tooling or scripting (e.g., SQL, data queries, lightweight automation) that might narrow the engineering gap",
+      "Stripe Professional Services team's typical career path and whether they hire strategically-minded operators into technical advisory roles"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

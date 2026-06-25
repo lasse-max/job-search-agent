@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with scaling global commercial operations and two promotions; experience with transformation programs suggests stakeholder management and strategic planning capability at enterprise scope",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead deal strategy: Define win themes, stakeholder maps, and executive alignment for complex, multi-threaded pursuits"
+      },
+      {
+        "candidate_evidence": "Product operations background with ownership of requirements, logic design, UAT, rollout, and transformation implies financial/business case modeling and cross-functional negotiation experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Structure deal economics: Build ROI/TCO, pricing architectures, and commercial constructs; partner with Deal Desk, Legal, and Risk"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations at Google implies regular high-level stakeholder engagement and ability to influence across levels; Strategy & Operations positioning confirms executive-level experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive executive engagement: Lead C-suite briefings, POVs, and workshops; establish trusted relationships with business and technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Transformation and rollout experience with UAT involvement demonstrates capability to translate requirements, validate feasibility, and manage implementation risks",
+        "evidence_strength": "medium",
+        "job_requirement": "Align solution fit: Co-develop high-level solution scope with Solution Architects; confirm feasibility, phase plans, and risks/mitigations"
+      },
+      {
+        "candidate_evidence": "Product Operations background with requirements ownership and logic design directly maps to translating customer needs into product prioritization",
+        "evidence_strength": "strong",
+        "job_requirement": "Inform product & roadmap: Synthesize enterprise requirements and market trends; translate into clear use cases and prioritization for Product"
+      },
+      {
+        "candidate_evidence": "Honest gap: product experience comes from ownership, requirements, logic design, UAT, and transformation rather than native engineering or payments domain depth; would require ramp on domain specifics",
+        "evidence_strength": "weak",
+        "job_requirement": "Technical fluency (not a pure Solution Architect): Acquiring, issuing, wallets/treasury/FX; comfortable engaging at an architectural level"
+      }
+    ],
+    "confidence": 0.82,
+    "evidence_strength": 75,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No direct payments, financial services, or treasury domain experience; JD emphasizes acquiring, issuing, wallets/treasury/FX as core GTM focus",
+        "mitigation": "Domain expertise is learnable via onboarding, customer engagement, and product immersion; candidate's requirements-ownership and solution-architecture background provide the foundational mindset to acquire financial services GTM knowledge quickly",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited pre-sales consulting or deal-desk experience; JD prioritizes deal orchestration, RFP/RFI ownership, and commercial terms negotiation with Deal Desk and Legal",
+        "mitigation": "Global commercial operations and transformation rollout imply cross-functional negotiation and commercial problem-solving; GTM and deal strategy are accelerated learnings for a strategic operator with executive credibility",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit enterprise quota-carrying or sales-led GTM background mentioned; JD role requires shaping enterprise AE strategy and win plans",
+        "mitigation": "Strategy & Operations and Product Operations roles often inform and enable sales strategy without direct sales accountability; can transition into GTM strategy leadership with domain ramp and sales-motion alignment",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 82,
+    "scope_seniority": 78,
+    "summary": "Strong fit to GTM Strategy & Operations role family with eight years of strategy, operations, and commercial-scale transformation at Google. Executive stakeholder engagement, requirements ownership, and cross-functional execution align well to deal strategy and product-roadmap inform duties. Medium gaps in payments domain and pre-sales/deal-desk consulting are manageable with domain ramp and sales-motion alignment. Consider for role; domain fluency and enterprise pre-sales depth are accelerated learnings for a proven strategic operator.",
+    "uncertainties": [
+      "Depth of customer-facing enterprise negotiation and deal-structure experience not fully detailed in candidate profile",
+      "Specific exposure to pricing strategy, commercial constructs (usage/SaaS/hybrid), and ROI/TCO modeling not explicitly stated",
+      "Extent of hands-on RFP/RFI orchestration and technical validation leadership in previous roles unclear",
+      "Career motivation and interest in domain-specific GTM (payments/fintech) not documented"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

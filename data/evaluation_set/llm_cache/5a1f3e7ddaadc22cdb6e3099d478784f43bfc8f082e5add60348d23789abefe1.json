@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with experience scaling global commercial operations and transformation programs, including process design and execution at enterprise scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Help define our sales motion and GTM function in an early-stage growth context"
+      },
+      {
+        "candidate_evidence": "Google Devices & Services background demonstrates ability to work across multiple org functions; Product Operations experience includes stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional collaboration with product, technical, operations, and marketing teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader background suggests quantitative, analytical approach to business problems",
+        "evidence_strength": "weak",
+        "job_requirement": "Analytical mindset and data-driven decision-making"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying enterprise sales background not demonstrated. Candidate is Strategy & Ops / Product Operations, not customer-facing sales.",
+        "mitigation": "Could potentially transition into a GTM Strategy or Sales Operations role, but not into a hands-on Sales Director closing $1M+ enterprise deals and leading prospecting/negotiation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of 10+ years identifying, prospecting, and closing large enterprise accounts. Candidate's experience is internal-facing strategy and operational transformation.",
+        "mitigation": "This is a foundational sales skill gap that is difficult to mitigate in a Director-level sales role responsible for revenue targets and complex deal closure.",
+        "severity": "high"
+      },
+      {
+        "gap": "Sales Director title at established company (Sierra, Tier 1) implies L5+ scope. Candidate's seniority ceiling is L4\u2013L5 in Strategy & Ops/Transformation; over-leveled for this company tier in a pure sales function.",
+        "mitigation": "Could explore a Sales Strategy or GTM Operations role at L4, but not a full Sales Director quota-carrying position.",
+        "severity": "high"
+      },
+      {
+        "gap": "Professional fluency in Spanish required; candidate profile lists German and English only.",
+        "mitigation": "Role is based in Madrid and explicitly requires Spanish fluency. No evidence this candidate meets that requirement.",
+        "severity": "medium"
+      },
+      {
+        "gap": "AI industry landscape familiarity not stated in candidate profile.",
+        "mitigation": "Preferred skill; candidate's analytical and strategic mindset may support quick ramp-up in AI/enterprise software context.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "This is a pure enterprise sales director role (quota-carrying, prospecting, deal closure) in a Tier 1 company at an over-leveled seniority tier. The candidate is a Strategy & Operations / Product Operations leader with deep transformation and cross-functional scope at Google, but lacks the 10+ years of customer-facing enterprise sales, prospecting, and complex deal negotiation core to this role. Additionally, the role requires professional Spanish fluency; candidate is fluent in English and German only. While the candidate could succeed in a GTM Strategy, Sales Operations, or Sales Transformation role at L4, this Director-level pure sales position is a functional and seniority mismatch.",
+    "uncertainties": [
+      "Candidate's Spanish language proficiency not documented; Madrid-based role explicitly requires 'Professional fluency in both Spanish and English.'",
+      "Depth of candidate's AI industry exposure or familiarity not stated; unknown whether candidate has worked in or studied AI/ML product or enterprise software contexts.",
+      "Whether candidate has any exposure to enterprise quota-carrying sales motions or deal closure cycles at Google (e.g., in a vendor-management or partnership capacity) is unclear from profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

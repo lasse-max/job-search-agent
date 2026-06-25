@@ -1,0 +1,59 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations and transformation program experience, including scaling global operations across multiple regions",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of business processes \u2013 finance and tax requirements in multiple jurisdictions is a bonus"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and scaled operations at global scale, demonstrating end-to-end project ownership and delivery in fast-moving environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Self-motivated and able to manage technical projects from conception to deployment in a fast-paced environment"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with experience across global commercial functions and transformation programs requiring cross-functional stakeholder alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong ability to manage through influence, building relationships with key people and able to influence decisions to achieve the right outcomes"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "This is a Senior IT Engineer / systems engineering role requiring hands-on ERP configuration, API integration architecture, and technical implementation. The candidate's background is Strategy and Operations, not production systems engineering.",
+        "mitigation": "Only viable if candidate has hidden or undisclosed deep hands-on technical experience in ERP/finance systems integration not mentioned in profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "Minimum qualification requires Bachelor's in IT, Computer Science, Finance, or related field with strong technical knowledge of ERP systems and integration technologies. Candidate profile does not document this technical credential or ERP/integration depth.",
+        "mitigation": "Candidate would need formal ERP certification or demonstrable hands-on ERP configuration/integration track record to meet minimum bar.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires 'Proven ability to build integrations using APIs, middleware tools, lowcode platform or scripting languages (e.g., Python, JavaScript).' Profile notes 'Python basic and actively learning,' indicating insufficient technical depth for a senior engineering role.",
+        "mitigation": "Significant upskilling in integration technologies and scripting required; not realistic for senior-level delivery.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct fintech or financial systems domain experience. Profile is generic commercial operations and transformation; no mention of ERP, tax compliance systems, procurement processes, or finance infrastructure.",
+        "mitigation": "Domain learning required, but operations leadership may provide adjacent context for finance process understanding.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Proven ability to build integrations using APIs, middleware tools, lowcode platform or scripting languages (e.g., Python, JavaScript)' under minimum qualifications. Candidate profile explicitly states 'Python basic and actively learning,' indicating insufficient proficiency for a hands-on senior engineer role responsible for system architecture and API integration design.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a hands-on Senior IT Engineer role for ERP/finance systems architecture and integration\u2014a production engineering function outside the candidate's target strategy and operations families. The candidate brings strong stakeholder management and global transformation leadership but lacks the required ERP systems knowledge, scripting proficiency (Python basic/learning), and financial systems domain depth. Scope seniority is reasonable but function fit is fundamentally misaligned.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

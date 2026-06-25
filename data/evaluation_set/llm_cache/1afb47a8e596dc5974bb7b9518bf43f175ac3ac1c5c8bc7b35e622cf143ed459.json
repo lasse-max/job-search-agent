@@ -1,0 +1,55 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "~8 years at Google Devices and Services with two promotions in commercial operations and transformation programs, positioned as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations Strategy role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations at Google with experience in transformation programs requiring stakeholder alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Global scope and cross-functional stakeholder management"
+      },
+      {
+        "candidate_evidence": "Product operations experience grounded in ownership, requirements design, UAT, rollout, and transformation execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Business transformation and process design"
+      }
+    ],
+    "confidence": 0.35,
+    "evidence_strength": 45,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "JD severely incomplete: no explicit requirements, responsibilities, or success criteria provided",
+        "mitigation": "Request full JD snapshot with detailed scope, key accountabilities, strategic priorities, and team/stakeholder context",
+        "severity": "high"
+      },
+      {
+        "gap": "Consulting or implementation experience not clearly demonstrated; classic case-team background absent",
+        "mitigation": "Clarify whether transformation projects at Google included external stakeholder engagement or implementation consulting models",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of fintech, payments, or cross-border commerce domain experience",
+        "mitigation": "Assess whether Google Devices operations domain transferability sufficient for Airwallex's payment and FX context",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 75,
+    "scope_seniority": 70,
+    "summary": "Candidate's Strategy and Operations background and ~8-year tenure at Google in commercial operations and transformation align well with the role family and seniority level. However, the JD provided is incomplete\u2014only metadata and no substantive job description, requirements, or responsibilities\u2014making evidence mapping and confidence severely limited. Request full JD to assess strategic priorities, team scope, and domain fit.",
+    "uncertainties": [
+      "JD contains no explicit requirements, responsibilities, or strategic accountabilities\u2014only title and department metadata",
+      "Scope and seniority level of the Operations Strategy role unclear without full description",
+      "Whether Google Devices operations experience transfers to fintech/payments/FX context unknown",
+      "Consulting or implementation-heavy scope unknown; cannot assess fit against approved stretch families",
+      "Team size, reporting relationship, and cross-functional scope not provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

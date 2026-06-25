@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with demonstrated program leadership and global operations scaling; experience owning transformation programs and process design indicates program and systems-thinking capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Own Knowledge Management environment end-to-end, defining architecture, establishing governance, and maintaining content quality"
+      },
+      {
+        "candidate_evidence": "No evidence of hands-on Confluence, wiki, or knowledge management platform administration provided in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on experience with Confluence or similar wiki tools; thought about architecture, governance, and rebuilt spaces from ground up"
+      },
+      {
+        "candidate_evidence": "Candidate profile notes 'Implementation-heavy AI transformation roles' as approved stretch family, but no concrete examples of leading AI tool selection, implementation, or management in the provided evidence",
+        "evidence_strength": "weak",
+        "job_requirement": "Successful experience leading selection, implementation, and management of AI technology solutions"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background implies analytics and insights capability; no specific case examples of metrics-driven decision-making in legal, compliance, or knowledge management contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyse and translate metrics into clear strategic insights"
+      },
+      {
+        "candidate_evidence": "Candidate background is from Google Devices and Services commercial operations and product strategy; no legal, compliance, risk, or legal operations experience mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep operational expertise within corporate legal, risk or compliance department, or specialised legal operations environment"
+      },
+      {
+        "candidate_evidence": "Global operations scaling and transformation program leadership at Google implies stakeholder management; no specific examples of legal/risk stakeholder or external partner engagement provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding communication and relationship-building with senior stakeholders and external partners globally"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No legal operations, corporate legal, risk, or compliance department background; candidate is from Google Devices/Services commercial operations, not legal/compliance domain",
+        "mitigation": "Rapid domain onboarding on legal operations workflows, compliance frameworks, and risk/ethics function dynamics would be required; strong ops foundation could accelerate learning but cultural and regulatory context is unfamiliar",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with Confluence, knowledge management platforms, or wiki-style system architecture and governance",
+        "mitigation": "Candidate would need to learn platform-specific tooling and knowledge architecture principles on the job; program leadership and process design skills may transfer but hands-on platform experience is missing",
+        "severity": "high"
+      },
+      {
+        "gap": "No concrete evidence of leading AI technology tool selection, implementation, or vendor management in production environments",
+        "mitigation": "Approved stretch family includes AI transformation roles; candidate may have exposure but JD requires proven leadership of AI integration projects; gap is learnable but unvalidated",
+        "severity": "medium"
+      },
+      {
+        "gap": "12-month fixed-term contract; candidate positioning emphasizes long-term strategic leadership and scaling at Google, suggesting potential misalignment with contract scope and duration",
+        "mitigation": "If candidate seeks 12-month tactical project leadership, fit improves; if seeking permanent strategic role, motivation and retention risk rise",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 28,
+    "scope_seniority": 62,
+    "summary": "Candidate is a strong Strategy &amp; Ops leader from Google with eight years of commercial operations and transformation program leadership, matching the seniority ceiling and stakeholder-management capability. However, the role requires deep legal operations, compliance, and knowledge-management domain expertise\u2014areas entirely absent from the candidate's background. No Confluence or wiki platform experience, unvalidated AI implementation leadership, and the 12-month contract term create misalignment. While program leadership and process design skills could theoretically transfer, the combination of domain gap, technical platform gap, and contract duration suggests a poor fit despite operational seniority.",
+    "uncertainties": [
+      "Unclear whether candidate has any exposure to AI technology selection or implementation beyond approved stretch family designation",
+      "No detail on depth of candidate's experience with operational metrics, analytics, and KPI frameworks in non-legal contexts",
+      "Unknown whether candidate has prior interest in or familiarity with legal operations, compliance, or risk-management functions",
+      "Unclear how candidate views 12-month fixed-term contract relative to career trajectory and commitment expectations"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

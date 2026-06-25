@@ -1,0 +1,44 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Operations leader with eight years at Google scaling global commercial operations and transformation programs",
+        "evidence_strength": "weak",
+        "job_requirement": "\u00dcberwachung der Einhaltung betrieblicher Standards und Regelwerke"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 10,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No railway operations, safety, or Triebfahrzeugf\u00fchrer (locomotive driver) certification background",
+        "mitigation": "Role is heavily specialized in German railway regulations and safety compliance; certification is a core hard requirement that cannot be acquired during employment",
+        "severity": "high"
+      },
+      {
+        "gap": "Role requires field-based safety inspection and direct operational oversight; candidate background is strategy and transformation focused, not field operations or safety compliance",
+        "mitigation": "Functional mismatch is fundamental; strategy ops experience does not transfer to hands-on safety inspection and regulatory compliance roles",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in transportation, logistics, regulatory compliance, or safety-critical operations",
+        "mitigation": "Domain experience is absent; learning curve would be extensive and domain-critical",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Abgeschlossene Ausbildung als Triebfahrzeugf\u00fchrer [Completed apprenticeship as locomotive driver]. This is a regulated, legally required qualification in Germany for railway operations safety roles. Candidate has no railway driver certification or equivalent transportation safety credential.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 5,
+    "scope_seniority": 25,
+    "summary": "This is a German railway safety inspector (Betriebskontrolleur) role requiring mandatory locomotive driver certification and deep railway operations expertise. The candidate is a Strategy &amp; Operations leader with Google tech background; this role family, scope, domain, and regulatory requirements are fundamentally misaligned. Hard blocker: no Triebfahrzeugf\u00fchrer qualification.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

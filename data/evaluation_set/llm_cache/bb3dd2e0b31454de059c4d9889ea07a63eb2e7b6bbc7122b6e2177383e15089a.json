@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs with demonstrated ability to drive cross-functional execution at scale; led requirements definition, business case development, and product rollout including UAT and market launch",
+        "evidence_strength": "strong",
+        "job_requirement": "Own external product delivery space end to end, shaping product strategy and driving execution with cross-functional stakeholders"
+      },
+      {
+        "candidate_evidence": "Transformation and strategic programs leadership with hands-on involvement in requirements logic design and proof-of-concept rollout; experience developing business cases and driving feasibility assessment through execution phases",
+        "evidence_strength": "medium",
+        "job_requirement": "Build compelling business cases, develop prototypes and proof-of-concepts, and translate technical capability into products and features solving real problems"
+      },
+      {
+        "candidate_evidence": "Regional-scale operations leadership at Google with proven stakeholder management across engineering, product, and commercial teams; cross-functional influence at senior levels during transformation initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Influence senior stakeholders and operate as connective tissue between market opportunity and product delivery"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background with involvement in technical requirements and UAT; basic Python proficiency and active learning in AI; however, not a native PM or engineer with deep API/AI engineering depth",
+        "evidence_strength": "medium",
+        "job_requirement": "Hands-on product experience with technical foundation, including working knowledge of APIs and practical understanding of AI and applications"
+      },
+      {
+        "candidate_evidence": "No explicit accounting or financial operations domain background evident in profile; would require rapid domain acquisition in APAC accounting and practice management workflows",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep familiarity with accounting practice workflows and operations, or ability to get across them quickly"
+      },
+      {
+        "candidate_evidence": "Eight-year Google track record in commercial operations and transformation program delivery; demonstrated ability to assess feasibility and build business cases; understanding of regional and regulatory context relevant to scaling operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Commercially sharp\u2014identify scalable opportunities, build solid business cases, keep keen eye on market viability"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 65,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Head of role signals Director/VP-level scope at an established tier-2 company; candidate is L4-equivalent eight-year IC/manager. Title suggests over-leveled seniority for peer-to-peer regional leadership.",
+        "mitigation": "If role is actually reframed as Principal IC, Strategy Architect, or cross-functional lead reporting to Regional Director (not peer-leveled), severity drops to medium. Clarify whether it is truly 'Head of' scope (hiring/P&L/FTE ownership) or strategic IC leadership.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct accounting, financial services, or tax/compliance domain expertise; no demonstrated familiarity with practice management, SME accounting workflows, or APAC regulatory requirements.",
+        "mitigation": "Candidate is positioned as a quick learner in domain transitions; allocate 2-3 months for domain immersion and close partnership with finance/compliance and practice ops SMEs. Hire onboarding buddy from Xero practice team.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited consulting brand and classic case-team experience; may lack exposure to rapid multi-stakeholder consensus building and external partnership narrative common in strategy roles.",
+        "mitigation": "Leverage Google's cross-regional stakeholder management experience and transformation leadership; pair with experienced Xero strategist for first 6 months to build consulting-style rigor in narrative and partner engagement.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit AI engineering or ML product depth; basic Python and active learning. Role expects 'practical understanding of AI and its applications' in product context.",
+        "mitigation": "Candidate can rapidly upskill in AI product application through self-directed learning and collaboration with Xero's product and AI teams. Domain knowledge and product acumen are more critical than depth here.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 42,
+    "summary": "Candidate is a strong Strategy & Operations fit with eight years of Google transformation and commercial ops leadership, proven cross-functional execution, and business case development\u2014directly aligned to product strategy and stakeholder influence. However, the \"Head of\" title signals over-leveled seniority (Director/VP-equivalent at tier-2 company) versus L4 peer scope, and critical gaps in accounting/financial operations domain and APAC regulatory context are substantial though learnable. Advisory is stretch: strong function fit and transformation leadership offset seniority mismatch and domain onboarding risk.",
+    "uncertainties": [
+      "Actual scope of 'Head of Technical Innovation' role\u2014is it true P&L/hiring/FTE ownership (over-leveled) or strategic IC leadership with cross-functional influence (appropriate)?",
+      "Depth of candidate's AI product acumen beyond 'basic Python and active learning'; role expects practical applied understanding",
+      "How quickly candidate can acquire accounting domain knowledge and APAC regulatory/tax compliance context; learning curve not quantified",
+      "Candidate's prior exposure to partner/ecosystem management; Google Devices scope unclear on external partner strategy and relationship building"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience in cross-functional coordination and stakeholder management across internal teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience leading complex sales processes and managing strategic, account-based partnerships with cross-functional teams internally"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background with experience in requirements definition, logic design, UAT, and rollout; strong on business problem-solving and stakeholder engagement; not quota-carrying sales",
+        "evidence_strength": "medium",
+        "job_requirement": "Understanding of customer IT roadmaps and ability to position solutions; transformational and consultative selling approach"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with global scope; experience managing stakeholder relationships and translating business requirements at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Executive relationship management and understanding of C-level business drivers"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying field sales experience. Candidate's background is product operations, transformation, and commercial operations\u2014not direct enterprise account management, territory management, or closing seven-figure sales deals",
+        "mitigation": "Candidate's strategic and stakeholder-management skills could support a transition, but would require hands-on sales training, territory ramp, and deal-closing mentorship. High career-change risk.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with Financial Services / Banking customers\u2014a stated 'extensive experience' requirement for HSBC account focus",
+        "mitigation": "Could acquire through onboarding, but entry-level risk in a specialized, high-stakes vertical.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct field sales process ownership. Candidate's sales expertise comes from requirements definition and transformation rollout, not pipeline management, executive deal flow, and account closure",
+        "mitigation": "Would require structured sales training and close pairing with account team leads.",
+        "severity": "high"
+      },
+      {
+        "gap": "No mention of managing or leading regional sales account teams aligned to customer outcomes",
+        "mitigation": "Candidate's program leadership and operational oversight experience could translate, but sales-team dynamics and quota accountability are distinct.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "This is a pure enterprise quota-carrying Global Account Manager role in Financial Services for Snowflake. Candidate is a Strategy and Operations / Product Operations leader from Google with strong transformation, stakeholder management, and commercial scaling skills\u2014a non-target role family. The 10\u201315+ years of field sales, seven-figure deal closure, and Financial Services verticals are explicitly required and not substantively met. Core sales execution experience gap is high and career-change risk is material.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

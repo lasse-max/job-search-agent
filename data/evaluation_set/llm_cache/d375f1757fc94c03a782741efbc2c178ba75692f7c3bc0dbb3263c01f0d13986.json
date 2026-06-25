@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with ownership of global commercial operations and transformation programs, including two promotions and demonstrated ability to scale operations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Define and own Airwallex's yield product strategy, solution design, roadmap, and delivery plans."
+      },
+      {
+        "candidate_evidence": "Product experience gained through ownership of requirements, logic design, UAT, rollout, and transformation programs; collaborated on cross-functional delivery.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with engineering and design teams to build high-quality, scalable features, driving clarity on requirements, trade-offs and timelines."
+      },
+      {
+        "candidate_evidence": "Operated at scale within a large multinational company (Google) with complex regulatory and operational environments; demonstrated ability to work cross-functionally across global commercial operations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with commercial, marketing, legal and finance teams to navigate regulatory and operational complexity."
+      },
+      {
+        "candidate_evidence": "Eight years of transformation and operations leadership suggests familiarity with trade-off management, but candidate profile emphasizes transformation and operations rather than product-driven growth prioritization.",
+        "evidence_strength": "weak",
+        "job_requirement": "Manage difficult trade-offs between long-term product vision and near-term growth in a data-driven, fast-paced environment."
+      },
+      {
+        "candidate_evidence": "Transformation and program leadership background indicates ability to drive new initiatives; however, no explicit evidence of launching multiple product verticals or managing product-market fit validation.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead extension of Yield into new verticals and use cases, validating opportunities and taking concepts to launch."
+      }
+    ],
+    "confidence": 0.65,
+    "evidence_strength": 55,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Native Product Manager pedigree: candidate's product experience comes from transformation, operations, and requirements ownership rather than end-to-end PM/SDLC cycles including discovery, competitive analysis, and shipped feature impact.",
+        "mitigation": "Candidate's strategic operations and transformation background may translate to strategy ownership; pair with experienced PM mentor or embedded IC to close hands-on product execution knowledge.",
+        "severity": "high"
+      },
+      {
+        "gap": "Fintech/payments domain experience: no evidence of prior work in financial services, payments, treasury, or embedded finance; Yield is a regulated, specialized product.",
+        "mitigation": "Assign a domain advisor or pair with a finance/compliance expert early; invest in rapid domain immersion (regulatory landscape, competitor products, customer segments in fintech).",
+        "severity": "high"
+      },
+      {
+        "gap": "Product metrics and growth analytics: operations/transformation focus does not clearly demonstrate deep experience with product analytics, cohort analysis, retention modeling, or data-driven growth prioritization.",
+        "mitigation": "Provide access to Airwallex's analytics infrastructure and hire or embed a strong data-driven PM or analytics partner for the first 6\u20139 months.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Yield product and competitive knowledge: no evidence of prior exposure to yield/sweep/treasury products, competitor offerings (Wise, Checkout.com, Mercury, etc.), or end-user expectations.",
+        "mitigation": "Conduct structured competitive deep-dive, customer interviews, and product teardowns before onboarding; allocate time for market research in first month.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 42,
+    "scope_seniority": 72,
+    "summary": "Candidate is a strategy and operations leader with eight years at Google and strong cross-functional collaboration and ownership experience, but this is a native Product Manager role requiring hands-on PM/SDLC expertise, fintech domain knowledge, and product-metrics-driven growth leadership\u2014areas where candidate has limited direct evidence. Scope seniority aligns well (L4-equivalent Staff PM); role family fit is weak due to product PM vs. operations/transformation focus. Recommend as a stretch play only if Airwallex is willing to invest in domain onboarding, PM mentorship, and embedded analytics support.",
+    "uncertainties": [
+      "Depth and scope of 'product experience' within transformation programs: unclear whether candidate directly owned feature definition, prioritization, or user feedback loops vs. coordinating cross-functional delivery.",
+      "Degree and depth of quantitative/analytical skills: profile mentions first-principles thinking but does not clarify comfort with product metrics, A/B testing, or cohort analysis.",
+      "Prior exposure to regulated financial products or licensing/compliance workflows: no evidence provided.",
+      "Motivation for shift from operations/transformation to hands-on product strategy: unclear whether candidate has successfully transitioned into PM roles before or seeks to do so now."
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

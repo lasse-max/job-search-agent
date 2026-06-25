@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs with demonstrated stakeholder management at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and maintain strategic relationships with key clients and serve as primary point of contact"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and commercial operations scaling experience with cross-functional coordination, though payment-specific and migration execution depth are unproven",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead and coordinate addition of new payment solutions and technical migrations for clients, working closely with cross-functional teams"
+      },
+      {
+        "candidate_evidence": "Product operations background with experience in requirements definition, logic design, and transformation rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Gather customer feedback, document feature requests, and provide insights to product roadmap"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Role is Customer Success / Technical Account Management, not Strategy and Operations or Product Operations\u2014core responsibility is relationship and technical support delivery, not strategic transformation or business operations leadership",
+        "mitigation": "Candidate could transition if TAM scope includes strategic account architecture and product roadmap influence at portfolio level, but JD emphasizes reactive technical support and upselling",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep payments industry domain expertise required (3DS, SCA, AVS, MIT, API integrations, PCI-DSS, PSD2) with familiarity of front/back-end technologies\u2014candidate background is Google Devices/Services operations without stated payments fintech exposure",
+        "mitigation": "Technical knowledge is learnable; candidate would require 6\u201312 months of ramp-on payments compliance, regulatory landscape, and integration patterns. Crypto & iGaming vertical adds specialization need",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of direct TAM, customer success, or account management experience\u2014background is internal operations and transformation rather than external client management or support delivery",
+        "mitigation": "Candidate has stakeholder and communication skills but lacks proven track record in customer-facing delivery, technical troubleshooting, and external satisfaction ownership",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct technical depth in APIs, payment workflows, or compliance frameworks\u2014background emphasizes requirements and design logic rather than hands-on integration debugging or technical mentoring of clients",
+        "mitigation": "Can develop through hands-on TAM onboarding; would benefit from pairing with technical engineers early in role",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated crypto or iGaming vertical experience\u2014niche specialization required for senior-level TAM in this segment",
+        "mitigation": "Industry knowledge builds with time; prior fintech familiarity would accelerate, but not present",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader with eight years at Google and strong transformation and stakeholder management credentials, but this role is Customer Success / Technical Account Management\u2014a function family explicitly outside target scope. While the candidate could contribute in strategic account architecture or portfolio-level product feedback, the JD emphasizes reactive technical support, client relationship delivery, payment-compliance expertise, and vertical specialization (crypto & iGaming) in which the candidate has no demonstrated depth. Risk of misalignment is high.",
+    "uncertainties": [
+      "Unclear whether 'Senior Specialist' TAM title at a tier-2 fintech company maps to Manager/L4 scope or is an IC specialist role; scope ambiguity affects seniority match",
+      "No information on candidate's familiarity with crypto or blockchain payment flows, which is critical for iGaming vertical",
+      "No data on candidate's hands-on API integration or technical debugging capability beyond requirements design"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

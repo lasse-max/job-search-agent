@@ -1,0 +1,44 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs; experience in operational oversight and process improvement",
+        "evidence_strength": "weak",
+        "job_requirement": "Operational oversight and safe transportation of passengers throughout entire route"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 2,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "No railway/transportation operations background or train conductor certification",
+        "mitigation": "Candidate would need to complete formal Zugf\u00fchrer/Zugchef certification program; position explicitly excludes career-changers and requires pre-qualified trained conductors",
+        "severity": "high"
+      },
+      {
+        "gap": "No technical railway competency: brake tests, wagon inspections, shunting operations",
+        "mitigation": "Requires specialized technical training in railway operations; certifications for brake tests and wagon inspections are mandatory prerequisites",
+        "severity": "high"
+      },
+      {
+        "gap": "Operational role scope is individual-contributor, shift-based transportation safety, not strategic leadership or transformation",
+        "mitigation": "Candidate's background is strategy/operations leadership; this is a frontline operational position with no strategic or program-leadership component",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: 'Du hast eine abgeschlossene Qualifizierung als Zugpersonal (z. B. Zugf\u00fchrer:in/ Zugchef:in)' and 'Achtung: Wir bieten keinen Quereinstieg und keine Ausbildung f\u00fcr diese Position an, sondern suchen nach vorqualifizierten und ausgebildeten Zugchef:innen/ Zugf\u00fchrer:innen f\u00fcr den Fernverkehr.' Candidate has no railway conductor certification, no train operations background, and no pathway to acquire this in context of strategy/operations profile.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "This is a frontline railway conductor (Zugf\u00fchrer/Zugchef) role requiring certified pre-qualified train personnel for safe passenger transportation, technical operations, and shift-based fieldwork. Candidate is a Strategy & Operations / Product Operations leader with eight years at Google; the role family, scope, and hard requirement for railway conductor certification are fundamentally misaligned. **Recommend skip.**",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

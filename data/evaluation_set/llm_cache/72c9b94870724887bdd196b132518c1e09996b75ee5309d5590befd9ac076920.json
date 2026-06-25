@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with scaling global commercial operations and transformation programs; strong operations and business logic expertise but not a CS/mathematics/physics background",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical background in computer science, mathematics, or physics"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning, not fluent; candidate profile explicitly notes this is a gap",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in Python programming"
+      },
+      {
+        "candidate_evidence": "No evidence provided in candidate profile of AI safety or AI policy motivation or work",
+        "evidence_strength": "weak",
+        "job_requirement": "Are motivated by making sure AI is safe and beneficial for society as a whole"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No strong technical background in computer science, mathematics, or physics; background is in operations and business transformation",
+        "mitigation": "Candidate could pursue self-directed study in mathematics or physics fundamentals, but this is a core requirement for the program and unlikely to be fully closed in a 4-month fellowship",
+        "severity": "high"
+      },
+      {
+        "gap": "Not fluent in Python; candidate is basic and actively learning",
+        "mitigation": "JD states 'Fluent in Python' as a must-have. Intensive self-study could bring candidate to conversational level but not fluency required for independent research implementation",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated interest in or experience with economics, policy research, or AI safety/security research; background is commercial operations and product strategy",
+        "mitigation": "Candidate could develop interest and self-teach policy/economics concepts, but no track record suggests alignment with the research areas (labor markets, AI-enabled cyber/bio, model scaling risks)",
+        "severity": "high"
+      },
+      {
+        "gap": "No empirical research or research publication background; experience is in operations execution and transformation rather than research design and communication",
+        "mitigation": "Program provides mentorship, but 80% past fellows produced papers suggesting baseline research aptitude expected; candidate's background is in execution, not hypothesis-driven research",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Fluent in Python programming' under 'Candidates must be.' Candidate profile explicitly identifies 'Python basic and actively learning' as a gap. The JD lists this as a strict requirement, not preferred or nice-to-have, and the program's empirical research workload requires implementation of research ideas in code.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 25,
+    "scope_seniority": 10,
+    "summary": "This is an AI safety research fellowship requiring fluent Python, a strong CS/mathematics/physics foundation, and interest in empirical AI policy and economics research. The candidate is a Strategy & Operations leader with 8 years at Google but lacks the technical prerequisites (fluent Python, CS/math background) and has no demonstrated experience in AI safety, economics research, or empirical research publication. The role is fundamentally a research position, not a business operations or strategy role, and sits outside the candidate's approved stretch families and primary competencies.",
+    "uncertainties": [
+      "Candidate's actual depth of mathematics or physics knowledge beyond the baseline profile description is unclear",
+      "No information on whether candidate has any independent research projects, publications, or research interest stated",
+      "Candidate's motivation for applying to an AI safety research fellowship is unknown; profile shows no AI safety or policy interest"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

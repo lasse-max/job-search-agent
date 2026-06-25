@@ -1,0 +1,74 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs with two promotions; background in strategy and operations with ownership of requirements, logic design, and transformation execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead executive-level workshops to identify business challenges and opportunities where Mistral's AI can drive step-change improvements; co-create AI adoption roadmaps with customers"
+      },
+      {
+        "candidate_evidence": "Google experience in scaling commercial operations and transformation programs suggests cross-functional stakeholder management and roadmap influence; positioning as Strategy and Operations leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as the bridge between customers and Mistral's internal teams, synthesizing feedback to influence product and research roadmaps"
+      },
+      {
+        "candidate_evidence": "Strategic vision and business problem-solving background from Google transformation programs; experience with stakeholder management and process design",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as a trusted advisor to customers, guiding their AI strategy and ensuring they maximize the value of their investment"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background with transformation programs and operational scaling; positioning emphasizes strategy and business problem-solving in complex environments",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong business acumen and problem-solving skills, with the ability to structure ambiguous challenges into actionable solutions"
+      },
+      {
+        "candidate_evidence": "Eight-year track record with two promotions at scale at Google, leading transformation programs suggests executive-level engagement; German native language plus English professional fluency",
+        "evidence_strength": "medium",
+        "job_requirement": "Executive presence and communication skills to influence senior stakeholders (VP, C-level)"
+      },
+      {
+        "candidate_evidence": "Actively learning Python; product experience through requirements, logic design, UAT, and transformation rather than native engineering background; limited deep ML/data-science engineering expertise",
+        "evidence_strength": "weak",
+        "job_requirement": "Foundational knowledge of AI/ML/Data Science, with the credibility to advise both technical and non-technical audiences"
+      }
+    ],
+    "confidence": 0.72,
+    "evidence_strength": 65,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Hands-on experience building and deploying AI applications in Python is stated as both a requirement and emphasized twice in the JD; candidate has only basic Python and is actively learning",
+        "mitigation": "Candidate's transformation and deployment execution background from Google could enable rapid ramp on applied AI implementation if paired with technical upskilling or close collaboration with Mistral's Applied AI team during projects. Role emphasizes business problem-solving and stakeholder management over solo technical delivery.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited consulting brand and classic case-team experience; JD seeks 2+ years in client-facing strategic and technical roles such as data science consulting or value engineering",
+        "mitigation": "Google's external-facing commercial operations and transformation experience may translate to customer engagement, though industry consulting pedigree is absent. Quick wins on account relationships and value realization could build credibility.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated background in sales qualification frameworks (MEDDPICC) or value-based selling, though listed as a plus",
+        "mitigation": "Standard sales methodology training is readily available and trainable; not a core blocker since it is marked as 'a plus' rather than required.",
+        "severity": "low"
+      },
+      {
+        "gap": "No explicit evidence of AI/ML domain expertise or credibility to advise on technical AI strategy; relied on product ownership and transformation execution rather than AI-native technical depth",
+        "mitigation": "Mistral's Applied AI team partnership is embedded in the role design. Candidate's problem-solving and stakeholder alignment skills can anchor advisory conversations if paired with technical subject-matter experts during customer engagements.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 72,
+    "scope_seniority": 75,
+    "summary": "Strong strategic and operational transformation background from Google aligns with the cross-functional bridge-building and executive advisory scope of this approved-stretch Deployment Strategist role. High gap in hands-on Python/AI application building (stated requirement) and limited consulting domain experience weaken evidence, though business problem-solving, stakeholder management, and execution capability are well-matched. Scope and seniority align at L4\u2013L5 equivalent; role is clearly strategic and cross-functional rather than pure technical delivery.",
+    "uncertainties": [
+      "Depth and recency of customer-facing strategic work at Google Devices and Services not fully detailed; transformation program scope and customer interaction intensity unclear",
+      "Level of AI/ML domain knowledge required to advise customers effectively; unclear whether Applied AI team partnership significantly lowers the bar for independent AI credibility",
+      "Python proficiency trajectory and timeline for reaching 'hands-on deployment' level unclear given 'actively learning' status",
+      "Geographic fit: candidate background is not specified; London-based role with 30\u201360% travel feasibility unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

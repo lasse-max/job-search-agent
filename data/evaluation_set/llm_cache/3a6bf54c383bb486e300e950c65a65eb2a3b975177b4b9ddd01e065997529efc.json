@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and managing transformation programs across ambiguous multi-team environments.",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to work at both strategic and tactical levels, with a proven track record to execute in ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership experience demonstrates stakeholder management across multiple teams; however, hospitality partner relationship management is outside candidate's commercial operations background.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and manage partner relationships within your assigned territory"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background implies data analysis capability, though specific quantitative deal analysis or sales pipeline analytics evidence is not detailed.",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyze data and utilize data-driven recommendations to identify and act on strategic opportunities"
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_strength": 35,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales and supply acquisition focus: This is fundamentally a frontline sales/acquisition role requiring direct prospecting, onboarding, and pipeline management of professional hosts\u2014not a strategic or transformation mandate.",
+        "mitigation": "Candidate could transition into a GTM or revenue operations strategy role if hired, but this Acquisition Manager posting is below the strategic/transformation threshold for the target family.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hospitality/travel industry domain knowledge: Candidate background is in Google Devices and Services with no stated hospitality, travel, short-term rental, or property management vertical experience.",
+        "mitigation": "Industry knowledge is acquired through onboarding and market immersion, but the 2+ years hospitality/travel preference and region-specific market expertise (Italy) require ramp time.",
+        "severity": "high"
+      },
+      {
+        "gap": "Field-based, territory-owned sales execution: Role requires on-the-ground prospecting, relationship building, and direct host onboarding in assigned market; candidate's scope seniority suggests more corporate/headquarters-based program and transformation work.",
+        "mitigation": "Candidate could manage a portfolio of markets or partner relationships at a higher level (Regional/Sales Strategy), but this individual contributor supply acquisition role is a level mismatch.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Salesforce CRM and sales operations tooling: JD lists Salesforce as a plus but implies CRM proficiency is expected; no evidence of sales operations platform expertise in candidate profile.",
+        "mitigation": "Salesforce is learnable on the job for a operations-focused candidate; not a blocker but indicates a capability gap.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Candidate is a Strategy and Operations leader with eight years at Google and proven ability to operate in ambiguous, cross-functional environments. However, this Acquisition Manager role is a frontline sales/supply acquisition position focused on direct host prospecting and pipeline management in Italy\u2014a pure quota-carrying sales domain outside the target strategic and transformation scope. Hospitality industry expertise and field-based territory ownership are also missing. Role is a strong function mismatch and likely a step backward in seniority and strategic impact.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

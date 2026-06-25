@@ -1,0 +1,64 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience scaling global commercial operations and transformation programs; positioning as Strategy and Operations leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Define and own product strategy, solution design, roadmap, and delivery plans"
+      },
+      {
+        "candidate_evidence": "Two promotions and seniority level suggesting team leadership experience within operations and transformation scope, though specific PM mentorship history not detailed",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead, mentor and develop a team of high performing product managers"
+      },
+      {
+        "candidate_evidence": "Positioning indicates cross-functional collaboration in transformation and commercial operations; experience navigating stakeholder-level coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with engineering, design, commercial, and operations teams on cross-functional problem-solving"
+      },
+      {
+        "candidate_evidence": "No evidence of fintech, payments, FX trading platform, or financial markets product experience provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Understanding of e-trading, eFX, trading technology, and financial markets domain"
+      }
+    ],
+    "confidence": 0.75,
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Native Product Management discipline. Candidate background is Strategy and Operations / Product Operations; limited evidence of core PM ownership (discovery, requirements authoring, SDLC collaboration, launch planning) vs. transformation/operational/process-design focus",
+        "mitigation": "Candidate could ramp PM fundamentals on the job if domain knowledge gap is addressed and mentoring/coaching is available; prior experience with product teams provides foundation",
+        "severity": "high"
+      },
+      {
+        "gap": "Critical domain gap: No demonstrated fintech, payments, FX, or trading platform product experience. Role requires deep eFX and e-trading acumen and understanding of liquidity, stablecoin, ledger, and reconciliation platforms",
+        "mitigation": "Domain can be learned through dedicated onboarding, customer engagement, and partnership with financial and engineering teams; not insurmountable but significant ramp time",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of direct P&L ownership, commercial strategy integration, or regulatory/compliance product navigation (Legal, Finance, payments regulation)",
+        "mitigation": "Collaboration with commercial, legal, and finance teams and learning from experienced mentors could accelerate; operations background may transfer",
+        "severity": "medium"
+      },
+      {
+        "gap": "Title suggests Director-level scope at Tier 1 company; candidate background positioned as L4-L5 manager/senior manager within Google ecosystem. Over-leveled role for candidate's demonstrated seniority ceiling",
+        "mitigation": "None; this is a structural seniority mismatch, not a learnable gap",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "role_family_fit": 25,
+    "scope_seniority": 45,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader with strong Google-scale transformation and cross-functional experience, but the role is a Product Director requiring native PM discipline, deep fintech/FX/trading platform domain expertise, and L5+ seniority at a Tier 1 unicorn. Core gaps are PM practice vs. ops-transformation focus, critical fintech domain deficit, and seniority over-leveling. Not a fit for this Director role.",
+    "uncertainties": [
+      "Specific product ownership and PM responsibility scope at Google Devices (strategy-set vs. feature-ownership vs. transformation program leadership) not detailed; clarification needed on native PM experience",
+      "Extent of team leadership experience (size, tenure, outcomes) and mentorship track record not provided",
+      "Whether financial services, B2B payments, or regulated industry product experience exists but not highlighted in profile",
+      "Current visa/work authorization status for SF, Singapore, Melbourne, or Sydney not stated"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

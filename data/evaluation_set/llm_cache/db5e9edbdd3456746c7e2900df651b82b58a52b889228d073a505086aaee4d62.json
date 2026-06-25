@@ -1,0 +1,69 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "~8 years at Google Devices scaling global commercial operations and transformation programs, demonstrating strategic partnership and cross-functional leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as key strategic partner to Product, Engineering, and Commercial leaders; operate as technical leader defining critical systems"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader background implies stakeholder communication, though no explicit evidence of articulating technical insights to mixed audiences",
+        "evidence_strength": "weak",
+        "job_requirement": "Clearly and persuasively communicate complex data insights and technical recommendations to both technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Experience with product ownership, requirements, logic design, UAT, rollout, and transformation demonstrates cross-functional collaboration",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Product, Engineering, Risk, and cross-functional teams to inform and influence product strategy"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Advanced degree (PhD or MS) in quantitative field required; candidate background in Strategy and Operations does not indicate advanced quantitative degree",
+        "mitigation": "Unlikely to be waived; this is a Staff-level data science role requiring credentialed expertise. No evidence of PhD/MS in Statistics, Computer Science, Engineering, Economics, or related disciplines.",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years industry data science or applied ML experience; candidate background is in Strategy and Operations, not data science or ML engineering",
+        "mitigation": "Candidate may have observed ML/data science as a stakeholder but has not built or deployed ML systems professionally. Career pivot would require extensive reskilling.",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficient in SQL and Python/R for production data work; candidate background notes Python basic and actively learning",
+        "mitigation": "No evidence of production-level SQL or Python proficiency. Current learning status insufficient for Staff-level data scientist requiring immediate technical delivery.",
+        "severity": "high"
+      },
+      {
+        "gap": "Proven experience in experimentation (A/B testing, causal inference) and deploying ML to production; candidate background focuses on operational transformation, not statistical methodology or ML deployment",
+        "mitigation": "No demonstrated expertise in experimentation design, causal inference, or ML systems in production.",
+        "severity": "high"
+      },
+      {
+        "gap": "No production software engineering or ML engineering background; technical strategy ownership requires deep hands-on credibility in algorithms and production systems",
+        "mitigation": "Candidate explicitly noted as lacking production software engineering. Staff IC role requires technical depth to define direction credibly.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Advanced degree (PhD or MS) in a quantitative field such as Statistics, Engineering, Computer Science, Economics, or related disciplines' and '5+ years of industry experience in data science or applied ML'. These are core technical qualifications. Candidate profile is Strategy and Operations, not data science or ML engineering. Candidate has 'Python basic and actively learning' and no production ML systems experience. The role requires 'strong experience in deploying ML systems to production', 'proficient in SQL and Python/R', and technical leadership on 'advanced algorithms (e.g. contextual bandits) and experimentation techniques (e.g. A/B testing, causal inference)'. Candidate lacks the credentialed expertise, hands-on ML engineering background, and technical depth required for a Staff-level data scientist IC defining technical strategy.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a Staff-level data scientist role requiring PhD/MS in quantitative field, 5+ years of ML/data science, production ML deployment, and advanced technical leadership\u2014none of which align with the candidate's Strategy and Operations background at Google. While the candidate demonstrates strong cross-functional leadership and strategic impact, they lack the core technical credentials, hands-on ML systems experience, and coding proficiency (Python/SQL) essential for this technical IC role. This is a fundamental function and seniority mismatch, not a gap-manageable stretch.",
+    "uncertainties": [
+      "Candidate's exact seniority level/title at Google Devices is not specified, limiting judgment on scope equivalence",
+      "Depth of quantitative training or coursework (if any) during academic background is not provided",
+      "Whether candidate has contributed to data science or experimentation projects in an advisory/strategic capacity is unclear",
+      "Extent of mentoring or coaching experience (a Staff IC responsibility) is not detailed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}

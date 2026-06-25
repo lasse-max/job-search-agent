@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs, with demonstrated ability to manage cross-functional stakeholder environments",
+        "evidence_strength": "medium",
+        "job_requirement": "navigate complex stakeholder environments, building consensus between globally-distributed teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background focused on business impact; transformation program leadership demonstrates business-value orientation",
+        "evidence_strength": "medium",
+        "job_requirement": "motivated by solving customer problems and delivering business value"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Production software engineering and codebase mastery. Role requires independent problem-solving across complex technical codebases, shipping robust and scalable code, and leading by example in code quality and design discussions.",
+        "mitigation": "Candidate has no production software-engineering background and basic Python skills actively being learned. This is a fundamental blocker for a Senior Engineer role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Native software development lifecycle (SDLC) and engineering practices. Role emphasizes resilient software design, agile development, high-quality engineering practices, and long-term code ownership.",
+        "mitigation": "Candidate's product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management or SDLC leadership.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep technical domain expertise. Role expects rapid ramping in unfamiliar codebases and mastery across diverse technical domains (Payments, Accounting, Payroll).",
+        "mitigation": "Candidate's background is operations and strategy-led; no evidence of deep technical platform architecture or domain ownership.",
+        "severity": "high"
+      },
+      {
+        "gap": "Mentoring and coaching in engineering best practices and code quality. Role explicitly calls for coaching engineers on code quality, design discussions, and professional growth.",
+        "mitigation": "Candidate's mentoring experience is rooted in operations and transformation, not technical engineering practices.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role is a Senior Engineer in Engineering department requiring independent problem-solving across complex technical codebases, shipping production code, leading by example in code quality and design, and mastering unfamiliar codebases. Candidate has no production software-engineering background and only basic Python skills being actively learned, placing them fundamentally below the baseline for this role family.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 8,
+    "scope_seniority": 25,
+    "summary": "This is a Senior Engineer role in a product-delivery engineering team. Candidate is a Strategy and Operations / Product Operations leader with eight years at Google and strong stakeholder-management and transformation-program capabilities, but has no production software-engineering background, no deep SDLC expertise, and only basic Python skills. This is not a strategy, operations, or transformation role; it is a core engineering position requiring mastery of codebases, code quality leadership, and technical problem-solving. Function family fit is minimal and seniority scope does not match engineering IC expectations.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

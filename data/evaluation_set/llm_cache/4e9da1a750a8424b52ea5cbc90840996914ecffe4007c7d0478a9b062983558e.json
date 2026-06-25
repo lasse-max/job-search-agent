@@ -1,0 +1,54 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate's background is Strategy and Operations / Product Operations at Google Devices and Services, with experience in scaling commercial operations and transformation programs. No stated experience in incident response, cybersecurity, or DFIR.",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven, hands-on experience leading response to real security incidents"
+      },
+      {
+        "candidate_evidence": "Candidate has product operations and business transformation experience at Google, which may include working with cloud infrastructure and operational scaling, but no evidence of hands-on incident investigation, forensics, or security operations.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong investigation capability across endpoint, identity, and cloud environments"
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No demonstrated hands-on cybersecurity or incident response experience",
+        "mitigation": "Candidate would require fundamental retraining in DFIR, forensics, malware analysis, and incident response frameworks\u2014this is a career pivot from operations to security engineering, not a natural progression.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with SIEM, security tooling, endpoint/identity/cloud forensics, or vulnerability management platforms",
+        "mitigation": "Critical technical toolkit missing for investigating real incidents and prioritizing vulnerability risk across complex estates.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background is business operations and product strategy; role requires deep hands-on technical incident leadership",
+        "mitigation": "Role requires technical decisiveness under pressure during live incidents. Candidate's strengths are in cross-functional stakeholder coordination and transformation, not live technical incident command.",
+        "severity": "high"
+      },
+      {
+        "gap": "No experience with compliance-driven security requirements or security maturity frameworks",
+        "mitigation": "While candidate may understand compliance in operations context, this role requires specific knowledge of incident response compliance, evidence handling, and legal/regulatory incident coordination.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD explicitly requires 'Proven, hands-on experience leading response to real security incidents,' 'Strong investigation capability across endpoint, identity, and cloud environments,' 'DFIR, forensics, or malware analysis experience,' and 'demonstrated experience prioritising vulnerability or patching risk in large, complex estates.' Candidate profile shows no cybersecurity, incident response, or security operations background. This is a specialized security engineering role, not a strategy or operations role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is a hands-on Incident Response Engineer role requiring deep cybersecurity, DFIR, forensics, and live incident leadership expertise. The candidate is a Strategy and Operations / Product Operations leader with eight years at Google in commercial operations and transformation\u2014a fundamentally different career track. No incident response, security tooling, malware analysis, or security operations experience is evident. This is a disqualifying functional mismatch, not a manageable gap; it would require a complete career pivot from operations to security engineering.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v2"
+}

@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Google Devices and Services background with eight years of commercial operations and transformation program scaling, including multi-functional stakeholder alignment and cross-team collaboration",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Engineering and Product to understand feature scope, technical requirements, and deployment complexities; Participate in technical reviews and design discussions"
+      },
+      {
+        "candidate_evidence": "Experience with rollout, UAT, and transformation program execution demonstrates user-facing requirements gathering and clarity advocacy within operational contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Gather feedback from Support, DevRel, and users to identify documentation pain points and opportunities; Advocate for clarity and user experience"
+      },
+      {
+        "candidate_evidence": "Ownership mindset evidenced by product and transformation work driven by requirements, logic design, and execution rigor; however, context is operational rather than developer-facing or technical writing",
+        "evidence_strength": "weak",
+        "job_requirement": "Own the responsibility that what you ship works, is testable, and solves real developer problems"
+      }
+    ],
+    "confidence": 0.92,
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No technical writing, developer documentation, or developer education background; role explicitly requires 5+ years in this domain",
+        "mitigation": "Candidate would require substantial retraining in technical writing fundamentals, tone, structure, and developer-documentation best practices; timeline to productivity would be 12\u201318 months",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on API testing, validation, and technical depth required for documentation; role requires Postman, curl, REST clients, and API testing workflows as core competency",
+        "mitigation": "Candidate has not demonstrated hands-on API or deployment validation experience; this is a core accountability of the role, not a nice-to-have",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of working with Markdown, Git, Docusaurus, Sphinx, or technical documentation tools; these are required for daily workflow",
+        "mitigation": "Tools are learnable but represent additional ramp time; candidate would need to acquire proficiency during onboarding",
+        "severity": "high"
+      },
+      {
+        "gap": "Familiarity with code examples (Python, JavaScript, CLI) and deployment scenarios (Docker, Kubernetes, on-premises) is essential for role; candidate background is operations and strategy, not infrastructure or deployment engineering",
+        "mitigation": "Candidate could learn deployment basics, but does not have the hands-on infrastructure experience that makes this role's technical validation credible",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is an individual contributor focused on hands-on excellence and technical documentation; candidate background is managerial/strategic transformation, not IC technical content production",
+        "mitigation": "Candidate would need to transition from strategic leadership mindset to IC output orientation; scope mismatch may create friction",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states '5+ years in technical writing, developer documentation, or developer education (SaaS, APIs, infrastructure, or AI/ML preferred)' and core duty is 'Test all APIs, features, and deployment workflows before documenting' and 'hands-on testing and experimentation.' Candidate has zero technical writing background and no API/deployment validation experience. This is not a preferred skill or stretch\u2014it is the primary job function.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is a developer-documentation and technical-writing role requiring 5+ years of hands-on API testing, validation, and technical-content production. The candidate's background is Strategy and Operations / Product Operations leadership at Google, with transformation and commercial scaling experience but no technical writing, developer education, or API/deployment validation background. The role is an individual contributor focused on hands-on excellence; the candidate is a strategic leader. Role family fit is misaligned, and the technical-writing domain expertise is a disqualifying gap.",
+    "uncertainties": [
+      "Whether candidate has written any internal technical documentation, runbooks, or knowledge-base articles at Google that could indicate latent technical-writing capability",
+      "Whether candidate's Python basic and actively learning covers practical API testing or is purely aspirational",
+      "Whether candidate has deployed or validated any infrastructure (Docker, Kubernetes) in operational transformation work"
+    ]
+  },
+  "prompt_version": "role_evaluation_v2"
+}
