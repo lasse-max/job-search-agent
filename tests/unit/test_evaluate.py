@@ -431,6 +431,53 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             70,
         )
 
+    def test_overleveled_established_company_roles_skip_on_level(self) -> None:
+        director = evaluate_role(
+            _row(
+                "Director, Strategy and Operations",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description="own cross-functional strategic programs and drive executive rhythm",
+            ),
+            _company(name="Spotify", tier=2),
+        )
+        head_of = evaluate_role(
+            _row(
+                "Head of Business Operations",
+                ["London, United Kingdom"],
+                department="Business Operations",
+                description="own cross-functional strategic programs and drive executive rhythm",
+            ),
+            _company(name="Airbnb", tier=1),
+        )
+        chief_of_staff = evaluate_role(
+            _row(
+                "Chief of Staff",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description="own cross-functional strategic programs and drive executive rhythm",
+            ),
+            _company(name="Spotify", tier=2),
+        )
+        startup_head = evaluate_role(
+            _row(
+                "Head of Business Operations",
+                ["London, United Kingdom"],
+                department="Business Operations",
+                description=(
+                    "early-stage startup team of 25; own cross-functional strategic "
+                    "programs and drive executive rhythm"
+                ),
+            ),
+            _company(name="SmallStartup", tier=2),
+        )
+
+        self.assertEqual(director.recommendation, "skip")
+        self.assertLess(director.dimensions["scope_seniority"], 50)
+        self.assertEqual(head_of.recommendation, "skip")
+        self.assertNotEqual(chief_of_staff.recommendation, "skip")
+        self.assertNotEqual(startup_head.recommendation, "skip")
+
     def test_core_families_score_above_stretch_families(self) -> None:
         core = _role_family_fit(
             "Strategic Operations Manager",

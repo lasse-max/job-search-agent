@@ -140,7 +140,7 @@ def evaluate_role(
 
     role_family_fit = _role_family_fit(title, row["department"] or "", text, profile)
     evidence_strength = _evidence_strength(text, profile)
-    scope_seniority = _scope_seniority(title, text, profile)
+    scope_seniority = _scope_seniority(title, text, company, profile)
     gap_manageability = 35 if hard_blockers else _gap_manageability(text, scoring_policy)
 
     dimensions = {
@@ -296,6 +296,12 @@ def _final_recommendation(
         feasibility_state,
         company,
         hard_blockers,
+        overleveled=_is_overleveled_role(
+            row["title"],
+            _role_text(row),
+            company,
+            profile,
+        ),
         stretch_family=_is_stretch_family(
             row["title"],
             row["department"] or "",
@@ -358,10 +364,13 @@ def _evidence_strength(
 def _scope_seniority(
     title: str,
     text: str,
+    company: CompanyConfig | None = None,
     profile: CandidateProfileConfig | None = None,
 ) -> int:
     profile = profile or load_candidate_profile()
     title_lower = title.lower()
+    if _is_overleveled_role(title, text, company, profile):
+        return 38
     if any(term in title_lower for term in profile.below_level_title_terms):
         return 35
     if _is_plain_revenue_ops_manager(title_lower) and not _has_clear_senior_scope(text, profile):
@@ -487,6 +496,7 @@ def _recommendation(
     company: CompanyConfig,
     hard_blockers: list[HardBlocker],
     *,
+    overleveled: bool = False,
     stretch_family: bool = False,
     exceptional_upside: bool = False,
     scoring_policy: ScoringPolicyConfig | None = None,
@@ -495,6 +505,8 @@ def _recommendation(
     thresholds = scoring_policy.recommendation_thresholds
     if hard_blockers or feasibility_state == "blocked":
         return "blocked"
+    if overleveled:
+        return "skip"
     if company.tier >= 3:
         if company.warm_path and fit_score >= thresholds.stretch_min_fit:
             return "stretch"
@@ -747,6 +759,24 @@ def _has_clear_senior_scope(
             text,
             flags=re.IGNORECASE,
         )
+    )
+
+
+def _is_overleveled_role(
+    title: str,
+    text: str,
+    company: CompanyConfig | None,
+    profile: CandidateProfileConfig,
+) -> bool:
+    title_lower = title.lower()
+    if not _matches_any(title_lower, profile.seniority_ceiling.over_level_title_patterns):
+        return False
+    if "chief of staff" in title_lower:
+        return False
+    exception_text = f"{title} {company.name if company else ''} {text}".lower()
+    return not _matches_any(
+        exception_text,
+        profile.seniority_ceiling.startup_exception_patterns,
     )
 
 

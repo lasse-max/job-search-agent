@@ -87,6 +87,12 @@ class HardRequirementConfig:
 
 
 @dataclass(frozen=True)
+class SeniorityCeilingConfig:
+    over_level_title_patterns: tuple[str, ...]
+    startup_exception_patterns: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class CandidateProfileConfig:
     version: str
     positioning: str
@@ -97,6 +103,7 @@ class CandidateProfileConfig:
     below_level_title_terms: tuple[str, ...]
     senior_title_terms: tuple[str, ...]
     scope_signals: tuple[str, ...]
+    seniority_ceiling: SeniorityCeilingConfig
     languages: dict[str, str]
     brand_floor: dict[str, object]
     disqualifying_hard_requirements: HardRequirementConfig
@@ -285,6 +292,12 @@ def load_candidate_profile(
     scope_signals = data.get("scope_seniority_signals")
     if not isinstance(scope_signals, dict):
         raise ValueError(f"No scope_seniority_signals configured in {path}")
+    target_seniority = data.get("target_seniority")
+    if not isinstance(target_seniority, dict):
+        target_seniority = {}
+    seniority_ceiling = target_seniority.get("seniority_ceiling")
+    if not isinstance(seniority_ceiling, dict):
+        seniority_ceiling = {}
 
     brand_floor = data.get("brand_floor")
     if not isinstance(brand_floor, dict):
@@ -306,6 +319,14 @@ def load_candidate_profile(
         below_level_title_terms=_tuple_of_str(scope_signals.get("below_level_title_terms")),
         senior_title_terms=_tuple_of_str(scope_signals.get("senior_title_terms")),
         scope_signals=_tuple_of_str(scope_signals.get("scope_signals")),
+        seniority_ceiling=SeniorityCeilingConfig(
+            over_level_title_patterns=_tuple_of_str(
+                seniority_ceiling.get("over_level_title_patterns"),
+            ),
+            startup_exception_patterns=_tuple_of_str(
+                seniority_ceiling.get("startup_exception_patterns"),
+            ),
+        ),
         languages={str(key): str(value) for key, value in languages.items()},
         brand_floor=dict(brand_floor),
         disqualifying_hard_requirements=HardRequirementConfig(

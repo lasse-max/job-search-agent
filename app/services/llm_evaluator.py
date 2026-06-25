@@ -241,6 +241,10 @@ def build_role_prompt(request: LLMRoleRequest) -> str:
         "usually_deprioritize": profile.usually_deprioritize,
         "honest_gaps": profile.honest_gaps,
         "languages": profile.languages,
+        "seniority_ceiling": {
+            "over_level_title_patterns": profile.seniority_ceiling.over_level_title_patterns,
+            "startup_exception_patterns": profile.seniority_ceiling.startup_exception_patterns,
+        },
         "disqualifying_hard_requirements": {
             "must_have_context_patterns": (
                 profile.disqualifying_hard_requirements.must_have_context_patterns

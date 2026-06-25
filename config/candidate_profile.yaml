@@ -11,6 +11,22 @@ target_seniority:
   principle: "Judge level by scope and responsibilities, not by title word alone."
   in_scope_note: "Associate or Senior Associate on a strategy team at a strong company can be L4-appropriate when the role owns meaningful strategic programs."
   below_level_rule: "Reject only when responsibilities are materially below roughly eight-year / L4 scope."
+  ceiling_rule: "Target band is L4-L5. Head of / Director / VP / C-suite roles at established companies are over-leveled and should skip on level, not function. Small-startup Head-of roles can remain in-scope when scope is roughly L4-L5."
+  seniority_ceiling:
+    over_level_title_patterns:
+      - "\\bhead of\\b"
+      - "\\bdirector\\b"
+      - "\\bvp\\b"
+      - "\\bvice president\\b"
+      - "\\bc[- ]?suite\\b"
+      - "\\bchief (?!of staff\\b)\\w+ officer\\b"
+      - "\\b(?:ceo|cfo|coo|cto|cio|cmo)\\b(?!\\s+office\\b)"
+    startup_exception_patterns:
+      - "\\bsmall startup\\b"
+      - "\\bearly[- ]stage\\b"
+      - "\\bseed[- ]stage\\b"
+      - "\\bfounding\\b"
+      - "\\bteam of (?:[1-9]|[1-4][0-9])\\b"
 languages:
   German: "native"
   English: "professional/fluent"

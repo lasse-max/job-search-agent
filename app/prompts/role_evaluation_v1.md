@@ -45,6 +45,17 @@ Usually deprioritize unless the JD clearly has strategic/transformation scope:
 - Deep software engineering, ML engineering, or production coding
 - Payroll, Legal, HR, Marketing, Industrial Design, and unrelated specialist functions
 
+Seniority ceiling:
+
+- Target scope is L4-L5: Manager, Senior Manager, Lead, Principal/Senior IC.
+- At established companies, `Head of`, Director, VP, and C-suite roles are
+  over-leveled. Score `scope_seniority` low and use `skip` as the advisory band
+  even when the function is otherwise relevant.
+- Exception: at a small or early-stage startup, `Head of` may be L4-L5-equivalent;
+  judge by ownership scope instead of title alone.
+- Do not confuse this with function fit: an over-leveled strategy role can still
+  have strong role-family fit but should be too senior for this candidate.
+
 Evidence rules:
 
 - Make alignments specific: map a real JD requirement to a real candidate evidence item.
