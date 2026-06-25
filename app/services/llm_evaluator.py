@@ -208,6 +208,33 @@ class ClaudeLLMProvider:
         return result
 
 
+@dataclass(frozen=True)
+class CachedLLMProvider:
+    model: str = DEFAULT_CLAUDE_MODEL
+    cache_dir: Path = DEFAULT_LLM_CACHE_DIR
+
+    @classmethod
+    def from_env(cls) -> CachedLLMProvider:
+        return cls(
+            model=os.getenv("ANTHROPIC_MODEL") or DEFAULT_CLAUDE_MODEL,
+            cache_dir=Path(os.getenv("LLM_EVALUATION_CACHE_DIR", str(DEFAULT_LLM_CACHE_DIR))),
+        )
+
+    @property
+    def model_version(self) -> str:
+        return f"cached:{self.model}"
+
+    def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        cache_path = _cache_path(self.cache_dir, self.model, request.row)
+        if not cache_path.exists():
+            raise LLMProviderError(
+                "cached_llm_evaluation_missing: "
+                f"{cache_path}. Populate data/evaluation_set/llm_cache with Claude "
+                "before running the benchmark."
+            )
+        return _cached_result(cache_path)
+
+
 def provider_from_env() -> LLMProvider | None:
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
@@ -338,6 +365,27 @@ def _write_cache(path: Path, result: LLMEvaluationResult) -> None:
         "output": result.output.model_dump(),
     }
     path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def write_cached_evaluation(
+    *,
+    cache_dir: Path,
+    model: str,
+    row: sqlite3.Row,
+    output: LLMEvaluationOutput,
+    prompt_version: str = PROMPT_VERSION,
+) -> Path:
+    path = _cache_path(cache_dir, model, row)
+    _write_cache(
+        path,
+        LLMEvaluationResult(
+            output=output,
+            model_version=model,
+            prompt_version=prompt_version,
+            cache_hit=False,
+        ),
+    )
+    return path
 
 
 def _optional_float(value: str | None) -> float | None:

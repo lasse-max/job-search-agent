@@ -24,6 +24,7 @@ from app.services.benchmark import (
 from app.services.export_csv import backup_sqlite, export_csvs
 from app.services.ingest import run_scan
 from app.services.live_noise import sample_live_noise_set
+from app.services.llm_evaluator import provider_from_env
 from app.services.manual_intake import add_text_intake, add_url_intake, read_text_input
 from app.services.review import (
     approve_review,
@@ -119,6 +120,11 @@ def main(argv: list[str] | None = None) -> int:
         "--force-refresh",
         action="store_true",
         help="Re-fetch cache files even when they already exist",
+    )
+    benchmark_parser.add_argument(
+        "--populate-llm-cache",
+        action="store_true",
+        help="Use ANTHROPIC_API_KEY once to populate llm_cache; default benchmark is cache-only",
     )
 
     sample_parser = subparsers.add_parser(
@@ -267,10 +273,17 @@ def main(argv: list[str] | None = None) -> int:
                 force=args.force_refresh,
             )
             print(f"cache_written={len(written)}")
+        llm_provider = None
+        if args.populate_llm_cache:
+            llm_provider = provider_from_env()
+            if llm_provider is None:
+                print("ANTHROPIC_API_KEY is required for --populate-llm-cache")
+                return 1
         run = run_benchmark(
             evaluation_set_path=args.evaluation_set,
             cache_dir=args.cache_dir,
             report_dir=args.out,
+            llm_provider=llm_provider,
         )
         metrics = run.metrics
         print(f"roles={metrics.total_roles}")
@@ -303,6 +316,7 @@ def main(argv: list[str] | None = None) -> int:
                 live_noise_set_path=precision_set,
                 report_dir=args.out,
                 label_set_purpose="gate_passer_precision",
+                llm_provider=llm_provider,
             )
             print(f"live_noise_labelled={live_run.metrics.labelled_roles}")
             print(f"live_noise_precision={live_run.metrics.digest_precision:.3f}")

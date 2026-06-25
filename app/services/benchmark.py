@@ -16,6 +16,7 @@ from app.adapters.utils import clean_html, compact_text
 from app.config import DATA_DIR
 from app.models import CompanyConfig
 from app.services.evaluate import evaluate_role, relevance_decision
+from app.services.llm_evaluator import CachedLLMProvider, LLMProvider
 
 
 DEFAULT_EVALUATION_SET = DATA_DIR / "evaluation_set" / "evaluation_set.yaml"
@@ -48,6 +49,7 @@ class BenchmarkResult:
     blocker_match: bool
     feasibility_match: bool
     fit_band_match: bool
+    evaluator_version: str
 
 
 @dataclass(frozen=True)
@@ -76,6 +78,8 @@ class BenchmarkRun:
     results: list[BenchmarkResult]
     markdown_path: Path
     csv_path: Path
+    label_set_path: Path
+    evaluator_versions: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -151,10 +155,12 @@ def run_benchmark(
     evaluation_set_path: Path = DEFAULT_EVALUATION_SET,
     cache_dir: Path = DEFAULT_JD_CACHE_DIR,
     report_dir: Path = DEFAULT_REPORT_DIR,
+    llm_provider: LLMProvider | None = None,
 ) -> BenchmarkRun:
     examples = load_evaluation_set(evaluation_set_path)
+    provider = llm_provider or CachedLLMProvider.from_env()
     results = [
-        _evaluate_example(example, cache_dir / f"{example['id']}.txt")
+        _evaluate_example(example, cache_dir / f"{example['id']}.txt", provider)
         for example in examples
     ]
     metrics = _metrics(results)
@@ -162,12 +168,21 @@ def run_benchmark(
     csv_path = report_dir / "calibration_report.csv"
     markdown_path = report_dir / "calibration_report.md"
     _write_csv(csv_path, results)
-    _write_markdown(markdown_path, metrics, results)
+    evaluator_versions = _benchmark_evaluator_versions(results)
+    _write_markdown(
+        markdown_path,
+        metrics,
+        results,
+        label_set_path=evaluation_set_path,
+        evaluator_versions=evaluator_versions,
+    )
     return BenchmarkRun(
         metrics=metrics,
         results=results,
         markdown_path=markdown_path,
         csv_path=csv_path,
+        label_set_path=evaluation_set_path,
+        evaluator_versions=evaluator_versions,
     )
 
 
@@ -176,10 +191,12 @@ def run_live_noise_benchmark(
     live_noise_set_path: Path = DEFAULT_LIVE_NOISE_PRECISION_SET,
     report_dir: Path = DEFAULT_REPORT_DIR,
     label_set_purpose: str = "gate_passer_precision",
+    llm_provider: LLMProvider | None = None,
 ) -> LiveNoiseBenchmarkRun:
     examples = load_live_noise_set(live_noise_set_path) if live_noise_set_path.exists() else []
     labelled = _labelled_examples(examples)
-    results = [_evaluate_live_noise_example(example) for example in labelled]
+    provider = llm_provider or CachedLLMProvider.from_env()
+    results = [_evaluate_live_noise_example(example, provider) for example in labelled]
     metrics = _live_noise_metrics(results)
     report_dir.mkdir(parents=True, exist_ok=True)
     csv_path = report_dir / "live_noise_precision_report.csv"
@@ -329,7 +346,11 @@ def refresh_jd_cache(
     return written
 
 
-def _evaluate_example(example: dict[str, Any], cache_path: Path) -> BenchmarkResult:
+def _evaluate_example(
+    example: dict[str, Any],
+    cache_path: Path,
+    llm_provider: LLMProvider,
+) -> BenchmarkResult:
     if not cache_path.exists():
         raise FileNotFoundError(
             f"Missing cached JD snapshot for {example['id']}: {cache_path}"
@@ -343,7 +364,12 @@ def _evaluate_example(example: dict[str, Any], cache_path: Path) -> BenchmarkRes
         "description_text": description_text,
     }
     company = _company_config(example)
-    evaluation = evaluate_role(row, company)
+    evaluation = evaluate_role(row, company, llm_provider=llm_provider)
+    evaluator_version = str(
+        evaluation.provenance.get("model_version")
+        or evaluation.provenance.get("evaluator_version")
+        or "unknown"
+    )
     actual_tier = str(evaluation.strategic_priority["company_tier"])
     expected_tier = str(example["expected_strategic_tier"])
     expected_recommendation = str(example["expected_recommendation"])
@@ -375,10 +401,14 @@ def _evaluate_example(example: dict[str, Any], cache_path: Path) -> BenchmarkRes
         blocker_match=actual_blocked == expected_blocked,
         feasibility_match=_feasibility_matches(expected_feasibility, actual_feasibility),
         fit_band_match=_fit_band(actual_recommendation) == _fit_band(expected_recommendation),
+        evaluator_version=evaluator_version,
     )
 
 
-def _evaluate_live_noise_example(example: dict[str, Any]) -> LiveNoiseBenchmarkResult:
+def _evaluate_live_noise_example(
+    example: dict[str, Any],
+    llm_provider: LLMProvider,
+) -> LiveNoiseBenchmarkResult:
     description_text = str(
         example.get("description_text") or example.get("description_excerpt") or ""
     )
@@ -401,7 +431,7 @@ def _evaluate_live_noise_example(example: dict[str, Any]) -> LiveNoiseBenchmarkR
         target_role_family_notes="Live-noise precision label.",
         warm_path=bool(example.get("warm_path", False)),
     )
-    evaluation = evaluate_role(row, company)
+    evaluation = evaluate_role(row, company, llm_provider=llm_provider)
     expected = str(example["expected_recommendation"])
     evaluator_version = str(
         evaluation.provenance.get("model_version")
@@ -561,11 +591,17 @@ def _write_markdown(
     path: Path,
     metrics: BenchmarkMetrics,
     results: list[BenchmarkResult],
+    *,
+    label_set_path: Path,
+    evaluator_versions: tuple[str, ...],
 ) -> None:
     lines = [
         "# Calibration Report",
         "",
         "Generated by `job-agent benchmark` against cached JD snapshots.",
+        "",
+        f"- Label set: `{label_set_path}`",
+        f"- Evaluator: `{', '.join(evaluator_versions) if evaluator_versions else 'not_available'}`",
         "",
         "## Aggregate Metrics",
         "",
@@ -699,6 +735,10 @@ def _write_gate_recall_markdown(
 
 
 def _evaluator_versions(results: list[LiveNoiseBenchmarkResult]) -> tuple[str, ...]:
+    return tuple(sorted({result.evaluator_version for result in results}))
+
+
+def _benchmark_evaluator_versions(results: list[BenchmarkResult]) -> tuple[str, ...]:
     return tuple(sorted({result.evaluator_version for result in results}))
 
 
