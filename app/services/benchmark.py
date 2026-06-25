@@ -15,14 +15,16 @@ import yaml
 from app.adapters.utils import clean_html, compact_text
 from app.config import DATA_DIR
 from app.models import CompanyConfig
-from app.services.evaluate import evaluate_role
+from app.services.evaluate import evaluate_role, relevance_decision
 
 
 DEFAULT_EVALUATION_SET = DATA_DIR / "evaluation_set" / "evaluation_set.yaml"
 DEFAULT_JD_CACHE_DIR = DATA_DIR / "evaluation_set" / "jd_cache"
 DEFAULT_LIVE_NOISE_SET = DATA_DIR / "evaluation_set" / "live_noise_labels.yaml"
+DEFAULT_LIVE_NOISE_PRECISION_SET = DATA_DIR / "evaluation_set" / "live_noise_precision_set.yaml"
 DEFAULT_REPORT_DIR = DATA_DIR / "evaluation_set" / "reports"
 APPLY_CONSIDER = {"apply_now", "consider"}
+LABELLED_RECOMMENDATIONS = {"apply_now", "consider", "stretch", "skip", "blocked"}
 MAX_CACHED_CHARS = 12000
 
 
@@ -85,6 +87,7 @@ class LiveNoiseBenchmarkResult:
     actual_recommendation: str
     fit_score: int
     surface_match: bool
+    evaluator_version: str
 
 
 @dataclass(frozen=True)
@@ -105,6 +108,42 @@ class LiveNoiseBenchmarkRun:
     results: list[LiveNoiseBenchmarkResult]
     markdown_path: Path
     csv_path: Path
+    label_set_path: Path
+    label_set_purpose: str
+    evaluator_versions: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class GateRecallBenchmarkResult:
+    role_id: str
+    company: str
+    role_title: str
+    expected_recommendation: str
+    expected_should_pass_gate: bool
+    actual_passed_gate: bool
+    gate_reason: str
+
+
+@dataclass(frozen=True)
+class GateRecallBenchmarkMetrics:
+    labelled_roles: int
+    expected_pass_count: int
+    expected_pass_recalled: int
+    gate_recall: float
+    false_skips: int
+
+    @property
+    def recall_passes(self) -> bool:
+        return self.expected_pass_count == 0 or self.gate_recall >= 0.95
+
+
+@dataclass(frozen=True)
+class GateRecallBenchmarkRun:
+    metrics: GateRecallBenchmarkMetrics
+    results: list[GateRecallBenchmarkResult]
+    markdown_path: Path
+    csv_path: Path
+    label_set_path: Path
 
 
 def run_benchmark(
@@ -134,33 +173,58 @@ def run_benchmark(
 
 def run_live_noise_benchmark(
     *,
-    live_noise_set_path: Path = DEFAULT_LIVE_NOISE_SET,
+    live_noise_set_path: Path = DEFAULT_LIVE_NOISE_PRECISION_SET,
     report_dir: Path = DEFAULT_REPORT_DIR,
+    label_set_purpose: str = "gate_passer_precision",
 ) -> LiveNoiseBenchmarkRun:
     examples = load_live_noise_set(live_noise_set_path) if live_noise_set_path.exists() else []
-    labelled = [
-        example
-        for example in examples
-        if str(example.get("expected_recommendation") or "") in {
-            "apply_now",
-            "consider",
-            "stretch",
-            "skip",
-            "blocked",
-        }
-    ]
+    labelled = _labelled_examples(examples)
     results = [_evaluate_live_noise_example(example) for example in labelled]
     metrics = _live_noise_metrics(results)
     report_dir.mkdir(parents=True, exist_ok=True)
     csv_path = report_dir / "live_noise_precision_report.csv"
     markdown_path = report_dir / "live_noise_precision_report.md"
     _write_live_noise_csv(csv_path, results)
-    _write_live_noise_markdown(markdown_path, metrics, results)
+    evaluator_versions = _evaluator_versions(results)
+    _write_live_noise_markdown(
+        markdown_path,
+        metrics,
+        results,
+        label_set_path=live_noise_set_path,
+        label_set_purpose=label_set_purpose,
+        evaluator_versions=evaluator_versions,
+    )
     return LiveNoiseBenchmarkRun(
         metrics=metrics,
         results=results,
         markdown_path=markdown_path,
         csv_path=csv_path,
+        label_set_path=live_noise_set_path,
+        label_set_purpose=label_set_purpose,
+        evaluator_versions=evaluator_versions,
+    )
+
+
+def run_gate_recall_benchmark(
+    *,
+    live_noise_set_path: Path = DEFAULT_LIVE_NOISE_SET,
+    report_dir: Path = DEFAULT_REPORT_DIR,
+) -> GateRecallBenchmarkRun:
+    examples = load_live_noise_set(live_noise_set_path) if live_noise_set_path.exists() else []
+    labelled = _labelled_examples(examples)
+    results = [_evaluate_gate_recall_example(example) for example in labelled]
+    metrics = _gate_recall_metrics(results)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = report_dir / "live_noise_gate_recall_report.csv"
+    markdown_path = report_dir / "live_noise_gate_recall_report.md"
+    _write_gate_recall_csv(csv_path, results)
+    _write_gate_recall_markdown(markdown_path, metrics, results, live_noise_set_path)
+    return GateRecallBenchmarkRun(
+        metrics=metrics,
+        results=results,
+        markdown_path=markdown_path,
+        csv_path=csv_path,
+        label_set_path=live_noise_set_path,
     )
 
 
@@ -180,6 +244,20 @@ def load_live_noise_set(path: Path = DEFAULT_LIVE_NOISE_SET) -> list[dict[str, A
     if not isinstance(data, dict) or not isinstance(data.get("live_noise_set"), list):
         raise ValueError(f"Expected live_noise_set list in {path}")
     return [dict(item) for item in data["live_noise_set"]]
+
+
+def labelled_live_noise_count(path: Path) -> int:
+    if not path.exists():
+        return 0
+    return len(_labelled_examples(load_live_noise_set(path)))
+
+
+def _labelled_examples(examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        example
+        for example in examples
+        if str(example.get("expected_recommendation") or "") in LABELLED_RECOMMENDATIONS
+    ]
 
 
 def _load_loose_evaluation_set(text: str) -> list[dict[str, Any]]:
@@ -325,6 +403,11 @@ def _evaluate_live_noise_example(example: dict[str, Any]) -> LiveNoiseBenchmarkR
     )
     evaluation = evaluate_role(row, company)
     expected = str(example["expected_recommendation"])
+    evaluator_version = str(
+        evaluation.provenance.get("model_version")
+        or evaluation.provenance.get("evaluator_version")
+        or "unknown"
+    )
     return LiveNoiseBenchmarkResult(
         role_id=str(example["id"]),
         company=str(example["company"]),
@@ -337,6 +420,43 @@ def _evaluate_live_noise_example(example: dict[str, Any]) -> LiveNoiseBenchmarkR
             if expected in APPLY_CONSIDER
             else evaluation.recommendation not in APPLY_CONSIDER
         ),
+        evaluator_version=evaluator_version,
+    )
+
+
+def _evaluate_gate_recall_example(example: dict[str, Any]) -> GateRecallBenchmarkResult:
+    row = {
+        "title": str(example["role_title"]),
+        "locations_json": json.dumps([str(example["location"])]),
+        "department": str(example.get("department") or ""),
+        "employment_type": str(example.get("employment_type") or ""),
+        "description_text": str(
+            example.get("description_text") or example.get("description_excerpt") or ""
+        ),
+        "source_url": str(example.get("source_url") or ""),
+    }
+    company = CompanyConfig(
+        name=str(example["company"]),
+        tier=int(example.get("company_tier") or 3),
+        enabled=True,
+        ats_type="manual",
+        source_key=str(example.get("stable_id") or example["id"]).lower(),
+        careers_url=str(example.get("source_url") or ""),
+        target_locations=[str(example["location"])],
+        target_role_family_notes="Live-noise gate-recall label.",
+        warm_path=bool(example.get("warm_path", False)),
+    )
+    decision = relevance_decision(row, company)
+    expected = str(example["expected_recommendation"])
+    expected_should_pass = expected != "skip"
+    return GateRecallBenchmarkResult(
+        role_id=str(example["id"]),
+        company=str(example["company"]),
+        role_title=str(example["role_title"]),
+        expected_recommendation=expected,
+        expected_should_pass_gate=expected_should_pass,
+        actual_passed_gate=decision.should_evaluate,
+        gate_reason=decision.reason,
     )
 
 
@@ -394,6 +514,19 @@ def _live_noise_metrics(results: list[LiveNoiseBenchmarkResult]) -> LiveNoiseBen
     )
 
 
+def _gate_recall_metrics(results: list[GateRecallBenchmarkResult]) -> GateRecallBenchmarkMetrics:
+    expected_pass = [result for result in results if result.expected_should_pass_gate]
+    recalled = [result for result in expected_pass if result.actual_passed_gate]
+    false_skips = len(expected_pass) - len(recalled)
+    return GateRecallBenchmarkMetrics(
+        labelled_roles=len(results),
+        expected_pass_count=len(expected_pass),
+        expected_pass_recalled=len(recalled),
+        gate_recall=_ratio(len(recalled), len(expected_pass)),
+        false_skips=false_skips,
+    )
+
+
 def _write_csv(path: Path, results: list[BenchmarkResult]) -> None:
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
@@ -408,6 +541,15 @@ def _write_csv(path: Path, results: list[BenchmarkResult]) -> None:
 
 def _write_live_noise_csv(path: Path, results: list[LiveNoiseBenchmarkResult]) -> None:
     fieldnames = list(LiveNoiseBenchmarkResult.__dataclass_fields__)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        for result in results:
+            writer.writerow(result.__dict__)
+
+
+def _write_gate_recall_csv(path: Path, results: list[GateRecallBenchmarkResult]) -> None:
+    fieldnames = list(GateRecallBenchmarkResult.__dataclass_fields__)
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
@@ -477,11 +619,19 @@ def _write_live_noise_markdown(
     path: Path,
     metrics: LiveNoiseBenchmarkMetrics,
     results: list[LiveNoiseBenchmarkResult],
+    *,
+    label_set_path: Path,
+    label_set_purpose: str,
+    evaluator_versions: tuple[str, ...],
 ) -> None:
     lines = [
         "# Live-Noise Precision Report",
         "",
-        "Generated by `job-agent benchmark` when a labelled live-noise set is present.",
+        "Generated by `job-agent benchmark` when a labelled gate-passer precision set is present.",
+        "",
+        f"- Label set: `{label_set_path}`",
+        f"- Label set purpose: `{label_set_purpose}`",
+        f"- Evaluator: `{', '.join(evaluator_versions) if evaluator_versions else 'not_available'}`",
         "",
         "## Aggregate Metrics",
         "",
@@ -506,6 +656,50 @@ def _write_live_noise_markdown(
             f"{result.fit_score} | {_pass_fail(result.surface_match)} |"
         )
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _write_gate_recall_markdown(
+    path: Path,
+    metrics: GateRecallBenchmarkMetrics,
+    results: list[GateRecallBenchmarkResult],
+    label_set_path: Path,
+) -> None:
+    lines = [
+        "# Live-Noise Gate-Recall Report",
+        "",
+        "Generated by `job-agent benchmark` from the uniform live-noise label set.",
+        "",
+        f"- Label set: `{label_set_path}`",
+        "- Evaluator: `title_department_relevance_gate`",
+        "",
+        "## Aggregate Metrics",
+        "",
+        f"- Labelled roles: {metrics.labelled_roles}",
+        (
+            "- Gate recall: "
+            f"{metrics.expected_pass_recalled}/{metrics.expected_pass_count} "
+            f"({metrics.gate_recall:.1%})"
+        ),
+        f"- False skips: {metrics.false_skips}",
+        f"- Gate-recall check: {_pass_fail(metrics.recall_passes)}",
+        "",
+        "## Per-Role Results",
+        "",
+        "| ID | Company | Role | Expected | Should Pass | Actual Pass | Reason |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for result in results:
+        lines.append(
+            "| "
+            f"{result.role_id} | {result.company} | {result.role_title} | "
+            f"{result.expected_recommendation} | {result.expected_should_pass_gate} | "
+            f"{result.actual_passed_gate} | {result.gate_reason} |"
+        )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _evaluator_versions(results: list[LiveNoiseBenchmarkResult]) -> tuple[str, ...]:
+    return tuple(sorted({result.evaluator_version for result in results}))
 
 
 def _company_config(example: dict[str, Any]) -> CompanyConfig:

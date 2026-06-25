@@ -9,6 +9,7 @@ import yaml
 from app.services.benchmark import (
     APPLY_CONSIDER,
     DEFAULT_JD_CACHE_DIR,
+    run_gate_recall_benchmark,
     run_benchmark,
     run_live_noise_benchmark,
 )
@@ -82,6 +83,64 @@ class BenchmarkCalibrationTest(unittest.TestCase):
             self.assertEqual(run.metrics.digest_precision, 1.0)
             self.assertTrue(run.markdown_path.exists())
             self.assertTrue(run.csv_path.exists())
+            report = run.markdown_path.read_text(encoding="utf-8")
+            self.assertIn("Label set purpose: `gate_passer_precision`", report)
+            self.assertIn("Evaluator:", report)
+
+    def test_gate_recall_benchmark_uses_uniform_label_set(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            labels_path = Path(directory) / "live_noise.yaml"
+            reports_dir = Path(directory) / "reports"
+            labels_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "version": "live_noise_labels_v1",
+                        "set_purpose": "uniform_gate_recall",
+                        "live_noise_set": [
+                            {
+                                "id": "LN-001",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "Strategic Operations Lead",
+                                "department": "Strategy & Operations",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/job",
+                                "description_text": (
+                                    "Lead strategy and operations programs, own executive "
+                                    "cadence, and drive transformation work."
+                                ),
+                                "expected_recommendation": "apply_now",
+                            },
+                            {
+                                "id": "LN-002",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "Payroll Manager",
+                                "department": "Finance",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/payroll",
+                                "description_text": "Own payroll operations.",
+                                "expected_recommendation": "skip",
+                            },
+                        ],
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+
+            run = run_gate_recall_benchmark(
+                live_noise_set_path=labels_path,
+                report_dir=reports_dir,
+            )
+
+            self.assertEqual(run.metrics.labelled_roles, 2)
+            self.assertEqual(run.metrics.expected_pass_count, 1)
+            self.assertEqual(run.metrics.gate_recall, 1.0)
+            report = run.markdown_path.read_text(encoding="utf-8")
+            self.assertIn("Evaluator: `title_department_relevance_gate`", report)
 
 
 if __name__ == "__main__":

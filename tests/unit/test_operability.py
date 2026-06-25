@@ -275,6 +275,42 @@ class OperabilityTest(unittest.TestCase):
             self.assertEqual(item["company"], "ExampleCo")
             self.assertEqual(item["expected_recommendation"], None)
 
+    def test_sample_live_noise_cli_can_sample_gate_passers_only(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_path = Path(directory) / "precision.yaml"
+            _add_job(db_path)
+            add_text_intake(
+                """Company: SalesCo
+Title: Account Executive
+Location: Munich, Germany
+Department: Sales
+
+Quota-carrying sales role.
+""",
+                db_path=db_path,
+                source_url="https://example.com/sales",
+            )
+
+            output = _run_cli(
+                [
+                    "sample-live-noise",
+                    "--gate-passers",
+                    "--db",
+                    str(db_path),
+                    "--out",
+                    str(output_path),
+                    "--size",
+                    "10",
+                ]
+            )
+
+            self.assertIn("sampled=1", output)
+            data = yaml.safe_load(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(data["set_purpose"], "gate_passer_precision")
+            self.assertEqual(len(data["live_noise_set"]), 1)
+            self.assertEqual(data["live_noise_set"][0]["role_title"], "Strategic Operations Manager")
+
 
 def _add_job(db_path: Path) -> int:
     result = add_text_intake(JOB_TEXT, db_path=db_path, source_url="https://example.com/job")

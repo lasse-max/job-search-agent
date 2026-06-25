@@ -12,10 +12,13 @@ from app.db import connect, init_db
 from app.services.benchmark import (
     DEFAULT_EVALUATION_SET,
     DEFAULT_JD_CACHE_DIR,
+    DEFAULT_LIVE_NOISE_PRECISION_SET,
     DEFAULT_LIVE_NOISE_SET,
     DEFAULT_REPORT_DIR,
+    labelled_live_noise_count,
     refresh_jd_cache,
     run_benchmark,
+    run_gate_recall_benchmark,
     run_live_noise_benchmark,
 )
 from app.services.export_csv import backup_sqlite, export_csvs
@@ -88,7 +91,24 @@ def main(argv: list[str] | None = None) -> int:
     benchmark_parser = subparsers.add_parser("benchmark", help="Run offline evaluator benchmark")
     benchmark_parser.add_argument("--evaluation-set", type=Path, default=DEFAULT_EVALUATION_SET)
     benchmark_parser.add_argument("--cache-dir", type=Path, default=DEFAULT_JD_CACHE_DIR)
-    benchmark_parser.add_argument("--live-noise-set", type=Path, default=DEFAULT_LIVE_NOISE_SET)
+    benchmark_parser.add_argument(
+        "--gate-recall-set",
+        type=Path,
+        default=DEFAULT_LIVE_NOISE_SET,
+        help="Uniform live-noise labels used to check relevance-gate recall",
+    )
+    benchmark_parser.add_argument(
+        "--precision-set",
+        type=Path,
+        default=DEFAULT_LIVE_NOISE_PRECISION_SET,
+        help="Gate-passer live-noise labels used to measure digest precision",
+    )
+    benchmark_parser.add_argument(
+        "--live-noise-set",
+        type=Path,
+        default=None,
+        help="Deprecated alias for --precision-set",
+    )
     benchmark_parser.add_argument("--out", type=Path, default=DEFAULT_REPORT_DIR)
     benchmark_parser.add_argument(
         "--refresh-cache",
@@ -113,6 +133,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     sample_parser.add_argument("--size", type=int, default=150)
     sample_parser.add_argument("--seed", type=int, default=7)
+    sample_parser.add_argument(
+        "--gate-passers",
+        action="store_true",
+        help="Sample only postings that pass the title/department relevance gate",
+    )
 
     subparsers.add_parser("stage0-status", help="Show the current stage boundary")
 
@@ -257,13 +282,35 @@ def main(argv: list[str] | None = None) -> int:
         print(f"feasibility_correctness={metrics.feasibility_correctness:.3f}")
         print(f"report_markdown={run.markdown_path}")
         print(f"report_csv={run.csv_path}")
-        if args.live_noise_set.exists():
-            live_run = run_live_noise_benchmark(
-                live_noise_set_path=args.live_noise_set,
+        gate_recall_passes = True
+        if args.gate_recall_set.exists() and labelled_live_noise_count(args.gate_recall_set):
+            gate_run = run_gate_recall_benchmark(
+                live_noise_set_path=args.gate_recall_set,
                 report_dir=args.out,
+            )
+            print(f"gate_recall_labelled={gate_run.metrics.labelled_roles}")
+            print(f"gate_recall={gate_run.metrics.gate_recall:.3f}")
+            print(f"gate_recall_report_markdown={gate_run.markdown_path}")
+            print(f"gate_recall_report_csv={gate_run.csv_path}")
+            gate_recall_passes = gate_run.metrics.recall_passes
+        else:
+            print("gate_recall_labelled=0")
+            print("gate_recall=not_available")
+
+        precision_set = args.live_noise_set or args.precision_set
+        if precision_set.exists() and labelled_live_noise_count(precision_set):
+            live_run = run_live_noise_benchmark(
+                live_noise_set_path=precision_set,
+                report_dir=args.out,
+                label_set_purpose="gate_passer_precision",
             )
             print(f"live_noise_labelled={live_run.metrics.labelled_roles}")
             print(f"live_noise_precision={live_run.metrics.digest_precision:.3f}")
+            print(f"live_noise_precision_label_set={live_run.label_set_path}")
+            print(
+                "live_noise_precision_evaluator="
+                f"{','.join(live_run.evaluator_versions) if live_run.evaluator_versions else 'not_available'}"
+            )
             print(f"live_noise_report_markdown={live_run.markdown_path}")
             print(f"live_noise_report_csv={live_run.csv_path}")
             live_gate_passes = (
@@ -275,7 +322,7 @@ def main(argv: list[str] | None = None) -> int:
             print("live_noise_labelled=0")
             print("live_noise_precision=not_available")
             live_gate_passes = True
-        return 0 if metrics.recall_passes and live_gate_passes else 1
+        return 0 if metrics.recall_passes and gate_recall_passes and live_gate_passes else 1
 
     if args.command == "sample-live-noise":
         conn = connect(args.db)
@@ -285,6 +332,7 @@ def main(argv: list[str] | None = None) -> int:
             args.out,
             sample_size=args.size,
             seed=args.seed,
+            gate_passers_only=args.gate_passers,
         )
         print(f"available={result.available_count}")
         print(f"sampled={result.sampled_count}")

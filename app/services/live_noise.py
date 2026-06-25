@@ -11,7 +11,9 @@ from typing import Any
 
 import yaml
 
-from app.models import utc_now
+from app.config import load_company_config
+from app.models import CompanyConfig, utc_now
+from app.services.evaluate import relevance_decision
 
 
 @dataclass(frozen=True)
@@ -27,23 +29,31 @@ def sample_live_noise_set(
     *,
     sample_size: int = 150,
     seed: int = 7,
+    gate_passers_only: bool = False,
 ) -> LiveNoiseSampleResult:
     """Write a deterministic label template from cached live postings."""
 
     rows = _candidate_rows(conn)
+    if gate_passers_only:
+        rows = _gate_passing_rows(rows)
     sampled = _sample_rows(rows, sample_size=sample_size, seed=seed)
+    set_purpose = "gate_passer_precision" if gate_passers_only else "uniform_gate_recall"
     payload = {
         "version": "live_noise_labels_v1",
         "sampled_at": utc_now(),
         "sample_size_requested": sample_size,
         "sample_size_actual": len(sampled),
+        "set_purpose": set_purpose,
         "source": "cached_sqlite_job_postings",
         "label_instructions": (
             "Fill expected_recommendation with apply_now, consider, stretch, skip, "
             "or blocked. Mark apply_now/consider only when the role belongs in the "
             "digest surface for this candidate."
         ),
-        "live_noise_set": [_template_item(index, row) for index, row in enumerate(sampled, 1)],
+        "live_noise_set": [
+            _template_item(index, row, id_prefix="LNP" if gate_passers_only else "LN")
+            for index, row in enumerate(sampled, 1)
+        ],
     }
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(yaml.safe_dump(payload, sort_keys=False), encoding="utf-8")
@@ -61,6 +71,7 @@ def _candidate_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
           jp.id AS job_id,
           c.name AS company,
           c.tier AS company_tier,
+          c.warm_path,
           js.source_type,
           js.source_key,
           jp.source_job_id,
@@ -81,6 +92,32 @@ def _candidate_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
     ).fetchall()
 
 
+def _gate_passing_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
+    passing: list[sqlite3.Row] = []
+    for row in rows:
+        company = _company_for_row(row)
+        if relevance_decision(row, company).should_evaluate:
+            passing.append(row)
+    return passing
+
+
+def _company_for_row(row: sqlite3.Row) -> CompanyConfig:
+    try:
+        return load_company_config(str(row["company"]))
+    except ValueError:
+        return CompanyConfig(
+            name=str(row["company"]),
+            tier=int(row["company_tier"]),
+            enabled=True,
+            ats_type=str(row["source_type"]),
+            source_key=str(row["source_key"]),
+            careers_url=str(row["source_url"]),
+            target_locations=json.loads(row["locations_json"]),
+            target_role_family_notes="Live-noise sample row.",
+            warm_path=bool(row["warm_path"]),
+        )
+
+
 def _sample_rows(
     rows: list[sqlite3.Row],
     *,
@@ -94,10 +131,10 @@ def _sample_rows(
     return shuffled[:sample_size]
 
 
-def _template_item(index: int, row: sqlite3.Row) -> dict[str, Any]:
+def _template_item(index: int, row: sqlite3.Row, *, id_prefix: str) -> dict[str, Any]:
     locations = json.loads(row["locations_json"])
     return {
-        "id": f"LN-{index:03d}",
+        "id": f"{id_prefix}-{index:03d}",
         "job_posting_id": int(row["job_id"]),
         "stable_id": f"{row['source_type']}:{row['source_key']}:{row['source_job_id']}",
         "company": row["company"],

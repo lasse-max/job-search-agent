@@ -49,3 +49,31 @@
 - **#47 — Live email paused until live-noise precision clears.** Remove `RESEND_API_KEY` + `DIGEST_RECIPIENT_EMAIL` secrets so `scan-all` falls back to local files. Reason: the first live digest surfaced Payroll/Legal/Sales as `apply_now`; live delivery on an unvalidated evaluator erodes trust. Reversible (re-add secrets after precision ≥80% + sign-off).
 - **#48 — The 33-role curated benchmark is superseded for *precision* by a ~150-role live-noise set; curated set retained for *recall*.** Reason: curated recall 100% / precision 90% gave false confidence — it never tested rejecting the ~97% off-target real feed. Reversible.
 - **#49 — Hybrid Claude evaluator replaces `uncalibrated_dev_stub_v1`.** Claude judges dimensions + evidence; code computes fit, applies blockers, sets bands (PRD §5.5). Reversible (interface keeps the deterministic fallback).
+
+---
+
+## Fix pass — post Cato re-review (`5aa012f` + `c796a40`)
+
+Cato verdict: **SHIP AFTER 🟠 FIXED.** Foundation is sound (gate kills most of the firehose deterministically; Claude machinery — validation/cache/cap/hybrid-split — is well-built; email safely paused). But **the LLM has never run** — the green benchmark is the deterministic fallback, so the slice has not yet proven it fixes anything. Otto triage below; do these before claiming the slice or re-enabling email.
+
+**Can start now (no labels needed):**
+
+- **[required — elevated from Cato 🟡] Make the fallback loud.** If `ANTHROPIC_API_KEY` is missing/expired/over-cap, `evaluate_role` currently reverts to the stub silently → the firehose returns. Flag fallback-quality runs and **refuse to compose or send an email digest built from the fallback evaluator** (PRD fail-loud / nothing-consequential-silently). Local-file output may still render but must be clearly marked "fallback evaluator — not validated."
+- **[Cato 🟡] Reconcile cost-cap math.** Correct the per-eval estimate to real Haiku pricing (well under a cent/role, not $0.02) so a normal scan doesn't halt mid-run. Document the spend-ledger eviction limitation as a known non-durable-state issue — **do not** build durable persistence (that's Stage 2, #40/#46).
+- **[Cato 🟡 — partially accepted] Fix the gate leaks only.** Fix `\bprogram\b` matching "Engineering Program Manager"; deny unambiguous off-family titles (SDR, Account Executive). **Do NOT deny whole departments** — Sales S&O / GTM is a target family (PRD §4.4) and People BP can be S&O-adjacent; ambiguous roles must keep routing to the LLM (PRD Decision #7). Record this divergence from Cato's denylist suggestion.
+
+**Sampling fix — two label sets, by purpose (uniform random is the wrong frame).**
+
+A uniform random sample of the ~6,788 feed is ~93% gate-skipped noise. Roles the relevance gate skips never reach the digest, so labeling them tells us nothing about digest *precision* and would leave the 80% gate resting on a denominator of ~5–10 roles. Split it:
+
+- **Gate-recall set** = the existing uniform `live_noise_labels.yaml` (150). Lasse skims it to catch any role the gate *wrongly skipped*. Purpose: confirm the gate isn't hiding good roles. Fast (mostly skips).
+- **Precision set** = NEW template restricted to postings that **pass the title/department relevance gate** (the pool that actually reaches evaluation). Random-sample if large (target ~150). Commit as `data/evaluation_set/live_noise_precision_set.yaml`. **This is the set digest precision is measured on.**
+
+**Validation (proves the slice) — run against the precision set:**
+
+- Lasse labels the **precision set** (the gate-passers) carefully; skims the gate-recall set for false skips.
+- Run Claude once against the curated 33 + the precision set; **commit the `llm_cache`**.
+- Make `benchmark` and its test run the **cached LLM provider, not the fallback**; the report must state which evaluator produced the numbers AND which label set precision was computed on.
+- Confirm **recall ≥95% (curated) AND digest precision ≥80% on the gate-passer precision set with Claude.** Budget 1–2 prompt/weight calibration loops.
+
+**Then:** re-enable live email only after live precision ≥80% **and** Lasse's sign-off. Confirm hosted CI green on the fix commit. Defer B-13 (brand_floor) to backlog — now unblocked once Claude is live.
