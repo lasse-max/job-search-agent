@@ -99,12 +99,89 @@ class BenchmarkCalibrationTest(unittest.TestCase):
             )
 
             self.assertEqual(run.metrics.labelled_roles, 1)
+            self.assertEqual(run.metrics.apply_consider_recall, 1.0)
             self.assertEqual(run.metrics.digest_precision, 1.0)
+            self.assertTrue(run.metrics.recall_passes)
+            self.assertTrue(run.metrics.passes)
             self.assertTrue(run.markdown_path.exists())
             self.assertTrue(run.csv_path.exists())
             report = run.markdown_path.read_text(encoding="utf-8")
             self.assertIn("Label set purpose: `gate_passer_precision`", report)
+            self.assertIn("Apply/Consider recall: 1/1 (100.0%)", report)
             self.assertIn("Evaluator:", report)
+
+    def test_live_noise_benchmark_fails_when_precision_hides_recall_miss(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            labels_path = Path(directory) / "live_noise.yaml"
+            reports_dir = Path(directory) / "reports"
+            labels_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "version": "live_noise_labels_v1",
+                        "live_noise_set": [
+                            {
+                                "id": "LN-001",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "Strategic Operations Lead",
+                                "department": "Strategy & Operations",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/job",
+                                "description_text": (
+                                    "Lead strategy and operations programs, own executive "
+                                    "cadence, and drive transformation work."
+                                ),
+                                "expected_recommendation": "apply_now",
+                            },
+                            {
+                                "id": "LN-002",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "Product Monetisation & Pricing Lead",
+                                "department": "Product",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/job-two",
+                                "description_text": "Ambiguous role with insufficient signal.",
+                                "expected_recommendation": "consider",
+                            },
+                        ],
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+            cache_dir = reports_dir / "llm_cache"
+            examples = yaml.safe_load(labels_path.read_text(encoding="utf-8"))[
+                "live_noise_set"
+            ]
+            for example, score in zip(examples, (88, 35), strict=True):
+                write_cached_evaluation(
+                    cache_dir=cache_dir,
+                    model=DEFAULT_CLAUDE_MODEL,
+                    row={
+                        "title": str(example["role_title"]),
+                        "locations_json": "[\"London, United Kingdom\"]",
+                        "department": str(example.get("department") or ""),
+                        "employment_type": str(example.get("employment_type") or ""),
+                        "description_text": str(example.get("description_text") or ""),
+                        "source_url": str(example.get("source_url") or ""),
+                    },
+                    output=_output(score),
+                )
+
+            run = run_live_noise_benchmark(
+                live_noise_set_path=labels_path,
+                report_dir=reports_dir,
+                llm_provider=CachedLLMProvider(cache_dir=cache_dir),
+            )
+
+            self.assertEqual(run.metrics.digest_precision, 1.0)
+            self.assertEqual(run.metrics.apply_consider_recall, 0.5)
+            self.assertTrue(run.metrics.precision_passes)
+            self.assertFalse(run.metrics.recall_passes)
+            self.assertFalse(run.metrics.passes)
 
     def test_gate_recall_benchmark_uses_uniform_label_set(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

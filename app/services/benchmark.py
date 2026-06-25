@@ -97,6 +97,9 @@ class LiveNoiseBenchmarkResult:
 @dataclass(frozen=True)
 class LiveNoiseBenchmarkMetrics:
     labelled_roles: int
+    apply_consider_expected: int
+    apply_consider_recalled: int
+    apply_consider_recall: float
     surfaced_count: int
     surfaced_correct: int
     digest_precision: float
@@ -104,6 +107,14 @@ class LiveNoiseBenchmarkMetrics:
     @property
     def precision_passes(self) -> bool:
         return self.labelled_roles > 0 and self.digest_precision >= 0.80
+
+    @property
+    def recall_passes(self) -> bool:
+        return self.apply_consider_recall >= 0.90
+
+    @property
+    def passes(self) -> bool:
+        return self.precision_passes and self.recall_passes
 
 
 @dataclass(frozen=True)
@@ -532,12 +543,21 @@ def _metrics(results: list[BenchmarkResult]) -> BenchmarkMetrics:
 
 
 def _live_noise_metrics(results: list[LiveNoiseBenchmarkResult]) -> LiveNoiseBenchmarkMetrics:
+    expected_surface = [
+        result for result in results if result.expected_recommendation in APPLY_CONSIDER
+    ]
+    recalled = [
+        result for result in expected_surface if result.actual_recommendation in APPLY_CONSIDER
+    ]
     surfaced = [result for result in results if result.actual_recommendation in APPLY_CONSIDER]
     surfaced_correct = [
         result for result in surfaced if result.expected_recommendation in APPLY_CONSIDER
     ]
     return LiveNoiseBenchmarkMetrics(
         labelled_roles=len(results),
+        apply_consider_expected=len(expected_surface),
+        apply_consider_recalled=len(recalled),
+        apply_consider_recall=_ratio(len(recalled), len(expected_surface)),
         surfaced_count=len(surfaced),
         surfaced_correct=len(surfaced_correct),
         digest_precision=_ratio(len(surfaced_correct), len(surfaced)),
@@ -673,10 +693,16 @@ def _write_live_noise_markdown(
         "",
         f"- Labelled roles: {metrics.labelled_roles}",
         (
+            "- Apply/Consider recall: "
+            f"{metrics.apply_consider_recalled}/{metrics.apply_consider_expected} "
+            f"({metrics.apply_consider_recall:.1%})"
+        ),
+        (
             "- Digest precision: "
             f"{metrics.surfaced_correct}/{metrics.surfaced_count} "
             f"({metrics.digest_precision:.1%})"
         ),
+        f"- Recall gate: {_pass_fail(metrics.recall_passes)}",
         f"- Precision gate: {_pass_fail(metrics.precision_passes)}",
         "",
         "## Per-Role Results",

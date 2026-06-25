@@ -1,6 +1,27 @@
-# Codex — next instruction (ordered)
+# Codex — FIX LOOP 2 (calibration regression on `5f9661e`)
+
+The real evaluator ran but is now **too conservative** — the green "precision 6/6" hides a recall miss on the live set. From `live_noise_precision_report.md`: of ~10 roles labeled apply/consider, only 6 surfaced (~60% recall). Fix the **mechanism**, then re-benchmark; do NOT hand-tune to pass individual rows.
+
+**Bug 1 — `apply_now` looks unreachable.** Zero roles got `apply_now` in the whole 150, even at fit 82. **LNP-090** (Airwallex Sr Mgr, Revenue Strategy & Operations, fit **82**, owner-labeled `apply_now`) was recommended **stretch**. Check the post-LLM band logic: a fit ≥80, non-blocked, Tier-1/2 role must reach `apply_now` (PRD §5.5). Confirm the band thresholds and tier read-through aren't demoting strong S&O roles to stretch (also **LNP-119**, fit 77, consider → stretch).
+
+**Bug 2 — hard-blocker over-firing.** **LNP-020** (Pigment AI Deployment Strategist, London, owner-labeled consider) was **blocked** at fit 69; dozens of `skip` roles are marked `blocked` broadly. Likely the `disqualifying_hard_requirement` (#51) catching non-must-have "Python/technical" language in Deployment-Strategist/Applied JDs. Enforce: it fires **only** on must-have / required / minimum-qualification language (never "preferred / a plus / familiarity / experience with"). A clean Deployment Strategist in an allowed location must not be blocked.
+
+**Bug 3 — benchmark reports precision without recall (same false-confidence pattern as #48).** Add **live-set recall** to `live_noise_precision_report`: of roles labeled apply/consider, how many the evaluator surfaced as apply/consider. Gate on it. Precision alone cannot pass.
+
+**Acceptance for this loop:**
+- `apply_now` is reachable; LNP-090 surfaces as `apply_now` (or at minimum apply/consider — surfaced).
+- LNP-020 is no longer `blocked` (surfaces as consider/stretch); broad skip→blocked over-firing reduced.
+- Report **both** live precision **and** live recall (evaluator named). Targets: live apply/consider **recall ≥90%** (≤1 miss of the ~10) AND **precision ≥80%**, recall ≥95% held on curated.
+- Defensible non-bugs (don't force): LNP-061 (consider→stretch, fit 58), LNP-111 (stretch→skip, fit 48) — leave to the model unless the mechanism fix naturally moves them.
+- Re-run cached benchmark, push. Then to Cato.
+
+---
+
+# Codex — next instruction (ordered) [prior loop, mostly shipped]
 
 > **STATE (live):** Steps 1–4 + 6 shipped in `a36ae0c` (loud fallback, cost math, gate leaks, location filter, hard-requirement blocker). Both label sets are now **labeled by Otto** (gate-recall `live_noise_labels.yaml`: 146 skip / 4 surfaced; precision `live_noise_precision_set.yaml`: 138 skip / 1 apply_now / 9 consider / 2 stretch) — **commit them**. REMAINING: add seniority ceiling **#52**; actually run Claude + populate `llm_cache`; switch `benchmark` to the cached LLM provider; calibrate to recall ≥95% + precision ≥80%. The LLM machinery exists (`c796a40`) but has never been run — that's the gap.
+>
+> **New rule to encode — DECISIONS #53 (hard digest cap, defense-in-depth):** Cap total surfaced roles in any email digest. Config-driven `digest_max_roles` default **25**, absolute max **50**. Render the top N by rank (apply_now → consider → stretch); collapse the remainder to a count. **Must be loud, not silent:** the digest states "showing 25 of N surfaced," and if N exceeds an anomaly threshold (e.g. >2× the cap) it raises a visible health warning that the evaluator is over-surfacing — never quietly truncate (a silent cap could mask a firehose recurrence). Ships independent of LLM calibration — it's the structural backstop so the 1,064-role email can't physically recur.
 >
 > **New rule to encode — DECISIONS #52 (seniority ceiling):** target band L4–L5 (Manager / Senior Manager / Lead / Senior IC). "Head of / Director / VP / C-suite" at an established company → over-leveled → `skip` even when function matches (skip on level, don't mislabel function). Exception: small startups where "Head of" ≈ L4–L5 scope. Encode in `candidate_profile.yaml` + `scope_seniority` logic + prompt.
 

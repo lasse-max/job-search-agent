@@ -168,6 +168,74 @@ class LlmEvaluatorTest(unittest.TestCase):
 
         self.assertNotIn(evaluation.recommendation, {"apply_now", "consider"})
 
+    def test_domain_mentions_do_not_cap_core_revenue_strategy_role(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload.update(
+            {
+                "role_family_fit": 87,
+                "evidence_strength": 82,
+                "scope_seniority": 79,
+                "gap_manageability": 75,
+                "confidence": 0.82,
+                "advisory_recommendation": "apply_now",
+            }
+        )
+        row = _row("Senior Manager, Revenue Strategy & Operations")
+        row["department"] = "Strategy & Operations"
+        row["description_text"] = (
+            "Lead EMEA Revenue Strategy & Operations for a global banking and "
+            "payments platform with embedded finance products."
+        )
+
+        evaluation = evaluate_role(
+            row,
+            _company(),
+            llm_provider=FakeProvider(LLMEvaluationOutput.model_validate(output_payload)),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertEqual(evaluation.recommendation, "apply_now")
+
+    def test_degree_only_hard_blocker_is_not_enforced_for_deployment_strategist(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload.update(
+            {
+                "role_family_fit": 72,
+                "evidence_strength": 65,
+                "scope_seniority": 75,
+                "gap_manageability": 62,
+                "confidence": 0.72,
+                "advisory_recommendation": "consider",
+                "hard_blockers": [
+                    {
+                        "type": "disqualifying_hard_requirement",
+                        "evidence": (
+                            "JD states 'Required Engineering or computer science degree "
+                            "from top tier institution.'"
+                        ),
+                    }
+                ],
+            }
+        )
+        row = _row("AI Deployment Strategist")
+        row["department"] = "Professional Services"
+        row["description_text"] = (
+            "Work directly with customers to translate business problems into models. "
+            "What we're looking for Required Engineering or computer science degree "
+            "from top tier institution. Proficiency with formulas, logic, and "
+            "structured modeling."
+        )
+
+        evaluation = evaluate_role(
+            row,
+            _company(),
+            llm_provider=FakeProvider(LLMEvaluationOutput.model_validate(output_payload)),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertNotEqual(evaluation.recommendation, "blocked")
+        self.assertEqual(evaluation.hard_blockers, [])
+
     def test_claude_provider_rejects_malformed_structured_output(self) -> None:
         provider = ClaudeLLMProvider(api_key="test-key", model="fake-model")
         request = LLMRoleRequest(

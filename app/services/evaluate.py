@@ -112,7 +112,10 @@ def evaluate_role(
         return _role_evaluation_from_llm(
             row,
             company,
-            _merge_hard_blockers(hard_blockers, llm_hard_blockers),
+            _merge_hard_blockers(
+                hard_blockers,
+                _filter_llm_hard_blockers(row, llm_hard_blockers, profile),
+            ),
             llm_result.output.dimensions,
             llm_confidence=llm_result.output.confidence,
             llm_alignments=[
@@ -340,12 +343,11 @@ def _calibrated_llm_dimensions(
     calibrated = {dimension: int(score) for dimension, score in dimensions.items()}
     title = row["title"]
     title_lower = title.lower()
-    text = _role_text(row)
     title_department = _title_department_text(row)
     if (
         _matches_any(title_department, profile.primary_role_family_patterns)
         and not _is_plain_revenue_ops_manager(title_lower)
-        and not _partnership_domain_gap(text)
+        and not _partnership_domain_gap(title_department)
     ):
         floors = {
             "role_family_fit": 82,
@@ -613,7 +615,7 @@ def _is_low_priority_surface_function(
     title_department = f"{title} {department}".lower()
     if _is_plain_revenue_ops_manager(title_lower):
         return True
-    if _partnership_domain_gap(text):
+    if _partnership_domain_gap(title_department):
         return True
     if _is_stretch_family(title, department, text, profile) and re.search(
         r"\b(?:government|public sector|defen[cs]e)\b",
@@ -655,7 +657,14 @@ def _hard_blockers(
     profile: CandidateProfileConfig,
 ) -> list[HardBlocker]:
     blockers = list(_technical_blockers(title_lower, scoring_policy))
-    blockers.extend(_disqualifying_hard_requirements(text, profile))
+    suppress_degree_requirements = _is_stretch_family(title_lower, "", text, profile)
+    blockers.extend(
+        _disqualifying_hard_requirements(
+            text,
+            profile,
+            suppress_degree_requirements=suppress_degree_requirements,
+        )
+    )
     if _technical_pm_depth(title_lower, text):
         blockers.append(
             HardBlocker(
@@ -694,6 +703,54 @@ def _merge_hard_blockers(
             merged.append(blocker)
             seen.add(key)
     return merged
+
+
+def _filter_llm_hard_blockers(
+    row: sqlite3.Row,
+    blockers: list[HardBlocker],
+    profile: CandidateProfileConfig,
+) -> list[HardBlocker]:
+    text = _role_text(row)
+    suppress_degree_requirements = _is_stretch_family(
+        row["title"],
+        row["department"] or "",
+        text,
+        profile,
+    )
+    return [
+        blocker
+        for blocker in blockers
+        if _llm_hard_blocker_is_enforceable(
+            blocker,
+            profile,
+            suppress_degree_requirements=suppress_degree_requirements,
+        )
+    ]
+
+
+def _llm_hard_blocker_is_enforceable(
+    blocker: HardBlocker,
+    profile: CandidateProfileConfig,
+    *,
+    suppress_degree_requirements: bool,
+) -> bool:
+    if blocker.type != "disqualifying_hard_requirement":
+        return True
+    evidence = blocker.evidence.lower()
+    config = profile.disqualifying_hard_requirements
+    if _matches_any(evidence, config.nice_to_have_context_patterns):
+        return False
+    if not _matches_any(evidence, config.must_have_context_patterns):
+        return False
+    if not _matches_any(evidence, config.requirement_patterns):
+        return False
+    if (
+        suppress_degree_requirements
+        and _degree_requirement(evidence)
+        and not _technical_depth_requirement(evidence)
+    ):
+        return False
+    return True
 
 
 def _technical_blockers(
@@ -745,6 +802,8 @@ def _work_authorization_blocker(
 def _disqualifying_hard_requirements(
     text: str,
     profile: CandidateProfileConfig,
+    *,
+    suppress_degree_requirements: bool = False,
 ) -> list[HardBlocker]:
     config = profile.disqualifying_hard_requirements
     if not config.requirement_patterns:
@@ -757,6 +816,12 @@ def _disqualifying_hard_requirements(
             continue
         if not _matches_any(fragment, config.requirement_patterns):
             continue
+        if (
+            suppress_degree_requirements
+            and _degree_requirement(fragment)
+            and not _technical_depth_requirement(fragment)
+        ):
+            continue
         blockers.append(
             HardBlocker(
                 type="disqualifying_hard_requirement",
@@ -767,6 +832,39 @@ def _disqualifying_hard_requirements(
             )
         )
     return blockers
+
+
+def _degree_requirement(text: str) -> bool:
+    return bool(
+        re.search(
+            (
+                r"\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\b"
+                r".{0,80}\b(?:computer science|software engineering|engineering)\b"
+                r"|\b(?:computer science|software engineering|engineering)\b"
+                r".{0,80}\bdegree\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _technical_depth_requirement(text: str) -> bool:
+    return bool(
+        re.search(
+            (
+                r"\b(?:advanced|expert|professional|strong|proficient)\b"
+                r".{0,50}\b(?:python|java|typescript|javascript|programming|coding|software development)\b"
+                r"|\bproduction software (?:development|engineering)\b"
+                r"|\b(?:build|building|built|write|writing)\b.{0,50}\bproduction (?:software|code)\b"
+                r"|\b(?:deep|strong|expert|advanced)\b.{0,50}\b(?:machine learning|ml|data science)\b"
+                r".{0,50}\b(?:engineering|model(?:l)?ing)\b"
+                r"|\bml engineering\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
 
 
 def _requirement_fragments(text: str) -> list[str]:
