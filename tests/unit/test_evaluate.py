@@ -194,6 +194,56 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             [blocker.type for blocker in preferred.hard_blockers],
         )
 
+    def test_technical_depth_hard_requirements_block_with_common_phrasings(
+        self,
+    ) -> None:
+        cases = (
+            "This role requires production software development in customer environments.",
+            "Mandatory advanced Python programming for deployment architecture.",
+            "You must own deep ML engineering work for customer deployments.",
+            "You need to write production code for deployed customer systems.",
+        )
+
+        for description in cases:
+            with self.subTest(description=description):
+                evaluation = evaluate_role(
+                    _row(
+                        "AI Deployment Strategist",
+                        ["London, United Kingdom"],
+                        department="Professional Services",
+                        description=(
+                            f"{description} Lead customer deployment strategy and "
+                            "operational planning."
+                        ),
+                    ),
+                    _company(tier=1),
+                )
+
+                self.assertEqual(evaluation.recommendation, "blocked")
+                self.assertIn(
+                    "disqualifying_hard_requirement",
+                    [blocker.type for blocker in evaluation.hard_blockers],
+                )
+
+        preferred = evaluate_role(
+            _row(
+                "AI Deployment Strategist",
+                ["London, United Kingdom"],
+                department="Professional Services",
+                description=(
+                    "Preferred: strong Python programming and production coding "
+                    "experience. Lead customer deployment strategy and operational "
+                    "planning."
+                ),
+            ),
+            _company(tier=1),
+        )
+
+        self.assertNotIn(
+            "disqualifying_hard_requirement",
+            [blocker.type for blocker in preferred.hard_blockers],
+        )
+
     def test_engineering_blocker_triggers_but_strategy_titles_are_allowed(self) -> None:
         blocked_titles = (
             "Software Engineer",

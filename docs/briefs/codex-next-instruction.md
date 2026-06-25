@@ -1,3 +1,22 @@
+# Codex — FIX LOOP 4 (Cato 🟠 on `34ebc3c`: hard-requirement blocker under-fires) — EMAIL-BLOCKING
+
+Cato's full review confirmed 34ebc3c is a genuine mechanism fix (no overfit), but found the blocker now **under-fires on common phrasing** — the inverse of the earlier over-block. Must close before owner sign-off to re-enable email.
+
+1. **[🟠 required] Broaden must-have detection + make technical-depth disqualifiers self-enforcing.**
+   - `must_have_context_patterns` currently matches only `\brequired\b`. Broaden to `require(s|d|ment)?`, `mandatory`, `must`, `need(ed)? to`.
+   - More robust: enforce **technical-depth disqualifiers (production coding / advanced programming / deep ML as a central duty) regardless of must-have phrasing** — per PRD §5.3 it's a true blocker on *centrality*, not on the word "required." `_llm_hard_blocker_is_enforceable` currently drops the blocker at the must-have gate *before* the `_technical_depth_requirement` override runs (override is partially dead on the LLM path) — fix the ordering so the technical-depth override can enforce.
+   - **Add the complementary regression test** (mirror of the degree test): a stretch-family role whose text *requires* production software development / advanced Python / deep ML still resolves to `blocked`. Use varied phrasings (requires / mandatory / must).
+2. **[🟡 confirm] Justify or soften the `role_family_fit` floor of 82.** Confirm a primary-family title floored to 82 isn't (a) re-admitting weak primary-titled roles, or (b) doing the benchmark's work — i.e. that LNP-090's apply_now reflects genuine fit, not just the floor. If it's masking, soften to a prior rather than a hard floor.
+3. **[reconcile] Confirm the carry-over fixes actually landed.** Cato lists the silent-fallback footgun + cost-cap/volume math as still-standing. Point to the tests proving `a36ae0c`'s loud-fallback (no email on fallback eval) and corrected cost math are in place; if they regressed or were partial, fix.
+4. **[🟡 widen] Grow the labeled positive set.** Sample more known-good S&O/primary-family roles across companies into the precision set for Lasse to label, reducing one-role metric swing (currently 9/9, 9/10 on ~10 positives).
+5. **[process] Confirm hosted GitHub Actions is green** on the latest commit (owner to check the Actions tab — it's been unverifiable from the build env every loop).
+
+Re-run cached benchmark + the new blocker test, push, **back to Cato**.
+
+**Owner decision — monitored soft-launch.** Email re-enable gate = **🟠 closed + carry-overs confirmed + Cato clears + owner sign-off.** Widening the positive label set (item 4) is **parallel, not blocking** — done from roles Lasse flags in live digests. Soft-launch relies on: clean apply/consider bands, the labeled "scrutinize" stretch section as the owner's calibration radar, the hard 25/50 cap, and loud-fallback.
+
+---
+
 # Codex — FIX LOOP 3 (Cato 🟠 on `34ebc3c`: metric ignores stretch, but the digest sends it)
 
 Owner decision: **keep full stretch cards in the email** (used as a calibration-monitoring surface). So the metric must now reflect what's delivered — close the mismatch by *measuring* stretch, not by hiding or dropping it.

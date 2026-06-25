@@ -116,7 +116,10 @@ usually_deprioritize:
   - "Deeply technical FDE, SWE, or ML engineering roles"
 disqualifying_hard_requirements:
   must_have_context_patterns:
-    - "\\brequired\\b"
+    - "\\brequire(?:s|d|ment|ments)?\\b"
+    - "\\bmandatory\\b"
+    - "\\bmust\\b"
+    - "\\bneed(?:s|ed)?\\s+to\\b"
     - "\\bminimum qualifications?\\b"
     - "\\bmust have\\b"
     - "\\bmust possess\\b"
@@ -135,8 +138,10 @@ disqualifying_hard_requirements:
   requirement_patterns:
     - "\\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\\b.{0,80}\\b(?:computer science|software engineering|engineering)\\b"
     - "\\b(?:computer science|software engineering|engineering)\\b.{0,80}\\bdegree\\b"
-    - "\\b(?:advanced|expert|professional|strong|proficient)\\b.{0,50}\\b(?:python|java|typescript|javascript|programming|coding|software development)\\b"
+    - "\\b(?:advanced|expert|professional|proficient)\\b.{0,50}\\b(?:python|java|typescript|javascript|programming|coding|software development)\\b"
+    - "\\bstrong\\b.{0,50}\\b(?:python|java|typescript|javascript|programming|coding)\\b"
     - "\\bproduction software (?:development|engineering)\\b"
+    - "\\bproduction coding\\b"
     - "\\b(?:build|building|built|write|writing)\\b.{0,50}\\bproduction (?:software|code)\\b"
     - "\\b(?:deep|strong|expert|advanced)\\b.{0,50}\\b(?:machine learning|ml|data science)\\b.{0,50}\\b(?:engineering|model(?:l)?ing)\\b"
     - "\\bml engineering\\b"

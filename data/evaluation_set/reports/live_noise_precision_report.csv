@@ -22,7 +22,7 @@ LNP-020,Pigment,AI Deployment Strategist,consider,consider,69,True,True,claude-h
 LNP-021,Mistral AI,"CyberSecurity Engineer, Incident Response Lead",skip,blocked,16,True,True,claude-haiku-4-5
 LNP-022,Xero,Partner Development Representative,skip,skip,22,True,True,claude-haiku-4-5
 LNP-023,OpenAI,Forward Deployed Engineer - London,skip,blocked,40,True,True,claude-haiku-4-5
-LNP-024,HelloFresh,Sr. Category Manager - Indirect Procurement CapEx (all genders),skip,skip,39,True,True,claude-haiku-4-5
+LNP-024,HelloFresh,Sr. Category Manager - Indirect Procurement CapEx (all genders),skip,blocked,39,True,True,claude-haiku-4-5
 LNP-025,Stripe,"Integration Engineer (Client facing), Professional Services",skip,blocked,36,True,True,claude-haiku-4-5
 LNP-026,Parloa,Staff Product Designer - Consumer Experience,skip,skip,23,True,True,claude-haiku-4-5
 LNP-027,Airwallex,"Director, Product Strategy",skip,skip,71,True,True,claude-haiku-4-5
@@ -30,7 +30,7 @@ LNP-028,OpenAI,"Consumer & Product Communications Lead, APAC",skip,skip,33,True,
 LNP-029,Mistral AI,"Applied AI, Technical Lead, Forward Deployed AI Engineer - EMEA",skip,blocked,26,True,True,claude-haiku-4-5
 LNP-030,Mistral AI,AI Deployment Strategist - UK,consider,consider,68,True,True,claude-haiku-4-5
 LNP-031,Sierra,"Strategist, Agent Development (Dutch speaking)",consider,consider,67,True,True,claude-haiku-4-5
-LNP-032,OpenAI,"Researcher, Training - London",skip,skip,24,True,True,claude-haiku-4-5
+LNP-032,OpenAI,"Researcher, Training - London",skip,blocked,24,True,True,claude-haiku-4-5
 LNP-033,Snowflake,"RVP, APJ Partner SE",skip,skip,25,True,True,claude-haiku-4-5
 LNP-034,Databricks,"Sales Director, Enterprise - Telco",skip,skip,22,True,True,claude-haiku-4-5
 LNP-035,Spotify,Head of Government Affairs Australia New Zealand,skip,skip,15,True,True,claude-haiku-4-5
@@ -75,7 +75,7 @@ LNP-073,Xero,Accounting Professional? Discover a new career in SaaS Sales with X
 LNP-074,Waymo,International Operations Safety & Readiness Manager,skip,skip,68,True,True,claude-haiku-4-5
 LNP-075,Checkout.com,Incident Response Engineer,skip,blocked,18,True,True,claude-haiku-4-5
 LNP-076,Airwallex,"Staff Product Manager, Yield",skip,stretch,54,True,False,claude-haiku-4-5
-LNP-077,Airwallex,"Staff/Senior Data Scientist, Analytics (Payments)",skip,skip,24,True,True,claude-haiku-4-5
+LNP-077,Airwallex,"Staff/Senior Data Scientist, Analytics (Payments)",skip,blocked,24,True,True,claude-haiku-4-5
 LNP-078,Sierra,"Sales Director, Spain",skip,skip,28,True,True,claude-haiku-4-5
 LNP-079,Celonis,Lead Value Engineer,skip,blocked,70,True,True,claude-haiku-4-5
 LNP-080,Airwallex,"Staff Data Scientist, Algorithm (Payments Fraud & Optimization)",skip,blocked,29,True,True,claude-haiku-4-5
@@ -118,7 +118,7 @@ LNP-116,Mistral AI,Data Annotation Quality Specialist,skip,skip,12,True,True,cla
 LNP-117,Sierra,Enterprise Sales Leader (ANZ),skip,skip,37,True,True,claude-haiku-4-5
 LNP-118,Airbnb,"Manager, Luxe Supply",skip,skip,46,True,True,claude-haiku-4-5
 LNP-119,Airwallex,"Senior Manager, Enterprise Strategy & GTM, APAC",consider,consider,77,True,True,claude-haiku-4-5
-LNP-120,Checkout.com,"Manager, Fraud and Risk Strategist",skip,skip,28,True,True,claude-haiku-4-5
+LNP-120,Checkout.com,"Manager, Fraud and Risk Strategist",skip,blocked,28,True,True,claude-haiku-4-5
 LNP-121,Databricks,"Director, Lakebase Sales Specialists (Central region)",skip,skip,25,True,True,claude-haiku-4-5
 LNP-122,Flix,Partner Manager (m/w/d) - DACH Region,skip,skip,52,True,True,claude-haiku-4-5
 LNP-123,OpenAI,"Solutions Engineer, Large Enterprise",skip,blocked,53,True,True,claude-haiku-4-5

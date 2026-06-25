@@ -13,6 +13,7 @@ from app.models import CompanyConfig
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION, evaluate_role
 from app.services.llm_evaluator import (
     ClaudeLLMProvider,
+    DEFAULT_ESTIMATED_EVAL_COST_USD,
     LLMEvaluationOutput,
     LLMEvaluationResult,
     LLMRoleRequest,
@@ -235,6 +236,95 @@ class LlmEvaluatorTest(unittest.TestCase):
 
         self.assertNotEqual(evaluation.recommendation, "blocked")
         self.assertEqual(evaluation.hard_blockers, [])
+
+    def test_technical_depth_hard_blocker_is_enforced_for_deployment_strategist(
+        self,
+    ) -> None:
+        evidence_cases = (
+            (
+                "requires",
+                "JD states 'This role requires production software development in customer environments.'",
+            ),
+            (
+                "mandatory",
+                "JD states 'Mandatory advanced Python programming for deployment architecture.'",
+            ),
+            (
+                "must",
+                "JD states 'You must own deep ML engineering work for customer deployments.'",
+            ),
+            (
+                "central duty",
+                "JD states 'Production coding is the central duty of this deployment role.'",
+            ),
+        )
+
+        for name, evidence in evidence_cases:
+            with self.subTest(name=name):
+                output_payload = _valid_output().model_dump()
+                output_payload.update(
+                    {
+                        "role_family_fit": 72,
+                        "evidence_strength": 65,
+                        "scope_seniority": 75,
+                        "gap_manageability": 62,
+                        "confidence": 0.72,
+                        "advisory_recommendation": "consider",
+                        "hard_blockers": [
+                            {
+                                "type": "disqualifying_hard_requirement",
+                                "evidence": evidence,
+                            }
+                        ],
+                    }
+                )
+                row = _row("AI Deployment Strategist")
+                row["department"] = "Professional Services"
+                row["description_text"] = (
+                    "Work directly with customers to translate business problems into "
+                    "AI deployment plans."
+                )
+
+                evaluation = evaluate_role(
+                    row,
+                    _company(),
+                    llm_provider=FakeProvider(
+                        LLMEvaluationOutput.model_validate(output_payload)
+                    ),
+                    spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+                )
+
+                self.assertEqual(evaluation.recommendation, "blocked")
+                self.assertIn(
+                    "disqualifying_hard_requirement",
+                    [blocker.type for blocker in evaluation.hard_blockers],
+                )
+
+    def test_core_family_floor_does_not_rescue_plain_revenue_ops(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload.update(
+            {
+                "role_family_fit": 45,
+                "evidence_strength": 15,
+                "scope_seniority": 45,
+                "gap_manageability": 20,
+                "confidence": 0.25,
+                "advisory_recommendation": "skip",
+            }
+        )
+
+        evaluation = evaluate_role(
+            _row("Manager, Revenue Operations"),
+            _company(),
+            llm_provider=FakeProvider(LLMEvaluationOutput.model_validate(output_payload)),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertLess(evaluation.dimensions["role_family_fit"], 82)
+        self.assertNotIn(evaluation.recommendation, {"apply_now", "consider"})
+
+    def test_default_model_cost_estimate_stays_below_one_cent(self) -> None:
+        self.assertLess(DEFAULT_ESTIMATED_EVAL_COST_USD, 0.01)
 
     def test_claude_provider_rejects_malformed_structured_output(self) -> None:
         provider = ClaudeLLMProvider(api_key="test-key", model="fake-model")

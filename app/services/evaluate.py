@@ -740,14 +740,15 @@ def _llm_hard_blocker_is_enforceable(
     config = profile.disqualifying_hard_requirements
     if _matches_any(evidence, config.nice_to_have_context_patterns):
         return False
-    if not _matches_any(evidence, config.must_have_context_patterns):
-        return False
     if not _matches_any(evidence, config.requirement_patterns):
+        return False
+    if _technical_depth_requirement(evidence):
+        return True
+    if not _matches_any(evidence, config.must_have_context_patterns):
         return False
     if (
         suppress_degree_requirements
         and _degree_requirement(evidence)
-        and not _technical_depth_requirement(evidence)
     ):
         return False
     return True
@@ -812,14 +813,18 @@ def _disqualifying_hard_requirements(
     for fragment in _requirement_fragments(text):
         if _matches_any(fragment, config.nice_to_have_context_patterns):
             continue
-        if not _matches_any(fragment, config.must_have_context_patterns):
-            continue
         if not _matches_any(fragment, config.requirement_patterns):
+            continue
+        has_technical_depth = _technical_depth_requirement(fragment)
+        if not has_technical_depth and not _matches_any(
+            fragment,
+            config.must_have_context_patterns,
+        ):
             continue
         if (
             suppress_degree_requirements
             and _degree_requirement(fragment)
-            and not _technical_depth_requirement(fragment)
+            and not has_technical_depth
         ):
             continue
         blockers.append(
@@ -853,9 +858,11 @@ def _technical_depth_requirement(text: str) -> bool:
     return bool(
         re.search(
             (
-                r"\b(?:advanced|expert|professional|strong|proficient)\b"
+                r"\b(?:advanced|expert|professional|proficient)\b"
                 r".{0,50}\b(?:python|java|typescript|javascript|programming|coding|software development)\b"
+                r"|\bstrong\b.{0,50}\b(?:python|java|typescript|javascript|programming|coding)\b"
                 r"|\bproduction software (?:development|engineering)\b"
+                r"|\bproduction coding\b"
                 r"|\b(?:build|building|built|write|writing)\b.{0,50}\bproduction (?:software|code)\b"
                 r"|\b(?:deep|strong|expert|advanced)\b.{0,50}\b(?:machine learning|ml|data science)\b"
                 r".{0,50}\b(?:engineering|model(?:l)?ing)\b"
