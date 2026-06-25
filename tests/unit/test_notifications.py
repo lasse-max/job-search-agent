@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 import tempfile
 import unittest
@@ -48,6 +49,10 @@ class NotificationDeliveryTest(unittest.TestCase):
                 "Low-priority / blocked",
                 (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
             )
+            self.assertIn(
+                "Fallback evaluator",
+                (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
+            )
             notification = conn.execute("SELECT * FROM notifications").fetchone()
             self.assertEqual(notification["status"], "fallback")
             self.assertEqual(notification["type"], "digest")
@@ -82,6 +87,7 @@ class NotificationDeliveryTest(unittest.TestCase):
                 """
             )
             conn.commit()
+            _mark_non_fallback_evaluations(conn)
             provider = FakeProvider()
 
             result = deliver_digest(
@@ -103,6 +109,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             output_dir = Path(directory) / "output"
             add_text_intake(JOB_TEXT, db_path=db_path, source_url="https://example.com/job")
             conn = _connect(db_path)
+            _mark_non_fallback_evaluations(conn)
             provider = FakeProvider()
 
             result = deliver_digest(conn, output_dir=output_dir, provider=provider)
@@ -177,6 +184,7 @@ class NotificationDeliveryTest(unittest.TestCase):
                 ("2026-06-24T10:00:00+00:00", job.job_id),
             )
             conn.commit()
+            _mark_non_fallback_evaluations(conn)
             provider = FakeProvider()
 
             first = deliver_digest(
@@ -200,6 +208,29 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(first.status, "sent")
             self.assertEqual(second.status, "suppressed_duplicate")
             self.assertEqual(len(provider.messages), 1)
+
+    def test_provider_refuses_fallback_evaluator_digest(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_dir = Path(directory) / "output"
+            add_text_intake(JOB_TEXT, db_path=db_path, source_url="https://example.com/job")
+            conn = _connect(db_path)
+            provider = FakeProvider()
+
+            result = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(result.status, "failed")
+            self.assertIn("fallback evaluator", result.error_summary or "")
+            self.assertEqual(provider.messages, [])
+            self.assertIn(
+                "Fallback evaluator",
+                (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
+            )
 
 
 class FakeProvider:
@@ -249,6 +280,21 @@ def _insert_failed_source(conn: sqlite3.Connection) -> None:
         changed_count=0,
         error_summary="connector failed",
     )
+    conn.commit()
+
+
+def _mark_non_fallback_evaluations(conn: sqlite3.Connection) -> None:
+    rows = conn.execute("SELECT id, evaluation_json FROM role_evaluations").fetchall()
+    for row in rows:
+        payload = json.loads(row["evaluation_json"])
+        payload.setdefault("provenance", {})
+        payload["provenance"]["fallback_quality"] = "false"
+        payload["provenance"]["model_version"] = "fake-claude"
+        payload["provenance"]["evaluator_version"] = "hybrid_claude_v1"
+        conn.execute(
+            "UPDATE role_evaluations SET evaluation_json = ? WHERE id = ?",
+            (json.dumps(payload), row["id"]),
+        )
     conn.commit()
 
 

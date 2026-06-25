@@ -20,7 +20,7 @@ from app.db import (
     record_notification,
     get_digest_rows,
 )
-from app.services.digest import render_html, render_text
+from app.services.digest import render_html, render_text, uses_fallback_evaluator
 
 
 DEFAULT_RESEND_FROM = "Job Search Agent <onboarding@resend.dev>"
@@ -167,6 +167,31 @@ def deliver_digest(
     text_path.write_text(text_body, encoding="utf-8")
 
     provider = provider or provider_from_env()
+    if provider is not None and uses_fallback_evaluator(rows):
+        error_summary = (
+            "Digest uses fallback evaluator output; refusing email delivery until "
+            "validated LLM evaluations are available."
+        )
+        record_notification(
+            conn,
+            notification_type="digest",
+            payload_hash=payload_hash,
+            status="failed",
+            error_summary=error_summary,
+        )
+        conn.commit()
+        return DigestDeliveryResult(
+            status="failed",
+            subject=subject,
+            payload_hash=payload_hash,
+            role_count=len(rows),
+            failure_count=len(failures),
+            html_path=html_path,
+            text_path=text_path,
+            recipient=recipient,
+            error_summary=error_summary,
+        )
+
     if provider is not None and not recipient:
         error_summary = "DIGEST_RECIPIENT_EMAIL is required when email delivery is configured."
         record_notification(

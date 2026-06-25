@@ -62,9 +62,28 @@ class MarketPolicyConfig:
 
 
 @dataclass(frozen=True)
+class LocationGateConfig:
+    enabled: bool
+    allowed_location_patterns: tuple[str, ...]
+    tier1_only_location_patterns: tuple[str, ...]
+    skipped_location_patterns: tuple[str, ...]
+    us_location_patterns: tuple[str, ...]
+    us_sponsorship_patterns: tuple[str, ...]
+    us_exceptional_role_patterns: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class LocationPolicyConfig:
     version: str
     markets: dict[str, MarketPolicyConfig]
+    pre_evaluation_filter: LocationGateConfig
+
+
+@dataclass(frozen=True)
+class HardRequirementConfig:
+    must_have_context_patterns: tuple[str, ...]
+    nice_to_have_context_patterns: tuple[str, ...]
+    requirement_patterns: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -80,6 +99,7 @@ class CandidateProfileConfig:
     scope_signals: tuple[str, ...]
     languages: dict[str, str]
     brand_floor: dict[str, object]
+    disqualifying_hard_requirements: HardRequirementConfig
     usually_deprioritize: tuple[str, ...]
     honest_gaps: tuple[str, ...]
 
@@ -231,9 +251,26 @@ def load_location_policy(
             notes=str(raw_market.get("notes") or ""),
         )
 
+    raw_gate = data.get("pre_evaluation_filter")
+    if not isinstance(raw_gate, dict):
+        raw_gate = {}
+
     return LocationPolicyConfig(
         version=str(data.get("version") or "location_policy_unknown"),
         markets=markets,
+        pre_evaluation_filter=LocationGateConfig(
+            enabled=bool(raw_gate.get("enabled", True)),
+            allowed_location_patterns=_tuple_of_str(raw_gate.get("allowed_location_patterns")),
+            tier1_only_location_patterns=_tuple_of_str(
+                raw_gate.get("tier1_only_location_patterns"),
+            ),
+            skipped_location_patterns=_tuple_of_str(raw_gate.get("skipped_location_patterns")),
+            us_location_patterns=_tuple_of_str(raw_gate.get("us_location_patterns")),
+            us_sponsorship_patterns=_tuple_of_str(raw_gate.get("us_sponsorship_patterns")),
+            us_exceptional_role_patterns=_tuple_of_str(
+                raw_gate.get("us_exceptional_role_patterns"),
+            ),
+        ),
     )
 
 
@@ -255,6 +292,9 @@ def load_candidate_profile(
     languages = data.get("languages")
     if not isinstance(languages, dict):
         languages = {}
+    hard_requirements = data.get("disqualifying_hard_requirements")
+    if not isinstance(hard_requirements, dict):
+        hard_requirements = {}
 
     return CandidateProfileConfig(
         version=str(data.get("version") or "candidate_profile_unknown"),
@@ -268,6 +308,15 @@ def load_candidate_profile(
         scope_signals=_tuple_of_str(scope_signals.get("scope_signals")),
         languages={str(key): str(value) for key, value in languages.items()},
         brand_floor=dict(brand_floor),
+        disqualifying_hard_requirements=HardRequirementConfig(
+            must_have_context_patterns=_tuple_of_str(
+                hard_requirements.get("must_have_context_patterns"),
+            ),
+            nice_to_have_context_patterns=_tuple_of_str(
+                hard_requirements.get("nice_to_have_context_patterns"),
+            ),
+            requirement_patterns=_tuple_of_str(hard_requirements.get("requirement_patterns")),
+        ),
         usually_deprioritize=_tuple_of_str(data.get("usually_deprioritize")),
         honest_gaps=_tuple_of_str(data.get("honest_gaps")),
     )

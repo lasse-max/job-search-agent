@@ -57,12 +57,11 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
 
     filter_config = load_relevance_filter()
     profile = load_candidate_profile()
-    locations = json.loads(row["locations_json"])
-    if filter_config.target_location_required and not _matches_target_location(
-        locations,
-        company.target_locations,
-    ):
-        return RelevanceDecision(False, "non_target_location")
+    location_policy = load_location_policy()
+    if filter_config.target_location_required:
+        location_decision = _location_gate_decision(row, company, location_policy)
+        if location_decision is not None:
+            return location_decision
 
     role_family_patterns = (
         profile.primary_role_family_patterns + profile.stretch_role_family_patterns
@@ -98,6 +97,7 @@ def evaluate_role(
         company,
         scoring_policy,
         location_policy,
+        profile,
     )
     provider = llm_provider or provider_from_env()
     if provider is not None:
@@ -105,10 +105,14 @@ def evaluate_role(
         tracker.assert_budget_allows()
         llm_result = provider.evaluate(LLMRoleRequest(row=row, company=company, profile=profile))
         tracker.record(llm_result.cost_usd)
+        llm_hard_blockers = [
+            HardBlocker(type=item.type, evidence=item.evidence)
+            for item in llm_result.output.hard_blockers
+        ]
         return _role_evaluation_from_llm(
             row,
             company,
-            hard_blockers,
+            _merge_hard_blockers(hard_blockers, llm_hard_blockers),
             llm_result.output.dimensions,
             llm_confidence=llm_result.output.confidence,
             llm_alignments=[
@@ -194,6 +198,8 @@ def evaluate_role(
             "prompt_version": "deterministic_fallback",
             "model_version": DETERMINISTIC_FALLBACK_VERSION,
             "evaluator_version": DETERMINISTIC_FALLBACK_VERSION,
+            "fallback_quality": "true",
+            "fallback_reason": "missing_anthropic_api_key",
         },
         summary=_summary(title, fit_score, recommendation, hard_blockers),
     )
@@ -257,6 +263,7 @@ def _role_evaluation_from_llm(
             "prompt_version": prompt_version or PROMPT_VERSION,
             "model_version": model_version,
             "evaluator_version": HYBRID_EVALUATOR_VERSION,
+            "fallback_quality": "false",
             "llm_advisory_recommendation": llm_advisory_recommendation,
             "llm_cache_hit": str(cache_hit).lower(),
         },
@@ -537,8 +544,10 @@ def _hard_blockers(
     company: CompanyConfig,
     scoring_policy: ScoringPolicyConfig,
     location_policy: LocationPolicyConfig,
+    profile: CandidateProfileConfig,
 ) -> list[HardBlocker]:
     blockers = list(_technical_blockers(title_lower, scoring_policy))
+    blockers.extend(_disqualifying_hard_requirements(text, profile))
     if _technical_pm_depth(title_lower, text):
         blockers.append(
             HardBlocker(
@@ -563,6 +572,20 @@ def _hard_blockers(
     if work_authorization is not None:
         blockers.append(work_authorization)
     return blockers
+
+
+def _merge_hard_blockers(
+    base: list[HardBlocker],
+    additional: list[HardBlocker],
+) -> list[HardBlocker]:
+    seen = {(blocker.type, blocker.evidence) for blocker in base}
+    merged = list(base)
+    for blocker in additional:
+        key = (blocker.type, blocker.evidence)
+        if key not in seen:
+            merged.append(blocker)
+            seen.add(key)
+    return merged
 
 
 def _technical_blockers(
@@ -609,6 +632,41 @@ def _work_authorization_blocker(
             ),
         )
     return None
+
+
+def _disqualifying_hard_requirements(
+    text: str,
+    profile: CandidateProfileConfig,
+) -> list[HardBlocker]:
+    config = profile.disqualifying_hard_requirements
+    if not config.requirement_patterns:
+        return []
+    blockers: list[HardBlocker] = []
+    for fragment in _requirement_fragments(text):
+        if _matches_any(fragment, config.nice_to_have_context_patterns):
+            continue
+        if not _matches_any(fragment, config.must_have_context_patterns):
+            continue
+        if not _matches_any(fragment, config.requirement_patterns):
+            continue
+        blockers.append(
+            HardBlocker(
+                type="disqualifying_hard_requirement",
+                evidence=(
+                    "Required technical credential/depth appears outside the "
+                    f"candidate profile: {fragment.strip()}"
+                ),
+            )
+        )
+    return blockers
+
+
+def _requirement_fragments(text: str) -> list[str]:
+    return [
+        fragment.strip()
+        for fragment in re.split(r"[\n.;•]+", text)
+        if fragment.strip()
+    ]
 
 
 def _security_clearance_required(text: str) -> bool:
@@ -726,6 +784,50 @@ def _title_department_text(row: sqlite3.Row) -> str:
 
 def _matches_any(text: str, patterns: tuple[str, ...]) -> bool:
     return any(re.search(pattern, text, flags=re.IGNORECASE) for pattern in patterns)
+
+
+def _location_gate_decision(
+    row: sqlite3.Row,
+    company: CompanyConfig,
+    location_policy: LocationPolicyConfig,
+) -> RelevanceDecision | None:
+    gate = location_policy.pre_evaluation_filter
+    if not gate.enabled:
+        locations = json.loads(row["locations_json"])
+        if not _matches_target_location(locations, company.target_locations):
+            return RelevanceDecision(False, "non_target_location")
+        return None
+
+    locations_text = " ".join(json.loads(row["locations_json"])).lower()
+    if not locations_text.strip():
+        return RelevanceDecision(False, "location_filter_missing_location")
+
+    if _matches_any(locations_text, gate.allowed_location_patterns):
+        return None
+
+    if _matches_any(locations_text, gate.tier1_only_location_patterns):
+        if company.tier == 1:
+            return None
+        return RelevanceDecision(False, "location_filter_tier1_only_location")
+
+    if _matches_any(locations_text, gate.us_location_patterns):
+        role_text = _role_text(row)
+        title_department = _title_department_text(row)
+        if (
+            company.tier == 1
+            and _matches_any(role_text, gate.us_sponsorship_patterns)
+            and _matches_any(title_department, gate.us_exceptional_role_patterns)
+        ):
+            return None
+        return RelevanceDecision(
+            False,
+            "location_filter_us_requires_tier1_sponsorship_exceptional_role",
+        )
+
+    if _matches_any(locations_text, gate.skipped_location_patterns):
+        return RelevanceDecision(False, "location_filter_skipped_market")
+
+    return RelevanceDecision(False, "location_filter_not_allowed")
 
 
 def _matches_target_location(locations: list[str], target_locations: list[str]) -> bool:

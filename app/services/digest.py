@@ -18,6 +18,7 @@ RECOMMENDATION_SECTIONS = [
     ("stretch", "Stretch / selective"),
 ]
 LOW_PRIORITY_RECOMMENDATIONS = {"skip", "blocked"}
+FALLBACK_EVALUATOR_WARNING = "fallback evaluator — not validated"
 
 
 def write_digest(
@@ -47,11 +48,18 @@ def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
         "<html><head><meta charset='utf-8'><title>Job Search Digest</title>",
         "<style>body{font-family:Arial,sans-serif;max-width:980px;margin:32px auto;line-height:1.45}"
         ".card{border:1px solid #ddd;border-radius:10px;padding:16px;margin:12px 0}"
+        ".warning{background:#fff3cd;border:1px solid #ffe69c;border-radius:10px;padding:12px;margin:12px 0}"
         ".muted{color:#666}.pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eee;margin:2px}"
         ".meta{margin:6px 0}.low summary{cursor:pointer;font-weight:bold;font-size:1.2em;margin:18px 0 8px}</style>",
         "</head><body>",
         f"<h1>Job Search Digest</h1><p class='muted'>Generated {html.escape(generated_at)}</p>",
     ]
+    if uses_fallback_evaluator(rows):
+        parts.append(
+            "<div class='warning'><strong>Fallback evaluator — not validated.</strong> "
+            "This local digest was rendered from deterministic fallback evaluations and "
+            "must not be treated as a calibrated email digest.</div>"
+        )
     for recommendation, label in RECOMMENDATION_SECTIONS:
         raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
         section_limit = digest_limits.get(recommendation, len(raw_section_rows))
@@ -103,6 +111,10 @@ def render_text(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
     grouped = _group_rows(rows)
     digest_limits = load_scoring_policy().digest_limits
     parts = [f"Job Search Digest - generated {utc_now()}", ""]
+    if uses_fallback_evaluator(rows):
+        parts.append(FALLBACK_EVALUATOR_WARNING)
+        parts.append("This local digest uses deterministic fallback evaluations.")
+        parts.append("")
     for recommendation, label in RECOMMENDATION_SECTIONS:
         raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
         section_limit = digest_limits.get(recommendation, len(raw_section_rows))
@@ -136,6 +148,19 @@ def render_text(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
     else:
         parts.append("- None recorded")
     return "\n".join(parts) + "\n"
+
+
+def uses_fallback_evaluator(rows: list[sqlite3.Row]) -> bool:
+    for row in rows:
+        evaluation = json.loads(row["evaluation_json"])
+        provenance = evaluation.get("provenance") or {}
+        if str(provenance.get("fallback_quality")).lower() == "true":
+            return True
+        evaluator_version = str(provenance.get("evaluator_version") or "")
+        model_version = str(provenance.get("model_version") or "")
+        if "deterministic_fallback" in evaluator_version or "deterministic_fallback" in model_version:
+            return True
+    return False
 
 
 def _group_rows(rows: list[sqlite3.Row]) -> dict[str, list[sqlite3.Row]]:

@@ -6,6 +6,8 @@ excluded_title_department_patterns:
   - "\\bcounsel\\b"
   - "\\b(?:software|hardware|machine learning|ml|data|full stack|backend|frontend) engineer\\b"
   - "\\bengineering manager\\b"
+  - "\\bengineering program manager\\b"
+  - "\\btechnical program manager\\b"
   - "\\bhardware\\b"
   - "\\bindustrial design(?:er)?\\b"
   - "\\bmarketing\\b"

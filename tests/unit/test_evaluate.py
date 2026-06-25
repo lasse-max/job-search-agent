@@ -156,6 +156,44 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             [blocker.type for blocker in technical_pm.hard_blockers],
         )
 
+    def test_required_technical_hard_requirements_block_but_preferred_do_not(
+        self,
+    ) -> None:
+        required = evaluate_role(
+            _row(
+                "Strategic Operations Lead",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description=(
+                    "Minimum qualifications: Bachelor's degree in Computer Science "
+                    "required. Lead strategic operations programs."
+                ),
+            ),
+            _company(tier=1),
+        )
+        preferred = evaluate_role(
+            _row(
+                "Strategic Operations Lead",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description=(
+                    "Preferred: familiarity with Python and exposure to software "
+                    "development. Lead strategic operations programs."
+                ),
+            ),
+            _company(tier=1),
+        )
+
+        self.assertEqual(required.recommendation, "blocked")
+        self.assertIn(
+            "disqualifying_hard_requirement",
+            [blocker.type for blocker in required.hard_blockers],
+        )
+        self.assertNotIn(
+            "disqualifying_hard_requirement",
+            [blocker.type for blocker in preferred.hard_blockers],
+        )
+
     def test_engineering_blocker_triggers_but_strategy_titles_are_allowed(self) -> None:
         blocked_titles = (
             "Software Engineer",
@@ -444,7 +482,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
                 _row("Strategic Operations Lead", ["New York, United States"]),
                 company,
             ).reason,
-            "non_target_location",
+            "location_filter_us_requires_tier1_sponsorship_exceptional_role",
         )
         self.assertEqual(
             relevance_decision(
@@ -452,6 +490,102 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
                 company,
             ).reason,
             "excluded_title_department_function",
+        )
+
+    def test_relevance_filter_blocks_off_family_program_and_sales_titles(self) -> None:
+        company = _company(target_locations=["London / UK"])
+        cases = (
+            "Engineering Program Manager",
+            "Technical Program Manager",
+            "Account Executive",
+            "SDR",
+        )
+
+        for title in cases:
+            with self.subTest(title=title):
+                decision = relevance_decision(
+                    _row(title, ["London, United Kingdom"], department="Operations"),
+                    company,
+                )
+                self.assertFalse(decision.should_evaluate)
+                self.assertEqual(decision.reason, "excluded_title_department_function")
+
+    def test_location_gate_uses_posted_location_policy(self) -> None:
+        tier1 = _company(tier=1)
+        tier2 = _company(tier=2)
+
+        self.assertTrue(
+            relevance_decision(
+                _row("Strategic Operations Lead", ["London, United Kingdom"]),
+                tier2,
+            ).should_evaluate
+        )
+        self.assertFalse(
+            relevance_decision(
+                _row("Strategic Operations Lead", ["Toronto, Canada"]),
+                tier1,
+            ).should_evaluate
+        )
+        self.assertEqual(
+            relevance_decision(
+                _row("Strategic Operations Lead", ["Dublin, Ireland"]),
+                tier2,
+            ).reason,
+            "location_filter_tier1_only_location",
+        )
+        self.assertTrue(
+            relevance_decision(
+                _row("Strategic Operations Lead", ["Dublin, Ireland"]),
+                tier1,
+            ).should_evaluate
+        )
+        self.assertTrue(
+            relevance_decision(
+                _row(
+                    "Strategic Operations Lead",
+                    ["New York, United States", "London, United Kingdom"],
+                ),
+                tier2,
+            ).should_evaluate
+        )
+
+    def test_us_location_gate_requires_tier1_sponsorship_and_exceptional_role(self) -> None:
+        sponsored = relevance_decision(
+            _row(
+                "Strategic Operations Lead",
+                ["New York, United States"],
+                department="Strategy & Operations",
+                description="Visa sponsorship available for exceptional candidates.",
+            ),
+            _company(tier=1),
+        )
+        no_sponsorship = relevance_decision(
+            _row(
+                "Strategic Operations Lead",
+                ["New York, United States"],
+                department="Strategy & Operations",
+                description="Lead strategic operations programs.",
+            ),
+            _company(tier=1),
+        )
+        non_exceptional = relevance_decision(
+            _row(
+                "Payroll Manager",
+                ["New York, United States"],
+                department="Finance",
+                description="Visa sponsorship available.",
+            ),
+            _company(tier=1),
+        )
+
+        self.assertTrue(sponsored.should_evaluate)
+        self.assertEqual(
+            no_sponsorship.reason,
+            "location_filter_us_requires_tier1_sponsorship_exceptional_role",
+        )
+        self.assertEqual(
+            non_exceptional.reason,
+            "location_filter_us_requires_tier1_sponsorship_exceptional_role",
         )
 
     def test_relevance_gate_uses_title_department_not_description_for_positive_match(

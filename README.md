@@ -81,9 +81,10 @@ set. Required for live delivery: `DIGEST_RECIPIENT_EMAIL` (for example,
 `you@example.com`). Optional: `DIGEST_FROM_EMAIL`.
 
 The evaluator uses Claude only when `ANTHROPIC_API_KEY` is present. Without a
-key, local and CI runs use the deterministic fallback and record that fallback in
-evaluation provenance. The scheduled workflow intentionally leaves live email
-secrets unwired until the live-noise precision gate clears.
+key, local and CI runs can render deterministic fallback files, but those
+evaluations are marked `fallback evaluator — not validated` and are blocked from
+email delivery. The scheduled workflow intentionally leaves live email secrets
+unwired until the live-noise precision gate clears.
 
 ### MVP commands
 

@@ -72,7 +72,6 @@ role_family_patterns:
     - "\\brevops\\b"
     - "\\bbusiness transformation\\b"
     - "\\bstrategic programs?\\b"
-    - "\\bprogram(?:me)?\\b"
     - "\\bchief of staff\\b"
   stretch:
     - "\\bdeployment strategist\\b"
@@ -99,6 +98,32 @@ usually_deprioritize:
   - "Junior analyst or associate scope"
   - "Pure Product Manager roles requiring extensive native PM or SDLC history"
   - "Deeply technical FDE, SWE, or ML engineering roles"
+disqualifying_hard_requirements:
+  must_have_context_patterns:
+    - "\\brequired\\b"
+    - "\\bminimum qualifications?\\b"
+    - "\\bmust have\\b"
+    - "\\bmust possess\\b"
+    - "\\byou (?:have|bring|need)\\b"
+    - "\\brequirements?\\b"
+    - "\\bqualifications?\\b"
+  nice_to_have_context_patterns:
+    - "\\bpreferred\\b"
+    - "\\bnice to have\\b"
+    - "\\ba plus\\b"
+    - "\\bbonus\\b"
+    - "\\bfamiliarity\\b"
+    - "\\bexposure to\\b"
+    - "\\bhelpful\\b"
+    - "\\bdesirable\\b"
+  requirement_patterns:
+    - "\\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\\b.{0,80}\\b(?:computer science|software engineering|engineering)\\b"
+    - "\\b(?:computer science|software engineering|engineering)\\b.{0,80}\\bdegree\\b"
+    - "\\b(?:advanced|expert|professional|strong|proficient)\\b.{0,50}\\b(?:python|java|typescript|javascript|programming|coding|software development)\\b"
+    - "\\bproduction software (?:development|engineering)\\b"
+    - "\\b(?:build|building|built|write|writing)\\b.{0,50}\\bproduction (?:software|code)\\b"
+    - "\\b(?:deep|strong|expert|advanced)\\b.{0,50}\\b(?:machine learning|ml|data science)\\b.{0,50}\\b(?:engineering|model(?:l)?ing)\\b"
+    - "\\bml engineering\\b"
 honest_gaps:
   - "No production software-engineering background"
   - "Python basic and actively learning"

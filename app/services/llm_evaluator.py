@@ -23,7 +23,7 @@ DEFAULT_CLAUDE_MODEL = "claude-haiku-4-5"
 PROMPT_PATH = Path(__file__).resolve().parents[1] / "prompts" / "role_evaluation_v1.md"
 DEFAULT_LLM_CACHE_DIR = DATA_DIR / "evaluation_set" / "llm_cache"
 DEFAULT_SPEND_LEDGER = DATA_DIR / "model_spend_ledger.json"
-DEFAULT_ESTIMATED_EVAL_COST_USD = 0.02
+DEFAULT_ESTIMATED_EVAL_COST_USD = 0.004
 
 
 class LLMAlignmentModel(BaseModel):
@@ -42,6 +42,13 @@ class LLMGapModel(BaseModel):
     mitigation: str = Field(min_length=1)
 
 
+class LLMHardBlockerModel(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    type: Literal["disqualifying_hard_requirement"]
+    evidence: str = Field(min_length=1, max_length=600)
+
+
 class LLMEvaluationOutput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -53,6 +60,7 @@ class LLMEvaluationOutput(BaseModel):
     advisory_recommendation: Literal["apply_now", "consider", "stretch", "skip", "blocked"]
     alignments: list[LLMAlignmentModel] = Field(min_length=1, max_length=4)
     gaps: list[LLMGapModel] = Field(min_length=1, max_length=4)
+    hard_blockers: list[LLMHardBlockerModel] = Field(default_factory=list, max_length=4)
     uncertainties: list[str] = Field(default_factory=list, max_length=5)
     summary: str = Field(min_length=1, max_length=600)
 
@@ -233,6 +241,15 @@ def build_role_prompt(request: LLMRoleRequest) -> str:
         "usually_deprioritize": profile.usually_deprioritize,
         "honest_gaps": profile.honest_gaps,
         "languages": profile.languages,
+        "disqualifying_hard_requirements": {
+            "must_have_context_patterns": (
+                profile.disqualifying_hard_requirements.must_have_context_patterns
+            ),
+            "nice_to_have_context_patterns": (
+                profile.disqualifying_hard_requirements.nice_to_have_context_patterns
+            ),
+            "requirement_patterns": profile.disqualifying_hard_requirements.requirement_patterns,
+        },
     }
     return (
         prompt_template

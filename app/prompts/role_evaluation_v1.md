@@ -15,6 +15,7 @@ Your job is to judge the role-specific evidence:
 - `gap_manageability`: 0-100 where higher means gaps are manageable.
 - `confidence`: 0-1, based on how clearly the JD describes scope and requirements.
 - `advisory_recommendation`: your advisory band only. Code makes the final call.
+- `hard_blockers`: include only disqualifying hard requirements with a quoted JD line.
 
 Target families:
 
@@ -52,3 +53,8 @@ Evidence rules:
 - Distinguish product/strategy/operator work from generic operations, CS, or sales.
 - If the title is ambiguous, use responsibilities and scope to judge.
 - If information is missing, lower confidence and add an uncertainty.
+- For hard blockers, distinguish must-have/minimum requirements from preferred,
+  bonus, nice-to-have, familiarity, or exposure language. Emit
+  `disqualifying_hard_requirement` only when the JD states a required CS/engineering
+  degree, required advanced/professional programming or production software
+  development as a core duty, or required deep ML/data-science engineering.

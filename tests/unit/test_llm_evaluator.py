@@ -91,6 +91,31 @@ class LlmEvaluatorTest(unittest.TestCase):
 
         self.assertEqual(provider.calls, 0)
 
+    def test_llm_reported_hard_requirement_is_code_enforced(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload["hard_blockers"] = [
+            {
+                "type": "disqualifying_hard_requirement",
+                "evidence": "Minimum qualification: advanced Python programming required.",
+            }
+        ]
+        provider = FakeProvider(
+            LLMEvaluationOutput.model_validate(output_payload)
+        )
+
+        evaluation = evaluate_role(
+            _row("Strategic Operations Lead"),
+            _company(),
+            llm_provider=provider,
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertEqual(evaluation.recommendation, "blocked")
+        self.assertIn(
+            "disqualifying_hard_requirement",
+            [blocker.type for blocker in evaluation.hard_blockers],
+        )
+
     def test_claude_provider_rejects_malformed_structured_output(self) -> None:
         provider = ClaudeLLMProvider(api_key="test-key", model="fake-model")
         request = LLMRoleRequest(
