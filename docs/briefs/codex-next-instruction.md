@@ -1,5 +1,10 @@
 # Codex — next instruction (ordered)
 
+> **STATE (live):** Steps 1–4 + 6 shipped in `a36ae0c` (loud fallback, cost math, gate leaks, location filter, hard-requirement blocker). Both label sets are now **labeled by Otto** (gate-recall `live_noise_labels.yaml`: 146 skip / 4 surfaced; precision `live_noise_precision_set.yaml`: 138 skip / 1 apply_now / 9 consider / 2 stretch) — **commit them**. REMAINING: add seniority ceiling **#52**; actually run Claude + populate `llm_cache`; switch `benchmark` to the cached LLM provider; calibrate to recall ≥95% + precision ≥80%. The LLM machinery exists (`c796a40`) but has never been run — that's the gap.
+>
+> **New rule to encode — DECISIONS #52 (seniority ceiling):** target band L4–L5 (Manager / Senior Manager / Lead / Senior IC). "Head of / Director / VP / C-suite" at an established company → over-leveled → `skip` even when function matches (skip on level, don't mislabel function). Exception: small startups where "Head of" ≈ L4–L5 scope. Encode in `candidate_profile.yaml` + `scope_seniority` logic + prompt.
+
+
 Full detail in `docs/briefs/llm-evaluator-slice.md`. Build to PRD/ROADMAP, commit small, pause for Cato re-review, log ADRs in DECISIONS.md. **Do NOT re-enable live email.** Do NOT start Stage 2/3.
 
 Do these in order:
