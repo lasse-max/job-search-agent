@@ -1,3 +1,18 @@
+# Codex — FIX LOOP 3 (Cato 🟠 on `34ebc3c`: metric ignores stretch, but the digest sends it)
+
+Owner decision: **keep full stretch cards in the email** (used as a calibration-monitoring surface). So the metric must now reflect what's delivered — close the mismatch by *measuring* stretch, not by hiding or dropping it.
+
+1. **Fix the precision report to match delivery.** Report TWO precision numbers in `live_noise_precision_report`:
+   - **Apply/Consider precision** (the calibrated bands) — keep gating this **≥80%** (currently 9/9).
+   - **All-surfaced precision INCLUDING stretch** (= what the email actually shows as full cards: apply_now + consider + stretch). Compute and display it; **report-only, not gated** for the MVP. It will read low (~11/20 ≈ 55%) because the stretch band is still noisy — that's the intended visibility, not a failure. This directly resolves Cato's flag: the metric can no longer claim "no firehose" while ignoring 9 skip→stretch roles.
+   - Keep live Apply/Consider **recall ≥90%** gated.
+2. **Label the stretch section in the digest** as lower-confidence, e.g. "Stretch / reach — calibration in progress, scrutinize." So its noise is explicit to the reader.
+3. **Backlog (next calibration target, not this loop):** the stretch band is noisy — 9 skip→stretch incl. **LNP-142 Palantir (defense — owner declined; should down-rank to skip)**, LNP-112 Talent Acquisition, LNP-062 associate pricing. Tune the stretch band + encode the defense-preference down-rank, informed by what the owner flags from live emails. Also grow the labeled positive set over time (currently thin at 10 — Cato 🟡).
+
+After 1–2: re-run cached benchmark, push, **back to Cato for re-review**. Email re-enable = apply/consider gates green + stretch shown-and-measured + owner sign-off.
+
+---
+
 # Codex — FIX LOOP 2 (calibration regression on `5f9661e`)
 
 The real evaluator ran but is now **too conservative** — the green "precision 6/6" hides a recall miss on the live set. From `live_noise_precision_report.md`: of ~10 roles labeled apply/consider, only 6 surfaced (~60% recall). Fix the **mechanism**, then re-benchmark; do NOT hand-tune to pass individual rows.

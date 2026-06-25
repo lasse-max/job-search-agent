@@ -100,7 +100,8 @@ class BenchmarkCalibrationTest(unittest.TestCase):
 
             self.assertEqual(run.metrics.labelled_roles, 1)
             self.assertEqual(run.metrics.apply_consider_recall, 1.0)
-            self.assertEqual(run.metrics.digest_precision, 1.0)
+            self.assertEqual(run.metrics.apply_consider_precision, 1.0)
+            self.assertEqual(run.metrics.all_surfaced_precision, 1.0)
             self.assertTrue(run.metrics.recall_passes)
             self.assertTrue(run.metrics.passes)
             self.assertTrue(run.markdown_path.exists())
@@ -108,7 +109,99 @@ class BenchmarkCalibrationTest(unittest.TestCase):
             report = run.markdown_path.read_text(encoding="utf-8")
             self.assertIn("Label set purpose: `gate_passer_precision`", report)
             self.assertIn("Apply/Consider recall: 1/1 (100.0%)", report)
+            self.assertIn("Apply/Consider precision (gated): 1/1 (100.0%)", report)
+            self.assertIn(
+                "All-surfaced precision incl. stretch (report-only): 1/1 (100.0%)",
+                report,
+            )
             self.assertIn("Evaluator:", report)
+
+    def test_live_noise_reports_stretch_precision_without_gating_it(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            labels_path = Path(directory) / "live_noise.yaml"
+            reports_dir = Path(directory) / "reports"
+            labels_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "version": "live_noise_labels_v1",
+                        "live_noise_set": [
+                            {
+                                "id": "LN-001",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "Strategic Operations Lead",
+                                "department": "Strategy & Operations",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/job",
+                                "description_text": "Lead strategy and operations work.",
+                                "expected_recommendation": "apply_now",
+                            },
+                            {
+                                "id": "LN-002",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "AI Deployment Strategist",
+                                "department": "Applied AI",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/stretch-noise",
+                                "description_text": "Customer-facing deployment strategy work.",
+                                "expected_recommendation": "skip",
+                            },
+                            {
+                                "id": "LN-003",
+                                "company": "ExampleCo",
+                                "company_tier": 1,
+                                "role_title": "Deployment Strategist",
+                                "department": "Applied AI",
+                                "employment_type": "Full-time",
+                                "location": "London, United Kingdom",
+                                "source_url": "https://example.com/stretch",
+                                "description_text": "Customer-facing deployment strategy work.",
+                                "expected_recommendation": "stretch",
+                            },
+                        ],
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+            cache_dir = reports_dir / "llm_cache"
+            examples = yaml.safe_load(labels_path.read_text(encoding="utf-8"))[
+                "live_noise_set"
+            ]
+            for example, score in zip(examples, (88, 55, 55), strict=True):
+                write_cached_evaluation(
+                    cache_dir=cache_dir,
+                    model=DEFAULT_CLAUDE_MODEL,
+                    row={
+                        "title": str(example["role_title"]),
+                        "locations_json": "[\"London, United Kingdom\"]",
+                        "department": str(example.get("department") or ""),
+                        "employment_type": str(example.get("employment_type") or ""),
+                        "description_text": str(example.get("description_text") or ""),
+                        "source_url": str(example.get("source_url") or ""),
+                    },
+                    output=_output(score),
+                )
+
+            run = run_live_noise_benchmark(
+                live_noise_set_path=labels_path,
+                report_dir=reports_dir,
+                llm_provider=CachedLLMProvider(cache_dir=cache_dir),
+            )
+
+            self.assertEqual(run.metrics.apply_consider_precision, 1.0)
+            self.assertEqual(run.metrics.all_surfaced_precision, 2 / 3)
+            self.assertTrue(run.metrics.precision_passes)
+            self.assertTrue(run.metrics.passes)
+            report = run.markdown_path.read_text(encoding="utf-8")
+            self.assertIn("Apply/Consider precision (gated): 1/1 (100.0%)", report)
+            self.assertIn(
+                "All-surfaced precision incl. stretch (report-only): 2/3 (66.7%)",
+                report,
+            )
 
     def test_live_noise_benchmark_fails_when_precision_hides_recall_miss(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -177,7 +270,8 @@ class BenchmarkCalibrationTest(unittest.TestCase):
                 llm_provider=CachedLLMProvider(cache_dir=cache_dir),
             )
 
-            self.assertEqual(run.metrics.digest_precision, 1.0)
+            self.assertEqual(run.metrics.apply_consider_precision, 1.0)
+            self.assertEqual(run.metrics.all_surfaced_precision, 1.0)
             self.assertEqual(run.metrics.apply_consider_recall, 0.5)
             self.assertTrue(run.metrics.precision_passes)
             self.assertFalse(run.metrics.recall_passes)

@@ -320,7 +320,14 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(f"live_noise_labelled={live_run.metrics.labelled_roles}")
             print(f"live_noise_recall={live_run.metrics.apply_consider_recall:.3f}")
-            print(f"live_noise_precision={live_run.metrics.digest_precision:.3f}")
+            print(
+                "live_noise_apply_consider_precision="
+                f"{live_run.metrics.apply_consider_precision:.3f}"
+            )
+            print(
+                "live_noise_all_surfaced_precision="
+                f"{live_run.metrics.all_surfaced_precision:.3f}"
+            )
             print(f"live_noise_precision_label_set={live_run.label_set_path}")
             print(
                 "live_noise_precision_evaluator="
@@ -336,7 +343,8 @@ def main(argv: list[str] | None = None) -> int:
         else:
             print("live_noise_labelled=0")
             print("live_noise_recall=not_available")
-            print("live_noise_precision=not_available")
+            print("live_noise_apply_consider_precision=not_available")
+            print("live_noise_all_surfaced_precision=not_available")
             live_gate_passes = True
         return 0 if metrics.recall_passes and gate_recall_passes and live_gate_passes else 1
 

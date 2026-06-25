@@ -15,7 +15,7 @@ from app.models import utc_now
 RECOMMENDATION_SECTIONS = [
     ("apply_now", "Apply now"),
     ("consider", "Consider"),
-    ("stretch", "Stretch / selective"),
+    ("stretch", "Stretch / reach — calibration in progress, scrutinize"),
 ]
 LOW_PRIORITY_RECOMMENDATIONS = {"skip", "blocked"}
 FALLBACK_EVALUATOR_WARNING = "fallback evaluator — not validated"

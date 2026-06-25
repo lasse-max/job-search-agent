@@ -25,6 +25,7 @@ DEFAULT_LIVE_NOISE_SET = DATA_DIR / "evaluation_set" / "live_noise_labels.yaml"
 DEFAULT_LIVE_NOISE_PRECISION_SET = DATA_DIR / "evaluation_set" / "live_noise_precision_set.yaml"
 DEFAULT_REPORT_DIR = DATA_DIR / "evaluation_set" / "reports"
 APPLY_CONSIDER = {"apply_now", "consider"}
+ALL_SURFACED = {"apply_now", "consider", "stretch"}
 LABELLED_RECOMMENDATIONS = {"apply_now", "consider", "stretch", "skip", "blocked"}
 MAX_CACHED_CHARS = 12000
 
@@ -91,6 +92,7 @@ class LiveNoiseBenchmarkResult:
     actual_recommendation: str
     fit_score: int
     surface_match: bool
+    all_surfaced_match: bool
     evaluator_version: str
 
 
@@ -100,13 +102,16 @@ class LiveNoiseBenchmarkMetrics:
     apply_consider_expected: int
     apply_consider_recalled: int
     apply_consider_recall: float
-    surfaced_count: int
-    surfaced_correct: int
-    digest_precision: float
+    apply_consider_surfaced_count: int
+    apply_consider_surfaced_correct: int
+    apply_consider_precision: float
+    all_surfaced_count: int
+    all_surfaced_correct: int
+    all_surfaced_precision: float
 
     @property
     def precision_passes(self) -> bool:
-        return self.labelled_roles > 0 and self.digest_precision >= 0.80
+        return self.labelled_roles > 0 and self.apply_consider_precision >= 0.80
 
     @property
     def recall_passes(self) -> bool:
@@ -115,6 +120,18 @@ class LiveNoiseBenchmarkMetrics:
     @property
     def passes(self) -> bool:
         return self.precision_passes and self.recall_passes
+
+    @property
+    def surfaced_count(self) -> int:
+        return self.apply_consider_surfaced_count
+
+    @property
+    def surfaced_correct(self) -> int:
+        return self.apply_consider_surfaced_correct
+
+    @property
+    def digest_precision(self) -> float:
+        return self.apply_consider_precision
 
 
 @dataclass(frozen=True)
@@ -444,6 +461,7 @@ def _evaluate_live_noise_example(
     )
     evaluation = evaluate_role(row, company, llm_provider=llm_provider)
     expected = str(example["expected_recommendation"])
+    actual = evaluation.recommendation
     evaluator_version = str(
         evaluation.provenance.get("model_version")
         or evaluation.provenance.get("evaluator_version")
@@ -454,12 +472,17 @@ def _evaluate_live_noise_example(
         company=str(example["company"]),
         role_title=str(example["role_title"]),
         expected_recommendation=expected,
-        actual_recommendation=evaluation.recommendation,
+        actual_recommendation=actual,
         fit_score=evaluation.role_fit_score,
         surface_match=(
-            evaluation.recommendation in APPLY_CONSIDER
+            actual in APPLY_CONSIDER
             if expected in APPLY_CONSIDER
-            else evaluation.recommendation not in APPLY_CONSIDER
+            else actual not in APPLY_CONSIDER
+        ),
+        all_surfaced_match=(
+            actual in ALL_SURFACED
+            if expected in ALL_SURFACED
+            else actual not in ALL_SURFACED
         ),
         evaluator_version=evaluator_version,
     )
@@ -549,18 +572,36 @@ def _live_noise_metrics(results: list[LiveNoiseBenchmarkResult]) -> LiveNoiseBen
     recalled = [
         result for result in expected_surface if result.actual_recommendation in APPLY_CONSIDER
     ]
-    surfaced = [result for result in results if result.actual_recommendation in APPLY_CONSIDER]
-    surfaced_correct = [
-        result for result in surfaced if result.expected_recommendation in APPLY_CONSIDER
+    apply_consider_surfaced = [
+        result for result in results if result.actual_recommendation in APPLY_CONSIDER
+    ]
+    apply_consider_correct = [
+        result
+        for result in apply_consider_surfaced
+        if result.expected_recommendation in APPLY_CONSIDER
+    ]
+    all_surfaced = [
+        result for result in results if result.actual_recommendation in ALL_SURFACED
+    ]
+    all_surfaced_correct = [
+        result
+        for result in all_surfaced
+        if result.expected_recommendation in ALL_SURFACED
     ]
     return LiveNoiseBenchmarkMetrics(
         labelled_roles=len(results),
         apply_consider_expected=len(expected_surface),
         apply_consider_recalled=len(recalled),
         apply_consider_recall=_ratio(len(recalled), len(expected_surface)),
-        surfaced_count=len(surfaced),
-        surfaced_correct=len(surfaced_correct),
-        digest_precision=_ratio(len(surfaced_correct), len(surfaced)),
+        apply_consider_surfaced_count=len(apply_consider_surfaced),
+        apply_consider_surfaced_correct=len(apply_consider_correct),
+        apply_consider_precision=_ratio(
+            len(apply_consider_correct),
+            len(apply_consider_surfaced),
+        ),
+        all_surfaced_count=len(all_surfaced),
+        all_surfaced_correct=len(all_surfaced_correct),
+        all_surfaced_precision=_ratio(len(all_surfaced_correct), len(all_surfaced)),
     )
 
 
@@ -698,24 +739,31 @@ def _write_live_noise_markdown(
             f"({metrics.apply_consider_recall:.1%})"
         ),
         (
-            "- Digest precision: "
-            f"{metrics.surfaced_correct}/{metrics.surfaced_count} "
-            f"({metrics.digest_precision:.1%})"
+            "- Apply/Consider precision (gated): "
+            f"{metrics.apply_consider_surfaced_correct}/"
+            f"{metrics.apply_consider_surfaced_count} "
+            f"({metrics.apply_consider_precision:.1%})"
+        ),
+        (
+            "- All-surfaced precision incl. stretch (report-only): "
+            f"{metrics.all_surfaced_correct}/{metrics.all_surfaced_count} "
+            f"({metrics.all_surfaced_precision:.1%})"
         ),
         f"- Recall gate: {_pass_fail(metrics.recall_passes)}",
-        f"- Precision gate: {_pass_fail(metrics.precision_passes)}",
+        f"- Apply/Consider precision gate: {_pass_fail(metrics.precision_passes)}",
         "",
         "## Per-Role Results",
         "",
-        "| ID | Company | Role | Expected | Actual | Fit | Surface |",
-        "|---|---|---|---|---|---:|---|",
+        "| ID | Company | Role | Expected | Actual | Fit | Apply/Consider Surface | All-Surfaced |",
+        "|---|---|---|---|---|---:|---|---|",
     ]
     for result in results:
         lines.append(
             "| "
             f"{result.role_id} | {result.company} | {result.role_title} | "
             f"{result.expected_recommendation} | {result.actual_recommendation} | "
-            f"{result.fit_score} | {_pass_fail(result.surface_match)} |"
+            f"{result.fit_score} | {_pass_fail(result.surface_match)} | "
+            f"{_pass_fail(result.all_surfaced_match)} |"
         )
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
