@@ -22,6 +22,8 @@
 
 3. **Keep scoring deterministic** (§5.5): CODE computes final `fit_score` from LLM dimensions × `scoring_policy.yaml` weights; CODE applies existing hard blockers (technical-PM, security clearance, work-authorization/visa) as overrides; CODE sets the final recommendation band from `scoring_policy` thresholds. The model's band is advisory only.
 
+   **[NEW — owner decision, DECISIONS #51] Add a `disqualifying_hard_requirement` blocker.** A JD that **requires** a credential the candidate definitively lacks → override to `blocked`. Configurable list in `candidate_profile.yaml` (from §4.7 honest gaps): required CS/engineering degree as a stated minimum; required advanced/expert/professional programming or production software development as a core duty; required deep ML/data-science engineering. **Fires only on must-have / required / minimum-qualification language** — never "preferred", "a plus", "nice to have", "familiarity", "exposure to" (PRD #7: keep blockers narrow). The LLM detects must-have-vs-nice-to-have and emits it in `hard_blockers` with the quoted JD line; code enforces the `blocked` override.
+
 4. **Schema validation** with pydantic (declared in `pyproject`, currently unused): ranges (fit 0–100, confidence 0–1), enums (recommendation/feasibility/severity), required fields. Malformed/refused responses are **REJECTED and logged (fail-loud)** — never fabricated or silently defaulted.
 
 5. **Prompt**: replace placeholder `app/prompts/role_evaluation_v1.md` with the real, versioned prompt encoding the profile, target/stretch families, the deprioritize list (CS, quota-sales, junior, native-PM, deep-eng), honest gaps, and the "product/strategy vs. generic ops/CS/sales" distinction.
@@ -61,6 +63,13 @@ Cato verdict: **SHIP AFTER 🟠 FIXED.** Foundation is sound (gate kills most of
 - **[required — elevated from Cato 🟡] Make the fallback loud.** If `ANTHROPIC_API_KEY` is missing/expired/over-cap, `evaluate_role` currently reverts to the stub silently → the firehose returns. Flag fallback-quality runs and **refuse to compose or send an email digest built from the fallback evaluator** (PRD fail-loud / nothing-consequential-silently). Local-file output may still render but must be clearly marked "fallback evaluator — not validated."
 - **[Cato 🟡] Reconcile cost-cap math.** Correct the per-eval estimate to real Haiku pricing (well under a cent/role, not $0.02) so a normal scan doesn't halt mid-run. Document the spend-ledger eviction limitation as a known non-durable-state issue — **do not** build durable persistence (that's Stage 2, #40/#46).
 - **[Cato 🟡 — partially accepted] Fix the gate leaks only.** Fix `\bprogram\b` matching "Engineering Program Manager"; deny unambiguous off-family titles (SDR, Account Executive). **Do NOT deny whole departments** — Sales S&O / GTM is a target family (PRD §4.4) and People BP can be S&O-adjacent; ambiguous roles must keep routing to the LLM (PRD Decision #7). Record this divergence from Cato's denylist suggestion.
+
+- **[NEW — owner decision, highest precision lever] Add a location filter to the gate.** A random feed sample was ~97% off-target, dominated by wrong *location*. Encode the owner-confirmed relocation policy as a deterministic pre-evaluation filter (and update `config/location_policy.yaml` + DECISIONS #50):
+  - **Allow (will relocate):** Western Europe broadly — UK (London), Germany (Munich, Hamburg, Berlin), Netherlands (Amsterdam), France (Paris), Ireland (Dublin — **only** Tier-1 brand / clear step-up, else skip), plus Copenhagen, Stockholm, Madrid, Milan, Lisbon, Zurich, Brussels, Vienna; **Singapore**; **Australia** (Sydney, Melbourne).
+  - **Skip (won't relocate):** Canada, India, rest of APAC (HK, Tokyo, China, Korea, Philippines, Indonesia), LATAM, Middle East, South Africa, etc.
+  - **US:** not auto-blocked, but **skip unless** Tier-1 company AND explicit sponsorship AND exceptional role.
+  - **Judge by posted location**; a multi-location posting passes if **any** posted location is allowed.
+  - Keep this distinct from visa `feasibility` — this is relocation preference, not work-authorization.
 
 **Sampling fix — two label sets, by purpose (uniform random is the wrong frame).**
 
