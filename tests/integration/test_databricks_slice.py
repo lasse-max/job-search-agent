@@ -11,8 +11,15 @@ from app.config import load_candidate_profile, load_location_policy, load_scorin
 from app.db import wake_due_snoozes
 from app.services.evaluate import DETERMINISTIC_FALLBACK_VERSION
 from app.services.digest import write_digest
-from app.services.llm_evaluator import PROMPT_VERSION
+from app.services.llm_evaluator import (
+    LLMEvaluationOutput,
+    LLMEvaluationResult,
+    LLMProviderError,
+    LLMRoleRequest,
+    PROMPT_VERSION,
+)
 from app.services.ingest import run_scan
+from app.services.notifications import EmailMessage, EmailSendResult, deliver_digest
 from app.services.review import approve_review, dismiss_review, snooze_review
 
 
@@ -159,6 +166,47 @@ class DatabricksSliceTest(unittest.TestCase):
                 load_scoring_policy().version,
             )
 
+    def test_one_malformed_llm_role_is_dropped_and_digest_still_sends(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            output_dir = Path(directory) / "output"
+            llm_provider = DropOneRoleProvider(source_job_id="8516118002")
+
+            with patch("app.services.evaluate.provider_from_env", return_value=llm_provider):
+                summary = run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            self.assertEqual(summary.status, "degraded")
+            self.assertIn("llm_evaluation_dropped_roles=1", summary.error_summary or "")
+            self.assertEqual(llm_provider.calls_by_source["8516118002"], 2)
+
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            evaluations = conn.execute(
+                "SELECT evaluation_json FROM role_evaluations ORDER BY id"
+            ).fetchall()
+            skip = conn.execute("SELECT reason FROM evaluation_skips").fetchone()
+            run = conn.execute("SELECT * FROM source_runs ORDER BY id DESC LIMIT 1").fetchone()
+
+            self.assertEqual(len(evaluations), 2)
+            self.assertIsNotNone(skip)
+            self.assertIn("claude_tool_input_validation_failed", skip["reason"])
+            self.assertEqual(run["status"], "degraded")
+            for row in evaluations:
+                payload = json.loads(row["evaluation_json"])
+                self.assertEqual(payload["provenance"]["fallback_quality"], "false")
+
+            email_provider = FakeEmailProvider()
+            notification = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=email_provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(notification.status, "sent")
+            self.assertEqual(notification.role_count, 2)
+            self.assertEqual(len(email_provider.messages), 1)
+
     def test_under_volume_feed_is_degraded_and_does_not_count_absences(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "slice.sqlite"
@@ -299,6 +347,37 @@ class DatabricksSliceTest(unittest.TestCase):
             self.assertIsNone(state["snooze_until"])
 
 
+class DropOneRoleProvider:
+    model_version = "fake-claude"
+
+    def __init__(self, *, source_job_id: str) -> None:
+        self.source_job_id = source_job_id
+        self.calls_by_source: dict[str, int] = {}
+
+    def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        source_job_id = str(request.row["source_job_id"])
+        self.calls_by_source[source_job_id] = self.calls_by_source.get(source_job_id, 0) + 1
+        if source_job_id == self.source_job_id:
+            raise LLMProviderError(
+                "claude_tool_input_validation_failed: alignments input should be a valid list"
+            )
+        return LLMEvaluationResult(
+            output=_valid_llm_output(),
+            model_version=self.model_version,
+            prompt_version="test_prompt_v1",
+            cost_usd=0.001,
+        )
+
+
+class FakeEmailProvider:
+    def __init__(self) -> None:
+        self.messages: list[EmailMessage] = []
+
+    def send(self, message: EmailMessage) -> EmailSendResult:
+        self.messages.append(message)
+        return EmailSendResult(status="sent", provider_message_id="fake-message-id")
+
+
 def _count(conn: sqlite3.Connection, table: str) -> int:
     return int(conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0])
 
@@ -344,6 +423,36 @@ def _fixture_job(
         "departments": [{"name": department}],
         "offices": [{"name": location}],
     }
+
+
+def _valid_llm_output() -> LLMEvaluationOutput:
+    return LLMEvaluationOutput.model_validate(
+        {
+            "role_family_fit": 82,
+            "evidence_strength": 76,
+            "scope_seniority": 75,
+            "gap_manageability": 70,
+            "confidence": 0.8,
+            "advisory_recommendation": "consider",
+            "alignments": [
+                {
+                    "job_requirement": "Lead strategic customer deployment work",
+                    "candidate_evidence": "Google transformation and operations evidence",
+                    "evidence_strength": "strong",
+                }
+            ],
+            "gaps": [
+                {
+                    "gap": "Limited direct Databricks domain evidence",
+                    "severity": "medium",
+                    "mitigation": "Position adjacent platform operations experience",
+                }
+            ],
+            "hard_blockers": [],
+            "uncertainties": ["Live regression fixture."],
+            "summary": "Good strategic deployment match.",
+        }
+    )
 
 
 if __name__ == "__main__":

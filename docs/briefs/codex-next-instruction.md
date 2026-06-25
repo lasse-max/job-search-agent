@@ -1,3 +1,17 @@
+# Codex — FIX LOOP 5 (live run: LLM output validation crash) — EMAIL-BLOCKING
+
+Secrets are now correct (Claude runs live). New blocker from the first real scheduled run: a live Claude response returned a **list field as a JSON-encoded string**, so `LLMEvaluationOutput.model_validate` raised and the role fell back → loud guard blocked the whole email. Exact error (Databricks): `ValidationError … alignments — Input should be a valid list … input_value='[\n {\n "job_require…'`. The cached benchmark never caught this (cache holds clean outputs); only live calls produce the format wobble.
+
+1. **Coerce stringified-JSON list fields before validation.** `LLMEvaluationOutput` (llm_evaluator.py:52) already has a `field_validator("hard_blockers", mode="before")` (line 67). Add the same `mode="before"` coercion for **`alignments`, `gaps`, `uncertainties`** (and verify `hard_blockers`): if the incoming value is a `str`, `json.loads` it first and use the resulting list. Handles the exact failure above.
+2. **Retry once, then degrade per-role — do NOT nuke the whole digest.** If a role still fails validation after coercion + one re-request, drop/flag *that one role* only. A single malformed response must not mark the entire digest as fallback.
+3. **Scope the loud-fallback guard correctly.** Block email only when the evaluator is wholesale non-functional (no key / provider down / all roles failing) — NOT when one role wobbled. Distinguish "evaluator broken" (block — the firehose protection) from "one role dropped" (send the rest). Today one bad response permanently blocks the digest.
+4. **Regression tests from the real failure:** (a) an LLM response with `alignments` as a JSON string parses cleanly; (b) a digest with 1 dropped malformed role among many valid ones still sends.
+5. **Backlog (now doubly relevant):** log *why* a role fell back (provider error vs malformed output vs no key) — the current log can't distinguish, which cost a debugging round.
+
+Re-run cached benchmark + a live-shaped test, push, back to Cato. This is ship-completing (makes the core email work), not gold-plating — justified despite the fix-freeze.
+
+---
+
 # Codex — FIX LOOP 4 (Cato 🟠 on `34ebc3c`: hard-requirement blocker under-fires) — EMAIL-BLOCKING
 
 Cato's full review confirmed 34ebc3c is a genuine mechanism fix (no overfit), but found the blocker now **under-fires on common phrasing** — the inverse of the earlier over-block. Must close before owner sign-off to re-enable email.

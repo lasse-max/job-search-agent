@@ -6,8 +6,6 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from pydantic import ValidationError
-
 from app.config import load_candidate_profile
 from app.models import CompanyConfig
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION, evaluate_role
@@ -17,6 +15,7 @@ from app.services.llm_evaluator import (
     LLMEvaluationOutput,
     LLMEvaluationResult,
     LLMRoleRequest,
+    LLMProviderError,
     ModelSpendCapExceeded,
     ModelSpendTracker,
 )
@@ -349,7 +348,7 @@ class LlmEvaluatorTest(unittest.TestCase):
         )
 
         with patch("app.services.llm_evaluator.httpx.post", return_value=FakeHttpResponse(payload)):
-            with self.assertRaises(ValidationError):
+            with self.assertRaises(LLMProviderError):
                 provider.evaluate(request)
 
     def test_validates_summary_with_realistic_verbose_bound(self) -> None:
@@ -395,6 +394,18 @@ class LlmEvaluatorTest(unittest.TestCase):
         output = LLMEvaluationOutput.model_validate(payload)
 
         self.assertEqual(output.hard_blockers, [])
+
+    def test_coerces_json_encoded_list_fields_from_live_response(self) -> None:
+        payload = _valid_output().model_dump()
+        payload["alignments"] = json.dumps(payload["alignments"], indent=2)
+        payload["gaps"] = json.dumps(payload["gaps"], indent=2)
+        payload["uncertainties"] = json.dumps(payload["uncertainties"], indent=2)
+
+        output = LLMEvaluationOutput.model_validate(payload)
+
+        self.assertEqual(output.alignments[0].job_requirement, "Lead strategy operations programs")
+        self.assertEqual(output.gaps[0].gap, "No direct AI-lab operating cadence")
+        self.assertEqual(output.uncertainties, ["JD does not state team size."])
 
     def test_claude_provider_caches_valid_response_by_material_hash(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

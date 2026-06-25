@@ -25,6 +25,7 @@ from app.db import (
 from app.models import utc_now
 from app.services.digest import write_digest
 from app.services.evaluate import evaluate_role, input_hash, relevance_decision
+from app.services.llm_evaluator import LLMProviderError
 
 
 @dataclass(frozen=True)
@@ -122,15 +123,36 @@ def run_scan(
         )
         candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
         evaluated_count = 0
+        attempted_evaluation_count = 0
+        dropped_evaluation_count = 0
+        dropped_evaluation_errors: list[str] = []
         for row in get_postings_by_ids(conn, candidate_ids):
             row_hash = input_hash(row)
             relevance = relevance_decision(row, company)
             if not relevance.should_evaluate:
                 record_evaluation_skip(conn, int(row["id"]), row_hash, relevance.reason)
                 continue
-            evaluation = evaluate_role(row, company)
+            attempted_evaluation_count += 1
+            try:
+                evaluation = _evaluate_role_with_retry(row, company)
+            except LLMProviderError as exc:
+                dropped_evaluation_count += 1
+                reason = _evaluation_drop_reason(exc)
+                dropped_evaluation_errors.append(reason)
+                record_evaluation_skip(conn, int(row["id"]), row_hash, reason)
+                continue
             if persist_evaluation(conn, int(row["id"]), row_hash, evaluation):
                 evaluated_count += 1
+
+        if (
+            attempted_evaluation_count > 0
+            and dropped_evaluation_count == attempted_evaluation_count
+        ):
+            raise RuntimeError(
+                "llm_evaluator_failed_all_roles: "
+                f"dropped {dropped_evaluation_count} role(s); "
+                f"first_error={dropped_evaluation_errors[0]}"
+            )
     except Exception as exc:  # noqa: BLE001 - fail loud with durable source health.
         conn.rollback()
         finished_at = utc_now()
@@ -174,19 +196,22 @@ def run_scan(
     if degraded_reason is None and fixture_path is None:
         update_expected_volume_min(conn, source_id, health.fetched_count)
 
+    evaluation_warning = _evaluation_warning(dropped_evaluation_count, dropped_evaluation_errors)
+    source_warning = _join_errors(degraded_reason, evaluation_warning)
+    source_status = "degraded" if source_warning else "success"
     _record_run(
         conn,
         source_id,
         started_at=started_at,
         finished_at=finished_at,
-        status="degraded" if degraded_reason else "success",
+        status=source_status,
         http_status=result.http_status,
         fetched_count=health.fetched_count,
         new_count=len(upsert_result.new_posting_ids),
         changed_count=len(upsert_result.changed_posting_ids),
-        error_summary=degraded_reason,
-        health_status="degraded" if degraded_reason else "healthy",
-        last_success_at=None if degraded_reason else finished_at,
+        error_summary=source_warning,
+        health_status="degraded" if source_warning else "healthy",
+        last_success_at=None if source_warning else finished_at,
     )
     if degraded_reason:
         recover_expected_volume_min_after_degraded(conn, source_id)
@@ -196,7 +221,7 @@ def run_scan(
         company=company.name,
         source_type=adapter.source_type,
         source_key=company.source_key,
-        status="failure" if digest_error else "degraded" if degraded_reason else "success",
+        status="failure" if digest_error else source_status,
         fetched_count=health.fetched_count,
         new_count=len(upsert_result.new_posting_ids),
         changed_count=len(upsert_result.changed_posting_ids),
@@ -204,8 +229,26 @@ def run_scan(
         digest_count=digest_count,
         digest_html=html_path,
         digest_text=text_path,
-        error_summary=_join_errors(degraded_reason, digest_error),
+        error_summary=_join_errors(source_warning, digest_error),
     )
+
+
+def _evaluate_role_with_retry(row, company):
+    try:
+        return evaluate_role(row, company)
+    except LLMProviderError:
+        return evaluate_role(row, company)
+
+
+def _evaluation_drop_reason(exc: LLMProviderError) -> str:
+    return f"llm_evaluation_dropped: {type(exc).__name__}: {exc}"
+
+
+def _evaluation_warning(count: int, errors: list[str]) -> str | None:
+    if count <= 0:
+        return None
+    first_error = errors[0] if errors else "unknown"
+    return f"llm_evaluation_dropped_roles={count}: {first_error}"
 
 
 def _record_run(

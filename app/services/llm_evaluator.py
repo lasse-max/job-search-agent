@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Literal, Protocol
 
 import httpx
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 from app.config import DATA_DIR, CandidateProfileConfig
 from app.models import CompanyConfig
@@ -64,11 +64,16 @@ class LLMEvaluationOutput(BaseModel):
     uncertainties: list[str] = Field(default_factory=list, max_length=5)
     summary: str = Field(min_length=1, max_length=2400)
 
-    @field_validator("hard_blockers", mode="before")
+    @field_validator("alignments", "gaps", "hard_blockers", "uncertainties", mode="before")
     @classmethod
-    def _empty_string_means_no_blockers(cls, value: object) -> object:
+    def _coerce_json_encoded_list_fields(cls, value: object) -> object:
         if value == "":
             return []
+        if isinstance(value, str):
+            try:
+                return json.loads(value)
+            except json.JSONDecodeError:
+                return value
         return value
 
     @property
@@ -324,7 +329,12 @@ def _parse_tool_output(payload: dict[str, Any]) -> LLMEvaluationOutput:
             raw_input = block.get("input")
             if not isinstance(raw_input, dict):
                 raise LLMProviderError("claude_tool_input_not_object")
-            return LLMEvaluationOutput.model_validate(raw_input)
+            try:
+                return LLMEvaluationOutput.model_validate(raw_input)
+            except ValidationError as exc:
+                raise LLMProviderError(
+                    f"claude_tool_input_validation_failed: {exc}"
+                ) from exc
     raise LLMProviderError("claude_response_missing_submit_role_evaluation_tool")
 
 
