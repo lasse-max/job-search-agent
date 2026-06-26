@@ -6,6 +6,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+import httpx
+
 from app.config import load_candidate_profile
 from app.models import CompanyConfig
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION, evaluate_role
@@ -406,6 +408,36 @@ class LlmEvaluatorTest(unittest.TestCase):
         self.assertEqual(output.alignments[0].job_requirement, "Lead strategy operations programs")
         self.assertEqual(output.gaps[0].gap, "No direct AI-lab operating cadence")
         self.assertEqual(output.uncertainties, ["JD does not state team size."])
+
+    def test_claude_provider_retries_transient_timeout(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            provider = ClaudeLLMProvider(
+                api_key="test-key",
+                model="fake-model",
+                cache_dir=Path(directory),
+            )
+            request = LLMRoleRequest(
+                row=_row("Strategic Operations Lead"),
+                company=_company(),
+                profile=load_candidate_profile(),
+            )
+            payload = _claude_payload(_valid_output().model_dump())
+
+            with (
+                patch(
+                    "app.services.llm_evaluator.httpx.post",
+                    side_effect=[
+                        httpx.TimeoutException("timed out"),
+                        FakeHttpResponse(payload),
+                    ],
+                ) as post,
+                patch("app.services.llm_evaluator.time.sleep") as sleep,
+            ):
+                result = provider.evaluate(request)
+
+        self.assertEqual(result.output.summary, "Strong strategy and operations match.")
+        self.assertEqual(post.call_count, 2)
+        sleep.assert_called_once()
 
     def test_claude_provider_caches_valid_response_by_material_hash(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

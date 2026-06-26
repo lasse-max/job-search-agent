@@ -50,7 +50,7 @@ class NotificationDeliveryTest(unittest.TestCase):
                 (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
             )
             self.assertIn(
-                "Fallback evaluator",
+                "DEGRADED",
                 (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
             )
             notification = conn.execute("SELECT * FROM notifications").fetchone()
@@ -209,12 +209,23 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(second.status, "suppressed_duplicate")
             self.assertEqual(len(provider.messages), 1)
 
-    def test_provider_refuses_fallback_evaluator_digest(self) -> None:
+    def test_provider_sends_degraded_fallback_evaluator_digest(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
             output_dir = Path(directory) / "output"
-            add_text_intake(JOB_TEXT, db_path=db_path, source_url="https://example.com/job")
+            for index in range(30):
+                add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/fallback-{index:02d}",
+                )
             conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+                mark_non_fallback=False,
+            )
             provider = FakeProvider()
 
             result = deliver_digest(
@@ -224,13 +235,84 @@ class NotificationDeliveryTest(unittest.TestCase):
                 recipient="owner@example.com",
             )
 
-            self.assertEqual(result.status, "failed")
-            self.assertIn("fallback evaluator", result.error_summary or "")
-            self.assertEqual(provider.messages, [])
-            self.assertIn(
-                "Fallback evaluator",
-                (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
+            self.assertEqual(result.status, "sent")
+            self.assertEqual(result.role_count, 25)
+            self.assertIn("DEGRADED", result.subject)
+            self.assertEqual(len(provider.messages), 1)
+            self.assertIn("DEGRADED", provider.messages[0].html_body)
+            self.assertEqual(
+                provider.messages[0].text_body.count("Source: https://example.com/fallback-"),
+                25,
             )
+            self.assertIn("➕ 5 more", provider.messages[0].text_body)
+
+    def test_provider_withholds_fallback_rows_when_valid_rows_exist(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_dir = Path(directory) / "output"
+            add_text_intake(JOB_TEXT, db_path=db_path, source_url="https://example.com/valid")
+            add_text_intake(
+                SECOND_JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/fallback",
+            )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                title_contains="Strategic Operations Manager",
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            provider = FakeProvider()
+
+            result = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(result.status, "sent")
+            self.assertEqual(result.role_count, 1)
+            self.assertEqual(len(provider.messages), 1)
+            self.assertIn("Strategic Operations Manager", provider.messages[0].text_body)
+            self.assertNotIn("Business Operations Lead", provider.messages[0].text_body)
+            self.assertIn("Fallback rows withheld: 1", provider.messages[0].text_body)
+
+    def test_email_digest_caps_at_25_and_adds_overflow_pointer(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_dir = Path(directory) / "output"
+            for index in range(30):
+                add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/job-{index:02d}",
+                )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            provider = FakeProvider()
+
+            result = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(result.status, "sent")
+            self.assertEqual(result.role_count, 25)
+            self.assertEqual(len(provider.messages), 1)
+            self.assertEqual(
+                provider.messages[0].text_body.count("Source: https://example.com/job-"),
+                25,
+            )
+            self.assertIn("➕ 5 more", provider.messages[0].text_body)
+            self.assertIn("view full list", provider.messages[0].text_body)
 
 
 class FakeProvider:
@@ -283,19 +365,50 @@ def _insert_failed_source(conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
-def _mark_non_fallback_evaluations(conn: sqlite3.Connection) -> None:
-    rows = conn.execute("SELECT id, evaluation_json FROM role_evaluations").fetchall()
+def _mark_non_fallback_evaluations(
+    conn: sqlite3.Connection,
+    *,
+    title_contains: str | None = None,
+    recommendation: str | None = None,
+    role_fit_score: int | None = None,
+    mark_non_fallback: bool = True,
+) -> None:
+    rows = conn.execute(
+        """
+        SELECT re.id, re.evaluation_json, jp.title
+        FROM role_evaluations re
+        JOIN job_postings jp ON jp.id = re.job_posting_id
+        """
+    ).fetchall()
     for row in rows:
+        if title_contains is not None and title_contains not in row["title"]:
+            continue
         payload = json.loads(row["evaluation_json"])
-        payload.setdefault("provenance", {})
-        payload["provenance"]["fallback_quality"] = "false"
-        payload["provenance"]["model_version"] = "fake-claude"
-        payload["provenance"]["evaluator_version"] = "hybrid_claude_v1"
+        if recommendation is not None:
+            payload["recommendation"] = recommendation
+        if role_fit_score is not None:
+            payload["role_fit_score"] = role_fit_score
+        if mark_non_fallback:
+            payload.setdefault("provenance", {})
+            payload["provenance"]["fallback_quality"] = "false"
+            payload["provenance"]["model_version"] = "fake-claude"
+            payload["provenance"]["evaluator_version"] = "hybrid_claude_v1"
         conn.execute(
             "UPDATE role_evaluations SET evaluation_json = ? WHERE id = ?",
             (json.dumps(payload), row["id"]),
         )
     conn.commit()
+
+
+def _job_text(index: int) -> str:
+    return f"""Company: CapCo {index:02d}
+Title: Strategic Operations Manager {index:02d}
+Location: Munich, Germany
+Department: Strategy & Operations
+
+Lead strategy and operations programs for cross-functional stakeholders.
+Own executive rhythm, customer operations, transformation work, and program delivery.
+"""
 
 
 if __name__ == "__main__":

@@ -207,7 +207,7 @@ class DatabricksSliceTest(unittest.TestCase):
             self.assertEqual(notification.role_count, 2)
             self.assertEqual(len(email_provider.messages), 1)
 
-    def test_all_malformed_llm_roles_fail_scan_and_block_email(self) -> None:
+    def test_all_malformed_llm_roles_send_degraded_capped_digest(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "slice.sqlite"
             output_dir = Path(directory) / "output"
@@ -216,17 +216,17 @@ class DatabricksSliceTest(unittest.TestCase):
             with patch("app.services.evaluate.provider_from_env", return_value=llm_provider):
                 summary = run_scan(db_path=db_path, fixture_path=FIXTURE)
 
-            self.assertEqual(summary.status, "failure")
-            self.assertIn("llm_evaluator_failed_all_roles", summary.error_summary or "")
+            self.assertEqual(summary.status, "degraded")
+            self.assertIn("llm_evaluation_fallback_roles=3", summary.error_summary or "")
 
             conn = sqlite3.connect(db_path)
             conn.row_factory = sqlite3.Row
             source = conn.execute("SELECT * FROM job_sources ORDER BY id DESC LIMIT 1").fetchone()
             run = conn.execute("SELECT * FROM source_runs ORDER BY id DESC LIMIT 1").fetchone()
 
-            self.assertEqual(_count(conn, "role_evaluations"), 0)
-            self.assertEqual(source["health_status"], "failing")
-            self.assertEqual(run["status"], "failure")
+            self.assertEqual(_count(conn, "role_evaluations"), 3)
+            self.assertEqual(source["health_status"], "degraded")
+            self.assertEqual(run["status"], "degraded")
             self.assertEqual(llm_provider.call_count, 6)
 
             email_provider = FakeEmailProvider()
@@ -238,10 +238,12 @@ class DatabricksSliceTest(unittest.TestCase):
             )
 
             self.assertEqual(notification.status, "sent")
-            self.assertEqual(notification.role_count, 0)
+            self.assertEqual(notification.role_count, 3)
             self.assertEqual(notification.failure_count, 1)
+            self.assertIn("DEGRADED", notification.subject)
             self.assertEqual(len(email_provider.messages), 1)
-            self.assertNotIn("Deployment Strategist", email_provider.messages[0].text_body)
+            self.assertIn("DEGRADED", email_provider.messages[0].text_body)
+            self.assertIn("Deployment Strategist", email_provider.messages[0].text_body)
             self.assertIn("Source failures", email_provider.messages[0].text_body)
 
     def test_under_volume_feed_is_degraded_and_does_not_count_absences(self) -> None:

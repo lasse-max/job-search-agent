@@ -1,3 +1,23 @@
+# Codex — FIX LOOP 6 (email guard too strict — blocks every live run) — EMAIL-BLOCKING
+
+Symptom: every scheduled run = `failure`, `Digest uses fallback evaluator output; refusing email delivery`, `notification_status=failed`, no email — even though the run takes **18 min** (so Claude DID score the bulk of the ~93 roles; the evaluator is working). Root cause: the **email-delivery guard is all-or-nothing** — `uses_fallback_evaluator(rows)` refuses the entire digest if **any** surfaced row is fallback-quality. On a live run with ~100 roles / hundreds of Claude calls, ≥1 role always falls back (transient 429/529/timeout, or a response that won't coerce), so the email is blocked **permanently**. This is the inverse of the firehose: now too conservative to ever ship. Fix Loop 5 relaxed the per-source role *drop* but the email guard still blocks on any single fallback row.
+
+1. **Exclude fallback-quality rows from the emailed digest instead of blocking the whole email.** Any role without a validated LLM evaluation is withheld from the email + logged (extend the Fix Loop 5 drop to ALL fallback causes: provider error, cost-cap halt, un-coercible output — not just validation crashes).
+2. **Always deliver — never block to zero, single 25 cap in both modes (owner decision DECISIONS #59).**
+   - **One cap, 25 (config; hard max 50 per #53), applied in BOTH modes** — NO special small/"5" cap. Owner: never miss a good role to an arbitrary floor.
+   - **Normal:** ≥1 validly-LLM-scored role → send valid roles ranked by fit, up to 25 (drop fallback ones + count them). >25 qualifying → top 25 + an overflow line "➕ N more — view full list" pointing to the full local digest / `job-agent review list` / CSV exports (eventual home: Stage 2 Opportunity Inbox).
+   - **Degraded (0 valid LLM evaluations — wholesale fallback / cost-cap / provider down):** do NOT block — send the same up-to-25 digest, stamped loudly (subject + top banner: "⚠️ DEGRADED — unvalidated stub scores, ranking not trustworthy"). Proof-of-life + calibration signal; can't firehose (≤25 + labeled).
+   Surface the dropped/fallback count + degraded state in the failures section (fail-loud preserved). Supersedes Fix Loop 5 #3's hard block-on-wholesale-fallback — firehose protection is now the 25 cap + loud degraded label, never a zero-email block.
+3. **Add transient-error resilience** on provider calls: bounded retry + backoff on 429/529/timeout (tenacity is already a dep) so fewer roles fall back on big runs.
+4. **Confirm the digest cap (#53) applies to the email** — `notification_roles=93` is far over the 25/50 cap. Apply/consider capped to N; remainder summarized.
+5. **Verify it's not the cost-cap ledger.** The 18-min runtime suggests the evaluator ran (not a wholesale cost-cap halt), but confirm the cache-persisted `MONTHLY_MODEL_SPEND_CAP_USD` ledger isn't near-exhausted and forcing fallbacks; if it is, that's a second cause to address (raise/scope the cap, or reset stale cache ledger).
+6. **Don't let exit-code conflate "a flaky source" with "run failed."** Decide (Otto note): a single `degraded` source (e.g. Atlassian fetched 0) should surface in the digest, not necessarily turn the whole scheduled run red every time. At minimum, a *delivered email with healthy evaluation* should not be reported as a total failure.
+7. **Regression tests (update, don't just add):** (a) mixed valid + fallback rows → email SENDS valid rows only (≤25), fallback count flagged; (b) **all-fallback → email SENDS the up-to-25, loudly-labeled DEGRADED digest** (no firehose: ≤25 cap + label); (c) >25 qualifying → exactly 25 shown + overflow pointer. **This flips the `55e76d7` `FailAllRolesProvider` test**, which currently asserts all-fail *blocks* — update it to assert the degraded labeled send instead. Reconcile DECISIONS #58/#59 so the design log isn't self-contradictory.
+
+Note: the ~93 "new" backlog is a snowball from repeated failed runs not advancing notified-state — it shrinks to normal once one run delivers. Ship-completing; justified despite freeze. Re-run, push, back to Cato.
+
+---
+
 # Codex — FIX LOOP 5 (live run: LLM output validation crash) — EMAIL-BLOCKING
 
 Secrets are now correct (Claude runs live). New blocker from the first real scheduled run: a live Claude response returned a **list field as a JSON-encoded string**, so `LLMEvaluationOutput.model_validate` raised and the role fell back → loud guard blocked the whole email. Exact error (Databricks): `ValidationError … alignments — Input should be a valid list … input_value='[\n {\n "job_require…'`. The cached benchmark never caught this (cache holds clean outputs); only live calls produce the format wobble.

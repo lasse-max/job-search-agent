@@ -25,7 +25,7 @@ from app.db import (
 from app.models import utc_now
 from app.services.digest import write_digest
 from app.services.evaluate import evaluate_role, input_hash, relevance_decision
-from app.services.llm_evaluator import LLMProviderError
+from app.services.llm_evaluator import LLMProviderError, ModelSpendCapExceeded
 
 
 @dataclass(frozen=True)
@@ -126,6 +126,8 @@ def run_scan(
         attempted_evaluation_count = 0
         dropped_evaluation_count = 0
         dropped_evaluation_errors: list[str] = []
+        dropped_evaluation_rows = []
+        fallback_evaluation_count = 0
         for row in get_postings_by_ids(conn, candidate_ids):
             row_hash = input_hash(row)
             relevance = relevance_decision(row, company)
@@ -135,10 +137,11 @@ def run_scan(
             attempted_evaluation_count += 1
             try:
                 evaluation = _evaluate_role_with_retry(row, company)
-            except LLMProviderError as exc:
+            except (LLMProviderError, ModelSpendCapExceeded) as exc:
                 dropped_evaluation_count += 1
                 reason = _evaluation_drop_reason(exc)
                 dropped_evaluation_errors.append(reason)
+                dropped_evaluation_rows.append((row, row_hash, reason))
                 record_evaluation_skip(conn, int(row["id"]), row_hash, reason)
                 continue
             if persist_evaluation(conn, int(row["id"]), row_hash, evaluation):
@@ -148,11 +151,12 @@ def run_scan(
             attempted_evaluation_count > 0
             and dropped_evaluation_count == attempted_evaluation_count
         ):
-            raise RuntimeError(
-                "llm_evaluator_failed_all_roles: "
-                f"dropped {dropped_evaluation_count} role(s); "
-                f"first_error={dropped_evaluation_errors[0]}"
-            )
+            fallback_evaluation_count = dropped_evaluation_count
+            for row, row_hash, _reason in dropped_evaluation_rows:
+                evaluation = evaluate_role(row, company, use_env_provider=False)
+                if persist_evaluation(conn, int(row["id"]), row_hash, evaluation):
+                    evaluated_count += 1
+            dropped_evaluation_count = 0
     except Exception as exc:  # noqa: BLE001 - fail loud with durable source health.
         conn.rollback()
         finished_at = utc_now()
@@ -196,7 +200,11 @@ def run_scan(
     if degraded_reason is None and fixture_path is None:
         update_expected_volume_min(conn, source_id, health.fetched_count)
 
-    evaluation_warning = _evaluation_warning(dropped_evaluation_count, dropped_evaluation_errors)
+    evaluation_warning = _evaluation_warning(
+        dropped_evaluation_count,
+        dropped_evaluation_errors,
+        fallback_evaluation_count,
+    )
     source_warning = _join_errors(degraded_reason, evaluation_warning)
     source_status = "degraded" if source_warning else "success"
     _record_run(
@@ -240,15 +248,24 @@ def _evaluate_role_with_retry(row, company):
         return evaluate_role(row, company)
 
 
-def _evaluation_drop_reason(exc: LLMProviderError) -> str:
+def _evaluation_drop_reason(exc: LLMProviderError | ModelSpendCapExceeded) -> str:
     return f"llm_evaluation_dropped: {type(exc).__name__}: {exc}"
 
 
-def _evaluation_warning(count: int, errors: list[str]) -> str | None:
-    if count <= 0:
+def _evaluation_warning(
+    dropped_count: int,
+    errors: list[str],
+    fallback_count: int,
+) -> str | None:
+    if dropped_count <= 0 and fallback_count <= 0:
         return None
     first_error = errors[0] if errors else "unknown"
-    return f"llm_evaluation_dropped_roles={count}: {first_error}"
+    parts = []
+    if dropped_count:
+        parts.append(f"llm_evaluation_dropped_roles={dropped_count}")
+    if fallback_count:
+        parts.append(f"llm_evaluation_fallback_roles={fallback_count}")
+    return f"{', '.join(parts)}: {first_error}"
 
 
 def _record_run(

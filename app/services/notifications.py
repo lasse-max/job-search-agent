@@ -20,7 +20,7 @@ from app.db import (
     record_notification,
     get_digest_rows,
 )
-from app.services.digest import render_html, render_text, uses_fallback_evaluator
+from app.services.digest import DigestSelection, render_html, render_text, select_digest_rows
 
 
 DEFAULT_RESEND_FROM = "Job Search Agent <onboarding@resend.dev>"
@@ -115,10 +115,12 @@ def deliver_digest(
     text_path = output_dir / "latest_digest.txt"
     recipient = recipient or os.getenv("DIGEST_RECIPIENT_EMAIL") or ""
     since = latest_delivered_notification_at(conn)
-    rows = get_digest_rows(conn, since=since)
+    raw_rows = get_digest_rows(conn, since=since)
+    selection = select_digest_rows(raw_rows)
+    rows = selection.rows
     failures = latest_source_failures(conn)
-    subject = _subject(len(rows), len(failures))
-    payload_hash = _payload_hash(rows, failures)
+    subject = _subject(len(rows), len(failures), degraded=selection.degraded)
+    payload_hash = _payload_hash(rows, failures, selection)
 
     if suppress_no_change and not rows and not failures:
         record_notification(
@@ -161,37 +163,12 @@ def deliver_digest(
             recipient=recipient,
         )
 
-    html_body = render_html(rows, failures)
-    text_body = render_text(rows, failures)
+    html_body = render_html(rows, failures, selection=selection)
+    text_body = render_text(rows, failures, selection=selection)
     html_path.write_text(html_body, encoding="utf-8")
     text_path.write_text(text_body, encoding="utf-8")
 
     provider = provider or provider_from_env()
-    if provider is not None and uses_fallback_evaluator(rows):
-        error_summary = (
-            "Digest uses fallback evaluator output; refusing email delivery until "
-            "validated LLM evaluations are available."
-        )
-        record_notification(
-            conn,
-            notification_type="digest",
-            payload_hash=payload_hash,
-            status="failed",
-            error_summary=error_summary,
-        )
-        conn.commit()
-        return DigestDeliveryResult(
-            status="failed",
-            subject=subject,
-            payload_hash=payload_hash,
-            role_count=len(rows),
-            failure_count=len(failures),
-            html_path=html_path,
-            text_path=text_path,
-            recipient=recipient,
-            error_summary=error_summary,
-        )
-
     if provider is not None and not recipient:
         error_summary = "DIGEST_RECIPIENT_EMAIL is required when email delivery is configured."
         record_notification(
@@ -273,16 +250,22 @@ def provider_from_env() -> EmailProvider | None:
     )
 
 
-def _subject(role_count: int, failure_count: int) -> str:
+def _subject(role_count: int, failure_count: int, *, degraded: bool = False) -> str:
     if role_count == 0 and failure_count == 0:
-        return "Job Search Digest: no new roles"
+        subject = "Job Search Digest: no new roles"
+        return f"⚠️ DEGRADED — {subject}" if degraded else subject
     parts = [f"{role_count} new/changed role{'s' if role_count != 1 else ''}"]
     if failure_count:
         parts.append(f"{failure_count} source issue{'s' if failure_count != 1 else ''}")
-    return "Job Search Digest: " + ", ".join(parts)
+    subject = "Job Search Digest: " + ", ".join(parts)
+    return f"⚠️ DEGRADED — {subject}" if degraded else subject
 
 
-def _payload_hash(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
+def _payload_hash(
+    rows: list[sqlite3.Row],
+    failures: list[sqlite3.Row],
+    selection: DigestSelection,
+) -> str:
     payload = {
         "roles": [
             {
@@ -307,6 +290,12 @@ def _payload_hash(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
             }
             for row in failures
         ],
+        "selection": {
+            "cap": selection.cap,
+            "overflow_count": selection.overflow_count,
+            "fallback_filtered_count": selection.fallback_filtered_count,
+            "degraded": selection.degraded,
+        },
         "schema": "digest_payload_v1",
     }
     return hashlib.sha256(json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()

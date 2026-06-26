@@ -5,6 +5,7 @@ from __future__ import annotations
 import html
 import json
 import sqlite3
+from dataclasses import dataclass
 from pathlib import Path
 
 from app.config import load_scoring_policy
@@ -18,7 +19,17 @@ RECOMMENDATION_SECTIONS = [
     ("stretch", "Stretch / reach — calibration in progress, scrutinize"),
 ]
 LOW_PRIORITY_RECOMMENDATIONS = {"skip", "blocked"}
-FALLBACK_EVALUATOR_WARNING = "fallback evaluator — not validated"
+DEFAULT_DIGEST_MAX_ROLES = 25
+ABSOLUTE_DIGEST_MAX_ROLES = 50
+
+
+@dataclass(frozen=True)
+class DigestSelection:
+    rows: list[sqlite3.Row]
+    cap: int
+    overflow_count: int
+    fallback_filtered_count: int
+    degraded: bool
 
 
 def write_digest(
@@ -34,14 +45,40 @@ def write_digest(
     html_path = output_dir / "latest_digest.html"
     text_path = output_dir / "latest_digest.txt"
 
-    html_path.write_text(render_html(rows, failures), encoding="utf-8")
-    text_path.write_text(render_text(rows, failures), encoding="utf-8")
-    return html_path, text_path, len(rows)
+    selection = select_digest_rows(rows)
+    html_path.write_text(
+        render_html(
+            selection.rows,
+            failures,
+            selection=selection,
+        ),
+        encoding="utf-8",
+    )
+    text_path.write_text(
+        render_text(
+            selection.rows,
+            failures,
+            selection=selection,
+        ),
+        encoding="utf-8",
+    )
+    return html_path, text_path, len(selection.rows)
 
 
-def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
+def render_html(
+    rows: list[sqlite3.Row],
+    failures: list[sqlite3.Row],
+    *,
+    selection: DigestSelection | None = None,
+) -> str:
     grouped = _group_rows(rows)
-    digest_limits = load_scoring_policy().digest_limits
+    selection = selection or DigestSelection(
+        rows=rows,
+        cap=digest_max_roles(),
+        overflow_count=0,
+        fallback_filtered_count=0,
+        degraded=uses_fallback_evaluator(rows),
+    )
     generated_at = utc_now()
     parts = [
         "<!doctype html>",
@@ -54,28 +91,34 @@ def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
         "</head><body>",
         f"<h1>Job Search Digest</h1><p class='muted'>Generated {html.escape(generated_at)}</p>",
     ]
-    if uses_fallback_evaluator(rows):
+    if selection.degraded:
         parts.append(
-            "<div class='warning'><strong>Fallback evaluator — not validated.</strong> "
-            "This local digest was rendered from deterministic fallback evaluations and "
-            "must not be treated as a calibrated email digest.</div>"
+            "<div class='warning'><strong>⚠️ DEGRADED — unvalidated.</strong> "
+            "This digest was rendered from deterministic fallback evaluations; "
+            "ranking is not trustworthy.</div>"
+        )
+    if selection.fallback_filtered_count:
+        parts.append(
+            "<div class='warning'><strong>Fallback rows withheld.</strong> "
+            f"{selection.fallback_filtered_count} unvalidated role"
+            f"{'s were' if selection.fallback_filtered_count != 1 else ' was'} "
+            "dropped from this normal email.</div>"
+        )
+    if selection.overflow_count:
+        parts.append(
+            "<div class='warning'><strong>"
+            f"Showing {len(rows)} of {len(rows) + selection.overflow_count} roles.</strong> "
+            f"➕ {selection.overflow_count} more — view full list with "
+            "<code>job-agent review list</code> or CSV exports.</div>"
         )
     for recommendation, label in RECOMMENDATION_SECTIONS:
         raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
-        section_limit = digest_limits.get(recommendation, len(raw_section_rows))
-        section_rows = raw_section_rows[:section_limit]
+        section_rows = raw_section_rows
         if not section_rows:
             continue
         parts.append(f"<h2>{html.escape(label)}</h2>")
         for row in section_rows:
             parts.append(_role_card(row))
-        if len(raw_section_rows) > len(section_rows):
-            parts.append(
-                "<p class='muted'>"
-                f"{len(raw_section_rows) - len(section_rows)} additional "
-                f"{html.escape(label.lower())} roles hidden by the digest cap."
-                "</p>"
-            )
     low_priority = [
         row
         for recommendation in LOW_PRIORITY_RECOMMENDATIONS
@@ -107,26 +150,49 @@ def render_html(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
     return "\n".join(parts)
 
 
-def render_text(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
+def render_text(
+    rows: list[sqlite3.Row],
+    failures: list[sqlite3.Row],
+    *,
+    selection: DigestSelection | None = None,
+) -> str:
     grouped = _group_rows(rows)
-    digest_limits = load_scoring_policy().digest_limits
+    selection = selection or DigestSelection(
+        rows=rows,
+        cap=digest_max_roles(),
+        overflow_count=0,
+        fallback_filtered_count=0,
+        degraded=uses_fallback_evaluator(rows),
+    )
     parts = [f"Job Search Digest - generated {utc_now()}", ""]
-    if uses_fallback_evaluator(rows):
-        parts.append(FALLBACK_EVALUATOR_WARNING)
-        parts.append("This local digest uses deterministic fallback evaluations.")
+    if selection.degraded:
+        parts.append("⚠️ DEGRADED — unvalidated")
+        parts.append(
+            "This digest uses deterministic fallback evaluations; ranking is not trustworthy."
+        )
+        parts.append("")
+    if selection.fallback_filtered_count:
+        parts.append(
+            f"Fallback rows withheld: {selection.fallback_filtered_count} "
+            "unvalidated role(s) dropped from this normal email."
+        )
+        parts.append("")
+    if selection.overflow_count:
+        parts.append(
+            f"Showing {len(rows)} of {len(rows) + selection.overflow_count} roles. "
+            f"➕ {selection.overflow_count} more — view full list with "
+            "job-agent review list or CSV exports."
+        )
         parts.append("")
     for recommendation, label in RECOMMENDATION_SECTIONS:
         raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
-        section_limit = digest_limits.get(recommendation, len(raw_section_rows))
-        section_rows = raw_section_rows[:section_limit]
+        section_rows = raw_section_rows
         if not section_rows:
             continue
         parts.append(label)
         parts.append("-" * len(label))
         for row in section_rows:
             parts.extend(_role_text_lines(row))
-        if len(raw_section_rows) > len(section_rows):
-            parts.append(f"{len(raw_section_rows) - len(section_rows)} additional hidden by cap.")
         parts.append("")
     low_priority = [
         row
@@ -151,17 +217,58 @@ def render_text(rows: list[sqlite3.Row], failures: list[sqlite3.Row]) -> str:
 
 
 def uses_fallback_evaluator(rows: list[sqlite3.Row]) -> bool:
-    for row in rows:
-        evaluation = json.loads(row["evaluation_json"])
-        provenance = evaluation.get("provenance") or {}
-        if str(provenance.get("fallback_quality")).lower() == "true":
-            return True
-        evaluator_version = str(provenance.get("evaluator_version") or "")
-        model_version = str(provenance.get("model_version") or "")
-        if "deterministic_fallback" in evaluator_version or "deterministic_fallback" in model_version:
-            return True
-    return False
+    return any(is_fallback_evaluator_row(row) for row in rows)
 
+
+def is_fallback_evaluator_row(row: sqlite3.Row) -> bool:
+    evaluation = json.loads(row["evaluation_json"])
+    provenance = evaluation.get("provenance") or {}
+    if str(provenance.get("fallback_quality")).lower() == "true":
+        return True
+    evaluator_version = str(provenance.get("evaluator_version") or "")
+    model_version = str(provenance.get("model_version") or "")
+    return "deterministic_fallback" in evaluator_version or "deterministic_fallback" in model_version
+
+
+def select_digest_rows(rows: list[sqlite3.Row]) -> DigestSelection:
+    cap = digest_max_roles()
+    valid_rows = [row for row in rows if not is_fallback_evaluator_row(row)]
+    fallback_rows = [row for row in rows if is_fallback_evaluator_row(row)]
+    degraded = not valid_rows and bool(fallback_rows)
+    candidate_rows = fallback_rows if degraded else valid_rows
+    ranked = _ranked_delivery_rows(candidate_rows)
+    selected = ranked[:cap]
+    return DigestSelection(
+        rows=selected,
+        cap=cap,
+        overflow_count=max(0, len(ranked) - len(selected)),
+        fallback_filtered_count=0 if degraded else len(fallback_rows),
+        degraded=degraded,
+    )
+
+
+def digest_max_roles() -> int:
+    configured = load_scoring_policy().digest_limits.get("max_roles", DEFAULT_DIGEST_MAX_ROLES)
+    return max(1, min(int(configured), ABSOLUTE_DIGEST_MAX_ROLES))
+
+
+def _ranked_delivery_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
+    recommendation_rank = {
+        "apply_now": 0,
+        "consider": 1,
+        "stretch": 2,
+        "skip": 3,
+        "blocked": 4,
+    }
+    return sorted(
+        rows,
+        key=lambda row: (
+            recommendation_rank.get(json.loads(row["evaluation_json"])["recommendation"], 99),
+            -int(json.loads(row["evaluation_json"])["role_fit_score"]),
+            str(row["company"]),
+            str(row["title"]),
+        ),
+    )
 
 def _group_rows(rows: list[sqlite3.Row]) -> dict[str, list[sqlite3.Row]]:
     grouped: dict[str, list[sqlite3.Row]] = {}

@@ -82,6 +82,7 @@ def evaluate_role(
     *,
     llm_provider: LLMProvider | None = None,
     spend_tracker: ModelSpendTracker | None = None,
+    use_env_provider: bool = True,
 ) -> RoleEvaluation:
     title = row["title"]
     title_lower = row["title"].lower()
@@ -99,7 +100,7 @@ def evaluate_role(
         location_policy,
         profile,
     )
-    provider = llm_provider or provider_from_env()
+    provider = llm_provider or (provider_from_env() if use_env_provider else None)
     if provider is not None:
         tracker = spend_tracker or ModelSpendTracker.from_env()
         tracker.assert_budget_allows()

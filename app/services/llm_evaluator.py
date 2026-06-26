@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import sqlite3
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal, Protocol
@@ -24,6 +25,8 @@ PROMPT_PATH = Path(__file__).resolve().parents[1] / "prompts" / "role_evaluation
 DEFAULT_LLM_CACHE_DIR = DATA_DIR / "evaluation_set" / "llm_cache"
 DEFAULT_SPEND_LEDGER = DATA_DIR / "model_spend_ledger.json"
 DEFAULT_ESTIMATED_EVAL_COST_USD = 0.004
+RETRYABLE_CLAUDE_STATUS_CODES = {429, 529}
+CLAUDE_MAX_ATTEMPTS = 3
 
 
 class LLMAlignmentModel(BaseModel):
@@ -185,24 +188,12 @@ class ClaudeLLMProvider:
 
         prompt = build_role_prompt(request)
         try:
-            response = httpx.post(
-                "https://api.anthropic.com/v1/messages",
-                headers={
-                    "x-api-key": self.api_key,
-                    "anthropic-version": "2023-06-01",
-                    "content-type": "application/json",
-                },
-                json={
-                    "model": self.model,
-                    "max_tokens": 1800,
-                    "system": _system_prompt(),
-                    "messages": [{"role": "user", "content": prompt}],
-                    "tools": [_evaluation_tool_schema()],
-                    "tool_choice": {"type": "tool", "name": "submit_role_evaluation"},
-                },
-                timeout=self.timeout_seconds,
+            response = _post_claude_message(
+                api_key=self.api_key,
+                model=self.model,
+                prompt=prompt,
+                timeout_seconds=self.timeout_seconds,
             )
-            response.raise_for_status()
         except httpx.HTTPError as exc:
             raise LLMProviderError(f"claude_evaluation_failed: {type(exc).__name__}: {exc}") from exc
 
@@ -308,6 +299,52 @@ def _system_prompt() -> str:
         "You are a strict job-role evaluator. Return only the requested tool call. "
         "Do not invent candidate evidence; use the supplied profile and job description."
     )
+
+
+def _post_claude_message(
+    *,
+    api_key: str,
+    model: str,
+    prompt: str,
+    timeout_seconds: int,
+) -> httpx.Response:
+    last_error: httpx.HTTPError | None = None
+    for attempt in range(CLAUDE_MAX_ATTEMPTS):
+        try:
+            response = httpx.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "x-api-key": api_key,
+                    "anthropic-version": "2023-06-01",
+                    "content-type": "application/json",
+                },
+                json={
+                    "model": model,
+                    "max_tokens": 1800,
+                    "system": _system_prompt(),
+                    "messages": [{"role": "user", "content": prompt}],
+                    "tools": [_evaluation_tool_schema()],
+                    "tool_choice": {"type": "tool", "name": "submit_role_evaluation"},
+                },
+                timeout=timeout_seconds,
+            )
+            response.raise_for_status()
+            return response
+        except httpx.HTTPError as exc:
+            last_error = exc
+            if attempt >= CLAUDE_MAX_ATTEMPTS - 1 or not _is_retryable_claude_error(exc):
+                raise
+            time.sleep(0.25 * (2**attempt))
+    assert last_error is not None
+    raise last_error
+
+
+def _is_retryable_claude_error(exc: httpx.HTTPError) -> bool:
+    if isinstance(exc, httpx.TimeoutException):
+        return True
+    if isinstance(exc, httpx.HTTPStatusError):
+        return exc.response.status_code in RETRYABLE_CLAUDE_STATUS_CODES
+    return False
 
 
 def _evaluation_tool_schema() -> dict[str, Any]:
