@@ -1,2 +1,232 @@
-<!-- Placeholder only. Stage 1 will add the local HTML digest template. -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="supported-color-schemes" content="dark">
+  <title>Job Search Digest</title>
+</head>
+<body style="margin:0;padding:0;background-color:#0a141c;color:#eef0ec;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a141c" style="width:100%;margin:0;padding:0;background-color:#0a141c;border-collapse:collapse;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#eef0ec;">
+    <tr>
+      <td align="center" bgcolor="#0a141c" style="padding:24px 12px;background-color:#0a141c;color:#eef0ec;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f1f2b" style="width:100%;max-width:600px;background-color:#0f1f2b;border:1px solid #243746;border-radius:14px;border-collapse:separate;overflow:hidden;color:#eef0ec;">
+          <tr>
+            <td bgcolor="#13242f" style="padding:22px 24px;background-color:#13242f;border-bottom:1px solid #243746;color:#eef0ec;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border-collapse:collapse;">
+                <tr>
+                  <td bgcolor="#13242f" style="background-color:#13242f;color:#57b6c4;font-size:11px;line-height:16px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">Job Search Agent · Find your layline</td>
+                </tr>
+                <tr>
+                  <td bgcolor="#13242f" style="padding-top:8px;background-color:#13242f;color:#eef0ec;font-size:22px;line-height:28px;font-weight:400;font-family:Newsreader,Georgia,'Times New Roman',serif;">Your roles — {{ digest.generated_label|e }}</td>
+                </tr>
+                <tr>
+                  <td bgcolor="#13242f" style="padding-top:10px;background-color:#13242f;color:#9fb0b6;font-size:13px;line-height:20px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    <span style="color:#e07a5c;font-weight:700;">{{ digest.counts.apply_now }} apply now</span>
+                    <span style="color:#526571;"> · </span>
+                    <span style="color:#57b6c4;font-weight:700;">{{ digest.counts.consider }} consider</span>
+                    <span style="color:#526571;"> · </span>
+                    <span style="color:#c7a86a;font-weight:700;">{{ digest.counts.stretch }} stretch</span>
+                    <span style="color:#526571;"> · </span>
+                    <span style="color:#9fb0b6;">{{ digest.counts.failures }} source issue{{ '' if digest.counts.failures == 1 else 's' }}</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
+          <tr>
+            <td bgcolor="#0f1f2b" style="padding:18px;background-color:#0f1f2b;color:#eef0ec;">
+              {% if digest.selection.degraded %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#2b241c" style="width:100%;background-color:#2b241c;border:1px solid #7a5038;border-radius:10px;border-collapse:separate;margin-bottom:12px;">
+                <tr>
+                  <td bgcolor="#2b241c" style="padding:12px 14px;background-color:#2b241c;color:#e3a08c;font-size:13px;line-height:19px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    <strong style="color:#f0876b;">⚠️ DEGRADED — unvalidated.</strong> This digest was rendered from deterministic fallback evaluations; ranking is not trustworthy.
+                  </td>
+                </tr>
+              </table>
+              {% endif %}
+
+              {% if digest.selection.fallback_filtered_count %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#2b241c" style="width:100%;background-color:#2b241c;border:1px solid #7a5038;border-radius:10px;border-collapse:separate;margin-bottom:12px;">
+                <tr>
+                  <td bgcolor="#2b241c" style="padding:12px 14px;background-color:#2b241c;color:#e3a08c;font-size:13px;line-height:19px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    <strong style="color:#f0876b;">Fallback rows withheld.</strong> {{ digest.selection.fallback_filtered_count }} unvalidated role{{ '' if digest.selection.fallback_filtered_count == 1 else 's' }} dropped from this normal email.
+                  </td>
+                </tr>
+              </table>
+              {% endif %}
+
+              {% if digest.selection.overflow_count %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#172937" style="width:100%;background-color:#172937;border:1px solid #2e4a5a;border-radius:10px;border-collapse:separate;margin-bottom:12px;">
+                <tr>
+                  <td bgcolor="#172937" style="padding:12px 14px;background-color:#172937;color:#b8c5ca;font-size:13px;line-height:19px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    <strong style="color:#eef0ec;">Showing {{ digest.counts.shown }} of {{ digest.counts.total }} roles.</strong> ➕ {{ digest.selection.overflow_count }} more — view full list with <code style="background-color:#233846;color:#9fb0b6;padding:1px 6px;border-radius:4px;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Consolas,monospace;">{{ digest.review_command|e }}</code> or CSV exports.
+                  </td>
+                </tr>
+              </table>
+              {% endif %}
+
+              {% for section in digest.sections %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f1f2b" style="width:100%;background-color:#0f1f2b;border-collapse:collapse;margin-top:{{ '2px' if loop.first else '18px' }};">
+                <tr>
+                  <td bgcolor="#0f1f2b" style="padding:0 6px 10px;background-color:#0f1f2b;color:{{ section.accent }};font-size:11px;line-height:16px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    ◆ {{ section.label|e }}{% if section.key == 'stretch' %} <span style="font-weight:500;text-transform:none;letter-spacing:0;color:#7e8c95;">— lower-confidence surface; scrutinize</span>{% endif %}
+                  </td>
+                </tr>
+              </table>
+
+              {% for role in section.roles %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border:1px solid #243746;border-left:3px solid {{ section.border }};border-radius:10px;border-collapse:separate;margin-bottom:12px;">
+                <tr>
+                  <td bgcolor="#13242f" style="padding:15px 16px;background-color:#13242f;color:#eef0ec;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border-collapse:collapse;">
+                      <tr>
+                        <td bgcolor="#13242f" valign="top" style="vertical-align:top;background-color:#13242f;color:#eef0ec;padding:0 12px 0 0;">
+                          <div style="font-size:16px;line-height:21px;font-weight:700;color:#eef0ec;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">{{ role.company|e }}</div>
+                          <div style="font-size:15px;line-height:21px;color:#c6d0d6;font-family:Newsreader,Georgia,'Times New Roman',serif;">{{ role.title|e }}</div>
+                        </td>
+                        <td bgcolor="#13242f" valign="top" align="right" width="64" style="width:64px;text-align:right;vertical-align:top;background-color:#13242f;color:#eef0ec;padding:0;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right" bgcolor="{{ section.score_bg }}" style="background-color:{{ section.score_bg }};border:1px solid {{ section.score_border }};border-radius:8px;border-collapse:separate;">
+                            <tr>
+                              <td bgcolor="{{ section.score_bg }}" align="center" style="padding:6px 11px;text-align:center;background-color:{{ section.score_bg }};color:{{ section.score_color }};">
+                                <div style="font-size:20px;line-height:20px;font-weight:800;color:{{ section.score_color }};font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">{{ role.fit_score }}</div>
+                                <div style="font-size:9px;line-height:12px;color:#9fb0b6;letter-spacing:0.06em;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">FIT</div>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border-collapse:collapse;margin-top:10px;">
+                      <tr>
+                        <td bgcolor="#13242f" style="background-color:#13242f;color:#aebcc4;font-size:12px;line-height:20px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                          <span style="display:inline-block;background-color:#213442;border-radius:6px;padding:3px 8px;color:#aebcc4;margin:2px 4px 2px 0;">📍 {{ role.locations_label|e }}</span>
+                          <span style="display:inline-block;background-color:#213442;border-radius:6px;padding:3px 8px;color:#aebcc4;margin:2px 4px 2px 0;">Tier {{ role.tier|e }}</span>
+                          <span style="display:inline-block;background-color:{{ '#183126' if role.feasibility_good else '#2d2620' }};border-radius:6px;padding:3px 8px;color:{{ '#7fd0ad' if role.feasibility_good else '#d3a463' }};margin:2px 4px 2px 0;">{{ '✓' if role.feasibility_good else '△' }} {{ role.feasibility_state|e }}</span>
+                          <span style="display:inline-block;background-color:#213442;border-radius:6px;padding:3px 8px;color:#aebcc4;margin:2px 4px 2px 0;">{{ role.confidence_label|e }} confidence</span>
+                          <span style="display:inline-block;background-color:#213442;border-radius:6px;padding:3px 8px;color:#aebcc4;margin:2px 4px 2px 0;">{{ role.recommendation_label|e }}</span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border-collapse:collapse;margin-top:8px;">
+                      <tr>
+                        <td bgcolor="#13242f" style="background-color:#13242f;color:#9fb0b6;font-size:12px;line-height:18px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                          <strong style="color:#c6d0d6;">Department:</strong> {{ role.department|e }}<br>
+                          <strong style="color:#c6d0d6;">First seen:</strong> {{ role.first_seen_at|e }} · <strong style="color:#c6d0d6;">Posted:</strong> {{ role.posted_at|e }}<br>
+                          <strong style="color:#c6d0d6;">Stable ID:</strong> {{ role.stable_id|e }}
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border-collapse:collapse;margin-top:10px;">
+                      <tr>
+                        <td bgcolor="#13242f" style="background-color:#13242f;color:#c6d0d6;font-size:13.5px;line-height:21px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">{{ role.summary|e }}</td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#13242f" style="padding-top:8px;background-color:#13242f;color:#d3a463;font-size:13px;line-height:19px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;"><strong style="color:#d7bd7d;">Priority:</strong> {{ role.priority_reason|e }}</td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#13242f" style="padding-top:5px;background-color:#13242f;color:#9fb0b6;font-size:13px;line-height:19px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;"><strong style="color:#c6d0d6;">Feasibility:</strong> {{ role.feasibility_state|e }} — {{ role.feasibility_reason|e }}</td>
+                      </tr>
+                    </table>
+
+                    {% if role.alignments %}
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border-collapse:collapse;margin-top:8px;">
+                      {% for alignment in role.alignments %}
+                      <tr>
+                        <td bgcolor="#13242f" style="padding-top:4px;background-color:#13242f;color:#7fd0ad;font-size:13px;line-height:18px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">✓ <strong style="color:#96d9bd;">{{ alignment.job_requirement|e }}</strong> → {{ alignment.candidate_evidence|e }} <span style="color:#6fa68e;">({{ alignment.evidence_strength|e }})</span></td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    {% if role.gaps %}
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;background-color:#13242f;border-collapse:collapse;margin-top:4px;">
+                      {% for gap in role.gaps %}
+                      <tr>
+                        <td bgcolor="#13242f" style="padding-top:4px;background-color:#13242f;color:#d3a463;font-size:13px;line-height:18px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">△ <strong style="color:#d7bd7d;">{{ gap.gap|e }}</strong> → {{ gap.mitigation|e }} <span style="color:#9f8955;">({{ gap.severity|e }})</span></td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    {% if role.hard_blockers %}
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#2b241c" style="width:100%;background-color:#2b241c;border:1px solid #7a5038;border-radius:8px;border-collapse:separate;margin-top:10px;">
+                      {% for blocker in role.hard_blockers %}
+                      <tr>
+                        <td bgcolor="#2b241c" style="padding:8px 10px;background-color:#2b241c;color:#e3a08c;font-size:13px;line-height:18px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;"><strong style="color:#f0876b;">Blocker — {{ blocker.type|e }}:</strong> {{ blocker.evidence|e }}</td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="background-color:#13242f;border-collapse:collapse;margin-top:13px;">
+                      <tr>
+                        <td bgcolor="#13242f" style="background-color:#13242f;color:#eef0ec;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                          <a href="{{ role.source_url|e }}" style="display:inline-block;background-color:{{ section.border }};color:#ffffff;text-decoration:none;font-size:13px;line-height:18px;font-weight:600;padding:9px 18px;border-radius:8px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">Open role →</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              {% endfor %}
+              {% endfor %}
+
+              {% if digest.low_priority.count %}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#171f28" style="width:100%;background-color:#171f28;border:1px solid #2b3c4a;border-radius:10px;border-collapse:separate;margin-top:18px;">
+                <tr>
+                  <td bgcolor="#171f28" style="padding:12px 14px;background-color:#171f28;color:#9fb0b6;font-size:12.5px;line-height:19px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    <strong style="color:#c6d0d6;">Low-priority / blocked:</strong> {{ digest.low_priority.count }} role{{ '' if digest.low_priority.count == 1 else 's' }} not expanded in this digest.
+                    {% if digest.low_priority.roles %}
+                    <br>
+                    {% for role in digest.low_priority.roles %}
+                    {{ role.company|e }} — {{ role.title|e }} ({{ role.fit_score }}){% if not loop.last %} · {% endif %}
+                    {% endfor %}
+                    {% if digest.low_priority.overflow_count %}<span style="color:#7e8c95;"> · +{{ digest.low_priority.overflow_count }} more</span>{% endif %}
+                    {% endif %}
+                  </td>
+                </tr>
+              </table>
+              {% endif %}
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ '#2b241c' if digest.failures else '#142a24' }}" style="width:100%;background-color:{{ '#2b241c' if digest.failures else '#142a24' }};border:1px solid {{ '#7a5038' if digest.failures else '#275240' }};border-radius:10px;border-collapse:separate;margin-top:18px;">
+                <tr>
+                  <td bgcolor="{{ '#2b241c' if digest.failures else '#142a24' }}" style="padding:12px 14px;background-color:{{ '#2b241c' if digest.failures else '#142a24' }};color:{{ '#e3a08c' if digest.failures else '#7fd0ad' }};font-size:12.5px;line-height:19px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    <strong style="color:{{ '#f0876b' if digest.failures else '#96d9bd' }};">Source failures and coverage gaps</strong><br>
+                    {% if digest.failures %}
+                    {% for failure in digest.failures %}
+                    ⚠ {{ failure.status|e }} — <strong style="color:#f0876b;">{{ failure.company|e }}</strong> ({{ failure.source_type|e }}:{{ failure.source_key|e }}) {{ failure.error_summary|e }}{% if not loop.last %}<br>{% endif %}
+                    {% endfor %}
+                    {% else %}
+                    No source failures recorded in this database.
+                    {% endif %}
+                  </td>
+                </tr>
+              </table>
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f1f2b" style="width:100%;background-color:#0f1f2b;border-collapse:collapse;margin-top:18px;">
+                <tr>
+                  <td align="center" bgcolor="#0f1f2b" style="text-align:center;background-color:#0f1f2b;color:#7e8c95;font-size:11.5px;line-height:20px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+                    Review in terminal: <code style="background-color:#213442;color:#9fb0b6;padding:1px 6px;border-radius:4px;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Consolas,monospace;">{{ digest.review_command|e }}</code><br>
+                    {{ digest.counts.shown }} new/changed role{{ '' if digest.counts.shown == 1 else 's' }} shown · cap {{ digest.selection.cap }} · full list in review CLI / CSV exports
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a141c" style="width:100%;max-width:600px;background-color:#0a141c;border-collapse:collapse;margin-top:10px;">
+          <tr>
+            <td align="center" bgcolor="#0a141c" style="text-align:center;background-color:#0a141c;color:#4a5a64;font-size:11px;line-height:16px;letter-spacing:0.04em;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">LAYLINE · velocity made good</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

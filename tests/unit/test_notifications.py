@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 import tempfile
 import unittest
@@ -339,6 +340,34 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(html_body.count('href="https://example.com/render-'), 25)
             self.assertIn("➕ 5 more", text_body)
             self.assertIn("➕ 5 more", html_body)
+
+    def test_html_digest_uses_email_safe_dark_template(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            add_text_intake(
+                JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/template-check",
+            )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            html_body = render_html(get_digest_rows(conn), [])
+
+            self.assertIn("LAYLINE · velocity made good", html_body)
+            self.assertIn('role="presentation"', html_body)
+            self.assertIn("max-width:600px", html_body)
+            self.assertIn("font-family:Newsreader,Georgia", html_body)
+            self.assertIn("font-family:'IBM Plex Sans',-apple-system", html_body)
+            self.assertNotIn("<style", html_body.lower())
+            td_tags = re.findall(r"<td\b[^>]*>", html_body)
+            self.assertTrue(td_tags)
+            self.assertTrue(
+                all("background-color:" in tag or "bgcolor=" in tag for tag in td_tags)
+            )
 
 
 class FakeProvider:

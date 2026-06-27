@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
-import html
 import json
 import sqlite3
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
+from typing import Any
+
+from jinja2 import Environment, FileSystemLoader
 
 from app.config import load_scoring_policy
 from app.db import get_digest_rows, latest_source_failures
@@ -21,6 +24,38 @@ RECOMMENDATION_SECTIONS = [
 LOW_PRIORITY_RECOMMENDATIONS = {"skip", "blocked"}
 DEFAULT_DIGEST_MAX_ROLES = 25
 ABSOLUTE_DIGEST_MAX_ROLES = 50
+TEMPLATE_DIR = Path(__file__).resolve().parents[1] / "templates"
+TEMPLATE_ENV = Environment(
+    loader=FileSystemLoader(str(TEMPLATE_DIR)),
+    trim_blocks=True,
+    lstrip_blocks=True,
+)
+SECTION_STYLES = {
+    "apply_now": {
+        "label": "Apply now — the mark",
+        "accent": "#e07a5c",
+        "border": "#d65a3c",
+        "score_color": "#f0876b",
+        "score_bg": "#2a2530",
+        "score_border": "#7d3d33",
+    },
+    "consider": {
+        "label": "Consider",
+        "accent": "#57b6c4",
+        "border": "#1f6f7c",
+        "score_color": "#7cc9d6",
+        "score_bg": "#18333d",
+        "score_border": "#2e7380",
+    },
+    "stretch": {
+        "label": "Stretch / reach",
+        "accent": "#c7a86a",
+        "border": "#9d854b",
+        "score_color": "#d7bd7d",
+        "score_bg": "#2b2a21",
+        "score_border": "#6e613c",
+    },
+}
 
 
 @dataclass(frozen=True)
@@ -72,76 +107,7 @@ def render_html(
     selection: DigestSelection | None = None,
 ) -> str:
     rows, selection = _render_inputs(rows, selection)
-    grouped = _group_rows(rows)
-    generated_at = utc_now()
-    parts = [
-        "<!doctype html>",
-        "<html><head><meta charset='utf-8'><title>Job Search Digest</title>",
-        "<style>body{font-family:Arial,sans-serif;max-width:980px;margin:32px auto;line-height:1.45}"
-        ".card{border:1px solid #ddd;border-radius:10px;padding:16px;margin:12px 0}"
-        ".warning{background:#fff3cd;border:1px solid #ffe69c;border-radius:10px;padding:12px;margin:12px 0}"
-        ".muted{color:#666}.pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eee;margin:2px}"
-        ".meta{margin:6px 0}.low summary{cursor:pointer;font-weight:bold;font-size:1.2em;margin:18px 0 8px}</style>",
-        "</head><body>",
-        f"<h1>Job Search Digest</h1><p class='muted'>Generated {html.escape(generated_at)}</p>",
-    ]
-    if selection.degraded:
-        parts.append(
-            "<div class='warning'><strong>⚠️ DEGRADED — unvalidated.</strong> "
-            "This digest was rendered from deterministic fallback evaluations; "
-            "ranking is not trustworthy.</div>"
-        )
-    if selection.fallback_filtered_count:
-        parts.append(
-            "<div class='warning'><strong>Fallback rows withheld.</strong> "
-            f"{selection.fallback_filtered_count} unvalidated role"
-            f"{'s were' if selection.fallback_filtered_count != 1 else ' was'} "
-            "dropped from this normal email.</div>"
-        )
-    if selection.overflow_count:
-        parts.append(
-            "<div class='warning'><strong>"
-            f"Showing {len(rows)} of {len(rows) + selection.overflow_count} roles.</strong> "
-            f"➕ {selection.overflow_count} more — view full list with "
-            "<code>job-agent review list</code> or CSV exports.</div>"
-        )
-    for recommendation, label in RECOMMENDATION_SECTIONS:
-        raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
-        section_rows = raw_section_rows
-        if not section_rows:
-            continue
-        parts.append(f"<h2>{html.escape(label)}</h2>")
-        for row in section_rows:
-            parts.append(_role_card(row))
-    low_priority = [
-        row
-        for recommendation in LOW_PRIORITY_RECOMMENDATIONS
-        for row in grouped.get(recommendation, [])
-    ]
-    if low_priority:
-        parts.append(
-            "<p class='muted'><strong>Low-priority / blocked:</strong> "
-            f"{len(low_priority)} role{'s' if len(low_priority) != 1 else ''} "
-            "not expanded in this digest.</p>"
-        )
-    parts.append("<h2>Source failures and coverage gaps</h2>")
-    if failures:
-        parts.append("<ul>")
-        for failure in failures:
-            status = failure["status"] or failure["health_status"]
-            parts.append(
-                "<li>"
-                f"<strong>{html.escape(status)}</strong> - "
-                f"{html.escape(failure['company'])} "
-                f"({html.escape(failure['source_type'])}:{html.escape(failure['source_key'])}) "
-                f"{html.escape(failure['error_summary'] or '')}"
-                "</li>"
-            )
-        parts.append("</ul>")
-    else:
-        parts.append("<p class='muted'>No source failures recorded in this database.</p>")
-    parts.append("</body></html>")
-    return "\n".join(parts)
+    return _render_template("digest.html.j2", rows, failures, selection)
 
 
 def render_text(
@@ -151,57 +117,7 @@ def render_text(
     selection: DigestSelection | None = None,
 ) -> str:
     rows, selection = _render_inputs(rows, selection)
-    grouped = _group_rows(rows)
-    parts = [f"Job Search Digest - generated {utc_now()}", ""]
-    if selection.degraded:
-        parts.append("⚠️ DEGRADED — unvalidated")
-        parts.append(
-            "This digest uses deterministic fallback evaluations; ranking is not trustworthy."
-        )
-        parts.append("")
-    if selection.fallback_filtered_count:
-        parts.append(
-            f"Fallback rows withheld: {selection.fallback_filtered_count} "
-            "unvalidated role(s) dropped from this normal email."
-        )
-        parts.append("")
-    if selection.overflow_count:
-        parts.append(
-            f"Showing {len(rows)} of {len(rows) + selection.overflow_count} roles. "
-            f"➕ {selection.overflow_count} more — view full list with "
-            "job-agent review list or CSV exports."
-        )
-        parts.append("")
-    for recommendation, label in RECOMMENDATION_SECTIONS:
-        raw_section_rows = _ranked_rows(grouped.get(recommendation, []))
-        section_rows = raw_section_rows
-        if not section_rows:
-            continue
-        parts.append(label)
-        parts.append("-" * len(label))
-        for row in section_rows:
-            parts.extend(_role_text_lines(row))
-        parts.append("")
-    low_priority = [
-        row
-        for recommendation in LOW_PRIORITY_RECOMMENDATIONS
-        for row in grouped.get(recommendation, [])
-    ]
-    if low_priority:
-        parts.append(f"Low-priority / blocked: {len(low_priority)} not expanded")
-        parts.append("")
-    parts.append("Source failures and coverage gaps")
-    if failures:
-        for failure in failures:
-            status = failure["status"] or failure["health_status"]
-            parts.append(
-                f"- {status} - {failure['company']} "
-                f"({failure['source_type']}:{failure['source_key']}) "
-                f"{failure['error_summary'] or ''}"
-            )
-    else:
-        parts.append("- None recorded")
-    return "\n".join(parts) + "\n"
+    return _render_template("digest.txt.j2", rows, failures, selection)
 
 
 def uses_fallback_evaluator(rows: list[sqlite3.Row]) -> bool:
@@ -255,6 +171,197 @@ def _render_inputs(
     )
 
 
+def _render_template(
+    template_name: str,
+    rows: list[sqlite3.Row],
+    failures: list[sqlite3.Row],
+    selection: DigestSelection,
+) -> str:
+    rendered = TEMPLATE_ENV.get_template(template_name).render(
+        digest=_digest_context(rows, failures, selection)
+    )
+    return rendered.rstrip() + "\n"
+
+
+def _digest_context(
+    rows: list[sqlite3.Row],
+    failures: list[sqlite3.Row],
+    selection: DigestSelection,
+) -> dict[str, Any]:
+    generated_at = utc_now()
+    grouped = _group_rows(rows)
+    sections = []
+    counts: dict[str, int] = {}
+    for recommendation, default_label in RECOMMENDATION_SECTIONS:
+        section_rows = _ranked_rows(grouped.get(recommendation, []))
+        counts[recommendation] = len(section_rows)
+        if not section_rows:
+            continue
+        style = SECTION_STYLES[recommendation]
+        sections.append(
+            {
+                "key": recommendation,
+                "label": style["label"],
+                "default_label": default_label,
+                "accent": style["accent"],
+                "border": style["border"],
+                "score_color": style["score_color"],
+                "score_bg": style["score_bg"],
+                "score_border": style["score_border"],
+                "roles": [_role_context(row) for row in section_rows],
+            }
+        )
+
+    low_priority_rows = [
+        row
+        for recommendation in LOW_PRIORITY_RECOMMENDATIONS
+        for row in grouped.get(recommendation, [])
+    ]
+    ranked_low_priority = _ranked_delivery_rows(low_priority_rows)
+    low_priority_limit = 6
+    low_priority_roles = [
+        _compact_role_context(row) for row in ranked_low_priority[:low_priority_limit]
+    ]
+
+    return {
+        "generated_at": generated_at,
+        "generated_label": _format_generated_label(generated_at),
+        "sections": sections,
+        "counts": {
+            "apply_now": counts.get("apply_now", 0),
+            "consider": counts.get("consider", 0),
+            "stretch": counts.get("stretch", 0),
+            "low_priority": len(low_priority_rows),
+            "failures": len(failures),
+            "shown": len(rows),
+            "total": len(rows) + selection.overflow_count,
+        },
+        "low_priority": {
+            "count": len(low_priority_rows),
+            "roles": low_priority_roles,
+            "overflow_count": max(0, len(ranked_low_priority) - len(low_priority_roles)),
+        },
+        "failures": [_failure_context(failure) for failure in failures],
+        "selection": {
+            "cap": selection.cap,
+            "overflow_count": selection.overflow_count,
+            "fallback_filtered_count": selection.fallback_filtered_count,
+            "degraded": selection.degraded,
+        },
+        "review_command": "job-agent review list",
+        "csv_command": "job-agent export",
+    }
+
+
+def _role_context(row: sqlite3.Row) -> dict[str, Any]:
+    evaluation = json.loads(row["evaluation_json"])
+    locations = _loads_list(row["locations_json"])
+    feasibility = evaluation.get("feasibility") or {}
+    priority = evaluation.get("strategic_priority") or {}
+    hard_blockers = evaluation.get("hard_blockers") or []
+    alignments = evaluation.get("alignments") or []
+    gaps = evaluation.get("gaps") or []
+    confidence = float(evaluation.get("confidence") or 0)
+    recommendation = str(evaluation.get("recommendation") or "")
+    return {
+        "stable_id": _stable_id(row),
+        "company": str(row["company"] or ""),
+        "title": str(row["title"] or ""),
+        "locations": locations,
+        "locations_label": ", ".join(locations) if locations else "Unknown location",
+        "department": str(row["department"] or "Unspecified"),
+        "first_seen_at": str(row["first_seen_at"] or "unknown"),
+        "posted_at": str(row["posted_at"] or "unknown"),
+        "fit_score": _as_int(evaluation.get("role_fit_score")),
+        "confidence_label": f"{confidence:.0%}",
+        "feasibility_state": str(feasibility.get("state") or "unknown"),
+        "feasibility_reason": str(feasibility.get("reason") or "No feasibility note."),
+        "feasibility_good": str(feasibility.get("state") or "") == "viable",
+        "tier": str(row["company_tier"] or "unknown"),
+        "priority_reason": str(priority.get("reason") or "No priority reason recorded."),
+        "recommendation": recommendation,
+        "recommendation_label": _humanize(recommendation),
+        "summary": str(evaluation.get("summary") or "No summary recorded."),
+        "alignments": [
+            {
+                "job_requirement": str(item.get("job_requirement") or ""),
+                "candidate_evidence": str(item.get("candidate_evidence") or ""),
+                "evidence_strength": str(item.get("evidence_strength") or ""),
+            }
+            for item in alignments[:4]
+            if isinstance(item, dict)
+        ],
+        "gaps": [
+            {
+                "gap": str(item.get("gap") or ""),
+                "mitigation": str(item.get("mitigation") or ""),
+                "severity": str(item.get("severity") or ""),
+            }
+            for item in gaps[:3]
+            if isinstance(item, dict)
+        ],
+        "hard_blockers": [
+            {
+                "type": str(item.get("type") or "blocker"),
+                "evidence": str(item.get("evidence") or ""),
+            }
+            for item in hard_blockers
+            if isinstance(item, dict)
+        ],
+        "source_url": str(row["source_url"] or ""),
+    }
+
+
+def _compact_role_context(row: sqlite3.Row) -> dict[str, Any]:
+    role = _role_context(row)
+    return {
+        "company": role["company"],
+        "title": role["title"],
+        "fit_score": role["fit_score"],
+        "recommendation_label": role["recommendation_label"],
+    }
+
+
+def _failure_context(failure: sqlite3.Row) -> dict[str, str]:
+    status = str(failure["status"] or failure["health_status"] or "unknown")
+    return {
+        "status": status,
+        "company": str(failure["company"] or ""),
+        "source_type": str(failure["source_type"] or ""),
+        "source_key": str(failure["source_key"] or ""),
+        "error_summary": str(failure["error_summary"] or "No error summary recorded."),
+        "finished_at": str(failure["finished_at"] or "unknown"),
+    }
+
+
+def _format_generated_label(value: str) -> str:
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError:
+        return value
+    return parsed.strftime("%a %d %b")
+
+
+def _loads_list(value: str | None) -> list[str]:
+    if not value:
+        return []
+    loaded = json.loads(value)
+    if not isinstance(loaded, list):
+        return []
+    return [str(item) for item in loaded]
+
+
+def _as_int(value: object) -> int:
+    try:
+        return int(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError):
+        return 0
+
+
+def _humanize(value: str) -> str:
+    return value.replace("_", " ").strip().title() if value else "Unknown"
+
+
 def digest_max_roles() -> int:
     configured = load_scoring_policy().digest_limits.get("max_roles", DEFAULT_DIGEST_MAX_ROLES)
     return max(1, min(int(configured), ABSOLUTE_DIGEST_MAX_ROLES))
@@ -278,6 +385,7 @@ def _ranked_delivery_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
         ),
     )
 
+
 def _group_rows(rows: list[sqlite3.Row]) -> dict[str, list[sqlite3.Row]]:
     grouped: dict[str, list[sqlite3.Row]] = {}
     for row in rows:
@@ -292,87 +400,6 @@ def _ranked_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
         key=lambda row: int(json.loads(row["evaluation_json"])["role_fit_score"]),
         reverse=True,
     )
-
-
-def _role_card(row: sqlite3.Row) -> str:
-    evaluation = json.loads(row["evaluation_json"])
-    locations = ", ".join(json.loads(row["locations_json"]))
-    feasibility = evaluation["feasibility"]
-    priority = evaluation["strategic_priority"]
-    alignments = "".join(
-        f"<li><strong>{html.escape(item['job_requirement'])}</strong>: "
-        f"{html.escape(item['candidate_evidence'])} "
-        f"<span class='muted'>({html.escape(item['evidence_strength'])})</span></li>"
-        for item in evaluation["alignments"][:4]
-    )
-    gaps = "".join(
-        f"<li><strong>{html.escape(item['gap'])}</strong>: "
-        f"{html.escape(item['mitigation'])} "
-        f"<span class='muted'>({html.escape(item['severity'])})</span></li>"
-        for item in evaluation["gaps"][:3]
-    )
-    blockers = "".join(
-        f"<li>{html.escape(item['type'])}: {html.escape(item['evidence'])}</li>"
-        for item in evaluation["hard_blockers"]
-    )
-    stable_id = _stable_id(row)
-    confidence = f"{float(evaluation['confidence']):.0%}"
-    posted_at = row["posted_at"] or "unknown"
-    return f"""
-<div class="card">
-  <h3>{html.escape(row['company'])} - {html.escape(row['title'])}</h3>
-  <p><span class="pill">Stable ID {html.escape(stable_id)}</span>
-     <span class="pill">Fit {evaluation['role_fit_score']}</span>
-     <span class="pill">Confidence {html.escape(confidence)}</span>
-     <span class="pill">{html.escape(evaluation['recommendation'])}</span>
-     <span class="pill">{html.escape(feasibility['state'])}</span>
-     <span class="pill">Tier {html.escape(str(row['company_tier']))}</span></p>
-  <p class="meta"><strong>Location:</strong> {html.escape(locations)}<br>
-     <strong>Department:</strong> {html.escape(row['department'] or '')}<br>
-     <strong>First seen:</strong> {html.escape(row['first_seen_at'])}<br>
-     <strong>Posted:</strong> {html.escape(posted_at)}</p>
-  <p>{html.escape(evaluation['summary'])}</p>
-  <p><strong>Priority reason:</strong> {html.escape(str(priority['reason']))}</p>
-  <p><strong>Feasibility:</strong> {html.escape(feasibility['state'])} - {html.escape(feasibility['reason'])}</p>
-  <p><strong>Alignments</strong></p><ul>{alignments}</ul>
-  <p><strong>Gaps</strong></p><ul>{gaps}</ul>
-  {f"<p><strong>Blockers</strong></p><ul>{blockers}</ul>" if blockers else ""}
-  <p><a href="{html.escape(row['source_url'])}">Source role</a></p>
-</div>
-"""
-
-
-def _role_text_lines(row: sqlite3.Row) -> list[str]:
-    evaluation = json.loads(row["evaluation_json"])
-    locations = ", ".join(json.loads(row["locations_json"]))
-    feasibility = evaluation["feasibility"]
-    priority = evaluation["strategic_priority"]
-    stable_id = _stable_id(row)
-    lines = [
-        (
-            f"[{stable_id}] {row['company']} - {row['title']} ({locations}) "
-            f"fit={evaluation['role_fit_score']} confidence={float(evaluation['confidence']):.0%} "
-            f"recommendation={evaluation['recommendation']}"
-        ),
-        f"  First seen: {row['first_seen_at']} | Posted: {row['posted_at'] or 'unknown'}",
-        f"  Feasibility: {feasibility['state']} - {feasibility['reason']}",
-        f"  Tier {row['company_tier']}: {priority['reason']}",
-        f"  {evaluation['summary']}",
-    ]
-    for alignment in evaluation["alignments"][:4]:
-        lines.append(
-            "  Alignment: "
-            f"{alignment['job_requirement']} -> {alignment['candidate_evidence']} "
-            f"({alignment['evidence_strength']})"
-        )
-    for gap in evaluation["gaps"][:3]:
-        lines.append(
-            f"  Gap: {gap['gap']} -> {gap['mitigation']} ({gap['severity']})"
-        )
-    for blocker in evaluation["hard_blockers"]:
-        lines.append(f"  Blocker: {blocker['type']} - {blocker['evidence']}")
-    lines.append(f"  Source: {row['source_url']}")
-    return lines
 
 
 def _stable_id(row: sqlite3.Row) -> str:

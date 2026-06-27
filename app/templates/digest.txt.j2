@@ -1,2 +1,63 @@
-Placeholder only. Stage 1 will add the plain-text digest template.
+Job Search Agent · Find your layline
+Your roles — {{ digest.generated_label }} (generated {{ digest.generated_at }})
 
+Summary: {{ digest.counts.apply_now }} apply now · {{ digest.counts.consider }} consider · {{ digest.counts.stretch }} stretch · {{ digest.counts.failures }} source issue{{ '' if digest.counts.failures == 1 else 's' }}
+
+{% if digest.selection.degraded -%}
+⚠️ DEGRADED — unvalidated
+This digest uses deterministic fallback evaluations; ranking is not trustworthy.
+
+{% endif -%}
+{% if digest.selection.fallback_filtered_count -%}
+Fallback rows withheld: {{ digest.selection.fallback_filtered_count }} unvalidated role(s) dropped from this normal email.
+
+{% endif -%}
+{% if digest.selection.overflow_count -%}
+Showing {{ digest.counts.shown }} of {{ digest.counts.total }} roles. ➕ {{ digest.selection.overflow_count }} more — view full list with {{ digest.review_command }} or CSV exports.
+
+{% endif -%}
+{% for section in digest.sections -%}
+{{ section.default_label }}
+{{ "-" * section.default_label|length }}
+{% for role in section.roles %}
+[{{ role.stable_id }}] {{ role.company }} - {{ role.title }} ({{ role.locations_label }})
+  Fit {{ role.fit_score }} · confidence {{ role.confidence_label }} · recommendation={{ role.recommendation }} · tier {{ role.tier }}
+  First seen: {{ role.first_seen_at }} | Posted: {{ role.posted_at }}
+  Department: {{ role.department }}
+  Feasibility: {{ role.feasibility_state }} - {{ role.feasibility_reason }}
+  Priority: {{ role.priority_reason }}
+  {{ role.summary }}
+{% for alignment in role.alignments %}
+  Alignment: {{ alignment.job_requirement }} -> {{ alignment.candidate_evidence }} ({{ alignment.evidence_strength }})
+{% endfor -%}
+{% for gap in role.gaps %}
+  Gap: {{ gap.gap }} -> {{ gap.mitigation }} ({{ gap.severity }})
+{% endfor -%}
+{% for blocker in role.hard_blockers %}
+  Blocker: {{ blocker.type }} - {{ blocker.evidence }}
+{% endfor -%}
+  Source: {{ role.source_url }}
+
+{% endfor -%}
+{% endfor -%}
+{% if digest.low_priority.count -%}
+Low-priority / blocked: {{ digest.low_priority.count }} not expanded
+{% if digest.low_priority.roles -%}
+  {% for role in digest.low_priority.roles -%}
+{{ role.company }} - {{ role.title }} ({{ role.fit_score }}){% if not loop.last %} · {% endif %}
+{%- endfor %}{% if digest.low_priority.overflow_count %} · +{{ digest.low_priority.overflow_count }} more{% endif %}
+{% endif %}
+
+{% endif -%}
+Source failures and coverage gaps
+{% if digest.failures -%}
+{% for failure in digest.failures -%}
+- {{ failure.status }} - {{ failure.company }} ({{ failure.source_type }}:{{ failure.source_key }}) {{ failure.error_summary }}
+{% endfor -%}
+{% else -%}
+- None recorded
+{% endif %}
+
+Review: {{ digest.review_command }}
+Export CSVs: {{ digest.csv_command }}
+Shown: {{ digest.counts.shown }} new/changed role{{ '' if digest.counts.shown == 1 else 's' }} · cap {{ digest.selection.cap }}
