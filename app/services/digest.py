@@ -71,14 +71,8 @@ def render_html(
     *,
     selection: DigestSelection | None = None,
 ) -> str:
+    rows, selection = _render_inputs(rows, selection)
     grouped = _group_rows(rows)
-    selection = selection or DigestSelection(
-        rows=rows,
-        cap=digest_max_roles(),
-        overflow_count=0,
-        fallback_filtered_count=0,
-        degraded=uses_fallback_evaluator(rows),
-    )
     generated_at = utc_now()
     parts = [
         "<!doctype html>",
@@ -156,14 +150,8 @@ def render_text(
     *,
     selection: DigestSelection | None = None,
 ) -> str:
+    rows, selection = _render_inputs(rows, selection)
     grouped = _group_rows(rows)
-    selection = selection or DigestSelection(
-        rows=rows,
-        cap=digest_max_roles(),
-        overflow_count=0,
-        fallback_filtered_count=0,
-        degraded=uses_fallback_evaluator(rows),
-    )
     parts = [f"Job Search Digest - generated {utc_now()}", ""]
     if selection.degraded:
         parts.append("⚠️ DEGRADED — unvalidated")
@@ -244,6 +232,26 @@ def select_digest_rows(rows: list[sqlite3.Row]) -> DigestSelection:
         overflow_count=max(0, len(ranked) - len(selected)),
         fallback_filtered_count=0 if degraded else len(fallback_rows),
         degraded=degraded,
+    )
+
+
+def _render_inputs(
+    rows: list[sqlite3.Row],
+    selection: DigestSelection | None,
+) -> tuple[list[sqlite3.Row], DigestSelection]:
+    if selection is None:
+        selection = select_digest_rows(rows)
+        return selection.rows, selection
+
+    cap = max(1, min(int(selection.cap), ABSOLUTE_DIGEST_MAX_ROLES))
+    overflow_count = max(selection.overflow_count, max(0, len(rows) - cap))
+    render_rows = rows[:cap]
+    return render_rows, DigestSelection(
+        rows=render_rows,
+        cap=cap,
+        overflow_count=overflow_count,
+        fallback_filtered_count=selection.fallback_filtered_count,
+        degraded=selection.degraded,
     )
 
 

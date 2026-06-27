@@ -7,7 +7,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from app.db import init_db, record_source_run
+from app.db import get_digest_rows, init_db, record_source_run
+from app.services.digest import render_html, render_text
 from app.services.manual_intake import add_text_intake
 from app.services.notifications import EmailMessage, EmailSendResult, deliver_digest
 
@@ -313,6 +314,31 @@ class NotificationDeliveryTest(unittest.TestCase):
             )
             self.assertIn("➕ 5 more", provider.messages[0].text_body)
             self.assertIn("view full list", provider.messages[0].text_body)
+
+    def test_renderers_self_cap_when_called_with_uncapped_rows(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index in range(30):
+                add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/render-{index:02d}",
+                )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            raw_rows = get_digest_rows(conn)
+
+            html_body = render_html(raw_rows, [])
+            text_body = render_text(raw_rows, [])
+
+            self.assertEqual(text_body.count("Source: https://example.com/render-"), 25)
+            self.assertEqual(html_body.count('href="https://example.com/render-'), 25)
+            self.assertIn("➕ 5 more", text_body)
+            self.assertIn("➕ 5 more", html_body)
 
 
 class FakeProvider:
