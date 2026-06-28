@@ -138,21 +138,21 @@ companies:
     selected_for_initial_coverage: false
   - name: "Atlassian"
     tier: 1
-    enabled: true
+    enabled: false
     careers_url: "https://www.atlassian.com/company/careers"
     current_role_url: null
     ats_type: "lever"
     source_key: "atlassian"
     supported_adapter: "lever"
-    coverage_state: "Supported"
+    coverage_state: "Manual fallback"
     source_evidence_url: "https://api.lever.co/v0/postings/atlassian?mode=json"
     job_count_at_audit: 0
     target_locations: ["Sydney", "London"]
     target_role_family_notes: "Enterprise Product Strategy; Business Operations; Product Operations"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Lever source_key=atlassian returns 0 jobs; use manual URL/text intake for promising Atlassian roles until the real ATS feed is found."
     selected_for_initial_coverage: false
-    notes: "Feed endpoint responded with zero jobs at audit; expected-volume detection is deferred."
+    notes: "Disabled 2026-06-27: Lever key appears dead/silent-zero. Tier-1 company; keep manual intake active while finding the real Atlassian ATS feed."
   - name: "Airwallex"
     tier: 1
     enabled: true

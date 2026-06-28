@@ -28,6 +28,10 @@
                     <span style="color:#57b6c4;font-weight:700;">{{ digest.counts.consider }} consider</span>
                     <span style="color:#526571;"> · </span>
                     <span style="color:#c7a86a;font-weight:700;">{{ digest.counts.stretch }} stretch</span>
+                    {% if digest.counts.calibration %}
+                    <span style="color:#526571;"> · </span>
+                    <span style="color:#9fb0b6;font-weight:700;">{{ digest.counts.calibration }} calibration</span>
+                    {% endif %}
                     <span style="color:#526571;"> · </span>
                     <span style="color:#9fb0b6;">{{ digest.counts.failures }} source issue{{ '' if digest.counts.failures == 1 else 's' }}</span>
                   </td>
@@ -213,7 +217,7 @@
                 <tr>
                   <td align="center" bgcolor="#0f1f2b" style="text-align:center;background-color:#0f1f2b;color:#7e8c95;font-size:11.5px;line-height:20px;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
                     Review in terminal: <code style="background-color:#213442;color:#9fb0b6;padding:1px 6px;border-radius:4px;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Consolas,monospace;">{{ digest.review_command|e }}</code><br>
-                    {{ digest.counts.shown }} new/changed role{{ '' if digest.counts.shown == 1 else 's' }} shown · cap {{ digest.selection.cap }} · full list in review CLI / CSV exports
+                    {{ digest.counts.shown }} new/changed role{{ '' if digest.counts.shown == 1 else 's' }} shown{% if digest.counts.calibration %} · {{ digest.counts.calibration }} calibration sample role{{ '' if digest.counts.calibration == 1 else 's' }}{% endif %} · cap {{ digest.selection.cap }} · full list in review CLI / CSV exports
                   </td>
                 </tr>
               </table>

@@ -54,7 +54,7 @@ class SourceConfigTest(unittest.TestCase):
         self.assertTrue(ashby_companies["Airwallex"])
         self.assertTrue(ashby_companies["Sierra"])
         self.assertEqual(disabled_greenhouse, [])
-        self.assertEqual(disabled_lever, [])
+        self.assertEqual(disabled_lever, ["Atlassian"])
         self.assertEqual(enabled_unsupported, [])
 
 

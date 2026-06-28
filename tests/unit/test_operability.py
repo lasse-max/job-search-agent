@@ -240,10 +240,10 @@ class OperabilityTest(unittest.TestCase):
         self.assertIn("status=degraded", output)
         self.assertIn("source_error=Databricks: expected_volume_degraded", output)
 
-    def test_scan_workflow_runs_every_six_hours_and_supports_manual_dispatch(self) -> None:
+    def test_scan_workflow_runs_daily_and_supports_manual_dispatch(self) -> None:
         workflow = Path(".github/workflows/scan.yml").read_text(encoding="utf-8")
 
-        self.assertIn('cron: "0 */6 * * *"', workflow)
+        self.assertIn('cron: "0 6 * * *"', workflow)
         self.assertIn("workflow_dispatch:", workflow)
         self.assertIn("job-agent scan-all", workflow)
         self.assertIn("ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}", workflow)

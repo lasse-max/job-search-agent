@@ -21,7 +21,14 @@ RECOMMENDATION_SECTIONS = [
     ("consider", "Consider"),
     ("stretch", "Stretch / reach — calibration in progress, scrutinize"),
 ]
+STRONG_RECOMMENDATIONS = {recommendation for recommendation, _ in RECOMMENDATION_SECTIONS}
 LOW_PRIORITY_RECOMMENDATIONS = {"skip", "blocked"}
+CALIBRATION_FLOOR_MIN_STRONG_ROLES = 5
+CALIBRATION_FLOOR_MAX_ROLES = 5
+CALIBRATION_SECTION_KEY = "calibration_floor"
+CALIBRATION_SECTION_LABEL = (
+    "Calibration sample — top 5 by fit (below bar / may repeat)"
+)
 DEFAULT_DIGEST_MAX_ROLES = 25
 ABSOLUTE_DIGEST_MAX_ROLES = 50
 TEMPLATE_DIR = Path(__file__).resolve().parents[1] / "templates"
@@ -55,12 +62,21 @@ SECTION_STYLES = {
         "score_bg": "#2b2a21",
         "score_border": "#6e613c",
     },
+    CALIBRATION_SECTION_KEY: {
+        "label": CALIBRATION_SECTION_LABEL,
+        "accent": "#9fb0b6",
+        "border": "#526571",
+        "score_color": "#c6d0d6",
+        "score_bg": "#213442",
+        "score_border": "#526571",
+    },
 }
 
 
 @dataclass(frozen=True)
 class DigestSelection:
     rows: list[sqlite3.Row]
+    calibration_rows: list[sqlite3.Row]
     cap: int
     overflow_count: int
     fallback_filtered_count: int
@@ -80,7 +96,8 @@ def write_digest(
     html_path = output_dir / "latest_digest.html"
     text_path = output_dir / "latest_digest.txt"
 
-    selection = select_digest_rows(rows)
+    calibration_pool_rows = get_digest_rows(conn) if since is not None else rows
+    selection = select_digest_rows(rows, calibration_pool_rows=calibration_pool_rows)
     html_path.write_text(
         render_html(
             selection.rows,
@@ -134,7 +151,11 @@ def is_fallback_evaluator_row(row: sqlite3.Row) -> bool:
     return "deterministic_fallback" in evaluator_version or "deterministic_fallback" in model_version
 
 
-def select_digest_rows(rows: list[sqlite3.Row]) -> DigestSelection:
+def select_digest_rows(
+    rows: list[sqlite3.Row],
+    *,
+    calibration_pool_rows: list[sqlite3.Row] | None = None,
+) -> DigestSelection:
     cap = digest_max_roles()
     valid_rows = [row for row in rows if not is_fallback_evaluator_row(row)]
     fallback_rows = [row for row in rows if is_fallback_evaluator_row(row)]
@@ -142,8 +163,14 @@ def select_digest_rows(rows: list[sqlite3.Row]) -> DigestSelection:
     candidate_rows = fallback_rows if degraded else valid_rows
     ranked = _ranked_delivery_rows(candidate_rows)
     selected = ranked[:cap]
+    calibration_rows = _calibration_floor_rows(
+        selected,
+        calibration_pool_rows or rows,
+        degraded=degraded,
+    )
     return DigestSelection(
         rows=selected,
+        calibration_rows=calibration_rows,
         cap=cap,
         overflow_count=max(0, len(ranked) - len(selected)),
         fallback_filtered_count=0 if degraded else len(fallback_rows),
@@ -164,6 +191,7 @@ def _render_inputs(
     render_rows = rows[:cap]
     return render_rows, DigestSelection(
         rows=render_rows,
+        calibration_rows=selection.calibration_rows,
         cap=cap,
         overflow_count=overflow_count,
         fallback_filtered_count=selection.fallback_filtered_count,
@@ -212,10 +240,28 @@ def _digest_context(
             }
         )
 
+    if selection.calibration_rows:
+        style = SECTION_STYLES[CALIBRATION_SECTION_KEY]
+        sections.append(
+            {
+                "key": CALIBRATION_SECTION_KEY,
+                "label": style["label"],
+                "default_label": style["label"],
+                "accent": style["accent"],
+                "border": style["border"],
+                "score_color": style["score_color"],
+                "score_bg": style["score_bg"],
+                "score_border": style["score_border"],
+                "roles": [_role_context(row) for row in selection.calibration_rows],
+            }
+        )
+
+    calibration_job_ids = {int(row["job_id"]) for row in selection.calibration_rows}
     low_priority_rows = [
         row
         for recommendation in LOW_PRIORITY_RECOMMENDATIONS
         for row in grouped.get(recommendation, [])
+        if int(row["job_id"]) not in calibration_job_ids
     ]
     ranked_low_priority = _ranked_delivery_rows(low_priority_rows)
     low_priority_limit = 6
@@ -231,6 +277,7 @@ def _digest_context(
             "apply_now": counts.get("apply_now", 0),
             "consider": counts.get("consider", 0),
             "stretch": counts.get("stretch", 0),
+            "calibration": len(selection.calibration_rows),
             "low_priority": len(low_priority_rows),
             "failures": len(failures),
             "shown": len(rows),
@@ -247,6 +294,7 @@ def _digest_context(
             "overflow_count": selection.overflow_count,
             "fallback_filtered_count": selection.fallback_filtered_count,
             "degraded": selection.degraded,
+            "calibration_count": len(selection.calibration_rows),
         },
         "review_command": "job-agent review list",
         "csv_command": "job-agent export",
@@ -352,10 +400,16 @@ def _loads_list(value: str | None) -> list[str]:
 
 
 def _as_int(value: object) -> int:
-    try:
-        return int(value)  # type: ignore[arg-type]
-    except (TypeError, ValueError):
-        return 0
+    if isinstance(value, bool):
+        return int(value)
+    if isinstance(value, int | float):
+        return int(value)
+    if isinstance(value, str):
+        try:
+            return int(value)
+        except ValueError:
+            return 0
+    return 0
 
 
 def _humanize(value: str) -> str:
@@ -386,12 +440,56 @@ def _ranked_delivery_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
     )
 
 
+def _calibration_floor_rows(
+    selected_rows: list[sqlite3.Row],
+    pool_rows: list[sqlite3.Row],
+    *,
+    degraded: bool,
+) -> list[sqlite3.Row]:
+    """Normal-mode calibration floor for quiet cycles; never used for degraded fallback."""
+
+    if degraded:
+        return []
+    strong_count = sum(
+        1 for row in selected_rows if _recommendation(row) in STRONG_RECOMMENDATIONS
+    )
+    if strong_count >= CALIBRATION_FLOOR_MIN_STRONG_ROLES:
+        return []
+
+    selected_strong_job_ids = {
+        int(row["job_id"])
+        for row in selected_rows
+        if _recommendation(row) in STRONG_RECOMMENDATIONS
+    }
+    valid_pool = [
+        row
+        for row in pool_rows
+        if not is_fallback_evaluator_row(row) and int(row["job_id"]) not in selected_strong_job_ids
+    ]
+    return _ranked_by_fit_rows(valid_pool)[:CALIBRATION_FLOOR_MAX_ROLES]
+
+
+def _ranked_by_fit_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
+    return sorted(
+        rows,
+        key=lambda row: (
+            -int(json.loads(row["evaluation_json"])["role_fit_score"]),
+            str(row["company"]),
+            str(row["title"]),
+        ),
+    )
+
+
 def _group_rows(rows: list[sqlite3.Row]) -> dict[str, list[sqlite3.Row]]:
     grouped: dict[str, list[sqlite3.Row]] = {}
     for row in rows:
         evaluation = json.loads(row["evaluation_json"])
         grouped.setdefault(evaluation["recommendation"], []).append(row)
     return grouped
+
+
+def _recommendation(row: sqlite3.Row) -> str:
+    return str(json.loads(row["evaluation_json"])["recommendation"])
 
 
 def _ranked_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:

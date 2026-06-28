@@ -101,9 +101,14 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             self.assertEqual(result.status, "sent")
             self.assertEqual(result.role_count, 1)
+            self.assertEqual(result.calibration_count, 2)
             self.assertEqual(len(provider.messages), 1)
-            self.assertNotIn("Strategic Operations Manager", provider.messages[0].html_body)
-            self.assertIn("Low-priority / blocked", provider.messages[0].html_body)
+            self.assertIn(
+                "Calibration sample — top 5 by fit (below bar / may repeat)",
+                provider.messages[0].html_body,
+            )
+            self.assertIn("Strategic Operations Manager", provider.messages[0].html_body)
+            self.assertIn("Business Operations Lead", provider.messages[0].html_body)
 
     def test_provider_without_recipient_fails_loud(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -175,18 +180,24 @@ class NotificationDeliveryTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
             output_dir = Path(directory) / "output"
-            job = add_text_intake(
-                JOB_TEXT,
-                db_path=db_path,
-                source_url="https://example.com/job",
-            )
+            for index in range(5):
+                job = add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/duplicate-{index:02d}",
+                )
+                conn = _connect(db_path)
+                conn.execute(
+                    "UPDATE role_evaluations SET created_at = ? WHERE job_posting_id = ?",
+                    ("2026-06-24T10:00:00+00:00", job.job_id),
+                )
+                conn.commit()
             conn = _connect(db_path)
-            conn.execute(
-                "UPDATE role_evaluations SET created_at = ? WHERE job_posting_id = ?",
-                ("2026-06-24T10:00:00+00:00", job.job_id),
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
             )
-            conn.commit()
-            _mark_non_fallback_evaluations(conn)
             provider = FakeProvider()
 
             first = deliver_digest(
@@ -209,6 +220,7 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             self.assertEqual(first.status, "sent")
             self.assertEqual(second.status, "suppressed_duplicate")
+            self.assertEqual(first.role_count, 5)
             self.assertEqual(len(provider.messages), 1)
 
     def test_provider_sends_degraded_fallback_evaluator_digest(self) -> None:
@@ -247,6 +259,117 @@ class NotificationDeliveryTest(unittest.TestCase):
                 25,
             )
             self.assertIn("➕ 5 more", provider.messages[0].text_body)
+
+    def test_normal_digest_appends_calibration_floor_when_strong_roles_are_thin(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index in range(6):
+                add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/calibration-{index:02d}",
+                )
+            conn = _connect(db_path)
+            for index, score in enumerate([10, 95, 40, 80, 70, 60]):
+                _mark_non_fallback_evaluations(
+                    conn,
+                    title_contains=f"{index:02d}",
+                    recommendation="skip",
+                    role_fit_score=score,
+                )
+
+            text_body = render_text(get_digest_rows(conn), [])
+
+            self.assertIn(
+                "Calibration sample — top 5 by fit (below bar / may repeat)",
+                text_body,
+            )
+            self.assertIn("Source: https://example.com/calibration-01", text_body)
+            self.assertIn("Source: https://example.com/calibration-03", text_body)
+            self.assertNotIn("Source: https://example.com/calibration-00", text_body)
+            self.assertEqual(text_body.count("Source: https://example.com/calibration-"), 5)
+
+    def test_degraded_fallback_digest_does_not_add_calibration_floor(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index in range(6):
+                add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/degraded-calibration-{index:02d}",
+                )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="skip",
+                role_fit_score=90,
+                mark_non_fallback=False,
+            )
+
+            text_body = render_text(get_digest_rows(conn), [])
+
+            self.assertIn("DEGRADED", text_body)
+            self.assertNotIn("Calibration sample", text_body)
+
+    def test_quiet_cycle_sends_calibration_floor_and_may_repeat(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_dir = Path(directory) / "output"
+            for index in range(5):
+                job = add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/quiet-calibration-{index:02d}",
+                )
+                conn = _connect(db_path)
+                conn.execute(
+                    "UPDATE role_evaluations SET created_at = ? WHERE job_posting_id = ?",
+                    ("2026-06-24T10:00:00+00:00", job.job_id),
+                )
+                conn.commit()
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="skip",
+                role_fit_score=80,
+            )
+            conn.execute(
+                """
+                INSERT INTO notifications (type, payload_hash, sent_at, status, error_summary)
+                VALUES ('digest', 'older-payload', '2026-06-24T11:00:00+00:00', 'sent', NULL)
+                """
+            )
+            conn.commit()
+            provider = FakeProvider()
+
+            first = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+            second = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(first.status, "sent")
+            self.assertEqual(second.status, "sent")
+            self.assertEqual(first.role_count, 0)
+            self.assertEqual(second.role_count, 0)
+            self.assertEqual(first.calibration_count, 5)
+            self.assertEqual(second.calibration_count, 5)
+            self.assertIn("5 calibration sample roles", first.subject)
+            self.assertEqual(len(provider.messages), 2)
+            self.assertIn("Calibration sample", provider.messages[0].text_body)
+            self.assertIn(
+                "Source: https://example.com/quiet-calibration-00",
+                provider.messages[0].text_body,
+            )
 
     def test_provider_withholds_fallback_rows_when_valid_rows_exist(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

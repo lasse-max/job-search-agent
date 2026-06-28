@@ -101,7 +101,7 @@ Deliver a headless Python service that:
 - Evaluates eligible new roles with an LLM using structured output
 - Separates fit, feasibility, and strategic priority
 - Stores state in SQLite
-- Scans every six hours by default
+- Scans once daily by default
 - Sends one consolidated morning digest
 - Optionally sends an urgent email for exceptional Tier 1 roles
 - Provides CLI review actions and CSV exports
@@ -582,7 +582,7 @@ Exports must be readable without the application.
 
 ## FR1-12 — Scheduling
 
-Default scan cadence: every six hours.  
+Default scan cadence: once daily.
 Default digest: once every morning in the owner's configured timezone.
 
 Stage 1 may use GitHub Actions or another simple scheduler, but:
