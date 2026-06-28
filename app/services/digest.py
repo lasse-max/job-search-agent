@@ -26,9 +26,7 @@ LOW_PRIORITY_RECOMMENDATIONS = {"skip", "blocked"}
 CALIBRATION_FLOOR_MIN_STRONG_ROLES = 5
 CALIBRATION_FLOOR_MAX_ROLES = 5
 CALIBRATION_SECTION_KEY = "calibration_floor"
-CALIBRATION_SECTION_LABEL = (
-    "No strong matches this cycle — top 5 by fit (below bar, for calibration)"
-)
+CALIBRATION_SECTION_LABEL = "Top open roles by fit — may repeat"
 DEFAULT_DIGEST_MAX_ROLES = 25
 ABSOLUTE_DIGEST_MAX_ROLES = 50
 TEMPLATE_DIR = Path(__file__).resolve().parents[1] / "templates"

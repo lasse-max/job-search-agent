@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from app.db import get_digest_rows, init_db, record_source_run
+from app.db import get_digest_rows, init_db, latest_source_failures, record_source_run
 from app.services.digest import render_html, render_text
 from app.services.manual_intake import add_text_intake
 from app.services.notifications import EmailMessage, EmailSendResult, deliver_digest
@@ -104,7 +104,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(result.calibration_count, 2)
             self.assertEqual(len(provider.messages), 1)
             self.assertIn(
-                "No strong matches this cycle — top 5 by fit (below bar, for calibration)",
+                "Top open roles by fit — may repeat",
                 provider.messages[0].html_body,
             )
             self.assertIn("Strategic Operations Manager", provider.messages[0].html_body)
@@ -152,6 +152,14 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(first.failure_count, 1)
             self.assertEqual(second.failure_count, 1)
             self.assertEqual(len(provider.messages), 2)
+
+    def test_disabled_degraded_source_is_not_reported_as_latest_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            conn = _connect(db_path)
+            _insert_disabled_degraded_source(conn)
+
+            self.assertEqual(latest_source_failures(conn), [])
 
     def test_no_change_digest_is_suppressed(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -283,7 +291,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             text_body = render_text(get_digest_rows(conn), [])
 
             self.assertIn(
-                "No strong matches this cycle — top 5 by fit (below bar, for calibration)",
+                "Top open roles by fit — may repeat",
                 text_body,
             )
             self.assertIn("Source: https://example.com/calibration-01", text_body)
@@ -311,7 +319,77 @@ class NotificationDeliveryTest(unittest.TestCase):
             text_body = render_text(get_digest_rows(conn), [])
 
             self.assertIn("DEGRADED", text_body)
-            self.assertNotIn("No strong matches this cycle", text_body)
+            self.assertNotIn("Top open roles by fit", text_body)
+
+    def test_degraded_since_last_digest_does_not_calibrate_from_valid_open_pool(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_dir = Path(directory) / "output"
+            old_job_ids = []
+            for index in range(5):
+                job = add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/older-valid-{index:02d}",
+                )
+                old_job_ids.append(job.job_id)
+            conn = _connect(db_path)
+            for job_id in old_job_ids:
+                conn.execute(
+                    "UPDATE role_evaluations SET created_at = ? WHERE job_posting_id = ?",
+                    ("2026-06-24T10:00:00+00:00", job_id),
+                )
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            conn.execute(
+                """
+                INSERT INTO notifications (type, payload_hash, sent_at, status, error_summary)
+                VALUES ('digest', 'older-payload', '2026-06-24T11:00:00+00:00', 'sent', NULL)
+                """
+            )
+            conn.commit()
+
+            new_job = add_text_intake(
+                _job_text(99),
+                db_path=db_path,
+                source_url="https://example.com/new-fallback",
+            )
+            conn = _connect(db_path)
+            conn.execute(
+                "UPDATE role_evaluations SET created_at = ? WHERE job_posting_id = ?",
+                ("2026-06-24T12:00:00+00:00", new_job.job_id),
+            )
+            conn.commit()
+            _mark_non_fallback_evaluations(
+                conn,
+                title_contains="99",
+                recommendation="apply_now",
+                role_fit_score=90,
+                mark_non_fallback=False,
+            )
+            provider = FakeProvider()
+
+            result = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(result.status, "sent")
+            self.assertEqual(result.role_count, 1)
+            self.assertEqual(result.calibration_count, 0)
+            self.assertEqual(len(provider.messages), 1)
+            text_body = provider.messages[0].text_body
+            self.assertIn("DEGRADED", text_body)
+            self.assertIn("Source: https://example.com/new-fallback", text_body)
+            self.assertNotIn("Top open roles by fit", text_body)
+            self.assertNotIn("Source: https://example.com/older-valid-", text_body)
 
     def test_quiet_cycle_sends_calibration_floor_and_may_repeat(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -365,7 +443,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(second.calibration_count, 5)
             self.assertIn("5 calibration sample roles", first.subject)
             self.assertEqual(len(provider.messages), 2)
-            self.assertIn("No strong matches this cycle", provider.messages[0].text_body)
+            self.assertIn("Top open roles by fit", provider.messages[0].text_body)
             self.assertIn(
                 "Source: https://example.com/quiet-calibration-00",
                 provider.messages[0].text_body,
@@ -543,6 +621,28 @@ def _insert_failed_source(conn: sqlite3.Connection) -> None:
         new_count=0,
         changed_count=0,
         error_summary="connector failed",
+    )
+    conn.commit()
+
+
+def _insert_disabled_degraded_source(conn: sqlite3.Connection) -> None:
+    conn.execute(
+        """
+        INSERT INTO companies (id, name, tier, enabled, warm_path, notes)
+        VALUES (2, 'DisabledCo', 1, 0, 0, NULL)
+        """
+    )
+    conn.execute(
+        """
+        INSERT INTO job_sources (
+          id, company_id, source_type, source_key, source_url, parser_version,
+          health_status, expected_volume_min
+        )
+        VALUES (
+          2, 2, 'lever', 'disabledco', 'https://example.com/jobs',
+          'lever_v1', 'degraded', 10
+        )
+        """
     )
     conn.commit()
 

@@ -692,8 +692,11 @@ def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sql
             WHERE newer.job_source_id = sr.job_source_id
           )
         ) latest ON latest.job_source_id = js.id
-        WHERE js.health_status IN ('degraded', 'failing', 'unsupported')
-           OR latest.status != 'success'
+        WHERE c.enabled = 1
+          AND (
+            js.health_status IN ('degraded', 'failing', 'unsupported')
+            OR latest.status != 'success'
+          )
         ORDER BY COALESCE(latest.id, 0) DESC, c.tier, c.name
         LIMIT ?
         """,
