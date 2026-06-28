@@ -27,7 +27,7 @@ CALIBRATION_FLOOR_MIN_STRONG_ROLES = 5
 CALIBRATION_FLOOR_MAX_ROLES = 5
 CALIBRATION_SECTION_KEY = "calibration_floor"
 CALIBRATION_SECTION_LABEL = (
-    "Calibration sample — top 5 by fit (below bar / may repeat)"
+    "No strong matches this cycle — top 5 by fit (below bar, for calibration)"
 )
 DEFAULT_DIGEST_MAX_ROLES = 25
 ABSOLUTE_DIGEST_MAX_ROLES = 50

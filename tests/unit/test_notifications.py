@@ -104,7 +104,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(result.calibration_count, 2)
             self.assertEqual(len(provider.messages), 1)
             self.assertIn(
-                "Calibration sample — top 5 by fit (below bar / may repeat)",
+                "No strong matches this cycle — top 5 by fit (below bar, for calibration)",
                 provider.messages[0].html_body,
             )
             self.assertIn("Strategic Operations Manager", provider.messages[0].html_body)
@@ -283,7 +283,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             text_body = render_text(get_digest_rows(conn), [])
 
             self.assertIn(
-                "Calibration sample — top 5 by fit (below bar / may repeat)",
+                "No strong matches this cycle — top 5 by fit (below bar, for calibration)",
                 text_body,
             )
             self.assertIn("Source: https://example.com/calibration-01", text_body)
@@ -311,7 +311,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             text_body = render_text(get_digest_rows(conn), [])
 
             self.assertIn("DEGRADED", text_body)
-            self.assertNotIn("Calibration sample", text_body)
+            self.assertNotIn("No strong matches this cycle", text_body)
 
     def test_quiet_cycle_sends_calibration_floor_and_may_repeat(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -365,7 +365,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(second.calibration_count, 5)
             self.assertIn("5 calibration sample roles", first.subject)
             self.assertEqual(len(provider.messages), 2)
-            self.assertIn("Calibration sample", provider.messages[0].text_body)
+            self.assertIn("No strong matches this cycle", provider.messages[0].text_body)
             self.assertIn(
                 "Source: https://example.com/quiet-calibration-00",
                 provider.messages[0].text_body,
