@@ -338,6 +338,7 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             self.assertEqual(text_body.count("Source: https://example.com/render-"), 25)
             self.assertEqual(html_body.count('href="https://example.com/render-'), 25)
+            self.assertIn("\n  Source: https://example.com/render-", text_body)
             self.assertIn("➕ 5 more", text_body)
             self.assertIn("➕ 5 more", html_body)
 
@@ -352,12 +353,15 @@ class NotificationDeliveryTest(unittest.TestCase):
             conn = _connect(db_path)
             _mark_non_fallback_evaluations(
                 conn,
-                recommendation="apply_now",
+                recommendation="stretch",
                 role_fit_score=90,
             )
             html_body = render_html(get_digest_rows(conn), [])
+            text_body = render_text(get_digest_rows(conn), [])
 
             self.assertIn("LAYLINE · velocity made good", html_body)
+            self.assertIn("Stretch / reach — calibration in progress, scrutinize", html_body)
+            self.assertIn("Stretch / reach — calibration in progress, scrutinize", text_body)
             self.assertIn('role="presentation"', html_body)
             self.assertIn("max-width:600px", html_body)
             self.assertIn("font-family:Newsreader,Georgia", html_body)

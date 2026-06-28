@@ -48,7 +48,7 @@ SECTION_STYLES = {
         "score_border": "#2e7380",
     },
     "stretch": {
-        "label": "Stretch / reach",
+        "label": "Stretch / reach — calibration in progress, scrutinize",
         "accent": "#c7a86a",
         "border": "#9d854b",
         "score_color": "#d7bd7d",

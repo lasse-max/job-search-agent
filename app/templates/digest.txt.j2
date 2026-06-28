@@ -29,13 +29,13 @@ Showing {{ digest.counts.shown }} of {{ digest.counts.total }} roles. ➕ {{ dig
   {{ role.summary }}
 {% for alignment in role.alignments %}
   Alignment: {{ alignment.job_requirement }} -> {{ alignment.candidate_evidence }} ({{ alignment.evidence_strength }})
-{% endfor -%}
+{% endfor %}
 {% for gap in role.gaps %}
   Gap: {{ gap.gap }} -> {{ gap.mitigation }} ({{ gap.severity }})
-{% endfor -%}
+{% endfor %}
 {% for blocker in role.hard_blockers %}
   Blocker: {{ blocker.type }} - {{ blocker.evidence }}
-{% endfor -%}
+{% endfor %}
   Source: {{ role.source_url }}
 
 {% endfor -%}
