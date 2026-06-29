@@ -31,3 +31,15 @@ The benchmark deliberately includes the cases that distinguish encoded judgment 
 ## Owner responsibility
 
 The labels encode the owner's judgment — **review and confirm them before trusting the benchmark.** When the strategy shifts, create a new profile/scoring version rather than overwriting the one used for prior scores.
+
+## Calibration case study — June 2026 (interview-ready)
+
+A worked example of "measure the right thing, not the convenient thing," across four review loops. Each failure was caught by reading the actual roles, not the green metric.
+
+1. **The benchmark measured the wrong thing.** The first benchmark (33 hand-curated roles: 100% recall, 90% precision) looked green, so the deterministic stub was wired to live email. The first real run produced a **1,064-role / 529-page firehose** — Payroll, Legal, Sales, Engineering all "apply now." The curated set was pre-filtered to on-target roles, so it never tested rejecting the ~97% off-target majority of a real feed. *Lesson: a benchmark is only as honest as the distribution it samples.*
+2. **Split the eval by purpose.** Replaced the single curated set with two purpose-built ones: a **gate-recall** set (uniform random sample — is the gate hiding good roles?) and a **gate-passer precision** set (roles that actually reach the digest — does the evaluator reject the noise the coarse gate lets through?). Precision is now measured where it's decided.
+3. **Precision can hide a recall miss.** After swapping in the Claude evaluator, "precision 6/6 = 100%" hid that only ~6 of ~10 wanted roles surfaced (the evaluator over-corrected to too-stingy, demoting the strongest role and false-blocking a clean one). Fix: **gate on recall and precision together** — neither alone can pass.
+4. **The metric must match what's delivered.** Reported precision counted only apply/consider, but the digest also sends a `stretch` section — so skip-labeled roles promoted to stretch were invisible to the number. Fix: report **all-surfaced precision (incl. stretch)** alongside the gated apply/consider number, so the metric can't claim "clean" while the inbox shows noise.
+5. **Independent review beats self-certification.** The builder (Codex) and reviewer (Claude Code) are deliberately *different tools*; the reviewer mutation-tested every regression fix and caught a blocker that under-fired on phrasings other than the literal word "required" — a bug invisible in the aggregate pass. The role separation, not the tool, is what caught it.
+
+Backstops that make a firehose structurally impossible regardless of evaluator quality: a deterministic relevance gate (location + function + L4–L5 seniority), narrow hard blockers, and a hard digest cap (25/50, loud-not-silent).
