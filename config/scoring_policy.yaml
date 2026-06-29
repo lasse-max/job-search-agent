@@ -15,9 +15,9 @@ fit_dimensions:
     meaning: "Severity of functional, technical, or domain gaps; higher score means more manageable."
 recommendation_thresholds:
   apply_now_min_fit: 80
-  warm_path_apply_now_min_fit: 70
-  consider_min_fit: 65
-  stretch_min_fit: 50
+  warm_path_apply_now_min_fit: 80
+  consider_min_fit: 70
+  stretch_min_fit: 60
   max_apply_now_tier: 2
   max_stretch_tier: 2
   warm_path_apply_now_tier: 1
@@ -59,11 +59,11 @@ gap_penalties:
   technical_pm_depth: 18
   partnership_domain_gap: 16
   quota: 18
+  required_credential: 24
 recommendation_rules:
   blocked: "Any true blocker."
   apply_now:
-    - "Fit >= 80, feasibility not blocked, and strategic priority Tier 1 or Tier 2."
-    - "Fit >= 70 for Tier 1 when there is a warm path or exceptional strategic upside."
-  consider: "Fit 65-79 with manageable feasibility."
-  stretch: "Fit 50-64 and Tier 1/2, approved stretch family, or strong warm path."
-  skip: "Fit < 50 or severe gap burden without compensating value."
+    - "Fit >= 80 after all fit inputs; no post-hoc tier or warm-path jump."
+  consider: "Fit 70-79 after all fit inputs."
+  stretch: "Fit 60-69 after all fit inputs."
+  skip: "Fit < 60 or severe gap burden without compensating value."

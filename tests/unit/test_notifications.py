@@ -48,10 +48,6 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(result.recipient, "")
             self.assertTrue((output_dir / "latest_digest.html").exists())
             self.assertIn(
-                "Low-priority / blocked",
-                (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
-            )
-            self.assertIn(
                 "DEGRADED",
                 (output_dir / "latest_digest.html").read_text(encoding="utf-8"),
             )
@@ -101,7 +97,7 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             self.assertEqual(result.status, "sent")
             self.assertEqual(result.role_count, 1)
-            self.assertEqual(result.calibration_count, 2)
+            self.assertEqual(result.calibration_count, 1)
             self.assertEqual(len(provider.messages), 1)
             self.assertIn(
                 "Top open roles by fit — may repeat",

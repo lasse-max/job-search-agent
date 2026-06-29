@@ -67,11 +67,11 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
         profile.primary_role_family_patterns + profile.stretch_role_family_patterns
     )
     title_department = _title_department_text(row)
-    if _matches_any(title_department, role_family_patterns):
-        return RelevanceDecision(True, "matched_title_department_role_family")
-
     if _matches_any(title_department, filter_config.excluded_title_department_patterns):
         return RelevanceDecision(False, "excluded_title_department_function")
+
+    if _matches_any(title_department, role_family_patterns):
+        return RelevanceDecision(True, "matched_title_department_role_family")
 
     return RelevanceDecision(True, "ambiguous_title_department_routed_to_llm")
 
@@ -147,12 +147,18 @@ def evaluate_role(
     scope_seniority = _scope_seniority(title, text, company, profile)
     gap_manageability = 35 if hard_blockers else _gap_manageability(text, scoring_policy)
 
-    dimensions = {
-        "role_family_fit": role_family_fit,
-        "evidence_strength": evidence_strength,
-        "scope_seniority": scope_seniority,
-        "gap_manageability": gap_manageability,
-    }
+    dimensions = _apply_fit_inputs(
+        row,
+        company,
+        {
+            "role_family_fit": role_family_fit,
+            "evidence_strength": evidence_strength,
+            "scope_seniority": scope_seniority,
+            "gap_manageability": gap_manageability,
+        },
+        scoring_policy,
+        profile,
+    )
     fit_score = _weighted_fit_score(dimensions, scoring_policy)
     feasibility_state, feasibility_reason = _feasibility(locations, location_policy)
     recommendation = _final_recommendation(
@@ -232,6 +238,8 @@ def _role_evaluation_from_llm(
     calibrated_dimensions = _calibrated_llm_dimensions(
         row,
         dimensions,
+        company,
+        scoring_policy,
         profile,
     )
     fit_score = _weighted_fit_score(calibrated_dimensions, scoring_policy)
@@ -330,6 +338,8 @@ def _final_recommendation(
 def _calibrated_llm_dimensions(
     row: sqlite3.Row,
     dimensions: dict[str, int],
+    company: CompanyConfig,
+    scoring_policy: ScoringPolicyConfig,
     profile: CandidateProfileConfig,
 ) -> dict[str, int]:
     """Apply conservative calibration floors to LLM scores.
@@ -358,7 +368,51 @@ def _calibrated_llm_dimensions(
         }
         for dimension, floor in floors.items():
             calibrated[dimension] = max(calibrated[dimension], floor)
-    return calibrated
+    elif _is_stretch_family(title, row["department"] or "", _role_text(row), profile):
+        floors = {
+            "role_family_fit": 78,
+            "evidence_strength": 66,
+            "scope_seniority": 68,
+            "gap_manageability": 68,
+        }
+        for dimension, floor in floors.items():
+            calibrated[dimension] = max(calibrated[dimension], floor)
+    return _apply_fit_inputs(row, company, calibrated, scoring_policy, profile)
+
+
+def _apply_fit_inputs(
+    row: sqlite3.Row,
+    company: CompanyConfig,
+    dimensions: dict[str, int],
+    scoring_policy: ScoringPolicyConfig,
+    profile: CandidateProfileConfig,
+) -> dict[str, int]:
+    adjusted = {dimension: int(score) for dimension, score in dimensions.items()}
+    text = _role_text(row)
+    if _is_low_priority_surface_function(
+        row["title"],
+        row["department"] or "",
+        text,
+        profile,
+    ):
+        adjusted["role_family_fit"] = min(adjusted.get("role_family_fit", 0), 58)
+        adjusted["gap_manageability"] = min(adjusted.get("gap_manageability", 0), 58)
+    if _required_credential_gap(text):
+        penalty = scoring_policy.gap_penalties.get("required_credential", 22)
+        adjusted["gap_manageability"] = adjusted.get("gap_manageability", 0) - penalty
+    if company.warm_path:
+        adjusted["evidence_strength"] = adjusted.get("evidence_strength", 0) + 3
+        adjusted["gap_manageability"] = adjusted.get("gap_manageability", 0) + 3
+    if company.tier == 1:
+        adjusted["evidence_strength"] = adjusted.get("evidence_strength", 0) + 2
+    elif company.tier >= 3:
+        adjusted["evidence_strength"] = adjusted.get("evidence_strength", 0) - 18
+        adjusted["gap_manageability"] = adjusted.get("gap_manageability", 0) - 18
+    return {dimension: _clamp_score(score) for dimension, score in adjusted.items()}
+
+
+def _clamp_score(value: int) -> int:
+    return max(0, min(100, int(value)))
 
 
 def _role_family_fit(
@@ -557,51 +611,11 @@ def _recommendation(
         return "blocked"
     if overleveled:
         return "skip"
-    if surface_capped:
-        if (
-            fit_score >= thresholds.stretch_min_fit
-            and company.tier <= thresholds.max_stretch_tier
-        ):
-            return "stretch"
-        return "skip"
-    if company.tier >= 3:
-        if company.warm_path and fit_score >= thresholds.stretch_min_fit:
-            return "stretch"
-        return "skip"
-
-    if stretch_family:
-        if (
-            fit_score >= thresholds.warm_path_apply_now_min_fit
-            and company.tier == thresholds.stretch_apply_now_tier
-            and (company.warm_path or exceptional_upside)
-        ):
-            return "apply_now"
-        if fit_score >= thresholds.consider_min_fit:
-            return "consider"
-        if (
-            fit_score >= thresholds.stretch_min_fit
-            and company.tier <= thresholds.max_stretch_tier
-        ):
-            return "stretch"
-        return "skip"
-
-    if (
-        fit_score >= thresholds.apply_now_min_fit
-        and company.tier <= thresholds.max_apply_now_tier
-    ):
-        return "apply_now"
-    if (
-        fit_score >= thresholds.warm_path_apply_now_min_fit
-        and company.tier == thresholds.warm_path_apply_now_tier
-        and company.warm_path
-    ):
+    if fit_score >= thresholds.apply_now_min_fit:
         return "apply_now"
     if fit_score >= thresholds.consider_min_fit:
         return "consider"
-    if (
-        fit_score >= thresholds.stretch_min_fit
-        and company.tier <= thresholds.max_stretch_tier
-    ):
+    if fit_score >= thresholds.stretch_min_fit:
         return "stretch"
     return "skip"
 
@@ -873,6 +887,23 @@ def _technical_depth_requirement(text: str) -> bool:
             flags=re.IGNORECASE,
         )
     )
+
+
+def _required_credential_gap(text: str) -> bool:
+    config = load_candidate_profile().disqualifying_hard_requirements
+    credential_pattern = (
+        r"\b(?:pmp|project management professional|certificat(?:e|ion)|certified|credential)\b"
+        r"|\b(?:intermediate|advanced|professional|proficient)\b.{0,80}"
+        r"\b(?:platform|tool|system|software|cloud)\b"
+    )
+    for fragment in _requirement_fragments(text):
+        if _matches_any(fragment, config.nice_to_have_context_patterns):
+            continue
+        if not _matches_any(fragment, config.must_have_context_patterns):
+            continue
+        if re.search(credential_pattern, fragment, flags=re.IGNORECASE):
+            return True
+    return False
 
 
 def _requirement_fragments(text: str) -> list[str]:
@@ -1158,6 +1189,17 @@ def _gaps(text: str, hard_blockers: list[HardBlocker]) -> list[Gap]:
                 mitigation=(
                     "Prepare a clear boundary: business/product logic and implementation "
                     "leadership, not production coding."
+                ),
+            )
+        )
+    if _required_credential_gap(text):
+        gaps.append(
+            Gap(
+                gap="Required credential or platform certification is not in the candidate profile.",
+                severity="medium",
+                mitigation=(
+                    "Down-rank unless the credential is easy to obtain before applying "
+                    "or owner context confirms it is not a true requirement."
                 ),
             )
         )

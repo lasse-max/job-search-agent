@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from app.adapters import parser_version, source_endpoint
+from app.adapters.utils import normal_key
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 from app.services.material import material_hash_for_posting, material_hash_for_row
@@ -294,6 +295,7 @@ def upsert_postings(
     *,
     count_absences: bool = True,
 ) -> UpsertResult:
+    postings = _merge_multi_location_postings(postings)
     new_ids: list[int] = []
     changed_ids: list[int] = []
     seen_source_job_ids = {posting.source_job_id for posting in postings}
@@ -388,6 +390,48 @@ def upsert_postings(
         mark_absences(conn, source_id, seen_source_job_ids) if count_absences else 0
     )
     return UpsertResult(new_ids, changed_ids, unavailable_count)
+
+
+def _merge_multi_location_postings(postings: list[JobPosting]) -> list[JobPosting]:
+    groups: dict[str, list[JobPosting]] = {}
+    for posting in postings:
+        groups.setdefault(_multi_location_dedupe_key(posting), []).append(posting)
+
+    merged: list[JobPosting] = []
+    for key, group in groups.items():
+        if len(group) == 1:
+            merged.append(group[0])
+            continue
+        first = group[0]
+        locations: list[str] = []
+        for posting in group:
+            for location in posting.locations:
+                if location not in locations:
+                    locations.append(location)
+        merged.append(
+            replace(
+                first,
+                locations=locations,
+                source_job_id=f"multi-{normal_key(key)[:80]}",
+                canonical_key=normal_key(f"{first.company}|{first.title}|{key}"),
+            )
+        )
+    return merged
+
+
+def _multi_location_dedupe_key(posting: JobPosting) -> str:
+    return normal_key(
+        "|".join(
+            [
+                posting.company,
+                posting.source_type,
+                posting.title,
+                posting.department or "",
+                posting.employment_type or "",
+                posting.description_text[:400],
+            ]
+        )
+    )
 
 
 def mark_absences(

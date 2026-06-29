@@ -93,6 +93,7 @@ role_family_patterns:
   stretch:
     - "\\bdeployment strategist\\b"
     - "\\bforward[- ]deployed strateg\\w*\\b"
+    - "\\bstrategist,?\\s+agent development\\b"
     - "\\bprofessional services operations\\b"
 scope_seniority_signals:
   below_level_title_terms:

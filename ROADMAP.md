@@ -22,8 +22,14 @@ Staged delivery. Each stage stands alone and delivers value before the next begi
 **Checkpoints:** B — one-source vertical slice working end-to-end (Databricks/Greenhouse local slice implemented; LLM evaluator still pending) · C — all three adapters + health + schedule + review CLI · D — benchmark calibration + live digest.
 **Exit (PRD §10.2):** the 12-point acceptance test passes, incl. ≥95% recall on owner-labelled Apply/Consider roles and zero silent connector failures. **Stop and wait for explicit approval before Stage 2.**
 
-## Stage 2 — Web app & database tracker · _after owner approval_
-Next.js + Supabase Postgres. Opportunity Inbox + Application Tracker, approval gate, immutable event history, controlled migration of the spreadsheet + Stage 1 data. The spreadsheet becomes export/backup only.
+## Stage 1.0 → 1.5 — Refinement + online opportunity list · _live, in progress (2026-06)_
+**Status:** 1.0 (the daily email agent) is **shipped and operating**. 1.5 is the active phase. Goal: make the matching trustworthy and give the owner an online place to see and act on leads — *before* building the full tracker.
+- **Search refinement / calibration:** strict monotonic band thresholds (DECISIONS #61: 80+ apply_now · 70–79 consider · 60–69 stretch · <60 skip — no post-hoc overrides), general function-gate fixes (kill keyword false-positives like Recruiter/SRE), required-credential down-ranking, multi-location dedup (B-02). Driven by owner calibration notes from live digests.
+- **User testing:** owner runs the daily digest, flags misses; tune to acceptable live precision.
+- **Online opportunity list (web):** a hosted **list of hot-lead roles to apply to** (the Opportunity Inbox surface) — including a **"what was skipped / all roles" view** so the owner can audit the gate, and a **running list** of open opportunities. This is the first web surface; the applied tracker is deferred to 2.0.
+
+## Stage 2.0 — Application tracker · _after 1.5_
+Next.js + Supabase Postgres. The **Application Tracker** (applied pipeline: stages, dates, next action, contacts, immutable event history) on top of the 1.5 opportunity list; approval gate creates application records; controlled migration of the spreadsheet + Stage 1 data. The spreadsheet becomes export/backup only. (Originally "Stage 2 — web app & tracker"; now split: opportunity list = 1.5, applied tracker = 2.0.)
 
 ## Stage 3 — Gmail-assisted updates · _after Stage 2 is stable_
 Read-only Gmail OAuth → classify → suggest status updates in a review queue. No email-derived update changes state before approval. Disconnect/delete flow included.

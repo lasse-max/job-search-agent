@@ -19,22 +19,18 @@ from app.services.evaluate import (
 
 
 # These band-edge tests use zip(..., strict=True), so they require Python >= 3.10.
-FIT_EDGES = (49, 50, 64, 65, 79, 80)
-CORE_COLD = ("skip", "stretch", "stretch", "consider", "consider", "apply_now")
-CORE_WARM = ("skip", "stretch", "stretch", "consider", "apply_now", "apply_now")
-TIER3_CORE = ("skip", "skip", "skip", "skip", "skip", "skip")
-STRETCH_COLD = ("skip", "stretch", "stretch", "consider", "consider", "consider")
-STRETCH_WARM = ("skip", "stretch", "stretch", "consider", "apply_now", "apply_now")
+FIT_EDGES = (59, 60, 69, 70, 79, 80)
+STRICT_BANDS = ("skip", "stretch", "stretch", "consider", "consider", "apply_now")
 BLOCKED = ("blocked", "blocked", "blocked", "blocked", "blocked", "blocked")
 
 
 class EvaluateDecisionLogicTest(unittest.TestCase):
     def test_core_recommendation_band_edges(self) -> None:
         scenarios = (
-            ("tier1_cold_viable", 1, False, "viable", CORE_COLD),
-            ("tier1_warm_viable", 1, True, "viable", CORE_WARM),
-            ("tier3_cold_viable", 3, False, "viable", TIER3_CORE),
-            ("tier1_cold_us_friction", 1, False, "sponsorship_required", CORE_COLD),
+            ("tier1_cold_viable", 1, False, "viable", STRICT_BANDS),
+            ("tier1_warm_viable", 1, True, "viable", STRICT_BANDS),
+            ("tier3_cold_viable", 3, False, "viable", STRICT_BANDS),
+            ("tier1_cold_us_friction", 1, False, "sponsorship_required", STRICT_BANDS),
             ("tier1_cold_blocked", 1, False, "blocked", BLOCKED),
         )
 
@@ -47,13 +43,13 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
                         expected,
                     )
 
-    def test_stretch_recommendation_needs_warm_path_or_upside_to_apply_now(
+    def test_stretch_recommendation_uses_same_monotonic_fit_bands(
         self,
     ) -> None:
         scenarios = (
-            ("tier1_cold", 1, False, STRETCH_COLD),
-            ("tier1_warm", 1, True, STRETCH_WARM),
-            ("tier2_warm", 2, True, STRETCH_COLD),
+            ("tier1_cold", 1, False, STRICT_BANDS),
+            ("tier1_warm", 1, True, STRICT_BANDS),
+            ("tier2_warm", 2, True, STRICT_BANDS),
         )
 
         for name, tier, warm_path, expected_values in scenarios:
@@ -73,14 +69,14 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
 
         self.assertEqual(
             _recommendation(
-                80,
+                79,
                 "viable",
                 _company(tier=1, warm_path=False),
                 [],
                 stretch_family=True,
                 exceptional_upside=True,
             ),
-            "apply_now",
+            "consider",
         )
 
     def test_hard_blockers_override_recommendation(self) -> None:
@@ -107,7 +103,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             [blocker.type for blocker in cold.hard_blockers],
         )
         self.assertEqual(warm.feasibility["state"], "sponsorship_required")
-        self.assertEqual(warm.recommendation, "stretch")
+        self.assertEqual(warm.recommendation, "consider")
 
     def test_security_clearance_and_technical_pm_depth_block(self) -> None:
         clearance = evaluate_role(
@@ -192,6 +188,40 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         self.assertNotIn(
             "disqualifying_hard_requirement",
             [blocker.type for blocker in preferred.hard_blockers],
+        )
+
+    def test_required_credentials_downrank_without_hard_blocking(self) -> None:
+        base = evaluate_role(
+            _row(
+                "Strategic Operations Lead",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description="Lead strategic operations programs and executive reporting.",
+            ),
+            _company(tier=1),
+        )
+        credentialed = evaluate_role(
+            _row(
+                "Strategic Operations Lead",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description=(
+                    "Requirements: PMP certification and intermediate platform "
+                    "certification within six months. Lead strategic operations "
+                    "programs and executive reporting."
+                ),
+            ),
+            _company(tier=1),
+        )
+
+        self.assertGreater(base.role_fit_score, credentialed.role_fit_score)
+        self.assertGreater(
+            base.dimensions["gap_manageability"],
+            credentialed.dimensions["gap_manageability"],
+        )
+        self.assertNotIn(
+            "disqualifying_hard_requirement",
+            [blocker.type for blocker in credentialed.hard_blockers],
         )
 
     def test_technical_depth_hard_requirements_block_with_common_phrasings(
@@ -594,8 +624,12 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         cases = (
             "Engineering Program Manager",
             "Technical Program Manager",
+            "Technical Product Manager, GTM Platform",
             "Account Executive",
             "SDR",
+            "Recruiter, G&A or GTM",
+            "Site Reliability Operations Analyst",
+            "Solutions Architect, GTM Operations",
         )
 
         for title in cases:

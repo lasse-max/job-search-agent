@@ -1,3 +1,21 @@
+# Codex — CALIBRATION LOOP (Stage 1.5) — from owner review of the 2026-06-29 digest
+
+Owner direction: **no brand-specific logic** (do NOT special-case Databricks). Fix the general failure modes. Details in `data/evaluation_set/live_calibration_notes.md` (2026-06-29).
+
+1. **🔴 Strict, monotonic band = function of fit only (DECISIONS #61).** Remove the post-hoc recommendation overrides (e.g. "Tier-1 + warm path → bump to apply_now") that let a lower-fit role outrank a higher-fit one (Databricks fit 73 was apply_now while Palantir fit 81 was consider). New rule, hard thresholds on the final code-computed fit:
+   - **fit ≥ 80 → apply_now · 70–79 → consider · 60–69 → stretch · <60 → skip**
+   - Hard blockers / infeasible may override **downward only** (→ blocked/skip), never upward.
+   - Warm path, company tier, and brand remain **inputs to the fit score** (they raise/lower the number via the dimensions), not separate band jumps. Net: band is a dumb, strict, interpretable function of fit; no two roles ever conflict.
+   - Re-run BOTH benchmarks after this — the threshold change moves the curated/live mappings; confirm recall ≥95% / precision still holds, and re-tune dimension weights (not the thresholds) if needed.
+2. **Function gate weights the core role noun over incidental keywords.** Two live false-positives slipped in via "GTM"/"Operations": **Recruiter (Talent/HR)** and **Site Reliability / SRE (engineering, analyst-level)**. The gate must classify on the head function (Recruiter, SRE, Solutions Architect, Technical PM, …) and skip those families regardless of a "GTM"/"Operations"/"Strategy" keyword elsewhere in the title.
+3. **Required-credential down-ranking.** Extend hard-requirement handling beyond CS-degree/production-coding: a JD that **requires** a credential the candidate lacks (e.g. PMP, a platform certification, intermediate platform fluency) should reduce fit materially (gap-manageability/penalty), and block only if that credential is central. (The Databricks Technical PM required PMP + Databricks cert within 6 months and still got apply_now.)
+4. **Multi-location dedup (B-02) — pull forward.** The same role across city variants (e.g. one Solutions Architect listed 3× for Paris / London / Berlin) must surface **once** with all locations listed, not as duplicate cards.
+5. **Confirm cadence stays once daily** (`0 6 * * *`) — already set in `558a6c5`; no change, just verify it didn't regress.
+
+Re-run cached + live benchmarks, push, back to Cato. This is the Stage-1.5 search-refinement work (ROADMAP).
+
+---
+
 # Codex — FIX LOOP 6 (email guard too strict — blocks every live run) — EMAIL-BLOCKING
 
 Symptom: every scheduled run = `failure`, `Digest uses fallback evaluator output; refusing email delivery`, `notification_status=failed`, no email — even though the run takes **18 min** (so Claude DID score the bulk of the ~93 roles; the evaluator is working). Root cause: the **email-delivery guard is all-or-nothing** — `uses_fallback_evaluator(rows)` refuses the entire digest if **any** surfaced row is fallback-quality. On a live run with ~100 roles / hundreds of Claude calls, ≥1 role always falls back (transient 429/529/timeout, or a response that won't coerce), so the email is blocked **permanently**. This is the inverse of the firehose: now too conservative to ever ship. Fix Loop 5 relaxed the per-source role *drop* but the email guard still blocks on any single fallback row.

@@ -141,7 +141,7 @@ class BenchmarkCalibrationTest(unittest.TestCase):
                                 "id": "LN-002",
                                 "company": "ExampleCo",
                                 "company_tier": 1,
-                                "role_title": "AI Deployment Strategist",
+                                "role_title": "AI Deployment Strategist - Government",
                                 "department": "Applied AI",
                                 "employment_type": "Full-time",
                                 "location": "London, United Kingdom",
@@ -153,8 +153,8 @@ class BenchmarkCalibrationTest(unittest.TestCase):
                                 "id": "LN-003",
                                 "company": "ExampleCo",
                                 "company_tier": 1,
-                                "role_title": "Deployment Strategist",
-                                "department": "Applied AI",
+                                "role_title": "Adjacent Transformation Lead",
+                                "department": "Business Programs",
                                 "employment_type": "Full-time",
                                 "location": "London, United Kingdom",
                                 "source_url": "https://example.com/stretch",
@@ -171,7 +171,7 @@ class BenchmarkCalibrationTest(unittest.TestCase):
             examples = yaml.safe_load(labels_path.read_text(encoding="utf-8"))[
                 "live_noise_set"
             ]
-            for example, score in zip(examples, (88, 55, 55), strict=True):
+            for example, score in zip(examples, (88, 65, 65), strict=True):
                 write_cached_evaluation(
                     cache_dir=cache_dir,
                     model=DEFAULT_CLAUDE_MODEL,
