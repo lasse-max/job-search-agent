@@ -8,6 +8,7 @@ target_seniority:
     - "Lead"
     - "Principal"
     - "Senior IC"
+    - "Senior Associate"
   principle: "Judge level by scope and responsibilities, not by title word alone."
   in_scope_note: "Associate or Senior Associate on a strategy team at a strong company can be L4-appropriate when the role owns meaningful strategic programs."
   below_level_rule: "Reject only when responsibilities are materially below roughly eight-year / L4 scope."
