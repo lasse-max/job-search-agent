@@ -12,7 +12,7 @@ from typing import Any
 from jinja2 import Environment, FileSystemLoader
 
 from app.config import load_scoring_policy
-from app.db import get_digest_rows, latest_source_failures
+from app.db import ScanReach, get_digest_rows, latest_scan_reach, latest_source_failures
 from app.models import utc_now
 
 
@@ -96,11 +96,13 @@ def write_digest(
 
     calibration_pool_rows = get_digest_rows(conn) if since is not None else rows
     selection = select_digest_rows(rows, calibration_pool_rows=calibration_pool_rows)
+    scan_reach = latest_scan_reach(conn)
     html_path.write_text(
         render_html(
             selection.rows,
             failures,
             selection=selection,
+            scan_reach=scan_reach,
         ),
         encoding="utf-8",
     )
@@ -109,6 +111,7 @@ def write_digest(
             selection.rows,
             failures,
             selection=selection,
+            scan_reach=scan_reach,
         ),
         encoding="utf-8",
     )
@@ -120,9 +123,10 @@ def render_html(
     failures: list[sqlite3.Row],
     *,
     selection: DigestSelection | None = None,
+    scan_reach: ScanReach | None = None,
 ) -> str:
     rows, selection = _render_inputs(rows, selection)
-    return _render_template("digest.html.j2", rows, failures, selection)
+    return _render_template("digest.html.j2", rows, failures, selection, scan_reach)
 
 
 def render_text(
@@ -130,9 +134,10 @@ def render_text(
     failures: list[sqlite3.Row],
     *,
     selection: DigestSelection | None = None,
+    scan_reach: ScanReach | None = None,
 ) -> str:
     rows, selection = _render_inputs(rows, selection)
-    return _render_template("digest.txt.j2", rows, failures, selection)
+    return _render_template("digest.txt.j2", rows, failures, selection, scan_reach)
 
 
 def uses_fallback_evaluator(rows: list[sqlite3.Row]) -> bool:
@@ -160,7 +165,14 @@ def select_digest_rows(
     degraded = not valid_rows and bool(fallback_rows)
     candidate_rows = fallback_rows if degraded else valid_rows
     ranked = _ranked_delivery_rows(candidate_rows)
-    selected = ranked[:cap]
+    surfaced_rows = [
+        row for row in ranked if _recommendation(row) in STRONG_RECOMMENDATIONS
+    ]
+    low_priority_rows = [
+        row for row in ranked if _recommendation(row) in LOW_PRIORITY_RECOMMENDATIONS
+    ]
+    selected_surfaced_rows = surfaced_rows[:cap]
+    selected = selected_surfaced_rows + low_priority_rows
     calibration_rows = _calibration_floor_rows(
         selected,
         calibration_pool_rows or rows,
@@ -170,7 +182,7 @@ def select_digest_rows(
         rows=selected,
         calibration_rows=calibration_rows,
         cap=cap,
-        overflow_count=max(0, len(ranked) - len(selected)),
+        overflow_count=max(0, len(surfaced_rows) - len(selected_surfaced_rows)),
         fallback_filtered_count=0 if degraded else len(fallback_rows),
         degraded=degraded,
     )
@@ -185,8 +197,14 @@ def _render_inputs(
         return selection.rows, selection
 
     cap = max(1, min(int(selection.cap), ABSOLUTE_DIGEST_MAX_ROLES))
-    overflow_count = max(selection.overflow_count, max(0, len(rows) - cap))
-    render_rows = rows[:cap]
+    surfaced_rows = [
+        row for row in rows if _recommendation(row) in STRONG_RECOMMENDATIONS
+    ]
+    low_priority_rows = [
+        row for row in rows if _recommendation(row) in LOW_PRIORITY_RECOMMENDATIONS
+    ]
+    render_rows = surfaced_rows[:cap] + low_priority_rows
+    overflow_count = max(selection.overflow_count, max(0, len(surfaced_rows) - cap))
     return render_rows, DigestSelection(
         rows=render_rows,
         calibration_rows=selection.calibration_rows,
@@ -202,9 +220,10 @@ def _render_template(
     rows: list[sqlite3.Row],
     failures: list[sqlite3.Row],
     selection: DigestSelection,
+    scan_reach: ScanReach | None,
 ) -> str:
     rendered = TEMPLATE_ENV.get_template(template_name).render(
-        digest=_digest_context(rows, failures, selection)
+        digest=_digest_context(rows, failures, selection, scan_reach)
     )
     return rendered.rstrip() + "\n"
 
@@ -213,8 +232,10 @@ def _digest_context(
     rows: list[sqlite3.Row],
     failures: list[sqlite3.Row],
     selection: DigestSelection,
+    scan_reach: ScanReach | None,
 ) -> dict[str, Any]:
     generated_at = utc_now()
+    scan_reach = scan_reach or ScanReach(fetched_count=0, company_count=0)
     grouped = _group_rows(rows)
     sections = []
     counts: dict[str, int] = {}
@@ -266,6 +287,12 @@ def _digest_context(
     low_priority_roles = [
         _compact_role_context(row) for row in ranked_low_priority[:low_priority_limit]
     ]
+    shown_card_count = (
+        counts.get("apply_now", 0)
+        + counts.get("consider", 0)
+        + counts.get("stretch", 0)
+        + len(selection.calibration_rows)
+    )
 
     return {
         "generated_at": generated_at,
@@ -278,8 +305,8 @@ def _digest_context(
             "calibration": len(selection.calibration_rows),
             "low_priority": len(low_priority_rows),
             "failures": len(failures),
-            "shown": len(rows),
-            "total": len(rows) + selection.overflow_count,
+            "shown": shown_card_count,
+            "total": shown_card_count + selection.overflow_count,
         },
         "low_priority": {
             "count": len(low_priority_rows),
@@ -293,6 +320,12 @@ def _digest_context(
             "fallback_filtered_count": selection.fallback_filtered_count,
             "degraded": selection.degraded,
             "calibration_count": len(selection.calibration_rows),
+        },
+        "scan_reach": {
+            "fetched_count": scan_reach.fetched_count,
+            "fetched_count_label": f"{scan_reach.fetched_count:,}",
+            "company_count": scan_reach.company_count,
+            "company_word": "company" if scan_reach.company_count == 1 else "companies",
         },
         "review_command": "job-agent review list",
         "csv_command": "job-agent export",

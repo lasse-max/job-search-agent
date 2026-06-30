@@ -134,6 +134,12 @@ class UpsertResult:
     unavailable_count: int
 
 
+@dataclass(frozen=True)
+class ScanReach:
+    fetched_count: int
+    company_count: int
+
+
 def connect(db_path: Path) -> sqlite3.Connection:
     db_path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(db_path)
@@ -746,3 +752,30 @@ def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sql
         """,
         (limit,),
     ).fetchall()
+
+
+def latest_scan_reach(conn: sqlite3.Connection) -> ScanReach:
+    row = conn.execute(
+        """
+        SELECT
+          COALESCE(SUM(COALESCE(latest.fetched_count, 0)), 0) AS fetched_count,
+          COUNT(DISTINCT c.id) AS company_count
+        FROM companies c
+        JOIN job_sources js ON js.company_id = c.id
+        LEFT JOIN (
+          SELECT sr.*
+          FROM source_runs sr
+          WHERE sr.id = (
+            SELECT MAX(newer.id)
+            FROM source_runs newer
+            WHERE newer.job_source_id = sr.job_source_id
+          )
+        ) latest ON latest.job_source_id = js.id
+        WHERE c.enabled = 1
+          AND js.source_type != 'manual'
+        """
+    ).fetchone()
+    return ScanReach(
+        fetched_count=int(row["fetched_count"] or 0),
+        company_count=int(row["company_count"] or 0),
+    )

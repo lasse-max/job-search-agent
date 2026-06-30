@@ -2,6 +2,7 @@ Job Search Agent · Find your layline
 Your roles — {{ digest.generated_label }} (generated {{ digest.generated_at }})
 
 Summary: {{ digest.counts.apply_now }} apply now · {{ digest.counts.consider }} consider · {{ digest.counts.stretch }} stretch{% if digest.counts.calibration %} · {{ digest.counts.calibration }} calibration{% endif %} · {{ digest.counts.failures }} source issue{{ '' if digest.counts.failures == 1 else 's' }}
+Scanned {{ digest.scan_reach.fetched_count_label }} postings across {{ digest.scan_reach.company_count }} {{ digest.scan_reach.company_word }} this run
 
 {% if digest.selection.degraded -%}
 ⚠️ DEGRADED — unvalidated
@@ -60,4 +61,4 @@ Source failures and coverage gaps
 
 Review: {{ digest.review_command }}
 Export CSVs: {{ digest.csv_command }}
-Shown: {{ digest.counts.shown }} new/changed role{{ '' if digest.counts.shown == 1 else 's' }}{% if digest.counts.calibration %} · {{ digest.counts.calibration }} calibration sample role{{ '' if digest.counts.calibration == 1 else 's' }}{% endif %} · cap {{ digest.selection.cap }}
+Shown: {{ digest.counts.shown }} role card{{ '' if digest.counts.shown == 1 else 's' }}{% if digest.counts.calibration %} · {{ digest.counts.calibration }} calibration sample role{{ '' if digest.counts.calibration == 1 else 's' }}{% endif %} · cap {{ digest.selection.cap }}

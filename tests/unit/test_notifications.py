@@ -8,7 +8,13 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from app.db import get_digest_rows, init_db, latest_source_failures, record_source_run
+from app.db import (
+    get_digest_rows,
+    init_db,
+    latest_scan_reach,
+    latest_source_failures,
+    record_source_run,
+)
 from app.services.digest import render_html, render_text
 from app.services.manual_intake import add_text_intake
 from app.services.notifications import EmailMessage, EmailSendResult, deliver_digest
@@ -513,6 +519,43 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertIn("➕ 5 more", provider.messages[0].text_body)
             self.assertIn("view full list", provider.messages[0].text_body)
 
+    def test_overflow_counts_only_surfaced_cards_not_low_priority_padding(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index in range(48):
+                add_text_intake(
+                    _job_text(index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/count-{index:02d}",
+                )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="skip",
+                role_fit_score=55,
+            )
+            for index in range(30):
+                _mark_non_fallback_evaluations(
+                    conn,
+                    title_contains=f"{index:02d}",
+                    recommendation="apply_now",
+                    role_fit_score=90,
+                )
+
+            text_body = render_text(get_digest_rows(conn), [])
+
+            rendered_cards = text_body.count("Source: https://example.com/count-")
+            shown_match = re.search(r"Showing (\d+) of (\d+) roles", text_body)
+            self.assertIsNotNone(shown_match)
+            assert shown_match is not None
+            self.assertEqual(int(shown_match.group(1)), rendered_cards)
+            self.assertEqual((shown_match.group(1), shown_match.group(2)), ("25", "30"))
+            self.assertIn("➕ 5 more", text_body)
+            self.assertIn("Low-priority / blocked: 18 not expanded", text_body)
+            self.assertNotIn("Showing 25 of 48", text_body)
+
     def test_renderers_self_cap_when_called_with_uncapped_rows(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
@@ -538,6 +581,35 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertIn("\n  Source: https://example.com/render-", text_body)
             self.assertIn("➕ 5 more", text_body)
             self.assertIn("➕ 5 more", html_body)
+
+    def test_digest_headers_include_latest_scan_reach(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            add_text_intake(
+                JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/scan-reach",
+            )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            _insert_scan_reach_sources(conn)
+            scan_reach = latest_scan_reach(conn)
+
+            html_body = render_html(get_digest_rows(conn), [], scan_reach=scan_reach)
+            text_body = render_text(get_digest_rows(conn), [], scan_reach=scan_reach)
+
+            self.assertIn(
+                "Scanned 1,247 postings across 2 companies this run",
+                html_body,
+            )
+            self.assertIn(
+                "Scanned 1,247 postings across 2 companies this run",
+                text_body,
+            )
 
     def test_html_digest_uses_email_safe_dark_template(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -639,6 +711,70 @@ def _insert_disabled_degraded_source(conn: sqlite3.Connection) -> None:
           'lever_v1', 'degraded', 10
         )
         """
+    )
+    conn.commit()
+
+
+def _insert_scan_reach_sources(conn: sqlite3.Connection) -> None:
+    conn.execute(
+        """
+        INSERT INTO companies (id, name, tier, enabled, warm_path, notes)
+        VALUES
+          (10, 'ScanOne', 1, 1, 0, NULL),
+          (11, 'ScanTwo', 1, 1, 0, NULL),
+          (12, 'DisabledScan', 1, 0, 0, NULL)
+        """
+    )
+    conn.execute(
+        """
+        INSERT INTO job_sources (
+          id, company_id, source_type, source_key, source_url, parser_version,
+          health_status, expected_volume_min
+        )
+        VALUES
+          (10, 10, 'greenhouse', 'scanone', 'https://example.com/one',
+           'greenhouse_v1', 'healthy', 10),
+          (11, 11, 'ashby', 'scantwo', 'https://example.com/two',
+           'ashby_v1', 'healthy', 10),
+          (12, 12, 'lever', 'disabledscan', 'https://example.com/disabled',
+           'lever_v1', 'healthy', 10)
+        """
+    )
+    record_source_run(
+        conn,
+        10,
+        started_at="2026-06-24T10:00:00+00:00",
+        finished_at="2026-06-24T10:01:00+00:00",
+        status="success",
+        http_status=200,
+        fetched_count=1000,
+        new_count=0,
+        changed_count=0,
+        error_summary=None,
+    )
+    record_source_run(
+        conn,
+        11,
+        started_at="2026-06-24T10:00:00+00:00",
+        finished_at="2026-06-24T10:01:00+00:00",
+        status="success",
+        http_status=200,
+        fetched_count=247,
+        new_count=0,
+        changed_count=0,
+        error_summary=None,
+    )
+    record_source_run(
+        conn,
+        12,
+        started_at="2026-06-24T10:00:00+00:00",
+        finished_at="2026-06-24T10:01:00+00:00",
+        status="success",
+        http_status=200,
+        fetched_count=9999,
+        new_count=0,
+        changed_count=0,
+        error_summary=None,
     )
     conn.commit()
 

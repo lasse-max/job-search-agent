@@ -16,6 +16,7 @@ from app.config import OUTPUT_DIR
 from app.db import (
     has_delivered_payload,
     latest_delivered_notification_at,
+    latest_scan_reach,
     latest_source_failures,
     record_notification,
     get_digest_rows,
@@ -121,6 +122,7 @@ def deliver_digest(
     selection = select_digest_rows(raw_rows, calibration_pool_rows=calibration_pool_rows)
     rows = selection.rows
     failures = latest_source_failures(conn)
+    scan_reach = latest_scan_reach(conn)
     calibration_count = len(selection.calibration_rows)
     subject = _subject(
         len(rows),
@@ -175,8 +177,8 @@ def deliver_digest(
             recipient=recipient,
         )
 
-    html_body = render_html(rows, failures, selection=selection)
-    text_body = render_text(rows, failures, selection=selection)
+    html_body = render_html(rows, failures, selection=selection, scan_reach=scan_reach)
+    text_body = render_text(rows, failures, selection=selection, scan_reach=scan_reach)
     html_path.write_text(html_body, encoding="utf-8")
     text_path.write_text(text_body, encoding="utf-8")
 
