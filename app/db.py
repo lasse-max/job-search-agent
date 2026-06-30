@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 from dataclasses import dataclass, replace
 from pathlib import Path
@@ -12,6 +13,11 @@ from app.adapters.utils import normal_key
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 from app.services.material import material_hash_for_posting, material_hash_for_row
+from app.services.text_rules import (
+    LANGUAGE_ALIASES,
+    strip_language_variant_markers,
+    unsupported_language_requirement,
+)
 
 
 DEFAULT_EVALUATOR_VERSION = "deterministic_fallback_v1"
@@ -408,7 +414,7 @@ def _merge_multi_location_postings(postings: list[JobPosting]) -> list[JobPostin
         if len(group) == 1:
             merged.append(group[0])
             continue
-        first = group[0]
+        first = _preferred_language_variant(group)
         locations: list[str] = []
         for posting in group:
             for location in posting.locations:
@@ -419,10 +425,28 @@ def _merge_multi_location_postings(postings: list[JobPosting]) -> list[JobPostin
                 first,
                 locations=locations,
                 source_job_id=f"multi-{normal_key(key)[:80]}",
-                canonical_key=normal_key(f"{first.company}|{first.title}|{key}"),
+                canonical_key=normal_key(
+                    f"{first.company}|{_dedupe_title(first.title)}|{key}"
+                ),
             )
         )
     return merged
+
+
+def _preferred_language_variant(postings: list[JobPosting]) -> JobPosting:
+    profile_languages = load_candidate_profile().languages
+    return sorted(
+        postings,
+        key=lambda posting: (
+            unsupported_language_requirement(
+                f"{posting.title} {posting.description_text}",
+                profile_languages,
+            )
+            is not None,
+            len(posting.title),
+            posting.source_job_id,
+        ),
+    )[0]
 
 
 def _multi_location_dedupe_key(posting: JobPosting) -> str:
@@ -431,13 +455,40 @@ def _multi_location_dedupe_key(posting: JobPosting) -> str:
             [
                 posting.company,
                 posting.source_type,
-                posting.title,
+                _dedupe_title(posting.title),
                 posting.department or "",
                 posting.employment_type or "",
-                posting.description_text[:400],
+                _dedupe_description(posting.description_text),
             ]
         )
     )
+
+
+def _dedupe_title(title: str) -> str:
+    title = strip_language_variant_markers(title)
+    return re.sub(r"\s+", " ", title).strip()
+
+
+def _dedupe_description(description: str) -> str:
+    snippet = strip_language_variant_markers(description[:400])
+    for aliases in LANGUAGE_ALIASES.values():
+        for alias in aliases:
+            language = r"\s+".join(re.escape(part) for part in alias.split())
+            snippet = re.sub(
+                rf"\b(?:fluent|fluency|native[-\s]?level|near[-\s]?native|proficiency|required|requires?)\b"
+                rf".{{0,50}}\b{language}\b",
+                " ",
+                snippet,
+                flags=re.IGNORECASE,
+            )
+            snippet = re.sub(
+                rf"\b{language}\b.{{0,50}}"
+                rf"\b(?:fluent|fluency|native[-\s]?level|near[-\s]?native|proficiency|required|requires?)\b",
+                " ",
+                snippet,
+                flags=re.IGNORECASE,
+            )
+    return re.sub(r"\s+", " ", snippet).strip()
 
 
 def mark_absences(

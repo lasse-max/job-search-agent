@@ -23,12 +23,12 @@ EV-21,ServiceNow / Moveworks,"Senior Customer Success Manager, Enterprise",cs_de
 EV-22,Harvey,Majors Customer Success Manager,cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,17,True,True,True,True,True,claude-haiku-4-5
 EV-23,Glean,Enterprise Customer Success,cs_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,19,True,True,True,True,True,claude-haiku-4-5
 EV-24,Cognition (Devin),GTM Operations Associate,below_level_by_scope_not_title,skip,consider,viable,viable,tier_2,tier_2,False,False,70,False,False,True,True,False,claude-haiku-4-5
-EV-25,Airwallex,"Manager, Revenue Operations",below_level_by_scope_not_title,skip,stretch,viable,viable,tier_2,tier_2,False,False,61,False,True,True,True,False,claude-haiku-4-5
+EV-25,Airwallex,"Manager, Revenue Operations",below_level_by_scope_not_title,skip,skip,viable,viable,tier_2,tier_2,False,False,57,True,True,True,True,True,claude-haiku-4-5
 EV-26,Datadog,GTM Strategy & Operations Analyst,below_level,skip,stretch,viable,viable,tier_3,tier_3,False,False,65,False,True,True,True,False,claude-haiku-4-5
 EV-27,Disney,"Principal, Streaming Strategy & Operations",visa_blocked,blocked,blocked,blocked,blocked,tier_2,tier_2,True,True,74,True,True,True,True,True,claude-haiku-4-5
 EV-28,Plaid,Integration Operations Program Manager,visa_blocked,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,62,True,True,True,True,True,claude-haiku-4-5
 EV-29,Roblox,"Lead, Strategic Initiatives",visa_blocked,stretch,stretch,sponsorship_required,sponsorship_required,tier_3,tier_3,False,False,64,True,True,True,True,True,claude-haiku-4-5
 EV-30,Roblox,"Product Manager, Consumer Payments and Subscriptions",technical_blocker,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,30,True,True,True,True,True,claude-haiku-4-5
-EV-31,Arondite,Deployment Strategist,technical_blocker,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,67,True,True,True,True,True,claude-haiku-4-5
+EV-31,Arondite,Deployment Strategist,technical_blocker,blocked,blocked,blocked,blocked,tier_3,tier_3,True,True,50,True,True,True,True,True,claude-haiku-4-5
 EV-32,AutoScout24,AI Process Transformation Lead,brand_deprioritize,skip,stretch,viable,viable,tier_3,tier_3,False,False,63,False,True,True,True,False,claude-haiku-4-5
 EV-33,OutSystems,Lead Customer Success Manager,brand_deprioritize,skip,skip,viable,viable,tier_3,tier_3,False,False,21,True,True,True,True,True,claude-haiku-4-5

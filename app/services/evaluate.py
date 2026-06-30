@@ -30,6 +30,7 @@ from app.services.llm_evaluator import (
     provider_from_env,
 )
 from app.services.material import material_hash_for_row
+from app.services.text_rules import unsupported_language_requirement
 
 
 DETERMINISTIC_FALLBACK_VERSION = "deterministic_fallback_v1"
@@ -67,6 +68,13 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
         profile.primary_role_family_patterns + profile.stretch_role_family_patterns
     )
     title_department = _title_department_text(row)
+    requirement_text = _role_requirement_text(row)
+    if unsupported_language_requirement(requirement_text, profile.languages):
+        return RelevanceDecision(False, "unsupported_language_requirement")
+
+    if _government_defense_or_clearance_scope(requirement_text):
+        return RelevanceDecision(False, "government_defense_clearance_declined")
+
     if _matches_any(title_department, filter_config.excluded_title_department_patterns):
         return RelevanceDecision(False, "excluded_title_department_function")
 
@@ -396,6 +404,8 @@ def _apply_fit_inputs(
         profile,
     ):
         adjusted["role_family_fit"] = min(adjusted.get("role_family_fit", 0), 58)
+        adjusted["evidence_strength"] = min(adjusted.get("evidence_strength", 0), 58)
+        adjusted["scope_seniority"] = min(adjusted.get("scope_seniority", 0), 58)
         adjusted["gap_manageability"] = min(adjusted.get("gap_manageability", 0), 58)
     if _required_credential_gap(text):
         penalty = scoring_policy.gap_penalties.get("required_credential", 22)
@@ -628,6 +638,15 @@ def _is_low_priority_surface_function(
 ) -> bool:
     title_lower = title.lower()
     title_department = f"{title} {department}".lower()
+    requirement_text = _requirement_scope_text(title_department, text)
+    if unsupported_language_requirement(requirement_text, profile.languages):
+        return True
+    if _government_defense_or_clearance_scope(requirement_text):
+        return True
+    if _pre_sales_value_function(title_department):
+        return True
+    if _adjacent_ops_noise(title_department):
+        return True
     if _is_plain_revenue_ops_manager(title_lower):
         return True
     if _partnership_domain_gap(title_department):
@@ -660,6 +679,88 @@ def _is_low_priority_surface_function(
     ):
         return True
     return False
+
+
+def _government_defense_or_clearance_scope(text: str) -> bool:
+    if re.search(
+        r"\b(?:security|sc|dv)\s+clearance\b|\bsecurity vetting\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        return True
+    for fragment in _requirement_fragments(text):
+        if re.search(
+            r"\b(?:government|public sector|military|national security)\b",
+            fragment,
+            flags=re.IGNORECASE,
+        ):
+            return True
+        if not re.search(r"\bdefen[cs]e\b", fragment, flags=re.IGNORECASE):
+            continue
+        if re.search(r"\b(?:first|second|third)?\s*line of defen[cs]e\b", fragment):
+            continue
+        if _nice_to_have_context(fragment):
+            continue
+        return True
+    return False
+
+
+def _nice_to_have_context(text: str) -> bool:
+    return bool(
+        re.search(
+            (
+                r"\bpreferred\b"
+                r"|\bnice to have\b"
+                r"|\ba plus\b"
+                r"|\bplus\b"
+                r"|\bbonus\b"
+                r"|\basset\b"
+                r"|\bnot required\b"
+                r"|\boptional\b"
+                r"|\bhelpful\b"
+                r"|\bdesirable\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _pre_sales_value_function(text: str) -> bool:
+    return bool(
+        re.search(
+            (
+                r"\bpre[-\s]?sales\b"
+                r"|\bvalue engineering\b"
+                r"|\bvalue engineer\b"
+                r"|\bvalue partner\b"
+                r"|\bsolutions? engineer\b"
+                r"|\bsolution engineering\b"
+                r"|\bsales engineering\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _adjacent_ops_noise(text: str) -> bool:
+    return bool(
+        re.search(
+            (
+                r"\blogistics\b"
+                r"|\bsupply[-\s]?chain\b.{0,80}\bstandards?\b"
+                r"|\bstandards?\b.{0,80}\bsupply[-\s]?chain\b"
+                r"|\brisk\b.{0,80}\boperations\b"
+                r"|\bcompliance\b.{0,80}\boperations\b"
+                r"|\boperations\b.{0,80}\b(?:risk|compliance)\b"
+                r"|\bproposals?\s*(?:&|and)\s*assurance\b"
+                r"|\bintegration manager\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
 
 
 def _hard_blockers(
@@ -1043,6 +1144,40 @@ def _role_text(row: sqlite3.Row) -> str:
 
 def _title_department_text(row: sqlite3.Row) -> str:
     return f"{row['title']} {row['department'] or ''}".lower()
+
+
+def _role_requirement_text(row: sqlite3.Row) -> str:
+    return _requirement_scope_text(
+        _title_department_text(row),
+        str(row["description_text"] or "").lower(),
+    )
+
+
+def _requirement_scope_text(title_department: str, description_text: str) -> str:
+    if _looks_like_aggregate_careers_page(description_text):
+        return title_department
+    return f"{title_department} {description_text}".lower()
+
+
+def _looks_like_aggregate_careers_page(text: str) -> bool:
+    lower = text.lower()
+    if "allfilters" in lower or ("all jobs" in lower and "positions" in lower):
+        return True
+    if "open roles" not in lower:
+        return False
+    role_list_markers = re.findall(
+        (
+            r"\bsoftware engineer\b"
+            r"|\bproduct manager\b"
+            r"|\bsales engineer\b"
+            r"|\brecruiter\b"
+            r"|\baccount executive\b"
+            r"|\bstrategist,\s*agent development\b"
+            r"|\bdepartment all departments\b"
+        ),
+        lower,
+    )
+    return len(role_list_markers) >= 4
 
 
 def _matches_any(text: str, patterns: tuple[str, ...]) -> bool:

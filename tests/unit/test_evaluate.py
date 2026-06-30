@@ -430,6 +430,15 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             ),
             58,
         )
+        self.assertEqual(
+            _role_family_fit(
+                "Product Monetisation & Pricing Lead",
+                "Product",
+                "own product packaging, pricing strategy, and monetisation roadmap",
+                profile,
+            ),
+            92,
+        )
 
     def test_profile_language_match_raises_score_and_alignment_strength(self) -> None:
         company = _company(target_locations=["Munich / Germany"])
@@ -496,6 +505,161 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             "German is listed in the profile as native.",
             [alignment.candidate_evidence for alignment in bare_german.alignments],
         )
+
+    def test_unsupported_required_language_skips_and_profile_languages_do_not(
+        self,
+    ) -> None:
+        company = _company(target_locations=["Paris / France"])
+        french = evaluate_role(
+            _row(
+                "Strategist, Agent Development (French speaking)",
+                ["Paris, France"],
+                department="Product",
+                description="Lead agent strategy for customers.",
+            ),
+            company,
+        )
+        german = evaluate_role(
+            _row(
+                "Strategic Operations Manager (German speaking)",
+                ["Munich, Germany"],
+                department="Strategy & Operations",
+                description="Lead strategic operations programs.",
+            ),
+            _company(target_locations=["Munich / Germany"]),
+        )
+        english = evaluate_role(
+            _row(
+                "Strategic Operations Manager",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description="Fluent English required. Lead strategic operations programs.",
+            ),
+            _company(target_locations=["London / UK"]),
+        )
+
+        self.assertEqual(
+            relevance_decision(
+                _row(
+                    "Strategist, Agent Development (Spanish speaking)",
+                    ["Madrid, Spain"],
+                    department="Product",
+                    description="Lead agent strategy for customers.",
+                ),
+                _company(target_locations=["Madrid / Spain"]),
+            ).reason,
+            "unsupported_language_requirement",
+        )
+        self.assertEqual(french.recommendation, "skip")
+        self.assertLess(french.role_fit_score, 60)
+        self.assertNotEqual(german.recommendation, "skip")
+        self.assertNotEqual(english.recommendation, "skip")
+
+    def test_aggregate_careers_page_language_markers_do_not_contaminate_role(
+        self,
+    ) -> None:
+        company = _company(target_locations=["Munich / Germany"])
+        row = _row(
+            "Strategist, Agent Development",
+            ["Munich, Germany"],
+            department="Product",
+            description=(
+                "Open roles Department All departments Engineering Software Engineer, "
+                "Agent Product Product Manager, Agent Development Sales Sales Engineer "
+                "Recruiting Recruiter Agent Strategist Strategist, Agent Development "
+                "(French speaking) Strategist, Agent Development (Spanish speaking)"
+            ),
+        )
+
+        decision = relevance_decision(row, company)
+        evaluation = evaluate_role(row, company)
+
+        self.assertTrue(decision.should_evaluate)
+        self.assertNotEqual(decision.reason, "unsupported_language_requirement")
+        self.assertNotEqual(evaluation.recommendation, "skip")
+
+    def test_government_defense_roles_are_skipped_without_brand_logic(self) -> None:
+        government = evaluate_role(
+            _row(
+                "Deployment Strategist - AUS Government",
+                ["Sydney, Australia"],
+                department="Professional Services",
+                description="Lead deployment strategy for public sector customers.",
+            ),
+            _company(tier=1, target_locations=["Sydney / Australia"]),
+        )
+        control_phrase = evaluate_role(
+            _row(
+                "Risk Operations Manager",
+                ["London, United Kingdom"],
+                department="Risk Operations",
+                description="Serve as a first line of defense for compliance controls.",
+            ),
+            _company(tier=2),
+        )
+        optional_defense = relevance_decision(
+            _row(
+                "AI Deployment Strategist, Cybersecurity - EMEA",
+                ["Paris, France"],
+                department="Solutions",
+                description=(
+                    "Lead customer deployments and executive workshops. "
+                    "Prior experience with defense or sovereign cloud environments "
+                    "is a plus."
+                ),
+            ),
+            _company(tier=2, target_locations=["Paris / France"]),
+        )
+
+        self.assertEqual(government.recommendation, "skip")
+        self.assertLess(government.role_fit_score, 60)
+        self.assertNotIn(
+            "security_clearance",
+            [blocker.type for blocker in government.hard_blockers],
+        )
+        self.assertNotIn(
+            "security_clearance",
+            [blocker.type for blocker in control_phrase.hard_blockers],
+        )
+        self.assertTrue(optional_defense.should_evaluate)
+
+    def test_pre_sales_value_partner_and_adjacent_ops_noise_skip(self) -> None:
+        cases = (
+            (
+                "Principal Client Value Partner",
+                "Value Engineering",
+                "Own value selling, pre-sales discovery, and customer demos.",
+            ),
+            (
+                "Logistics Standards Manager",
+                "Operations",
+                "Own logistics standards and operating procedures.",
+            ),
+            (
+                "Risk and Compliance Operations Manager",
+                "Operations",
+                "Own risk operations and compliance workflows.",
+            ),
+            (
+                "Integration Manager",
+                "Operations",
+                "Manage partner integration activities and launch checklists.",
+            ),
+        )
+
+        for title, department, description in cases:
+            with self.subTest(title=title):
+                evaluation = evaluate_role(
+                    _row(
+                        title,
+                        ["London, United Kingdom"],
+                        department=department,
+                        description=description,
+                    ),
+                    _company(tier=2),
+                )
+                self.assertEqual(evaluation.recommendation, "skip")
+                self.assertLess(evaluation.role_fit_score, 60)
 
     def test_associate_strategy_role_is_not_auto_scored_low(self) -> None:
         self.assertEqual(_scope_seniority("Strategy Intern", "strategic operations"), 35)
@@ -630,6 +794,9 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             "Recruiter, G&A or GTM",
             "Site Reliability Operations Analyst",
             "Solutions Architect, GTM Operations",
+            "Solutions Engineer, Large Enterprise",
+            "Principal Client Value Partner",
+            "Lead Value Engineer",
         )
 
         for title in cases:

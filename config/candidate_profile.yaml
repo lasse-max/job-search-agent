@@ -80,6 +80,8 @@ role_family_patterns:
     - "\\bproduct operations\\b"
     - "\\bproduct ops\\b"
     - "\\bproduct strateg\\w*\\b"
+    - "\\bproduct\\b.{0,80}\\b(?:moneti[sz]ation|pricing)\\b"
+    - "\\b(?:moneti[sz]ation|pricing)\\b.{0,80}\\bproduct\\b"
     - "\\bgtm\\b"
     - "\\bgo-to-market\\b"
     - "\\b(?:gtm|sales)\\s+s\\s*&\\s*o\\b"
