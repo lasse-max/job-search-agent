@@ -153,6 +153,23 @@ companies:
     manual_fallback: "Lever source_key=atlassian returns 0 jobs; use manual URL/text intake for promising Atlassian roles until the real ATS feed is found."
     selected_for_initial_coverage: false
     notes: "Disabled 2026-06-27: Lever key appears dead/silent-zero. Tier-1 company; keep manual intake active while finding the real Atlassian ATS feed."
+  - name: "Black Forest Labs"
+    tier: 2
+    enabled: true
+    careers_url: "https://bfl.ai/careers"
+    current_role_url: null
+    ats_type: "greenhouse"
+    source_key: "blackforestlabs"
+    supported_adapter: "greenhouse"
+    coverage_state: "Supported"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/blackforestlabs/jobs"
+    job_count_at_audit: 12
+    target_locations: ["Freiburg", "Berlin", "London", "Remote - EU"]
+    target_role_family_notes: "Strategy & Operations / BizOps / Partnerships / Strategic Finance at a frontier image+video generative-AI lab (FLUX); HQ Freiburg, Germany."
+    warm_path: false
+    manual_fallback: "Greenhouse feed live; if it ever returns zero, use manual URL/text intake."
+    selected_for_initial_coverage: false
+    notes: "Added 2026-06-30 by owner. Greenhouse source_key=blackforestlabs verified live (12 jobs at audit). German AI lab, Freiburg — strong location fit; mostly research/eng today, watch for S&O/BizOps/partnerships roles."
   - name: "Airwallex"
     tier: 1
     enabled: true
