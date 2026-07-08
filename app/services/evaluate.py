@@ -34,7 +34,7 @@ from app.services.text_rules import unsupported_language_requirement
 
 
 DETERMINISTIC_FALLBACK_VERSION = "deterministic_fallback_v1"
-HYBRID_EVALUATOR_VERSION = "hybrid_claude_v1"
+HYBRID_EVALUATOR_VERSION = "hybrid_claude_v2"
 
 
 @dataclass(frozen=True)
@@ -165,6 +165,7 @@ def evaluate_role(
             "gap_manageability": gap_manageability,
         },
         scoring_policy,
+        location_policy,
         profile,
     )
     fit_score = _weighted_fit_score(dimensions, scoring_policy)
@@ -248,6 +249,7 @@ def _role_evaluation_from_llm(
         dimensions,
         company,
         scoring_policy,
+        location_policy,
         profile,
     )
     fit_score = _weighted_fit_score(calibrated_dimensions, scoring_policy)
@@ -348,6 +350,7 @@ def _calibrated_llm_dimensions(
     dimensions: dict[str, int],
     company: CompanyConfig,
     scoring_policy: ScoringPolicyConfig,
+    location_policy: LocationPolicyConfig,
     profile: CandidateProfileConfig,
 ) -> dict[str, int]:
     """Apply conservative calibration floors to LLM scores.
@@ -366,7 +369,6 @@ def _calibrated_llm_dimensions(
     if (
         _matches_any(title_department, profile.primary_role_family_patterns)
         and not _is_plain_revenue_ops_manager(title_lower)
-        and not _partnership_domain_gap(title_department)
     ):
         floors = {
             "role_family_fit": 82,
@@ -385,7 +387,14 @@ def _calibrated_llm_dimensions(
         }
         for dimension, floor in floors.items():
             calibrated[dimension] = max(calibrated[dimension], floor)
-    return _apply_fit_inputs(row, company, calibrated, scoring_policy, profile)
+    return _apply_fit_inputs(
+        row,
+        company,
+        calibrated,
+        scoring_policy,
+        location_policy,
+        profile,
+    )
 
 
 def _apply_fit_inputs(
@@ -393,10 +402,15 @@ def _apply_fit_inputs(
     company: CompanyConfig,
     dimensions: dict[str, int],
     scoring_policy: ScoringPolicyConfig,
+    location_policy: LocationPolicyConfig,
     profile: CandidateProfileConfig,
 ) -> dict[str, int]:
     adjusted = {dimension: int(score) for dimension, score in dimensions.items()}
     text = _role_text(row)
+    fit_cap = _fit_cap_for_gate(row, company, text, location_policy, profile)
+    if fit_cap is not None:
+        for dimension in adjusted:
+            adjusted[dimension] = min(adjusted[dimension], fit_cap)
     if _is_low_priority_surface_function(
         row["title"],
         row["department"] or "",
@@ -407,8 +421,13 @@ def _apply_fit_inputs(
         adjusted["evidence_strength"] = min(adjusted.get("evidence_strength", 0), 58)
         adjusted["scope_seniority"] = min(adjusted.get("scope_seniority", 0), 58)
         adjusted["gap_manageability"] = min(adjusted.get("gap_manageability", 0), 58)
+    if _partnership_domain_gap(_title_department_text(row)):
+        for dimension in adjusted:
+            adjusted[dimension] = min(adjusted[dimension], 68)
     if _required_credential_gap(text):
         penalty = scoring_policy.gap_penalties.get("required_credential", 22)
+        for dimension in adjusted:
+            adjusted[dimension] = min(adjusted[dimension], 68)
         adjusted["gap_manageability"] = adjusted.get("gap_manageability", 0) - penalty
     if company.warm_path:
         adjusted["evidence_strength"] = adjusted.get("evidence_strength", 0) + 3
@@ -419,6 +438,59 @@ def _apply_fit_inputs(
         adjusted["evidence_strength"] = adjusted.get("evidence_strength", 0) - 18
         adjusted["gap_manageability"] = adjusted.get("gap_manageability", 0) - 18
     return {dimension: _clamp_score(score) for dimension, score in adjusted.items()}
+
+
+def _fit_cap_for_gate(
+    row: sqlite3.Row,
+    company: CompanyConfig,
+    text: str,
+    location_policy: LocationPolicyConfig,
+    profile: CandidateProfileConfig,
+) -> int | None:
+    title = str(row["title"])
+    title_lower = title.lower()
+    title_department = _title_department_text(row)
+    requirement_text = _role_requirement_text(row)
+    filter_config = load_relevance_filter()
+
+    if filter_config.target_location_required:
+        location_decision = _location_gate_decision(row, company, location_policy)
+        warm_us_exception = (
+            company.warm_path
+            and location_decision is not None
+            and location_decision.reason
+            == "location_filter_us_requires_tier1_sponsorship_exceptional_role"
+        )
+        if location_decision is not None and not warm_us_exception:
+            return 55
+    locations = json.loads(row["locations_json"])
+    if _work_authorization_blocker(locations, company, location_policy) is not None:
+        return 55
+    if unsupported_language_requirement(requirement_text, profile.languages):
+        return 55
+    if _government_defense_or_clearance_scope(requirement_text):
+        return 55
+    if _matches_any(title_department, filter_config.excluded_title_department_patterns):
+        return 55
+    if _below_target_scope_gap(row, profile):
+        return 58
+    if _agent_development_product_manager(title_department):
+        return 68
+    if _off_function_title_department(title_department):
+        return 55
+    if _is_overleveled_role(title, text, company, profile):
+        return 55
+    if _technical_pm_depth(title_lower, text):
+        return 55
+    if _security_clearance_required(text):
+        return 55
+
+    compensation_signal = _compensation_seniority_signal(title, text)
+    if compensation_signal == "over_target_senior_ic":
+        return 68
+    if compensation_signal == "over_target_executive":
+        return 55
+    return None
 
 
 def _clamp_score(value: int) -> int:
@@ -647,9 +719,9 @@ def _is_low_priority_surface_function(
         return True
     if _adjacent_ops_noise(title_department):
         return True
-    if _is_plain_revenue_ops_manager(title_lower):
+    if _off_function_title_department(title_department):
         return True
-    if _partnership_domain_gap(title_department):
+    if _is_plain_revenue_ops_manager(title_lower):
         return True
     if _is_stretch_family(title, department, text, profile) and re.search(
         r"\b(?:government|public sector|defen[cs]e)\b",
@@ -679,6 +751,73 @@ def _is_low_priority_surface_function(
     ):
         return True
     return False
+
+
+def _off_function_title_department(text: str) -> bool:
+    if _native_product_manager_function(text):
+        return True
+    if _partnership_manager_without_strategy_ops(text):
+        return True
+    if re.search(
+        (
+            r"\bproduct marketing\b"
+            r"|\bmarketing\b"
+            r"|\bgrowth marketing\b"
+            r"|\bbrand\b.{0,40}\bmarketing\b"
+            r"|\bcommercial market (?:specialist|manager)\b"
+            r"|\bpricing\s*&\s*yield\b"
+            r"|\byield management\b"
+            r"|\baccount executive\b"
+            r"|\baccount manager\b"
+            r"|\bcustomer success\b"
+            r"|\b(?:sales|business) development representative\b"
+            r"|\b(?:sdr|bdr)\b"
+            r"|\brecruit(?:er|ing)\b"
+        ),
+        text,
+        flags=re.IGNORECASE,
+    ):
+        return True
+    return False
+
+
+def _native_product_manager_function(text: str) -> bool:
+    if not re.search(r"\bproduct manager\b", text, flags=re.IGNORECASE):
+        return False
+    if _agent_development_product_manager(text):
+        return False
+    return not re.search(
+        (
+            r"\bproduct operations\b"
+            r"|\bproduct ops\b"
+            r"|\bproduct strateg\w*\b"
+            r"|\bproduct\b.{0,80}\b(?:moneti[sz]ation|pricing)\b"
+            r"|\b(?:moneti[sz]ation|pricing)\b.{0,80}\bproduct\b"
+        ),
+        text,
+        flags=re.IGNORECASE,
+    )
+
+
+def _agent_development_product_manager(text: str) -> bool:
+    return bool(
+        re.search(r"\bproduct manager\b", text, flags=re.IGNORECASE)
+        and re.search(r"\bagent development\b", text, flags=re.IGNORECASE)
+    )
+
+
+def _partnership_manager_without_strategy_ops(text: str) -> bool:
+    if not re.search(
+        r"\b(?:partner|partnerships?)\b.{0,60}\bmanager\b|\bmanager\b.{0,60}\b(?:partner|partnerships?)\b",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    return not re.search(
+        r"\b(?:strategy|strategic operations|operations|bizops|program|gtm|go-to-market)\b",
+        text,
+        flags=re.IGNORECASE,
+    )
 
 
 def _government_defense_or_clearance_scope(text: str) -> bool:
@@ -751,6 +890,8 @@ def _adjacent_ops_noise(text: str) -> bool:
                 r"\blogistics\b"
                 r"|\bsupply[-\s]?chain\b.{0,80}\bstandards?\b"
                 r"|\bstandards?\b.{0,80}\bsupply[-\s]?chain\b"
+                r"|\bsafety\b.{0,80}\breadiness\b"
+                r"|\boperations safety\b"
                 r"|\brisk\b.{0,80}\boperations\b"
                 r"|\bcompliance\b.{0,80}\boperations\b"
                 r"|\boperations\b.{0,80}\b(?:risk|compliance)\b"
@@ -1112,6 +1253,100 @@ def _is_overleveled_role(
         exception_text,
         profile.seniority_ceiling.startup_exception_patterns,
     )
+
+
+def _below_target_scope_gap(
+    row: sqlite3.Row,
+    profile: CandidateProfileConfig,
+) -> bool:
+    title_lower = str(row["title"]).lower()
+    if not re.search(r"\b(?:analyst|associate)\b", title_lower):
+        return False
+    if "senior associate" in title_lower:
+        return False
+    scoped_text = _role_requirement_text(row)
+    return not _has_clear_senior_scope(scoped_text, profile)
+
+
+def _compensation_seniority_signal(title: str, text: str) -> str | None:
+    max_compensation = _max_annual_compensation(text)
+    if max_compensation is None:
+        return None
+    currency, amount = max_compensation
+    thresholds = {
+        "usd": 250_000,
+        "eur": 220_000,
+        "gbp": 180_000,
+        "aud": 300_000,
+        "sgd": 300_000,
+    }
+    threshold = thresholds.get(currency)
+    if threshold is None or amount < threshold:
+        return None
+    title_lower = title.lower()
+    if re.search(r"\b(?:lead|principal|staff)\b", title_lower) and not re.search(
+        r"\b(?:head of|director|vp|vice president|chief)\b",
+        title_lower,
+    ):
+        return "over_target_senior_ic"
+    return "over_target_executive"
+
+
+def _max_annual_compensation(text: str) -> tuple[str, int] | None:
+    candidates: list[tuple[str, int]] = []
+    for fragment in _requirement_fragments(text):
+        if not re.search(
+            r"\b(?:salary|compensation|base pay|pay range|annual|per year|ote)\b",
+            fragment,
+            flags=re.IGNORECASE,
+        ):
+            continue
+        currency = _compensation_currency(fragment)
+        if currency is None:
+            continue
+        amounts = [
+            _parse_compensation_amount(match.group("amount"), match.group("suffix"))
+            for match in re.finditer(
+                r"(?P<amount>\d[\d,.]*)(?:\s*(?P<suffix>k))?",
+                fragment,
+                flags=re.IGNORECASE,
+            )
+        ]
+        amounts = [amount for amount in amounts if amount >= 20_000]
+        if amounts:
+            candidates.append((currency, max(amounts)))
+    if not candidates:
+        return None
+    return max(candidates, key=lambda candidate: candidate[1])
+
+
+def _compensation_currency(text: str) -> str | None:
+    lowered = text.lower()
+    if "$" in text or "usd" in lowered or "us dollar" in lowered:
+        return "usd"
+    if "€" in text or "eur" in lowered or "euro" in lowered:
+        return "eur"
+    if "£" in text or "gbp" in lowered or "pound" in lowered:
+        return "gbp"
+    if "aud" in lowered or "australian dollar" in lowered:
+        return "aud"
+    if "sgd" in lowered or "singapore dollar" in lowered:
+        return "sgd"
+    return None
+
+
+def _parse_compensation_amount(raw: str, suffix: str | None) -> int:
+    cleaned = raw.strip()
+    if "," in cleaned:
+        normalized = cleaned.replace(",", "")
+    elif "." in cleaned and len(cleaned.rsplit(".", 1)[-1]) == 3:
+        normalized = cleaned.replace(".", "")
+    else:
+        normalized = cleaned
+    amount = float(normalized)
+    if suffix:
+        amount *= 1_000
+    return int(amount)
 
 
 def _partnership_domain_gap(text: str) -> bool:

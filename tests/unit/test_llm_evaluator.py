@@ -170,6 +170,197 @@ class LlmEvaluatorTest(unittest.TestCase):
 
         self.assertNotIn(evaluation.recommendation, {"apply_now", "consider"})
 
+    def test_gate_penalties_cap_overgenerous_llm_fit(self) -> None:
+        cases = (
+            (
+                "native_pm",
+                "Product Manager, Consumer",
+                "Product",
+                "Own product roadmap, PRDs, experimentation, launch planning, and PM rituals.",
+                ["London, United Kingdom"],
+                _company(),
+            ),
+            (
+                "marketing",
+                "Senior Product Marketing Manager",
+                "Marketing",
+                "Own product marketing launches, messaging, campaigns, and demand generation.",
+                ["London, United Kingdom"],
+                _company(),
+            ),
+            (
+                "off_location",
+                "Strategic Operations Lead",
+                "Strategy & Operations",
+                "Lead strategic operations programs and executive cadence.",
+                ["Toronto, Canada"],
+                _company(),
+            ),
+            (
+                "wrong_language",
+                "Strategist, Agent Development (Spanish speaking)",
+                "Product",
+                "Lead agent strategy for customers. Spanish fluency required.",
+                ["Madrid, Spain"],
+                _company_targeting(["Madrid / Spain"]),
+            ),
+            (
+                "defense",
+                "Deployment Strategist - AUS Government",
+                "Professional Services",
+                "Lead deployment strategy for public sector customers.",
+                ["Sydney, Australia"],
+                _company_targeting(["Sydney / Australia"]),
+            ),
+            (
+                "pre_sales",
+                "Principal Client Value Partner",
+                "Value Engineering",
+                "Own value selling, pre-sales discovery, customer demos, and value cases.",
+                ["London, United Kingdom"],
+                _company(),
+            ),
+        )
+
+        for name, title, department, description, locations, company in cases:
+            with self.subTest(name=name):
+                output_payload = _valid_output().model_dump()
+                output_payload.update(
+                    {
+                        "role_family_fit": 90,
+                        "evidence_strength": 88,
+                        "scope_seniority": 86,
+                        "gap_manageability": 84,
+                        "confidence": 0.84,
+                        "advisory_recommendation": "apply_now",
+                    }
+                )
+                row = _row(title)
+                row["department"] = department
+                row["description_text"] = description
+                row["locations_json"] = json.dumps(locations)
+
+                evaluation = evaluate_role(
+                    row,
+                    company,
+                    llm_provider=FakeProvider(LLMEvaluationOutput.model_validate(output_payload)),
+                    spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+                )
+
+                self.assertEqual(evaluation.recommendation, "skip")
+                self.assertLess(evaluation.role_fit_score, 60)
+
+    def test_required_credential_and_salary_band_reduce_llm_fit(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload.update(
+            {
+                "role_family_fit": 92,
+                "evidence_strength": 88,
+                "scope_seniority": 84,
+                "gap_manageability": 80,
+                "confidence": 0.81,
+                "advisory_recommendation": "apply_now",
+            }
+        )
+        provider_output = LLMEvaluationOutput.model_validate(output_payload)
+
+        credential_row = _row("Strategic Operations Lead")
+        credential_row["description_text"] = (
+            "Requirements: PMP certification and intermediate platform certification "
+            "within six months. Lead strategic operations programs."
+        )
+        credential = evaluate_role(
+            credential_row,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        lead_row = _row("Lead, Strategic Operations")
+        lead_row["description_text"] = (
+            "Lead strategic operations programs and executive cadence. "
+            "Annual base salary range is $260,000 - $320,000 USD."
+        )
+        senior_ic = evaluate_role(
+            lead_row,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        director_row = _row("Director, Strategic Operations")
+        director_row["description_text"] = (
+            "Lead strategic operations programs and executive cadence. "
+            "Annual base salary range is $260,000 - $320,000 USD."
+        )
+        director = evaluate_role(
+            director_row,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        allowance_row = _row("Strategic Operations Lead")
+        allowance_row["description_text"] = (
+            "Lead strategic operations programs and executive cadence. "
+            "Competitive cash salary and equity. Food benefit: £200 monthly allowance."
+        )
+        allowance = evaluate_role(
+            allowance_row,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertLess(credential.role_fit_score, 70)
+        self.assertNotIn(credential.recommendation, {"apply_now", "consider"})
+        self.assertEqual(senior_ic.recommendation, "stretch")
+        self.assertGreaterEqual(senior_ic.role_fit_score, 60)
+        self.assertLess(senior_ic.role_fit_score, 70)
+        self.assertEqual(director.recommendation, "skip")
+        self.assertLess(director.role_fit_score, 60)
+        self.assertEqual(allowance.recommendation, "apply_now")
+
+    def test_below_level_title_caps_only_when_scope_is_missing(self) -> None:
+        output_payload = _valid_output().model_dump()
+        output_payload.update(
+            {
+                "role_family_fit": 88,
+                "evidence_strength": 82,
+                "scope_seniority": 80,
+                "gap_manageability": 76,
+                "confidence": 0.78,
+                "advisory_recommendation": "apply_now",
+            }
+        )
+        provider_output = LLMEvaluationOutput.model_validate(output_payload)
+
+        sparse = _row("GTM Strategy & Operations Analyst")
+        sparse["description_text"] = "Support reporting and dashboards for the GTM team."
+        scoped = _row("Strategy and Operations Associate")
+        scoped["description_text"] = (
+            "Own cross-functional strategic program delivery and drive executive rhythm "
+            "with senior stakeholders."
+        )
+
+        sparse_eval = evaluate_role(
+            sparse,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+        scoped_eval = evaluate_role(
+            scoped,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
+        self.assertEqual(sparse_eval.recommendation, "skip")
+        self.assertLess(sparse_eval.role_fit_score, 60)
+        self.assertNotEqual(scoped_eval.recommendation, "skip")
+        self.assertGreaterEqual(scoped_eval.role_fit_score, 70)
+
     def test_domain_mentions_do_not_cap_core_revenue_strategy_role(self) -> None:
         output_payload = _valid_output().model_dump()
         output_payload.update(
@@ -547,6 +738,21 @@ def _company() -> CompanyConfig:
         target_locations=["London / UK"],
         target_role_family_notes="Strategy and operations",
         warm_path=False,
+    )
+
+
+def _company_targeting(target_locations: list[str]) -> CompanyConfig:
+    company = _company()
+    return CompanyConfig(
+        name=company.name,
+        tier=company.tier,
+        enabled=company.enabled,
+        ats_type=company.ats_type,
+        source_key=company.source_key,
+        careers_url=company.careers_url,
+        target_locations=target_locations,
+        target_role_family_notes=company.target_role_family_notes,
+        warm_path=company.warm_path,
     )
 
 

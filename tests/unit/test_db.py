@@ -2,9 +2,16 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from types import SimpleNamespace
 import unittest
 
-from app.db import init_db, upsert_company, upsert_postings, upsert_source
+from app.db import (
+    _stored_evaluation_version,
+    init_db,
+    upsert_company,
+    upsert_postings,
+    upsert_source,
+)
 from app.models import CompanyConfig, JobPosting
 
 
@@ -51,6 +58,29 @@ class JobPostingPersistenceTest(unittest.TestCase):
             ],
         )
         self.assertTrue(str(rows[0]["source_job_id"]).startswith("multi-"))
+
+    def test_stored_evaluation_version_includes_hybrid_calibration(self) -> None:
+        llm_evaluation = SimpleNamespace(
+            provenance={
+                "model_version": "claude-haiku-4-5",
+                "evaluator_version": "hybrid_claude_v2",
+            }
+        )
+        fallback_evaluation = SimpleNamespace(
+            provenance={
+                "model_version": "deterministic_fallback_v1",
+                "evaluator_version": "deterministic_fallback_v1",
+            }
+        )
+
+        self.assertEqual(
+            _stored_evaluation_version(llm_evaluation),
+            "claude-haiku-4-5|hybrid_claude_v2",
+        )
+        self.assertEqual(
+            _stored_evaluation_version(fallback_evaluation),
+            "deterministic_fallback_v1",
+        )
 
     def test_language_variants_merge_and_prefer_supported_language_variant(self) -> None:
         conn = sqlite3.connect(":memory:")

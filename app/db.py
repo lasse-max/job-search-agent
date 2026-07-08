@@ -618,12 +618,7 @@ def persist_evaluation(
     *,
     model_version: str | None = None,
 ) -> bool:
-    stored_model_version = (
-        model_version
-        or evaluation.provenance.get("model_version")
-        or evaluation.provenance.get("evaluator_version")
-        or DEFAULT_EVALUATOR_VERSION
-    )
+    stored_model_version = _stored_evaluation_version(evaluation, model_version)
     stored_prompt_version = evaluation.provenance.get(
         "prompt_version",
         load_scoring_policy().version,
@@ -648,6 +643,26 @@ def persist_evaluation(
         ),
     )
     return cursor.rowcount > 0
+
+
+def _stored_evaluation_version(
+    evaluation: RoleEvaluation,
+    model_version: str | None = None,
+) -> str:
+    stored_model_version = (
+        model_version
+        or evaluation.provenance.get("model_version")
+        or evaluation.provenance.get("evaluator_version")
+        or DEFAULT_EVALUATOR_VERSION
+    )
+    evaluator_version = evaluation.provenance.get("evaluator_version")
+    if (
+        evaluator_version
+        and evaluator_version != stored_model_version
+        and str(evaluator_version) not in str(stored_model_version)
+    ):
+        return f"{stored_model_version}|{evaluator_version}"
+    return str(stored_model_version)
 
 
 def record_evaluation_skip(
