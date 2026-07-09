@@ -45,6 +45,9 @@ class PostgresFoundationTest(unittest.TestCase):
 
         self.assertIn("current_calibrated_role_evaluations", schema)
         self.assertIn("latest.model_version LIKE '%|hybrid\\_claude\\_v2' ESCAPE '\\'", schema)
+        self.assertIn("latest.model_version NOT ILIKE '%deterministic_fallback%'", schema)
+        self.assertIn("{provenance,fallback_quality}", schema)
+        self.assertIn("{provenance,is_fallback}", schema)
         self.assertNotIn("deterministic_fallback_v1", schema)
 
     def test_migration_report_redacts_target_and_surfaces_ambiguous_rows(self) -> None:

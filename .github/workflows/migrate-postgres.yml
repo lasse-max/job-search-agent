@@ -1,0 +1,276 @@
+name: One-off SQLite to Postgres Migration
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      SQLITE_DB_PATH: data/job_search_agent.sqlite
+      MIGRATION_REPORT: output/sqlite_to_postgres_migration_report.md
+      VERIFICATION_REPORT: output/postgres_verification.md
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore SQLite state
+        uses: actions/cache@v4
+        with:
+          path: data/job_search_agent.sqlite
+          key: job-search-agent-db-${{ github.run_id }}
+          restore-keys: |
+            job-search-agent-db-
+
+      - name: Validate inputs
+        env:
+          JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
+          OWNER_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}
+        run: |
+          test -s "$SQLITE_DB_PATH"
+          test -n "$JOB_AGENT_DATABASE_URL"
+          test -n "$OWNER_EMAIL"
+          mkdir -p output
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Run controlled one-way import
+        id: import
+        continue-on-error: true
+        env:
+          JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
+          OWNER_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}
+        run: |
+          job-agent migrate-postgres \
+            --source "$SQLITE_DB_PATH" \
+            --report "$MIGRATION_REPORT" \
+            --owner-email "$OWNER_EMAIL"
+
+      - name: Apply Supabase auth and RLS migration
+        if: always()
+        env:
+          JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          import psycopg
+
+          migration = Path("migrations/002_stage15_supabase_auth.sql").read_text(
+              encoding="utf-8"
+          )
+          with psycopg.connect(os.environ["JOB_AGENT_DATABASE_URL"]) as conn:
+              with conn.cursor() as cursor:
+                  cursor.execute(migration)
+              conn.commit()
+          PY
+
+      - name: Verify Postgres cutover
+        id: verify
+        if: always()
+        continue-on-error: true
+        env:
+          JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sqlite3
+          from pathlib import Path
+
+          import psycopg
+
+          source_path = Path(os.environ["SQLITE_DB_PATH"])
+          report_path = Path(os.environ["VERIFICATION_REPORT"])
+          report_path.parent.mkdir(parents=True, exist_ok=True)
+
+          core_tables = [
+              "companies",
+              "job_sources",
+              "source_runs",
+              "job_postings",
+              "role_evaluations",
+              "opportunity_reviews",
+          ]
+          auxiliary_tables = ["evaluation_skips", "notifications"]
+          protected_tables = [*core_tables, *auxiliary_tables, "app_allowed_users"]
+
+          lines = ["# Postgres Cutover Verification", ""]
+          errors: list[str] = []
+
+          sqlite_conn = sqlite3.connect(source_path)
+          pg_conn = psycopg.connect(os.environ["JOB_AGENT_DATABASE_URL"])
+
+          def sqlite_count(table: str) -> int:
+              return int(sqlite_conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0])
+
+          def pg_scalar(sql: str, params: tuple[object, ...] = ()) -> object:
+              with pg_conn.cursor() as cursor:
+                  cursor.execute(sql, params)
+                  return cursor.fetchone()[0]
+
+          def pg_count(table: str) -> int:
+              return int(pg_scalar(f"SELECT COUNT(*) FROM {table}"))
+
+          lines.extend(
+              [
+                  "## Row Counts",
+                  "",
+                  "| Table | SQLite source | Postgres target |",
+                  "| --- | ---: | ---: |",
+              ]
+          )
+          for table in [*core_tables, *auxiliary_tables]:
+              source_count = sqlite_count(table)
+              target_count = pg_count(table)
+              lines.append(f"| `{table}` | {source_count} | {target_count} |")
+              if source_count != target_count:
+                  errors.append(
+                      f"{table}: SQLite source has {source_count}, Postgres target has {target_count}"
+                  )
+
+          lines.extend(["", "## Schema And RLS", ""])
+          for table in protected_tables:
+              exists = bool(pg_scalar("SELECT to_regclass(%s)", (f"public.{table}",)))
+              if not exists:
+                  errors.append(f"missing table: {table}")
+                  lines.append(f"- `{table}`: missing")
+                  continue
+              rls_enabled = bool(
+                  pg_scalar(
+                      """
+                      SELECT c.relrowsecurity
+                      FROM pg_class c
+                      JOIN pg_namespace n ON n.oid = c.relnamespace
+                      WHERE n.nspname = 'public'
+                        AND c.relname = %s
+                      """,
+                      (table,),
+                  )
+              )
+              lines.append(f"- `{table}`: exists, rls_enabled={str(rls_enabled).lower()}")
+              if not rls_enabled:
+                  errors.append(f"RLS not enabled: {table}")
+
+          policy_count = int(
+              pg_scalar(
+                  """
+                  SELECT COUNT(*)
+                  FROM pg_policies
+                  WHERE schemaname = 'public'
+                    AND policyname LIKE 'owner_read_%'
+                  """
+              )
+          )
+          allowed_user_count = int(pg_count("app_allowed_users"))
+          lines.extend(
+              [
+                  "",
+                  f"- Owner-read policy count: `{policy_count}`",
+                  f"- Allowed user count: `{allowed_user_count}`",
+              ]
+          )
+          if policy_count < len(protected_tables):
+              errors.append(f"expected at least {len(protected_tables)} owner-read policies")
+          if allowed_user_count < 1:
+              errors.append("app_allowed_users has no owner row")
+
+          current_eval_count = int(pg_count("current_calibrated_role_evaluations"))
+          bad_version_count = int(
+              pg_scalar(
+                  """
+                  SELECT COUNT(*)
+                  FROM current_calibrated_role_evaluations
+                  WHERE model_version NOT LIKE %s ESCAPE '\\'
+                  """,
+                  ("%|hybrid\\_claude\\_v2",),
+              )
+          )
+          stale_v1_count = int(
+              pg_scalar(
+                  """
+                  SELECT COUNT(*)
+                  FROM current_calibrated_role_evaluations
+                  WHERE model_version LIKE %s ESCAPE '\\'
+                  """,
+                  ("%|hybrid\\_claude\\_v1",),
+              )
+          )
+          fallback_count = int(
+              pg_scalar(
+                  """
+                  SELECT COUNT(*)
+                  FROM current_calibrated_role_evaluations
+                  WHERE model_version ILIKE '%deterministic_fallback%'
+                     OR COALESCE(
+                          lower(evaluation_json::jsonb #>> '{provenance,fallback_quality}'),
+                          'false'
+                        ) = 'true'
+                     OR COALESCE(
+                          lower(evaluation_json::jsonb #>> '{provenance,is_fallback}'),
+                          'false'
+                        ) = 'true'
+                  """
+              )
+          )
+          lines.extend(
+              [
+                  "",
+                  "## Calibrated View Guard",
+                  "",
+                  f"- Current calibrated rows: `{current_eval_count}`",
+                  f"- Wrong evaluator-version rows: `{bad_version_count}`",
+                  f"- Stale `hybrid_claude_v1` rows: `{stale_v1_count}`",
+                  f"- Fallback rows: `{fallback_count}`",
+              ]
+          )
+          if bad_version_count:
+              errors.append("current_calibrated_role_evaluations returned non-v2 rows")
+          if stale_v1_count:
+              errors.append("current_calibrated_role_evaluations returned stale v1 rows")
+          if fallback_count:
+              errors.append("current_calibrated_role_evaluations returned fallback rows")
+
+          lines.extend(["", "## Result", ""])
+          if errors:
+              lines.append("status: failed")
+              lines.append("")
+              lines.append("```json")
+              lines.append(json.dumps(errors, indent=2))
+              lines.append("```")
+          else:
+              lines.append("status: passed")
+
+          report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          print(report_path.read_text(encoding="utf-8"))
+          if errors:
+              raise SystemExit(1)
+          PY
+
+      - name: Upload migration reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: postgres-migration-reports
+          path: |
+            output/sqlite_to_postgres_migration_report.md
+            output/postgres_verification.md
+          if-no-files-found: ignore
+
+      - name: Fail on migration or verification errors
+        if: steps.import.outcome != 'success' || steps.verify.outcome != 'success'
+        run: |
+          echo "Migration import or verification failed. See postgres-migration-reports artifact."
+          exit 1

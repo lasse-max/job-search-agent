@@ -125,6 +125,15 @@ WHERE re.id = (
   FROM role_evaluations latest
   WHERE latest.job_posting_id = re.job_posting_id
     AND latest.model_version LIKE '%|hybrid\_claude\_v2' ESCAPE '\'
+    AND latest.model_version NOT ILIKE '%deterministic_fallback%'
+    AND COALESCE(
+      lower(latest.evaluation_json::jsonb #>> '{provenance,fallback_quality}'),
+      'false'
+    ) <> 'true'
+    AND COALESCE(
+      lower(latest.evaluation_json::jsonb #>> '{provenance,is_fallback}'),
+      'false'
+    ) <> 'true'
 );
 
 CREATE VIEW current_opportunity_evaluations

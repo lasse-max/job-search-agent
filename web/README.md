@@ -37,7 +37,8 @@ The first migration creates the agent tables and the read views:
 - `current_opportunity_evaluations`
 
 Those views only expose latest evaluations whose `model_version` ends with the
-current calibrated evaluator suffix: `|hybrid_claude_v2`.
+current calibrated evaluator suffix, `|hybrid_claude_v2`, and whose provenance
+is not marked as fallback.
 
 The second migration enables RLS and grants read access only to authenticated
 users whose email exists in `app_allowed_users`. Anonymous access has no table
