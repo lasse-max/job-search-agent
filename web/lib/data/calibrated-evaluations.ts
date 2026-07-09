@@ -1,11 +1,101 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
 export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v2";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
+const CALIBRATION_FLOOR_LIMIT = 5;
+
+type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
+type CurrentEvaluationRow =
+  Database["public"]["Views"]["current_opportunity_evaluations"]["Row"];
+type SkipRow = Database["public"]["Tables"]["evaluation_skips"]["Row"];
+type PostingRow = Pick<
+  Database["public"]["Tables"]["job_postings"]["Row"],
+  "id" | "company_id" | "title" | "locations_json" | "source_url" | "availability_state"
+>;
+type CompanyRow = Pick<Database["public"]["Tables"]["companies"]["Row"], "id" | "name" | "tier">;
+type ScanRunRow = Pick<
+  Database["public"]["Tables"]["source_runs"]["Row"],
+  "started_at" | "fetched_count" | "status"
+>;
+
+export type Recommendation = "apply_now" | "consider" | "stretch" | "skip" | "blocked";
+export type MatchBand = "apply_now" | "consider" | "stretch" | "calibration";
+
+export type AlignmentEvidence = {
+  jobRequirement: string;
+  candidateEvidence: string;
+  evidenceStrength: "strong" | "medium" | "weak" | string;
+};
+
+export type GapEvidence = {
+  gap: string;
+  severity: "low" | "medium" | "high" | string;
+  mitigation: string;
+};
+
+export type PotentialMatch = {
+  id: number;
+  stableId: string;
+  company: string;
+  title: string;
+  sourceUrl: string | null;
+  locations: string[];
+  locationsLabel: string;
+  tier: number;
+  recommendation: Recommendation;
+  band: MatchBand;
+  fitScore: number;
+  confidencePct: number;
+  feasibilityPct: number;
+  feasibilityState: string;
+  feasibilityReason: string;
+  summary: string;
+  topAlignment: string;
+  topGap: string;
+  alignments: AlignmentEvidence[];
+  gaps: GapEvidence[];
+  hardBlockers: string[];
+  firstSeenAt: string;
+  postedAt: string | null;
+  evaluatedAt: string;
+  reviewState: string;
+  skipReason: string | null;
+  isCalibration: boolean;
+};
+
+export type AuditRow = {
+  id: string;
+  fitScore: number | null;
+  company: string;
+  title: string;
+  reason: string;
+  source: "evaluation" | "gate";
+  createdAt: string;
+};
+
+export type PotentialMatchesData = {
+  generatedAtLabel: string;
+  scanReach: {
+    fetchedCount: number | null;
+    companyCount: number | null;
+    latestScanAt: string | null;
+  };
+  bands: Record<MatchBand, PotentialMatch[]>;
+  auditRows: AuditRow[];
+  counts: {
+    applyNow: number;
+    consider: number;
+    stretch: number;
+    calibration: number;
+    audit: number;
+  };
+  quietDay: boolean;
+  initialExpandedId: number | null;
+};
 
 export async function listCurrentEvaluationRefs(
-  supabase: SupabaseClient<Database>,
+  supabase: AppSupabaseClient,
   limit = 25
 ) {
   return supabase
@@ -14,4 +104,430 @@ export async function listCurrentEvaluationRefs(
     .like("model_version", CURRENT_EVALUATOR_VERSION_SUFFIX)
     .order("evaluated_at", { ascending: false })
     .limit(limit);
+}
+
+export async function loadPotentialMatches(
+  supabase: AppSupabaseClient
+): Promise<PotentialMatchesData> {
+  const { data: evaluationRows, error } = await supabase
+    .from("current_opportunity_evaluations")
+    .select("*")
+    .eq("availability_state", "open")
+    .like("model_version", CURRENT_EVALUATOR_VERSION_SUFFIX)
+    .order("evaluated_at", { ascending: false })
+    .limit(500);
+
+  if (error) {
+    throw new Error(`Unable to load calibrated evaluations: ${error.message}`);
+  }
+
+  const allCurrentMatches = (evaluationRows ?? [])
+    .map(normalizeCurrentEvaluation)
+    .filter((role): role is PotentialMatch => role !== null);
+  const reviewableMatches = allCurrentMatches.filter((role) => role.reviewState === "new");
+  const surfacedMatches = reviewableMatches.filter((role) =>
+    ["apply_now", "consider", "stretch"].includes(role.recommendation)
+  );
+  const selectedStrongIds = new Set(surfacedMatches.map((role) => role.id));
+  const quietDay = surfacedMatches.length < CALIBRATION_FLOOR_LIMIT;
+  const calibrationMatches = quietDay
+    ? [...reviewableMatches]
+        .filter((role) => !selectedStrongIds.has(role.id))
+        .sort(byFitDescending)
+        .slice(0, CALIBRATION_FLOOR_LIMIT)
+        .map((role) => ({ ...role, band: "calibration" as const, isCalibration: true }))
+    : [];
+
+  const bands: Record<MatchBand, PotentialMatch[]> = {
+    apply_now: surfacedMatches.filter((role) => role.recommendation === "apply_now"),
+    consider: surfacedMatches.filter((role) => role.recommendation === "consider"),
+    stretch: surfacedMatches.filter((role) => role.recommendation === "stretch"),
+    calibration: calibrationMatches
+  };
+
+  const [skipAuditRows, scanReach] = await Promise.all([
+    loadSkipAuditRows(supabase),
+    loadScanReach(supabase)
+  ]);
+  const evaluatedAuditRows = allCurrentMatches
+    .map((role) => matchToAuditRow(role))
+    .sort((left, right) => right.createdAt.localeCompare(left.createdAt));
+  const auditRows = [...evaluatedAuditRows, ...skipAuditRows].slice(0, 160);
+  const firstExpandable =
+    bands.apply_now[0]?.id ?? bands.consider[0]?.id ?? bands.stretch[0]?.id ?? bands.calibration[0]?.id ?? null;
+
+  return {
+    generatedAtLabel: formatDateTime(new Date().toISOString()),
+    scanReach,
+    bands,
+    auditRows,
+    counts: {
+      applyNow: bands.apply_now.length,
+      consider: bands.consider.length,
+      stretch: bands.stretch.length,
+      calibration: bands.calibration.length,
+      audit: auditRows.length
+    },
+    quietDay,
+    initialExpandedId: firstExpandable
+  };
+}
+
+function normalizeCurrentEvaluation(row: CurrentEvaluationRow): PotentialMatch | null {
+  const evaluation = parseJsonObject(row.evaluation_json);
+  if (!evaluation || isFallbackEvaluation(evaluation)) {
+    return null;
+  }
+
+  const recommendation = normalizeRecommendation(readString(evaluation.recommendation));
+  const fitScore = clampPercent(readNumber(evaluation.role_fit_score), 0);
+  const confidencePct = normalizePercent(readNumber(evaluation.confidence), 0);
+  const feasibility = asRecord(evaluation.feasibility);
+  const feasibilityState = readString(feasibility?.state) || "unknown";
+  const feasibilityReason = readString(feasibility?.reason) || "No feasibility note recorded.";
+  const locations = parseLocations(row.locations_json);
+  const alignments = readAlignments(evaluation.alignments);
+  const gaps = readGaps(evaluation.gaps);
+  const hardBlockers = readHardBlockers(evaluation.hard_blockers);
+  const summary = readString(evaluation.summary) || "No summary recorded.";
+  const sourceUrl = safeHttpUrl(row.source_url);
+  const topAlignment = formatTopAlignment(alignments[0]);
+  const topGap = gaps[0]?.gap || hardBlockers[0] || "No major gap recorded.";
+
+  return {
+    id: row.job_id,
+    stableId: `${row.source_type}:${row.source_key}:${row.source_job_id}`,
+    company: row.company,
+    title: row.title,
+    sourceUrl,
+    locations,
+    locationsLabel: locations.length ? locations.join(", ") : "Unknown location",
+    tier: row.company_tier,
+    recommendation,
+    band: recommendationToBand(recommendation),
+    fitScore,
+    confidencePct,
+    feasibilityPct: feasibilityStateToPct(feasibilityState),
+    feasibilityState,
+    feasibilityReason,
+    summary,
+    topAlignment,
+    topGap,
+    alignments,
+    gaps,
+    hardBlockers,
+    firstSeenAt: row.first_seen_at,
+    postedAt: row.posted_at,
+    evaluatedAt: row.evaluated_at,
+    reviewState: row.review_state,
+    skipReason: skipReasonForEvaluation(recommendation, hardBlockers, gaps, row.review_state),
+    isCalibration: false
+  };
+}
+
+async function loadSkipAuditRows(supabase: AppSupabaseClient): Promise<AuditRow[]> {
+  const { data: skips, error } = await supabase
+    .from("evaluation_skips")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(80);
+
+  const skipRows = (skips ?? []) as SkipRow[];
+  if (error || !skipRows.length) {
+    return [];
+  }
+
+  const postingIds = [...new Set(skipRows.map((skip) => skip.job_posting_id))];
+  const { data: postings } = await supabase
+    .from("job_postings")
+    .select("*")
+    .in("id", postingIds);
+  const postingRows = (postings ?? []) as PostingRow[];
+  const postingsById = new Map(postingRows.map((posting) => [posting.id, posting]));
+  const companyIds = [...new Set(postingRows.map((posting) => posting.company_id))];
+  const { data: companies } = companyIds.length
+    ? await supabase.from("companies").select("*").in("id", companyIds)
+    : { data: [] as CompanyRow[] };
+  const companyRows = (companies ?? []) as CompanyRow[];
+  const companiesById = new Map(companyRows.map((company) => [company.id, company]));
+
+  return skipRows.map((skip) => skipToAuditRow(skip, postingsById, companiesById));
+}
+
+async function loadScanReach(supabase: AppSupabaseClient) {
+  const [{ data: runs }, { count }] = await Promise.all([
+    supabase
+      .from("source_runs")
+      .select("*")
+      .order("id", { ascending: false })
+      .limit(96),
+    supabase.from("companies").select("id", { count: "exact", head: true }).eq("enabled", 1)
+  ]);
+
+  const runRows = (runs ?? []) as ScanRunRow[];
+  const latestSuccessful = runRows.find((run) => run.status === "success" || run.status === "degraded");
+  if (!latestSuccessful) {
+    return { fetchedCount: null, companyCount: count ?? null, latestScanAt: null };
+  }
+
+  const latestDay = latestSuccessful.started_at.slice(0, 10);
+  const fetchedCount = runRows
+    .filter((run) => run.started_at.slice(0, 10) === latestDay)
+    .reduce((total, run) => total + run.fetched_count, 0);
+
+  return {
+    fetchedCount,
+    companyCount: count ?? null,
+    latestScanAt: latestSuccessful.started_at
+  };
+}
+
+function skipToAuditRow(
+  skip: SkipRow,
+  postingsById: Map<number, PostingRow>,
+  companiesById: Map<number, CompanyRow>
+): AuditRow {
+  const posting = postingsById.get(skip.job_posting_id);
+  const company = posting ? companiesById.get(posting.company_id) : undefined;
+  return {
+    id: `gate-${skip.id}`,
+    fitScore: null,
+    company: company?.name ?? "Unknown company",
+    title: posting?.title ?? `Posting ${skip.job_posting_id}`,
+    reason: humanizeReason(skip.reason),
+    source: "gate",
+    createdAt: skip.created_at
+  };
+}
+
+function matchToAuditRow(role: PotentialMatch): AuditRow {
+  return {
+    id: `evaluation-${role.id}`,
+    fitScore: role.fitScore,
+    company: role.company,
+    title: role.title,
+    reason: role.skipReason ?? `${humanizeRecommendation(role.recommendation)} · ${role.reviewState}`,
+    source: "evaluation",
+    createdAt: role.evaluatedAt
+  };
+}
+
+function parseJsonObject(value: string): Record<string, unknown> | null {
+  try {
+    return asRecord(JSON.parse(value));
+  } catch {
+    return null;
+  }
+}
+
+function parseLocations(value: string): string[] {
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed.map((item) => String(item)).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    return value as Record<string, unknown>;
+  }
+  return null;
+}
+
+function readString(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function readNumber(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+  if (typeof value === "string" && value.trim() !== "") {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  return null;
+}
+
+function readAlignments(value: unknown): AlignmentEvidence[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .map((item) => asRecord(item))
+    .filter((item): item is Record<string, unknown> => item !== null)
+    .map((item) => ({
+      jobRequirement: readString(item.job_requirement) || "Requirement not specified",
+      candidateEvidence: readString(item.candidate_evidence) || "Evidence not recorded",
+      evidenceStrength: readString(item.evidence_strength) || "medium"
+    }));
+}
+
+function readGaps(value: unknown): GapEvidence[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .map((item) => asRecord(item))
+    .filter((item): item is Record<string, unknown> => item !== null)
+    .map((item) => ({
+      gap: readString(item.gap) || "Gap not specified",
+      severity: readString(item.severity) || "medium",
+      mitigation: readString(item.mitigation) || "Mitigation not recorded"
+    }));
+}
+
+function readHardBlockers(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .map((item) => {
+      const record = asRecord(item);
+      if (!record) {
+        return "";
+      }
+      const type = readString(record.type) || "blocker";
+      const evidence = readString(record.evidence);
+      return evidence ? `${type}: ${evidence}` : type;
+    })
+    .filter(Boolean);
+}
+
+function isFallbackEvaluation(evaluation: Record<string, unknown>) {
+  const provenance = asRecord(evaluation.provenance);
+  const fallbackQuality = readString(provenance?.fallback_quality).toLowerCase();
+  const isFallback = readString(provenance?.is_fallback).toLowerCase();
+  const modelVersion = readString(provenance?.model_version).toLowerCase();
+  const evaluatorVersion = readString(provenance?.evaluator_version).toLowerCase();
+  return (
+    fallbackQuality === "true" ||
+    isFallback === "true" ||
+    modelVersion.includes("deterministic_fallback") ||
+    evaluatorVersion.includes("deterministic_fallback")
+  );
+}
+
+function normalizeRecommendation(value: string): Recommendation {
+  if (value === "apply_now" || value === "consider" || value === "stretch" || value === "blocked") {
+    return value;
+  }
+  return "skip";
+}
+
+function recommendationToBand(recommendation: Recommendation): MatchBand {
+  if (recommendation === "apply_now" || recommendation === "consider" || recommendation === "stretch") {
+    return recommendation;
+  }
+  return "calibration";
+}
+
+function normalizePercent(value: number | null, fallback: number) {
+  if (value === null) {
+    return fallback;
+  }
+  return clampPercent(value <= 1 ? Math.round(value * 100) : Math.round(value), fallback);
+}
+
+function clampPercent(value: number | null, fallback: number) {
+  if (value === null || !Number.isFinite(value)) {
+    return fallback;
+  }
+  return Math.max(0, Math.min(100, Math.round(value)));
+}
+
+function feasibilityStateToPct(state: string) {
+  const normalized = state.toLowerCase();
+  if (normalized === "viable") {
+    return 90;
+  }
+  if (normalized === "sponsorship_required") {
+    return 70;
+  }
+  if (normalized === "uncertain") {
+    return 45;
+  }
+  if (normalized === "blocked") {
+    return 0;
+  }
+  return 50;
+}
+
+function formatTopAlignment(alignment: AlignmentEvidence | undefined) {
+  if (!alignment) {
+    return "No alignment recorded.";
+  }
+  return `${alignment.jobRequirement} -> ${alignment.candidateEvidence}`;
+}
+
+function skipReasonForEvaluation(
+  recommendation: Recommendation,
+  hardBlockers: string[],
+  gaps: GapEvidence[],
+  reviewState: string
+) {
+  if (hardBlockers.length) {
+    return `blocked: ${hardBlockers[0]}`;
+  }
+  if (recommendation === "skip" || recommendation === "blocked") {
+    return gaps[0]?.gap ? `${recommendation}: ${gaps[0].gap}` : humanizeRecommendation(recommendation);
+  }
+  if (reviewState !== "new") {
+    return `review state: ${reviewState}`;
+  }
+  return null;
+}
+
+function humanizeReason(value: string) {
+  return value.replaceAll("_", " ").replace(/\s+/g, " ").trim();
+}
+
+export function humanizeRecommendation(value: Recommendation | string) {
+  if (value === "apply_now") {
+    return "Apply now";
+  }
+  if (value === "consider") {
+    return "Consider";
+  }
+  if (value === "stretch") {
+    return "Stretch";
+  }
+  if (value === "blocked") {
+    return "Blocked";
+  }
+  return "Skip";
+}
+
+function byFitDescending(left: PotentialMatch, right: PotentialMatch) {
+  return right.fitScore - left.fitScore || left.company.localeCompare(right.company) || left.title.localeCompare(right.title);
+}
+
+function safeHttpUrl(value: string) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "http:" || url.protocol === "https:" ? url.toString() : null;
+  } catch {
+    return null;
+  }
+}
+
+export function formatDateTime(value: string | null) {
+  if (!value) {
+    return "unknown";
+  }
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+  return new Intl.DateTimeFormat("en", {
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    month: "short"
+  }).format(date);
 }
