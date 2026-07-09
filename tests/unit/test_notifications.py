@@ -16,6 +16,7 @@ from app.db import (
     record_source_run,
 )
 from app.services.digest import render_html, render_text
+from app.services.evaluate import HYBRID_EVALUATOR_VERSION
 from app.services.manual_intake import add_text_intake
 from app.services.notifications import EmailMessage, EmailSendResult, deliver_digest
 
@@ -300,6 +301,34 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertIn("Source: https://example.com/calibration-03", text_body)
             self.assertNotIn("Source: https://example.com/calibration-00", text_body)
             self.assertEqual(text_body.count("Source: https://example.com/calibration-"), 5)
+
+    def test_current_evaluator_filter_excludes_stale_llm_rows(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            add_text_intake(
+                JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/stale-version",
+            )
+            conn = _connect(db_path)
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            conn.execute(
+                """
+                UPDATE role_evaluations
+                SET model_version = 'fake-claude|hybrid_claude_v1'
+                """
+            )
+            conn.commit()
+
+            self.assertEqual(len(get_digest_rows(conn)), 1)
+            self.assertEqual(
+                get_digest_rows(conn, evaluator_version=HYBRID_EVALUATOR_VERSION),
+                [],
+            )
 
     def test_degraded_fallback_digest_does_not_add_calibration_floor(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

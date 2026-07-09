@@ -15,13 +15,14 @@ import httpx
 from app.config import OUTPUT_DIR
 from app.db import (
     has_delivered_payload,
+    get_digest_rows,
     latest_delivered_notification_at,
     latest_scan_reach,
     latest_source_failures,
     record_notification,
-    get_digest_rows,
 )
 from app.services.digest import DigestSelection, render_html, render_text, select_digest_rows
+from app.services.evaluate import HYBRID_EVALUATOR_VERSION
 
 
 DEFAULT_RESEND_FROM = "Job Search Agent <onboarding@resend.dev>"
@@ -117,8 +118,8 @@ def deliver_digest(
     text_path = output_dir / "latest_digest.txt"
     recipient = recipient or os.getenv("DIGEST_RECIPIENT_EMAIL") or ""
     since = latest_delivered_notification_at(conn)
-    raw_rows = get_digest_rows(conn, since=since)
-    calibration_pool_rows = get_digest_rows(conn)
+    raw_rows = get_digest_rows(conn, since=since, evaluator_version=HYBRID_EVALUATOR_VERSION)
+    calibration_pool_rows = get_digest_rows(conn, evaluator_version=HYBRID_EVALUATOR_VERSION)
     selection = select_digest_rows(raw_rows, calibration_pool_rows=calibration_pool_rows)
     rows = selection.rows
     failures = latest_source_failures(conn)

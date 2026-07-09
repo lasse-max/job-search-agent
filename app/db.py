@@ -610,6 +610,42 @@ def get_postings_by_ids(conn: sqlite3.Connection, posting_ids: list[int]) -> lis
     ).fetchall()
 
 
+def stale_open_posting_ids_for_evaluator(
+    conn: sqlite3.Connection,
+    source_id: int,
+    *,
+    evaluator_version: str,
+    limit: int,
+) -> list[int]:
+    if limit <= 0:
+        return []
+    rows = conn.execute(
+        """
+        SELECT jp.id
+        FROM job_postings jp
+        JOIN role_evaluations re ON re.job_posting_id = jp.id
+        WHERE jp.source_id = ?
+          AND jp.availability_state = 'open'
+          AND re.id = (
+            SELECT MAX(latest.id)
+            FROM role_evaluations latest
+            WHERE latest.job_posting_id = jp.id
+          )
+          AND re.model_version != ?
+          AND re.model_version NOT LIKE ? ESCAPE '\\'
+        ORDER BY re.created_at ASC, jp.first_seen_at ASC, jp.id ASC
+        LIMIT ?
+        """,
+        (
+            source_id,
+            DEFAULT_EVALUATOR_VERSION,
+            _evaluator_version_like(evaluator_version),
+            limit,
+        ),
+    ).fetchall()
+    return [int(row["id"]) for row in rows]
+
+
 def persist_evaluation(
     conn: sqlite3.Connection,
     job_posting_id: int,
@@ -685,13 +721,28 @@ def get_digest_rows(
     conn: sqlite3.Connection,
     *,
     since: str | None = None,
+    evaluator_version: str | None = None,
 ) -> list[sqlite3.Row]:
     wake_due_snoozes(conn, utc_now()[:10])
     since_clause = ""
-    params: tuple[str, ...] = ()
+    latest_version_clause = ""
+    params: list[str] = []
     if since is not None:
         since_clause = "AND re.created_at >= ?"
-        params = (since,)
+        params.append(since)
+    if evaluator_version is not None:
+        latest_version_clause = """
+              AND (
+                latest.model_version = ?
+                OR latest.model_version LIKE ? ESCAPE '\\'
+              )
+        """
+        params.extend(
+            [
+                DEFAULT_EVALUATOR_VERSION,
+                _evaluator_version_like(evaluator_version),
+            ]
+        )
     return conn.execute(
         f"""
         SELECT
@@ -722,11 +773,17 @@ def get_digest_rows(
           AND re.id = (
             SELECT MAX(id) FROM role_evaluations latest
             WHERE latest.job_posting_id = jp.id
+            {latest_version_clause}
           )
         ORDER BY c.tier, jp.first_seen_at DESC
         """,
-        params,
+        tuple(params),
     ).fetchall()
+
+
+def _evaluator_version_like(evaluator_version: str) -> str:
+    escaped = evaluator_version.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+    return f"%|{escaped}"
 
 
 def latest_delivered_notification_at(

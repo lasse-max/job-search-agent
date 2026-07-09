@@ -14,6 +14,7 @@ from jinja2 import Environment, FileSystemLoader
 from app.config import load_scoring_policy
 from app.db import ScanReach, get_digest_rows, latest_scan_reach, latest_source_failures
 from app.models import utc_now
+from app.services.evaluate import HYBRID_EVALUATOR_VERSION
 
 
 RECOMMENDATION_SECTIONS = [
@@ -88,13 +89,17 @@ def write_digest(
     since: str | None = None,
 ) -> tuple[Path, Path, int]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    rows = get_digest_rows(conn, since=since)
+    rows = get_digest_rows(conn, since=since, evaluator_version=HYBRID_EVALUATOR_VERSION)
     conn.commit()
     failures = latest_source_failures(conn)
     html_path = output_dir / "latest_digest.html"
     text_path = output_dir / "latest_digest.txt"
 
-    calibration_pool_rows = get_digest_rows(conn) if since is not None else rows
+    calibration_pool_rows = (
+        get_digest_rows(conn, evaluator_version=HYBRID_EVALUATOR_VERSION)
+        if since is not None
+        else rows
+    )
     selection = select_digest_rows(rows, calibration_pool_rows=calibration_pool_rows)
     scan_reach = latest_scan_reach(conn)
     html_path.write_text(

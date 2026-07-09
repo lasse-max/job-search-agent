@@ -10,22 +10,30 @@ from app.config import DEFAULT_DB_PATH, OUTPUT_DIR, load_company_config
 from app.db import (
     connect,
     get_expected_volume_min,
+    get_postings_by_ids,
     init_db,
     persist_evaluation,
     recover_expected_volume_min_after_degraded,
     record_evaluation_skip,
     record_source_run,
     set_source_health,
+    stale_open_posting_ids_for_evaluator,
     update_expected_volume_min,
     upsert_company,
-    upsert_postings,
     upsert_source,
-    get_postings_by_ids,
+    upsert_postings,
 )
 from app.models import utc_now
 from app.services.digest import write_digest
-from app.services.evaluate import evaluate_role, input_hash, relevance_decision
+from app.services.evaluate import (
+    HYBRID_EVALUATOR_VERSION,
+    evaluate_role,
+    input_hash,
+    relevance_decision,
+)
 from app.services.llm_evaluator import LLMProviderError, ModelSpendCapExceeded
+
+STALE_EVALUATION_BACKFILL_LIMIT = 25
 
 
 @dataclass(frozen=True)
@@ -121,35 +129,68 @@ def run_scan(
             seen_at,
             count_absences=degraded_reason is None,
         )
-        candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
+        fresh_candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
+        stale_candidate_ids = stale_open_posting_ids_for_evaluator(
+            conn,
+            source_id,
+            evaluator_version=HYBRID_EVALUATOR_VERSION,
+            limit=STALE_EVALUATION_BACKFILL_LIMIT,
+        )
+        candidate_ids = _ordered_unique_ids(fresh_candidate_ids + stale_candidate_ids)
+        stale_only_candidate_ids = set(stale_candidate_ids).difference(fresh_candidate_ids)
         evaluated_count = 0
-        attempted_evaluation_count = 0
+        fresh_attempted_evaluation_count = 0
         dropped_evaluation_count = 0
         dropped_evaluation_errors: list[str] = []
         dropped_evaluation_rows = []
         fallback_evaluation_count = 0
-        for row in get_postings_by_ids(conn, candidate_ids):
+        rows_by_id = {int(row["id"]): row for row in get_postings_by_ids(conn, candidate_ids)}
+        for candidate_id in candidate_ids:
+            row = rows_by_id.get(candidate_id)
+            if row is None:
+                continue
+            stale_backfill = candidate_id in stale_only_candidate_ids
             row_hash = input_hash(row)
             relevance = relevance_decision(row, company)
             if not relevance.should_evaluate:
                 record_evaluation_skip(conn, int(row["id"]), row_hash, relevance.reason)
                 continue
-            attempted_evaluation_count += 1
+            if not stale_backfill:
+                fresh_attempted_evaluation_count += 1
             try:
                 evaluation = _evaluate_role_with_retry(row, company)
-            except (LLMProviderError, ModelSpendCapExceeded) as exc:
-                dropped_evaluation_count += 1
+            except ModelSpendCapExceeded as exc:
                 reason = _evaluation_drop_reason(exc)
+                record_evaluation_skip(conn, int(row["id"]), row_hash, reason)
+                if stale_backfill:
+                    break
+                dropped_evaluation_count += 1
                 dropped_evaluation_errors.append(reason)
                 dropped_evaluation_rows.append((row, row_hash, reason))
+                continue
+            except LLMProviderError as exc:
+                reason = _evaluation_drop_reason(exc)
                 record_evaluation_skip(conn, int(row["id"]), row_hash, reason)
+                if stale_backfill:
+                    continue
+                dropped_evaluation_count += 1
+                dropped_evaluation_errors.append(reason)
+                dropped_evaluation_rows.append((row, row_hash, reason))
+                continue
+            if stale_backfill and _is_fallback_evaluation(evaluation):
+                record_evaluation_skip(
+                    conn,
+                    int(row["id"]),
+                    row_hash,
+                    "stale_evaluation_backfill_deferred_no_current_evaluator",
+                )
                 continue
             if persist_evaluation(conn, int(row["id"]), row_hash, evaluation):
                 evaluated_count += 1
 
         if (
-            attempted_evaluation_count > 0
-            and dropped_evaluation_count == attempted_evaluation_count
+            fresh_attempted_evaluation_count > 0
+            and dropped_evaluation_count == fresh_attempted_evaluation_count
         ):
             fallback_evaluation_count = dropped_evaluation_count
             for row, row_hash, _reason in dropped_evaluation_rows:
@@ -246,6 +287,15 @@ def _evaluate_role_with_retry(row, company):
         return evaluate_role(row, company)
     except LLMProviderError:
         return evaluate_role(row, company)
+
+
+def _ordered_unique_ids(ids: list[int]) -> list[int]:
+    return list(dict.fromkeys(ids))
+
+
+def _is_fallback_evaluation(evaluation) -> bool:
+    provenance = evaluation.provenance
+    return str(provenance.get("fallback_quality")).lower() == "true"
 
 
 def _evaluation_drop_reason(exc: LLMProviderError | ModelSpendCapExceeded) -> str:

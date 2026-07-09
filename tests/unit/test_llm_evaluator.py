@@ -312,6 +312,18 @@ class LlmEvaluatorTest(unittest.TestCase):
             spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
         )
 
+        requisition_row = _row("Strategic Operations Lead")
+        requisition_row["description_text"] = (
+            "Lead strategic operations programs and executive cadence. "
+            "$180,000 salary, requisition 9999999, global operating rhythm ownership."
+        )
+        requisition = evaluate_role(
+            requisition_row,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
         self.assertLess(credential.role_fit_score, 70)
         self.assertNotIn(credential.recommendation, {"apply_now", "consider"})
         self.assertEqual(senior_ic.recommendation, "stretch")
@@ -320,6 +332,8 @@ class LlmEvaluatorTest(unittest.TestCase):
         self.assertEqual(director.recommendation, "skip")
         self.assertLess(director.role_fit_score, 60)
         self.assertEqual(allowance.recommendation, "apply_now")
+        self.assertEqual(requisition.recommendation, "apply_now")
+        self.assertGreaterEqual(requisition.role_fit_score, 80)
 
     def test_below_level_title_caps_only_when_scope_is_missing(self) -> None:
         output_payload = _valid_output().model_dump()

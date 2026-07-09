@@ -1295,29 +1295,54 @@ def _compensation_seniority_signal(title: str, text: str) -> str | None:
 def _max_annual_compensation(text: str) -> tuple[str, int] | None:
     candidates: list[tuple[str, int]] = []
     for fragment in _requirement_fragments(text):
-        if not re.search(
-            r"\b(?:salary|compensation|base pay|pay range|annual|per year|ote)\b",
-            fragment,
-            flags=re.IGNORECASE,
-        ):
-            continue
-        currency = _compensation_currency(fragment)
-        if currency is None:
-            continue
-        amounts = [
-            _parse_compensation_amount(match.group("amount"), match.group("suffix"))
-            for match in re.finditer(
-                r"(?P<amount>\d[\d,.]*)(?:\s*(?P<suffix>k))?",
-                fragment,
-                flags=re.IGNORECASE,
-            )
-        ]
-        amounts = [amount for amount in amounts if amount >= 20_000]
-        if amounts:
-            candidates.append((currency, max(amounts)))
+        for span in _compensation_spans(fragment):
+            currency = _compensation_currency(span)
+            if currency is None:
+                continue
+            amounts = [
+                _parse_compensation_amount(match.group("amount"), match.group("suffix"))
+                for match in re.finditer(
+                    r"(?P<amount>\d[\d,.]*)(?:\s*(?P<suffix>k))?",
+                    span,
+                    flags=re.IGNORECASE,
+                )
+            ]
+            amounts = [amount for amount in amounts if amount >= 20_000]
+            if amounts:
+                candidates.append((currency, max(amounts)))
     if not candidates:
         return None
     return max(candidates, key=lambda candidate: candidate[1])
+
+
+def _compensation_spans(fragment: str) -> list[str]:
+    context = r"\b(?:salary|compensation|base pay|pay range|annual|per year|ote)\b"
+    currency = (
+        r"(?:[$€£]|\b(?:usd|eur|gbp|aud|sgd|us dollars?|euros?|pounds?"
+        r"|australian dollars?|singapore dollars?)\b)"
+    )
+    amount = r"\d[\d,.]*(?:\s*k)?"
+    amount_or_range = (
+        rf"(?:{currency}\s*)?{amount}"
+        rf"(?:\s*(?:-|–|—|to)\s*(?:{currency}\s*)?{amount})?"
+        rf"(?:\s*{currency})?"
+    )
+    patterns = [
+        rf"{context}[^.;\n]{{0,90}}?{amount_or_range}",
+        rf"{amount_or_range}[^,.;\n]{{0,45}}?{context}",
+    ]
+    spans: list[str] = []
+    seen: set[tuple[int, int]] = set()
+    for pattern in patterns:
+        for match in re.finditer(pattern, fragment, flags=re.IGNORECASE):
+            bounds = match.span()
+            if bounds in seen:
+                continue
+            seen.add(bounds)
+            span = match.group(0).strip()
+            if _compensation_currency(span) is not None:
+                spans.append(span)
+    return spans
 
 
 def _compensation_currency(text: str) -> str | None:

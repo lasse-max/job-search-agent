@@ -364,6 +364,38 @@ class DatabricksSliceTest(unittest.TestCase):
             ]
             self.assertEqual(states, ["new", "new"])
 
+    def test_stale_evaluator_version_open_postings_are_reevaluated(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            provider = SuccessfulProvider()
+
+            with patch("app.services.evaluate.provider_from_env", return_value=provider):
+                run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            conn.execute(
+                "UPDATE role_evaluations SET model_version = 'fake-claude|hybrid_claude_v1'"
+            )
+            conn.commit()
+            before_count = _count(conn, "role_evaluations")
+
+            with patch("app.services.evaluate.provider_from_env", return_value=provider):
+                refreshed = run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            current_count = conn.execute(
+                """
+                SELECT COUNT(*)
+                FROM role_evaluations
+                WHERE model_version = 'fake-claude|hybrid_claude_v2'
+                """
+            ).fetchone()[0]
+
+            self.assertEqual(refreshed.changed_count, 0)
+            self.assertEqual(refreshed.evaluated_count, 3)
+            self.assertEqual(_count(conn, "role_evaluations"), before_count + 3)
+            self.assertEqual(current_count, 3)
+
     def test_snoozed_role_resurfaces_after_snooze_until_passes(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "slice.sqlite"
@@ -418,6 +450,18 @@ class FailAllRolesProvider:
         self.call_count += 1
         raise LLMProviderError(
             "claude_tool_input_validation_failed: alignments input should be a valid list"
+        )
+
+
+class SuccessfulProvider:
+    model_version = "fake-claude"
+
+    def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        return LLMEvaluationResult(
+            output=_valid_llm_output(),
+            model_version=self.model_version,
+            prompt_version="test_prompt_v1",
+            cost_usd=0.001,
         )
 
 
