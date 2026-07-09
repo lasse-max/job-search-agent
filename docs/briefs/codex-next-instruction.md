@@ -1,3 +1,34 @@
+# ⛔ THIS FILE IS ARCHIVE — do NOT paste to Codex as the next job
+
+**Current next Codex job = the Stage 1.5 web app, build-order step A1.** It lives in
+**`docs/briefs/webapp-build-brief.md`** (+ the sequenced map in `docs/PLAN_1.5_to_2.0.md`).
+**Gated:** do not send it to Codex until Arthur's review of `f965590` (the calibration
+stale-score fix) comes back clean.
+
+Everything below this line is **shipped history**, kept for context — not an instruction to run:
+- Calibration Sweep 2 (fit/gate unification + language/defense/pre-sales/dedup) → shipped `8af7022`.
+- Stale-score refresh + salary parser fix → shipped `f965590` (in Arthur review).
+- Earlier calibration loop + Fix Loops 5/6 → shipped previously.
+
+---
+
+# [ARCHIVE — SHIPPED `8af7022` + `f965590`] Codex — CALIBRATION SWEEP 2 (Stage 1.5 / B-15) — filtering & stretch tuning, from the 2026-06-30 digest
+
+The strict bands (`a729689`) are confirmed working live. This sweep tightens the filters/stretch band. All general rules, no brand logic. Details in `live_calibration_notes.md` (2026-06-30 + 2026-07-04).
+
+0. **🔴 PRIORITY — unify fit with the gate (fit must be the single source of truth).** The 2026-07-04 calibration floor exposed that fit and band have decoupled: off-function/off-location/over-level roles keep high LLM fit scores (Airbnb Product Manager = fit **87**, HelloFresh Sr Director Product in Warsaw/Toronto = 87) while being gated to `skip` — so the "Top open roles by fit" floor surfaced fit-87 skips *above* the real fit-82 apply_now. Under strict bands (fit≥80 → apply_now) that's a contradiction. Fix: the gate penalties (off-function, off-location, over-level, required-credential, wrong-language, defense) must **reduce the computed fit score itself**, not just flip the band separately. A native PM / marketing / off-location role must score *low* (e.g. <60), so fit is monotonic with real suitability and never disagrees with the band. Also: refresh stale pre-recalibration cached scores, and/or have the calibration floor draw only from gate-eligible roles.
+   - **Use posted salary/comp as a seniority signal** (owner note 2026-07-04): the Anthropic apply_now self-described "L4–L5" from JD scope words but the comp band reads ~L6. When a posting states a pay band, infer level from it; a band materially above the L4–L5 target → over-level penalty (reduces fit). A senior-IC "Lead" that's L6 is a legitimate stretch (don't hard-skip); the ceiling targets Head-of/Director/VP function-heads. Re-benchmark after (this changes fit distributions; gated apply/consider should hold).
+
+1. **Language-requirement filter (NEW).** Profile already has `languages: {German: native, English: professional/fluent}` — *use it*. If a role **requires** a working language NOT in {German, English} as a core requirement → skip (or strong down-rank). Strongest signal: title markers like "(French speaking)", "(Spanish speaking)", "(Italian speaking)"; also JD "fluent French required" etc. German/English requirements = no penalty. This also fixes the Sierra duplicate problem (drop the French/Spanish variants, keep the English/German one).
+2. **Encode the defense/government decline (priority — explicit owner instruction).** Government / defense / security-clearance roles → skip (or block), not stretch. "Palantir — Deployment Strategist — AUS Government" surfaced at stretch despite owner declining it (LNP-142). General rule on gov/defense/clearance signals, not Palantir-specific.
+3. **Pre-sales / "Value Partner" / "Value Engineer" head-function → skip.** "Celonis — Principal Client Value Partner" leaked to stretch; same pre-sales family already labelled skip.
+4. **Stretch-band general tuning (B-15):** down-rank adjacent-ops noise — Logistics/Supply-Chain Standards, Risk/Compliance Operations, Proposals & Assurance, pure Integration Manager — toward skip.
+5. **Extend dedup to language variants (B-02):** same role across language variants (Sierra French/Spanish/…) → one entry; combine with the language filter so only qualifying-language variants surface.
+
+Re-run cached + live benchmarks (these change skip/stretch composition; gated apply/consider should hold), push, back to Cato.
+
+---
+
 # Codex — CALIBRATION LOOP (Stage 1.5) — from owner review of the 2026-06-29 digest
 
 Owner direction: **no brand-specific logic** (do NOT special-case Databricks). Fix the general failure modes. Details in `data/evaluation_set/live_calibration_notes.md` (2026-06-29).
@@ -11,6 +42,8 @@ Owner direction: **no brand-specific logic** (do NOT special-case Databricks). F
 3. **Required-credential down-ranking.** Extend hard-requirement handling beyond CS-degree/production-coding: a JD that **requires** a credential the candidate lacks (e.g. PMP, a platform certification, intermediate platform fluency) should reduce fit materially (gap-manageability/penalty), and block only if that credential is central. (The Databricks Technical PM required PMP + Databricks cert within 6 months and still got apply_now.)
 4. **Multi-location dedup (B-02) — pull forward.** The same role across city variants (e.g. one Solutions Architect listed 3× for Paris / London / Berlin) must surface **once** with all locations listed, not as duplicate cards.
 5. **Confirm cadence stays once daily** (`0 6 * * *`) — already set in `558a6c5`; no change, just verify it didn't regress.
+6. **🐛 Header count mismatch.** `digest.counts.shown` ("Showing 25 of 48") counts the capped selection *including* `skip`/`blocked` rows that render only as the collapsed low-priority count, not as cards — so it claims 25 while only ~8 cards (apply/consider/stretch) show. Fix: `counts.shown` = number of **actually-rendered role cards** (surfaced bands + calibration floor); keep skip/blocked summarized in the existing low-priority count line; ensure the "➕ N more" overflow counts additional **surfaced** roles, not skip/blocked padding. Header must read truthfully. Add a test asserting `shown` == rendered card count.
+7. **✨ Scan-reach stat (owner feature — interview highlight).** Add a digest header line, e.g. **"Scanned 8,247 postings across 31 companies this run"** — sum of `source_runs.fetched_count` for the run + count of enabled/scanned companies. Render in both HTML and txt headers; show real numbers, no PII.
 
 Re-run cached + live benchmarks, push, back to Cato. This is the Stage-1.5 search-refinement work (ROADMAP).
 

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,300..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#f2eee1}
+*{box-sizing:border-box}
+a{color:#1f6f7c;text-decoration:none}
+a:hover{color:#155a66}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:rgba(28,48,58,.16);border-radius:5px}
+::-webkit-scrollbar-track{background:transparent}
+@keyframes slideOver{from{transform:translateX(28px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+</helmet>
+<div style="display:flex; height:100vh; overflow:hidden; background:#f2eee1; color:#1c2a31; font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased">
+
+  <!-- ============ LEFT NAV ============ -->
+  <nav style="width:224px; flex-shrink:0; border-right:1px solid rgba(28,48,58,.14); display:flex; flex-direction:column; padding:22px 14px 18px; position:relative; z-index:2">
+    <div style="padding:0 10px 22px; display:flex; align-items:baseline; gap:8px">
+      <span style="font-family:'Newsreader',serif; font-style:italic; font-size:21px; font-weight:500; color:#1c2a31; letter-spacing:.2px">Sextant</span>
+      <span style="width:7px; height:7px; background:#1f6f7c; transform:rotate(45deg); position:relative; top:-2px"></span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:2px">
+      <sc-for list="{{ navItems }}" as="nv" hint-placeholder-count="3">
+        <button onClick="{{ nv.go }}" style="display:flex; align-items:center; justify-content:space-between; gap:8px; width:100%; text-align:left; border:none; cursor:pointer; font-family:inherit; font-size:13.5px; padding:9px 10px; border-radius:6px; background:{{ nv.bg }}; color:{{ nv.fg }}" style-hover="color:#1c2a31">
+          <span style="font-weight:500">{{ nv.label }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:{{ nv.countColor }}">{{ nv.count }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="flex:1"></div>
+    <div style="padding:14px 10px 0; border-top:1px solid rgba(28,48,58,.14); font-family:'IBM Plex Mono',monospace; font-size:10.5px; line-height:1.9; color:#8d9ba0">
+      <div>last scan · today 06:12</div>
+      <div>6,901 postings · 32 cos.</div>
+      <div style="color:rgba(141,155,160,.75)">next scan · tomorrow 06:00</div>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main style="flex:1; overflow-y:auto; position:relative; z-index:1">
+    <sc-if value="{{ gridOn }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed; left:224px; right:0; top:0; bottom:0; pointer-events:none; z-index:0; background-image:linear-gradient(rgba(31,111,124,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(31,111,124,.06) 1px, transparent 1px); background-size:56px 56px"></div>
+    </sc-if>
+
+    <!-- ======== PAGE 1 · POTENTIAL MATCHES ======== -->
+    <sc-if value="{{ isMatches }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Potential Matches" style="position:relative; max-width:1020px; margin:0 auto; padding:32px 40px 90px">
+
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px">
+          <div>
+            <h1 style="margin:0; font-family:'Newsreader',serif; font-weight:500; font-size:27px; letter-spacing:.2px">Potential matches</h1>
+            <div style="margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#8d9ba0">Wed 8 Jul 2026 · digest generated 06:12</div>
+          </div>
+          <button onClick="{{ toggleAudit }}" style="border:1px solid rgba(28,48,58,.14); background:transparent; color:#5b6e75; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; padding:6px 12px; border-radius:6px" style-hover="color:#1c2a31; border-color:rgba(28,48,58,.30)">{{ auditLabel }}</button>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:22px; padding:12px 16px; background:#faf7ec; border:1px solid rgba(28,48,58,.14); border-radius:8px">
+          <div style="display:flex; align-items:center; gap:18px; font-size:13px">
+            <span style="display:flex; align-items:center; gap:7px"><span style="width:8px; height:8px; border-radius:50%; background:#c25436"></span><span style="font-family:'IBM Plex Mono',monospace; color:#1c2a31">{{ applyCount }}</span><span style="color:#5b6e75">apply</span></span>
+            <span style="display:flex; align-items:center; gap:7px"><span style="width:8px; height:8px; border-radius:50%; background:#1f6f7c"></span><span style="font-family:'IBM Plex Mono',monospace; color:#1c2a31">{{ considerCount }}</span><span style="color:#5b6e75">consider</span></span>
+            <span style="display:flex; align-items:center; gap:7px"><span style="width:8px; height:8px; border-radius:50%; background:#a1823e"></span><span style="font-family:'IBM Plex Mono',monospace; color:#1c2a31">{{ stretchCount }}</span><span style="color:#5b6e75">stretch</span></span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8d9ba0; border-left:1px solid rgba(28,48,58,.14); padding-left:18px">scanned 6,901 postings across 32 companies</span>
+          </div>
+          <div style="display:flex; gap:8px">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5b6e75; border:1px solid rgba(28,48,58,.14); padding:4px 10px; border-radius:6px; cursor:pointer">sort · fit ↓</span>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5b6e75; border:1px solid rgba(28,48,58,.14); padding:4px 10px; border-radius:6px; cursor:pointer">filter · all</span>
+          </div>
+        </div>
+
+        <!-- audit view -->
+        <sc-if value="{{ auditOn }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:28px">
+            <div style="display:flex; align-items:baseline; gap:12px">
+              <span style="font-size:12px; letter-spacing:1.6px; text-transform:uppercase; color:#5b6e75; font-weight:500">Skipped / all evaluated</span>
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8d9ba0">6,901 scanned → {{ matchTotal }} surfaced · rest skipped</span>
+            </div>
+            <div style="margin-top:12px; background:#faf7ec; border:1px solid rgba(28,48,58,.14); border-radius:8px; overflow:hidden">
+              <sc-for list="{{ skipped }}" as="sk" hint-placeholder-count="6">
+                <div style="display:grid; grid-template-columns:44px 150px 1fr 1.1fr; gap:14px; align-items:baseline; padding:10px 16px; border-top:1px solid rgba(28,48,58,.08); font-size:12.5px">
+                  <span style="font-family:'IBM Plex Mono',monospace; color:{{ sk.fitColor }}">{{ sk.fit }}</span>
+                  <span style="color:#1c2a31; font-weight:500">{{ sk.company }}</span>
+                  <span style="color:#5b6e75">{{ sk.title }}</span>
+                  <span style="color:#8d9ba0; font-family:'IBM Plex Mono',monospace; font-size:11px">{{ sk.reason }}</span>
+                </div>
+              </sc-for>
+              <div style="padding:11px 16px; border-top:1px solid rgba(28,48,58,.08); font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8d9ba0">…and 6,874 more below the fit floor (40) — not stored</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- digest view -->
+        <sc-if value="{{ digestOn }}" hint-placeholder-val="{{ true }}">
+          <div>
+          <sc-if value="{{ quietDay }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:26px; padding:13px 16px; border:1px solid rgba(161,130,62,.4); background:rgba(161,130,62,.07); border-radius:8px; font-size:13px; color:#a1823e">No strong matches today — showing the top 5 by fit.</div>
+          </sc-if>
+          <sc-for list="{{ bands }}" as="band" hint-placeholder-count="2">
+            <div style="margin-top:32px">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px">
+                <span style="width:14px; height:3px; background:{{ band.color }}"></span>
+                <span style="font-size:12px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500; color:{{ band.color }}">{{ band.label }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8d9ba0">{{ band.count }}</span>
+                <span style="flex:1; height:1px; background:rgba(28,48,58,.10)"></span>
+                <sc-if value="{{ band.collapsible }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ band.toggle }}" style="border:none; background:transparent; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8d9ba0; padding:2px 4px" style-hover="color:#a1823e">{{ band.caret }}</button>
+                </sc-if>
+              </div>
+
+              <sc-for list="{{ band.rolesShown }}" as="role" hint-placeholder-count="2">
+                <div style="display:flex; gap:18px; background:#fdfbf3; border:1px solid rgba(28,48,58,.14); border-radius:10px; padding:16px 18px; margin-bottom:10px">
+                  <div style="flex-shrink:0; width:54px; height:54px; border:1px solid {{ role.ring }}; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px">
+                    <span style="font-family:'IBM Plex Mono',monospace; font-size:19px; font-weight:500; color:{{ role.color }}">{{ role.fit }}</span>
+                    <span style="font-size:9px; letter-spacing:1.2px; text-transform:uppercase; color:#8d9ba0">fit</span>
+                  </div>
+                  <div style="flex:1; min-width:0">
+                    <div style="display:flex; align-items:baseline; gap:8px; flex-wrap:wrap">
+                      <span style="font-size:15px; font-weight:600">{{ role.company }}</span>
+                      <span style="font-size:14.5px; color:#33454d">{{ role.title }}</span>
+                    </div>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px">
+                      <sc-for list="{{ role.chips }}" as="chip" hint-placeholder-count="4">
+                        <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5b6e75; border:1px solid rgba(28,48,58,.14); border-radius:6px; padding:2px 8px">{{ chip }}</span>
+                      </sc-for>
+                    </div>
+                    <div style="margin-top:9px; font-size:13px; color:#5b6e75; line-height:1.5">{{ role.summary }}</div>
+                    <sc-if value="{{ role.isExpanded }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:12px; padding:12px 14px; background:#faf7ec; border:1px solid rgba(28,48,58,.10); border-radius:8px; display:flex; flex-direction:column; gap:8px">
+                        <div style="display:flex; gap:10px; font-size:12.5px; line-height:1.5"><span style="color:#2f8f6d; flex-shrink:0">✓</span><span style="color:#33454d">{{ role.align }}</span></div>
+                        <div style="display:flex; gap:10px; font-size:12.5px; line-height:1.5"><span style="color:#a1823e; flex-shrink:0">△</span><span style="color:#5b6e75">{{ role.gap }}</span></div>
+                        <button onClick="{{ role.openDetail }}" style="align-self:flex-start; border:none; background:transparent; cursor:pointer; padding:0; font-family:inherit; font-size:12px; color:#1f6f7c" style-hover="color:#155a66">Full evidence →</button>
+                      </div>
+                    </sc-if>
+                  </div>
+                  <div style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; gap:10px">
+                    <button onClick="{{ role.markApply }}" style="border:none; cursor:pointer; font-family:inherit; font-size:12.5px; font-weight:500; color:#f6e8e2; background:#b8472f; padding:7px 14px; border-radius:6px" style-hover="background:#cf5638">Mark to apply</button>
+                    <div style="display:flex; gap:12px; align-items:center">
+                      <button onClick="{{ role.dismiss }}" style="border:none; background:transparent; cursor:pointer; padding:0; font-family:inherit; font-size:11.5px; color:#8d9ba0" style-hover="color:#1c2a31">Dismiss</button>
+                      <button onClick="{{ role.snooze }}" style="border:none; background:transparent; cursor:pointer; padding:0; font-family:inherit; font-size:11.5px; color:#8d9ba0" style-hover="color:#1c2a31">Snooze</button>
+                      <a href="#" style="font-size:11.5px; color:#8d9ba0" style-hover="color:#1f6f7c">Source ↗</a>
+                    </div>
+                    <button onClick="{{ role.expandToggle }}" style="border:none; background:transparent; cursor:pointer; padding:0; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8d9ba0" style-hover="color:#1f6f7c">{{ role.caret }}</button>
+                  </div>
+                </div>
+              </sc-for>
+              <sc-if value="{{ band.showCollapsedNote }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:12px 16px; border:1px dashed rgba(28,48,58,.16); border-radius:8px; font-size:12.5px; color:#8d9ba0">{{ band.collapsedNote }}</div>
+              </sc-if>
+            </div>
+          </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <!-- ======== PAGE 2 · TO APPLY ======== -->
+    <sc-if value="{{ isToApply }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="To Apply" style="position:relative; max-width:860px; margin:0 auto; padding:32px 40px 90px">
+        <h1 style="margin:0; font-family:'Newsreader',serif; font-weight:500; font-size:27px">To apply</h1>
+        <div style="margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#8d9ba0">shortlist · {{ shortlistCount }} roles · oldest first</div>
+
+        <sc-if value="{{ shortlistEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:80px; text-align:center">
+            <div style="font-family:'Newsreader',serif; font-style:italic; font-size:18px; color:#5b6e75">Nothing shortlisted.</div>
+            <div style="margin-top:8px; font-size:13px; color:#8d9ba0">Mark roles from <a href="#" onClick="{{ goMatches }}">Potential Matches</a>.</div>
+          </div>
+        </sc-if>
+
+        <div style="margin-top:26px; display:flex; flex-direction:column; gap:10px">
+          <sc-for list="{{ shortlist }}" as="it" hint-placeholder-count="2">
+            <div style="display:flex; align-items:center; gap:18px; background:#faf7ec; border:1px solid rgba(28,48,58,.14); border-radius:10px; padding:15px 18px">
+              <span style="flex-shrink:0; width:40px; font-family:'IBM Plex Mono',monospace; font-size:16px; color:{{ it.color }}">{{ it.fit }}</span>
+              <div style="flex:1; min-width:0">
+                <div style="display:flex; align-items:baseline; gap:8px; flex-wrap:wrap">
+                  <span style="font-size:14.5px; font-weight:600">{{ it.company }}</span>
+                  <span style="font-size:14px; color:#33454d">{{ it.title }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#8d9ba0">{{ it.loc }}</span>
+                </div>
+                <div style="margin-top:6px; font-size:12.5px; font-style:italic; color:{{ it.noteColor }}">{{ it.noteShown }}</div>
+              </div>
+              <span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#8d9ba0">{{ it.age }}</span>
+              <div style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:7px">
+                <button onClick="{{ it.markApplied }}" style="border:none; cursor:pointer; font-family:inherit; font-size:12.5px; font-weight:500; color:#f6e8e2; background:#b8472f; padding:7px 14px; border-radius:6px" style-hover="background:#cf5638">Mark applied</button>
+                <button onClick="{{ it.remove }}" style="border:none; background:transparent; cursor:pointer; padding:0; font-family:inherit; font-size:11px; color:#8d9ba0" style-hover="color:#1c2a31">Remove</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ======== PAGE 3 · APPLIED ======== -->
+    <sc-if value="{{ isApplied }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Applied" style="position:relative; max-width:1280px; margin:0 auto; padding:32px 40px 90px">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px">
+          <div>
+            <h1 style="margin:0; font-family:'Newsreader',serif; font-weight:500; font-size:27px">Applied</h1>
+            <div style="margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#8d9ba0">pipeline · click a row for history + original evaluation</div>
+          </div>
+          <div style="display:flex; gap:0; font-family:'IBM Plex Mono',monospace; font-size:11px">
+            <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+              <div style="padding:0 16px; border-left:1px solid rgba(28,48,58,.14); text-align:right">
+                <div style="font-size:16px; color:#1c2a31">{{ st.n }}</div>
+                <div style="margin-top:2px; color:#8d9ba0; font-size:10px; letter-spacing:.6px">{{ st.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <sc-if value="{{ appliedEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:80px; text-align:center">
+            <div style="font-family:'Newsreader',serif; font-style:italic; font-size:18px; color:#5b6e75">Nothing applied yet.</div>
+            <div style="margin-top:8px; font-size:13px; color:#8d9ba0">Promote a role from <a href="#" onClick="{{ goToApply }}">To Apply</a>.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ appliedHasRows }}" hint-placeholder-val="{{ true }}">
+          <div>
+          <div style="margin-top:26px; display:flex; gap:26px; padding:14px 18px; background:#faf7ec; border:1px solid rgba(28,48,58,.14); border-radius:8px">
+            <sc-for list="{{ funnel }}" as="f" hint-placeholder-count="6">
+              <div style="min-width:78px">
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:16px; color:{{ f.numColor }}">{{ f.count }}</div>
+                <div style="margin-top:2px; font-size:9.5px; letter-spacing:1px; text-transform:uppercase; color:#8d9ba0">{{ f.label }}</div>
+                <div style="margin-top:7px; height:3px; border-radius:2px; background:{{ f.color }}; width:{{ f.barW }}; opacity:.85"></div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:20px; background:#faf7ec; border:1px solid rgba(28,48,58,.14); border-radius:10px; overflow-x:auto">
+            <div style="min-width:1140px">
+              <div style="display:grid; grid-template-columns:110px 1.25fr 92px 118px 92px 1.35fr 76px 108px 86px 1fr; gap:12px; padding:11px 18px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1px; text-transform:uppercase; color:#8d9ba0">
+                <span>Company</span><span>Role</span><span>Location</span><span>Stage</span><span>Applied</span><span style="color:#5b6e75">Next action</span><span style="color:#5b6e75">Due</span><span>Contact</span><span>Salary</span><span>Notes</span>
+              </div>
+              <sc-for list="{{ applied }}" as="row" hint-placeholder-count="5">
+                <div onClick="{{ row.open }}" style="display:grid; grid-template-columns:110px 1.25fr 92px 118px 92px 1.35fr 76px 108px 86px 1fr; gap:12px; align-items:center; padding:12px 18px; border-top:1px solid rgba(28,48,58,.08); font-size:12.5px; cursor:pointer" style-hover="background:rgba(28,48,58,.045)">
+                  <span style="font-weight:600; color:{{ row.inkColor }}">{{ row.company }}</span>
+                  <span style="color:{{ row.roleColor }}; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{{ row.role }}</span>
+                  <span style="color:#8d9ba0; font-size:11.5px">{{ row.loc }}</span>
+                  <span><span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.4px; color:{{ row.stageColor }}; border:1px solid {{ row.stageBorder }}; border-radius:6px; padding:2px 8px; white-space:nowrap">{{ row.stage }}</span></span>
+                  <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#8d9ba0">{{ row.appliedOn }}</span>
+                  <span style="font-weight:500; color:{{ row.nextColor }}">{{ row.next }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; color:{{ row.dueColor }}">{{ row.due }}</span>
+                  <span style="color:#5b6e75; font-size:11.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{{ row.contact }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5b6e75">{{ row.salary }}</span>
+                  <span style="color:#8d9ba0; font-size:11.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{{ row.notes }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+  </main>
+
+  <!-- ======== ROLE-DETAIL SLIDE-OVER ======== -->
+  <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:40">
+      <div onClick="{{ closeDetail }}" style="position:absolute; inset:0; background:rgba(30,42,49,.35); animation:fadeIn .18s ease"></div>
+      <div style="position:absolute; right:0; top:0; bottom:0; width:490px; background:#faf7ec; border-left:1px solid rgba(28,48,58,.16); box-shadow:-24px 0 60px rgba(60,72,68,.18); overflow-y:auto; padding:28px 30px 40px; animation:slideOver .22s ease">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px">
+          <span style="font-size:11px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500; color:{{ detail.color }}">{{ detail.bandLabel }}</span>
+          <button onClick="{{ closeDetail }}" style="border:none; background:transparent; cursor:pointer; color:#8d9ba0; font-size:15px; padding:0; line-height:1" style-hover="color:#1c2a31">✕</button>
+        </div>
+        <div style="margin-top:12px; display:flex; align-items:flex-start; gap:16px">
+          <div style="flex:1">
+            <h2 style="margin:0; font-family:'Newsreader',serif; font-weight:500; font-size:22px; line-height:1.25">{{ detail.company }} — {{ detail.title }}</h2>
+            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:10px">
+              <sc-for list="{{ detail.chips }}" as="chip" hint-placeholder-count="4">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5b6e75; border:1px solid rgba(28,48,58,.14); border-radius:6px; padding:2px 8px">{{ chip }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="flex-shrink:0; width:56px; height:56px; border:1px solid {{ detail.ring }}; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:500; color:{{ detail.color }}">{{ detail.fit }}</span>
+            <span style="font-size:9px; letter-spacing:1.2px; text-transform:uppercase; color:#8d9ba0">fit</span>
+          </div>
+        </div>
+        <div style="margin-top:14px; font-size:13px; color:#5b6e75; line-height:1.55">{{ detail.summary }}</div>
+
+        <div style="margin-top:28px; display:flex; align-items:center; gap:10px">
+          <span style="font-size:11px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500; color:#5b6e75">Why it fits</span>
+          <span style="flex:1; height:1px; background:rgba(28,48,58,.10)"></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8d9ba0">JD requirement → your evidence</span>
+        </div>
+        <div style="margin-top:14px; display:flex; flex-direction:column; gap:12px">
+          <sc-for list="{{ detail.evidence }}" as="ev" hint-placeholder-count="4">
+            <div style="display:flex; gap:12px; padding:11px 14px; background:#fdfbf3; border:1px solid rgba(28,48,58,.10); border-radius:8px">
+              <span style="flex-shrink:0; width:8px; height:8px; border-radius:50%; margin-top:5px; background:{{ ev.pip }}"></span>
+              <div style="flex:1">
+                <div style="font-size:12px; color:#5b6e75; line-height:1.45">{{ ev.req }}</div>
+                <div style="margin-top:5px; font-size:12.5px; color:#1c2a31; line-height:1.5; display:flex; gap:7px"><span style="color:#1f6f7c; flex-shrink:0">→</span><span>{{ ev.mine }}</span></div>
+              </div>
+              <span style="flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.6px; color:{{ ev.pip }}">{{ ev.strength }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:26px; display:flex; align-items:center; gap:10px">
+          <span style="font-size:11px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500; color:#a1823e">Gaps &amp; mitigations</span>
+          <span style="flex:1; height:1px; background:rgba(28,48,58,.10)"></span>
+        </div>
+        <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px">
+          <sc-for list="{{ detail.gaps }}" as="g" hint-placeholder-count="2">
+            <div style="display:flex; gap:11px; padding:10px 14px; border:1px solid rgba(161,130,62,.3); border-radius:8px">
+              <span style="color:#a1823e; flex-shrink:0; font-size:12px">△</span>
+              <div>
+                <div style="font-size:12.5px; color:#1c2a31; line-height:1.45">{{ g.gap }}</div>
+                <div style="margin-top:4px; font-size:12px; color:#5b6e75; line-height:1.45">{{ g.mit }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:30px; padding-top:18px; border-top:1px solid rgba(28,48,58,.14); display:flex; align-items:center; gap:14px">
+          <button onClick="{{ detail.markApply }}" style="border:none; cursor:pointer; font-family:inherit; font-size:13px; font-weight:500; color:#f6e8e2; background:#b8472f; padding:8px 16px; border-radius:6px" style-hover="background:#cf5638">Mark to apply</button>
+          <button onClick="{{ detail.dismiss }}" style="border:none; background:transparent; cursor:pointer; padding:0; font-family:inherit; font-size:12px; color:#8d9ba0" style-hover="color:#1c2a31">Dismiss</button>
+          <button onClick="{{ detail.snooze }}" style="border:none; background:transparent; cursor:pointer; padding:0; font-family:inherit; font-size:12px; color:#8d9ba0" style-hover="color:#1c2a31">Snooze</button>
+          <span style="flex:1"></span>
+          <a href="#" style="font-size:12px">Open source ↗</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ======== APPLIED ROW DRAWER ======== -->
+  <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:40">
+      <div onClick="{{ closeDrawer }}" style="position:absolute; inset:0; background:rgba(30,42,49,.35); animation:fadeIn .18s ease"></div>
+      <div style="position:absolute; right:0; top:0; bottom:0; width:470px; background:#faf7ec; border-left:1px solid rgba(28,48,58,.16); box-shadow:-24px 0 60px rgba(60,72,68,.18); overflow-y:auto; padding:28px 30px 40px; animation:slideOver .22s ease">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px">
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.4px; color:{{ drawer.stageColor }}; border:1px solid {{ drawer.stageBorder }}; border-radius:6px; padding:2px 8px">{{ drawer.stage }}</span>
+          <button onClick="{{ closeDrawer }}" style="border:none; background:transparent; cursor:pointer; color:#8d9ba0; font-size:15px; padding:0; line-height:1" style-hover="color:#1c2a31">✕</button>
+        </div>
+        <h2 style="margin:12px 0 0; font-family:'Newsreader',serif; font-weight:500; font-size:22px; line-height:1.25">{{ drawer.company }} — {{ drawer.role }}</h2>
+        <div style="margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; font-size:12px">
+          <div><span style="color:#8d9ba0; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.8px; text-transform:uppercase">Applied</span><div style="margin-top:3px; color:#1c2a31">{{ drawer.appliedOn }}</div></div>
+          <div><span style="color:#8d9ba0; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.8px; text-transform:uppercase">Contact</span><div style="margin-top:3px; color:#1c2a31">{{ drawer.contact }}</div></div>
+          <div><span style="color:#8d9ba0; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.8px; text-transform:uppercase">Next action</span><div style="margin-top:3px; color:#1c2a31; font-weight:500">{{ drawer.next }}</div></div>
+          <div><span style="color:#8d9ba0; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.8px; text-transform:uppercase">Due</span><div style="margin-top:3px; font-family:'IBM Plex Mono',monospace; color:{{ drawer.dueColor }}">{{ drawer.due }}</div></div>
+        </div>
+
+        <div style="margin-top:28px; display:flex; align-items:center; gap:10px">
+          <span style="font-size:11px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500; color:#5b6e75">Stage history</span>
+          <span style="flex:1; height:1px; background:rgba(28,48,58,.10)"></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8d9ba0">immutable</span>
+        </div>
+        <div style="margin-top:14px; border-left:1px solid rgba(28,48,58,.16); padding-left:18px; display:flex; flex-direction:column; gap:13px">
+          <sc-for list="{{ drawer.history }}" as="h" hint-placeholder-count="3">
+            <div style="position:relative">
+              <span style="position:absolute; left:-22px; top:5px; width:7px; height:7px; border-radius:50%; background:#1f6f7c"></span>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#8d9ba0">{{ h.d }}</div>
+              <div style="margin-top:2px; font-size:12.5px; color:#33454d; line-height:1.45">{{ h.e }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:28px; display:flex; align-items:center; gap:10px">
+          <span style="font-size:11px; letter-spacing:1.8px; text-transform:uppercase; font-weight:500; color:#5b6e75">Original evaluation</span>
+          <span style="flex:1; height:1px; background:rgba(28,48,58,.10)"></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8d9ba0">{{ drawer.snapDate }}</span>
+        </div>
+        <div style="margin-top:14px; background:#fdfbf3; border:1px solid rgba(28,48,58,.10); border-radius:8px; padding:16px 18px">
+          <div style="display:flex; align-items:center; gap:12px">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:19px; color:{{ drawer.snapColor }}">{{ drawer.snapFit }}</span>
+            <span style="font-size:12px; color:#8d9ba0">fit at evaluation · why you applied</span>
+          </div>
+          <div style="margin-top:12px; display:flex; flex-direction:column; gap:7px">
+            <sc-for list="{{ drawer.snapAligns }}" as="a" hint-placeholder-count="2">
+              <div style="display:flex; gap:10px; font-size:12.5px; line-height:1.5"><span style="color:#2f8f6d; flex-shrink:0">✓</span><span style="color:#33454d">{{ a }}</span></div>
+            </sc-for>
+            <sc-for list="{{ drawer.snapGaps }}" as="g" hint-placeholder-count="1">
+              <div style="display:flex; gap:10px; font-size:12.5px; line-height:1.5"><span style="color:#a1823e; flex-shrink:0">△</span><span style="color:#5b6e75">{{ g }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;quietDay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Digest&quot;},&quot;chartGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Surface&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const STAGE = {
+      'preparing':       { c: '#5b6e75' },
+      'applied':         { c: '#6fa3ad' },
+      'recruiter screen':{ c: '#1f6f7c' },
+      'interviewing':    { c: '#a1823e' },
+      'final round':     { c: '#c25436' },
+      'offer':           { c: '#2f8f6d' },
+      'rejected':        { c: '#8d9ba0' },
+      'withdrawn':       { c: '#8d9ba0' }
+    };
+    this.STAGE = STAGE;
+    this.state = {
+      page: 'matches',
+      auditOn: false,
+      stretchOpen: false,
+      expandedId: 'r1',
+      detailId: null,
+      drawerId: null,
+      matches: [
+        { id:'r1', band:'apply', fit:91, company:'Ramp', title:'Strategy & Operations Lead, Financial Products', chips:['New York · hybrid','Tier 1','high feasibility','high confidence'],
+          summary:'Owns pricing and GTM operations for a new financial product line — a near-exact mirror of your fintech pricing work, at larger scale.',
+          align:'Led pricing revamp across 3 product lines (+$4.2M ARR) — JD asks for exactly this.',
+          gap:'No direct card-issuing domain exposure.',
+          evidence:[
+            { req:'Own pricing strategy for a multi-product financial suite', mine:'Ran the 2024 pricing revamp across 3 product lines; +$4.2M ARR, 9% churn reduction', strength:'strong' },
+            { req:'Build the operating cadence for a 40-person GTM org', mine:'Designed weekly ops review + QBR system adopted by 3 departments at Meridian', strength:'strong' },
+            { req:'Partner with finance on unit-economics models', mine:'Built contribution-margin model used in 2 board decks; partnered with FP&A monthly', strength:'strong' },
+            { req:'SQL fluency for self-serve analysis', mine:'Daily SQL for 3 years; built the team\u2019s dbt reporting layer', strength:'partial' }
+          ],
+          gaps:[
+            { gap:'Card-issuing / interchange economics not in your background.', mit:'Adjacent: payments pricing at Meridian covered take-rate mechanics. Cite the interchange primer you wrote internally.' },
+            { gap:'JD prefers 2+ yrs at a >1,000-person company.', mit:'Frame Meridian\u2019s 300→900 scale-up as equivalent operating complexity.' }
+          ] },
+        { id:'r2', band:'consider', fit:79, company:'Vanta', title:'Business Operations Manager', chips:['SF · remote-ok','Tier 1','high feasibility','med confidence'],
+          summary:'Broad BizOps remit across GTM and product — strong ops-cadence overlap, lighter on pricing.',
+          align:'Operating-cadence design maps 1:1 to their "run the operating system" language.',
+          gap:'Compliance/security domain is new to you.',
+          evidence:[
+            { req:'Run planning + operating cadence company-wide', mine:'Owned OKR + weekly ops cycle for a 200-person org', strength:'strong' },
+            { req:'Lead cross-functional special projects', mine:'Ran 4 zero-to-one initiatives incl. a partner-channel launch', strength:'strong' },
+            { req:'Familiarity with compliance/security market', mine:'None direct — SOC 2 exposure as a stakeholder only', strength:'weak' }
+          ],
+          gaps:[ { gap:'Security/compliance market knowledge.', mit:'Skim their SOC 2 + trust-report content; the role is ops-first, domain-second.' } ] },
+        { id:'r3', band:'consider', fit:76, company:'Notion', title:'Strategy & Operations, GTM', chips:['SF · hybrid','Tier 1','med feasibility','high confidence'],
+          summary:'GTM strategy seat close to sales leadership; heavy on territory + capacity modelling.',
+          align:'Capacity model you built at Meridian is the JD\u2019s first bullet.',
+          gap:'PLG motion differs from your sales-led background.',
+          evidence:[
+            { req:'Territory + capacity planning for sales org', mine:'Built rep-capacity model that reset 2025 quotas', strength:'strong' },
+            { req:'Deal-desk and pricing exceptions process', mine:'Co-owned deal desk for 18 months', strength:'strong' },
+            { req:'Experience in PLG / self-serve funnels', mine:'Sales-led only; some touch via free-trial experiment', strength:'weak' }
+          ],
+          gaps:[ { gap:'PLG funnel mechanics.', mit:'Lead with the self-serve trial experiment; position sales-led rigor as what they\u2019re hiring for.' } ] },
+        { id:'r4', band:'consider', fit:74, company:'Linear', title:'Chief of Staff, GTM', chips:['remote (US)','Tier 2','high feasibility','med confidence'],
+          summary:'Small-team CoS role — high leverage, generalist, writing-heavy.',
+          align:'Board-deck + narrative writing samples fit their docs-first culture.',
+          gap:'Team of ~60 — less structure than you\u2019re used to.',
+          evidence:[
+            { req:'Write strategy memos for exec team', mine:'12 board/strategy memos shipped; 2 became company OKRs', strength:'strong' },
+            { req:'Own exec operating rhythm', mine:'Ran CEO staff meeting + planning calendar at Meridian', strength:'strong' },
+            { req:'Comfort with ambiguity at <100-person scale', mine:'Joined Meridian at 300 — closest analogue is the 4-person ops pod', strength:'partial' }
+          ],
+          gaps:[ { gap:'Never operated below ~300 headcount.', mit:'Emphasise zero-to-one projects where you had no playbook.' } ] },
+        { id:'r5', band:'consider', fit:73, company:'Mercury', title:'Strategy & Operations Manager', chips:['NYC or SF','Tier 2','high feasibility','high confidence'],
+          summary:'Fintech ops seat with pricing + risk-ops rotation; strong domain match.',
+          align:'Fintech pricing background is directly on-thesis.',
+          gap:'Risk-ops rotation is outside your track record.',
+          evidence:[
+            { req:'Fintech pricing or monetisation experience', mine:'3 years payments pricing at Meridian', strength:'strong' },
+            { req:'Process design for risk/underwriting ops', mine:'None direct; built adjacent KYC-handoff process', strength:'partial' },
+            { req:'Dashboarding + SQL', mine:'dbt + Looker owner for the GTM org', strength:'strong' }
+          ],
+          gaps:[ { gap:'Risk-ops depth.', mit:'The rotation is taught; cite KYC-handoff redesign as proof of speed in regulated workflows.' } ] },
+        { id:'r6', band:'consider', fit:71, company:'Retool', title:'BizOps & Strategy', chips:['SF · onsite 3d','Tier 2','med feasibility','med confidence'],
+          summary:'Classic BizOps rotation program; strong brand, generalist scope.',
+          align:'Rotation format rewards your breadth across GTM + product ops.',
+          gap:'Onsite 3 days — relocation math needed.',
+          evidence:[
+            { req:'Generalist analytical toolkit', mine:'SQL, financial modelling, survey design — all in weekly use', strength:'strong' },
+            { req:'Stakeholder management across eng + GTM', mine:'Ran roadmap-tradeoff forum between eng and sales', strength:'strong' }
+          ],
+          gaps:[ { gap:'SF onsite 3 days/week.', mit:'Only pursue if the Ramp thread stalls; flag relocation openness in cover note.' } ] },
+        { id:'r7', band:'consider', fit:69, company:'Watershed', title:'Sr. Strategy & Operations Associate', chips:['SF · hybrid','Tier 2','high feasibility','med confidence'],
+          summary:'Climate-reporting platform; ops seat supporting enterprise GTM.',
+          align:'Enterprise GTM ops experience carries directly.',
+          gap:'Title is a half-step down from your current level.',
+          evidence:[
+            { req:'Support enterprise sales ops + forecasting', mine:'Owned forecast roll-up for $40M enterprise book', strength:'strong' },
+            { req:'Climate/regulatory reporting interest', mine:'Genuine interest, no work history', strength:'partial' }
+          ],
+          gaps:[ { gap:'Seniority: Associate-level title.', mit:'Ask recruiter about Manager-level scope before investing time.' } ] },
+        { id:'r8', band:'consider', fit:68, company:'Plaid', title:'GTM Strategy Manager', chips:['NYC · hybrid','Tier 1','med feasibility','med confidence'],
+          summary:'Partnership-heavy GTM strategy role in core fintech infrastructure.',
+          align:'Fintech domain + partner-channel launch experience.',
+          gap:'JD leans heavily on partnerships you\u2019ve only touched once.',
+          evidence:[
+            { req:'Partner/channel GTM strategy', mine:'Launched one partner channel (12% of new ARR in year 1)', strength:'partial' },
+            { req:'Fintech ecosystem fluency', mine:'3 years in payments; wrote internal interchange primer', strength:'strong' }
+          ],
+          gaps:[ { gap:'Depth in partnerships strategy.', mit:'The channel launch is one strong story — rehearse it as a case.' } ] },
+        { id:'r9', band:'stretch', fit:61, company:'Stripe', title:'Program Manager, Corporate Strategy', chips:['SF / NYC','Tier 1','low feasibility','low confidence'],
+          summary:'Corp-strategy adjacent PM seat; heavy internal competition expected.',
+          align:'Strategy-memo portfolio is the right artefact for this loop.',
+          gap:'JD asks for consulting or corp-dev background.',
+          evidence:[
+            { req:'Corp strategy / consulting background', mine:'Operator path, no consulting — strategy memos as substitute', strength:'partial' },
+            { req:'Program management at scale', mine:'Ran 3-team planning program', strength:'partial' }
+          ],
+          gaps:[ { gap:'No consulting/corp-dev credential.', mit:'Referral-only application; cold apply not worth it.' } ] },
+        { id:'r10', band:'stretch', fit:57, company:'Databricks', title:'Sr. Manager, Business Operations', chips:['SF · onsite','Tier 1','low feasibility','med confidence'],
+          summary:'One level above your current scope; would need an internal champion.',
+          align:'Operating-cadence work matches, at smaller scale.',
+          gap:'Wants 8+ yrs and direct people management of 4+.',
+          evidence:[
+            { req:'8+ years, manage team of 4+', mine:'6 years, managed 2 directly + 3 dotted-line', strength:'partial' }
+          ],
+          gaps:[ { gap:'Seniority bar.', mit:'Only via referral; park unless an insider appears.' } ] },
+        { id:'r11', band:'stretch', fit:54, company:'Figma', title:'Director of Business Operations', chips:['SF · hybrid','Tier 1','low feasibility','low confidence'],
+          summary:'Director seat — two levels up. Logged for calibration, not action.',
+          align:'Long-term target profile; useful JD to study.',
+          gap:'Director-level scope and 10+ yrs asked.',
+          evidence:[
+            { req:'10+ yrs leading BizOps function', mine:'6 yrs, no function ownership yet', strength:'weak' }
+          ],
+          gaps:[ { gap:'Two levels above current scope.', mit:'Keep as a 3-year North Star; do not apply.' } ] }
+      ],
+      skipped: [
+        { fit:38, company:'Rippling', title:'Revenue Operations Analyst', reason:'below fit floor (40) — analyst-level scope' },
+        { fit:36, company:'Snowflake', title:'Strategy & Ops, Zürich', reason:'location filter — onsite Zürich' },
+        { fit:'—', company:'Coinbase', title:'VP Business Operations', reason:'seniority filter — Director+ out of band' },
+        { fit:'—', company:'Deel', title:'BizOps Manager', reason:'duplicate — evaluated 30 Jun (fit 64, dismissed)' },
+        { fit:35, company:'Affirm', title:'Sales Strategy Associate', reason:'below fit floor (40) — comp band below target' },
+        { fit:'—', company:'HireRight Partners', title:'Strategy roles (multiple)', reason:'source filter — staffing-agency posting' },
+        { fit:33, company:'Chime', title:'Ops Program Coordinator', reason:'below fit floor (40) — coordinator-level scope' },
+        { fit:'—', company:'Airwallex', title:'Strategy & Ops Manager', reason:'snoozed by you until 15 Jul' }
+      ],
+      shortlist: [
+        { id:'s1', fit:77, company:'Airtable', title:'Business Operations Manager', loc:'SF · remote-ok', note:'Referral via Dana — ping her before submitting.', age:'flagged 2d ago',
+          snapAligns:['Operating-cadence design for 200-person org','Deal-desk co-ownership 18 months'], snapGaps:['No workflow-tools domain exposure'] },
+        { id:'s2', fit:74, company:'Rippling', title:'Strategy & Operations, GTM', loc:'NYC · hybrid', note:'', age:'flagged 4d ago',
+          snapAligns:['Capacity model reset 2025 quotas','Forecast roll-up for $40M book'], snapGaps:['Fast-cycle culture — confirm sustainable pace'] }
+      ],
+      applied: [
+        { id:'a1', company:'Brex', role:'Strategy & Operations Manager', loc:'SF · remote', stage:'interviewing', appliedOn:'12 Jun · W24',
+          next:'Prep case study for panel', due:'10 Jul', dueTone:'soon', contact:'M. Okafor (rec.)', salary:'$175–195k', notes:'Panel is 3×45min; case is pricing-themed',
+          history:[ {d:'12 Jun', e:'Applied via referral (T. Reyes)'}, {d:'17 Jun', e:'preparing → applied · confirmation received'}, {d:'24 Jun', e:'applied → recruiter screen · 30min call, positive'}, {d:'02 Jul', e:'recruiter screen → interviewing · panel scheduled 11 Jul'} ],
+          snapDate:'evaluated 10 Jun', snapFit:84, snapAligns:['Fintech pricing revamp (+$4.2M ARR)','Ops cadence for 40-person GTM org'], snapGaps:['Card-issuing economics — mitigated via interchange primer'] },
+        { id:'a2', company:'Carta', role:'BizOps Lead, Fund Administration', loc:'NYC · hybrid', stage:'recruiter screen', appliedOn:'24 Jun · W26',
+          next:'Send interview availability', due:'9 Jul', dueTone:'soon', contact:'J. Lim (rec.)', salary:'$160–180k', notes:'Recruiter flagged hiring mgr is ex-Meridian',
+          history:[ {d:'24 Jun', e:'Applied (cold, tailored note)'}, {d:'01 Jul', e:'preparing → applied'}, {d:'07 Jul', e:'applied → recruiter screen · call booked'} ],
+          snapDate:'evaluated 22 Jun', snapFit:78, snapAligns:['Fund-ops adjacent to payments ops','SQL + dbt reporting ownership'], snapGaps:['Fund-admin domain new'] },
+        { id:'a3', company:'Flexport', role:'Strategy & Operations, Network', loc:'SF · onsite', stage:'applied', appliedOn:'30 Jun · W27',
+          next:'Follow up — quiet 8 days', due:'7 Jul', dueTone:'overdue', contact:'—', salary:'—', notes:'Cold apply; low signal',
+          history:[ {d:'30 Jun', e:'Applied via careers page'}, {d:'30 Jun', e:'preparing → applied'} ],
+          snapDate:'evaluated 28 Jun', snapFit:69, snapAligns:['Ops-cadence + forecasting toolkit'], snapGaps:['Logistics domain new','Onsite 5 days'] },
+        { id:'a4', company:'Samsara', role:'Sr. Manager, GTM Strategy', loc:'remote (US)', stage:'final round', appliedOn:'28 May · W22',
+          next:'Send thank-you + references list', due:'11 Jul', dueTone:'ok', contact:'R. Patel (HM)', salary:'$185–205k', notes:'Final was 4 rounds; refs requested',
+          history:[ {d:'28 May', e:'Applied via referral (K. Osei)'}, {d:'03 Jun', e:'preparing → applied'}, {d:'09 Jun', e:'applied → recruiter screen'}, {d:'18 Jun', e:'recruiter screen → interviewing · 3 rounds'}, {d:'06 Jul', e:'interviewing → final round · onsite loop done'} ],
+          snapDate:'evaluated 26 May', snapFit:81, snapAligns:['Capacity + territory modelling','Deal-desk experience'], snapGaps:['Hardware+SaaS motion unfamiliar'] },
+        { id:'a5', company:'Gusto', role:'Business Operations Manager', loc:'SF / Denver', stage:'rejected', appliedOn:'19 May · W21',
+          next:'—', due:'—', dueTone:'none', contact:'A. Novak (rec.)', salary:'$155–175k', notes:'Rejected after screen — "seeking payroll domain"',
+          history:[ {d:'19 May', e:'Applied (cold)'}, {d:'22 May', e:'preparing → applied'}, {d:'29 May', e:'applied → recruiter screen'}, {d:'04 Jun', e:'recruiter screen → rejected · domain mismatch cited'} ],
+          snapDate:'evaluated 17 May', snapFit:72, snapAligns:['BizOps generalist toolkit'], snapGaps:['Payroll domain — proved decisive'] },
+        { id:'a6', company:'Instacart', role:'Strategy & Ops, Ads', loc:'SF · hybrid', stage:'withdrawn', appliedOn:'5 May · W19',
+          next:'—', due:'—', dueTone:'none', contact:'—', salary:'—', notes:'Withdrew — ads org reorg announced mid-process',
+          history:[ {d:'05 May', e:'Applied via referral'}, {d:'12 May', e:'preparing → applied'}, {d:'20 May', e:'applied → recruiter screen'}, {d:'02 Jun', e:'recruiter screen → withdrawn · reorg risk'} ],
+          snapDate:'evaluated 03 May', snapFit:70, snapAligns:['Monetisation/pricing background'], snapGaps:['Ads domain new'] }
+      ]
+    };
+  }
+
+  bandMeta(band) {
+    if (band === 'apply') return { label: 'Apply now', color: '#c25436', ring: 'rgba(194,84,54,.45)' };
+    if (band === 'consider') return { label: 'Consider', color: '#1f6f7c', ring: 'rgba(31,111,124,.4)' };
+    return { label: 'Stretch / reach', color: '#a1823e', ring: 'rgba(161,130,62,.4)' };
+  }
+  fitColor(fit) {
+    if (typeof fit !== 'number') return '#8d9ba0';
+    if (fit >= 85) return '#c25436';
+    if (fit >= 65) return '#1f6f7c';
+    if (fit >= 45) return '#a1823e';
+    return '#8d9ba0';
+  }
+  pipColor(s) { return s === 'strong' ? '#2f8f6d' : (s === 'partial' ? '#a1823e' : '#c94f27'); }
+
+  decorate(r) {
+    const m = this.bandMeta(r.band);
+    return Object.assign({}, r, {
+      color: m.color, ring: m.ring, bandLabel: m.label,
+      isExpanded: this.state.expandedId === r.id,
+      caret: this.state.expandedId === r.id ? '▴ less' : '▾ details',
+      evidence: (r.evidence || []).map(e => Object.assign({}, e, { pip: this.pipColor(e.strength) })),
+      expandToggle: () => this.setState(s => ({ expandedId: s.expandedId === r.id ? null : r.id })),
+      openDetail: () => this.setState({ detailId: r.id }),
+      markApply: () => this.setState(s => ({
+        matches: s.matches.filter(x => x.id !== r.id),
+        detailId: s.detailId === r.id ? null : s.detailId,
+        shortlist: [{ id: 'sl_' + r.id, fit: r.fit, company: r.company, title: r.title, loc: (r.chips[0] || ''), note: '', age: 'flagged today', snapAligns: [r.align], snapGaps: [r.gap] }].concat(s.shortlist)
+      })),
+      dismiss: () => this.setState(s => ({
+        matches: s.matches.filter(x => x.id !== r.id),
+        detailId: s.detailId === r.id ? null : s.detailId,
+        skipped: [{ fit: r.fit, company: r.company, title: r.title, reason: 'dismissed by you — today' }].concat(s.skipped)
+      })),
+      snooze: () => this.setState(s => ({
+        matches: s.matches.filter(x => x.id !== r.id),
+        detailId: s.detailId === r.id ? null : s.detailId,
+        skipped: [{ fit: r.fit, company: r.company, title: r.title, reason: 'snoozed by you until 15 Jul' }].concat(s.skipped)
+      }))
+    });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const quietDay = this.props.quietDay ?? false;
+    const gridOn = this.props.chartGrid ?? true;
+    const roles = st.matches.map(r => this.decorate(r));
+    const byBand = b => roles.filter(r => r.band === b);
+    const applyR = byBand('apply'), considerR = byBand('consider'), stretchR = byBand('stretch');
+
+    let bands;
+    if (quietDay) {
+      const top5 = roles.slice().sort((a, b) => b.fit - a.fit).slice(0, 5);
+      bands = [{ label: 'Top 5 by fit', color: '#5b6e75', count: String(top5.length), rolesShown: top5, collapsible: false, showCollapsedNote: false }];
+    } else {
+      bands = [
+        { label: 'Apply now', color: '#c25436', count: String(applyR.length), rolesShown: applyR, collapsible: false, showCollapsedNote: false },
+        { label: 'Consider', color: '#1f6f7c', count: String(considerR.length), rolesShown: considerR, collapsible: false, showCollapsedNote: false },
+        { label: 'Stretch / reach', color: '#a1823e', count: String(stretchR.length),
+          rolesShown: st.stretchOpen ? stretchR : [],
+          collapsible: true,
+          caret: st.stretchOpen ? '▴ collapse' : '▾ expand',
+          toggle: () => this.setState(s => ({ stretchOpen: !s.stretchOpen })),
+          showCollapsedNote: !st.stretchOpen,
+          collapsedNote: stretchR.length + ' stretch roles collapsed — long-shot fits kept for calibration. Expand to review.' }
+      ].filter(b => b.rolesShown.length > 0 || b.collapsible || b.label === 'Apply now');
+    }
+
+    const detailRole = roles.find(r => r.id === st.detailId) || null;
+
+    const shortlist = st.shortlist.map(it => Object.assign({}, it, {
+      color: this.fitColor(it.fit),
+      noteShown: it.note || 'add a note…',
+      noteColor: it.note ? '#5b6e75' : 'rgba(141,155,160,.85)',
+      markApplied: () => this.setState(s => ({
+        shortlist: s.shortlist.filter(x => x.id !== it.id),
+        applied: [{
+          id: 'ap_' + it.id, company: it.company, role: it.title, loc: it.loc, stage: 'preparing',
+          appliedOn: '8 Jul · W28', next: 'Tailor résumé + draft outreach', due: '10 Jul', dueTone: 'soon',
+          contact: '—', salary: '—', notes: it.note || '',
+          history: [{ d: '8 Jul', e: 'Promoted from shortlist → preparing' }],
+          snapDate: 'evaluated at flag', snapFit: it.fit, snapAligns: it.snapAligns || [], snapGaps: it.snapGaps || []
+        }].concat(s.applied)
+      })),
+      remove: () => this.setState(s => ({ shortlist: s.shortlist.filter(x => x.id !== it.id) }))
+    }));
+
+    const dueColor = t => t === 'overdue' ? '#c94f27' : (t === 'soon' ? '#a1823e' : (t === 'ok' ? '#5b6e75' : '#8d9ba0'));
+    const applied = st.applied.map(row => {
+      const closed = row.stage === 'rejected' || row.stage === 'withdrawn';
+      const sc = (this.STAGE[row.stage] || { c: '#5b6e75' }).c;
+      return Object.assign({}, row, {
+        stageColor: sc, stageBorder: sc === '#6fa3ad' ? 'rgba(31,111,124,.35)' : sc.startsWith('#') ? sc + '55' : sc,
+        inkColor: closed ? '#8d9ba0' : '#1c2a31',
+        roleColor: closed ? '#8d9ba0' : '#33454d',
+        nextColor: closed ? '#8d9ba0' : '#1c2a31',
+        dueColor: dueColor(row.dueTone),
+        snapColor: this.fitColor(row.snapFit),
+        open: () => this.setState({ drawerId: row.id })
+      });
+    });
+    const drawerRow = applied.find(r => r.id === st.drawerId) || null;
+
+    const count = stg => st.applied.filter(r => r.stage === stg).length;
+    const active = count('preparing') + count('applied') + count('recruiter screen');
+    const inInterview = count('interviewing') + count('final round');
+    const offers = count('offer');
+    const closed = count('rejected') + count('withdrawn');
+    const funnelStages = ['preparing', 'applied', 'recruiter screen', 'interviewing', 'final round', 'offer'];
+    const funnel = funnelStages.map(stg => {
+      const n = count(stg);
+      return { label: stg, count: String(n), color: (this.STAGE[stg] || {}).c, numColor: n > 0 ? '#1c2a31' : '#c9d1d3', barW: (10 + n * 26) + 'px' };
+    });
+
+    const go = p => () => this.setState({ page: p, detailId: null, drawerId: null });
+    const navItems = [
+      { key: 'matches', label: 'Potential Matches', count: String(st.matches.length) },
+      { key: 'toapply', label: 'To Apply', count: String(st.shortlist.length) },
+      { key: 'applied', label: 'Applied', count: String(st.applied.filter(r => r.stage !== 'rejected' && r.stage !== 'withdrawn').length) }
+    ].map(n => Object.assign(n, {
+      go: go(n.key),
+      bg: st.page === n.key ? 'rgba(31,111,124,.10)' : 'transparent',
+      fg: st.page === n.key ? '#1c2a31' : '#5b6e75',
+      countColor: st.page === n.key ? '#1f6f7c' : '#8d9ba0'
+    }));
+
+    return {
+      navItems, gridOn, quietDay,
+      isMatches: st.page === 'matches',
+      isToApply: st.page === 'toapply',
+      isApplied: st.page === 'applied',
+      applyCount: String(applyR.length), considerCount: String(considerR.length), stretchCount: String(stretchR.length),
+      matchTotal: String(st.matches.length),
+      auditOn: st.auditOn, digestOn: !st.auditOn,
+      auditLabel: st.auditOn ? '← back to matches' : 'skipped / all roles · ' + st.skipped.length,
+      toggleAudit: () => this.setState(s => ({ auditOn: !s.auditOn })),
+      skipped: st.skipped.map(sk => Object.assign({}, sk, { fitColor: typeof sk.fit === 'number' ? '#8d9ba0' : '#c9d1d3' })),
+      bands,
+      detailOpen: !!detailRole, detail: detailRole || {},
+      closeDetail: () => this.setState({ detailId: null }),
+      shortlist, shortlistCount: String(shortlist.length), shortlistEmpty: shortlist.length === 0,
+      goMatches: go('matches'), goToApply: go('toapply'),
+      applied, appliedEmpty: applied.length === 0, appliedHasRows: applied.length > 0,
+      stats: [ { n: String(active), label: 'active' }, { n: String(inInterview), label: 'in interview' }, { n: String(offers), label: 'offers' }, { n: String(closed), label: 'closed' } ],
+      funnel,
+      drawerOpen: !!drawerRow, drawer: drawerRow || {},
+      closeDrawer: () => this.setState({ drawerId: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

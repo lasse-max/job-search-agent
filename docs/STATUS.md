@@ -2,9 +2,37 @@
 
 Living status doc. Single source of truth for *where things stand right now and who's holding what*. Complements `DECISIONS.md` (why), `ROADMAP.md` (direction), and `docs/briefs/` (what to build). Update at each checkpoint. **Owner of this doc:** George (coordinator).
 
-**Last updated:** 2026-06-27 · **Branch:** `main`
+**Last updated:** 2026-07-08 · **Branch:** `main`
 
-## 🟢 LIVE, TUNED & OPERATING — 2.0 in design (2026-06-27)
+## 🟢 STAGE 1.5 — web-app gate CLEARED; build unblocked (2026-07-08)
+
+**Calibration stale-score fix shipped (`f965590`, Cato 🟠 closed).** Stale pre-calibration evaluations are now backfilled on each scan (capped per run, under the monthly spend cap), and old evaluator-version rows are filtered out of both the digest and the calibration-floor reads — so the DB no longer surfaces pre-calibration inflation (the native-PMs-at-87 class). Salary parsing now reads only pay-adjacent spans, so `$180,000 salary, requisition 9999999` no longer falsely down-ranks. Regressions added (stale-version re-eval, digest version filter, salary/requisition). `ruff` green · 125 tests green · benchmark recall/precision gates green · CI green (`28988776521`). Follow-ups parked as **B-21** (backfill admin/visibility) + **B-22** (richer comp parsing); **DECISIONS #65** logged.
+
+**This unblocks the Stage 1.5 web app** (`docs/briefs/webapp-build-brief.md`). Sequencing: build-order step 1 (SQLite→Postgres migration + Next.js/Supabase/Vercel skeleton + auth) can start now (it displays no scores); before step 2 (Potential Matches, which renders fit/band) confirm one live post-fix digest looks sane. App must reuse the current-version filter so the UI only ever shows calibrated scores.
+
+**`f965590` reviewed → SHIP (Cato, no 🔴/🟠).** Three 🟡 follow-ups: (a) fallback-discard test + (b) UK "per annum"/"annually"/`p.a.`/comma-context salary parsing → **both shipped in `1cd4066`** (calibration-only, 131 tests green, CI `28991140872`) — awaiting Cato review; (c) **the app data layer must exclude fallback evals — show only `%|hybrid_claude_v2`, never `is_fallback`** — the version filter alone admits deterministic stubs [baked into the web-app brief; verify in the app read layer].
+
+**`a2533db` "Add Stage 1.5 web foundation" landed on `main` (2026-07-08).** Codex built + committed the A1 foundation (Postgres migrations `001_stage15_core` + `002_stage15_supabase_auth`, `test_postgres_foundation`, Next.js/Tailwind/Supabase-Auth skeleton in `web/`, DECISIONS #66) ahead of the formal go — clean self-contained commit, CI green (`28990664258`), but **not yet reviewed**. Codex did **not** run the migration against live Supabase (no `JOB_AGENT_DATABASE_URL` locally). Next handoff: **Cato reviews `a2533db` against the Stage-1.5 checklist** (reviewing code/schema, not a live cutover). Then continue to A2 (Potential Matches).
+
+**⏳ LIVE SUPABASE CUTOVER — in progress (reviews cleared 2026-07-08).** Supabase project live (region us-west-2/Oregon; owner in SF). `JOB_AGENT_DATABASE_URL` (Session-pooler URI) set in GitHub Actions secrets. Supabase MCP connected to Codex (DATABASE/DEBUGGING/DOCS, write-enabled, read-only OFF for the migration — flip back after). **Key finding:** the authoritative SQLite state lives in the **GitHub Actions cache** (`scan.yml actions/cache`), not locally — local copy is a Jun-28 snapshot (31 companies / 7,058 postings / 1,340 evals, ~10 days stale). So the one-time import runs **in CI** (fresh cache + secret both present), NOT locally against stale data. `scan.yml` already wires `JOB_AGENT_DATABASE_URL` into `scan-all`, so the daily scan writes to Postgres going forward.
+
+**Cutover workflow pushed — `ff5efcb` "Add Supabase cutover workflow" (CI green, run `28993221576`).** `.github/workflows/migrate-postgres.yml`: restores the SQLite Actions cache, runs `job-agent migrate-postgres` in CI only, applies the RLS/auth migration after import, uploads `output/sqlite_to_postgres_migration_report.md` + `output/postgres_verification.md` (checks row-count parity, RLS/policies, allowed-owner row, calibrated-view safety). Owner email comes from the `DIGEST_RECIPIENT_EMAIL` secret (no real email committed). Codex also patched `current_calibrated_role_evaluations` to **exclude fallback provenance**, not just old evaluator versions (closes 🟡C at the view level). Brief: `docs/briefs/supabase-cutover-brief.md`.
+
+**▶ OWNER NEXT ACTION:** in GitHub Actions, run **"One-off SQLite to Postgres Migration"** manually, then send Codex the run id/status → Codex pulls the reports + verifies counts. After verify: flip the Supabase MCP to read-only, run one live digest (A1.5 check), then A2 (Potential Matches).
+
+---
+
+## 🟢 STAGE 1.5 — live agent + search refinement; 1.5 opportunity-list in design (2026-06-29)
+
+Roadmap split (owner): **1.0 shipped** (daily email agent) → **1.5** = search refinement + user testing + an online **opportunity list** (hot leads to apply, with a Skipped/all-roles audit view + running list) → **2.0** = applied tracker.
+
+- **Calibration loop shipped (`a729689`) → in Cato review.** From the 2026-06-29 digest review: **strict monotonic bands** (DECISIONS #61: fit-only, 80+/70–79/60–69/<60; removed the Tier-1+warm-path upward override that inverted ranking — warm-path/tier now feed the fit *score*); function gate now skips head-function false-positives (Recruiter, SRE, Solutions Architect, Technical PM) regardless of "GTM/Operations" keywords; required-credential gaps down-rank fit; multi-location dedup. **No brand-specific logic** (owner: stop treating Databricks differently). 112 tests; gated metrics hold (curated recall 100%/precision 90%; live apply/consider precision 100%/recall 90%; all-surfaced 47.4% report-only — expected stretch-inclusion effect). Calibration notes: `live_calibration_notes.md`.
+- **1.5 design:** `docs/design/stage2_design_brief.md` updated — Opportunity Inbox + role detail + **Skipped/all-roles audit view** + running list = design first; Application Tracker deferred to 2.0.
+- **Cadence:** once daily `0 6 * * *` (confirmed unchanged). Extra emails owner saw = manual Run-workflow triggers.
+
+---
+
+## 🟢 LIVE, TUNED & OPERATING (2026-06-27)
 
 Stage 1 is live, delivering, and now tuned to the owner's preference. All review loops closed (Cato SHIP on `558a6c5`). The agent: scans the watchlist **once daily (`0 6 * * *`)** → calibrated Claude eval → capped **Layline-dark** email that is **never empty** (always ≥5: "Top open roles by fit — may repeat" floor on quiet days) and carries **no false source alarms**.
 

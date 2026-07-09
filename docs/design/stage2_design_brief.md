@@ -1,78 +1,74 @@
-# Stage 2 (2.0) — Design Brief
-*For Claude design / mockups. Design first, build after. Single-user private web app — the operating surface for the job-search agent.*
+# Job Search Agent — Web App Design Brief (3 pages)
+*Paste into Claude design. Single-user private web app in the Layline brand. Design-first; build after.*
 
 ---
 
-## Paste-this prompt (short version)
+## PASTE-THIS PROMPT
 
-> Design a calm, data-dense **single-user job-search web app** in the **Layline** brand (nautical chart-paper, dark theme). Three core screens — **New Opportunities** (an inbox of AI-evaluated roles), **Active Opportunities** (a shortlist of roles I've flagged), and **Application Tracker** (a pipeline of roles I've applied to). Desktop-first. Use the brand tokens below. Priority screen to nail first: **New Opportunities + the role-detail panel.** Feel: precise, confident, uncluttered — like a navigator's chart, not a busy SaaS dashboard.
+> Design a calm, data-dense **single-user job-search web app** in the **Layline** brand (nautical chart-paper, dark theme — tokens below). **Three pages**, connected as a pipeline:
+> **1) Potential Matches** — AI-scored roles (the same list the daily email sends), grouped by recommendation band, each with a fit score, chips, and an expandable "why it fits" evidence view; primary action **Mark to apply**.
+> **2) To Apply** — the shortlist of roles I marked; primary action **Mark applied**.
+> **3) Applied (Tracker)** — a table of roles I've applied to, tracking each through interview stages (a personal application pipeline tracker).
+> Desktop-first, single focused user, no login/marketing chrome. Feel: a navigator's chart — precise, confident, uncluttered; one accent used sparingly; lots of quiet. Nothing moves between pages automatically — every transition is an explicit click.
 
 ---
 
 ## Who & why
-- **One user (me).** Private tool, no onboarding, no marketing, no multi-tenant chrome.
-- Replaces a morning email digest + a spreadsheet. The job: *see the few strong roles, shortlist them, track the ones I apply to* — without losing control of any decision.
-- Tone: **"velocity made good"** — real progress toward a destination. Calm, sharp, trustworthy. Information-dense but never noisy.
+One private user (me). Replaces a morning email digest + a spreadsheet. Flow: **see strong roles → shortlist the ones worth applying to → track the ones I applied to**, never losing control of a decision. Tone: *"velocity made good"* — real progress toward a destination.
 
-## Brand system (Layline)
-**Colors — dark (primary theme):**
-- Surface / bg: `#0a141c` (outer), `#0d1a24` / `#13242f` (panels)
-- Ink (text): `#eef0ec` · muted: `#9fb0b6` · faint: `#6f828a`
+## Brand tokens (Layline — dark)
+- **Surface:** `#0a141c` (page), `#0d1a24` / `#13242f` (panels/cards) · **Lines:** `rgba(255,255,255,.08)`
+- **Text:** ink `#eef0ec` · muted `#9fb0b6` · faint `#6f828a`
 - **Accent — deep-water teal:** `#1f6f7c` (bright-on-dark `#57b6c4`)
-- **Destination mark — rust:** `#b8472f` (bright `#e07a5c`) → reserve for *the top action / apply_now*
-- Success / viable: `#5bbf9a` · Warn / issue: `#ec6c41` · Stretch / caution gold: `#c7a86a`
-- Lines: `rgba(255,255,255,.08)`
+- **Destination mark — rust:** `#b8472f` (bright `#e07a5c`) → reserve for **apply_now / primary action**
+- **Success/viable:** `#5bbf9a` · **Stretch/caution gold:** `#c7a86a` · **Warn/issue:** `#ec6c41`
+- **Type:** headings **Newsreader** (serif) · body/UI **IBM Plex Sans** · data/IDs/mono **IBM Plex Mono**
+- Small radii (6–10px), hairline borders, generous whitespace, subtle shadows.
 
-*(Light variant exists if you want a paper mode: paper `#f4f2ec`, ink `#13242f`, same teal/rust.)*
+## Shared: the role object (real fields, so cards/detail have content)
+Company · title · location(s) · department · company tier (1/2/3) · **fit score 0–100** · **confidence %** · **recommendation** (apply_now / consider / stretch) · **feasibility** (viable / sponsorship_required) · 1–3 **alignments** (JD requirement → my evidence, strength strong/med/weak) · 1–3 **gaps** (severity + mitigation) · 2–3 sentence summary · apply link · first-seen date.
 
-**Type:** Headings — **Newsreader** (serif, elegant). Body/UI — **IBM Plex Sans**. Data / IDs / commands — **IBM Plex Mono**.
-**Shape:** small radii (2–6px), thin hairline borders, generous whitespace, subtle shadows. Chart-paper restraint — one accent, used sparingly.
-
-## Recurring data per role (so cards/detail have real content)
-Company · title · location · department · **company tier** (1/2/3) · **fit score 0–100** · **confidence %** · **recommendation** (apply_now / consider / stretch) · **feasibility** (viable / sponsorship_required / uncertain) · 1–3 **alignments** (JD requirement → my evidence, strength) · 1–3 **gaps** (severity, mitigation) · a 2–3 sentence summary · source link.
+## Left nav (persistent)
+Layline wordmark + "find your layline" · **Potential Matches** · **To Apply** · **Applied** · (small) System health. A pipeline counter on each nav item (e.g. Matches 12 · To Apply 5 · Applied 8).
 
 ---
 
-## Screen 1 — New Opportunities (the inbox) ★ design first
-**Purpose:** the daily surface — newly evaluated roles, best first.
-- **Layout:** left nav (3 screens + System health) · main column of role cards grouped by band: **Apply now** (rust accent) → **Consider** (teal) → **Stretch / reach** (gold, collapsed, labelled "calibration in progress — scrutinize").
-- **Role card:** company + title (serif), **fit as a prominent badge** (the number, colour-keyed to band), chips for location · tier · feasibility · confidence. One-line summary. Expand → top alignment (✓) + top gap (△). Actions: **Interested** (primary, moves to Active), **Dismiss**, **Snooze**, **Open source ↗**.
-- **Top bar:** date, summary count ("1 apply · 4 consider · 6 stretch · 1 source issue"), sort (fit / newest / tier), filter (band, location, tier).
-- **Source-health strip:** subtle banner if a feed is degraded (e.g. "[source] ATS: 0 jobs").
-- **States:** loading, empty ("no new roles this cycle — here are the top 5 for calibration"), degraded.
+## Page 1 — Potential Matches  ★ design first
+The daily digest, online. Best roles first.
+- **Top bar:** date · summary counts ("1 apply · 7 consider · 3 stretch") · **scan-reach stat** ("Scanned 6,901 postings across 32 companies") · sort (fit / newest / tier) · filter (band, location, tier, company).
+- **Grouped by band:** **Apply now** (rust accent) → **Consider** (teal) → **Stretch / reach** (gold, collapsed, labelled "scrutinize").
+- **Role card:** company + title (serif) · **fit as a prominent badge** (number, colour-keyed to band) · chips: location · tier · feasibility · confidence · one-line summary · **expand** → top alignment (✓) + top gap (△). Actions: **Mark to apply** (primary, rust → moves to page 2) · Dismiss · Snooze · Open source ↗.
+- **Source-health strip:** subtle amber banner if a feed degraded.
+- **Optional toggle — "Skipped / all roles":** audit view showing everything evaluated incl. skip/blocked, each with band, fit, and a one-line *reason skipped* (off-function / off-location / over-level / required-credential / language) — so I can catch a good role wrongly filtered. (Not a 4th page — a toggle here.)
+- **States:** loading · quiet-day ("no strong matches — top 5 by fit, for calibration") · degraded.
 
-## Screen 1b — Role detail (panel or page) ★ design with screen 1
-The differentiator — show *why*. Slide-over panel or full page:
-- Header: company · title · fit badge · confidence · recommendation · feasibility.
-- **Evidence mapping:** alignments as aligned rows — *"JD requirement → my evidence"* with a strength pip (strong/medium/weak). Gaps as rows with severity + mitigation. This is the heart — make it readable and credible, not a wall.
-- Summary, source link, posted/first-seen dates.
-- Primary action: **Mark interested** → Active.
+## Page 1b — Role detail (slide-over panel) ★ design with page 1
+The differentiator: show *why*. Header (company · title · fit badge · confidence · recommendation · feasibility) → **evidence mapping** as aligned rows *"JD requirement → my evidence"* with a strength pip; **gaps** as rows (severity + mitigation); summary; apply link; posted/first-seen. Primary action: **Mark to apply**. Keep it readable and credible, not a wall of AI text.
 
-## Screen 2 — Active Opportunities (shortlist)
-**Purpose:** roles I've flagged but not yet applied to — my working set.
-- **Layout:** lighter than the inbox — a focused list or simple board. Each item: company · title · fit · location · a free-text note · age ("flagged 2d ago").
-- Primary action: **Applied →** (promotes to the Tracker, creates an application record). Secondary: back to inbox, dismiss.
-- Keep it small and calm — this is a curated handful, not a feed.
+## Page 2 — To Apply (shortlist)
+Roles I flagged, pre-application — my working set.
+- Lighter than page 1: a focused list (or simple board). Each item: company · title · fit · location · free-text note · age ("flagged 2d ago").
+- **Primary action: Mark applied →** (moves to the Tracker). Secondary: open role, back to matches, remove.
+- Small and calm — a curated handful, not a feed. Empty state: "Nothing shortlisted — mark roles from Potential Matches."
 
-## Screen 3 — Application Tracker
-**Purpose:** the pipeline of things I've actually applied to (Hasse-style).
-- **Primary view: table.** Columns: Company · Role · Location · **Stage** · Date applied · Last activity · **Next action** · Due · Contact · Notes.
-- **Stages** as a clear status/pill progression: `preparing → applied → recruiter screen → interviewing → final round → offer / rejected / withdrawn`. Colour-key stages.
-- Row → detail drawer: full history (immutable timeline of stage changes), notes, contacts, doc links, and the *original evaluation snapshot* from when it was approved.
-- Optional later: kanban by stage. Table first.
-- **States:** empty ("nothing applied yet — promote a role from Active"), per-stage counts up top.
+## Page 3 — Applied (Tracker)  *(internal working pipeline — not a vanity dashboard)*
+The roles I've applied to, tracked through stages. **Reference:** a friend's tracker (hasse-job-search.netlify.app) is the shape, but his is *external/motivational* (weekly streak, "weeks with ≥2 applications" habit bar, interview-rate badge, salary-anchoring showpiece). **Make this internal instead** — a quiet tool that helps me *run* the search, not display it.
+- **Keep from that reference:** the applications **table**, a compact **stage funnel**, an **Applied-on / calendar-week** column, and a **salary** column (useful for comparing offers internally).
+- **Drop:** the weekly-streak gamification, the ≥2/week habit bar, the interview-rate vanity metric, and the salary-anchoring hero section.
+- **Slim stat strip (quiet, not a dashboard):** Active · In interview · Offers · Closed — plain counts, small, top-right. No streaks, no charts-for-show.
+- **Primary view: table.** Columns: Company · Role · Location · **Stage** · Applied on (+ CW) · **Next action** · Due · Contact/referral · Salary · Notes. Emphasis on **Next action + Due** — the working columns.
+- **Stages** as a coloured pill progression: `preparing → applied → recruiter screen → interviewing → final round → offer / rejected / withdrawn`. Compact funnel of per-stage counts up top.
+- **Row → detail drawer:** immutable timeline of stage changes (date-stamped), notes, contacts, document links, and the **original evaluation snapshot** from when it was shortlisted (fit, alignments, gaps — so I remember why I applied and can prep).
+- Optional later: kanban by stage (design table first).
+- Empty state: "Nothing applied yet — promote a role from To Apply."
 
-## Cross-cutting
-- **Left nav:** New Opportunities · Active · Tracker · System health (coverage, last scan, source failures, cost). Brand wordmark + "find your layline."
-- **The one hard rule (reflect in UI):** *nothing consequential happens automatically.* Moving a role between New → Active → Applied is always an explicit click. "Applied" is the only action that creates a tracked record.
-- **Empty/quiet states matter** — this app is often calm; quiet should feel intentional, not broken.
-- Desktop-first (single user, focused sessions); graceful at tablet width.
+## Pipeline & rules
+`Potential Matches → (Mark to apply) → To Apply → (Mark applied) → Applied`. Every move is an explicit click; nothing auto-advances. Only "Mark applied" creates a tracked application record.
 
-## Design priority order
-1. **New Opportunities + Role detail** (the daily surface + the evidence differentiator).
-2. **Application Tracker** (table + stage pills + detail drawer).
-3. **Active Opportunities** (lightest screen).
-4. Nav shell + System health.
+## Design priority
+1. Page 1 (Potential Matches) + 1b (role detail) — the daily surface + the evidence differentiator.
+2. Page 3 (Applied tracker) — table + stage pills + detail drawer.
+3. Page 2 (To Apply) — lightest.
 
 ## Out of scope (don't design)
-Auth/login screens, settings beyond a watchlist view, mobile-first layouts, kanban v1, analytics dashboards, anything multi-user. Keep it to the three screens + detail views.
+Login/auth screens, marketing pages, multi-user, mobile-first, analytics dashboards. Just the three pages + role detail.
