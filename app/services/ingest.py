@@ -8,7 +8,7 @@ from pathlib import Path
 from app.adapters import get_adapter
 from app.config import DEFAULT_DB_PATH, OUTPUT_DIR, load_company_config
 from app.db import (
-    connect,
+    connect_runtime_database,
     get_expected_volume_min,
     get_postings_by_ids,
     init_db,
@@ -56,6 +56,7 @@ def run_scan(
     *,
     company_name: str = "Databricks",
     db_path: Path = DEFAULT_DB_PATH,
+    database_url: str | None = None,
     fixture_path: Path | None = None,
 ) -> ScanSummary:
     company = load_company_config(company_name)
@@ -63,7 +64,7 @@ def run_scan(
         raise ValueError(f"Company is not enabled for automated scanning: {company.name}")
 
     adapter = get_adapter(company.ats_type)
-    conn = connect(db_path)
+    conn = connect_runtime_database(db_path, database_url=database_url)
     init_db(conn)
     started_at = utc_now()
     company_id = upsert_company(conn, company)

@@ -1,4 +1,9 @@
 .env
+web/.env*.local
+web/.env
+web/.next/
+web/node_modules/
+web/tsconfig.tsbuildinfo
 .DS_Store
 .venv/
 __pycache__/

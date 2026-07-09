@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from app.config import DEFAULT_DB_PATH, load_enabled_company_configs
-from app.db import connect, init_db
+from app.db import connect_runtime_database, init_db
 from app.models import CompanyConfig
 from app.services.ingest import ScanSummary, run_scan
 from app.services.notifications import DigestDeliveryResult, deliver_digest
@@ -36,6 +36,7 @@ class ScheduledScanResult:
 def run_scheduled_scan(
     *,
     db_path: Path = DEFAULT_DB_PATH,
+    database_url: str | None = None,
     companies: list[CompanyConfig] | None = None,
     send_digest: bool = False,
 ) -> ScheduledScanResult:
@@ -48,7 +49,11 @@ def run_scheduled_scan(
             skipped.append(f"{company.name}: manual sources are intake-only")
             continue
         try:
-            summary = run_scan(company_name=company.name, db_path=db_path)
+            summary = run_scan(
+                company_name=company.name,
+                db_path=db_path,
+                database_url=database_url,
+            )
         except Exception as exc:  # noqa: BLE001 - scheduler must continue and report all sources.
             failures.append(f"{company.name}: {type(exc).__name__}: {exc}")
             continue
@@ -58,7 +63,7 @@ def run_scheduled_scan(
 
     notification = None
     if send_digest:
-        conn = connect(db_path)
+        conn = connect_runtime_database(db_path, database_url=database_url)
         init_db(conn)
         notification = deliver_digest(conn)
         if notification.status == "failed":

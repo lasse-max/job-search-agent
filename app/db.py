@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sqlite3
 from dataclasses import dataclass, replace
 from pathlib import Path
+from typing import Any
 
 from app.adapters import parser_version, source_endpoint
 from app.adapters.utils import normal_key
@@ -18,6 +20,7 @@ from app.services.text_rules import (
     strip_language_variant_markers,
     unsupported_language_requirement,
 )
+from app.postgres import connect_postgres, is_postgres_connection, postgres_core_schema
 
 
 DEFAULT_EVALUATOR_VERSION = "deterministic_fallback_v1"
@@ -146,6 +149,9 @@ class ScanReach:
     company_count: int
 
 
+Connection = sqlite3.Connection | Any
+
+
 def connect(db_path: Path) -> sqlite3.Connection:
     db_path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(db_path)
@@ -154,8 +160,19 @@ def connect(db_path: Path) -> sqlite3.Connection:
     return conn
 
 
-def init_db(conn: sqlite3.Connection) -> None:
-    conn.executescript(SCHEMA)
+def connect_runtime_database(
+    db_path: Path,
+    *,
+    database_url: str | None = None,
+) -> Connection:
+    resolved_url = database_url or os.getenv("JOB_AGENT_DATABASE_URL")
+    if resolved_url:
+        return connect_postgres(resolved_url)
+    return connect(db_path)
+
+
+def init_db(conn: Connection) -> None:
+    conn.executescript(postgres_core_schema() if is_postgres_connection(conn) else SCHEMA)
     conn.commit()
 
 

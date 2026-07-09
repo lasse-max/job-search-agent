@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sqlite3
 from pathlib import Path
 
@@ -26,6 +27,7 @@ from app.services.ingest import run_scan
 from app.services.live_noise import sample_live_noise_set
 from app.services.llm_evaluator import provider_from_env
 from app.services.manual_intake import add_text_intake, add_url_intake, read_text_input
+from app.services.postgres_migration import migrate_sqlite_to_postgres
 from app.services.review import (
     approve_review,
     dismiss_review,
@@ -45,10 +47,34 @@ def main(argv: list[str] | None = None) -> int:
     scan_parser = subparsers.add_parser("scan", help="Run a configured source scan")
     scan_parser.add_argument("--company", default="Databricks")
     scan_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    scan_parser.add_argument("--database-url", help="Postgres URL; defaults to JOB_AGENT_DATABASE_URL")
     scan_parser.add_argument("--fixture", type=Path, help="Use a local adapter fixture")
 
     scan_all_parser = subparsers.add_parser("scan-all", help="Run all enabled source scans")
     scan_all_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    scan_all_parser.add_argument(
+        "--database-url",
+        help="Postgres URL; defaults to JOB_AGENT_DATABASE_URL",
+    )
+
+    migrate_parser = subparsers.add_parser(
+        "migrate-postgres",
+        help="One-way import from the local SQLite cache into Postgres",
+    )
+    migrate_parser.add_argument("--source", type=Path, default=DEFAULT_DB_PATH)
+    migrate_parser.add_argument(
+        "--database-url",
+        help="Postgres URL; defaults to JOB_AGENT_DATABASE_URL",
+    )
+    migrate_parser.add_argument(
+        "--report",
+        type=Path,
+        default=OUTPUT_DIR / "sqlite_to_postgres_migration_report.md",
+    )
+    migrate_parser.add_argument(
+        "--owner-email",
+        help="Optional single-user allow-list seed for Supabase Auth",
+    )
 
     review_parser = subparsers.add_parser("review", help="Inspect new evaluated opportunities")
     review_subparsers = review_parser.add_subparsers(dest="review_command", required=True)
@@ -154,7 +180,12 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "scan":
-        summary = run_scan(company_name=args.company, db_path=args.db, fixture_path=args.fixture)
+        summary = run_scan(
+            company_name=args.company,
+            db_path=args.db,
+            database_url=args.database_url,
+            fixture_path=args.fixture,
+        )
         print(f"status={summary.status}")
         print(f"company={summary.company}")
         print(f"source={summary.source_type}:{summary.source_key}")
@@ -171,7 +202,11 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "scan-all":
-        result = run_scheduled_scan(db_path=args.db, send_digest=True)
+        result = run_scheduled_scan(
+            db_path=args.db,
+            database_url=args.database_url,
+            send_digest=True,
+        )
         print(f"status={result.status}")
         print(f"scanned={len(result.summaries)}")
         print(f"skipped={len(result.skipped)}")
@@ -195,6 +230,23 @@ def main(argv: list[str] | None = None) -> int:
             if result.notification.error_summary:
                 print(f"notification_error={result.notification.error_summary}")
         return 1 if result.failures else 0
+
+    if args.command == "migrate-postgres":
+        database_url = args.database_url or os.getenv("JOB_AGENT_DATABASE_URL") or ""
+        if not database_url or database_url.startswith("sqlite"):
+            print("Postgres URL required via --database-url or JOB_AGENT_DATABASE_URL")
+            return 1
+        report = migrate_sqlite_to_postgres(
+            source_path=args.source,
+            database_url=database_url,
+            report_path=args.report,
+            owner_email=args.owner_email or os.getenv("OWNER_EMAIL"),
+        )
+        print(f"report={args.report}")
+        print(f"imported={report.imported}")
+        print(f"skipped={report.skipped}")
+        print(f"ambiguous={report.ambiguous}")
+        return 1 if report.ambiguous else 0
 
     if args.command == "review":
         conn = connect(args.db)

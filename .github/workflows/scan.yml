@@ -39,6 +39,7 @@ jobs:
           ANTHROPIC_MODEL: claude-haiku-4-5
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}
+          JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
           MONTHLY_MODEL_SPEND_CAP_USD: "15"
         run: job-agent scan-all
 
