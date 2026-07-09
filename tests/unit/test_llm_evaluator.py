@@ -10,7 +10,12 @@ import httpx
 
 from app.config import load_candidate_profile
 from app.models import CompanyConfig
-from app.services.evaluate import HYBRID_EVALUATOR_VERSION, evaluate_role
+from app.services.evaluate import (
+    HYBRID_EVALUATOR_VERSION,
+    _compensation_seniority_signal,
+    _max_annual_compensation,
+    evaluate_role,
+)
 from app.services.llm_evaluator import (
     ClaudeLLMProvider,
     DEFAULT_ESTIMATED_EVAL_COST_USD,
@@ -324,6 +329,19 @@ class LlmEvaluatorTest(unittest.TestCase):
             spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
         )
 
+        london_lead_row = _row("Lead, Strategic Operations")
+        london_lead_row["locations_json"] = json.dumps(["London, United Kingdom"])
+        london_lead_row["description_text"] = (
+            "Lead strategic operations programs and executive cadence. "
+            "£280,000 per annum, base salary plus equity."
+        )
+        london_lead = evaluate_role(
+            london_lead_row,
+            _company(),
+            llm_provider=FakeProvider(provider_output),
+            spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+        )
+
         self.assertLess(credential.role_fit_score, 70)
         self.assertNotIn(credential.recommendation, {"apply_now", "consider"})
         self.assertEqual(senior_ic.recommendation, "stretch")
@@ -331,9 +349,30 @@ class LlmEvaluatorTest(unittest.TestCase):
         self.assertLess(senior_ic.role_fit_score, 70)
         self.assertEqual(director.recommendation, "skip")
         self.assertLess(director.role_fit_score, 60)
+        self.assertEqual(london_lead.recommendation, "stretch")
+        self.assertGreaterEqual(london_lead.role_fit_score, 60)
+        self.assertLess(london_lead.role_fit_score, 70)
         self.assertEqual(allowance.recommendation, "apply_now")
         self.assertEqual(requisition.recommendation, "apply_now")
         self.assertGreaterEqual(requisition.role_fit_score, 80)
+
+    def test_compensation_parser_handles_uk_per_annum_without_requisition_false_positive(
+        self,
+    ) -> None:
+        self.assertEqual(
+            _max_annual_compensation("£280,000 per annum"),
+            ("gbp", 280_000),
+        )
+        self.assertEqual(
+            _max_annual_compensation("£280,000 per annum, base salary plus equity."),
+            ("gbp", 280_000),
+        )
+        self.assertIsNone(
+            _compensation_seniority_signal(
+                "Strategic Operations Lead",
+                "$180,000 salary, requisition 9999999, global operating rhythm ownership.",
+            )
+        )
 
     def test_below_level_title_caps_only_when_scope_is_missing(self) -> None:
         output_payload = _valid_output().model_dump()

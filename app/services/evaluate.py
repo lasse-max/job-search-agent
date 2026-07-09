@@ -1316,7 +1316,10 @@ def _max_annual_compensation(text: str) -> tuple[str, int] | None:
 
 
 def _compensation_spans(fragment: str) -> list[str]:
-    context = r"\b(?:salary|compensation|base pay|pay range|annual|per year|ote)\b"
+    context = (
+        r"\b(?:salary|compensation|base pay|pay range|annual(?:ly)?|per annum|p\.a\.|"
+        r"per year|ote)\b"
+    )
     currency = (
         r"(?:[$€£]|\b(?:usd|eur|gbp|aud|sgd|us dollars?|euros?|pounds?"
         r"|australian dollars?|singapore dollars?)\b)"
@@ -1329,7 +1332,7 @@ def _compensation_spans(fragment: str) -> list[str]:
     )
     patterns = [
         rf"{context}[^.;\n]{{0,90}}?{amount_or_range}",
-        rf"{amount_or_range}[^,.;\n]{{0,45}}?{context}",
+        rf"{amount_or_range}[^.;\n]{{0,45}}?{context}",
     ]
     spans: list[str] = []
     seen: set[tuple[int, int]] = set()

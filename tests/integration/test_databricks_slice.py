@@ -396,6 +396,46 @@ class DatabricksSliceTest(unittest.TestCase):
             self.assertEqual(_count(conn, "role_evaluations"), before_count + 3)
             self.assertEqual(current_count, 3)
 
+    def test_stale_backfill_discards_fallback_when_no_current_evaluator_is_available(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            provider = SuccessfulProvider()
+
+            with patch("app.services.evaluate.provider_from_env", return_value=provider):
+                run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            conn.execute(
+                "UPDATE role_evaluations SET model_version = 'fake-claude|hybrid_claude_v1'"
+            )
+            conn.commit()
+            before_count = _count(conn, "role_evaluations")
+
+            with patch("app.services.evaluate.provider_from_env", return_value=None):
+                refreshed = run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            model_versions = [
+                row["model_version"]
+                for row in conn.execute(
+                    "SELECT model_version FROM role_evaluations ORDER BY id"
+                ).fetchall()
+            ]
+            skip_reasons = [
+                row["reason"]
+                for row in conn.execute("SELECT reason FROM evaluation_skips ORDER BY id").fetchall()
+            ]
+
+            self.assertEqual(refreshed.changed_count, 0)
+            self.assertEqual(refreshed.evaluated_count, 0)
+            self.assertEqual(_count(conn, "role_evaluations"), before_count)
+            self.assertEqual(model_versions, ["fake-claude|hybrid_claude_v1"] * 3)
+            self.assertNotIn(DETERMINISTIC_FALLBACK_VERSION, model_versions)
+            self.assertEqual(
+                skip_reasons,
+                ["stale_evaluation_backfill_deferred_no_current_evaluator"] * 3,
+            )
+
     def test_snoozed_role_resurfaces_after_snooze_until_passes(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "slice.sqlite"
