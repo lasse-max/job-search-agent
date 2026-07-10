@@ -55,7 +55,9 @@ jobs:
           job-agent migrate-postgres \
             --source "$SQLITE_DB_PATH" \
             --report "$MIGRATION_REPORT" \
-            --owner-email "$OWNER_EMAIL"
+            --owner-email "$OWNER_EMAIL" \
+            --batch-size 500 \
+            --replace-target
 
       - name: Apply Supabase auth and RLS migration
         if: always()
@@ -71,7 +73,15 @@ jobs:
           migration = Path("migrations/002_stage15_supabase_auth.sql").read_text(
               encoding="utf-8"
           )
-          with psycopg.connect(os.environ["JOB_AGENT_DATABASE_URL"]) as conn:
+          with psycopg.connect(
+              os.environ["JOB_AGENT_DATABASE_URL"],
+              connect_timeout=20,
+              keepalives=1,
+              keepalives_idle=30,
+              keepalives_interval=10,
+              keepalives_count=5,
+              prepare_threshold=None,
+          ) as conn:
               with conn.cursor() as cursor:
                   cursor.execute(migration)
               conn.commit()
@@ -111,7 +121,15 @@ jobs:
           errors: list[str] = []
 
           sqlite_conn = sqlite3.connect(source_path)
-          pg_conn = psycopg.connect(os.environ["JOB_AGENT_DATABASE_URL"])
+          pg_conn = psycopg.connect(
+              os.environ["JOB_AGENT_DATABASE_URL"],
+              connect_timeout=20,
+              keepalives=1,
+              keepalives_idle=30,
+              keepalives_interval=10,
+              keepalives_count=5,
+              prepare_threshold=None,
+          )
 
           def sqlite_count(table: str) -> int:
               return int(sqlite_conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0])
@@ -213,7 +231,7 @@ jobs:
                   """
                   SELECT COUNT(*)
                   FROM current_calibrated_role_evaluations
-                  WHERE model_version ILIKE '%deterministic_fallback%'
+                  WHERE model_version ILIKE '%%deterministic_fallback%%'
                      OR COALESCE(
                           lower(evaluation_json::jsonb #>> '{provenance,fallback_quality}'),
                           'false'

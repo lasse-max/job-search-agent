@@ -75,6 +75,17 @@ def main(argv: list[str] | None = None) -> int:
         "--owner-email",
         help="Optional single-user allow-list seed for Supabase Auth",
     )
+    migrate_parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=500,
+        help="Rows per Postgres import batch",
+    )
+    migrate_parser.add_argument(
+        "--replace-target",
+        action="store_true",
+        help="Clear import-owned Postgres tables before loading from SQLite",
+    )
 
     review_parser = subparsers.add_parser("review", help="Inspect new evaluated opportunities")
     review_subparsers = review_parser.add_subparsers(dest="review_command", required=True)
@@ -241,6 +252,8 @@ def main(argv: list[str] | None = None) -> int:
             database_url=database_url,
             report_path=args.report,
             owner_email=args.owner_email or os.getenv("OWNER_EMAIL"),
+            batch_size=args.batch_size,
+            replace_target=args.replace_target,
         )
         print(f"report={args.report}")
         print(f"imported={report.imported}")

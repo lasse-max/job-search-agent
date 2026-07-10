@@ -65,7 +65,15 @@ class PostgresConnection:
             ) from exc
 
         self.database_url = database_url
-        self._conn = psycopg.connect(database_url)
+        self._conn = psycopg.connect(
+            database_url,
+            connect_timeout=20,
+            keepalives=1,
+            keepalives_idle=30,
+            keepalives_interval=10,
+            keepalives_count=5,
+            prepare_threshold=None,
+        )
 
     def execute(self, sql: str, params: tuple[Any, ...] | list[Any] = ()) -> PostgresCursor:
         translated_sql = _translate_sql(sql)
@@ -131,9 +139,17 @@ def _translate_sql(sql: str) -> str:
         translated += " ON CONFLICT (job_posting_id, input_hash, model_version) DO NOTHING"
     if translated.startswith("INSERT INTO evaluation_skips") and "ON CONFLICT" not in translated:
         translated += " ON CONFLICT (job_posting_id, input_hash, reason) DO NOTHING"
-    if translated.startswith("INSERT INTO job_postings") and "RETURNING" not in translated:
+    if (
+        translated.startswith("INSERT INTO job_postings")
+        and "RETURNING" not in translated
+        and "ON CONFLICT" not in translated
+    ):
         translated += " RETURNING id"
-    if translated.startswith("INSERT INTO notifications") and "RETURNING" not in translated:
+    if (
+        translated.startswith("INSERT INTO notifications")
+        and "RETURNING" not in translated
+        and "ON CONFLICT" not in translated
+    ):
         translated += " RETURNING id"
     return translated.replace("?", "%s")
 

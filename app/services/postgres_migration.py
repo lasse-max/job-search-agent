@@ -5,7 +5,7 @@ from __future__ import annotations
 import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit
 
 from app.db import init_db
 from app.postgres import PostgresConnection, connect_postgres
@@ -46,6 +46,7 @@ class MigrationReport:
     target: str
     owner_seeded: bool
     tables: tuple[TableMigrationResult, ...]
+    target_replaced: bool = False
 
     @property
     def imported(self) -> int:
@@ -66,6 +67,7 @@ class MigrationReport:
             f"- Source: `{self.source_path}`",
             f"- Target: `{self.target}`",
             f"- Owner allow-list seeded: `{str(self.owner_seeded).lower()}`",
+            f"- Target import tables replaced before import: `{str(self.target_replaced).lower()}`",
             f"- Totals: imported `{self.imported}`, skipped `{self.skipped}`, "
             f"ambiguous `{self.ambiguous}`",
             "",
@@ -95,26 +97,52 @@ def migrate_sqlite_to_postgres(
     database_url: str,
     report_path: Path,
     owner_email: str | None = None,
+    batch_size: int = 500,
+    replace_target: bool = False,
 ) -> MigrationReport:
-    source = sqlite3.connect(source_path)
+    if batch_size < 1:
+        raise ValueError("batch_size must be at least 1")
+    source = _connect_readonly_sqlite(source_path)
+    target: PostgresConnection | None = None
+    try:
+        target = connect_postgres(database_url)
+        init_db(target)
+        if replace_target:
+            _replace_import_tables(target)
+        owner_seeded = _seed_owner(target, owner_email)
+        results = []
+        for table in (*MIGRATION_TABLES, *AUXILIARY_TABLES):
+            results.append(_migrate_table(source, target, table, batch_size=batch_size))
+        _reset_sequences(target)
+        target.commit()
+        report = MigrationReport(
+            source_path=source_path,
+            target=_redact_database_url(database_url),
+            owner_seeded=owner_seeded,
+            tables=tuple(results),
+            target_replaced=replace_target,
+        )
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(report.to_markdown(), encoding="utf-8")
+        return report
+    finally:
+        source.close()
+        if target is not None:
+            target.close()
+
+
+def _connect_readonly_sqlite(source_path: Path) -> sqlite3.Connection:
+    uri = f"file:{quote(str(source_path.resolve()))}?mode=ro"
+    source = sqlite3.connect(uri, uri=True)
     source.row_factory = sqlite3.Row
-    target = connect_postgres(database_url)
-    init_db(target)
-    owner_seeded = _seed_owner(target, owner_email)
-    results = []
-    for table in (*MIGRATION_TABLES, *AUXILIARY_TABLES):
-        results.append(_migrate_table(source, target, table))
-    _reset_sequences(target)
+    source.execute("PRAGMA query_only = ON")
+    return source
+
+
+def _replace_import_tables(target: PostgresConnection) -> None:
+    tables = ", ".join((*MIGRATION_TABLES, *AUXILIARY_TABLES, "app_allowed_users"))
+    target.execute(f"TRUNCATE TABLE {tables} RESTART IDENTITY CASCADE")
     target.commit()
-    report = MigrationReport(
-        source_path=source_path,
-        target=_redact_database_url(database_url),
-        owner_seeded=owner_seeded,
-        tables=tuple(results),
-    )
-    report_path.parent.mkdir(parents=True, exist_ok=True)
-    report_path.write_text(report.to_markdown(), encoding="utf-8")
-    return report
 
 
 def _seed_owner(target: PostgresConnection, owner_email: str | None) -> bool:
@@ -136,70 +164,82 @@ def _migrate_table(
     source: sqlite3.Connection,
     target: PostgresConnection,
     table: str,
+    *,
+    batch_size: int = 500,
 ) -> TableMigrationResult:
     result = TableMigrationResult(table=table)
     columns = _source_columns(source, table)
     if not columns:
         return result
-    placeholders = ", ".join("?" for _ in columns)
     column_list = ", ".join(columns)
-    rows = source.execute(f"SELECT {column_list} FROM {table} ORDER BY id").fetchall()
-    for row in rows:
-        row_id = int(row["id"])
-        existing = target.execute(
-            f"SELECT {column_list} FROM {table} WHERE id = ?",
-            (row_id,),
-        ).fetchone()
-        if existing is not None:
-            if _rows_equal(columns, row, existing):
-                result.skipped += 1
-            else:
-                result.ambiguous.append(
-                    AmbiguousRow(
-                        table=table,
-                        row_id=row_id,
-                        reason="target id already exists with different values",
-                    )
-                )
-            continue
+    source_cursor = source.execute(f"SELECT {column_list} FROM {table} ORDER BY id")
+    while rows := source_cursor.fetchmany(batch_size):
         try:
             cursor = target.execute(
-                f"""
-                INSERT INTO {table} ({column_list})
-                VALUES ({placeholders})
-                ON CONFLICT (id) DO NOTHING
-                """,
-                tuple(row[column] for column in columns),
+                _bulk_upsert_sql(table, columns, row_count=len(rows)),
+                _flatten_rows(rows, columns),
             )
             target.commit()
         except Exception as exc:  # noqa: BLE001 - migration must report row-level failures.
             target.rollback()
+            _migrate_rows_individually(rows, columns, target, result, exc)
+            continue
+        result.imported += len(rows) if cursor.rowcount >= 0 else len(rows)
+    return result
+
+
+def _migrate_rows_individually(
+    rows: list[sqlite3.Row],
+    columns: list[str],
+    target: PostgresConnection,
+    result: TableMigrationResult,
+    batch_error: Exception,
+) -> None:
+    sql = _bulk_upsert_sql(result.table, columns, row_count=1)
+    for row in rows:
+        try:
+            target.execute(sql, tuple(row[column] for column in columns))
+            target.commit()
+        except Exception as exc:  # noqa: BLE001 - keep migrating independent rows.
+            target.rollback()
             result.ambiguous.append(
-                AmbiguousRow(table=table, row_id=row_id, reason=f"{type(exc).__name__}: {exc}")
+                AmbiguousRow(
+                    table=result.table,
+                    row_id=int(row["id"]),
+                    reason=(
+                        f"batch {type(batch_error).__name__}: {batch_error}; "
+                        f"row {type(exc).__name__}: {exc}"
+                    ),
+                )
             )
             continue
-        if cursor.rowcount > 0:
-            result.imported += 1
-        else:
-            result.ambiguous.append(
-                AmbiguousRow(table=table, row_id=row_id, reason="conflict on non-id constraint")
-            )
-    return result
+        result.imported += 1
+
+
+def _bulk_upsert_sql(table: str, columns: list[str], *, row_count: int) -> str:
+    column_list = ", ".join(columns)
+    row_placeholders = "(" + ", ".join("?" for _ in columns) + ")"
+    values = ", ".join(row_placeholders for _ in range(row_count))
+    update_columns = [column for column in columns if column != "id"]
+    if update_columns:
+        conflict_action = "DO UPDATE SET " + ", ".join(
+            f"{column} = EXCLUDED.{column}" for column in update_columns
+        )
+    else:
+        conflict_action = "DO NOTHING"
+    return (
+        f"INSERT INTO {table} ({column_list}) VALUES {values} "
+        f"ON CONFLICT (id) {conflict_action}"
+    )
+
+
+def _flatten_rows(rows: list[sqlite3.Row], columns: list[str]) -> tuple[object, ...]:
+    return tuple(row[column] for row in rows for column in columns)
 
 
 def _source_columns(source: sqlite3.Connection, table: str) -> list[str]:
     rows = source.execute(f"PRAGMA table_info({table})").fetchall()
     return [str(row["name"]) for row in rows]
-
-
-def _rows_equal(columns: list[str], source_row: sqlite3.Row, target_row: dict[str, object]) -> bool:
-    return all(_normalize(source_row[column]) == _normalize(target_row[column]) for column in columns)
-
-
-def _normalize(value: object) -> str:
-    if value is None:
-        return ""
-    return str(value)
 
 
 def _reset_sequences(target: PostgresConnection) -> None:
