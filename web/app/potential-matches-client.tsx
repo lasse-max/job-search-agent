@@ -97,6 +97,8 @@ export function PotentialMatchesClient({ data, userEmail }: Props) {
 
           <SummaryBar data={data} />
 
+          {data.loadError ? <DataLoadErrorBanner error={data.loadError} /> : null}
+
           {auditOpen ? (
             <AuditView rows={data.auditRows} />
           ) : (
@@ -146,6 +148,21 @@ export function PotentialMatchesClient({ data, userEmail }: Props) {
       </section>
       {detailRole ? <RoleSlideOver onClose={() => setDetailId(null)} role={detailRole} /> : null}
     </main>
+  );
+}
+
+function DataLoadErrorBanner({
+  error
+}: {
+  error: NonNullable<PotentialMatchesData["loadError"]>;
+}) {
+  return (
+    <div className="mt-6 rounded-lg border border-chart-warn/30 bg-chart-warn/10 px-4 py-4">
+      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-chart-warn">
+        {error.title}
+      </div>
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-chart-muted">{error.message}</p>
+    </div>
   );
 }
 

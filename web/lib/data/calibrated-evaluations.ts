@@ -92,6 +92,10 @@ export type PotentialMatchesData = {
   };
   quietDay: boolean;
   initialExpandedId: number | null;
+  loadError: {
+    title: string;
+    message: string;
+  } | null;
 };
 
 export async function listCurrentEvaluationRefs(
@@ -169,8 +173,37 @@ export async function loadPotentialMatches(
       audit: auditRows.length
     },
     quietDay,
-    initialExpandedId: firstExpandable
+    initialExpandedId: firstExpandable,
+    loadError: null
   };
+}
+
+export function emptyPotentialMatchesData(loadError: PotentialMatchesData["loadError"] = null) {
+  return {
+    generatedAtLabel: formatDateTime(new Date().toISOString()),
+    scanReach: {
+      fetchedCount: null,
+      companyCount: null,
+      latestScanAt: null
+    },
+    bands: {
+      apply_now: [],
+      consider: [],
+      stretch: [],
+      calibration: []
+    },
+    auditRows: [],
+    counts: {
+      applyNow: 0,
+      consider: 0,
+      stretch: 0,
+      calibration: 0,
+      audit: 0
+    },
+    quietDay: false,
+    initialExpandedId: null,
+    loadError
+  } satisfies PotentialMatchesData;
 }
 
 function normalizeCurrentEvaluation(row: CurrentEvaluationRow): PotentialMatch | null {
