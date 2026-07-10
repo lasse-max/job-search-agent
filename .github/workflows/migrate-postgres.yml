@@ -188,8 +188,9 @@ jobs:
                   SELECT COUNT(*)
                   FROM pg_policies
                   WHERE schemaname = 'public'
-                    AND policyname LIKE 'owner_read_%'
-                  """
+                    AND policyname LIKE %s
+                  """,
+                  ("owner_read_%",),
               )
           )
           allowed_user_count = int(pg_count("app_allowed_users"))

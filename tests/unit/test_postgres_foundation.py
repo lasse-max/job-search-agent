@@ -172,6 +172,9 @@ class PostgresFoundationTest(unittest.TestCase):
 
         self.assertIn("--batch-size 500", workflow)
         self.assertIn("--replace-target", workflow)
+        self.assertIn("policyname LIKE %s", workflow)
+        self.assertIn('("owner_read_%",)', workflow)
+        self.assertNotIn("policyname LIKE 'owner_read_%'", workflow)
         self.assertIn("ILIKE '%%deterministic_fallback%%'", workflow)
         self.assertNotIn("ILIKE '%deterministic_fallback%'", workflow)
 
