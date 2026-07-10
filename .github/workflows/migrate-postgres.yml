@@ -2,6 +2,12 @@ name: One-off SQLite to Postgres Migration
 
 on:
   workflow_dispatch:
+    inputs:
+      verify_only:
+        description: "Skip import and only verify the existing Postgres cutover"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   migrate:
@@ -47,6 +53,7 @@ jobs:
 
       - name: Run controlled one-way import
         id: import
+        if: ${{ !inputs.verify_only }}
         continue-on-error: true
         env:
           JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
@@ -289,7 +296,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Fail on migration or verification errors
-        if: steps.import.outcome != 'success' || steps.verify.outcome != 'success'
+        if: ${{ (!inputs.verify_only && steps.import.outcome != 'success') || steps.verify.outcome != 'success' }}
         run: |
           echo "Migration import or verification failed. See postgres-migration-reports artifact."
           exit 1

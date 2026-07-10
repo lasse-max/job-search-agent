@@ -172,6 +172,9 @@ class PostgresFoundationTest(unittest.TestCase):
 
         self.assertIn("--batch-size 500", workflow)
         self.assertIn("--replace-target", workflow)
+        self.assertIn("verify_only:", workflow)
+        self.assertIn("if: ${{ !inputs.verify_only }}", workflow)
+        self.assertIn("!inputs.verify_only && steps.import.outcome != 'success'", workflow)
         self.assertIn("policyname LIKE %s", workflow)
         self.assertIn('("owner_read_%",)', workflow)
         self.assertNotIn("policyname LIKE 'owner_read_%'", workflow)
