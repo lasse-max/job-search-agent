@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import type {
@@ -168,10 +169,14 @@ function DataLoadErrorBanner({
 
 function SideNav({ data, userEmail }: Props) {
   const navItems = [
-    { label: "Potential Matches", count: data.counts.applyNow + data.counts.consider + data.counts.stretch },
-    { label: "To Apply", count: "locked" },
-    { label: "Applied", count: "locked" },
-    { label: "Profile", count: "" }
+    {
+      label: "Potential Matches",
+      count: data.counts.applyNow + data.counts.consider + data.counts.stretch,
+      href: "/"
+    },
+    { label: "To Apply", count: "locked", href: null },
+    { label: "Applied", count: "", href: "/applied" },
+    { label: "Profile", count: "", href: null }
   ];
   return (
     <aside className="flex w-56 shrink-0 flex-col border-r border-white/10 px-3.5 py-5">
@@ -181,21 +186,34 @@ function SideNav({ data, userEmail }: Props) {
       </div>
       <nav className="flex flex-col gap-1">
         {navItems.map((item, index) => (
-          <div
-            className={`flex items-center justify-between rounded-md px-2.5 py-2 text-[13.5px] ${
-              index === 0 ? "bg-chart-teal/10 text-chart-ink" : "text-chart-muted"
-            }`}
-            key={item.label}
-          >
-            <span className="font-medium">{item.label}</span>
-            <span
-              className={`font-mono text-[10px] uppercase tracking-[0.14em] ${
-                index === 0 ? "text-chart-teal" : "text-chart-faint"
+          item.href ? (
+            <Link
+              className={`flex items-center justify-between rounded-md px-2.5 py-2 text-[13.5px] transition hover:bg-white/[0.03] hover:text-chart-ink ${
+                index === 0 ? "bg-chart-teal/10 text-chart-ink" : "text-chart-muted"
               }`}
+              href={item.href}
+              key={item.label}
             >
-              {item.count}
-            </span>
-          </div>
+              <span className="font-medium">{item.label}</span>
+              <span
+                className={`font-mono text-[10px] uppercase tracking-[0.14em] ${
+                  index === 0 ? "text-chart-teal" : "text-chart-faint"
+                }`}
+              >
+                {item.count}
+              </span>
+            </Link>
+          ) : (
+            <div
+              className="flex items-center justify-between rounded-md px-2.5 py-2 text-[13.5px] text-chart-muted"
+              key={item.label}
+            >
+              <span className="font-medium">{item.label}</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-chart-faint">
+                {item.count}
+              </span>
+            </div>
+          )
         ))}
       </nav>
       <div className="mt-auto border-t border-white/10 px-2.5 pt-4 font-mono text-[10.5px] leading-6 text-chart-faint">

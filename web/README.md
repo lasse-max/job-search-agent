@@ -119,6 +119,12 @@ pnpm run build
 
 ## Scope Boundary
 
-This slice renders Potential Matches and the role-detail slide-over from stored
-agent evaluations only. To Apply, Applied tracker, Profile, and all pipeline
-actions remain locked until Cato reviews this slice.
+The current web slice renders Potential Matches plus the Applied working
+tracker. The tracker reads immutable evaluation snapshots created by the
+database-backed `Mark applied` operation, records every stage change as an
+immutable event, and exposes only narrow owner-authorized writes. To Apply and
+Profile remain locked until their later reviewed slice.
+
+Apply `migrations/003_stage15_applications.sql` to Supabase before opening
+`/applied`. It adds the two tracker tables, owner-only RLS, calibrated
+mark-applied/stage/detail RPCs, and the immutable event/snapshot triggers.

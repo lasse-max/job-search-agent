@@ -52,6 +52,67 @@ export type Database = {
       };
     };
     Tables: {
+      applications: {
+        Row: {
+          id: number;
+          company: string;
+          role: string;
+          location: string;
+          url: string | null;
+          stage:
+            | "preparing"
+            | "applied"
+            | "recruiter_screen"
+            | "interviewing"
+            | "final_round"
+            | "offer"
+            | "rejected"
+            | "withdrawn";
+          applied_at: string;
+          applied_calendar_week: number;
+          next_action: string | null;
+          due: string | null;
+          contact: string | null;
+          salary: string | null;
+          notes: string | null;
+          source_posting_id: number;
+          eval_snapshot_json: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Record<string, unknown>;
+        Update: Record<string, unknown>;
+        Relationships: [
+          {
+            foreignKeyName: "applications_source_posting_id_fkey";
+            columns: ["source_posting_id"];
+            isOneToOne: true;
+            referencedRelation: "job_postings";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      application_events: {
+        Row: {
+          id: number;
+          application_id: number;
+          actor: string;
+          occurred_at: string;
+          previous_stage: string | null;
+          new_stage: string;
+        };
+        Insert: Record<string, unknown>;
+        Update: Record<string, unknown>;
+        Relationships: [
+          {
+            foreignKeyName: "application_events_application_id_fkey";
+            columns: ["application_id"];
+            isOneToOne: false;
+            referencedRelation: "applications";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
       companies: {
         Row: {
           id: number;
@@ -136,7 +197,27 @@ export type Database = {
         Relationships: [];
       };
     };
-    Functions: Record<string, never>;
+    Functions: {
+      change_application_stage: {
+        Args: { p_application_id: number; p_new_stage: string };
+        Returns: Json;
+      };
+      mark_application_applied: {
+        Args: { p_job_posting_id: number; p_applied_at?: string };
+        Returns: Json;
+      };
+      update_application_details: {
+        Args: {
+          p_application_id: number;
+          p_next_action: string;
+          p_due: string | null;
+          p_contact: string;
+          p_salary: string;
+          p_notes: string;
+        };
+        Returns: Json;
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };
