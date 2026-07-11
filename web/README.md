@@ -1,13 +1,23 @@
 # Sextant Web App
 
-Stage 1.5 step 1 foundation only.
+Stage 1.5 A2 Potential Matches.
 
 This app is a private Next.js + TypeScript + Tailwind shell over the job-search
 agent's shared Supabase Postgres store. It does not score roles, assign bands,
 or re-implement the evaluator. It only reads stored agent outputs through the
 current calibrated-evaluator views.
 
-## Required Environment
+## Vercel Setup
+
+Create the Vercel project from this repository with `web/` as the project root.
+`web/vercel.json` pins the deployment shape:
+
+- Framework: Next.js
+- Install command: `pnpm install --frozen-lockfile`
+- Build command: `pnpm run build`
+- Output directory: `.next`
+
+## Required Vercel Environment
 
 Set these in Vercel for the `web/` project:
 
@@ -17,12 +27,29 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 OWNER_EMAIL=
 ```
 
-Set this in the scanner runtime / GitHub Actions secrets when moving off the
-SQLite cache:
+`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are the normal
+Supabase browser-safe project values. `OWNER_EMAIL` is server-side only and must
+match the single allowed owner row seeded into `app_allowed_users`.
+
+Do not set a Supabase service-role key in Vercel. The web app is read-only over
+RLS-protected views and should only use the anon key.
+
+Set this in the scanner runtime / GitHub Actions secrets, not in Vercel:
 
 ```bash
 JOB_AGENT_DATABASE_URL=
 ```
+
+## Supabase Auth Redirects
+
+Before deploying, configure Supabase Auth URL settings for the Vercel domain:
+
+- Site URL: `https://<vercel-domain>`
+- Additional Redirect URL: `https://<vercel-domain>/auth/callback`
+- Local development Redirect URL: `http://localhost:3000/auth/callback`
+
+Without the `/auth/callback` redirect URL, passwordless or OAuth sign-in can
+complete in Supabase but fail to establish the web session.
 
 ## Database Setup
 
@@ -76,6 +103,6 @@ pnpm run build
 
 ## Scope Boundary
 
-This slice stops at auth + data foundation. Potential Matches, To Apply,
-Applied tracker, Profile, and all pipeline actions are intentionally locked
-until Cato reviews this foundation.
+This slice renders Potential Matches and the role-detail slide-over from stored
+agent evaluations only. To Apply, Applied tracker, Profile, and all pipeline
+actions remain locked until Cato reviews this slice.

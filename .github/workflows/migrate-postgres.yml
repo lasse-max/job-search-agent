@@ -127,160 +127,184 @@ jobs:
           lines = ["# Postgres Cutover Verification", ""]
           errors: list[str] = []
 
-          sqlite_conn = sqlite3.connect(source_path)
-          pg_conn = psycopg.connect(
-              os.environ["JOB_AGENT_DATABASE_URL"],
-              connect_timeout=20,
-              keepalives=1,
-              keepalives_idle=30,
-              keepalives_interval=10,
-              keepalives_count=5,
-              prepare_threshold=None,
-          )
+          sqlite_conn = None
+          pg_conn = None
 
-          def sqlite_count(table: str) -> int:
-              return int(sqlite_conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0])
+          def add_result() -> None:
+              if "## Result" in lines:
+                  return
+              lines.extend(["", "## Result", ""])
+              if errors:
+                  lines.append("status: failed")
+                  lines.append("")
+                  lines.append("```json")
+                  lines.append(json.dumps(errors, indent=2))
+                  lines.append("```")
+              else:
+                  lines.append("status: passed")
 
-          def pg_scalar(sql: str, params: tuple[object, ...] = ()) -> object:
-              with pg_conn.cursor() as cursor:
-                  cursor.execute(sql, params)
-                  return cursor.fetchone()[0]
+          try:
+              sqlite_conn = sqlite3.connect(source_path)
+              pg_conn = psycopg.connect(
+                  os.environ["JOB_AGENT_DATABASE_URL"],
+                  connect_timeout=20,
+                  keepalives=1,
+                  keepalives_idle=30,
+                  keepalives_interval=10,
+                  keepalives_count=5,
+                  prepare_threshold=None,
+              )
 
-          def pg_count(table: str) -> int:
-              return int(pg_scalar(f"SELECT COUNT(*) FROM {table}"))
+              def sqlite_count(table: str) -> int:
+                  row = sqlite_conn.execute(f"SELECT COUNT(*) FROM {table}").fetchone()
+                  if row is None or row[0] is None:
+                      raise RuntimeError(f"SQLite count returned no value for {table}")
+                  return int(row[0])
 
-          lines.extend(
-              [
-                  "## Row Counts",
-                  "",
-                  "| Table | SQLite source | Postgres target |",
-                  "| --- | ---: | ---: |",
-              ]
-          )
-          for table in [*core_tables, *auxiliary_tables]:
-              source_count = sqlite_count(table)
-              target_count = pg_count(table)
-              lines.append(f"| `{table}` | {source_count} | {target_count} |")
-              if source_count != target_count:
-                  errors.append(
-                      f"{table}: SQLite source has {source_count}, Postgres target has {target_count}"
+              def pg_scalar(sql: str, params: tuple[object, ...] = ()) -> object:
+                  with pg_conn.cursor() as cursor:
+                      cursor.execute(sql, params)
+                      row = cursor.fetchone()
+                  if row is None:
+                      raise RuntimeError(f"Postgres query returned no row: {sql.strip()}")
+                  return row[0]
+
+              def pg_count(table: str) -> int:
+                  value = pg_scalar(f"SELECT COUNT(*) FROM {table}")
+                  if value is None:
+                      raise RuntimeError(f"Postgres count returned no value for {table}")
+                  return int(value)
+
+              lines.extend(
+                  [
+                      "## Row Counts",
+                      "",
+                      "| Table | SQLite source | Postgres target |",
+                      "| --- | ---: | ---: |",
+                  ]
+              )
+              for table in [*core_tables, *auxiliary_tables]:
+                  source_count = sqlite_count(table)
+                  target_count = pg_count(table)
+                  lines.append(f"| `{table}` | {source_count} | {target_count} |")
+                  if source_count != target_count:
+                      errors.append(
+                          f"{table}: SQLite source has {source_count}, Postgres target has {target_count}"
+                      )
+
+              lines.extend(["", "## Schema And RLS", ""])
+              for table in protected_tables:
+                  exists = bool(pg_scalar("SELECT to_regclass(%s)", (f"public.{table}",)))
+                  if not exists:
+                      errors.append(f"missing table: {table}")
+                      lines.append(f"- `{table}`: missing")
+                      continue
+                  rls_enabled = bool(
+                      pg_scalar(
+                          """
+                          SELECT c.relrowsecurity
+                          FROM pg_class c
+                          JOIN pg_namespace n ON n.oid = c.relnamespace
+                          WHERE n.nspname = 'public'
+                            AND c.relname = %s
+                          """,
+                          (table,),
+                      )
                   )
+                  lines.append(f"- `{table}`: exists, rls_enabled={str(rls_enabled).lower()}")
+                  if not rls_enabled:
+                      errors.append(f"RLS not enabled: {table}")
 
-          lines.extend(["", "## Schema And RLS", ""])
-          for table in protected_tables:
-              exists = bool(pg_scalar("SELECT to_regclass(%s)", (f"public.{table}",)))
-              if not exists:
-                  errors.append(f"missing table: {table}")
-                  lines.append(f"- `{table}`: missing")
-                  continue
-              rls_enabled = bool(
+              policy_count = int(
                   pg_scalar(
                       """
-                      SELECT c.relrowsecurity
-                      FROM pg_class c
-                      JOIN pg_namespace n ON n.oid = c.relnamespace
-                      WHERE n.nspname = 'public'
-                        AND c.relname = %s
+                      SELECT COUNT(*)
+                      FROM pg_policies
+                      WHERE schemaname = 'public'
+                        AND policyname LIKE %s
                       """,
-                      (table,),
+                      ("owner_read_%",),
                   )
               )
-              lines.append(f"- `{table}`: exists, rls_enabled={str(rls_enabled).lower()}")
-              if not rls_enabled:
-                  errors.append(f"RLS not enabled: {table}")
-
-          policy_count = int(
-              pg_scalar(
-                  """
-                  SELECT COUNT(*)
-                  FROM pg_policies
-                  WHERE schemaname = 'public'
-                    AND policyname LIKE %s
-                  """,
-                  ("owner_read_%",),
+              allowed_user_count = int(pg_count("app_allowed_users"))
+              lines.extend(
+                  [
+                      "",
+                      f"- Owner-read policy count: `{policy_count}`",
+                      f"- Allowed user count: `{allowed_user_count}`",
+                  ]
               )
-          )
-          allowed_user_count = int(pg_count("app_allowed_users"))
-          lines.extend(
-              [
-                  "",
-                  f"- Owner-read policy count: `{policy_count}`",
-                  f"- Allowed user count: `{allowed_user_count}`",
-              ]
-          )
-          if policy_count < len(protected_tables):
-              errors.append(f"expected at least {len(protected_tables)} owner-read policies")
-          if allowed_user_count < 1:
-              errors.append("app_allowed_users has no owner row")
+              if policy_count < len(protected_tables):
+                  errors.append(f"expected at least {len(protected_tables)} owner-read policies")
+              if allowed_user_count < 1:
+                  errors.append("app_allowed_users has no owner row")
 
-          current_eval_count = int(pg_count("current_calibrated_role_evaluations"))
-          bad_version_count = int(
-              pg_scalar(
-                  """
-                  SELECT COUNT(*)
-                  FROM current_calibrated_role_evaluations
-                  WHERE model_version NOT LIKE %s ESCAPE '\\'
-                  """,
-                  ("%|hybrid\\_claude\\_v2",),
+              current_eval_count = int(pg_count("current_calibrated_role_evaluations"))
+              bad_version_count = int(
+                  pg_scalar(
+                      """
+                      SELECT COUNT(*)
+                      FROM current_calibrated_role_evaluations
+                      WHERE model_version NOT LIKE %s ESCAPE '\\'
+                      """,
+                      ("%|hybrid\\_claude\\_v2",),
+                  )
               )
-          )
-          stale_v1_count = int(
-              pg_scalar(
-                  """
-                  SELECT COUNT(*)
-                  FROM current_calibrated_role_evaluations
-                  WHERE model_version LIKE %s ESCAPE '\\'
-                  """,
-                  ("%|hybrid\\_claude\\_v1",),
+              stale_v1_count = int(
+                  pg_scalar(
+                      """
+                      SELECT COUNT(*)
+                      FROM current_calibrated_role_evaluations
+                      WHERE model_version LIKE %s ESCAPE '\\'
+                      """,
+                      ("%|hybrid\\_claude\\_v1",),
+                  )
               )
-          )
-          fallback_count = int(
-              pg_scalar(
-                  """
-                  SELECT COUNT(*)
-                  FROM current_calibrated_role_evaluations
-                  WHERE model_version ILIKE '%%deterministic_fallback%%'
-                     OR COALESCE(
-                          lower(evaluation_json::jsonb #>> '{provenance,fallback_quality}'),
-                          'false'
-                        ) = 'true'
-                     OR COALESCE(
-                          lower(evaluation_json::jsonb #>> '{provenance,is_fallback}'),
-                          'false'
-                        ) = 'true'
-                  """
+              fallback_count = int(
+                  pg_scalar(
+                      """
+                      SELECT COUNT(*)
+                      FROM current_calibrated_role_evaluations
+                      WHERE model_version ILIKE '%%deterministic_fallback%%'
+                         OR COALESCE(
+                              lower(evaluation_json::jsonb #>> '{provenance,fallback_quality}'),
+                              'false'
+                            ) = 'true'
+                         OR COALESCE(
+                              lower(evaluation_json::jsonb #>> '{provenance,is_fallback}'),
+                              'false'
+                            ) = 'true'
+                      """
+                  )
               )
-          )
-          lines.extend(
-              [
-                  "",
-                  "## Calibrated View Guard",
-                  "",
-                  f"- Current calibrated rows: `{current_eval_count}`",
-                  f"- Wrong evaluator-version rows: `{bad_version_count}`",
-                  f"- Stale `hybrid_claude_v1` rows: `{stale_v1_count}`",
-                  f"- Fallback rows: `{fallback_count}`",
-              ]
-          )
-          if bad_version_count:
-              errors.append("current_calibrated_role_evaluations returned non-v2 rows")
-          if stale_v1_count:
-              errors.append("current_calibrated_role_evaluations returned stale v1 rows")
-          if fallback_count:
-              errors.append("current_calibrated_role_evaluations returned fallback rows")
+              lines.extend(
+                  [
+                      "",
+                      "## Calibrated View Guard",
+                      "",
+                      f"- Current calibrated rows: `{current_eval_count}`",
+                      f"- Wrong evaluator-version rows: `{bad_version_count}`",
+                      f"- Stale `hybrid_claude_v1` rows: `{stale_v1_count}`",
+                      f"- Fallback rows: `{fallback_count}`",
+                  ]
+              )
+              if bad_version_count:
+                  errors.append("current_calibrated_role_evaluations returned non-v2 rows")
+              if stale_v1_count:
+                  errors.append("current_calibrated_role_evaluations returned stale v1 rows")
+              if fallback_count:
+                  errors.append("current_calibrated_role_evaluations returned fallback rows")
+          except Exception as exc:
+              errors.append(f"verification script crashed: {type(exc).__name__}: {exc}")
+          finally:
+              if sqlite_conn is not None:
+                  sqlite_conn.close()
+              if pg_conn is not None:
+                  pg_conn.close()
+              add_result()
+              report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+              print(report_path.read_text(encoding="utf-8"))
 
-          lines.extend(["", "## Result", ""])
-          if errors:
-              lines.append("status: failed")
-              lines.append("")
-              lines.append("```json")
-              lines.append(json.dumps(errors, indent=2))
-              lines.append("```")
-          else:
-              lines.append("status: passed")
-
-          report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-          print(report_path.read_text(encoding="utf-8"))
           if errors:
               raise SystemExit(1)
           PY

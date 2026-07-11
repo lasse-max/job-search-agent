@@ -180,6 +180,8 @@ class PostgresFoundationTest(unittest.TestCase):
         self.assertNotIn("policyname LIKE 'owner_read_%'", workflow)
         self.assertIn("ILIKE '%%deterministic_fallback%%'", workflow)
         self.assertNotIn("ILIKE '%deterministic_fallback%'", workflow)
+        self.assertIn("verification script crashed", workflow)
+        self.assertIn('report_path.write_text("\\n".join(lines) + "\\n"', workflow)
 
 
 if __name__ == "__main__":
