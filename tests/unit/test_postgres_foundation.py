@@ -6,6 +6,7 @@ from pathlib import Path
 import unittest
 
 from app.postgres import _translate_sql, postgres_core_schema
+from app.services.evaluate import HYBRID_EVALUATOR_VERSION
 from app.services.postgres_migration import (
     AmbiguousRow,
     MigrationReport,
@@ -138,9 +139,13 @@ class PostgresFoundationTest(unittest.TestCase):
 
     def test_core_schema_exposes_only_current_calibrated_evaluations(self) -> None:
         schema = postgres_core_schema()
+        escaped_version = HYBRID_EVALUATOR_VERSION.replace("_", "\\_")
 
         self.assertIn("current_calibrated_role_evaluations", schema)
-        self.assertIn("latest.model_version LIKE '%|hybrid\\_claude\\_v3' ESCAPE '\\'", schema)
+        self.assertIn(
+            f"latest.model_version LIKE '%|{escaped_version}' ESCAPE '\\'",
+            schema,
+        )
         self.assertIn("latest.model_version NOT ILIKE '%deterministic_fallback%'", schema)
         self.assertIn("{provenance,fallback_quality}", schema)
         self.assertIn("{provenance,is_fallback}", schema)

@@ -84,6 +84,74 @@ class JobPostingPersistenceTest(unittest.TestCase):
         )
         self.assertTrue(str(rows[0]["source_job_id"]).startswith("multi-"))
 
+    def test_same_title_roles_with_shared_long_boilerplate_remain_distinct(self) -> None:
+        conn = sqlite3.connect(":memory:")
+        conn.row_factory = sqlite3.Row
+        init_db(conn)
+        company = CompanyConfig(
+            name="ExampleCo",
+            tier=1,
+            enabled=True,
+            ats_type="greenhouse",
+            source_key="example",
+            careers_url="https://example.com/careers",
+            target_locations=["London"],
+            target_role_family_notes="Strategy and operations",
+            warm_path=False,
+        )
+        company_id = upsert_company(conn, company)
+        source_id = upsert_source(conn, company_id, company)
+        boilerplate = (
+            "ExampleCo builds trusted infrastructure for teams around the world. "
+            "Our people work across functions, markets, and time zones to solve "
+            "difficult customer problems with care, curiosity, and sound judgment. "
+            "We value thoughtful execution, inclusive collaboration, clear ownership, "
+            "and durable outcomes. Everyone contributes to a culture of learning and "
+            "continuous improvement while helping the company scale responsibly. "
+            "This introduction is intentionally long enough to exceed the old four "
+            "hundred character deduplication shortcut before the actual role scope. "
+        )
+        self.assertGreater(len(boilerplate), 470)
+
+        result = upsert_postings(
+            conn,
+            company_id,
+            source_id,
+            [
+                _posting(
+                    "strategy-planning",
+                    ["London, United Kingdom"],
+                    title="Strategy Manager",
+                    description_text=(
+                        f"{boilerplate} Own annual planning, investment governance, "
+                        "and executive operating reviews."
+                    ),
+                ),
+                _posting(
+                    "strategy-partners",
+                    ["London, United Kingdom"],
+                    title="Strategy Manager",
+                    description_text=(
+                        f"{boilerplate} Build the partner expansion model, negotiate "
+                        "channel programs, and lead regional launch execution."
+                    ),
+                ),
+            ],
+            "2026-07-11T08:00:00+00:00",
+        )
+
+        rows = conn.execute(
+            "SELECT source_job_id, description_text FROM job_postings ORDER BY source_job_id"
+        ).fetchall()
+        self.assertEqual(len(result.new_posting_ids), 2)
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(
+            {row["source_job_id"] for row in rows},
+            {"strategy-partners", "strategy-planning"},
+        )
+        self.assertTrue(any("annual planning" in row["description_text"] for row in rows))
+        self.assertTrue(any("partner expansion" in row["description_text"] for row in rows))
+
     def test_stored_evaluation_version_includes_hybrid_calibration(self) -> None:
         llm_evaluation = SimpleNamespace(
             provenance={

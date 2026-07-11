@@ -18,7 +18,6 @@ from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 from app.services.evaluate import has_disqualifying_hard_requirement
 from app.services.material import material_hash_for_posting, material_hash_for_row
 from app.services.text_rules import (
-    LANGUAGE_ALIASES,
     strip_language_variant_markers,
     strip_location_variant_suffix,
     unsupported_language_requirement,
@@ -523,19 +522,21 @@ def _variant_descriptions_compatible(left: JobPosting, right: JobPosting) -> boo
     return overlap >= 0.60
 
 
+_VARIANT_IGNORED_TOKENS = {
+    "about",
+    "across",
+    "company",
+    "job",
+    "location",
+    "role",
+    "team",
+    "the",
+    "this",
+    "with",
+}
+
+
 def _variant_description_tokens(posting: JobPosting) -> set[str]:
-    ignored = {
-        "about",
-        "across",
-        "company",
-        "job",
-        "location",
-        "role",
-        "team",
-        "the",
-        "this",
-        "with",
-    }
     location_tokens = {
         token
         for location in posting.locations
@@ -547,7 +548,7 @@ def _variant_description_tokens(posting: JobPosting) -> set[str]:
             r"[a-z]{3,}",
             strip_language_variant_markers(posting.description_text).casefold(),
         )
-        if token not in ignored and token not in location_tokens
+        if token not in _VARIANT_IGNORED_TOKENS and token not in location_tokens
     }
 
 
@@ -580,9 +581,8 @@ def _multi_location_dedupe_key(posting: JobPosting) -> str:
                 _dedupe_title(posting.title, posting.locations),
                 posting.department or "",
                 posting.employment_type or "",
-                _variant_material_signature(posting)
-                if _has_variant_title(posting)
-                else _dedupe_description(posting.description_text),
+                _variant_material_signature(posting),
+                _normalized_dedupe_description(posting),
             ]
         )
     )
@@ -670,26 +670,21 @@ def _required_experience_years(text: str) -> int:
     return max(years, default=0)
 
 
-def _dedupe_description(description: str) -> str:
-    snippet = strip_language_variant_markers(description[:400])
-    for aliases in LANGUAGE_ALIASES.values():
-        for alias in aliases:
-            language = r"\s+".join(re.escape(part) for part in alias.split())
-            snippet = re.sub(
-                rf"\b(?:fluent|fluency|native[-\s]?level|near[-\s]?native|proficiency|required|requires?)\b"
-                rf".{{0,50}}\b{language}\b",
-                " ",
-                snippet,
-                flags=re.IGNORECASE,
-            )
-            snippet = re.sub(
-                rf"\b{language}\b.{{0,50}}"
-                rf"\b(?:fluent|fluency|native[-\s]?level|near[-\s]?native|proficiency|required|requires?)\b",
-                " ",
-                snippet,
-                flags=re.IGNORECASE,
-            )
-    return re.sub(r"\s+", " ", snippet).strip()
+def _normalized_dedupe_description(posting: JobPosting) -> str:
+    """Use the complete role body while ignoring explicit posting-location variants."""
+
+    description = strip_language_variant_markers(posting.description_text).casefold()
+    location_tokens = {
+        token
+        for location in posting.locations
+        for token in re.findall(r"[a-z]{3,}", location.casefold())
+    }
+    tokens = re.findall(r"[a-z0-9]+", description)
+    return " ".join(
+        token
+        for token in tokens
+        if token not in _VARIANT_IGNORED_TOKENS and token not in location_tokens
+    )
 
 
 def mark_absences(

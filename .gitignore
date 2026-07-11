@@ -22,6 +22,7 @@ data/model_spend_ledger.json
 # Real job-search artifacts — PII, never commit (Cato review 2026-06-27)
 *.xlsx
 Apply_Now_Interim_Tracker.xlsx
+data/evaluation_set/llm_cache/
 docs/briefs/* copy.md
 output/*
 !output/source_coverage.csv
