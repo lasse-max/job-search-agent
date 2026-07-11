@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useTransition } from "react";
+import { markToApply } from "@/app/actions/opportunities";
 import type {
   AlignmentEvidence,
   AuditRow,
@@ -174,9 +176,9 @@ function SideNav({ data, userEmail }: Props) {
       count: data.counts.applyNow + data.counts.consider + data.counts.stretch,
       href: "/"
     },
-    { label: "To Apply", count: "locked", href: null },
+    { label: "To Apply", count: "", href: "/to-apply" },
     { label: "Applied", count: "", href: "/applied" },
-    { label: "Profile", count: "", href: null }
+    { label: "Profile", count: "", href: "/profile" }
   ];
   return (
     <aside className="flex w-56 shrink-0 flex-col border-r border-white/10 px-3.5 py-5">
@@ -374,14 +376,7 @@ function RoleCard({
           {humanizeRecommendation(role.recommendation)}
         </div>
         <div className="flex flex-col items-end gap-2">
-          <button
-            className="rounded-md bg-chart-rust px-3 py-2 text-[12px] font-semibold text-white/95 opacity-50"
-            disabled
-            title="Pipeline actions land in the To Apply slice."
-            type="button"
-          >
-            Mark to apply
-          </button>
+          <MarkToApplyButton jobPostingId={role.id} />
           <div className="flex gap-2 text-[11px]">
             <button className="rounded border border-white/10 px-2 py-1 text-chart-faint" disabled type="button">
               Dismiss
@@ -554,14 +549,7 @@ function RoleSlideOver({ onClose, role }: { onClose: () => void; role: Potential
         <GapSection gaps={role.gaps} hardBlockers={role.hardBlockers} />
 
         <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-5">
-          <button
-            className="rounded-md bg-chart-rust px-3 py-2 text-[12px] font-semibold text-white/95 opacity-50"
-            disabled
-            title="Pipeline actions land in the To Apply slice."
-            type="button"
-          >
-            Mark to apply
-          </button>
+          <MarkToApplyButton jobPostingId={role.id} />
           <button className="rounded border border-white/10 px-3 py-2 text-[12px] text-chart-faint" disabled type="button">
             Dismiss
           </button>
@@ -670,6 +658,33 @@ function StrengthPip({ strength }: { strength: string }) {
         ? "bg-chart-warn"
         : "bg-chart-gold";
   return <span className={`mt-1 h-2 w-2 shrink-0 rounded-full ${color}`} />;
+}
+
+function MarkToApplyButton({ jobPostingId }: { jobPostingId: number }) {
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+  const [message, setMessage] = useState<string | null>(null);
+  return (
+    <div className="flex flex-col items-end gap-1">
+      <button
+        className="rounded-md bg-chart-rust px-3 py-2 text-[12px] font-semibold text-white/95 transition hover:bg-[#b85f45] disabled:opacity-50"
+        disabled={pending}
+        onClick={() => {
+          startTransition(async () => {
+            const result = await markToApply(jobPostingId);
+            setMessage(result.message);
+            if (result.ok) {
+              router.refresh();
+            }
+          });
+        }}
+        type="button"
+      >
+        {pending ? "Adding…" : "Mark to apply"}
+      </button>
+      {message ? <span className="max-w-36 text-right text-[10px] text-chart-faint">{message}</span> : null}
+    </div>
+  );
 }
 
 function EmptyMatches() {

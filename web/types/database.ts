@@ -206,6 +206,14 @@ export type Database = {
         Args: { p_job_posting_id: number; p_applied_at?: string };
         Returns: Json;
       };
+      mark_opportunity_interested: {
+        Args: { p_job_posting_id: number; p_note?: string | null };
+        Returns: Json;
+      };
+      remove_opportunity_interest: {
+        Args: { p_job_posting_id: number };
+        Returns: Json;
+      };
       update_application_details: {
         Args: {
           p_application_id: number;

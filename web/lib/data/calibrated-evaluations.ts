@@ -206,7 +206,7 @@ export function emptyPotentialMatchesData(loadError: PotentialMatchesData["loadE
   } satisfies PotentialMatchesData;
 }
 
-function normalizeCurrentEvaluation(row: CurrentEvaluationRow): PotentialMatch | null {
+export function normalizeCurrentEvaluation(row: CurrentEvaluationRow): PotentialMatch | null {
   const evaluation = parseJsonObject(row.evaluation_json);
   if (!evaluation || isFallbackEvaluation(evaluation)) {
     return null;

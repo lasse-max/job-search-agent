@@ -99,9 +99,9 @@ function AppliedSideNav({ activeCount, userEmail }: { activeCount: number; userE
       </div>
       <nav className="flex flex-col gap-1">
         <NavItem href="/" label="Potential Matches" />
-        <NavItem label="To Apply" value="locked" />
+        <NavItem href="/to-apply" label="To Apply" />
         <NavItem active href="/applied" label="Applied" value={String(activeCount)} />
-        <NavItem label="Profile" />
+        <NavItem href="/profile" label="Profile" />
       </nav>
       <div className="mt-auto border-t border-white/10 px-2.5 pt-4 font-mono text-[10.5px] leading-6 text-chart-faint">
         <div>internal working tracker</div>

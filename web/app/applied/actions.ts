@@ -29,6 +29,7 @@ export async function markApplied(jobPostingId: number): Promise<ApplicationActi
     };
   }
   revalidatePath("/");
+  revalidatePath("/to-apply");
   revalidatePath("/applied");
   return { ok: true, message: "Application added at preparing." };
 }

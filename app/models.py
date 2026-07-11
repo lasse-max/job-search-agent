@@ -15,7 +15,15 @@ from typing import Any, Literal
 AvailabilityState = Literal["open", "unavailable"]
 EvaluationRecommendation = Literal["apply_now", "consider", "stretch", "skip", "blocked"]
 FeasibilityState = Literal["viable", "sponsorship_required", "uncertain", "blocked"]
-ReviewState = Literal["new", "approved", "dismissed", "snoozed", "duplicate", "closed"]
+ReviewState = Literal[
+    "new",
+    "interested",
+    "approved",
+    "dismissed",
+    "snoozed",
+    "duplicate",
+    "closed",
+]
 
 
 def utc_now() -> str:
