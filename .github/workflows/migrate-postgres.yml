@@ -108,6 +108,7 @@ jobs:
           from pathlib import Path
 
           import psycopg
+          from app.services.postgres_migration import redact_database_error
 
           source_path = Path(os.environ["SQLITE_DB_PATH"])
           report_path = Path(os.environ["VERIFICATION_REPORT"])
@@ -295,7 +296,13 @@ jobs:
               if fallback_count:
                   errors.append("current_calibrated_role_evaluations returned fallback rows")
           except Exception as exc:
-              errors.append(f"verification script crashed: {type(exc).__name__}: {exc}")
+              safe_error = redact_database_error(
+                  exc,
+                  os.environ.get("JOB_AGENT_DATABASE_URL", ""),
+              )
+              errors.append(
+                  f"verification script crashed: {type(exc).__name__}: {safe_error}"
+              )
           finally:
               if sqlite_conn is not None:
                   sqlite_conn.close()

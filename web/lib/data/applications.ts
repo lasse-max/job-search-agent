@@ -37,6 +37,7 @@ export type ApplicationSnapshot = {
   capturedAt: string;
   evaluatedAt: string;
   modelVersion: string;
+  isEarlierEvaluator: boolean;
   fitScore: number;
   recommendation: string;
   alignments: AlignmentEvidence[];
@@ -187,7 +188,8 @@ function normalizeSnapshot(value: Json): ApplicationSnapshot | null {
   if (
     !snapshot ||
     !evaluation ||
-    !modelVersion.endsWith(`|${CURRENT_EVALUATOR_VERSION}`) ||
+    !modelVersion ||
+    modelVersion.toLowerCase().includes("deterministic_fallback") ||
     isFallbackEvaluation(evaluation)
   ) {
     return null;
@@ -196,6 +198,7 @@ function normalizeSnapshot(value: Json): ApplicationSnapshot | null {
     capturedAt: readString(snapshot.captured_at),
     evaluatedAt: readString(snapshot.evaluated_at),
     modelVersion,
+    isEarlierEvaluator: !modelVersion.endsWith(`|${CURRENT_EVALUATOR_VERSION}`),
     fitScore: clampPercent(readNumber(evaluation.role_fit_score)),
     recommendation: readString(evaluation.recommendation) || "unknown",
     alignments: readAlignments(evaluation.alignments),

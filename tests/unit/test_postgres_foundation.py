@@ -13,6 +13,7 @@ from app.services.postgres_migration import (
     _connect_readonly_sqlite,
     _migrate_table,
     _redact_database_url,
+    redact_database_error,
 )
 
 
@@ -167,6 +168,27 @@ class PostgresFoundationTest(unittest.TestCase):
         self.assertIn("`companies` id `42`: target differs", markdown)
         self.assertNotIn("secret", markdown)
 
+    def test_verification_error_redacts_database_host_user_and_credentials(self) -> None:
+        database_url = (
+            "postgresql://postgres.project:secret-password@"
+            "db.private-project.supabase.co:5432/postgres"
+        )
+        error = RuntimeError(
+            "connection failed for user \"postgres.project\" at "
+            "host=db.private-project.supabase.co password=secret-password "
+            f"dsn={database_url}"
+        )
+
+        redacted = redact_database_error(error, database_url)
+
+        self.assertNotIn("postgres.project", redacted)
+        self.assertNotIn("db.private-project.supabase.co", redacted)
+        self.assertNotIn("secret-password", redacted)
+        self.assertNotIn(database_url, redacted)
+        self.assertIn("user [redacted]", redacted)
+        self.assertIn("host=[redacted]", redacted)
+        self.assertIn("password=[redacted]", redacted)
+
     def test_migration_workflow_uses_replace_batches_and_escaped_like_pattern(self) -> None:
         workflow = Path(".github/workflows/migrate-postgres.yml").read_text(encoding="utf-8")
 
@@ -181,6 +203,12 @@ class PostgresFoundationTest(unittest.TestCase):
         self.assertIn("ILIKE '%%deterministic_fallback%%'", workflow)
         self.assertNotIn("ILIKE '%deterministic_fallback%'", workflow)
         self.assertIn("verification script crashed", workflow)
+        self.assertIn("from app.services.postgres_migration import redact_database_error", workflow)
+        self.assertIn("safe_error = redact_database_error(", workflow)
+        self.assertNotIn(
+            'f"verification script crashed: {type(exc).__name__}: {exc}"',
+            workflow,
+        )
         self.assertIn('report_path.write_text("\\n".join(lines) + "\\n"', workflow)
 
 

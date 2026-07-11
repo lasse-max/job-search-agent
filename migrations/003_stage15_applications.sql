@@ -135,6 +135,10 @@ BEGIN
 END;
 $$;
 
+REVOKE EXECUTE ON FUNCTION private.record_application_stage_event() FROM PUBLIC;
+REVOKE EXECUTE ON FUNCTION private.prevent_application_event_mutation() FROM PUBLIC;
+REVOKE EXECUTE ON FUNCTION private.protect_application_snapshot() FROM PUBLIC;
+
 DROP TRIGGER IF EXISTS application_stage_event ON applications;
 CREATE TRIGGER application_stage_event
 AFTER INSERT OR UPDATE OF stage ON applications

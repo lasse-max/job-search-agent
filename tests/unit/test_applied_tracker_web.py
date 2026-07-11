@@ -80,6 +80,15 @@ class AppliedTrackerSchemaTest(unittest.TestCase):
         self.assertIn("application events are immutable", self.schema)
         self.assertIn("application source and evaluation snapshot are immutable", self.schema)
         self.assertIn("BEFORE UPDATE ON applications", self.schema)
+        for function_name in (
+            "record_application_stage_event",
+            "prevent_application_event_mutation",
+            "protect_application_snapshot",
+        ):
+            self.assertIn(
+                f"REVOKE EXECUTE ON FUNCTION private.{function_name}() FROM PUBLIC",
+                self.schema,
+            )
 
     def test_tracker_tables_keep_owner_only_rls_and_rpc_writes(self) -> None:
         for table in ("applications", "application_events"):
@@ -117,15 +126,30 @@ class AppliedTrackerSchemaTest(unittest.TestCase):
 
 
 class AppliedTrackerWebContractTest(unittest.TestCase):
-    def test_web_read_path_rejects_stale_or_fallback_snapshots(self) -> None:
+    def test_web_read_path_preserves_historical_versions_and_rejects_fallbacks(self) -> None:
         source = (REPO_ROOT / "web" / "lib" / "data" / "applications.ts").read_text(
             encoding="utf-8"
         )
 
-        self.assertIn("modelVersion.endsWith(`|${CURRENT_EVALUATOR_VERSION}`)", source)
+        self.assertIn("!modelVersion ||", source)
+        self.assertNotIn(
+            "!modelVersion.endsWith(`|${CURRENT_EVALUATOR_VERSION}`) ||",
+            source,
+        )
+        self.assertIn(
+            "isEarlierEvaluator: !modelVersion.endsWith(`|${CURRENT_EVALUATOR_VERSION}`)",
+            source,
+        )
+        self.assertIn('modelVersion.toLowerCase().includes("deterministic_fallback")', source)
         self.assertIn("isFallbackEvaluation(evaluation)", source)
         self.assertIn("provenance?.is_fallback", source)
         self.assertIn("deterministic_fallback", source)
+
+        drawer = (
+            REPO_ROOT / "web" / "app" / "applied" / "applied-tracker-client.tsx"
+        ).read_text(encoding="utf-8")
+        self.assertIn("scored by {snapshot.modelVersion}", drawer)
+        self.assertIn("earlier evaluator", drawer)
 
     def test_web_actions_use_narrow_rpcs_instead_of_table_writes(self) -> None:
         source = (REPO_ROOT / "web" / "app" / "applied" / "actions.ts").read_text(

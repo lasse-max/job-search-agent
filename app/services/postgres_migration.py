@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -262,3 +263,46 @@ def _redact_database_url(database_url: str) -> str:
     host = parsed.hostname or "postgres"
     database = parsed.path.lstrip("/") or "database"
     return f"{parsed.scheme}://***@{host}/{database}"
+
+
+_DATABASE_URL_RE = re.compile(r"\bpostgres(?:ql)?://[^\s'\"`]+", re.IGNORECASE)
+_CONNECTION_FIELD_RE = re.compile(
+    r"\b(host|hostaddr|user|password|dbname|database)\s*=\s*"
+    r"(?:'[^']*'|\"[^\"]*\"|[^\s,;]+)",
+    re.IGNORECASE,
+)
+_QUOTED_CONNECTION_FIELD_RE = re.compile(
+    r"\b(host|user|dbname|database)\s+(?:'[^']*'|\"[^\"]*\")",
+    re.IGNORECASE,
+)
+
+
+def redact_database_error(error: BaseException, database_url: str) -> str:
+    """Remove connection identifiers before an error reaches logs or artifacts."""
+
+    message = str(error)
+    parsed = urlsplit(database_url)
+    sensitive_values = {
+        database_url,
+        parsed.netloc,
+        parsed.hostname,
+        parsed.password,
+    }
+    for value in sorted((value for value in sensitive_values if value), key=len, reverse=True):
+        message = message.replace(value, "[redacted]")
+
+    if parsed.username:
+        message = re.sub(
+            rf"(?<![\w]){re.escape(parsed.username)}(?![\w])",
+            "[redacted]",
+            message,
+        )
+    message = _DATABASE_URL_RE.sub("postgresql://[redacted]", message)
+    message = _CONNECTION_FIELD_RE.sub(
+        lambda match: f"{match.group(1)}=[redacted]",
+        message,
+    )
+    return _QUOTED_CONNECTION_FIELD_RE.sub(
+        lambda match: f"{match.group(1)} [redacted]",
+        message,
+    )

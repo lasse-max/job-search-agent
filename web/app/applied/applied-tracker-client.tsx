@@ -526,6 +526,14 @@ function EvaluationSnapshot({ application }: { application: TrackedApplication }
             fit at evaluation · {snapshot.recommendation.replaceAll("_", " ")}
           </span>
         </div>
+        <div className="mt-2 flex flex-wrap items-center gap-2 font-mono text-[9.5px] text-chart-faint">
+          <span className="break-all">scored by {snapshot.modelVersion}</span>
+          {snapshot.isEarlierEvaluator ? (
+            <span className="rounded border border-chart-gold/30 bg-chart-gold/10 px-1.5 py-0.5 uppercase tracking-[0.08em] text-chart-gold">
+              earlier evaluator
+            </span>
+          ) : null}
+        </div>
         <div className="mt-4 flex flex-col gap-3">
           {snapshot.alignments.map((alignment, index) => (
             <div className="flex gap-2 text-[12.5px] leading-5" key={`alignment-${index}`}>
