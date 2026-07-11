@@ -31,11 +31,17 @@ Staged delivery. Each stage stands alone and delivers value before the next begi
 ## Stage 2.0 — Optimize the app · _after 1.5_
 Analytics/metrics, kanban, editable criteria in the UI, salary-anchoring, conversion analysis by CV version, advanced tracker features, light theme — the *optimization* layer on top of the simple 1.5 app. (Roadmap note: the tracker itself moved into 1.5 as a simple form; 2.0 is now "make the app better," not "build the tracker.")
 
+## Stage 2.5 — Feedback-signal analytics · _after 2.0_ (backlog B-23)
+Learn from the owner's own pipeline actions as graded quality signals: actioning a recommendation nudges *similar* roles higher, and a ladder of positive evidence — **hotlist < mark-applied < interview** — feeds the scoring, with dismiss/no-action as weak negative. A personalization layer on the calibrated evaluator. Guardrail: learned signals stay subordinate to the hard gates (location/level/blockers) and the strict monotonic bands — a learned preference never overrides a blocker. Needs 1.5 action history first.
+
 ## Stage 3 — Gmail-assisted updates · _after Stage 2 is stable_
 Read-only Gmail OAuth → classify → suggest status updates in a review queue. No email-derived update changes state before approval. Disconnect/delete flow included.
 
 ## Stage 4 — Future (not approved)
 CV/cover-letter copilot · interview-prep packs · outreach drafts · conversion analysis by CV version · discovery beyond the watchlist. Never: auto-apply.
+
+## Productization track — External multi-user product · _separate track, after 2.0_ (backlog B-24)
+Turn the single-user tool into a portfolio-grade external product: email login (owner-controlled access), a conversational intake agent that interviews a new user (citizenship, visa/work-auth, target roles + level, CV upload) to build their profile + watchlist, and a few sample-role ratings to seed per-user calibration. Demonstrates the project as a real product, not a personal tool. Large scope jump (multi-tenancy, per-user isolation, CV parsing, per-user calibration) — only after the single-user product is genuinely good.
 
 ---
 
