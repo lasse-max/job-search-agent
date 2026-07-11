@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience scaling global commercial operations; demonstrated ability to lead and transform at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and lead a high-performing enterprise sales team across Australia and New Zealand"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with experience in global commercial operations and transformation programs; product operations and GTM strategy in primary role families",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop and execute a comprehensive ANZ go-to-market strategy for enterprise customers across key industry verticals"
+      },
+      {
+        "candidate_evidence": "Eight years in cross-functional leadership roles; experience managing complex stakeholder relationships and transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with Product, Marketing, and Customer Success teams to adapt offerings for the ANZ market"
+      },
+      {
+        "candidate_evidence": "Google-scale experience with strategic partnerships and cross-functional program execution demonstrates stakeholder navigation",
+        "evidence_strength": "medium",
+        "job_requirement": "Navigate complex, multi-stakeholder sales processes within large organisations"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents; owns AI evaluation methodology and benchmarking; proficient in SQL, BigQuery, and data analysis",
+        "evidence_strength": "medium",
+        "job_requirement": "Deep knowledge of enterprise tech industry, particularly cloud services, data management, or AI"
+      },
+      {
+        "candidate_evidence": "Eight years building and communicating strategy at global scale; multilingual (English fluent, German native)",
+        "evidence_strength": "medium",
+        "job_requirement": "Represent Anthropic with key customers and across partner events, communicating trust and safety principles"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 45,
+    "gap_manageability": 28,
+    "gaps": [
+      {
+        "gap": "No demonstrated enterprise sales leadership background; candidate's commercial experience is in Global Operations and Product Operations, not quota-carrying, partnership-driven, or team-building enterprise sales",
+        "mitigation": "Sales leadership in high-growth B2B tech companies can be learned, but the JD prioritises 15+ years in enterprise sales and 5+ years managing large sales operations; candidate would require significant domain transition",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited proven track record selling technical API products, cloud services, or SaaS solutions; no demonstrated experience in partner sales motions or cloud partner (AWS, Azure, GCP) sales channels",
+        "mitigation": "Candidate has technical literacy (SQL, BigQuery, AI/LLM evaluation) but lacks hands-on enterprise sales execution and partner channel strategy",
+        "severity": "high"
+      },
+      {
+        "gap": "No ANZ market expertise or demonstrated success selling into Australian and New Zealand enterprises, financial institutions, government agencies, or digital-native organisations",
+        "mitigation": "Market entry can be supported by hiring local talent and partnerships, but the JD explicitly values a proven history in ANZ; candidate would start from zero in regional networks and regulatory/cultural knowledge",
+        "severity": "high"
+      },
+      {
+        "gap": "Career trajectory shows strategy, operations, and product ownership; does not show quota achievement, enterprise customer acquisition, or sales team scaling at Anthropic scale",
+        "mitigation": "Candidate's Google pedigree and operational excellence are assets, but enterprise sales leadership requires customer-acquisition pipeline ownership and revenue accountability that are not evident",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience navigating complex enterprise sales cycles, building internal champions at Fortune 500 / large enterprise scale, or overcoming competitive market challenges in a sales-driven motion",
+        "mitigation": "Stakeholder management experience at Google may transfer, but closing large enterprise deals is distinct from managing cross-functional transformation initiatives",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 15+ years enterprise sales (L6+ anchor), 5+ years leadership managing large-scale sales operations, and team-building at scale in sophisticated enterprise markets (Australia/New Zealand). Title \"Head of\" with regional P&L and team leadership responsibility maps to L6 in this context. JD clarity and years requirement strongly support L6 estimate.",
+    "role_family_fit": 28,
+    "scope_seniority": 82,
+    "summary": "This is a Head of Enterprise Sales role for Australia/New Zealand, requiring 15+ years in enterprise sales and 5+ years leading large-scale sales operations\u2014a clear L6 leadership position. The candidate is a Strategy and Operations leader with eight years at Google and strong cross-functional and transformation experience, but lacks quota-carrying enterprise sales background, partner-channel and SaaS sales expertise, and any ANZ market presence. While operationally strong, the candidate does not fit the core sales-leadership family and would require significant domain transition and regional market re-entry. Advisory: skip for this sales-specific role; consider for strategy or operations positions at Anthropic if available.",
+    "uncertainties": [
+      "Candidate profile does not detail quota responsibility or enterprise customer acquisition experience; unclear whether commercial operations role included direct P&L ownership or revenue accountability",
+      "JD states company size/stage as 'unknown_unless_stated_in_jd'; Anthropic is well-known but Confidence in role clarity is somewhat limited by absence of explicit reporting line, team size, or revenue target in JD",
+      "No information on candidate's willingness to relocate to Sydney or prior international business experience outside Google contexts",
+      "Scope and depth of 'global commercial operations' experience at Google not fully detailed; unclear how much involved enterprise sales motion vs. internal finance, supply chain, or partnership operations"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

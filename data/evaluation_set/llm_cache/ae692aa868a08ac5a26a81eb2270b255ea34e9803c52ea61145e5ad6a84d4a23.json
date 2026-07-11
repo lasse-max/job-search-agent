@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents; advanced Excel/Sheets; builds Looker dashboards",
+        "evidence_strength": "weak",
+        "job_requirement": "Use low-code/no-code tools to build automations/orchestrations (Workato, Okta Workflows, Zapier, etc.)"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration",
+        "evidence_strength": "medium",
+        "job_requirement": "Leverage, design, implement AI with a focus on the LRC function"
+      },
+      {
+        "candidate_evidence": "Proficient SQL, BigQuery querying; limited native API integration or infrastructure-as-code evidence",
+        "evidence_strength": "weak",
+        "job_requirement": "Work with APIs across major vendors (Okta, Google, GCP, Aliyun, etc.)"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Production software engineering, infrastructure as code (Terraform), and hands-on coding in Python or other languages at professional depth",
+        "mitigation": "Candidate's Python is basic and data-analysis focused; no stated Terraform or IaC experience; role requires 'programming language, such as python, and infrastructure as code' as core duty",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on identity and access management (SAML, OAuth, SSO, RBAC, ABAC, PBAC, ACLs) at expert level",
+        "mitigation": "No evidence of identity standards engineering or IAM system architecture; role explicitly requires 'expert level understanding' of these standards",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep orchestration and workflow platform expertise (Workato, Okta Workflows, etc.)",
+        "mitigation": "Candidate has automation and agentic-tooling leadership but not demonstrated hands-on low-code/no-code platform administration or complex workflow design",
+        "severity": "high"
+      },
+      {
+        "gap": "MDM, cloud infrastructure (AWS, GCP), and SaaS ecosystem administration",
+        "mitigation": "No stated experience with Kandji, JAMF, Intune, or AWS/GCP operations; role requires strong understanding across these systems",
+        "severity": "medium"
+      },
+      {
+        "gap": "Core IT engineering and operations discipline",
+        "mitigation": "Background is commercial operations and product transformation at Google; IT engineering, IT operations, and corporate IT engineering are distinct disciplines with different tooling, escalation models, and incident-response expectations",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5+ years relevant experience, expert IAM/orchestration depth, and full-stack IT engineering ownership across identity, workflows, cloud, and MDM systems. This maps to mid-to-senior IC (L5) scope within IT engineering discipline, with scope slightly elevated by global legal-team partnership and autonomy expectations.",
+    "role_family_fit": 15,
+    "scope_seniority": 70,
+    "summary": "This is a Senior IT Engineer role focused on IT infrastructure, identity management, workflow automation, and legal-team support\u2014a discipline fundamentally outside the candidate's eight-year history in commercial operations, product operations, and business transformation at Google. While the candidate demonstrates advanced skills in agentic AI, data querying, and cross-functional program delivery, the role requires hands-on production software engineering, infrastructure-as-code (Terraform), expert-level identity standards (SAML/OAuth/RBAC), and deep expertise in low-code orchestration platforms (Workato, Okta Workflows) and MDM systems\u2014none of which are evident in the supplied profile. The role is within target seniority (L5) but is a poor fit for role family and discipline.",
+    "uncertainties": [
+      "Airwallex company stage context not stated in JD; assuming high-growth scale-up (2,200+ people, $8B valuation) suggests established infrastructure, but exact IT maturity and team structure unclear",
+      "Extent of hands-on coding vs. direction-only in candidate's AI/agentic-tooling role not detailed; if primarily direction, engineering gap widens",
+      "No detail on candidate's exposure to identity/access-management architecture or corporate IT incident response",
+      "Exact scope of 'admin' role for Salesforce and degree of infrastructure or systems work involved not expanded"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

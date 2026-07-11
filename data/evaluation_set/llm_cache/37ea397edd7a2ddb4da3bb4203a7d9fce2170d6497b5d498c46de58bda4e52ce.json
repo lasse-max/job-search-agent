@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; Commercial Operations expertise translates directly to revenue management, pricing execution, and commercial strategy",
+        "evidence_strength": "strong",
+        "job_requirement": "Revenue Management, Pricing, Commercial Strategy experience ideally in Transportation, Mobility, Hospitality"
+      },
+      {
+        "candidate_evidence": "Advanced Excel, advanced Sheets, SQL proficiency (joins, GROUP BY, subqueries, window functions), Looker and Tableau dashboarding; owns data pulling and shaping across multiple BI platforms",
+        "evidence_strength": "strong",
+        "job_requirement": "Analytics & Stakeholder Support using Excel, BI, SQL to inform decisions"
+      },
+      {
+        "candidate_evidence": "Demonstrated track record in commercial operations with focus on metrics, dashboarding (Looker, Tableau), and SQL-driven insights; regularly delivers actionable insights to stakeholders",
+        "evidence_strength": "strong",
+        "job_requirement": "Performance & Insights: track demand, competition, KPIs; deliver data-driven recommendations"
+      },
+      {
+        "candidate_evidence": "Eight years coordinating across global teams; Salesforce administration and territory-budget management demonstrate sales operations alignment; transformation program leadership implies cross-functional execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Cross-Functional Collaboration with Revenue Management, Marketing, Sales, Product teams"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with eight years at Google; demonstrated ability to influence stakeholders and drive transformation programs across organizational boundaries",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong stakeholder management and communication skills"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google over eight years; commercial operations scaling role indicates autonomous ownership and execution in complex, dynamic context",
+        "evidence_strength": "medium",
+        "job_requirement": "Self-driven, structured, and comfortable with ownership in fast-paced environment"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "Industry-specific Transportation, Mobility, or Hospitality revenue management domain experience not explicitly stated",
+        "mitigation": "Commercial operations principles (pricing, yield, demand, territory management) transfer across sectors; early tenure at Flix would build domain fluency with standard onboarding and mentoring",
+        "severity": "low"
+      },
+      {
+        "gap": "Power BI or Tableau experience listed as 'strong plus' but not primary requirement; candidate has Tableau and Looker but no stated Power BI production experience",
+        "mitigation": "Power BI is a tool, not a core capability; Tableau and Looker mastery demonstrates BI platform fluency and learning speed; Power BI ramp is weeks, not months",
+        "severity": "low"
+      },
+      {
+        "gap": "Specific pricing and yield management frameworks not detailed in profile; role emphasizes 'maintain competitive pricing and positioning insights'",
+        "mitigation": "Candidate's commercial operations and Salesforce territory-budget management provide foundational pricing execution; pricing frameworks are teachable given analytics depth and commercial acumen",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit mention of forecasting methodology or budget-cycle participation at scale",
+        "mitigation": "Commercial operations role likely involved budget cycles; analytics and SQL skills support forecasting model building; standard ramp with revenue-management team",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 2+ years revenue/pricing/commercial experience and targets a specialist/manager scope at a mid-stage mobility company. No management headcount, reporting line, or company seniority signal provided. Title \"Commercial Market Manager\" and cross-functional steering responsibilities suggest L4 equivalent (3\u20135 years IC ownership and influence), though lack of company-size context and absence of people-management scope keep confidence at 75.",
+    "role_family_fit": 82,
+    "scope_seniority": 70,
+    "summary": "Strong alignment on analytics, commercial operations, cross-functional collaboration, and Revenue Operations translation (pricing, territory management, sales steering). Eight years at Google and two promotions support scope ownership; however, role does not require or mention direct reports or strategic steering at company level. Industry-specific domain (Transportation/Mobility) and Power BI are low-severity gaps. No hard blockers.",
+    "uncertainties": [
+      "Flix company size and stage unknown from JD (affects scope_seniority and estimated_level confidence)",
+      "Candidate's specific forecasting and budget-cycle depth at Google not stated",
+      "Transportation/Mobility pricing mechanics and yield-management frameworks may differ from candidate's prior domain",
+      "Reporting line and strategic decision-making authority for this role not specified"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

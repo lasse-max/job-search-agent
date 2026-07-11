@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; demonstrates translating complex operational constraints and policy requirements into strategic solutions.",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate complex systems, policies, and operational constraints into clear, thoughtful product experiences"
+      },
+      {
+        "candidate_evidence": "Product Operations leader with demonstrated cross-functional collaboration on transformation programs; partnered with engineering on Salesforce feature requests and directs LLM-coding agents to build production systems.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with PMs, engineers, researchers, operations, and strategists to shape product direction"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL, BigQuery queries, advanced Excel and Sheets; builds Looker and Tableau dashboards; demonstrates data-driven decision-making in operations and transformation contexts.",
+        "evidence_strength": "medium",
+        "job_requirement": "Use qualitative and quantitative signals to inform decisions and evaluate impact"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No native product design background or portfolio demonstrating visual craft, interaction design, and systems thinking",
+        "mitigation": "Cannot be mitigated; product design discipline requires specialized training and demonstrated design execution across touchpoints and surfaces.",
+        "severity": "high"
+      },
+      {
+        "gap": "Career is in Strategy and Operations / Commercial Operations, not user-facing design or product user-experience discipline",
+        "mitigation": "The role explicitly requires 8+ years of product design experience at a product-driven company; operations and transformation work does not substitute for design craft and portfolio evidence.",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience with prototyping, interaction design, and design communication artifacts not demonstrated",
+        "mitigation": "Core design discipline gap; operations leaders and strategists do not typically develop this skillset without dedicated design training.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of visual design quality standards, design systems leadership, or design coherence across multiple surfaces",
+        "mitigation": "While operations background includes process design, visual and interaction design are fundamentally different disciplines requiring specific experience.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Posted role requires 8+ years of product design experience at a product-driven technology company, with explicit demand for portfolio, visual craft, and interaction design discipline. This anchors the role at L5 (established senior IC ownership in a specialized design discipline). Company stage not stated in JD. confidence lowered slightly for missing context.",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "This is a native Product Designer role requiring 8+ years of design experience, portfolio-demonstrated visual craft, interaction design, and systems thinking. The candidate is a Strategy and Operations / Product Operations leader with strong data and cross-functional execution skills, but no product design background, design portfolio, or prototyping experience. The disciplinary gap is disqualifying: operations and transformation work does not substitute for design craft, design systems leadership, or user-facing interaction design execution. This role falls outside the candidate's primary and stretch families and does not align with their core capabilities.",
+    "uncertainties": [
+      "Candidate profile does not mention any design background, design portfolio, or interest in product design discipline; cannot infer latent design capability from operations experience.",
+      "Stripe company size/stage not stated in JD; confidence in level estimate slightly lower for missing enterprise/startup context.",
+      "Role does not map to approved families (Strategy & Operations, BizOps, Product Operations, GTM, RevOps, Chief of Staff); deprioritization rule applies to native Product Manager and related design/PM roles without transformation scope."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

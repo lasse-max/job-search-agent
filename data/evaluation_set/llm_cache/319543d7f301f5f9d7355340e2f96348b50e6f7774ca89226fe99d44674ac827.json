@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in scaled global operations and transformation programs, demonstrating stakeholder influence and cross-functional coordination.",
+        "evidence_strength": "medium",
+        "job_requirement": "Clear communicator who can influence outcomes without needing direct ownership of every fix"
+      },
+      {
+        "candidate_evidence": "Track record scaling commercial operations and managing transformation programs suggests execution discipline and pragmatic prioritization.",
+        "evidence_strength": "medium",
+        "job_requirement": "Pragmatic mindset: reduce risk first, optimise later"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No proven hands-on incident response leadership; role requires leading end-to-end technical response to high-severity security incidents, investigation, containment, eradication, and recovery.",
+        "mitigation": "Candidate would need intensive training and mentoring in DFIR, forensics, incident response playbooks, and live incident command\u2014a multi-month ramp, not a lateral move.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with endpoint, identity, cloud, or SaaS security environments; role operates across all four.",
+        "mitigation": "Domain expertise in these platforms (Windows/Linux endpoint telemetry, Azure/AWS IAM, SaaS application security) would require dedicated study and mentorship.",
+        "severity": "high"
+      },
+      {
+        "gap": "No DFIR, forensics, or malware analysis experience; JD lists these as must-have signals.",
+        "mitigation": "Candidate would need certification or substantial project-based learning; this is not transferable from operations background.",
+        "severity": "high"
+      },
+      {
+        "gap": "No vulnerability management, patching risk prioritization, or SIEM/security-tooling experience; role requires using SIEM to prioritize patching based on exposure and exploitability.",
+        "mitigation": "Would require hands-on training in vulnerability scanning platforms, risk correlation, and security operations tools.",
+        "severity": "high"
+      },
+      {
+        "gap": "No compliance-driven security or regulatory background; role mentions exposure to compliance requirements.",
+        "mitigation": "Learnable, but adds to ramp-up burden alongside technical security gaps.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "L5 IC scope: leads technical incident response for a global fintech platform (10B+ daily transactions), owns SIEM/vulnerability operations, coordinates across endpoint/identity/cloud/SaaS teams, reports into security leadership. No manager-of-managers delegation. established autonomous IC authority with cross-functional influence.",
+    "role_family_fit": 5,
+    "scope_seniority": 80,
+    "summary": "Incident Response Engineer at Checkout.com is a technical security leadership role requiring deep DFIR, forensics, vulnerability management, and hands-on incident response across endpoint, identity, cloud, and SaaS environments\u2014entirely outside the candidate's core Strategy and Operations / Revenue Operations family. The candidate has no security, infrastructure, or incident-response background; while operational discipline and stakeholder influence transfer modestly, the role demands specialized technical expertise (SIEM, malware analysis, endpoint forensics, vulnerability correlation) that would require a multi-month deep-technical ramp. Not a viable lateral move.",
+    "uncertainties": [
+      "Company size/stage not explicitly stated in JD; Checkout.com is a established private fintech, but team structure and Security org scale are unknown.",
+      "Reporting line and direct-management scope not specified; unclear if this is a peer IC or team lead.",
+      "No insight into whether candidate's Python/SQL/BigQuery skills or AI/agentic tooling experience could substitute for SIEM/security-tool expertise\u2014likely no."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

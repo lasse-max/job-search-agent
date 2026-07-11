@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in strategy and operations roles with experience in transformation programs, global commercial operations, and system design ownership. Designs and directs LLM coding agents to production systems; owns evaluation methodology and benchmarking. SQL proficiency (joins, GROUP BY, subqueries/CTEs, window functions); BigQuery and Python basic/learning.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical knowledge in software architecture, breadth across technology stacks with hands-on skills"
+      },
+      {
+        "candidate_evidence": "Basic Python, actively learning data-analysis track. Directs LLM agents and owns agentic-tooling evaluation and benchmarking. Advanced Excel and Google Sheets. Does not write production code independently; learning-stage Python limits hands-on coding ability.",
+        "evidence_strength": "weak",
+        "job_requirement": "Ability to write code and comfortable talking about technical concepts and API architecture"
+      },
+      {
+        "candidate_evidence": "Eight years in Google Devices global operations managing large internal stakeholders (CTOs, product engineering, cross-functional teams). No direct pre-sales, solutions architecture, or customer-facing engagement documented in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with large enterprise customers and customer-facing pre-sales or technical engagement"
+      },
+      {
+        "candidate_evidence": "Demonstrated advocacy and cross-functional influence at Google: partnered with engineering on Salesforce feature requests, influenced product strategy on commercial operations and transformation initiatives. Internal stakeholder management strength documented.",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as advocate for customers internally and influence product direction and priorities"
+      },
+      {
+        "candidate_evidence": "Eight years strategic and operations leadership at Google; experience translating business requirements into technical solutions and transformation programs. No documented pre-sales, customer-facing deep-dive, or external stakeholder engagement at customer sites.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead technical discussions and solution deep dives; engage with CTOs and technical leads at key users"
+      },
+      {
+        "candidate_evidence": "Professional English fluency; native German speaker. No evidence of Italian language capability or large-audience presentation experience documented.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong verbal and written communication abilities, including presenting to large audiences in both Italian and English"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No pre-sales or customer-facing technical engagement experience; role is external-facing solutions architecture, not internal strategy",
+        "mitigation": "Four-year pre-sales minimum is stated; candidate has internal influence and technical translation skills but no documented external customer engagement, demos, RFP responses, or solutions-design delivery to external accounts.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on coding ability; role requires ability to write code and API architecture depth",
+        "mitigation": "Candidate has basic Python and learning trajectory, but role is not engineering-heavy. However, 'ability to write code' and 'hands-on skills' are minimum requirements; basic Python and learning status do not meet 'strong hands-on' bar for enterprise technical architecture discussions.",
+        "severity": "high"
+      },
+      {
+        "gap": "No Italian language capability; role requires presenting and communicating in Italian and English",
+        "mitigation": "Italian is stated as a requirement. Candidate is fluent in English and native German; no Italian fluency documented.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No documented payments, fintech, or e-commerce domain knowledge; role involves Stripe payment infrastructure",
+        "mitigation": "Domain is preferred, not required. However, absence of payments or financial systems background in commercial operations context limits credibility with fintech customers and architects.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD specifies 4+ years with 1+ year pre-sales minimum. role scope is enterprise/large-customer technical architecture, customer engagement, and internal advocacy. No management headcount stated. Reporting line unspecified. Stripe scale implies established IC L5 scope. Language and customer engagement requirements elevate complexity beyond junior IC.",
+    "role_family_fit": 28,
+    "scope_seniority": 72,
+    "summary": "Solutions Architect is a strong role-family mismatch for a Strategy and Operations / Product Operations leader. The role is external-facing pre-sales technical consulting with enterprise customer engagement, demos, and fintech domain depth\u2014domains where the candidate has zero documented experience. While the candidate demonstrates strategic influence, cross-functional leadership, and basic technical chops (SQL, Python learning, LLM tooling), the role requires hands-on coding ability, Italian language fluency, and pre-sales customer-facing delivery as minimum gates. The missing pre-sales, customer engagement, and payments domain experience are not easily mitigated in ramp time.",
+    "uncertainties": [
+      "Company size/stage not stated in JD; assumed Stripe is large but role scope ambiguity affects level confidence",
+      "Whether candidate's internal stakeholder work (CTOs, product engineering) translates to external customer CTOs and architects in pre-sales context",
+      "Depth of hands-on code experience required for enterprise technical architecture discussions with customers; JD states 'write code' and 'hands-on skills' but does not specify systems programming, API integration, or language depth",
+      "Italian language requirement severity: whether it is a hard gate or soft for Dublin role"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

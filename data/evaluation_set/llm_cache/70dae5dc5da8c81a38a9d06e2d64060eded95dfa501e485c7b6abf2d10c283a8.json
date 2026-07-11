@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Commercial Operations and transformation programs; no quota-carrying sales or revenue targets cited in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Achieve sales quotas for allocated accounts on a quarterly and annual basis"
+      },
+      {
+        "candidate_evidence": "Google Devices & Services experience includes global commercial operations scaling and cross-functional coordination; no direct sales team leadership or account-team management mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience leading sales account teams aligned to customer(s) at a regional level"
+      },
+      {
+        "candidate_evidence": "Commercial Operations transformation background; no evidence of deal closure, territory revenue ownership, or multi-year strategic account planning",
+        "evidence_strength": "weak",
+        "job_requirement": "Closing seven-figure, multi-year deals and formulating strategic account plans"
+      },
+      {
+        "candidate_evidence": "No Financial Services, Banking, or HSBC customer domain experience mentioned in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Extensive experience operating with large Financial Services/Banking customers"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation focus; no new-business development, qualification pipeline, or opportunity-generation experience cited",
+        "evidence_strength": "weak",
+        "job_requirement": "Prospect qualification and development of new sales opportunities and ongoing revenue streams"
+      },
+      {
+        "candidate_evidence": "Product transformation and Commercial Operations background; limited evidence of consultative customer IT roadmap discovery or solution selling",
+        "evidence_strength": "weak",
+        "job_requirement": "Understanding customer IT roadmap and driving solution positioning"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 18,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying field sales with 10\u201315+ years of deal closure and territory revenue ownership",
+        "mitigation": "Candidate's Commercial Operations and scaling background demonstrates business acumen and cross-functional execution, but lacks field sales quota accountability, pipeline generation, and customer relationship closure.",
+        "severity": "high"
+      },
+      {
+        "gap": "Sales account team leadership and regional account management",
+        "mitigation": "Product Operations and transformation focus do not translate directly to managing account teams aligned to customer revenue streams and coordinating field sales execution.",
+        "severity": "high"
+      },
+      {
+        "gap": "Financial Services/Banking domain and HSBC customer ecosystem knowledge",
+        "mitigation": "No evidence of HSBC or banking vertical experience; domain ramp-in would require significant onboarding and relationship building.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Consultative selling, strategic customer needs assessment, and ROI articulation in enterprise sales context",
+        "mitigation": "Candidate's background is transformation and operations strategy, not consultative solution selling, customer discovery, or enterprise deal negotiations.",
+        "severity": "high"
+      },
+      {
+        "gap": "CxO executive relationship management and business-driver understanding at customer level",
+        "mitigation": "Google experience may include executive coordination, but no explicit evidence of customer-facing C-suite relationship building or sustained account executive engagement.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 73,
+    "level_rationale": "Global Account Manager at a large, high-growth public SaaS company (Snowflake) with 10\u201315+ years field sales expected, managing seven-figure strategic accounts and account teams at regional scope. Reporting context not stated. Role maps to L5 senior IC field-sales level. no evidence of manager-of-managers scope elevating to L6.",
+    "role_family_fit": 12,
+    "scope_seniority": 68,
+    "summary": "This is a quota-carrying Global Account Manager role at Snowflake with explicit focus on 10\u201315+ years of field sales experience, seven-figure deal closure, and strategic account ownership\u2014a profile outside the candidate's target function families. The candidate's eight-year background in Commercial Operations, Product Operations, and transformation at Google demonstrates strong strategy and execution capability, but lacks field sales quota accountability, account team leadership, pipeline generation, and consultative customer relationship expertise. The HSBC banking vertical adds a further domain gap. While scope_seniority is solid for a senior account-management role, role-family fit is misaligned; this is a sales function, not strategy or operations.",
+    "uncertainties": [
+      "Snowflake company size stage not stated; confidence in posted-role level estimate reflects this gap",
+      "Candidate's 'Commercial Operations' experience at Google may include customer engagement, but profile does not specify customer-facing account ownership, deal closure, or quota responsibility",
+      "No clear evidence of whether candidate has led or coordinated field account teams versus enabling internal operations"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

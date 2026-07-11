@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Python: basic, actively learning (data-analysis / pandas track)",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in Python programming"
+      },
+      {
+        "candidate_evidence": "Eight years of strategy and operations leadership at Google with expertise in AI agentic tooling design, specs and directing LLM coding agents; SQL/BigQuery proficiency and dashboard/analytics work",
+        "evidence_strength": "medium",
+        "job_requirement": "Have a strong technical background in computer science, mathematics, or physics"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs; experience with UAT, rollout, and implementation-heavy work; advanced Excel/Sheets and Looker dashboard proficiency",
+        "evidence_strength": "medium",
+        "job_requirement": "Can implement ideas quickly and communicate clearly"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Fluent Python programming required; candidate is at basic level and actively learning",
+        "mitigation": "The role emphasizes empirical research and ML systems with expectation of hands-on implementation. While the candidate has designed and directed LLM systems, this is not a substitute for fluent production-level Python. Steep learning curve in 4-month program.",
+        "severity": "high"
+      },
+      {
+        "gap": "No formal CS, mathematics, or physics degree or research background explicitly mentioned",
+        "mitigation": "Role lists strong technical background in CS/math/physics as core criterion. Candidate's background is strategy/ops with AI tooling direction and analytics, not native CS or empirical research training.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited hands-on ML systems or large-scale distributed systems engineering experience",
+        "mitigation": "Workstream focuses on building CPU simulators, accelerator backends, synthetic data pipelines, and large-scale systems. Candidate's work has been operations, commercial scaling, and tooling direction, not systems implementation or HPC.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of research publication, paper submission, or empirical AI research output",
+        "mitigation": "Role expects fellows to produce public research output (papers). Candidate's work is internal operations transformation and tooling enablement, not research publication track.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role requires full-time commitment for 4 months; unclear if candidate can step back from current role",
+        "mitigation": "Program is designed for fellows, not employed staff mid-career. Candidate positioning suggests employed at Google; feasibility unknown.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Fluent in Python programming\" and \"Have strong software engineering skills with experience building complex ML systems\" are listed as core criteria. Candidate is at basic Python level, actively learning, with no production software-engineering background. The JD explicitly states \"You might be a particularly great fit for this workstream if you: Have strong software engineering skills with experience building complex ML systems.\" This is a must-have for the ML Systems & Performance workstream.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "A 4-month research fellowship with direct mentorship and full-time immersion is junior research-stage work. The role accepts candidates from diverse backgrounds and does not require prior research experience, mapping to early-career or below L3 level. The cohort structure and mentorship-heavy model align with intern/fellow level (L3 equivalent) rather than mid-career IC scope.",
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "This is a 4-month AI research fellowship focusing on ML systems, infrastructure, and performance engineering. Candidate is a Strategy & Operations leader with AI tooling direction and commercial transformation expertise but lacks core requirements: fluent Python (candidate is basic/learning), strong software engineering background (not demonstrated), and hands-on complex ML systems experience (role emphasizes CPU simulators, accelerator backends, and large-scale HPC). Role family is AI research/engineering, not strategy/ops. Role level is L3 (fellowship, mentorship-heavy, no prior research publication required), well below candidate's seniority band. Hard blocker: core requirement for fluent Python and strong ML systems engineering skills not met.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

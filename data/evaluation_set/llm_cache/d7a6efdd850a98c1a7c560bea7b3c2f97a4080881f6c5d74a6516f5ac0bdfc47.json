@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in strategy and operations; Commercial Operations experience translatable to Revenue Operations (territory budgets, CRM administration, forecasting, pricing execution, revenue-leakage control).",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue Operations leadership role"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs at Google; designs and directs LLM coding agents for production systems; owns evaluation methodology, benchmarking, and calibration.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy and transformation program ownership"
+      },
+      {
+        "candidate_evidence": "Proficient SQL with BigQuery queries, advanced Excel and Sheets, Looker dashboard building, Tableau; writes queries to pull and shape own data; basic Python actively learning for data analysis.",
+        "evidence_strength": "strong",
+        "job_requirement": "Data and analytics capability (typical RevOps scope)"
+      },
+      {
+        "candidate_evidence": "Salesforce admin experience; managed territory budgets and partnered with engineering on feature requests.",
+        "evidence_strength": "medium",
+        "job_requirement": "SaaS operational platform and CRM administration"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "unknown",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No concrete RevOps or SaaS revenue-operations experience in prior roles; Commercial Operations background does not confirm real revenue cycle, forecasting cadence, or quota-attainment process ownership.",
+        "mitigation": "Candidate's territory budget and pricing execution work, plus analytics depth, could transfer if RevOps scope is well-defined and mentorship is provided during onboarding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Location mismatch: Sydney-based role, candidate location not stated; relocation feasibility unknown.",
+        "mitigation": "Clarify candidate's location and willingness to relocate to Australia before proceeding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD content unavailable (fetch failed); critical role context, seniority signals, reporting line, company stage, and explicit requirements are unknown.",
+        "mitigation": "Obtain a complete, readable JD. Without it, seniority estimate and true scope fit cannot be assessed reliably.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 15,
+    "level_rationale": "JD text is unavailable (fetch failed). Title \"Revenue Operations & Strategy Lead\" is ambiguous without context on company size, reporting line, or scope. Cannot estimate role level without explicit seniority anchors (years required, management scope, stakeholder level).",
+    "role_family_fit": 60,
+    "scope_seniority": 30,
+    "summary": "Revenue Operations & Strategy Lead at Rokt (Sydney) is a strong title-and-family match for the candidate's strategy and operations background and analytics toolkit. However, the JD fetch failed, making seniority estimate and true scope alignment impossible to assess. Candidate's Commercial Operations and Google-scale transformation experience are relevant but do not directly evidence SaaS revenue-operations process ownership. Location feasibility is unknown. Recommend obtaining a complete, readable JD and clarifying candidate's relocation willingness before advancing.",
+    "uncertainties": [
+      "JD content is inaccessible (fetch_failed: TooManyRedirects); cannot extract explicit requirements, seniority signals, or management scope.",
+      "Company size and stage not stated; Rokt brand context is not assumed; cannot calibrate role level.",
+      "Candidate location not provided; Sydney relocation feasibility unknown.",
+      "RevOps vs. Commercial Operations domain translation requires confirmation of revenue cycle, forecasting, and quota-attainment process scope in the actual role.",
+      "Whether the 'Strategy' component emphasizes pricing strategy, territory strategy, or product-revenue strategy is unclear without JD text."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

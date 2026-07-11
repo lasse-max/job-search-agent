@@ -15,6 +15,8 @@ from app.services.evaluate import (
     _scope_seniority,
     _technical_blockers,
     _weighted_fit_score,
+    _is_stretch_family,
+    has_disqualifying_hard_requirement,
     relevance_decision,
 )
 
@@ -570,6 +572,24 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         )
         self.assertEqual(
             _role_family_fit(
+                "Partner Operations Lead",
+                "Channel Operations",
+                "own partner field operations and channel planning",
+                profile,
+            ),
+            92,
+        )
+        self.assertEqual(
+            _role_family_fit(
+                "Partnerships Sales Manager",
+                "Business Development",
+                "carry quota and close partner sales deals",
+                profile,
+            ),
+            58,
+        )
+        self.assertEqual(
+            _role_family_fit(
                 "Strategic Operations Manager",
                 "Business Operations",
                 "lead strategic operations programs",
@@ -586,6 +606,98 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             ),
             92,
         )
+
+    def test_program_management_is_stretch_only_for_business_scope(self) -> None:
+        self.assertTrue(
+            _is_stretch_family(
+                "Technical Program Manager",
+                "Transformation",
+                "Own a cross-functional business transformation and change-management program.",
+            )
+        )
+        self.assertFalse(
+            _is_stretch_family(
+                "Technical Program Manager",
+                "Engineering",
+                "Own SDLC release trains, software delivery, and infrastructure dependencies.",
+            )
+        )
+        business = relevance_decision(
+            _row(
+                "Technical Program Manager",
+                ["London, United Kingdom"],
+                department="Transformation",
+                description="Own business transformation and cross-functional change management.",
+            ),
+            _company(tier=2),
+        )
+        engineering = relevance_decision(
+            _row(
+                "Technical Program Manager",
+                ["London, United Kingdom"],
+                department="Engineering",
+                description="Own SDLC releases and pure software engineering delivery.",
+            ),
+            _company(tier=2),
+        )
+
+        self.assertTrue(business.should_evaluate)
+        self.assertFalse(engineering.should_evaluate)
+        self.assertEqual(engineering.reason, "excluded_title_department_function")
+
+    def test_required_technical_degree_is_scoped_to_its_clause(self) -> None:
+        self.assertTrue(
+            has_disqualifying_hard_requirement(
+                "What we're looking for Required Engineering or computer science degree "
+                "from a top tier institution. Translate business problems into models."
+            )
+        )
+        self.assertFalse(
+            has_disqualifying_hard_requirement(
+                "A degree in business, economics, or engineering is required."
+            )
+        )
+
+    def test_native_product_director_is_downranked_without_strategy_ops_scope(self) -> None:
+        evaluation = evaluate_role(
+            _row(
+                "Product Director, Financial Markets & Financial Platform",
+                ["Singapore"],
+                department="Product",
+                description=(
+                    "Own the product roadmap, manage product managers, and partner with "
+                    "engineering to launch financial-platform features."
+                ),
+            ),
+            _company(tier=1, target_locations=["Singapore"]),
+        )
+
+        self.assertLess(evaluation.role_fit_score, 60)
+        self.assertEqual(evaluation.recommendation, "skip")
+
+    def test_stage19_location_allowlist_adds_brisbane_and_drops_spain(self) -> None:
+        brisbane = relevance_decision(
+            _row(
+                "Strategy and Operations Manager",
+                ["Brisbane, Australia"],
+                department="Business Operations",
+                description="Own strategic planning and operating cadence.",
+            ),
+            _company(tier=2),
+        )
+        madrid = relevance_decision(
+            _row(
+                "Strategy and Operations Manager",
+                ["Madrid, Spain"],
+                department="Business Operations",
+                description="Own strategic planning and operating cadence.",
+            ),
+            _company(tier=2),
+        )
+
+        self.assertTrue(brisbane.should_evaluate)
+        self.assertFalse(madrid.should_evaluate)
+        self.assertEqual(madrid.reason, "location_filter_not_allowed")
 
     def test_profile_language_match_raises_score_and_alignment_strength(self) -> None:
         company = _company(target_locations=["Munich / Germany"])
@@ -732,11 +844,11 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             relevance_decision(
                 _row(
                     "Strategist, Agent Development (Spanish speaking)",
-                    ["Madrid, Spain"],
+                    ["Paris, France"],
                     department="Product",
                     description="Lead agent strategy for customers.",
                 ),
-                _company(target_locations=["Madrid / Spain"]),
+                _company(target_locations=["Paris / France"]),
             ).reason,
             "unsupported_language_requirement",
         )
@@ -1092,7 +1204,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             "Sales S&O Lead",
             "Go-to-Market Program Lead",
             "Business Transformation Manager",
-            "Strategic Programs Lead",
+            "Strategic Program Manager",
             "Chief of Staff",
             "BizOps Lead",
             "Deployment Strategist",

@@ -1,0 +1,70 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations; Salesforce admin background managing territory budgets and CRM administration",
+        "evidence_strength": "medium",
+        "job_requirement": "Draft, review, and negotiate commercial agreements, with a primary focus on GTM/Sales transactions including enterprise customer contracts"
+      },
+      {
+        "candidate_evidence": "Commercial Operations and transformation program leadership; cross-functional stakeholder management with GTM alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with Sales and Go-to-Market teams to support deal velocity and provide practical legal guidance"
+      },
+      {
+        "candidate_evidence": "Scaling global operations and process design in commercial transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Help build and maintain our commercial legal infrastructure, including contract templates, playbooks, and process improvements"
+      },
+      {
+        "candidate_evidence": "Google-scale cross-functional and international operations leadership; demonstrated adaptability in transformation roles",
+        "evidence_strength": "medium",
+        "job_requirement": "A low-ego, collaborative approach to working with colleagues and external partners; Comfort in fast-paced environments with shifting priorities"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No law degree (JD) or active bar membership required; candidate has neither",
+        "mitigation": "Disqualifying hard requirement; no feasible onboarding or skill transfer path",
+        "severity": "high"
+      },
+      {
+        "gap": "No legal background or commercial transaction drafting/negotiation experience",
+        "mitigation": "Would require formal legal training or a substantial apprenticeship under senior counsel; core duty of the role",
+        "severity": "high"
+      },
+      {
+        "gap": "No SaaS agreements, commercial contract templates, or legal playbook development experience",
+        "mitigation": "Highly specialized legal infrastructure work requiring specialized legal education and practice",
+        "severity": "high"
+      },
+      {
+        "gap": "No exposure to AI policy, safety agreements, or AI governance frameworks",
+        "mitigation": "Learnable through mentorship, but significant ramp time required alongside core legal competencies",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"A JD and active membership in at least one U.S. state bar (California preferred)\" and \"Minimum education: Bachelor's degree or an equivalent combination of education, training, and/or experience Required field of study: A field relevant to the role as demonstrated through coursework, training, or professional experience\". The role is explicitly a legal-practice role (Commercial Counsel) requiring bar admission to perform core duties (draft, review, and negotiate commercial agreements). Candidate does not have a JD or bar membership.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 70,
+    "level_rationale": "Role requires 3\u20135 years of legal experience with active bar membership, SaaS/tech-transaction specialization, and independent drafting/negotiation. At a scale-stage AI company (Anthropic), this is a practicing attorney role\u2014mid-level IC (L4 equivalent). Company size or stage detail is limited in the JD. level confidence is modest due to that ambiguity, but the legal-credential and experience floors are non-negotiable regardless of company size.",
+    "role_family_fit": 5,
+    "scope_seniority": 45,
+    "summary": "This is a Commercial Counsel role requiring a practicing attorney with a JD, active bar membership, 3\u20135 years of legal transaction experience, and specialized SaaS/commercial agreement expertise. The candidate is a Strategy and Operations leader with strong Commercial Operations and cross-functional program management background, but lacks the core disqualifying credentials: no law degree, no bar membership, and no legal practice experience. While the candidate's business operations and deal-support experience could translate to some operational aspects of legal work, the role's core duties\u2014drafting, reviewing, and negotiating commercial agreements, and building legal infrastructure\u2014are legal practice work that requires formal legal training and credentials. This is a skip due to hard disqualification.",
+    "uncertainties": [
+      "Anthropic's internal stage and team size are not detailed, making fine-grained seniority calibration difficult",
+      "Unclear whether the role might accept a non-lawyer business operations partner (e.g., legal operations or contracts coordinator) in lieu of a practicing attorney; JD requirement suggests no"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

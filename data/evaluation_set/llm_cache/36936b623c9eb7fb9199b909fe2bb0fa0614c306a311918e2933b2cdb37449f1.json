@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions scaling global commercial operations and transformation programs; owns strategic transformation and cross-functional alignment at global scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic Initiatives ownership and cross-functional execution"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations primary role family with demonstrated commercial operations and business transformation experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and Operations domain expertise"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "JD content unavailable; Roblox is a mid-to-large public gaming platform company with different operational domain from Devices and Services",
+        "mitigation": "Obtain full JD text to assess specific requirements and context-fit; evaluate domain transferability once requirements are clear",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with gaming platforms, creator economics, or virtual-world business models",
+        "mitigation": "Assess whether Roblox role requires deep domain knowledge or if strategic/operational fundamentals transfer; conduct domain onboarding interview",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited visibility into Roblox organizational maturity, company stage, and strategic priorities affecting scope interpretation",
+        "mitigation": "Research Roblox current strategy and organizational structure; clarify reporting line and cross-functional stakeholder scope during interview",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 40,
+    "level_rationale": "Title \"Lead, Strategic Initiatives\" and Strategy & Operations department suggest L5 IC or junior senior-manager scope. Without JD text, cannot confirm years required, reporting line, or stakeholder scope. lowered confidence due to missing job description content. Public company context implies established org structure but stage and scope remain unclear.",
+    "role_family_fit": 78,
+    "scope_seniority": 62,
+    "summary": "Lead, Strategic Initiatives role title and Strategy & Operations department indicate strong potential role-family fit with the candidate's eight-year background scaling global transformation programs and commercial operations at Google. However, the job description could not be fetched from the public Roblox careers page (404 error), eliminating visibility into specific requirements, domain context, organizational scope, cross-functional stakeholder span, and reporting structure. Without full JD text, evidence mapping is severely limited, confidence is low, and gaps related to gaming-platform domain and Roblox-specific strategic priorities cannot be assessed. Skip pending receipt of complete, stable job description content.",
+    "uncertainties": [
+      "Full job description unavailable; cannot assess specific requirements or confirm role scope",
+      "Roblox company stage, organizational maturity, and strategic context not stated in role JSON",
+      "Domain transferability from Devices and Services to gaming/platform business model unclear without role context",
+      "Reporting line, cross-functional stakeholder span, and strategic priority area not specified",
+      "Level estimate confidence limited to title and department inference only"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

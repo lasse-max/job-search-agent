@@ -1,7 +1,7 @@
 {
   "versions": {
-    "candidate": "candidate_profile_v2",
-    "location": "location_policy_v2",
+    "candidate": "candidate_profile_v3",
+    "location": "location_policy_v3",
     "scoring": "scoring_policy_v2"
   },
   "targetRoleFamilies": [
@@ -11,13 +11,14 @@
     "Product Strategy",
     "GTM / Sales Strategy and Operations",
     "Revenue Operations at appropriate seniority",
-    "Business Transformation",
-    "Strategic Programs / Program Leadership"
+    "Partner Operations / Partner Strategy & Operations",
+    "Business Transformation"
   ],
   "approvedStretchFamilies": [
     "Deployment Strategist",
     "Forward-Deployed Strategy",
-    "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering"
+    "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering",
+    "Program / Project Management where the role owns business or strategic programs, cross-functional execution, or transformation — not pure engineering-delivery PM"
   ],
   "seniority": {
     "preferredLevels": [
@@ -42,6 +43,17 @@
       "level": "professional/fluent"
     }
   ],
+  "toolsAndSkills": {
+    "SQL": "proficient — joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data",
+    "Salesforce": "admin — managed territory budgets; partnered with engineering on feature requests",
+    "Looker": "builds dashboards",
+    "Tableau": "yes",
+    "Excel": "advanced",
+    "Google Sheets": "advanced",
+    "BigQuery": "working — writes queries, pulls and shapes own data",
+    "Python": "basic, actively learning (data-analysis / pandas track)",
+    "AI and agentic tooling": "designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration"
+  },
   "hardBlockers": [
     "Posting is closed or unavailable at first discovery.",
     "Mandatory active security/government clearance that the candidate cannot obtain.",
@@ -71,17 +83,13 @@
       "Amsterdam",
       "Paris",
       "Copenhagen",
-      "Stockholm",
-      "Madrid",
-      "Milan",
       "Lisbon",
       "Zurich",
-      "Brussels",
-      "Vienna",
       "Singapore",
       "Sydney",
       "Melbourne",
-      "Perth"
+      "Perth",
+      "Brisbane"
     ],
     "tier1Only": [
       "Dublin / Ireland"

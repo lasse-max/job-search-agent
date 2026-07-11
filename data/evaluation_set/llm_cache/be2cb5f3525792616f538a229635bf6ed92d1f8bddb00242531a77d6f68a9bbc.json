@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services, two promotions; led global commercial operations transformation and scaling programs with measurable business impact (conversion, revenue, cost efficiency gains).",
+        "evidence_strength": "medium",
+        "job_requirement": "5+ years in product management or product-adjacent role with proven track record building highly impactful products"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries, CTEs, window functions); works with BigQuery; builds Looker dashboards; advanced Excel and Sheets; demonstrated revenue-impact measurement and optimization in Commercial Operations.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong analytical capabilities with experience defining and tracking success metrics, running experiments, and using data to measure product impact on revenue, conversion, and margins"
+      },
+      {
+        "candidate_evidence": "Commercial Operations transformation and scaling at Google across global teams; worked with engineering (Salesforce feature requests) and cross-functional stakeholders (Legal, Risk, Go-to-Market); managed complex partner and internal alignment.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience partnering closely with engineers, designers, and external partners to build products and complex systems at scale"
+      },
+      {
+        "candidate_evidence": "Eight-year career spanning two promotions and global cross-functional program leadership; positioned as Strategy &amp; Operations leader with demonstrated stakeholder influence and communication at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to effectively communicate with and influence both user-facing and partner-facing stakeholders; strong written and verbal communication skills"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations transformation, managed territory budget alignment, and coordinated between multiple internal teams; no explicit evidence of joint-roadmap creation or long-term multi-quarter PM roadmaps.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience working on products that require aligning multiple stakeholders, developing joint roadmaps, and navigating competing priorities between internal goals and external partner objectives"
+      },
+      {
+        "candidate_evidence": "Transformation programs and scaling initiatives at Google; program-execution discipline evident; no direct evidence of shipped multi-quarter product roadmaps or feature prioritization leadership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Background delivering successfully on multi-quarter roadmaps and aligning diverse stakeholders to achieve shared goals"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 52,
+    "gap_manageability": 48,
+    "gaps": [
+      {
+        "gap": "No native product management background or shipped product roadmap ownership; experience is strategy, operations, and transformation rather than requirements definition, user discovery, and feature prioritization.",
+        "mitigation": "Candidate's program-execution discipline, cross-functional leadership, and stakeholder alignment are transferable. Native PM skills (user research, discovery, roadmap sequencing) can be learned on the job if candidate demonstrates appetite for product thinking; Stripe's mentorship and domain context would be critical.",
+        "severity": "high"
+      },
+      {
+        "gap": "No payments, fintech, or online-business domain background; JD emphasizes conversion/margin trade-offs, payment-method optimization, risk-compliance integration, and global payment industry trends.",
+        "mitigation": "Domain knowledge is teachable given analytical depth (SQL, data analysis, metric definition) and business acumen. Candidate's Commercial Operations background involves revenue leakage and efficiency optimization, which are adjacent but not payments-specific. Ramp time would be material.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct experience with financial-partner ecosystem management and joint product roadmapping; JD requires close collaboration with payment providers on competing priorities and shared roadmap development.",
+        "mitigation": "Candidate managed cross-functional alignment and internal partner prioritization; financial-partner dynamics (compliance, risk, incentive misalignment) are unique but manageable with domain support and mentorship.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated consumer-product user-discovery or merchant-user research discipline; JD emphasizes deep user empathy with merchants and partners through observation, feedback patterns, and industry-trend analysis.",
+        "mitigation": "Candidate's transformation work required stakeholder listening and requirement synthesis; formal user-research and discovery techniques would need to be developed or coached.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product Marketing and Go-to-Market collaboration is mentioned in JD; candidate's background is operations and strategy, not product-go-to-market execution.",
+        "mitigation": "Cross-functional collaboration is demonstrated; GTM partnership is a standard PM skill and not a blocker.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 5+ years product-adjacent experience with proven high-impact delivery, multi-quarter roadmap ownership, and cross-functional stakeholder alignment at scale. Multi-year strategic product ownership with platform/ecosystem complexity aligns with L5 (6\u20139 years, established senior-IC scope). Company size not stated. confidence capped at 78.",
+    "role_family_fit": 45,
+    "scope_seniority": 72,
+    "summary": "Candidate is a Strategy &amp; Operations leader with eight years at Google in Commercial Operations, transformation, and scaling. This is a native PM role requiring deep payments domain, conversion/margin optimization, financial-partner ecosystem management, and platform-product complexity\u2014not a stretch function. Candidate's strengths are strategic alignment, cross-functional program execution, revenue impact analysis, and transformation; weaknesses are no native PM track record, no payments or fintech background, and no demonstrated product roadmap ownership or user-discovery discipline. Role seniority and scope fit target band (L4\u2013L5), but role-family distance is substantial.",
+    "uncertainties": [
+      "Candidate's transformation and scaling programs at Google are described at a high level; specific product impact metrics (adoption, revenue uplift, user-satisfaction measurement) are not detailed.",
+      "No explicit evidence of how candidate defines success metrics, runs A/B tests, or uses statistical rigor; SQL and data skills suggest capability but not track record in product experimentation.",
+      "Unclear whether candidate has experience with regulated financial services, compliance requirements, or risk-mitigation trade-offs (payment networks, fraud prevention, regulatory approval cycles).",
+      "No mention of open-source, multi-sided platform, or marketplace dynamics; candidate's operations background may not have required ecosystem balance or partner-incentive alignment."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

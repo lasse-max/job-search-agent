@@ -1,0 +1,85 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Built and scaled global commercial operations frameworks and transformation programs at Google across multiple regions; designed processes, governance models, and escalation protocols for cross-functional alignment and risk mitigation",
+        "evidence_strength": "medium",
+        "job_requirement": "Architect, own, and continuously evolve Airwallex's global Operational Risk Framework, including standards, governance, and escalation protocols"
+      },
+      {
+        "candidate_evidence": "Eight years leading strategy and operations with accountability for systemic risk identification, root-cause analysis of operational failures, and escalation protocols; demonstrated ability to challenge deeply and hold teams accountable",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as the senior 2LoD authority for operational risk boundary breaches, including tracking systemic exposures, driving root cause analysis, and escalating material issues"
+      },
+      {
+        "candidate_evidence": "Designs and directs LLM coding agents; owns evaluation methodology and benchmarking; builds Looker dashboards and writes SQL/BigQuery queries to pull and shape data for insights; demonstrates capability in automation and analytics",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive a more modern, scalable control environment by pushing the organization toward automated, data-driven controls and embedded guardrails"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure at Google managing global stakeholders, C-level partnerships, and cross-functional transformation; strong executive presence and ability to influence at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Engage credibly with senior executives, regulators, auditors, and cross-functional stakeholders, and challenge constructively in a fast-moving environment"
+      }
+    ],
+    "confidence": 0.95,
+    "estimated_level": "L6",
+    "evidence_strength": 22,
+    "gap_manageability": 28,
+    "gaps": [
+      {
+        "gap": "No fintech, banking, payments, or financial-services industry experience; all background is enterprise tech (Google Devices & Services)",
+        "mitigation": "Fintech-specific risk frameworks, regulatory language, customer-trust dynamics, and compliance constraints are foundational to the role. Industry transition requires 12\u201318 month immersion; role is embedded second line to regulators from day one.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with operational risk methodologies (Basel operational risk principles, COSO, ISO standards) or regulatory risk frameworks",
+        "mitigation": "These are non-negotiable for 2LoD credibility with regulators and auditors. Candidate has no evidence of CRISC, CISA, CAMS, or equivalent certifications mentioned as preferred.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct experience in second-line governance, risk and control self-assessments, key risk indicators (KRIs), loss event management, or issue escalation frameworks specific to regulated environments",
+        "mitigation": "Core technical competencies for the role. Commercial ops frameworks do not generalize to regulatory second-line discipline required in fintech.",
+        "severity": "high"
+      },
+      {
+        "gap": "No third-party risk management, vendor due-diligence, or outsourcing governance experience in regulated or fintech contexts",
+        "mitigation": "Role explicitly requires building and enforcing third-party risk governance across payment partners, cloud providers, and critical ecosystem dependencies. No comparable Airwallex or fintech work shown.",
+        "severity": "high"
+      },
+      {
+        "gap": "No business continuity, operational resilience, recovery-and-resolution, or crisis-recovery planning experience in regulated environments",
+        "mitigation": "JD explicitly requires owning second-line operational resilience framework and scenario testing. Candidate's transformation background is operational delivery, not financial-services resilience architecture.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No fraud risk governance experience in digital payments (account takeover, onboarding fraud, merchant fraud, card-not-present fraud)",
+        "mitigation": "Listed as preferred, not minimum. Still, fraud-specific risk governance in payments is a specialized domain requiring fintech or banking background.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"You have 12 to 15+ years of experience across operational risk, enterprise risk, technology risk, operational resilience, or related control disciplines within financial services, banking, payments, or fintech.\" Candidate has 8 years in enterprise tech operations (Google), none in financial services, banking, payments, fintech, risk, compliance, or regulatory domains.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"You have built and scaled end-to-end operational risk frameworks, including risk and control self-assessments, key risk indicators, loss event management, issue management, and escalation governance.\" Candidate's frameworks are commercial operations (pricing, territory management, global alignment); no operational risk, KRI, loss event, or regulatory escalation experience.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"You have direct experience with third-party risk management, including risk tiering, due diligence, ongoing oversight, and governance of critical outsourcing or vendor relationships.\" Candidate has no third-party risk, vendor due diligence, or outsourcing governance experience in fintech or regulated contexts.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 92,
+    "level_rationale": "Senior Director title with 12\u201315+ years required experience, 5+ years managing global multi-regional 2LoD teams, and credible engagement with C-suite and regulators. JD scope spans end-to-end framework ownership, controls architecture, and executive governance\u2014characteristic of L6 senior IC or manager-of-managers in risk leadership.",
+    "role_family_fit": 15,
+    "scope_seniority": 78,
+    "summary": "Global Risk leadership role building operational risk frameworks and 2LoD governance at a $8B fintech. Requires 12\u201315+ years fintech/banking risk experience, 5+ years senior team leadership, and deep operational risk / regulatory frameworks expertise. Candidate brings 8 years Google strategy/ops and commercial transformation with no fintech, regulatory, risk, or compliance background. Strong execution and AI tooling capability do not translate to specialized risk frameworks, Basel/COSO methodologies, third-party risk governance, or regulatory credibility required for senior 2LoD leadership in regulated fintech.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

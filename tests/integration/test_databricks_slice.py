@@ -406,8 +406,9 @@ class DatabricksSliceTest(unittest.TestCase):
                 """
                 SELECT COUNT(*)
                 FROM role_evaluations
-                WHERE model_version = 'fake-claude|hybrid_claude_v3'
-                """
+                WHERE model_version = ?
+                """,
+                (f"fake-claude|{HYBRID_EVALUATOR_VERSION}",),
             ).fetchone()[0]
 
             self.assertEqual(refreshed.changed_count, 0)
@@ -479,8 +480,9 @@ class DatabricksSliceTest(unittest.TestCase):
                 """
                 SELECT COUNT(*)
                 FROM role_evaluations
-                WHERE model_version = 'fake-claude|hybrid_claude_v3'
-                """
+                WHERE model_version = ?
+                """,
+                (f"fake-claude|{HYBRID_EVALUATOR_VERSION}",),
             ).fetchone()[0]
             self.assertEqual(progressed.changed_count, 0)
             self.assertEqual(progressed.evaluated_count, 5)

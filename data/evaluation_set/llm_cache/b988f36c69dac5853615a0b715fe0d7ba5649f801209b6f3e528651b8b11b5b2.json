@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, including experience scaling global commercial operations and designing transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute to documentation strategy and content roadmap, identifying gaps and proposing solutions"
+      },
+      {
+        "candidate_evidence": "Cross-functional stakeholder management and product ownership experience (requirements, UAT, rollout, transformation design) at Google scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Participate in technical reviews, design discussions, and release planning to ensure documentation is integrated early; gather feedback from Support, DevRel, and users"
+      },
+      {
+        "candidate_evidence": "Scaling global operations and transformation programs demonstrates process design, governance, and standards-setting capability",
+        "evidence_strength": "weak",
+        "job_requirement": "Help define and enforce tone guidelines, content standards, and documentation best practices"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L4",
+    "evidence_strength": 28,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No technical writing or developer documentation background; candidate is Strategy and Operations professional, not content/writing specialist",
+        "mitigation": "Candidate has cross-functional collaboration and process-design experience; ramp would require significant mentoring in technical-writing craft, narrative structure, and SaaS/API/deployment-domain specificity. Not a natural-hire path.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on technical validation and testing at the depth required; candidate background is operations, not engineering or technical testing workflows",
+        "mitigation": "Candidate has SQL, BigQuery, and basic Python (learning track); can learn Postman, curl, and REST testing. Docker/Kubernetes/on-premises infrastructure testing is unfamiliar and would require dedicated ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with Markdown, Git workflows, headless CMS, Docusaurus, Sphinx, or technical documentation platforms",
+        "mitigation": "These tools are learnable for someone with advanced technical skills (Excel, Sheets, SQL), but the learning curve extends timeline and introduces execution risk in a hands-on role.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No API documentation, SDK, or developer-education background; candidate expertise is commercial operations and revenue/territory management",
+        "mitigation": "Candidate understands complex systems (LLM agents, data pipelines) and can absorb technical domain knowledge, but lacks domain context and the writing voice/narrative structure required for developer-facing content.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Posted role requires 5+ years in technical writing / developer documentation and hands-on technical validation (APIs, deployment, infrastructure testing). Role is individual-contributor focused on technical accuracy, content design, and user-facing storytelling. This maps to L4 (Senior IC) in technical-writing ladder, anchored by 5+ years requirement and cross-functional scope (Engineering, Product, Support, DevRel) without management or strategic business ownership.",
+    "role_family_fit": 12,
+    "scope_seniority": 55,
+    "summary": "This is a technical-writing and developer-education role at Mistral AI, not a Strategy and Operations or Business Operations position. The candidate is a Strategy and Operations professional with eight years at Google in commercial operations, transformation, and revenue-operations leadership\u2014a fundamentally different discipline from technical documentation, API validation, Markdown/Git workflows, and developer-facing storytelling. While cross-functional collaboration and process design transfer, the core duties (hands-on testing, technical accuracy validation, narrative documentation craft, tooling stack) require specialist writing and technical-testing experience the candidate does not possess. High ramp cost, domain mismatch, and misalignment with target role family warrant skip recommendation for the candidate to pursue roles in Strategy Operations, Revenue Operations, Partner Operations, or AI transformation\u2014where eight years of proven execution would be valued.",
+    "uncertainties": [
+      "Mistral AI company size and stage not stated; cannot contextualize whether this role's strategic scope or seniority is different from stated",
+      "Candidate's familiarity with developer communities, DevRel ecosystem, or technical-audience writing style unknown",
+      "Whether candidate has published technical content, authored guides, or practiced technical storytelling is not supplied"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs with demonstrated cross-stakeholder engagement",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as an executive sponsor in pre-Sales and post-Sales phases, presenting strategic visions to C-level executives"
+      },
+      {
+        "candidate_evidence": "Partnered with engineering on Salesforce feature requests; directed LLM coding agents and owns evaluation methodology and benchmarking, indicating experience translating technical needs across teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-Functional Alignment: Serve as the leadership bridge between product & engineering teams and client teams"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries, window functions); writes BigQuery queries; basic Python, actively learning data-analysis track; Salesforce admin with territory-budget management",
+        "evidence_strength": "medium",
+        "job_requirement": "Technical Foundation: Strong background in Data Architecture, system integrations, and data-related languages (SQL, Python)"
+      },
+      {
+        "candidate_evidence": "Commercial Operations scaling at Google; Revenue Operations-equivalent evidence through territory management and commercial transformation, not direct sales quota or customer acquisition leadership",
+        "evidence_strength": "weak",
+        "job_requirement": "Overarching contribution to overall sales team and business success; new customer acquisition, retention, up-selling metrics"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 52,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "20+ years required; candidate has ~8 years, primarily in Google commercial operations and Product Operations, not enterprise architecture, consulting, or SaaS vendor leadership",
+        "mitigation": "Candidate's two promotions and transformation program leadership demonstrate accelerated growth trajectory; however, the 12-year gap in years-of-service and lack of Enterprise Architect team management experience cannot be bridged by internal progression alone without significant external mentorship and ramp time",
+        "severity": "high"
+      },
+      {
+        "gap": "Enterprise Architect team leadership experience required; candidate background is in Product Operations and commercial transformation, not architect hiring, mentoring, or technical-team management",
+        "mitigation": "Candidate has demonstrated hiring and team scaling in operations context; transfer to architect team leadership would require substantial domain knowledge acquisition in enterprise architecture, capability mapping, and IT systems design",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep Enterprise Architecture Expertise (Capability Mapping, Enterprise Modernization, Agentic AI, Cloud-native architectures, legacy on-premise systems) not demonstrated in profile",
+        "mitigation": "Candidate has agentic AI tooling ownership and directs LLM agents; however, no evidence of enterprise architecture frameworks, legacy system modernization, or multi-domain IT landscape assessment",
+        "severity": "high"
+      },
+      {
+        "gap": "MSc in Computer Science or IT-related field required; candidate education not stated in profile",
+        "mitigation": "Education background unknown; if candidate lacks formal CS/IT degree, this is a stated minimum qualification that would require waiver",
+        "severity": "high"
+      },
+      {
+        "gap": "C-level executive presentation and negotiation track record with customer architecture teams; candidate experience in internal stakeholder management and transformation, not external enterprise sales or client engagement leadership",
+        "mitigation": "Candidate's cross-functional alignment skills and Google-brand prestige may transfer, but no evidence of managing customer executive relationships, RFP negotiations, or multi-year enterprise architecture consulting engagements",
+        "severity": "medium"
+      },
+      {
+        "gap": "Industry vertical and domain depth (Finance, Manufacturing, Supply Chain, HR, Banking, Pharma, Aerospace) across two+ domains and two+ industries not evident",
+        "mitigation": "Google commercial operations span multiple markets; however, no specific evidence of SaaS/enterprise software implementation depth in target verticals or familiarity with ERP/CRM/HCM migration patterns",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Education: 'MSc degree in Computer Science or an equivalent in an Information Technology-related field' is stated as required. Candidate profile does not specify educational background; if candidate lacks CS/IT master's or equivalent, this is a non-negotiable stated minimum.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role explicitly requires 20+ years, proven management of Enterprise Architect teams or technical teams at top consulting or SaaS vendor, executive C-level engagement, and strategic architecture leadership. These signals collectively map to L6 (Senior Manager/Director scope managing specialized technical teams and customer executives). Company stage is not specified in JD, but Celonis context as fast-growing enterprise SaaS with multi-office global presence reinforces senior-leadership scope.\".",
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "This is a manager-of-Enterprise-Architects role at L6 requiring 20+ years of experience, formal CS/IT education, and deep enterprise architecture / consulting background. The candidate brings eight years of Product Operations and commercial transformation expertise, cross-functional leadership, SQL/data skills, and agentic AI tooling ownership\u2014strong signals in the Strategy and Operations family. However, the role is fundamentally about enterprise architecture team leadership, customer architecture engagement, and multi-domain SaaS/legacy-system modernization expertise. The 12-year experience gap, absence of architect team management, lack of stated enterprise architecture frameworks and IT systems depth, and unclear educational credentials create disqualifying misalignment. Candidate's operations and transformation skills do not transfer sufficiently to architect leadership without 2\u20133 years of ramp and substantial mentorship.",
+    "uncertainties": [
+      "Candidate education (BS/MSc degree type and field) not specified in profile; affects hard-blocker assessment",
+      "Depth and breadth of candidate's customer-facing C-level engagement at Google not detailed; internal versus external stakeholder management distinction unclear",
+      "Whether candidate's agentic AI ownership and data architecture appreciation constitute 'strong background in Data Architecture and system integrations' as JD interprets them remains ambiguous",
+      "Celonis company stage context missing from JD; assumed enterprise-scale SaaS with established customer base and multi-domain vertical presence"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

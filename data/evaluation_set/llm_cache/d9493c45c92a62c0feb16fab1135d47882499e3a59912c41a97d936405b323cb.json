@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices defining product strategy for global commercial operations; led transformation programs scaling cross-functional teams and driving GTM initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Set vision and shape product strategy for GenAI-native coding assistant"
+      },
+      {
+        "candidate_evidence": "Owned product requirements, logic design, UAT, and rollout for technical systems at scale; built agentic-tooling specs and directed LLM coding agents; partners directly with engineering teams on feature design and constraints",
+        "evidence_strength": "medium",
+        "job_requirement": "Deep understanding of developer-facing products and workflows; empathy for developers"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations transformation and GTM execution; managed pricing and territory-budget strategy; drove revenue recovery and leakage control through data-driven roadmaps",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven experience owning product vision and strategy for enterprise-focused products; define GTM, positioning, pricing, packaging"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology and benchmarking; actively learning Python for data analysis and collaboration with technical teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience working with AI or applied science teams; translate research into production-ready products"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; proficient SQL (BigQuery joins, GROUP BY, subqueries, window functions); builds Looker dashboards; drives metrics-driven prioritization and roadmap definition",
+        "evidence_strength": "strong",
+        "job_requirement": "Data analysis, experimentation, A/B testing, performance metrics; dynamic roadmap execution"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations; led GTM execution, pricing strategy, and territory management; drove enterprise-customer pipeline and revenue recovery initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Building and scaling go-to-market motions; driving revenue growth through product-led initiatives"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 75,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Native product management and SDLC expertise; candidate background is operations/transformation, not PM in product-engineering orgs",
+        "mitigation": "Candidate has shipped products through UAT, rollout, and stakeholder alignment; six-month ramp on PM processes, roadmap discipline, and experimentation cadence manageable with mentorship from current leadership",
+        "severity": "medium"
+      },
+      {
+        "gap": "Direct LLM product experience; no stated prior work scaling LLM-powered products",
+        "mitigation": "Demonstrated understanding of how GenAI impacts product discovery through agentic-tooling ownership and evaluation methodology; learning Python for data/AI collaboration; exposure to LLM constraints sufficient to execute, but expertise building required on-the-job",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited classic developer-tools brand experience; background is commercial/enterprise operations, not developer tools market",
+        "mitigation": "Worked at Google; direct exposure to developer workflows through engineering partnerships and technical-system ownership; developer empathy can build quickly through customer engagement and product immersion",
+        "severity": "low"
+      },
+      {
+        "gap": "Limited direct consulting or case-team experience; problem-scoping and market-research rigor may differ from Mistral's expectation",
+        "mitigation": "Positioned to lean on internal AI/science teams and research partners for market validation; first 90 days should include structured customer research with marketing and design leads",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 10+ years PM leadership, 0\u20131 product launches, GTM scaling, and stakeholder alignment in ambiguous, fast-growing orgs. This indicates L5 (established senior IC, 6\u20139 years baseline leadership with proven scale and execution). High seniority signal from 10+ years language and multi-team ownership. Company stage/size not stated. confidence is 75.",
+    "role_family_fit": 72,
+    "scope_seniority": 78,
+    "summary": "Candidate brings 8 years of product strategy, GTM execution, and transformation leadership at Google\u2014strong on enterprise roadmap ownership, metrics-driven prioritization, and cross-functional stakeholder alignment. Medium gap on native PM and SDLC practices; manageable with onboarding. LLM product experience is limited; candidate demonstrates understanding of GenAI through agentic-tooling ownership and AI-team collaboration but will require on-the-job deepening. Developer-tools market exposure is lighter than ideal, though engineering partnerships and technical system ownership provide foundation. Role family fit is moderate: operations/transformation background is adjacent to product leadership but distinct; a stretch, not a core fit.",
+    "uncertainties": [
+      "Company size/stage not stated; cannot fully contextualize urgency, team structure, or resource constraints",
+      "Candidate's direct exposure to developer-tools market and developer community engagement is not detailed",
+      "Depth of AI/science team collaboration experience not fully specified; unclear how much candidate shaped versus informed by research teams",
+      "Native PM/roadmap discipline and experimentation velocity at Google Devices unclear relative to Mistral's expected pace"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

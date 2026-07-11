@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; builds Looker dashboards; writes SQL queries in BigQuery",
+        "evidence_strength": "strong",
+        "job_requirement": "Proficiency in Microsoft Office (Excel) and/or Google Sheets; confident working with spreadsheets"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations; experience with transformation programs and data-driven decision-making",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyze customer feedback to surface actionable insights, translating what customers are saying into concrete improvements"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background with territory-budget management and forecasting/reporting experience; Salesforce administration with territory ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage day-to-day operations covering ingredient availability, stock tracking, pricing updates, margin calculations, and competitor benchmarking"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L3",
+    "evidence_strength": 65,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Role is an internship (5-6 months, \u20ac700/month); candidate has eight years at L4-L5 equivalent and two promotions. Massive overleveling and career regression.",
+        "mitigation": "None viable. This role is fundamentally a student/recent-graduate entry point. Candidate is a seasoned manager-level strategist.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in food, food technology, recipe development, ingredient sourcing, or sensory evaluation",
+        "mitigation": "Candidate's operations background does not transfer to food-industry domain specificity required for menu planning and ingredient management.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct product operations experience in a food/consumer-goods production environment; HelloFresh domain is FMCG/meal-kit logistics and quality assurance",
+        "mitigation": "Candidate's Product Operations at Google Devices is a different domain; meal-kit supply chain, sourcing, and sensory evaluation are not addressed in profile.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Currently enrolled student status is a requirement; candidate profile indicates full professional employment with no mention of part-time or student status",
+        "mitigation": "Cannot be mitigated. Role requires \"currently enrolled in HBO/WO program\" and internship eligibility documentation. Candidate does not appear eligible.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"You are currently enrolled in an HBO/WO program\" and \"internship eligibility and university requirements (such as duration, documentation, or approval criteria).\" Candidate is a full-time professional employee with eight years of Google tenure and two promotions; no indication of current student status or internship eligibility.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 95,
+    "level_rationale": "Internship role explicitly designed for students or recent graduates (5\u20136 months, \u20ac700/month, structured mentorship). Requires current enrollment in HBO/WO program with internship documentation. This is an entry-level rotation typical of L3 scope (0\u20132 years equivalent), not a.",
+    "role_family_fit": 15,
+    "scope_seniority": 10,
+    "summary": "This is a 5\u20136 month entry-level internship for current students in food or business technology, requiring university enrollment and internship eligibility documentation. Candidate is an eight-year senior strategist and operations leader with two promotions at Google, with no food-industry background, sensory-evaluation experience, or current student status. The role is a disqualifying mismatch on seniority (L3 internship vs. L4\u2013L5 candidate), career trajectory (regression by eight years), and mandatory eligibility (current enrollment). While candidate's spreadsheet and data skills are strong, they do not offset the fundamental unsuitability of this entry-level position for a senior practitioner.",
+    "uncertainties": [
+      "Candidate's current employment status and whether any sabbatical or educational pursuit is planned (not stated in profile)",
+      "Whether candidate has any unpaid interest in food tech or meal-kit supply chains not reflected in professional history",
+      "HelloFresh company stage and whether this internship is part of a broader hiring pipeline for senior roles (not indicated)"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

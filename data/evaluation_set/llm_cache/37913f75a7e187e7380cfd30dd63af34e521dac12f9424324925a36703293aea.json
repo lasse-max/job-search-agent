@@ -1,0 +1,68 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; scaled global commercial operations and directed transformation programs; demonstrated team leadership and strategic execution capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Manager, Revenue Operations \u2013 role ownership of RevOps strategy, execution, and team leadership"
+      },
+      {
+        "candidate_evidence": "Salesforce administration including territory budget management; commercial operations (translates to revenue operations per positioning); forecasting and reporting cadence experience; revenue-leakage control in commercial ops context",
+        "evidence_strength": "strong",
+        "job_requirement": "Revenue operations, forecasting, and territory management (assumed from Revenue Operations title)"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries/CTEs, window functions); BigQuery query writing; Looker and Tableau dashboarding; advanced Excel and Sheets; can pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Data analysis, reporting, and dashboarding capabilities"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global operations; transformation program leadership; Salesforce feature-request partnership with engineering; multi-functional coordination implied by scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder engagement and program execution (typical RevOps scope)"
+      },
+      {
+        "candidate_evidence": "Commercial operations and transformation experience indicates process redesign and scaling capability; product ownership mindset applied to operational domains",
+        "evidence_strength": "medium",
+        "job_requirement": "Process design, optimization, and operational excellence"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L4",
+    "evidence_strength": 75,
+    "gap_manageability": 70,
+    "gaps": [
+      {
+        "gap": "Specific Revenue Operations domain depth \u2013 background is commercial operations at Google, not dedicated RevOps function; revenue recovery, pricing execution, and CRM-centric workflows may differ from prior scope",
+        "mitigation": "Candidate has Salesforce administration and territory-budget management experience; commercial operations translate to RevOps fundamentals; onboarding and domain-specific mentorship can close this gap in 2\u20133 months",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited external consulting or B2B SaaS sales-operations background \u2013 eight years in single company at Google Devices & Services; may lack exposure to multi-stakeholder, high-velocity go-to-market environments typical of growth-stage SaaS",
+        "mitigation": "Google's scale and complexity may approximate large SaaS structure; transfer of operations skills is generalizable; domain specifics (e.g., usage-based pricing, expansion revenue) can be learned with strong operations foundation",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD scope and explicit requirements are not clearly provided in cached snapshot \u2013 revenue operations, team size, reporting line, and strategic initiatives are unclear",
+        "mitigation": "Request full JD text to assess reporting line, number of direct reports, revenue-leakage priorities, and integration with sales/marketing teams",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Role title \"Manager, Revenue Operations\" and reporting to a likely Director or VP suggests L4 (senior IC or team lead) scope. no explicit years, team size, or company stage provided in cached JD snapshot. Estimate is based on typical revenue-operations manager scope (3\u20135 years, 2\u20134 reports, functional ownership) and Google-equivalent manager level. Confidence is moderate due to incomplete JD data.",
+    "role_family_fit": 82,
+    "scope_seniority": 73,
+    "summary": "Strong role-family fit: Manager, Revenue Operations aligns directly with Revenue Operations at appropriate seniority and sits within the approved target families. Candidate brings eight years of commercial operations, Salesforce administration, territory management, and transformation-program leadership from Google, with demonstrated data analytics (SQL, BigQuery, Looker, Tableau) and cross-functional execution. Primary gap is specific RevOps domain depth\u2014prior focus was commercial operations rather than dedicated revenue-operations functions\u2014but core capabilities transfer well. JD snapshot is incomplete; full JD would clarify team scope, strategic priorities, and stage/size context to refine fit assessment.",
+    "uncertainties": [
+      "JD snapshot is truncated HTML; actual job requirements, team size, reporting line, and strategic priorities are not fully visible",
+      "Airwallex company stage and size not stated in Role JSON; unable to assess manager-of-managers or individual-contributor scope distinction",
+      "Revenue Operations domain specifics (usage-based pricing, expansion revenue, revenue-leakage workflows, CRM tech stack) not detailed in cached snapshot",
+      "Number of direct reports and expected team scope unclear from provided role data",
+      "Candidate's experience in commercial operations may not map 1:1 to SaaS-specific revenue operations workflows if Airwallex operates in a significantly different GTM or customer-lifecycle model"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

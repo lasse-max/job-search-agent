@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, scaling global commercial operations and transformation programs; demonstrated ability to influence cross-functional teams and drive execution at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong Communication Skills: Exceptional verbal and written communication abilities"
+      },
+      {
+        "candidate_evidence": "Proficient SQL, BigQuery querying, advanced Excel/Sheets, Looker/Tableau dashboarding; owns evaluation methodology and benchmarking for LLM systems; demonstrated data-driven operations leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Analytical Mindset: Ability to analyze market trends, identify opportunities, and make data-driven decisions"
+      },
+      {
+        "candidate_evidence": "Salesforce admin experience managing territory budgets; works with engineering on feature requests; understands CRM administration and forecasting cadence from commercial operations background",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with RevOps to ensure clean data and clear insights"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "10\u201315+ years enterprise customer-facing sales with large-account closing experience",
+        "mitigation": "Candidate has operations/strategy scaling experience at Google but no stated direct enterprise sales quota management, deal-closing, or prospecting responsibility. This is a core role requirement, not a nice-to-have.",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years managing and developing high-performing enterprise sales teams",
+        "mitigation": "No evidence of people leadership, hiring, onboarding, or coaching of sales teams. This is a critical dimension of the player/coach role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Managing $1M+ quota and running end-to-end complex deals",
+        "mitigation": "Commercial operations and territory-budget management differ significantly from owning a personal sales quota and closing large deals independently.",
+        "severity": "high"
+      },
+      {
+        "gap": "Industry Knowledge: familiarity with AI landscape and emerging trends",
+        "mitigation": "Given experience with LLM agents and AI tooling, candidate may quickly develop AI-sales familiarity; this is stated as 'even better' not required.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 80,
+    "level_rationale": "Role requires 10\u201315+ years in enterprise customer-facing sales with large-quota and team leadership scope (5+ years managing AEs), plus day-one prospecting and deal-closing accountability. This is a classic L5\u2013L6 sales leadership role anchored by explicit tenure and team-building requirement.",
+    "role_family_fit": 15,
+    "scope_seniority": 70,
+    "summary": "Enterprise Sales Leader is a customer-facing quota-carrying and people-leadership role. Candidate is a Strategy and Operations leader with no stated direct sales experience, quota management, deal-closing, or sales-team leadership. While analytics and CRM-administration skills are transferable, the role's core requirement\u201410\u201315+ years closing enterprise deals and leading sales teams\u2014is not addressed. This is a deprioritized family for this candidate and the gap is not manageable within typical onboarding windows.",
+    "uncertainties": [
+      "Company stage and funding not disclosed; multi-office footprint suggests growth-stage or Series B+, but headcount and revenue context would clarify whether estimated L5 is appropriate or should trend higher",
+      "Unclear whether candidate's territory-budget and Salesforce-admin experience included any prospecting, sales-process coaching, or deal-negotiation involvement",
+      "No information on candidate's sales hiring or team-building aspirations; positioning focuses on strategy, transformation, and operations, not sales leadership"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

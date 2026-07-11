@@ -91,6 +91,7 @@ jobs:
                       "migrations/002_stage15_supabase_auth.sql",
                       "migrations/005_stage15_evaluator_v3.sql",
                       "migrations/006_stage15_versioned_evaluation_skips.sql",
+                      "migrations/007_stage19_evaluator_v4.sql",
                   ):
                       cursor.execute(Path(migration_path).read_text(encoding="utf-8"))
               conn.commit()
@@ -250,7 +251,7 @@ jobs:
                       FROM current_calibrated_role_evaluations
                       WHERE model_version NOT LIKE %s ESCAPE '\\'
                       """,
-                      ("%|hybrid\\_claude\\_v3",),
+                      ("%|hybrid\\_claude\\_v4",),
                   )
               )
               stale_prior_count = int(
@@ -260,8 +261,13 @@ jobs:
                       FROM current_calibrated_role_evaluations
                       WHERE model_version LIKE %s ESCAPE '\\'
                          OR model_version LIKE %s ESCAPE '\\'
+                         OR model_version LIKE %s ESCAPE '\\'
                       """,
-                      ("%|hybrid\\_claude\\_v1", "%|hybrid\\_claude\\_v2"),
+                      (
+                          "%|hybrid\\_claude\\_v1",
+                          "%|hybrid\\_claude\\_v2",
+                          "%|hybrid\\_claude\\_v3",
+                      ),
                   )
               )
               fallback_count = int(
@@ -288,14 +294,14 @@ jobs:
                       "",
                       f"- Current calibrated rows: `{current_eval_count}`",
                       f"- Wrong evaluator-version rows: `{bad_version_count}`",
-                      f"- Stale pre-v3 rows: `{stale_prior_count}`",
+                      f"- Stale pre-v4 rows: `{stale_prior_count}`",
                       f"- Fallback rows: `{fallback_count}`",
                   ]
               )
               if bad_version_count:
-                  errors.append("current_calibrated_role_evaluations returned non-v3 rows")
+                  errors.append("current_calibrated_role_evaluations returned non-v4 rows")
               if stale_prior_count:
-                  errors.append("current_calibrated_role_evaluations returned stale pre-v3 rows")
+                  errors.append("current_calibrated_role_evaluations returned stale pre-v4 rows")
               if fallback_count:
                   errors.append("current_calibrated_role_evaluations returned fallback rows")
           except Exception as exc:

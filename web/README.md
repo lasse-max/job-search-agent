@@ -77,6 +77,7 @@ Apply the migrations in order in Supabase:
 4. `migrations/004_stage15_shortlist.sql`
 5. `migrations/005_stage15_evaluator_v3.sql`
 6. `migrations/006_stage15_versioned_evaluation_skips.sql`
+7. `migrations/007_stage19_evaluator_v4.sql`
 
 The first migration creates the agent tables and the read views:
 
@@ -84,7 +85,7 @@ The first migration creates the agent tables and the read views:
 - `current_opportunity_evaluations`
 
 Those views only expose latest evaluations whose `model_version` ends with the
-current calibrated evaluator suffix, `|hybrid_claude_v3`, and whose provenance
+current calibrated evaluator suffix, `|hybrid_claude_v4`, and whose provenance
 is not marked as fallback.
 
 The second migration enables RLS and grants read access only to authenticated
@@ -93,7 +94,8 @@ grants. Migrations 3 and 4 add the Applied tracker and To Apply shortlist behind
 owner-gated RPCs. Migration 5 advances current evaluation reads to the level-aware
 v3 evaluator and continues to exclude fallback provenance. Migration 6 records
 current-version relevance-gate skips so bounded stale-score backfills keep moving.
-The manual migration workflow applies migrations 2, 5, and 6 during a verify-only
+Migration 7 advances the calibrated read view to the corrected Stage 1.9 profile.
+The manual migration workflow applies migrations 2 and 5–7 during a verify-only
 run for an existing cutover.
 
 ## One-Way Import

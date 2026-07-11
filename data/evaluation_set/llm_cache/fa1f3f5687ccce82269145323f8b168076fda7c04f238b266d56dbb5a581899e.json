@@ -1,0 +1,48 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with strategy and transformation experience; two promotions demonstrating cross-functional leadership capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Work together with our Management Team to shape the future of Trade Republic"
+      }
+    ],
+    "confidence": 0.15,
+    "estimated_level": "unknown",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Job description is extremely sparse and provides no concrete responsibilities, requirements, scope, or accountability. No information on team size, reporting line, business goals, or required qualifications.",
+        "mitigation": "Escalate to hiring manager or internal recruiter for full role specification and clarification on Customer Council function (advisory board, customer feedback panel, strategy committee, or other purpose).",
+        "severity": "high"
+      },
+      {
+        "gap": "Role family unclear. 'Customer Council' in Growth department could be customer success advisory, sales enablement, product feedback governance, or community strategy\u2014none of which are primary-fit families for this candidate.",
+        "mitigation": "Confirm whether the role involves strategic business operations, transformation, or GTM strategy, or whether it is customer-facing advisory or CS-adjacent without transformation scope.",
+        "severity": "high"
+      },
+      {
+        "gap": "No indication of seniority, team leadership, decision rights, or budget ownership.",
+        "mitigation": "Obtain clarification on management scope, P&L responsibility, and reporting relationship.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 5,
+    "level_rationale": "Insufficient detail in role description to estimate level. No years required, reporting line, scope, or company-stage clarity supplied. Cannot infer L3\u2013L7+ without concrete JD scope.",
+    "role_family_fit": 10,
+    "scope_seniority": 15,
+    "summary": "The \"Customer Council\" role is described too vaguely to evaluate fit. The JD contains only a title, company, location, and a generic statement about shaping the future with management\u2014no actual responsibilities, requirements, scope, team structure, or seniority anchors. Without a full job description, role family cannot be determined; this could be customer advisory, CS, community, or strategy-focused, but no evidence supports a primary-family match. Recommend requesting the complete JD before proceeding.",
+    "uncertainties": [
+      "Is 'Customer Council' a customer-advisory board, an internal strategic committee, a product feedback council, or a different function?",
+      "What are the core business problems and decisions the role owns?",
+      "What is the reporting line, team size, and decision authority?",
+      "Is this a full-time position or a board/advisory capacity?",
+      "What is Trade Republic's size, stage, and company maturity context?"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

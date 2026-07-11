@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions; experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "weak",
+        "job_requirement": "Program Manager role (inferred from title only)"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader; primary target family is Strategy and Operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy & Operations department (from role metadata)"
+      }
+    ],
+    "confidence": 0.1,
+    "estimated_level": "unknown",
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No legible JD means no specific technical, domain, or functional requirements can be identified or mapped",
+        "mitigation": "Request clean, unencoded JD with full role description, responsibilities, requirements, reporting line, and experience expectations",
+        "severity": "high"
+      },
+      {
+        "gap": "Cannot determine if Plaid integration operations or specific platform/partner requirements are needed",
+        "mitigation": "Clean JD must specify Plaid fintech platform context, partner ecosystem, and integration-specific demands",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of candidate's fintech or payment-ecosystem experience supplied",
+        "mitigation": "Candidate background is Google Devices & Services; transferability depends on actual integration operations scope in JD",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 5,
+    "level_rationale": "JD is corrupted\u2014contains only HTML/CSS markup and no legible job description, requirements, years of experience, reporting line, or team scope. Cannot estimate role level from unreadable content.",
+    "role_family_fit": 65,
+    "scope_seniority": 30,
+    "summary": "Integration Operations Program Manager at Plaid is a strategy and operations program management role with cross-functional execution and transformation scope\u2014a strong family fit. The JD snapshot is severely corrupted (HTML/CSS rendering artifacts, no actual role description), making confidence and evidence quality assessment impossible. No core responsibilities, reporting line, team scope, experience requirements, or business context are legible. Recommend requesting a clean JD before proceeding.",
+    "uncertainties": [
+      "JD snapshot is HTML/CSS corrupted\u2014no actual job description text is legible",
+      "Cannot determine reporting line, manager scope, or team size from metadata alone",
+      "Unknown whether role is L4-L5 or significantly above/below target band",
+      "No specification of Plaid company stage, team maturity, or integration platform context",
+      "Role title 'Integration Operations Program Manager' could span wide scope depending on hidden requirements"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

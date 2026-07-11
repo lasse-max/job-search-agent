@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years scaling global commercial operations and transformation programs; designs and directs LLM coding agents; owns evaluation methodology, benchmarking, and calibration for AI/agentic tooling",
+        "evidence_strength": "strong",
+        "job_requirement": "Design, scope, and build full-stack systems delivering customer value; codify patterns into tools and playbooks"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and commercial operations scaling at Google; cross-functional stakeholder management; execution and rollout leadership documented in profile",
+        "evidence_strength": "strong",
+        "job_requirement": "Embed with customer teams, understand needs, guide adoption; keep teams moving through clarity and follow-through"
+      },
+      {
+        "candidate_evidence": "Advanced SQL (joins, GROUP BY, subqueries, window functions, BigQuery); Python basic and actively learning (pandas); manages Salesforce administration",
+        "evidence_strength": "weak",
+        "job_requirement": "Write and review production-grade code; contribute directly in code when progress depends on it"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents; owns evaluation methodology and benchmarking; actively involved in AI/agentic tooling but from design/product-ownership angle rather than native FDE deployment",
+        "evidence_strength": "medium",
+        "job_requirement": "Build or deploy systems powered by LLMs/generative models; understand how model behaviour affects product experience"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google Devices and Services; scaling global operations; transformation program leadership in ambiguous environments",
+        "evidence_strength": "strong",
+        "job_requirement": "Scope and deliver complex systems in fast-moving, ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leadership; documented experience in transformation and execution; cross-functional influence at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Spot risks early, adjust without slowing down; simplify complexity; make sound decisions under pressure"
+      }
+    ],
+    "confidence": 0.92,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 32,
+    "gaps": [
+      {
+        "gap": "No production software-engineering background or native Forward Deployed Engineer / technical deployment experience; experience is operations, strategy, and AI tooling design rather than end-to-end customer system delivery",
+        "mitigation": "Candidate has 8 years at a tier-1 tech company with proven ability to learn complex domains and partner with engineers; LLM/agentic-tooling ownership and AI benchmarking provide foundation in model behavior and evaluation. Could learn FDE patterns through immersion, but ramp would be steep.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python at basic level and actively learning; role requires production-grade Python coding and code review across frontend and backend",
+        "mitigation": "Candidate demonstrates data-analysis and querying skill in SQL/BigQuery; can ramp Python through structured learning and pair programming. Still a material time-to-productivity gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented full-stack system design or frontend/backend build experience; expertise is in operational tooling, dashboards (Looker, Tableau), and CRM administration",
+        "mitigation": "LLM agent design and benchmarking work shows systems thinking; could develop full-stack skills through mentorship and collaborative delivery, but gap is substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct consulting brand or external deployment-team experience; internal Google operations scaling differs from external customer-facing technical delivery at pace",
+        "mitigation": "Strong internal execution, stakeholder management, and cross-functional influence provide transferable leadership foundation. Customer-facing communication skills inferred from partnership work but not deeply evidenced.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No documented experience in JavaScript or equivalent frontend framework; role mentions frontend and backend code authoring",
+        "mitigation": "Advanced Excel/Sheets and Looker dashboard building provide some UI/UX sensibility; JavaScript could be learned, but represents an additional ramp need.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "5+ years required engineering/deployment experience with customer-facing work, full-stack system design and production rollout, code authoring in Python/JavaScript, and LLM system deployment. Reporting line not stated. Hybrid London-based role with 50% travel. At a frontier-AI company scale, this positions the role at mid-to-senior IC (L5). lack of management scope and explicit 5-year anchor keep it below L6.",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "This Forward Deployed Engineer role at OpenAI is a technical delivery and customer-facing systems-engineering position requiring 5+ years of engineering, LLM/generative model deployment experience, and production-grade coding in Python/JavaScript. The candidate brings 8 years of strategy, operations, and transformation leadership at Google with advanced SQL/BigQuery, AI/agentic tooling design, and Salesforce administration\u2014strong operational and strategic execution capabilities\u2014but lacks production software-engineering background, native FDE/technical deployment experience, and hands-on production coding at the required depth. This is a high-capability ops-and-strategy candidate in a role that explicitly gates on engineering and coding fundamentals.",
+    "uncertainties": [
+      "Depth of LLM deployment experience: candidate's AI/agentic tooling role is described as design-and-direction focused; unclear how much hands-on model integration or production LLM troubleshooting the candidate has personally executed",
+      "Customer-facing technical delivery cadence: internal Google operations scaling may differ meaningfully from external FDE deployment rhythm and customer pressure; no evidence of external consulting or customer-vendor relationship management",
+      "Frontend engineering exposure: Looker/Tableau dashboarding is BI/analytics tooling, not full-stack frontend; JavaScript or modern frontend framework experience not mentioned",
+      "Speed and risk tolerance in ambiguous delivery: Google Devices/Services scale and process maturity differ from OpenAI startup/frontier-model deployment chaos; unproven in high-tempo, unstructured customer delivery"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

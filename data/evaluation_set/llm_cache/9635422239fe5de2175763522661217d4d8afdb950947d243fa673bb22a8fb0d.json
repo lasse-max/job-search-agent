@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services managing global commercial operations with demonstrated portfolio ownership and scaling experience; built playbooks for territory management, pricing execution, and revenue accountability",
+        "evidence_strength": "strong",
+        "job_requirement": "Verantwortung f\u00fcr die vertragliche und kommerzielle Gesch\u00e4ftsbeziehung eines Portfolios von mittelst\u00e4ndischen Partner-Busunternehmen"
+      },
+      {
+        "candidate_evidence": "Conducted commercial contract negotiations and business-outcome partnerships with external stakeholders; experience translates directly to multi-party stakeholder management and deal structuring",
+        "evidence_strength": "strong",
+        "job_requirement": "Zentrale Ansprechperson f\u00fcr die Gesch\u00e4ftsf\u00fchrung unserer Buspartner inkl. Vertragsverhandlungen und betriebswirtschaftlicher Beratung"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries/CTEs, window functions); advanced Excel and Sheets; builds Looker dashboards; demonstrated experience translating operational data into executive decision support and performance reviews",
+        "evidence_strength": "strong",
+        "job_requirement": "Erstellung von Entscheidungsvorlagen auf Basis von Kosten- und Performanceanalysen f\u00fcr die FlixBus-Gesch\u00e4ftsf\u00fchrung"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets skills; proficient SQL for data shaping; demonstrates quantitative and analytical mindset in portfolio optimization and cost-performance trade-off analysis",
+        "evidence_strength": "strong",
+        "job_requirement": "Ausgesprochene analytische F\u00e4higkeiten und sehr gute Excel-Kenntnisse"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations programs over eight years; demonstrated end-to-end program ownership including rollout, transformation, and business execution; project delivery embedded in strategy and operations background",
+        "evidence_strength": "medium",
+        "job_requirement": "Leitung kleinerer Projekte von der Konzeption bis zum Abschluss; Sicherstellung der Einhaltung von Zielen, Timelines und Budgets"
+      },
+      {
+        "candidate_evidence": "Native German speaker and professional/fluent English; meets language requirements directly",
+        "evidence_strength": "strong",
+        "job_requirement": "Verhandlungssicheres Deutsch sowie sehr gute Englischkenntnisse"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No explicit partner-ecosystem operations or vendor-management background in stated history; Bus-industry and logistics domain unfamiliar",
+        "mitigation": "Portfolio management and commercial operations fundamentals are domain-agnostic; candidate brings framework for rapid domain learning and stakeholder relationship scaling typical of hyper-growth tech to transport logistics",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of leading or negotiating complex transportation or supply-chain contracts; transportation/logistics domain exposure not mentioned",
+        "mitigation": "Commercial contract negotiation experience in tech SaaS and partnership contexts is transferable; structured contracting playbooks and cost-performance frameworks port directly to bus-partner terms and revenue models",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience in fleet operations, capacity planning, route optimization, or carrier logistics; technical transport knowledge is absent",
+        "mitigation": "Role does not require deep operational transport expertise; candidate's analytical and cross-functional program-management capability covers business-case analysis and partner coordination without needing engineering-level logistics mastery",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "JD requires minimum 2 years BE experience. role emphasizes portfolio ownership, contract negotiation, project leadership, and cross-functional coordination with executive visibility. Responsibilities align with senior individual-contributor or lead scope: central stakeholder management, decision-support analytics, and autonomous project direction suggest L4 without manager-of-managers authority typical of L5+. Company stage/size and Berlin location do not alter level assessment.",
+    "role_family_fit": 81,
+    "scope_seniority": 74,
+    "summary": "Partner Manager role at Flix combines portfolio ownership, contract negotiation, cost-performance analytics, and cross-functional project leadership\u2014a strong commercial-operations and partner-strategy fit. Candidate brings eight years of Google-scale commercial operations, analytical rigor (SQL, Excel, Looker), and demonstrated stakeholder and program management. Primary gaps are transportation-logistics domain unfamiliarity and no direct carrier/vendor-management history; both are manageable through domain ramp and stakeholder-relationship frameworks already deployed. Language requirements (native German, fluent English) are met. Advisory: strong operations fundamentals but domain transition; consider for candidate growth into transport sector.",
+    "uncertainties": [
+      "Flix company size and stage not stated in JD; no salary posted; level confidence is moderate absent context on growth stage or team structure reporting to this role",
+      "Candidate's prior commercial-operations experience at Google centers on global commercial; DACH-region and SME-partner-focused scope may require recalibration of complexity and autonomy assumptions",
+      "No explicit mention of prior negotiations with fleet operators, carrier businesses, or supply-chain partners; transfer risk on relationship-building style and regulatory familiarity in transport sector is not quantified"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

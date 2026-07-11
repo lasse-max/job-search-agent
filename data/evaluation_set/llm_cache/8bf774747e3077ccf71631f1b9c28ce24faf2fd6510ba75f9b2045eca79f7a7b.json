@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, leading global commercial operations transformation programs and scaling technical and commercial initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years of experience accountable for technical project / program delivery within the domain of Data and AI"
+      },
+      {
+        "candidate_evidence": "Google commercial operations leader serving as technical lead across multiple business units, orchestrating cross-functional teams, and managing complex stakeholder relationships at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in a customer-facing pre-sales, technical architecture, customer success, or consulting role"
+      },
+      {
+        "candidate_evidence": "Directed transformation programs, managed cross-functional team coordination, and owned execution of complex initiatives at Google; demonstrated stakeholder and resource orchestration",
+        "evidence_strength": "strong",
+        "job_requirement": "Technical program, or project management including account, stakeholder and resource management accountability"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure managing enterprise-scale programs with C-suite and senior stakeholder engagement across Google Devices and Services",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience resolving complex and important escalation with senior customer executives"
+      },
+      {
+        "candidate_evidence": "Google transformation program ownership included requirements definition, roadmap design, UAT leadership, and complex program rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Conduct open-ended discovery workshops, create strategic roadmaps, conducting business analysis and managing delivery of complex programmes/projects"
+      },
+      {
+        "candidate_evidence": "Works with SQL (proficient in joins, GROUP BY, subqueries, window functions), BigQuery, Python (basic, actively learning), and designs specifications for LLM coding agents; no production Spark, distributed data platform, or data-engineering background stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Understanding of solution architecture related distributed data systems; become the post-sale technical lead across all Databricks products"
+      }
+    ],
+    "confidence": 0.82,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 38,
+    "gaps": [
+      {
+        "gap": "Advanced Python and production Spark engineering are core technical requirements; candidate has only basic Python and no Spark or distributed-systems production experience",
+        "mitigation": "Candidate is actively learning Python on the pandas/data-analysis track. Databricks could invest in structured Spark and distributed-systems training (typically 3\u20136 months) if program-delivery, stakeholder-management, and business-value-attribution strengths outweigh the gap. Consider pairing with embedded Spark/platform specialists early in the role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with Databricks platform, data lakehouse architecture, or modern data-stack tools (Delta Lake, MLflow) beyond basic SQL and BigQuery",
+        "mitigation": "Standard onboarding for a new platform. Candidate's SQL querying, data-analysis, and agentic-tool ownership provide a foundation, but lakehouse vision and platform-specific architecture require product training.",
+        "severity": "high"
+      },
+      {
+        "gap": "No pre-sales, technical solutions architecture, or customer success background; commercial ops differs from field-facing technical account management",
+        "mitigation": "Candidate's internal stakeholder orchestration and transformation leadership transfer partially. Pair with experienced Solutions Architects early; shadow pre-sales engagements and customer discovery sessions to learn customer-engagement and technical-positioning patterns.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated track record of customer quota attainment or overachievement against commercial goals",
+        "mitigation": "Candidate managed territory budgets in Salesforce and drove adoption/usage initiatives; these indirect commercial outcomes are relevant but not explicit quota achievement. Clarify customer-expansion metrics and MRR growth from prior role.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting and case-team background; no evidence of leading external discovery workshops or writing customer-facing architecture proposals",
+        "mitigation": "Candidate's program-design and stakeholder-management skills transfer, but formal consulting delivery patterns and customer-proposal writing require role-specific training and initial mentorship.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 76,
+    "level_rationale": "5+ years required experience in technical program/project delivery, post-sales technical account leadership, customer escalation management, and complex delivery orchestration. Reports to DSA Manager (not manager-of-managers). Mid-market or enterprise customer scope at a Series-D+ company. Anchors to L5: established technical-IC ownership of account strategy and delivery, stakeholder management across multiple teams, and pre-sales/post-sales bridge responsibility.",
+    "role_family_fit": 35,
+    "scope_seniority": 68,
+    "summary": "Delivery Solutions Architect is a customer-facing technical leadership role requiring 5+ years of technical program/project delivery in data/AI, strong Python and Spark engineering, and pre-sales or solutions architecture experience. The candidate has deep commercial ops, transformation, and stakeholder-management experience at Google but lacks the required advanced Python, production Spark coding, and classic data-platform technical architecture background this DSA role demands as core accountabilities.",
+    "uncertainties": [
+      "Candidate's Python learning velocity and readiness for Spark engineering are unknown; timeline to production-level fluency in Spark is unclear.",
+      "Extent of customer-facing work at Google (vs. internal stakeholder management) is not fully specified; confirms field-engagement capability.",
+      "Databricks company size and DSA-team maturity are not stated; support infrastructure for onboarding a non-data-engineer into the role is unknown."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -245,6 +245,9 @@ class OperabilityTest(unittest.TestCase):
 
         self.assertIn('cron: "0 6 * * *"', workflow)
         self.assertIn("workflow_dispatch:", workflow)
+        self.assertIn("full_stale_backfill:", workflow)
+        self.assertIn("STALE_EVALUATION_BACKFILL_LIMIT:", workflow)
+        self.assertIn("inputs.full_stale_backfill", workflow)
         self.assertIn("job-agent scan-all", workflow)
         self.assertIn("ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}", workflow)
         self.assertIn("ANTHROPIC_MODEL: claude-haiku-4-5", workflow)

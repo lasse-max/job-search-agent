@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience developing teams and cross-functional leadership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and lead a high-performing team of Account Executives"
+      },
+      {
+        "candidate_evidence": "Proven scaling of commercial operations, managing forecasting and reporting cadence; advanced Excel/Sheets; Looker and Tableau dashboarding; SQL proficiency for data pulling and shaping.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong operational rigor in pipeline management, forecasting, and sales metrics"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation background; owns evaluation methodology and benchmarking for LLM coding agents; experience translating technical requirements and driving stakeholder alignment.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with technical teams to enable credible conversations about AI applications with engineering leaders and CTOs"
+      },
+      {
+        "candidate_evidence": "Directs LLM coding agents to build production systems; designs and specs agentic tooling with evaluation methodology; owns benchmarking and calibration; cross-functional engineering partnerships at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Applied AI Engineering teams to demonstrate technical capabilities and optimise solutions post-sales"
+      },
+      {
+        "candidate_evidence": "Global commercial operations experience; transformation program leadership; cross-functional partnership and stakeholder management at Google scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication skills and ability to build relationships across all levels, from individual engineers to C-suite executives"
+      },
+      {
+        "candidate_evidence": "No direct evidence of developer-led, product-led, or SaaS/API-first buying-cycle experience; background is primarily internal Devices operations and product transformation, not enterprise software sales or GTM.",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep understanding of how digital-native companies evaluate and adopt new technologies, including developer-led and product-led buying motions"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No quota-carrying sales or AE team-leadership experience; background is internal Devices operations and product transformation, not enterprise software sales.",
+        "mitigation": "Candidate would require significant onboarding in sales methodology, AE coaching, and developer/SaaS buying cycles. Transferable leadership and operational rigor are present, but functional domain is substantially different.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited exposure to developer-led, product-led, or SaaS/API-first buying motions; candidate's experience is product-internal and transformation-focused, not customer-facing enterprise sales.",
+        "mitigation": "Sales enablement and close partnership with GTM and Applied AI teams could accelerate domain learning, but the role assumes existing familiarity with these customer segments.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated recruiting, hiring, or AE ramp-acceleration experience; team development is inferred from scale and transformation work, not hands-on people management in sales.",
+        "mitigation": "Candidate's cross-functional leadership and promotion history suggest capability to learn AE coaching, but sales-specific mentorship track record is absent.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated passion for or deep knowledge of AI technology application in customer workflows; background is internal agentic tooling and product specs, not customer-facing AI deployment.",
+        "mitigation": "Candidate's agentic tooling ownership and benchmarking work provide relevant AI acumen for technical conversations, but direct customer-facing AI sales or implementation experience is lacking.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Sales Manager role requires 10+ years enterprise sales experience and 5+ years sales leadership with team-building and coaching emphasis. Title and people-leadership responsibility anchor to L5. company stage not stated in JD. Base salary (\u00a3280\u2013330k) supports mid-to-senior IC or manager level. No director-equivalent language or manager-of-managers scope present.",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Candidate brings eight years of scaling global commercial operations, team development, advanced analytics, and cross-functional partnership at Google. However, this is a quota-carrying sales-management role with core responsibilities in team sales leadership, enterprise software sales cycles, and developer/SaaS/API-first buying motions\u2014a domain outside the candidate's Product Operations and internal transformation background. No demonstrable experience selling into technology companies, managing AE teams, or navigating developer-led or product-led buying cycles.",
+    "uncertainties": [
+      "Candidate's Commercial Operations background may translate to Revenue Operations in a B2B SaaS/enterprise context, but this role is fundamentally enterprise quota-carrying sales management with AE team leadership\u2014a functional shift, not a domain translation.",
+      "No stated experience recruiting, hiring, coaching, or scaling AE teams.",
+      "No evidence of enterprise software sales cycle experience, SaaS GTM, or API-first/developer-first customer motion exposure.",
+      "Company stage and existing team maturity not specified in JD, limiting clarity on onboarding risk."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

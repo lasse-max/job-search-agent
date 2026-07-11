@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; demonstrated ownership of scaling global commercial operations and transformation programs with cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Own and manage defined workstreams within Checkout's GRC programme, including PCI DSS v4.0.1, ISO 27001, SOC 2, and relevant regulatory obligations"
+      },
+      {
+        "candidate_evidence": "Commercial operations transformation experience involving process design, control implementation, and business-stakeholder coordination; not domain-specific GRC evidence",
+        "evidence_strength": "weak",
+        "job_requirement": "Coordinate control evidence collection activities across internal teams, ensuring continuous audit readiness"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; SQL and BigQuery proficiency for data analysis and reporting; experience designing systems and specifications",
+        "evidence_strength": "medium",
+        "job_requirement": "Maintain and improve GRC documentation including policies, standards, procedures, and control matrices"
+      },
+      {
+        "candidate_evidence": "Cross-functional stakeholder engagement across Google Devices; experience translating business requirements into systems and processes; Salesforce administration and partnership with engineering teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Engineering, Product, Legal, Procurement, and Finance to embed security and compliance requirements into processes"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google suggesting leadership progression; no explicit team leadership, mentoring, or people-management experience documented",
+        "evidence_strength": "weak",
+        "job_requirement": "Provide guidance and day-to-day support to junior analysts, contributing to their development"
+      },
+      {
+        "candidate_evidence": "No documented experience with information security compliance frameworks, GRC, IT audit, payments compliance, or fintech regulatory requirements",
+        "evidence_strength": "weak",
+        "job_requirement": "Practical working knowledge of PCI DSS, ISO 27001, SOC 2, and familiarity with DORA, NIST CSF, or EU AI Act"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 32,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No GRC, information security compliance, IT audit, or payments/fintech regulatory background",
+        "mitigation": "Candidate has process-design and stakeholder-management foundations that could transfer, but domain re-skilling on PCI DSS, ISO 27001, SOC 2, DORA, and payment-industry compliance would require significant time and external training.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with external audits, QSA liaisons, or evidence collation workflows",
+        "mitigation": "Audit-readiness and third-party assessor coordination are core to the role; no direct evidence in commercial operations or business transformation work.",
+        "severity": "high"
+      },
+      {
+        "gap": "No team leadership or explicit mentoring experience documented",
+        "mitigation": "Role requires day-to-day guidance to L1 and L2 analysts; candidate profile does not detail direct reports or coaching activities.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No cloud GRC, GRC tooling, risk platforms, or compliance-automation hands-on experience",
+        "mitigation": "Preferred qualifications; candidate has BI/reporting tools (Looker, Tableau) and data-query skills but not compliance-specific platforms.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "2\u20134 years required, independent workstream ownership, junior-analyst mentoring, and audit-liaison scope suggest L4 IC-track or junior manager. Payments-fintech domain and regulatory-framework depth anchor mid-career specialist level. Company stage unstated. typical fintech scale does not elevate baseline.\".",
+    "role_family_fit": 12,
+    "scope_seniority": 58,
+    "summary": "This is an Information Security Analyst II (GRC) role requiring 2\u20134 years of hands-on governance, risk, and compliance experience in payments or fintech\u2014specifically PCI DSS, ISO 27001, SOC 2, and emerging regulatory frameworks (DORA, EU AI Act). The candidate brings strong process-design, stakeholder-engagement, and cross-functional transformation skills from eight years in Commercial Operations at Google, but lacks any documented background in information security compliance, IT audit, external audit support, or payment-industry regulatory obligations. While foundational project ownership and communication skills are present, domain knowledge and audit-readiness coordination are critical and absent, making this a fundamental mismatch despite seniority alignment.",
+    "uncertainties": [
+      "Candidate profile does not specify explicit team leadership, direct reports, or mentoring track record\u2014unclear whether two promotions included people management",
+      "No indication whether candidate has security, risk, or compliance certifications (CISA, CISM, PCIP, etc.)",
+      "Checkout.com company size/stage inferred as mid-to-large fintech from transaction volume, but exact regulatory footprint and GRC-program scale not stated in role JSON",
+      "No evidence of cloud GRC, risk-platform, or compliance-automation tool ownership"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,79 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, including scaling global commercial operations and transformation programs; demonstrated program ownership and cross-functional execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience with technical project delivery - managing scope, timelines and measurable outcomes, translating complex concepts into actionable solutions."
+      },
+      {
+        "candidate_evidence": "Global commercial operations experience at scale with stakeholder engagement and transformation program leadership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience working with enterprise clients and managing conflicts across a broad stakeholder range"
+      },
+      {
+        "candidate_evidence": "Product operations ownership includes requirements definition, logic design, and UAT\u2014typical of roles requiring documentation and technical communication.",
+        "evidence_strength": "medium",
+        "job_requirement": "Documentation and white-boarding skills."
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Extensive hands-on production software engineering, data engineering, and distributed systems experience required; candidate background is strategy and operations, not engineering-delivery.",
+        "mitigation": "Candidate has hands-on LLM agentic tooling design/direction and basic Python (actively learning), plus advanced SQL/BigQuery querying\u2014sufficient only if role would accept a non-traditional engineering hire. FDE role description emphasizes 'hands-on builder' and 'implement end-to-end systems,' making this gap substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep experience with Apache Spark, distributed computing, and Spark runtime internals required; candidate has no stated Spark or distributed systems experience.",
+        "mitigation": "Spark expertise is foundational for FDE role at Databricks. No ramp time mentioned in JD; gap is not easily closed in onboarding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Working knowledge of two or more Cloud ecosystems (AWS, Azure, GCP) and expertise in at least one; candidate cloud experience not mentioned.",
+        "mitigation": "Cloud platform experience is material for FDE delivery. No evidence in candidate profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "MLOps, ML/AI models, and AI APIs production deployment experience; candidate exposure limited to agentic tooling design and basic Python learning.",
+        "mitigation": "Candidate's agentic tooling work is design and direction, not production MLOps engineering. Gap remains substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role family mismatch: Forward Deployed Engineer is an implementation-heavy engineering delivery role, not a strategy/operations or transformation-strategy role.",
+        "mitigation": "Approved stretch includes 'Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering'\u2014but FDE role emphasizes production engineering, architecture decisions, and hands-on code/implementation as core deliverables, not outweighed by business/strategy.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Extensive experience in data engineering, data platforms & analytics, or software engineering' and 'Lead impactful customer technical projects by delivering production-grade systems, designing and building reference architectures, custom applications.' Candidate background is strategy and operations at Google with no stated data engineering, analytics platform, or production software-engineering experience. Hands-on LLM agentic tooling direction and basic Python learning do not constitute extensive production engineering or data platform experience required for FDE role.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires 'Deep experience with distributed computing with Apache Spark\u2122 and knowledge of Spark runtime internals.' Candidate profile includes no mention of Spark, distributed computing, or big-data systems engineering. This is a foundational technical requirement for Databricks FDE role.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD emphasizes 'hands-on, customer-facing role for builders' and 'implement end-to-end systems spanning data engineering, AI, and application development' with 'Production Solution Delivery' as the first impact statement. Candidate is a strategy and operations leader, not an engineering builder or implementer. Honest gaps include 'No production software-engineering background' and product experience is 'requirements, logic design, UAT, rollout, and transformation rather than native engineering product management.'",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "FDE role at Databricks requires extensive hands-on engineering experience (data engineering, software engineering, distributed systems). deep Spark and cloud expertise. production MLOps and AI API deployment. and customer technical delivery at scale. JD emphasizes 'hands-on builder' and 'implement end-to-end systems.' These requirements map to L5 IC engineering or early L6 delivery leadership. No reporting line or company-size context stated. confidence is moderate.",
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a Senior Forward Deployed Engineer role\u2014a hands-on, customer-facing engineering-delivery position requiring extensive data engineering, software engineering, and Apache Spark expertise. The candidate is a Strategy and Operations leader with eight years at Google, advanced operations and transformation skills, and emerging agentic AI tooling capability, but no production software-engineering, data-engineering, or distributed-systems background. The role's core deliverables are production-grade system implementation, architecture design, and hands-on coding\u2014fundamentally misaligned with candidate's strategy-operations profile. Hard blockers on extensive engineering experience, Spark expertise, and hands-on builder scope make this a skip.",
+    "uncertainties": [
+      "Company stage and team size not stated; assumes mid-stage or mature given Databricks' market position, but cannot confirm seniority anchors from JD alone.",
+      "Databricks certification mentioned as a requirement; not specified if it is prerequisite or obtainable post-hire.",
+      "Candidate's agentic tooling work involves directing LLM agents to build systems\u2014unclear whether this constitutes sufficient 'hands-on engineering' signal for a non-traditional FDE path; JD emphasizes direct implementation and Spark expertise as core, not alternatives."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

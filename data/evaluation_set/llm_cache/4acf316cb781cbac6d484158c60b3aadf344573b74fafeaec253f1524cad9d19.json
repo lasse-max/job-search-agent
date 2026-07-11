@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; proficient SQL with joins, GROUP BY, subqueries, CTEs, window functions; builds Looker dashboards; writes BigQuery queries to pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Build tools and analytics\u2014including dashboards, queries, and custom data reports\u2014to support user business reviews and operational needs"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations; cross-functional stakeholder management and revenue operations experience; partnered with engineering on Salesforce feature requests",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with Sales, Solution Architecture, and Implementation teams to drive user engagement and commercial outcomes"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; product transformation and requirements ownership; UAT and rollout leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Product and Engineering to proactively surface potential enhancements and new features based on field feedback"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "4+ years software engineering or integration engineering role: candidate has zero production software-engineering background and no native integration engineering experience",
+        "mitigation": "Candidate has eight years scaling global commercial operations and transformation; product ownership and requirements logic design; direction of LLM coding agents. However, this does not substitute for hands-on software engineering or client-facing integration delivery roles.",
+        "severity": "high"
+      },
+      {
+        "gap": "Ability to write and debug code in Go, Java, C/C++, or similar: candidate has basic Python actively learning, not professional proficiency in required languages",
+        "mitigation": "Candidate can query and shape data with SQL and BigQuery; basic Python; direction of LLM agents. Insufficient to lead hands-on keyboard implementations or debug production user code in Go/Java/C++.",
+        "severity": "high"
+      },
+      {
+        "gap": "Code-level debugging (Stripe and user code) and using code as a problem-solving tool: candidate has no demonstrated production debugging experience",
+        "mitigation": "Candidate directs LLM agents and owns evaluation methodology; does not have hands-on debugging track record for integration or infrastructure issues.",
+        "severity": "high"
+      },
+      {
+        "gap": "Customer-facing technical or solutions engineering role: candidate's experience is internal operations and product transformation, not external client advisory or troubleshooting",
+        "mitigation": "Candidate has stakeholder management and cross-functional leadership; does not have proven track record leading technical conversations with external enterprise customers or resolving their integration issues.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Payments domain expertise and API security principles: no evidence of payments, fintech, or API security background",
+        "mitigation": "Candidate can learn domain; however, role requires understanding of payments domain and API security as a minimum requirement, not preferred.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Minimum requirements: '4+ years of experience in a software engineering or integration engineering role' and 'Ability to write and debug code in languages such as Go, Java, C/C++, or similar' and 'Comfortable with code-level debugging (both Stripe and user code) and using code as a practical problem-solving tool'. Candidate has zero production software-engineering background, basic Python actively learning, and no integration engineering experience. These are explicit minimum requirements stated as non-negotiable entry criteria.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 4+ years software engineering or integration engineering (L4 anchor), customer-facing technical advisory, hands-on keyboard implementations, and code-level debugging of production systems. These responsibilities and skill demands map to established L5 professional-services or field-engineering scope at a mature fintech/payments platform. Company size (Stripe, mature) and EMEA delivery team structure reinforce L5 estimate.",
+    "role_family_fit": 15,
+    "scope_seniority": 62,
+    "summary": "Integration Engineer (Client-facing) at Stripe is a customer-facing technical delivery and advisory role requiring 4+ years hands-on software engineering or integration engineering, proficiency in Go/Java/C++, code-level debugging, payments domain knowledge, and strategic technical conversations with enterprise users. Candidate has strong data/analytics and dashboarding skills (SQL, BigQuery, Looker) and commercial operations leadership, but lacks production software-engineering background, required language proficiency, integration engineering experience, and customer-facing technical advisory track record. Role family fit is out of scope (pure technical delivery, not strategy/operations); hard blockers on minimum engineering requirements disqualify.",
+    "uncertainties": [
+      "Candidate's LLM agent direction and evaluation methodology ownership may indicate some systems-thinking about code and debugging, but extent of hands-on technical depth is unclear from profile",
+      "Payments domain exposure through commercial operations or product work not mentioned; learning curve unclear",
+      "Professional services team structure and peer-level technical anchors at Stripe not stated in JD",
+      "Whether advanced SQL/BigQuery proficiency could partially offset missing Go/Java/C++ for initial engagements is unclear, but JD frames code-level debugging as minimum"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

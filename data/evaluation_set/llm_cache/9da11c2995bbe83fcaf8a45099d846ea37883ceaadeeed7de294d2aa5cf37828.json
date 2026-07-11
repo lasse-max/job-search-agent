@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years strategy &amp; operations at Google scaling global commercial systems; designed go-to-market frameworks and pricing execution across product lines",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and design pricing strategy and frameworks covering product suite, utilising different pricing methodologies"
+      },
+      {
+        "candidate_evidence": "Proficient SQL/BigQuery (joins, GROUP BY, subqueries, window functions); builds Looker dashboards; advanced Excel/Sheets; owns data analysis and shapes own datasets",
+        "evidence_strength": "strong",
+        "job_requirement": "Analyse internal and external data, maintain pricing benchmarks, enhance pricing philosophy"
+      },
+      {
+        "candidate_evidence": "Global commercial operations experience at scale; cross-regional stakeholder management and GTM strategy",
+        "evidence_strength": "medium",
+        "job_requirement": "Define pricing strategy across regions; perform market research and competitor analysis"
+      },
+      {
+        "candidate_evidence": "8-year track record of stakeholder influence and executive-level communication in complex cross-functional environment",
+        "evidence_strength": "strong",
+        "job_requirement": "Prepare and present pricing proposals to key individuals; influence across organisation"
+      },
+      {
+        "candidate_evidence": "Proven collaboration with commercial and operations teams on strategy, execution, and rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with commercial and marketing to create pricing collateral"
+      },
+      {
+        "candidate_evidence": "SQL proficient (BigQuery); Looker dashboard builder; Tableau experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience with SQL and BI tools (stated as plus)"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 58,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No stated experience in payment processing, payment schemes (Visa/Mastercard), or card issuing pricing models",
+        "mitigation": "Candidate's core commercial operations and pricing-methodology background (cost-plus, value-based frameworks) are domain-agnostic. Fintech pricing domain can be acquired through onboarding and collaboration with Product and Finance teams. No re-architecture of foundational skills required.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of post-implementation pricing performance analysis and feedback loops in prior roles",
+        "mitigation": "Candidate's data-analysis tooling (SQL, BigQuery, Looker) and metrics-driven approach to commercial programs provide foundation. Role clarity and mentoring on fintech KPIs will close this quickly.",
+        "severity": "low"
+      },
+      {
+        "gap": "No explicit consulting, case-team, or pricing-boutique advisory background",
+        "mitigation": "Candidate's internal strategy and operations depth, stakeholder influence, and analytical rigor substitute for classic pricing-consulting playbook. Cross-functional collaboration skills are demonstrated at scale.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Title \"Senior Associate\" with 3\u20135 years of implied pricing/commercial experience required. Scope spans cross-functional strategy, data analysis, and market research with stakeholder influence across Product, Finance, and Commercial. No manager-of-managers or Director-level scope stated. Aligns with L4 mid-career ownership in a fintech scale-up.",
+    "role_family_fit": 62,
+    "scope_seniority": 68,
+    "summary": "Candidate brings 8 years of Google Devices/Services Strategy &amp; Operations with commercial transformation, SQL/BigQuery data work, advanced analytics, and cross-functional influence. Role is a strong fit for pricing strategy and operational rigor, but requires direct payment-processor or scheme pricing experience (candidate has not demonstrated this domain). SQL and BI tooling are strengths. Gap: no stated fintech or pricing-specific background; this is learnable with strong analytic and commercial foundations already present.",
+    "uncertainties": [
+      "Company size and stage not stated in JD; fintech scale-up context inferred from customer list (eBay, Spotify, Uber) but growth trajectory and pricing maturity not clear",
+      "Depth of 'pricing projects' expected (candidate's experience framed as commercial ops strategy, not dedicated pricing work) may require validation in conversation",
+      "Whether candidate's Google Devices context (hardware-adjacent pricing) translates well to digital payments and software-as-a-platform pricing models"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

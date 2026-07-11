@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling commercial operations and transformation programs; demonstrated ability to shape strategy and drive cross-functional execution at enterprise scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Shaping a clear product strategy and driving execution with a network of development partners and cross-functional stakeholders"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology and benchmarking. Actively learning Python for data analysis",
+        "evidence_strength": "strong",
+        "job_requirement": "Working knowledge of APIs and a practical understanding of AI and its applications"
+      },
+      {
+        "candidate_evidence": "Experience translating technical requirements, logic design, and UAT findings across global operations teams; demonstrated ability to influence and communicate at multiple levels during transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Translating complex technical concepts into clear, compelling narratives for a range of stakeholders from engineers to executives"
+      },
+      {
+        "candidate_evidence": "Commercial Operations and strategy background with transformation execution; built business cases and drove pricing and territory management initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Commercially sharp\u2014identify scalable opportunities, build solid business cases, and keep a keen eye on what's viable in market"
+      },
+      {
+        "candidate_evidence": "Demonstrated cross-functional collaboration across Google Devices and Services; experience working with engineering on feature requests and product rollouts",
+        "evidence_strength": "medium",
+        "job_requirement": "Confidence working cross-functionally and influencing without authority, bringing people along"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 62,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Deep familiarity with accounting practice workflows and operations, or the ability to get across them quickly",
+        "mitigation": "Candidate has Commercial Operations experience in different domain (Google Devices); accounting practice workflows are domain-specific and learning curve is material but not disqualifying if candidate is willing to invest",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on product experience as defined by the JD (native product strategy/delivery ownership in a product org)",
+        "mitigation": "Candidate's product experience derives from commercial operations, requirements, and transformation rather than native product management, SDLC, or shipping product cycles; credibility gap in a product-heavy role",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep understanding of APAC market and regulatory landscape, particularly tax, compliance, and accounting",
+        "mitigation": "No demonstrated regional or accounting-regulatory domain expertise in candidate profile; material ramp required",
+        "severity": "high"
+      },
+      {
+        "gap": "Practical technical foundation including working knowledge of APIs beyond observation",
+        "mitigation": "Candidate directs LLM agents but has only basic Python and no stated API design or integration experience; understanding of AI applications is present but depth unclear",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role is described as individual contributor with leadership mindset, reporting to Regional Director on 10-person APAC leadership team, with broad cross-functional influence, market-facing accountability, and strategic roadmap ownership. Eight years of required experience, senior stakeholder influence, and cross-regional execution suggest L5 (Senior IC or Lead equivalent). confidence is tempered by lack of stated company size context and ambiguity between pure IC and light leadership scope.",
+    "role_family_fit": 45,
+    "scope_seniority": 72,
+    "summary": "Head of Technical Innovation is a strategic product delivery role requiring deep accounting domain expertise, native product strategy and execution experience, and APAC regulatory knowledge. Candidate brings strong commercial operations, transformation, and cross-functional collaboration skills, plus practical AI tooling background, but lacks hands-on product management, accounting workflows familiarity, and regional market expertise. High-impact role (L5) but material credibility gaps in core domain and product discipline make this a misalignment despite strong operational capabilities.",
+    "uncertainties": [
+      "Xero company size and stage not stated in JD; cannot confirm whether Head of role at this org is genuinely L5-equivalent or potentially L6 given autonomy language",
+      "Candidate's AI tooling work (directing LLM agents) depth and production-readiness scope unclear from profile; API and technical architecture knowledge level not specified",
+      "Extent of candidate's exposure to SME business workflows or adjacent verticals (not accounting) not detailed; domain learning curve cannot be precisely estimated",
+      "No indication whether candidate has operated in regional multi-market or regulatory-complex environments before (Google Devices geography/scope not detailed)"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

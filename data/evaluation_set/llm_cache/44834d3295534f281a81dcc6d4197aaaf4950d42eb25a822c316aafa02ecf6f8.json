@@ -1,0 +1,60 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Commercial Operations and Devices/Services scaling; does not include front-line business development, quota-carrying sales, or cold-calling track record",
+        "evidence_strength": "weak",
+        "job_requirement": "Prospecting and cold calling into target accounts to initiate qualified meetings"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google; demonstrated ability to learn and scale complex global commercial systems",
+        "evidence_strength": "medium",
+        "job_requirement": "Work in a structured manner & fast learner with excellent communication skills"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; native German. No stated Nordic language proficiency",
+        "evidence_strength": "weak",
+        "job_requirement": "Native or equivalent proficiency in Nordic language (Swedish, Finnish, Danish) and English"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Entry-level sales development scope: role targets student/intern BDR with 6 months full-time availability, not strategic operations leadership",
+        "mitigation": "Candidate is overqualified for the internship pathway and career arc; would be misaligned with program design",
+        "severity": "high"
+      },
+      {
+        "gap": "Nordic language requirement: JD requires native/equivalent proficiency in Swedish, Finnish, or Danish; candidate has no stated Nordic language skills",
+        "mitigation": "No viable workaround; language is a hard operational requirement for Madrid-based Nordic market prospecting",
+        "severity": "high"
+      },
+      {
+        "gap": "Front-line BDR and quota-carrying sales experience: candidate background is operations, commercial strategy, and transformation, not sales development or cold-calling",
+        "mitigation": "Cold-calling and prospecting are core duties, not strategic adjacencies; no evidence of hands-on sales prospecting or AE support",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Native (or equivalent) proficiency in a Nordic language (Swedish, Finish, Danish) + Native (or equivalent) proficiency in English. Candidate profile shows professional/fluent English and native German, with no stated Nordic language proficiency. The JD specifies this as a hard requirement for the Madrid-based Nordic market role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Entry-level internship / BDR program targeting students and near-graduates with 6 months full-time availability and no prior full-time experience required. explicitly described as standard path into BDR without previous experience = Google-equivalent L3 (0\u20132 years, intern tier).",
+    "role_family_fit": 5,
+    "scope_seniority": 10,
+    "summary": "This is an L3 entry-level sales development / BDR internship program designed for students and near-graduates with no prior full-time sales experience. The candidate is an eight-year senior Commercial Operations leader at Google with strategic transformation and global scaling experience. Core misalignments include: (1) scope is junior BDR prospecting and cold calling vs. candidate's strategic operations and transformation background; (2) mandatory Nordic language proficiency is not met; (3) the role is intentionally designed as an internship pathway, not a senior leadership position. The candidate is overqualified for the program's career arc and lacks the entry-level sales development profile the JD targets.",
+    "uncertainties": [
+      "Role family classification: JD emphasizes BDR prospecting and account research, which falls under deprioritized \"pure quota-carrying sales\" and junior analyst scope, not Strategy and Operations or approved stretches",
+      "Company size/stage not stated; Celonis is described as a fast-growing SaaS company but no headcount or funding stage given, limiting seniority context"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

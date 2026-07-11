@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic Project Lead role in AI Operations within Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in transformation programs and scaling global operations, with stated positioning in strategy and operations leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Project leadership and cross-functional execution capability"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration. Experience with agentic tooling and AI system design.",
+        "evidence_strength": "medium",
+        "job_requirement": "AI Operations context (from title and partial JD)"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "JD incomplete: Lever snapshot is truncated and contains only HTML/CSS boilerplate; actual job requirements, responsibilities, required qualifications, and scope are missing.",
+        "mitigation": "Request full, unformatted JD text from SafetyCulture. Evaluate only after substantive requirements, experience expectations, and reporting line are provided.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role title 'Strategic Project Lead, AI Operations' suggests execution and AI domain focus, but scope, stakeholder level, and ownership breadth are unclear without full JD.",
+        "mitigation": "Clarify whether role owns strategic transformation, execution only, or operational AI platform work. Confirm whether the candidate's agentic-tooling background and transformation experience align with stated scope.",
+        "severity": "high"
+      },
+      {
+        "gap": "No visibility into company stage, team size, or reporting line; cannot calibrate seniority properly without this context.",
+        "mitigation": "Confirm SafetyCulture size, stage, and reporting structure. L4 estimate assumes mid-scale company; early-stage or large-scale would shift level assessment.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Role title 'Strategic Project Lead' in Strategy & Operations department suggests L4\u2013L5 scope with cross-functional project ownership. No years required, management scope, or explicit reporting line stated. Company size/stage unknown. Estimated L4 as a baseline. full JD needed to confirm scope and seniority anchors.\".",
+    "role_family_fit": 70,
+    "scope_seniority": 45,
+    "summary": "Candidate has strong Strategy and Operations background with eight years at Google and demonstrated agentic-tooling and transformation experience, aligning with the role family. However, the provided JD is incomplete\u2014it contains only HTML/CSS boilerplate with no substantive job requirements, responsibilities, experience expectations, or scope details. Recommend obtaining the full, plain-text JD before proceeding with a confident evaluation. Role level cannot be calibrated reliably without clarity on company stage, team size, reporting line, and specific AI Operations scope.",
+    "uncertainties": [
+      "JD snapshot is truncated HTML/CSS; actual job description text and requirements are not present",
+      "Company stage and size unknown; cannot anchor seniority estimate",
+      "Scope of 'AI Operations' and 'Strategic Project Lead' responsibilities unclear",
+      "No reporting line or team-size context provided",
+      "Unclear whether role emphasizes strategic transformation, operational execution, or platform/engineering delivery"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

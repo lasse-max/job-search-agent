@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with two promotions, leading commercial operations and global transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "6+ years of experience"
+      },
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries/CTEs, window functions); BigQuery working experience; Looker dashboarding; advanced Excel and Google Sheets",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong data analysis and operationalization skills (SQL, rollups, building operational dashboards)"
+      },
+      {
+        "candidate_evidence": "No stated AWS or Azure experience; Google Cloud environment only implied from Google tenure",
+        "evidence_strength": "weak",
+        "job_requirement": "Solid understanding of cloud infrastructure (AWS, Azure)"
+      },
+      {
+        "candidate_evidence": "Owns requirements, logic design, UAT, rollout, and transformation programs; cross-functional stakeholder coordination at scale; lacks native PM inbound/outbound customer-research and SDLC collaboration experience",
+        "evidence_strength": "medium",
+        "job_requirement": "End-to-end product management: gather requirements, design features, collaborate with engineering, coordinate launches"
+      },
+      {
+        "candidate_evidence": "No evidence of infrastructure, query processing, or storage architecture work; background is commercial ops and business transformation",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep understanding of modern cloud infrastructure, data governance, query processing, storage"
+      },
+      {
+        "candidate_evidence": "No degree field or credentials stated in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Bachelor's degree in Computer Science or similar field"
+      }
+    ],
+    "confidence": 0.82,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Native Product Management experience (inbound/outbound customer discovery, competitive analysis, market research, SDLC collaboration)",
+        "mitigation": "Candidate has 8 years leading requirements gathering, feature design, UAT, and rollout for complex transformation programs; this is product thinking applied to internal operations. Structured PM onboarding and mentorship from Databricks PM leadership can close the PM-process and customer-research gap within 6\u201312 months.",
+        "severity": "high"
+      },
+      {
+        "gap": "Cloud infrastructure, query processing, storage architecture, and data governance deep knowledge",
+        "mitigation": "Candidate has no stated backend-infrastructure or query-engine background. This is the highest barrier to entry. Requires self-directed learning (Databricks docs, Spark internals, query optimization), pairing with engineering, and customer discovery to build domain literacy. 3\u20136 month ramp is realistic with active immersion.",
+        "severity": "high"
+      },
+      {
+        "gap": "AWS and Azure cloud platform experience",
+        "mitigation": "Candidate has worked at Google (GCP context); AWS and Azure are learnable through role immersion, documentation, and hands-on sandbox environment. Not a blocker but requires proactive upskilling in Year 1.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Stated Bachelor's in Computer Science or similar",
+        "mitigation": "Profile does not state degree or field. If candidate lacks a CS/engineering degree, this violates a stated JD requirement. Verify educational credentials before proceeding.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "6+ years PM required, reports to (inferred) product leadership at a scale-stage company (10K+ customers, 50%+ Fortune 500). Ownership of end-to-end product lifecycle, strategy, OKR definition, and cross-functional launch coordination signals senior IC/lead scope. No manager-of-managers mentioned. L5 is appropriate for staffed senior PM.",
+    "role_family_fit": 25,
+    "scope_seniority": 72,
+    "summary": "Staff PM at Databricks for Runtime/storage/infrastructure\u2014a strong technical product role requiring 6+ years PM experience, CS degree, and deep cloud/data infrastructure knowledge. Candidate brings 8 years at Google in commercial ops and transformation, proven data-analysis, SQL, and BigQuery skills, but lacks native product management experience, a CS degree, and the backend infrastructure/query-processing depth this technical PM role demands. Gap is substantial but manageable with onboarding.",
+    "uncertainties": [
+      "Candidate's degree field and educational background unknown; JD requires 'Bachelor's degree in Computer Science or similar field'.",
+      "No evidence of AWS, Azure, or multi-cloud platform experience; Databricks is cloud-agnostic and candidates typically have hands-on cloud infrastructure familiarity.",
+      "No indication of familiarity with Spark, Lakehouse, Delta Lake, or data-warehouse/query-optimization concepts central to Databricks's platform.",
+      "Native PM experience (customer interviews, competitive positioning, roadmap prioritization, SDLC collaboration) not demonstrated in commercial-ops background.",
+      "Candidate's honest gap list explicitly notes 'Product experience comes from ownership, requirements, logic design, UAT, rollout' rather than native PM discipline."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

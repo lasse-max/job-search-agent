@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate has designed and directed LLM coding agents to build production systems and owns evaluation methodology and benchmarking\u2014not architecture design, model training, or scaling LLM training runs.",
+        "evidence_strength": "weak",
+        "job_requirement": "Design, prototype and scale up new architectures to improve model intelligence"
+      },
+      {
+        "candidate_evidence": "Candidate has optimization and debugging experience from commercial operations and infrastructure work; no evidence of model-level or computational performance optimization for LLM training.",
+        "evidence_strength": "weak",
+        "job_requirement": "Study, debug, and optimize both model performance and computational performance"
+      },
+      {
+        "candidate_evidence": "Candidate has led transformation programs and cross-functional experiments in commercial operations and product; research-level experimental rigor and instrumentation are not evidenced.",
+        "evidence_strength": "medium",
+        "job_requirement": "Execute and analyze experiments autonomously and collaboratively"
+      },
+      {
+        "candidate_evidence": "No evidence of contributions to LLM training runs, model checkpoints, or training infrastructure.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have experience landing contributions to major LLM training runs"
+      },
+      {
+        "candidate_evidence": "Candidate has basic Python, learning data analysis, and AI/agentic tooling design direction; no evidence of transformer architecture knowledge or efficiency optimizations.",
+        "evidence_strength": "weak",
+        "job_requirement": "Well-versed in the state of the art transformer modifications for efficiency"
+      },
+      {
+        "candidate_evidence": "Candidate has built Looker dashboards and managed Salesforce administration; no evidence of infrastructure contribution or systems-level engineering.",
+        "evidence_strength": "weak",
+        "job_requirement": "Contribute to training and inference infrastructure"
+      }
+    ],
+    "confidence": 0.88,
+    "estimated_level": "L6",
+    "evidence_strength": 15,
+    "gap_manageability": 8,
+    "gaps": [
+      {
+        "gap": "No background in deep learning, model training, or LLM architecture design",
+        "mitigation": "Candidate would require fundamental retraining in neural-network architectures, transformer models, and training dynamics\u2014outside the scope of onboarding to a research-level role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on experience with major LLM training runs or model checkpoints",
+        "mitigation": "This is a core requirement and a disqualifying gap; no equivalent commercial operations experience translates.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python and ML tooling at learning/basic level, not production research depth",
+        "mitigation": "Role requires sophisticated empirical debugging and architecture iteration; basic Python is insufficient for research-level LLM work.",
+        "severity": "high"
+      },
+      {
+        "gap": "No research publication record, peer-review experience, or academic rigor signals",
+        "mitigation": "Research roles typically prioritize research credentials; candidate profile does not mention them.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'you will push the frontier of LLM development' and candidates 'have experience landing contributions to major LLM training runs' with 'deep understanding of LLM architectures, a sophisticated understanding of model inference, and a hands-on empirical approach.' Candidate has no training-run, architecture-design, or inference-optimization background; background is commercial operations and product transformation, not deep learning research.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Role requires deep LLM research and model-training expertise, hands-on architecture design and optimization, autonomous empirical work, and landing major contributions to LLM training runs. These are L6-equivalent research-track competencies at a frontier AI organization. JD does not state years of experience, team size, or reporting line. London-based hybrid research role at OpenAI implies senior IC or early-senior researcher scope.",
+    "role_family_fit": 5,
+    "scope_seniority": 72,
+    "summary": "This is a frontier LLM research role requiring deep knowledge of transformer architectures, hands-on contributions to major model-training runs, and autonomous empirical debugging of training and inference performance. The candidate's eight years of experience in Strategy and Operations, Commercial Operations, Product Transformation, and AI/agentic tooling *direction* are fundamentally misaligned with research-track deep learning and model-training depth. While the candidate can design and direct LLM systems and has strong operational and strategic capabilities, the role is disqualifying for lack of LLM-training background, architecture expertise, and production research credibility. This is not a bridge or stretch fit; it is a different function family entirely.",
+    "uncertainties": [
+      "JD does not specify years of experience or research publication expectations; confidence in level is high but not absolute.",
+      "No salary range or exact reporting line provided in JD.",
+      "Unclear whether candidate's 'AI and agentic tooling' work involved any hands-on model-training or infrastructure contribution (beyond direction), which might marginally shift evidence on one alignment."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

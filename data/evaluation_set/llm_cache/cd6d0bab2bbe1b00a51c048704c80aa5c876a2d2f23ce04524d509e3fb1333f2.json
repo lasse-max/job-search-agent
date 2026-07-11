@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in global commercial operations, transformation programs, and cross-functional stakeholder management",
+        "evidence_strength": "weak",
+        "job_requirement": "Work at the intersection of policy, technology, and creativity\u2014partnering with governments, regulators, and industry groups"
+      },
+      {
+        "candidate_evidence": "Experience with AI agentic tooling design, specs, and LLM evaluation methodology; product operations and transformation ownership",
+        "evidence_strength": "weak",
+        "job_requirement": "Represent Spotify's voice on issues ranging from competition and online safety to AI and the future of the creative economy"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No government affairs, policy, or regulatory strategy background\u2014role requires deep expertise in policy advocacy, regulatory compliance, and government relations",
+        "mitigation": "Candidate could invest in policy education and mentorship, but this is foundational domain knowledge not easily acquired mid-career without prior exposure",
+        "severity": "high"
+      },
+      {
+        "gap": "No creative industry, music, media, or entertainment sector experience\u2014role emphasizes issues for creators, listeners, and media landscape",
+        "mitigation": "Domain immersion and industry stakeholder networking would be required; candidate's Google B2B background does not transfer directly",
+        "severity": "high"
+      },
+      {
+        "gap": "No external affairs, public policy, or government liaison experience\u2014role is titled 'Head of' Government Affairs, implying leadership of a portfolio, not internal operations",
+        "mitigation": "Candidate's internal-facing operations experience does not substitute for external-affairs leadership and government relationship ownership",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of public speaking, media engagement, or thought leadership in policy or competitive advocacy",
+        "mitigation": "Could develop over time with mentoring and exposure, but is a material skill gap for a leadership-level role",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Title \"Head of Government Affairs\" implies regional leadership ownership and executive portfolio scope. No explicit years required. Spotify company size and media-sector complexity suggest L5\u2013L6 seniority. Estimated L5 based on regional (not global) scope, reporting line not stated, and lack of manager-of-managers language in JD.",
+    "role_family_fit": 8,
+    "scope_seniority": 65,
+    "summary": "Government Affairs at Spotify is a policy and regulatory leadership role focused on government relations, creative-industry advocacy, and competition/online-safety positioning\u2014a function family entirely outside the candidate's target (Strategy and Operations, Product Operations, Business Transformation). Candidate brings operational excellence, AI transformation insight, and cross-functional leadership from a technology giant, but lacks the foundational policy, government affairs, media-sector, and external advocacy experience that this role demands. Not a fit.",
+    "uncertainties": [
+      "Company stage not stated; assuming established multinational",
+      "Reporting line to CEO/C-suite not stated; inferred from 'Head of' regional title",
+      "Whether candidate has any unpublished policy experience or government affairs network",
+      "Exact scope of manager-of-managers expectation in Australia/New Zealand Government Affairs team"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

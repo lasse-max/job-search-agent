@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations roles, demonstrating ownership of operational goal-setting, cross-functional strategy alignment, and scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive the OKR-setting process for Streaming Product & Technology leadership, partnering with team leads to set objectives, using informed analysis to define measurable targets"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries/CTEs, window functions; BigQuery), advanced Excel/Sheets, Looker dashboard building, and proven ability to translate data into insights for leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Be the analytical backbone for key metrics; understand data sets, identify trends, surface insights, and work with Product, Engineering, and Data Science to optimize performance"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets, proficient SQL with BigQuery, builds Looker dashboards, and Tableau experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong spreadsheet (Excel, Google Sheets) and SQL skills; Proficiency with Tableau, Looker, or similar BI tools is highly preferred"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs at Google; experience translating complex analysis into executive-level storytelling for senior leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven ability to manage multiple workstreams simultaneously with high attention to detail, while also knowing when to zoom out and have executive-level discussions"
+      },
+      {
+        "candidate_evidence": "Eight years in Strategy and Operations roles at Google; direct evidence of setting and measuring organizational goals and performance metrics across commercial and transformation initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience defining and measuring OKRs, KPIs, or other comparable success metrics"
+      },
+      {
+        "candidate_evidence": "Demonstrated cross-functional collaboration scaling global operations; experience at Google Devices and Services managing partner relationships, territory budgets, and matrixed stakeholder alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Team-oriented culture carrier with a proclivity towards cross-functional collaboration; comfortable influencing in the absence of direct control"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 82,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Experience requirement: JD specifies 10+ years in ProdOps, Strategy, or Analytics roles; candidate has 8 years, falling 2 years short of the explicit minimum",
+        "mitigation": "Candidate's two promotions and global-operations scaling at Google suggest accelerated or above-level progression; highlight examples of Principal-equivalent scope, cross-functional leadership, and executive rigor within Google's context",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct streaming, media, entertainment, or content-platform strategy experience stated; all evidence is from Google Devices and Services and commercial operations domain",
+        "mitigation": "Core analytical, OKR, and operational rigor are domain-transferable; frame candidate's product-strategy and cross-functional execution work as applicable to Disney's streaming product architecture and metric ownership. Conduct domain deep-dive with candidate to assess familiarity with Disney+ and Hulu competitive landscape",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit evidence of cultural transformation, large-scale event planning (town halls, offsites/summits), or Corporate Communications partnership",
+        "mitigation": "This is a secondary responsibility in the role; candidate's cross-functional collaboration and scale experience can support this. Prioritize assessment of analytical and OKR leadership first",
+        "severity": "low"
+      },
+      {
+        "gap": "Salesforce administration and territory-budget management experience are Commercial Operations focused; no explicit Product Operations platform or tool experience (e.g., Amplitude, Mixpanel, internal product analytics stacks) stated",
+        "mitigation": "SQL, BigQuery, and Looker dashboard capability demonstrate ability to query and visualize product metrics; Salesforce admin experience shows tool ownership and engineering partnership; likely able to onboard to Disney's analytics and product-ops stack quickly",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Posted role requires 10+ years in ProdOps, Strategy, or Analytics at top-tier firms. reports to CPTO with organizational-goal ownership, strategic metric definition, and executive visibility. This maps to L5 Senior IC (individual contributor with strategic scope) at Google scale. confidence is 78 rather than higher due to title/level ambiguity at the.",
+    "role_family_fit": 88,
+    "scope_seniority": 79,
+    "summary": "Strong fit in Strategy and Operations with deep analytical capability and proven cross-functional execution at Google. Exceeds technical requirements (SQL, Sheets, Looker) and has demonstrated OKR/KPI ownership and performance-metric leadership. Gap: 2 years below stated 10+ requirement and no direct Principal title or large-scale media/streaming strategy evidence; however, transformation and global-operations scaling experience is translatable. Recommend as a genuine consider if candidate can articulate Disney streaming context and seniority progression.",
+    "uncertainties": [
+      "Candidate's current title/level at Google not stated; eight-year tenure with two promotions suggests L4-L5 equivalent, but degree of Principal-equivalent scope or 'analytical backbone' ownership at Google is unclear",
+      "BS/BA requirement is listed but candidate's degree type and field are not provided in profile; assume satisfied unless profile indicates otherwise",
+      "Disney Entertainment and ESPN organization size and CPTO reporting structure are assumed from title; no org-chart or team-size details available to validate scope",
+      "Candidate's exposure to strategy-setting in large, matrixed technology enterprises and whether eight years at Google is sufficient proxy for Disney's scale and culture"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

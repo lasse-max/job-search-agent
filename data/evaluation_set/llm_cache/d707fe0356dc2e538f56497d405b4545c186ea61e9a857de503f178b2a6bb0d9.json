@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions; primary role family is GTM / Sales Strategy and Operations; positioned as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "GTM Strategy & Operations role within Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience scaling global commercial operations and transformation programs; designs and directs AI agentic tooling systems and evaluation methodologies",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and Operations function with business problem-solving and cross-functional execution"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries, window functions); writes BigQuery queries to pull and shape own data; builds Looker dashboards; advanced Excel and Google Sheets",
+        "evidence_strength": "strong",
+        "job_requirement": "Analytical and data-driven decision-making capability"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L3",
+    "evidence_strength": 78,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Role is Analyst-level (L3 estimated) versus candidate target band of L4\u2013L5 (Manager / Senior Manager / Lead / Principal IC)",
+        "mitigation": "Candidate is significantly overqualified for an analyst scope; this is a steep step backward in seniority and likely career progression. Role ownership and stakeholder responsibility would need to be far larger to be a fit.",
+        "severity": "high"
+      },
+      {
+        "gap": "JD is a cached snapshot with minimal substantive detail; no job description text, responsibilities, reporting line, or scope stated beyond title",
+        "mitigation": "Request full, current job description from Datadog careers page. Analyst title alone does not clarify whether this is L3 individual-contributor data work, L4 program ownership, or L5 multi-region strategy\u2014all of which would dramatically change fit assessment.",
+        "severity": "high"
+      },
+      {
+        "gap": "London location may introduce visa/sponsorship complexity for candidate (location not stated in profile)",
+        "mitigation": "Confirm candidate's UK work eligibility or visa sponsorship appetite before advancing.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 25,
+    "level_rationale": "JD title is \"Analyst\" with no scope descriptor, tenure anchor, management, or reporting line stated. Company size/stage not provided. Generic analyst title with no context is typically L3\u2013L4 entry-to-mid-level. without job description detail, seniority cannot be reliably estimated. Low confidence due to incomplete JD snapshot.",
+    "role_family_fit": 82,
+    "scope_seniority": 35,
+    "summary": "Strong role-family fit (GTM Strategy & Operations) and candidate analytical strength (SQL, BigQuery, dashboarding, data fluency), but the posted role is titled \"GTM Strategy & Operations Analyst\" with no substantive job description, scope, responsibilities, or reporting line visible. Cached JD snapshot lacks detail; cannot assess actual seniority or ownership. Estimated L3 analyst-level (if literal analyst scope) is substantially below candidate target band (L4\u2013L5). Recommend requesting the full, current job description from Datadog careers page before proceeding; without role detail, this is a deprioritized step-backward move.",
+    "uncertainties": [
+      "JD snapshot appears to be cached website HTML rather than extracted job description; no actual role responsibilities, qualifications, reporting structure, or scope are visible.",
+      "Company size/stage context not provided; Datadog is a known public SaaS company, but JD does not state this.",
+      "Analyst title is ambiguous; could range from L3 individual-contributor analytics to L4 program analyst to L5 strategy analyst without role description.",
+      "No information on whether role manages people, owns P&L, drives cross-functional initiatives, or executes analyses for others."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

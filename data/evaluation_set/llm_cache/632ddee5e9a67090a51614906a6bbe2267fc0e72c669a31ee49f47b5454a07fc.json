@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with scaling of global commercial operations and transformation programs; experience with revenue targets and commercial partnerships is inferred but not explicitly detailed in supplied profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Prospect, qualify, and close new advertising opportunities, leading the full sales cycle from initial engagement through contract execution"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with experience in stakeholder management and cross-functional collaboration at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and maintain relationships with senior-level advertising decision-makers, delivering strategic guidance"
+      },
+      {
+        "candidate_evidence": "Documented experience in transformation programs and cross-functional execution; agentic-tooling direction and engineering collaboration on Salesforce feature requests",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead cross-functional collaboration across Product, Engineering, Marketing, Policy, and Operations"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background with forecasting/reporting cadence; SQL, BigQuery, and advanced Excel/Sheets for data-driven analysis",
+        "evidence_strength": "medium",
+        "job_requirement": "Maintain rigorous pipeline management and accurate revenue forecasting"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 55,
+    "gap_manageability": 42,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales experience: JD requires 10+ years in performance marketing, digital marketing, or client-facing sales with 3+ years as proven advisor closing complex deals. Candidate background is Strategy and Operations, not native sales or account management.",
+        "mitigation": "Cross-functional collaboration and stakeholder management from ops background could translate, but requires explicit evidence of territory ownership, deal closure velocity, and revenue-target accountability that is not supplied.",
+        "severity": "high"
+      },
+      {
+        "gap": "Advertising domain expertise: JD emphasizes 'performance marketing, digital marketing' and understanding advertiser business models. Candidate experience is in devices/services ops at Google, not ads or advertising solutions.",
+        "mitigation": "Domain can be learned on the job, but ramp time is non-trivial for a quota-carrying role. Candidate's ops background may help with process and analytics but does not substitute for advertiser-focused GTM experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "Client-facing sales acumen and deal-negotiation velocity: JD states 'structure and negotiate complex commercial agreements' and 'close new advertising opportunities.' Candidate has partnered with engineering and managed internal stakeholders; direct client negotiation and closing experience is not evidenced.",
+        "mitigation": "Sales skills can be developed with strong mentorship, but ramp period for quota responsibility is material.",
+        "severity": "high"
+      },
+      {
+        "gap": "Singapore office requirement: JD specifies 'This role is based in our Singapore office' with hybrid 3 days/week on-site. Candidate location and visa status are not stated.",
+        "mitigation": "Relocation assistance offered, but visa/sponsorship fit is unknown; add as uncertainty.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 10+ years in performance marketing/digital marketing/strategy-consulting and 3+ years closing complex deals with senior-level influence. This anchors to L5 (senior IC or established leadership) in a quota-carrying, client-facing role. L6+ would be implied by director title or manager-of-managers scope, neither present. Company size unknown. confidence is moderate due to lack of explicit organizational context and role level signaling beyond experience bands.",
+    "role_family_fit": 28,
+    "scope_seniority": 72,
+    "summary": "This is a pure quota-carrying Regional Client Partner / Account Executive role in advertising sales at OpenAI, requiring 10+ years in performance marketing and 3+ years closing complex deals with senior stakeholders. The candidate is a Strategy and Operations leader with commercial ops and transformation experience at Google, but lacks native sales, advertising domain, and direct deal-closure evidence. Role family fit is low (not strategy, ops, or transformation governance); scope and seniority are clear (L5 client-facing quota role). The gap between ops/strategy background and direct client-acquisition accountability is material and high-severity.",
+    "uncertainties": [
+      "Candidate's direct quota-carrying and deal-closure experience not evidenced in supplied profile; inferred only from 'commercial partnerships' language",
+      "Advertising or performance-marketing domain exposure not stated",
+      "Candidate location, visa eligibility, and willingness to relocate to Singapore unknown",
+      "Whether candidate's ops background translated into internal stakeholder closures or negotiations with external clients"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

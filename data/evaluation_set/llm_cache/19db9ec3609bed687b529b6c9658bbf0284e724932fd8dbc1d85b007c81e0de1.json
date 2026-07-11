@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; owns features from idea to release in product operations context",
+        "evidence_strength": "weak",
+        "job_requirement": "Build the systems that move money fast, safely, and at scale; Design and ship features used by millions of users"
+      },
+      {
+        "candidate_evidence": "No production software-engineering background; Python basic and actively learning; designs and directs LLM coding agents rather than writing production code",
+        "evidence_strength": "weak",
+        "job_requirement": "Write clean, tested, production-ready code; Hands-on experience deploying applications to production environments using CI/CD pipelines"
+      },
+      {
+        "candidate_evidence": "Basic Python knowledge actively being developed; no OOP or software architecture background demonstrated",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong object-oriented programming skills with a focus on clean architecture and maintainable design"
+      },
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries, window functions); BigQuery querying; no demonstrated automated testing experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Solid experience working with relational databases; Hands-on experience with automated testing"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "3\u20134 years commercial backend or full-stack engineering and 2+ years production Kotlin; candidate has zero production software-engineering background",
+        "mitigation": "This is a career-pivot target, not a lateral move. Candidate would require several years of hands-on SWE ramp-up; employer is willing to support learning for some skill gaps but not for core engineering capability.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on production-code ownership and shipping; candidate owns requirements, UAT, rollout, and transformation logic but not code writing or testing",
+        "mitigation": "Candidate's product operations background does not translate to the daily hands-on coding and test-automation duties described.",
+        "severity": "high"
+      },
+      {
+        "gap": "Object-oriented programming and clean architecture patterns; candidate has basic Python knowledge only",
+        "mitigation": "Essential for backend engineering in Kotlin/Spring Boot; not acquirable in ramp-up for an L4 backend role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Automated testing (unit, integration, component, UI); candidate has no demonstrated testing background",
+        "mitigation": "Teachable via onboarding, but expected as a baseline for L4.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states \"3-4 years of experience building backend or full-stack web applications, including at least 2 years working with Kotlin in a commercial setup\" and \"Write clean, tested, production-ready code\" as core duties. Candidate has zero production software-engineering background, basic Python knowledge, and no commercial Kotlin or backend engineering experience. The role requires hands-on engineering as a primary function, not advisory or transformation support.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 3\u20134 years backend/full-stack and 2+ years production Kotlin, solid database and testing experience, and hands-on code shipping. This profile maps to L4 (mid-level IC, 3\u20135 years specialist experience required). Company stage is not stated, but the scope is standard engineering-delivery, not transformation. Confidence is moderate due to missing company-size context.",
+    "role_family_fit": 5,
+    "scope_seniority": 68,
+    "summary": "This is a Full-stack (Kotlin) backend-focused engineer role at Flix's Payments Team, requiring 3\u20134 years of commercial backend/full-stack experience and 2+ years production Kotlin. The candidate is a Strategy and Operations leader with eight years at Google, strong in Commercial Operations, SQL querying, data dashboarding, and agentic-tooling direction\u2014but with zero production software-engineering background and only basic, self-taught Python. The core mismatch is fundamental: the role demands hands-on code writing, OOP patterns, automated testing, and shipping ownership; the candidate's strength lies in requirements, transformation, and stakeholder orchestration. This is a category mismatch (deeply technical SWE vs. ops/strategy leader) that cannot be bridged by onboarding. Advisory recommendation: skip.\",\n  \"uncertainties\": [\n    \"Company stage and hiring philosophy for engineering-capability gaps (JD encourages applications from those not meeting 100% but hard blockers are core SWE skills).\",\n    \"Candidate's willingness to pursue a multi-year career pivot into backend engineering (outside stated stretch families).\"\n  ]",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

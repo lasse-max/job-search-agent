@@ -156,7 +156,7 @@ class JobPostingPersistenceTest(unittest.TestCase):
         llm_evaluation = SimpleNamespace(
             provenance={
                 "model_version": "claude-haiku-4-5",
-                "evaluator_version": "hybrid_claude_v3",
+                "evaluator_version": "hybrid_claude_v4",
             }
         )
         fallback_evaluation = SimpleNamespace(
@@ -168,7 +168,7 @@ class JobPostingPersistenceTest(unittest.TestCase):
 
         self.assertEqual(
             _stored_evaluation_version(llm_evaluation),
-            "claude-haiku-4-5|hybrid_claude_v3",
+            "claude-haiku-4-5|hybrid_claude_v4",
         )
         self.assertEqual(
             _stored_evaluation_version(fallback_evaluation),
@@ -205,7 +205,7 @@ class JobPostingPersistenceTest(unittest.TestCase):
             job_id,
             "input-a",
             "excluded_title_department_function",
-            evaluator_version="hybrid_claude_v3",
+            evaluator_version="hybrid_claude_v4",
         )
         record_evaluation_skip(
             conn,

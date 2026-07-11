@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, demonstrating career progression and team-scaling experience. Product Operations and Business Transformation background with cross-functional stakeholder management.",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead, coach, and develop a team of Luxe Market Managers across EMEA and APAC, setting clear expectations and creating a culture of excellence, accountability, and continuous growth."
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs; translates to strategic supply and portfolio ownership mindset.",
+        "evidence_strength": "medium",
+        "job_requirement": "Own the end-to-end supply strategy for EMEA and APAC, setting priorities across acquisition, host quality, and portfolio optimization."
+      },
+      {
+        "candidate_evidence": "Salesforce admin background managing territory budgets; proficient SQL (joins, GROUP BY, subqueries, window functions); BigQuery querying; advanced Excel and Sheets; Looker dashboarding; builds data-informed insights.",
+        "evidence_strength": "strong",
+        "job_requirement": "Analytical and strategic thinker who uses data and market insights to shape portfolio strategies; Familiarity with CRM tools and performance dashboards."
+      },
+      {
+        "candidate_evidence": "Eight-year track record of cross-functional collaboration, transformation program leadership, and stakeholder influence at scale within a large, matrixed organization.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Luxe leadership, Guest Services, Content & Quality, Marketing, RevOps, Policy, and Product to launch initiatives; cascade market insights to influence product and policy decisions."
+      }
+    ],
+    "confidence": 0.78,
+    "estimated_level": "L6",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No demonstrated luxury hospitality, marketplace, or luxury real estate sales/BD background. Candidate's experience is in Commercial Operations and Product Operations at Google, not in luxury supply acquisition, host relationship management, or high-end property partnerships.",
+        "mitigation": "Transferable skills in territory strategy, supply metrics, and partnership execution are present; however, luxury market expertise, host psychology, and estate-manager relationship-building cannot be rapidly acquired. Onboarding investment would be substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit field-based team leadership or sales field management experience. Candidate's team development is within product, ops, and transformation, not quota-carrying or supply-acquisition field teams.",
+        "mitigation": "Core coaching and team-scaling capability exists; however, field dynamics, rep motivation, and hands-on host negotiation are distinct from product-ops team dynamics. Training and mentorship would be required.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited demonstrated direct sales or business-development closing experience. The role requires 10+ years in 'sales, business development, luxury hospitality, or marketplace management'; candidate background is ops and product strategy.",
+        "mitigation": "Analytical rigor and strategic thinking are strong; direct sales closing and BD pipeline ownership are not evidenced in the profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "No EMEA or APAC regional market expertise or local network. Role explicitly requires 'deep knowledge of the EMEA and/or APAC luxury travel and real estate landscape.'",
+        "mitigation": "Candidate fluency in German and professional English supports EMEA operations; however, specific luxury-travel and luxury-real-estate market knowledge for APAC and EMEA are absent.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Role requires 10+ years in sales/BD/hospitality/marketplace plus 4+ years leading and scaling field-based teams across EMEA/APAC. Manager-of-managers scope (leading team of Luxe Market Managers), regional P&L ownership, and senior cross-functional leadership signal L6. explicit experience thresholds and team-scaling requirement reinforce this level.",
+    "role_family_fit": 32,
+    "scope_seniority": 75,
+    "summary": "This is a luxury marketplace supply-leadership role (L6, 10+ years in sales/BD/hospitality + 4+ years leading field teams) at Airbnb. The candidate brings eight years of strategy-and-operations leadership, strong analytical capability (SQL, BigQuery, Salesforce, dashboarding), and cross-functional stakeholder management. However, the role explicitly demands luxury hospitality market expertise, field-based team leadership in a sales/acquisition context, and direct business-development closing experience\u2014none of which are evidenced in the candidate's Google product-operations and transformation background. The functional and domain mismatch is substantial despite overlapping analytical and leadership skills. Advisory: skip\u2014recommend for family-fit business development or marketplace supply roles with weaker luxury expertise requirements, not as a priority for this specific luxury-focused, field-sales-led position.",
+    "uncertainties": [
+      "Extent of candidate's international travel and on-the-ground regional operations experience within Google Devices and Services; unclear whether this included market-facing field operations or remote/HQ-based product/ops work.",
+      "Specific commercial operations domain: revenue recovery, territory budgeting, CRM administration, and forecasting expertise are inferred but not explicitly detailed in the profile narrative.",
+      "Whether Google Devices and Services involved luxury brand positioning, premium market segmentation, or high-net-worth customer/host psychology; no luxury background is indicated."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

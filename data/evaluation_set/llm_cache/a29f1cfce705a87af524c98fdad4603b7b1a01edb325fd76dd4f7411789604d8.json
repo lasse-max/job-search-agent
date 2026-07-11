@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Demonstrates data-driven decision-making across global commercial operations and transformation programs at Google; advanced Excel, Sheets, SQL, and BigQuery skills to pull, shape, and analyze own data; Looker dashboard building",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic & Analytical Skills: Experience using data to analyze trends, benchmark against the market, and recommend strategic improvements"
+      },
+      {
+        "candidate_evidence": "Salesforce admin experience managing territory budgets and partnering with engineering on feature requests; demonstrates cross-functional collaboration with external and internal stakeholders on system implementations",
+        "evidence_strength": "medium",
+        "job_requirement": "Vendor and Systems Management: Proven ability to manage vendors, negotiate contracts, and oversee benefits systems and platforms"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google; demonstrated ability to communicate across organizational levels and translate complex requirements into executable plans",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication, written and verbal, presentation skills, with ability to clearly articulate complex information"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Deep benefits-domain expertise: UK/Ireland pension, statutory benefits, compliance, enrollment workflows, and employee relations. Candidate background is commercial operations and product transformation, not HR/benefits administration.",
+        "mitigation": "Candidate would require multi-month domain onboarding and benefits-specific mentorship; generic operations skills do not transfer cleanly to pension plan design, qualifying life events, appeals, or statutory compliance.",
+        "severity": "high"
+      },
+      {
+        "gap": "Workday platform expertise and open enrollment execution: JD explicitly requires Workday and/or alternative benefits platform experience, launching open enrollment, updating benefit plans, and running reports. No evidence in candidate profile.",
+        "mitigation": "Workday administration can be learned on the job, but candidate lacks benefits-system background; ramp time extends beyond typical system-training.",
+        "severity": "high"
+      },
+      {
+        "gap": "UK employment law and benefits regulations: JD requires in-depth understanding of UK (and preferably Ireland) health, welfare, and retirement benefits administration, statutory compliance, and regulatory landscape.",
+        "mitigation": "Candidate has no stated UK employment or benefits regulatory background; this domain is region-specific and not transferable from commercial operations experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "Vendor contract negotiation and benefits-provider relationships: While candidate has Salesforce vendor-admin experience, benefits vendor landscape (insurers, actuaries, brokers, pension providers) is distinct and requires industry relationships.",
+        "mitigation": "Negotiation and vendor-management skills are portable, but benefits-specific vendor ecosystem and contract structures differ significantly from SaaS/technology procurement.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Regional specialist role focused on end-to-end benefits administration, vendor management, and strategic planning with UK/Ireland scope. Requires extensive benefits-domain knowledge and hands-on execution. operational maturity and autonomy signal mid-senior IC level (L4) rather than L5 scope. High-growth fintech context adds modest senior-IC expectations, but core domain is HR/benefits specialist rather than strategic transformation.",
+    "role_family_fit": 15,
+    "scope_seniority": 60,
+    "summary": "This is a specialist HR/Benefits administration role at a high-growth fintech, not a strategy-and-operations, business-operations, or transformation-focused position. While the candidate brings strong analytical, vendor-management, and cross-functional collaboration skills, the role's core accountability is deep benefits-domain expertise (UK/Ireland enrollment, compliance, Workday, vendor coordination, employee relations), which is a payroll and HR specialist function outside the candidate's target families. Domain gaps in pension schemes, statutory benefits administration, and Workday platform proficiency cannot be quickly bridged by general operations experience.",
+    "uncertainties": [
+      "No explicit information on whether the candidate has any exposure to HR systems, payroll integrations, or employee benefits structures in any context.",
+      "Checkout.com company size and stage (beyond 'high-growth fintech') not stated in JD; scale assumptions may affect seniority floor.",
+      "No indication of candidate's familiarity with UK employment law, statutory benefits, or pension governance."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

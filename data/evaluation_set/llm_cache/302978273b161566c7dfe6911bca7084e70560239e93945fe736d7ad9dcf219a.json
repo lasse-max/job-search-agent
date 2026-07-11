@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience translating requirements, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "Maintain and update the internal and external project roadmap, coordinating deliverables across engineering and commercial workstreams"
+      },
+      {
+        "candidate_evidence": "Proficient with SQL, BigQuery, advanced Excel and Sheets, Looker dashboard building; demonstrated data-query and analytical capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and manage a project steering dashboard that tracks KPIs across engineering milestones and contractual commitments"
+      },
+      {
+        "candidate_evidence": "Global commercial-operations experience at Google; proven ability to manage cross-functional alignment and transformation program delivery",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate stakeholder interactions across internal teams, partners and defence customers, ensuring decisions and actions are documented and followed through"
+      },
+      {
+        "candidate_evidence": "Transformation-program background with structured delivery discipline; experience managing senior stakeholder communication and escalation",
+        "evidence_strength": "medium",
+        "job_requirement": "Monitor project risks and issues, surfacing challenges early and preparing structured course-correction recommendations for programme leadership"
+      },
+      {
+        "candidate_evidence": "Native German, professional/fluent English; native-level capability to engage in bilingual technical and procurement contexts",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate with full fluency in both German and English, written and spoken, and navigate defence and procurement terminology"
+      },
+      {
+        "candidate_evidence": "Google-scale program delivery with transformation and commercial operations focus; no explicit PMP certification mentioned, but demonstrated structured delivery discipline",
+        "evidence_strength": "medium",
+        "job_requirement": "Apply structured project management methodologies in high-accountability, fast-moving environments"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No explicit PMP certification or equivalent project-management credential mentioned",
+        "mitigation": "Candidate's Google transformation-program and commercial-operations experience provides structured delivery foundation; PMP is listed as 'actively working towards' acceptable; most defence contractors offer on-hire PMP training or sponsor certification.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated defence, aerospace, automotive, or complex engineering programme background",
+        "mitigation": "Candidate's transformation and global operations scaling at Google demonstrates analogous cross-functional complexity and stakeholder management; defence-specific domain knowledge is learnable with mentorship and embedded customer exposure.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited stated familiarity with defence procurement structures or government contract workflows",
+        "mitigation": "JD labels this as 'Nice to Have'; candidate's commercial-operations background transfers to commercial\u2013government contractual discipline with ramp time.",
+        "severity": "low"
+      },
+      {
+        "gap": "No engineering or political science educational background explicitly stated",
+        "mitigation": "JD explicitly states 'ability and impact cannot be summarised in a few bullet points' and encourages applications from non-traditional backgrounds; candidate's technical product and operations knowledge compensates.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 4\u20136+ years coordinating complex defence/aerospace programme delivery with PMP or equivalent, direct exposure to senior stakeholders, and structured cross-functional execution. Company size and stage unknown. assumed mature enterprise defence contractor. These signals suggest L5 (Senior IC / Lead scope) to low L6 range. Confidence moderated because company stage, team size, and reporting line are not specified in JD.",
+    "role_family_fit": 72,
+    "scope_seniority": 76,
+    "summary": "Candidate brings eight years of Google-scale global commercial-operations and transformation-program delivery with demonstrated cross-functional coordination, stakeholder management, and data-driven KPI tracking. Role is L5-level programme-delivery lead requiring defence/aerospace context and PMP; candidate's strengths in roadmap coordination, dashboard building (SQL, BigQuery, Looker), and structured escalation management align well, but lack of explicit defence-industry experience and PMP credential create moderate gaps. No hard blockers; gaps are manageable through embedded ramp and mentorship.",
+    "uncertainties": [
+      "Helsing company stage and team size not stated; cannot confirm span of 'direct exposure to senior stakeholders' or org maturity",
+      "PMP certification status unknown; JD accepts 'actively working towards'",
+      "Candidate's transformation-program complexity scale and defence-analogue stakeholder depth not fully detailed in supplied profile",
+      "No explicit statement of willingness or ability to obtain national security clearance under German/EU law"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

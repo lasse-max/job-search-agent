@@ -1,0 +1,87 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "No demonstrated ML experimentation, model training, or empirical research background. Candidate's tooling skills (SQL, BigQuery, Looker) support data analysis but not experimental design or model evaluation.",
+        "evidence_strength": "weak",
+        "job_requirement": "Build and run elegant and thorough machine learning experiments"
+      },
+      {
+        "candidate_evidence": "Python at basic level, actively learning (data-analysis / pandas track). No evidence of production Python scripts, experimental codebases, or ML frameworks (PyTorch, TensorFlow).",
+        "evidence_strength": "weak",
+        "job_requirement": "Conduct all interviews in Python; write scripts and run experiments"
+      },
+      {
+        "candidate_evidence": "Eight years of Google strategy and operations with transformation program authorship and executive communication. No peer-reviewed research, academic publication, or AI safety research writing.",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute ideas, figures, and writing to research papers, blog posts, and talks"
+      },
+      {
+        "candidate_evidence": "No software engineering background. Designs and directs LLM coding agents (agentic tooling) and manages complex transformation and operational systems, but not hands-on research engineering or model development.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have significant software, ML, or research engineering experience"
+      },
+      {
+        "candidate_evidence": "Directed LLM agents for production systems and owns evaluation methodology and benchmarking. This is AI-systems tooling direction, not empirical research project contribution.",
+        "evidence_strength": "weak",
+        "job_requirement": "Some experience contributing to empirical AI research projects"
+      },
+      {
+        "candidate_evidence": "Has worked with LLMs through agentic-tooling direction. No demonstrated RL, Kubernetes, or complex shared-codebase experience.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong candidates may have experience with LLMs, reinforcement learning, and Kubernetes clusters"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 20,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No production ML engineering, empirical research, or model-training background. Role requires hands-on ML experimentation; candidate has strategic tooling direction only.",
+        "mitigation": "Candidate could shadow or intern on a single empirical project, but would require significant ramp on ML frameworks, experimental design, and safety-research methodology.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python at basic/learning level; JD conducts interviews in Python and requires scripting for experiments and evaluation. Candidate learns pandas-track data analysis, not ML engineering.",
+        "mitigation": "Intensive upskilling in PyTorch/TensorFlow, data loading, and experiment harnesses would take months. Fast-moving collaborative projects would struggle with proficiency gaps.",
+        "severity": "high"
+      },
+      {
+        "gap": "No research publication, peer review, or AI safety research authorship. Role emphasizes papers, blog posts, and alignment research contribution.",
+        "mitigation": "Candidate's transformation and executive communication skills could transfer to research communication, but no safety research domain knowledge.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No RL, Kubernetes, complex shared-codebase, or frontier-model evaluation experience. These are strong-candidate signals in the JD.",
+        "mitigation": "Candidate could develop familiarity if offered mentorship, but would remain in catch-up mode on specialized tooling.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited AI safety research familiarity. JD assumes knowledge of alignment failures, misalignment stress-testing, and safety-technique robustness testing.",
+        "mitigation": "Candidate would need to read foundational safety research and undertake significant domain learning before contributing independently.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Have significant software, ML, or research engineering experience\" and \"conduct all interviews in Python.\" Candidate has no software engineering, no ML engineering, and Python at basic/learning level only. JD explicitly requires interviews be conducted in Python, signaling that production-level Python fluency is a gating skill. Candidate's honest gap profile confirms \"No production software-engineering background\" and \"Python basic and actively learning.\"",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 65,
+    "level_rationale": "JD requires \"significant software, ML, or research engineering experience\" and authoring research papers as a strong. Salary band (\u00a3260\u2013370k) and emphasis on collaborative empirical research suggest senior IC (L5) rather than entry (L3\u2013L4). However, no explicit years minimum stated, and company stage/size context unclear, limiting confidence.",
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "Research Engineer role at Anthropic requires hands-on ML/AI safety research, empirical experimentation (Python interviews, multi-agent RL, LLM evaluation), and research-paper authorship. Candidate brings eight years of strategy and operations at Google\u2014advanced tooling (SQL, BigQuery, Looker), process design, stakeholder management, and agentic-LLM direction\u2014but lacks production ML engineering, research authorship, and empirical AI safety background. Role is outside Strategy and Operations / Product Ops family; deprioritized as deep technical research engineering without strategic or transformation scope.",
+    "uncertainties": [
+      "JD does not state explicit minimum years of experience; interpreted 'significant' as L5 senior IC, but could be L4 in context of rapid early-stage growth.",
+      "Candidate's agentic-LLM direction and evaluation methodology ownership is not production ML but could be undersold; unclear whether JD would view this as partial credit for 'ML experience.'",
+      "London location requires 25% on-site; visa sponsorship is available but uncertain whether candidate's visa status is already resolved.",
+      "JD encourages applications even without every qualification; however, Python-interview gating and empirical research core mission create structural misalignment, not just preference gap."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

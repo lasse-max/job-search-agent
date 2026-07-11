@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration. Advanced SQL, BigQuery, Python (learning), Looker dashboarding for data-driven insights.",
+        "evidence_strength": "strong",
+        "job_requirement": "Build tooling for AI-forward investigation of malicious users; develop infrastructure for detection of novel misuse"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices/Services with two promotions in Strategy and Operations; led global commercial operations and transformation programs; proficient in SQL, BigQuery, advanced Excel/Sheets for data analysis and decision-making.",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead full stack systems to prevent violations of OpenAI's usage policies; use data to guide product development"
+      },
+      {
+        "candidate_evidence": "Cross-functional transformation and scaling experience at global company; Salesforce admin experience partnering with engineering on feature requests; demonstrated stakeholder management across product, finance, operations, and engineering.",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate with product, safety, policy, user operations and engineering teams with world-class communication and execution skills"
+      },
+      {
+        "candidate_evidence": "Product operations ownership at scale with requirements definition, UAT, rollout, and transformation responsibility; owns agentic-tooling evaluation and benchmarking methodology.",
+        "evidence_strength": "medium",
+        "job_requirement": "Have proven experience working in a technical environment with cross-functional teams to drive product vision and define requirements"
+      },
+      {
+        "candidate_evidence": "No education history provided in candidate profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Obtain a bachelor's degree in Computer Science, Engineering, Information Systems, Analytics, Mathematics, Physics, Applied Sciences, or related field"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Native Product Manager experience: candidate's PM background is operations-focused (requirements, logic design, UAT, rollout, transformation) rather than traditional SDLC, feature roadmap, or user research-led PM",
+        "mitigation": "Integrity PM role prioritizes cross-functional execution, abuse investigation, and policy enforcement over native product feature development; operations and data-driven strategic thinking apply directly.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Formal education not confirmed: JD requires bachelor's in CS, Engineering, IS, Analytics, Math, Physics, or related field; no degree information provided",
+        "mitigation": "Candidate's eight years at Google and demonstrated technical fluency (SQL, BigQuery, Python learning, agentic-tooling design) may satisfy the spirit of technical background; HR/legal to confirm.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Production coding and software engineering depth: candidate explicitly notes basic Python (learning) and no production SWE background",
+        "mitigation": "Role emphasizes product strategy and systems architecture over hands-on engineering; candidate's ability to spec and direct LLM agents and write SQL/BigQuery queries mitigates pure engineering gap.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 10+ years of PM or related experience, technical environment cross-functional leadership, and reporting scope across product, safety, policy, ops, and engineering teams. OpenAI's scale and integrity scope imply L5 (senior IC) or L6 (manager-of-managers). no explicit management scope stated. 10+ years maps coarsely to L5\u2013L6 boundary. lacking explicit people-management language, estimated as L5 with strong scope signal.",
+    "role_family_fit": 68,
+    "scope_seniority": 76,
+    "summary": "Candidate brings 8 years of strategy, operations, and transformation leadership at Google with demonstrated data fluency (SQL, BigQuery, Looker), cross-functional stakeholder management, and agentic-tooling ownership. The role is a native PM position at OpenAI's integrity scope (abuse investigation, policy enforcement, cross-team systems), not a classic Operations fit. Candidate's product-ops background and technical-environment execution strength align with the job's strategic and data-driven demands, but native PM and SDLC depth is operations-inflected rather than core. Education confirmation and slight PM-practice gap are manageable; recommend as stretch for owner review.",
+    "uncertainties": [
+      "Candidate's formal education (bachelor's degree field) is not provided; JD lists specific technical fields as requirements.",
+      "Company size/stage context for OpenAI's Integrity team scope (report structure, number of stakeholders, product-line scale) not stated in JD.",
+      "Candidate's specific experience with abuse, safety policy, or integrity operations at Google Devices/Services not detailed; Commercial/Revenue Ops context differs from trust & safety domain.",
+      "Product management philosophy and roadmap ownership depth not explicitly covered in candidate profile; may differ from typical PM skill set."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

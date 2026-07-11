@@ -73,6 +73,15 @@ export function ProfileClient({ data, userEmail }: { data: ProfileData; userEmai
                   </div>
                 ))}
               </div>
+              <Subhead>Tools + skills</Subhead>
+              <div className="flex flex-col gap-2">
+                {Object.entries(config.toolsAndSkills).map(([tool, evidence]) => (
+                  <div className="rounded border border-white/10 bg-chart-card px-3 py-2" key={tool}>
+                    <span className="font-mono text-[10px] text-chart-teal">{tool}</span>
+                    <span className="ml-2 text-[11.5px] leading-5 text-chart-muted">{evidence}</span>
+                  </div>
+                ))}
+              </div>
               <Subhead>Monotonic fit bands</Subhead>
               <div className="grid grid-cols-3 gap-3">
                 <Threshold label="Apply now" value={config.thresholds.applyNow} tone="rust" />

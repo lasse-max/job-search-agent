@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Proficient in SQL\u2014writes joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Used SQL skills to extract and model data from a variety of data sources"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations with reporting and analytics foundations; builds Looker dashboards, works with BigQuery",
+        "evidence_strength": "medium",
+        "job_requirement": "Worked with large data sets in a data-driven environment"
+      },
+      {
+        "candidate_evidence": "Designed, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration\u2014operational rigor and process design demonstrated",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and maintain data-driven risk identification processes"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Python is basic and actively learning; JD requires programming language knowledge (Python, R, JavaScript) as essential",
+        "mitigation": "Candidate is actively learning Python on data-analysis/pandas track. Six-to-twelve month ramp to production-level Python would be needed; not immediately executable.",
+        "severity": "high"
+      },
+      {
+        "gap": "No credit-risk, payments, lending, or production data-science background; JD strongly prefers experience with PD, LGD, EAD models and credit risk principles",
+        "mitigation": "Domain knowledge is specialized and typically learned in-role or via structured fintech/risk team immersion. Candidate's operations and transformation background do not translate directly to credit-risk modeling or regulatory ECL measurement.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role family is technical data science and modeling; candidate is positioned as Strategy and Operations / Product Operations leader",
+        "mitigation": "Fundamental misalignment. This is not a strategic operations, transformation, or deployment role; it is a technical data-science and risk-modeling position requiring deep domain and statistical expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "No fraud, payments, lending, or risk portfolio experience mentioned in profile",
+        "mitigation": "Risk domain is deep and specialized. Candidate's Google commercial operations and transformation experience do not provide fraud detection, anomaly identification, or risk-scorecard background.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 60,
+    "level_rationale": "Title \"Manager\" with data-science and credit-risk modeling depth typically L5 IC or team-lead scope. SQL and Python proficiency required. credit risk and payments domain experience expected. Role does not clearly state management of people or reporting line. company size unknown, lowering confidence in final seniority estimate.",
+    "role_family_fit": 15,
+    "scope_seniority": 50,
+    "summary": "Role is Senior Risk Data Scientist (titled \"Manager, Fraud and Risk Strategist\") requiring strong SQL, Python, and credit-risk modeling expertise in payments/lending, with PD/LGD/EAD model development as core duty. Candidate has advanced SQL and BigQuery skills but Python is basic/learning and no credit-risk, payments, lending, or production data-science background. No hard blockers on education, but domain and technical depth gaps are substantial and directly disqualifying for a risk data science role. Title suggests possible team leadership, but JD emphasizes technical execution over people management. Misalignment on role family (technical data science vs. strategy/operations) and honest gaps on production Python and domain expertise make this a poor fit.",
+    "uncertainties": [
+      "Company size and stage unknown; 'Manager' title could indicate team leadership or senior IC depending on org structure",
+      "JD mentions 'credit risk principles' as preferred, not required; ambiguity on whether this is truly a must-have or a strong signal",
+      "Whether LGM coding-agent and evaluation-methodology work might partially substitute for credit-risk domain expertise if the role values novel risk detection methods",
+      "Role title is 'Manager, Fraud and Risk Strategist,' but JD emphasizes technical data-science execution (models, reporting, anomaly detection) over strategic/operational scope"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

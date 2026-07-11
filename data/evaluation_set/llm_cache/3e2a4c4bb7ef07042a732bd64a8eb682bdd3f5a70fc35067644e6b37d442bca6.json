@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "AI and agentic tooling: designs, specs and directs LLM coding agents; owns evaluation methodology, benchmarking and calibration. No hands-on EM simulation tool experience (CST, FEKO, HFSS) or antenna/RF engineering background.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead advanced electromagnetic modeling to optimize antenna placement and mitigate interference using tools such as CST, FEKO, HFSS"
+      },
+      {
+        "candidate_evidence": "Eight years in commercial operations, product operations, and transformation at Google. No aerospace, defense, EMI/EMC, grounding, bonding, shielding, or composite-structure experience documented.",
+        "evidence_strength": "weak",
+        "job_requirement": "Define and maintain the EMC Control Plan: grounding, bonding, shielding, filtering, and cable segregation philosophies for complex platforms including composite structures"
+      },
+      {
+        "candidate_evidence": "Demonstrated requirement translation and specification in product operations and commercial transformation. However, EMI/EMC and electromagnetic domain knowledge is not present; the candidate's requirement work is in operations and product, not electrical engineering or defense systems.",
+        "evidence_strength": "weak",
+        "job_requirement": "Translate platform-level electromagnetic environment requirements into measurable subsystem-level EMI/EMC requirements and KPIs"
+      },
+      {
+        "candidate_evidence": "Eight years at Google leading cross-functional teams, managing supplier relationships, and driving technical governance in commercial operations and product operations. Transferable leadership and cross-functional coordination skills, though not in aerospace/defense context.",
+        "evidence_strength": "medium",
+        "job_requirement": "Are comfortable leading cross-functional and supplier governance: reviewing EMC control plans, qualification evidence, ICDs, and driving issue closure"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 18,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No aerospace, defense, or airborne-platform systems engineering background. Role requires end-to-end EMI/EMC ownership for airborne platforms and military certification.",
+        "mitigation": "Would require fundamental domain transition from commercial operations to aerospace defense; aerospace EMI/EMC engineering typically requires years of platform-level experience. Not realistic in a 6\u201312 month ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "No electromagnetic engineering, RF, antenna, or EE degree. Role explicitly requires relevant degree in Electrical Engineering, Aerospace Engineering, or related field and strong understanding of electromagnetic theory: transmission lines, antennas, wave propagation, shielding, grounding, coupling mechanisms.",
+        "mitigation": "Candidate is a strategic/operations leader, not an electrical engineer. Pursuing production electromagnetic modeling (CST, FEKO, HFSS, antenna coupling analysis) without formal EE/AE training and domain depth is not credible.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on experience with EM simulation tools (CST, FEKO, HFSS) or antenna placement, shielding effectiveness, HIRF, lightning indirect effects analysis.",
+        "mitigation": "These are core daily responsibilities. Candidate's Python is basic and learning-stage; production EM simulation tool expertise is a specialized skill requiring years of aerospace/defense platform experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "No military airworthiness, MIL-STD-461, MIL-STD-464, DO-160, STANAG, or NATO certification framework experience. Role requires \"familiar with applicable standards and relevant NATO/STANAG or national military airworthiness frameworks.\"",
+        "mitigation": "Aerospace/defense certification is a domain requirement; Google consumer/commercial operations does not provide this exposure.",
+        "severity": "high"
+      },
+      {
+        "gap": "No EMI/EMC test campaign execution, chamber testing, flight-test EMC verification, or instrumentation/data analysis for aerospace platforms.",
+        "mitigation": "Test campaign ownership is listed as a core day-to-day responsibility. Candidate's experience is in commercial product operations and transformation, not hardware/platform verification.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires end-to-end EMI/EMC ownership for airborne defense platforms, translating complex aerospace/military requirements into subsystem specifications, and leading EM modeling and certification. JD lists degree requirement and hands-on EM simulation tool expertise as core duties. This is a senior-IC or principal systems-engineer role (L5) requiring 7\u201312+ years of aerospace/defense platform systems experience, not operations or product leadership. Estimated level is L5 (senior specialist role).",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "Systems Engineer \u2013 EMI at Helsing is a deep aerospace/defense electrical engineering role requiring end-to-end EMI/EMC ownership, EM simulation tool mastery (CST, FEKO, HFSS), military certification and standards knowledge (MIL-STD-461, DO-160, STANAG), and 7\u201312+ years of airborne-platform systems experience. Candidate is a Google Strategy and Operations leader with eight years of commercial product operations, transformation, and cross-functional governance\u2014transferable leadership skills, but no electrical engineering degree, no aerospace/defense domain exposure, no EM simulation tool experience, and no military airworthiness certification framework knowledge. The role is not a strategy, operations, or transformation function; it is a specialized technical systems-engineering discipline. This is a fundamentally mismatched fit.",
+    "uncertainties": [
+      "Helsing company stage, team size, and maturity not stated in JD; cannot assess whether 'Systems Engineer' might carry cross-functional strategy scope at an early-stage startup.",
+      "Degree and domain requirements are explicitly stated, but JD note ('encourage you to apply even if you don't meet all qualifications') creates ambiguity about flexibility on EE/AE background.",
+      "Candidate's AI agentic-tooling leadership and EM modeling direction could theoretically apply to algorithm/ML aspects of EM simulation, but JD focus is hands-on EM tool execution and aerospace platform systems, not AI-driven simulation."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

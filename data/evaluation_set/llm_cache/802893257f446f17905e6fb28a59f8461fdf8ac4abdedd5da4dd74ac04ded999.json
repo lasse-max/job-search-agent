@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Proficient in SQL with joins, GROUP BY, subqueries/CTEs, window functions; writes BigQuery queries to pull and shape own data; advanced Excel and Sheets; Looker dashboard building.",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to work practically with data (e.g. building PoCs, exploring datasets, troubleshooting)"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google; designs and directs LLM coding agents to build production systems with evaluation methodology and benchmarking; owns requirements, logic design, UAT, and transformation rollout.",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate business requirements into practical, scalable data and AI solutions"
+      },
+      {
+        "candidate_evidence": "Designs and directs LLM agents; actively learning Python (pandas/data-analysis track); has hands-on experience iterating on solutions; commercial operations background includes troubleshooting and process redesign.",
+        "evidence_strength": "medium",
+        "job_requirement": "Comfortable reasoning through code, explaining how it works, and adapting it when things don't behave as expected"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services commercial operations leader; transformation and scaling experience; does not explicitly show presales consulting, customer-facing technical advisory, or sales-cycle partnership; operations and internal stakeholder management shown instead.",
+        "evidence_strength": "weak",
+        "job_requirement": "Customer-facing mindset; experience in presales, consulting, or advisory capacity"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no stated background in distributed data processing, compute systems, or hands-on large-scale dataset engineering; internal operations and transformation focus.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with Python (or similar) and familiarity with distributed data processing and compute and working with large-scale datasets"
+      },
+      {
+        "candidate_evidence": "No stated experience with data pipeline design, modern data architectures, analytics workflows, data science, or ML workflows; Commercial Operations background does not overlap these domains.",
+        "evidence_strength": "weak",
+        "job_requirement": "Understanding of data pipelines and modern data architectures; Familiarity with analytics, data science, or machine learning workflows"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No stated presales, technical sales, or customer advisory consulting background; candidate is internal Commercial Operations leader, not external customer-facing presales strategist.",
+        "mitigation": "Transferable stakeholder management, solution design, and transformation experience; would require significant ramp on customer discovery and presales cycle dynamics.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on distributed data processing, data pipeline architecture, or large-scale data systems experience; Python only basic and actively learning.",
+        "mitigation": "Strong foundational SQL and BigQuery querying; can learn distributed systems architecture with domain mentoring, but presales PoC execution would be initially constrained.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated analytics, data science, or machine learning workflow experience; Commercial Operations domain does not map to data or AI platform use cases.",
+        "mitigation": "LLM agent design and direction shows AI systems thinking; would require upskilling in classical analytics, feature pipelines, and model-training workflows.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated Databricks, Spark, or data-lakehouse platform experience; cloud data-platform architecture understanding not explicitly demonstrated.",
+        "mitigation": "Strong technical learning track record at Google; architecture thinking from transformation programs; platform-specific knowledge can be acquired through training.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Posted role is a presales Solutions Architect requiring customer-facing technical execution, Python fluency, and data-systems architecture depth. No explicit years requirement stated. Presales roles typically sit at L4\u2013L5 depending on customer complexity and independence. this JD emphasizes hands-on PoC building and code reasoning, suggesting mid-level technical IC (L4) in a sales-embedded context. Company size not stated. lower confidence accordingly.",
+    "role_family_fit": 25,
+    "scope_seniority": 50,
+    "summary": "Candidate is a Google Strategy and Operations / Commercial Operations leader with strong SQL, BigQuery, and analytics tooling skills, but lacks presales consulting, customer technical advisory, and hands-on data-pipeline or AI-workflow experience. The role requires deep Python fluency (candidate is basic/learning), distributed-data systems expertise, and data/ML architecture understanding\u2014none of which are demonstrated in her Google commercial operations background. While transformation and stakeholder-management skills are transferable, the core technical and customer-facing presales competencies are significantly misaligned.",
+    "uncertainties": [
+      "No company size or stage stated; unable to calibrate level confidence fully.",
+      "Unclear whether presales technical advisory experience exists outside the explicit Commercial Operations narrative; recommend clarifying customer-facing technical sales involvement.",
+      "Python learning pace and current production-code execution capability unknown; stated as 'basic' and 'actively learning,' which is typically insufficient for hands-on PoC and production-reasoning demands.",
+      "No visibility into AI systems thinking beyond LLM agent design; classical ML/analytics workflow depth unknown."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

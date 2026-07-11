@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google with two promotions, including end-to-end business process redesign and cross-functional delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Own the internal and external project roadmap across the full physical product lifecycle, from design and manufacturing through to customer delivery, driving prioritisation of deliverables"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; builds Looker dashboards; proficient SQL for data shaping; experience translating metrics into senior leadership briefings",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and maintain a programme steering dashboard that tracks KPIs spanning supply chain performance, engineering milestones and contractual commitments"
+      },
+      {
+        "candidate_evidence": "Led cross-functional teams at scale; managed partnerships and external supplier relationships; experience translating complex technical and commercial interdependencies into structured delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Govern stakeholder interactions across internal engineering teams, supply chain partners, overseas manufacturers and military customers, ensuring decision-making is structured, traceable and aligned with contractual and strategic commitments"
+      },
+      {
+        "candidate_evidence": "No direct evidence of headcount planning, recruitment, or program management function leadership",
+        "evidence_strength": "weak",
+        "job_requirement": "Coordinate headcount planning and recruitment needs in close partnership with Programme Management, establishing governance standards"
+      },
+      {
+        "candidate_evidence": "No defence or military industry experience; no physical product program delivery at scale",
+        "evidence_strength": "weak",
+        "job_requirement": "Have delivered large-scale physical product programmes as a project or delivery lead within military or defence contexts"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; native German speaker; clearance status unknown",
+        "evidence_strength": "medium",
+        "job_requirement": "Meet all requirements for national security clearance, fluent in English and German"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No defence, military, or government contract industry experience; candidate background is entirely commercial technology",
+        "mitigation": "Would require substantial onboarding to defence procurement structures, military customer operating models, and national security contracting norms; unlikely to be accelerated",
+        "severity": "high"
+      },
+      {
+        "gap": "No large-scale physical product programme delivery experience; candidate's background is software, services, and digital transformation",
+        "mitigation": "Supply-chain coordination, manufacturing governance, and land-domain fielding are distinct from commercial operations; fundamentals may not transfer",
+        "severity": "high"
+      },
+      {
+        "gap": "No PMP certification or demonstrated structured programme management methodologies (risk registers, roadmap governance, KPI frameworks) at scale",
+        "mitigation": "Candidate has project-delivery experience but not certified or formally governed programme management; JD requires this as a must-have",
+        "severity": "high"
+      },
+      {
+        "gap": "No headcount planning, recruitment, or programme management function leadership experience",
+        "mitigation": "This is a secondary responsibility but indicates candidate has not built or scaled delivery teams",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit experience translating complex technical and commercial interdependencies in a regulated, contractual, multi-national manufacturing context",
+        "mitigation": "Candidate's experience is Google-internal or commercial SaaS; defence contracts have different risk, regulatory, and compliance frameworks",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Senior Project Manager role requiring 6+ years of large-scale programme delivery in defence/military contexts with PMP certification or equivalent. Reports to company leadership. governs multi-stakeholder, high-stakes physical product delivery with budget, schedule, and contractual accountability. Estimated L5 based on 6-9 year experience anchor, cross-functional ownership scope, and senior stakeholder engagement. defence specificity and manufacturing-through-field expertise are material seniority signals within the domain.",
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "Candidate is a Strategy and Operations leader with strong cross-functional delivery and stakeholder governance experience at Google, but the role requires specific defence-industry and large-scale physical product programme delivery expertise that candidate does not have. Dashboard and metrics translation skills align, but absence of PMP certification, military/defence context, manufacturing domain, and programme management function leadership creates material gaps. Language and clearance readiness are secondary considerations against core disqualifications.",
+    "uncertainties": [
+      "Candidate's security clearance eligibility not stated; German nationality may facilitate EU/NATO clearance but is not guaranteed",
+      "Scope of 'transformation programs' at Google unclear; may not translate to multi-vendor physical product manufacturing and fielding",
+      "No explicit evidence of budget ownership or contractual accountability in defence contracts or complex supply-chain programs",
+      "Helsing stage/size and reporting structure not specified; assumed L5-equivalent based on 'senior internal stakeholders' and defence contracting context"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

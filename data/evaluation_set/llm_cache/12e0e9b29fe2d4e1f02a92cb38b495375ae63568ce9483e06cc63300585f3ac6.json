@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; designed territory strategy and partnered with field teams on revenue recovery and commercial execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop customer engagement strategies in partnership with Account Executive(s) in your designated territory"
+      },
+      {
+        "candidate_evidence": "Designed and directed LLM coding agents to build production systems; owns evaluation methodology and benchmarking; proficient in SQL, BigQuery, and advanced Excel/Sheets",
+        "evidence_strength": "medium",
+        "job_requirement": "Provide technical solutions for specialized customer needs and navigate a competitive landscape"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google over eight years; experience scaling transformation programs and mentoring field teams on commercial execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Coach junior Solutions Architects and teams on use case prioritization"
+      },
+      {
+        "candidate_evidence": "Global commercial operations background; partnered with Salesforce engineering on feature requests and managed cross-functional cloud transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Influence stakeholders at all levels through complex engagements with wider cloud ecosystem and 3rd party applications"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and technical community engagement at Google; capable of communicating complex data strategies to diverse audiences",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop customer-facing collateral and lead workshops, seminars, and meet-ups"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 48,
+    "gaps": [
+      {
+        "gap": "No production software engineering or coding background; only basic Python and learning analytics track. Role requires 'prior experience with coding in a core programming language (Python, Java, Scala) and willingness to learn a base level of Spark'",
+        "mitigation": "Candidate is actively learning Python for data analysis and has designed LLM coding agents; could ramp to Spark fundamentals with structured self-study and mentoring, but starting from foundational coding knowledge",
+        "severity": "high"
+      },
+      {
+        "gap": "No native Solutions Architecture, pre-sales, or proof-of-concept execution background. Role is customer-facing technical advisory in data/analytics domain; candidate's background is commercial operations, not solutions engineering",
+        "mitigation": "Transfer of commercial operations strategy, stakeholder influence, and transformation execution to solutions architecture requires domain retraining in data platform architecture, analytics design patterns, and POC delivery",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on experience with public cloud platforms (AWS, GCP, Azure) at the depth required for complex data platform engagement. Role emphasizes 'hands-on expertise with complex proofs-of-concept and public cloud platform(s)'",
+        "mitigation": "Candidate has Google cloud context but not deep multi-cloud hands-on PoC experience; would require ramp-up on Databricks platform specifics and cloud architecture patterns",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct experience advising on data intelligence, analytics architecture, or lakehouse design. Role requires operating as 'expert solution architect and trusted advisor for significant data analytics architecture, design, and adoption of the Databricks Data Intelligence Platform'",
+        "mitigation": "Cannot be closed quickly; requires sustained domain immersion in data architecture, Apache Spark, Delta Lake, and analytics modernization patterns",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 'prior experience with coding in a core programming language' and 'hands-on expertise with complex proofs-of-concept and public cloud platform(s).' It is a senior individual contributor (Solutions Architect) with coaching and influence scope over junior architects and decision-makers, reporting implicitly to a territory/account leadership structure. The JD emphasizes technical depth and customer advisory at scale (40%+ Fortune 500 customer base).",
+    "role_family_fit": 18,
+    "scope_seniority": 58,
+    "summary": "Sr. Solutions Architect is a customer-facing, pre-sales technical advisory role at L5 requiring deep hands-on coding experience (Python/Java/Scala), Apache Spark fundamentals, cloud PoC delivery, and data analytics architecture expertise. Candidate brings eight years of commercial operations, global transformation program leadership, and stakeholder influence, but lacks native solutions architecture background, production coding experience, and data platform domain knowledge. The role family does not fit target families (Strategy, BizOps, Product Ops, GTM Strategy); it is a pure technical pre-sales function requiring sustained software-engineering and analytics-architecture expertise. High-severity domain and technical gaps make this a poor fit despite strong operational and leadership foundation.",
+    "uncertainties": [
+      "No explicit career trajectory or interview signals available; unclear whether candidate has considered domain retraining in data architecture or solutions engineering as a career pivot",
+      "Candidate's 'designs, specs and directs LLM coding agents' evidence is unclear in scope and production maturity; unclear whether this qualifies as hands-on technical depth or orchestration of engineering",
+      "JD does not specify reporting line, team size, or whether this is individual-contributor-only or has people-management optionality; signals L5 but could have L6 context in practice",
+      "Company size and funding stage stated as 'unknown_unless_stated_in_jd'; only JD context is 10,000+ customer organizations globally, which suggests maturity but not internal team structure"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

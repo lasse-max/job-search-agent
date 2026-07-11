@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries, window functions, BigQuery); Python basic and actively learning; no stated experience with R or data modeling",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong skills in SQL and Python/R; experience with data modeling"
+      },
+      {
+        "candidate_evidence": "Eight years building measurement frameworks, defining product KPIs, and translating data into strategic decisions across Commercial Operations and global transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Build scalable measurement frameworks and strategic north star metrics to enable data-driven decision-making"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to influence cross-functional stakeholders and drive product roadmaps through data-driven insights; executive communication across business, product, and engineering teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate data insights and recommendations to technical and non-technical audiences, ensuring findings influence stakeholders"
+      },
+      {
+        "candidate_evidence": "Experience translating ambiguous Commercial Operations and transformation challenges into structured analytical initiatives and business cases",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate open-ended business problems into clearly defined data science initiatives"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 52,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "No advanced or production Python/R background; listed as basic and actively learning, while role requires strong Python/R for data science experimentation and modeling",
+        "mitigation": "On-the-job ramp in advanced Python/pandas and statistical modeling; mentorship from data science team; training in causal-inference frameworks if role prioritizes tooling over problem-solving",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with experimentation design, A/B testing, or causal inference\u2014core to the role's mission of 'rigorous frontend experiments' and 'data-informed product decisions'",
+        "mitigation": "Candidate has driven product decisions through data; experimentation methodology and causal inference are learnable skills if fundamentals in hypothesis testing and business acumen are strong",
+        "severity": "high"
+      },
+      {
+        "gap": "No data modeling or data warehouse schema design background",
+        "mitigation": "Data modeling is a constructive skill; technical depth in SQL and Looker/Tableau dashboarding suggest analytical foundation",
+        "severity": "medium"
+      },
+      {
+        "gap": "Payments domain and fintech product-specific expertise not stated",
+        "mitigation": "Candidate has driven strategic initiatives in high-growth, regulated, global environments; payments mechanics and fintech domain are context-learnable",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 7+ years in quantitative field and a degree (MS/PhD bonus), with mentorship and single-threaded technical ownership of cross-functional initiatives. This maps to L5 (senior IC) at a high-growth fintech company. No company stage/size is stated, lowering confidence slightly. title and scope suggest established scale, not seed or early-stage.",
+    "role_family_fit": 28,
+    "scope_seniority": 65,
+    "summary": "This is a Staff/Senior Data Scientist role in payments analytics\u2014a deeply technical data-science function requiring advanced Python/R, experimentation design, and causal inference. Candidate brings strong strategic measurement and stakeholder influence from Commercial Operations, but lacks the production Python, statistical modeling, and A/B testing background core to this role's mission. The role sits above the L4-L5 target band in technical depth and is outside Strategy-and-Operations family; recommend skip unless candidate has undisclosed statistical or ML coursework that de-risks the language and experimentation gaps.",
+    "uncertainties": [
+      "No quantitative degree stated in candidate profile (required or bonus); unclear if candidate holds a CS, Statistics, Engineering, or Economics degree",
+      "No A/B testing, experimentation framework, or causal inference experience mentioned; role emphasizes 'rigorous frontend experiments' and experimentation-driven product decisions",
+      "Company stage/size not stated in Role JSON; Airwallex is known to be scaled, but JD context does not clarify org structure or mentor-IC vs. individual-contributor expectations",
+      "Candidate's data-science positioning may come from analytics, business intelligence, or operational measurement rather than statistical inference\u2014alignment unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

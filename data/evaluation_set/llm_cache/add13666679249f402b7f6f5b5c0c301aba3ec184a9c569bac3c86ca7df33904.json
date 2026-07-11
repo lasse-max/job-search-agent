@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in strategy and operations leadership; built and scaled global commercial operations teams and transformation programs with cross-functional stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead and grow a team of FDE delivering production systems with frontier models"
+      },
+      {
+        "candidate_evidence": "Demonstrated ownership of complex transformation programs at scale with cross-functional coordination, process design, and execution excellence; directs LLM coding agents to build production systems and owns evaluation methodology and calibration",
+        "evidence_strength": "medium",
+        "job_requirement": "Own end-to-end delivery outcomes through clarity, speed, tight coordination, and technical quality"
+      },
+      {
+        "candidate_evidence": "Direct experience translating commercial operations into scalable systems, processes, and playbooks; designs and directs LLM tooling solutions that inform strategy and execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Codify what works into tools, playbooks, and roadmap inputs that create leverage"
+      },
+      {
+        "candidate_evidence": "Eight-year track record of translating operational insights and customer/partner feedback into product strategy and roadmap influence at Google; manages cross-functional partnerships with product and research",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate field experience into sharp, actionable feedback for Product and Research"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning (data-analysis/pandas); proficient in SQL, BigQuery querying, and owns AI agentic tooling that directs production system builds; no stated Javascript or backend development experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Write and review production-grade code across frontend and backend using Javascript or Python"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in strategy and operations leadership with two promotions; no stated native FDE or customer-facing engineer management background; product experience from ownership and transformation rather than engineering PM",
+        "evidence_strength": "medium",
+        "job_requirement": "8+ years of engineering or technical delivery experience, including 2+ years managing high-performing FDE or customer-facing engineers"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L6",
+    "evidence_strength": 65,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "No native FDE or field-engineering team management experience; background is strategy, operations, and transformation rather than direct engineering-team leadership",
+        "mitigation": "Eight years of cross-functional leadership, team scaling, and high-pressure delivery at Google; FDE management skillset (clarity under pressure, technical judgment, field signal translation) is transferable from large-scale operations; hiring and feedback scaffolding are learnable with mentorship",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited production code-writing depth; Python is basic-level actively learning, no Javascript stated, and no native backend/frontend development experience",
+        "mitigation": "Role emphasizes business and deployment value, team leadership, and field signal over hands-on coding; candidate's AI agentic tooling direction and technical architecture exposure mitigate the gap partially, but code review rigor and technical depth will require ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit consulting brand or classic customer-facing technical delivery background; experience is internal operations and transformation",
+        "mitigation": "Cross-functional stakeholder management, ambiguity navigation, and delivery excellence are demonstrated at scale; customer-engagement mechanics are learnable; domain expertise in frontier AI is absent but learnable",
+        "severity": "medium"
+      },
+      {
+        "gap": "Visa status and relocation feasibility to London not stated",
+        "mitigation": "OpenAI offers relocation assistance; candidate language profile includes native German and professional English; no disqualifying visa constraint evident from profile",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 85,
+    "level_rationale": "Role specifies 8+ years technical-delivery experience with 2+ years managing high-performing FDE, team growth ownership, end-to-end delivery accountability, and influence on product/research roadmap. Reporting relationship and company scale (OpenAI, frontier AI context) signal senior leadership scope. This is a manager-of-managers (or equivalent team-scaling) role with customer-facing stakes and cross-functional influence, positioning it at L6 equivalent.",
+    "role_family_fit": 70,
+    "scope_seniority": 75,
+    "summary": "Candidate brings eight years of Google strategy-and-operations leadership with proven team scaling, cross-functional delivery, and transformation execution under pressure. Role family fit is moderate-to-strong as an approved-stretch (implementation-heavy AI transformation with business problem-solving and stakeholder management focus); however, the role is L6 and requires native FDE or field-engineering team management, which is not in the candidate's profile. Core gaps are engineering-team leadership experience and production code depth (Python basic-level, no Javascript); these are significant but partially mitigatable through transferable delivery leadership and AI tooling background. Confidence in alignment is moderate; recommend stretch for owner consideration given demonstrated execution excellence and learnable domain context.",
+    "uncertainties": [
+      "Candidate's FDE or customer-facing field engineering leadership experience not explicitly stated; risk of underestimating relevant prior exposure",
+      "Depth and scope of AI agentic tooling direction not fully detailed; impact on technical code-review readiness unclear",
+      "Visa eligibility and willingness to relocate to London not stated; relocation assistance may mitigate but should be confirmed",
+      "OpenAI stage, team size, and onboarding/mentorship model not specified in JD; affects ramp risk for first-time FDE leader"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

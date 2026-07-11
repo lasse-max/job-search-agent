@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; demonstrated ownership of global commercial operations and transformation programs; experience translating business requirements into strategy and execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Define and own Airwallex's financial market's product strategy, solution design, roadmap, and delivery plans"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google suggest progression into people leadership; scaling global commercial operations implies team ownership and mentorship responsibilities",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead, mentor and develop a team of high performing product managers"
+      },
+      {
+        "candidate_evidence": "Product Operations experience includes requirements logic design, UAT, rollout, and transformation; directs LLM coding agents and owns evaluation methodology and benchmarking; advanced SQL, BigQuery, and data-shaping skills enable cross-functional clarity",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner closely with engineering and design teams to build high-quality, scalable features and user experiences; drive clarity on requirements, trade-offs and timelines"
+      },
+      {
+        "candidate_evidence": "Eight years in Commercial Operations at a large, regulated enterprise; experience managing territory budgets, Salesforce administration, and cross-functional commercial execution; understands pricing and revenue leakage control",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate closely with commercial, marketing, legal and finance teams to navigate regulatory and operational complexity"
+      },
+      {
+        "candidate_evidence": "Demonstrated ownership-level product work including requirements gathering, UAT, and rollout; transformation program experience implies deep stakeholder and market understanding",
+        "evidence_strength": "medium",
+        "job_requirement": "Deeply understand user needs, target markets, and the competitive landscape; leverage customer and partner feedback to inform strategy and prioritization"
+      },
+      {
+        "candidate_evidence": "Builds Looker dashboards and owns advanced analytics in BigQuery and SQL; proven track record scaling operations and monitoring performance; uses AI to work smarter and solve problems faster",
+        "evidence_strength": "strong",
+        "job_requirement": "Monitor product performance, drive continuous operational improvement, and remain ahead of industry trends in finance, payments, and technology"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 74,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No stated e-trading, eFX, or trading-technology domain knowledge",
+        "mitigation": "Financial markets and FX strategy can be learned through intensive domain onboarding; candidate's eight years in regulated commercial operations and demonstrated ability to translate complex requirements into product roadmaps provide a foundation. Fast-iteration and data-driven decision-making are transferable.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited explicit native Product Management or SDLC depth compared to engineering-background expectations",
+        "mitigation": "Candidate's product operations ownership\u2014including requirements logic design, UAT, and transformation\u2014demonstrates PM-adjacent rigor. Mentorship of high-performing PMs will require close partnership with experienced engineering and product leads during onboarding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No directly stated experience managing or mentoring product managers",
+        "mitigation": "Two promotions and scaling of global operations imply people-leadership capability; explicit PM team mentorship can be developed through pairing with strong Engineering and PM leadership during first quarter.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or strategy-consulting brand experience",
+        "mitigation": "Eight years of ownership-level strategy execution and transformation delivery at a scaled enterprise provide strong first-principles thinking and cross-functional problem-solving foundation. Consulting pedigree is nice-to-have, not core to the role's success.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Posted role requires 8+ years in Product Management, Engineering, or related field. reports to senior product leadership (implicit from director title and 2,200-person, $8B company). owns full P&L strategy and mentors a PM team (manager-of-managers scope). 8+ years + team leadership + strategic P&L ownership aligns with L6 in Google-equivalent scale.",
+    "role_family_fit": 78,
+    "scope_seniority": 76,
+    "summary": "Product Director role at Airwallex demands 8+ years of PM/technical leadership with team mentorship and full financial-markets strategy ownership\u2014moderately above the candidate's typical L4\u2013L5 band. Candidate brings eight years at Google with two promotions, demonstrated ownership of global commercial operations and transformation programs, strong cross-functional partnership (engineering, commercial, finance), advanced analytics and data-driven decision-making, and proven ability to translate complex requirements into roadmaps. Critical gap: no stated e-trading, eFX, or trading-technology domain knowledge; this is learnable but requires intensive onboarding. Secondary gap: PM team mentorship is implied by promotions but not explicitly evidenced; will benefit from close PM/engineering partnership. Role-family fit is strong (Strategy and Operations, Product Operations); seniority is a stretch, not a disqualifier. Recommend stretch assessment pending domain interest and hiring manager calibration on PM mentorship ramp.",
+    "uncertainties": [
+      "Company stage and hiring context not stated in JD; assumes $8B series-stage fintech typical of that valuation",
+      "Degree requirement stated as 'Bachelor's degree or higher in a related field'; candidate's education background not provided in profile",
+      "Explicit evidence of PM team mentorship not supplied; inferred from promotions and scaling scope",
+      "e-trading and eFX domain expertise gap severity depends on hiring team's tolerance for domain ramp time"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

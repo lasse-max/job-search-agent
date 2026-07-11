@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, including scaling global commercial operations and leading cross-functional transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Leitung und Motivation eines Teams von Montagearbeitern"
+      },
+      {
+        "candidate_evidence": "Extensive stakeholder management and cross-functional coordination experience in global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Aufrechterhaltung einer aktiven Kommunikation mit anderen Abteilungen wie Logistik und Qualit\u00e4tsmanagement zur Optimierung der Produktionsprozesse"
+      },
+      {
+        "candidate_evidence": "Native German speaker",
+        "evidence_strength": "strong",
+        "job_requirement": "Gute Deutschkenntnisse in Wort und Schrift"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No hands-on manufacturing, assembly line, or production-floor operations experience",
+        "mitigation": "Candidate's commercial operations and transformation background do not address factory floor dynamics, shift work, equipment troubleshooting, or frontline production supervision",
+        "severity": "high"
+      },
+      {
+        "gap": "No technical apprenticeship or vocational training in manufacturing or assembly",
+        "mitigation": "JD requires 'erfolgreich abgeschlossene technische Ausbildung und/ oder Weiterbildung' (completed technical vocational or continuing education) in manufacturing context; candidate's background is commercial operations and strategy",
+        "severity": "high"
+      },
+      {
+        "gap": "No prior shift-supervisor, floor-lead, or assembly-team leadership role",
+        "mitigation": "Role requires 'Erste F\u00fchrungserfahrung in einer \u00e4hnliche Rolle' (prior experience in similar role); candidate has manager/lead scope but not in manufacturing or shift operations",
+        "severity": "high"
+      },
+      {
+        "gap": "Domain expertise in quality standards, safety compliance, and production efficiency metrics specific to assembly manufacturing",
+        "mitigation": "While candidate understands process compliance and metrics reporting, defense-manufacturing quality, safety, and assembly-specific KPIs are outside stated experience",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD describes a shift supervisor supporting a production manager with direct assembly-team leadership, quality monitoring, and compliance duties. No years required stated, but title, peer reporting to production manager, and frontline hands-on scope align with L3 (junior team lead or supervisor entry-level role). Company size/stage not stated. unclear if this is startup exception context.",
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is a German-language assembly-floor shift supervisor role at Helsing (defense AI). While the candidate has eight years of Google strategy-and-operations leadership and native German fluency, the role requires hands-on manufacturing/assembly experience, vocational technical training, and prior shift-supervisor leadership\u2014none of which the candidate demonstrates. The functional domain (factory production, quality standards, shift management) is a fundamental mismatch with commercial operations and product-strategy background. Not aligned with target Strategy and Operations families.",
+    "uncertainties": [
+      "Helsing company size and stage not stated in JD; cannot confirm whether this is a startup or established org, affecting L3 confidence",
+      "Candidate's production/manufacturing domain knowledge gap extent unclear\u2014may have learned adjacent process compliance or supply-chain dynamics at Google Devices that could partially transfer",
+      "Defense-sector manufacturing compliance, security, and quality rigor unknown relative to candidate's prior certifications or clearances"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

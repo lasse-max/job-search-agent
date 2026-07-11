@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in commercial operations and transformation programs; experience scaling global operations and managing stakeholder relationships",
+        "evidence_strength": "medium",
+        "job_requirement": "Enterprise Customer Success role supporting large accounts and driving expansion"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background with partner and stakeholder management; territory budget administration via Salesforce",
+        "evidence_strength": "medium",
+        "job_requirement": "Account management and customer success execution"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL, BigQuery queries, advanced Excel/Sheets, Looker dashboard building; owns data analysis and reporting",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven decision making and reporting"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 52,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Pure Customer Success or Account Management role with no stated strategic, transformation, or product strategy scope",
+        "mitigation": "Candidate has deep commercial operations and transformation experience that could translate to strategic account management, but JD does not articulate strategic or transformation ownership; without that clarity, this is a deprioritized function per targeting guidelines",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct Customer Success or enterprise account management track record",
+        "mitigation": "Commercial operations, stakeholder management, and territory administration provide adjacent operational skills, but candidate lacks native CS/AM experience and success metrics in that domain",
+        "severity": "medium"
+      },
+      {
+        "gap": "Company stage and role scope unclear from JD snapshot",
+        "mitigation": "JD text is largely HTML boilerplate and does not articulate clear scope, reporting line, or strategic ownership; lower confidence in role-level estimate and fit assessment",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 60,
+    "level_rationale": "Enterprise Customer Success typically requires 3\u20135 years of CS/AM seniority and clear account ownership. posted role lacks explicit tenure, scope, or reporting detail. Estimated L4 based on 'Enterprise' designation and account-management scope, but confidence is modest due to JD boilerplate nature and missing context on company stage, team size, and strategic mandate.",
+    "role_family_fit": 35,
+    "scope_seniority": 50,
+    "summary": "Enterprise Customer Success at Glean\u2014a pure CS/account-management role with no apparent strategic transformation or product strategy scope. Candidate brings strong data analytics, Salesforce territory administration, and eight years of commercial operations and stakeholder management, but lacks native Customer Success or account-management track record. This is a deliberately deprioritized function per targeting guidelines unless the JD clearly articulates strategic or transformation ownership; the cached JD snapshot does not provide that clarity. Recommend skip in favor of roles with clearer strategy, transformation, or product-operations anchors.",
+    "uncertainties": [
+      "JD text is mostly HTML boilerplate; actual role scope, reporting line, team size, and strategic mandate are not visible in the cached snapshot",
+      "Whether the Enterprise CS role includes strategic account expansion, product feedback loops, or transformation ownership is unclear",
+      "Company stage (seed, growth, mature) and Glean's market maturity are not stated in the Role JSON; this affects seniority estimation",
+      "Whether the role requires quota-carrying or is purely success/retention focused"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

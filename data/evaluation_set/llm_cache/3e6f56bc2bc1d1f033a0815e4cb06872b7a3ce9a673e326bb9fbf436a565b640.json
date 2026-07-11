@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations, managing cross-functional transformation programs, and coordinating between development partners and internal stakeholders on product launches and infrastructure initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate complex stakeholder relationships, maintain regular reporting and status tracking, and ensure seamless transitions from project inception through operational readiness"
+      },
+      {
+        "candidate_evidence": "Owned transformation programs and documented repeatable processes during global commercial operations scaling; experience designing business logic and rollout strategies",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive continuous improvement and develop standardized processes and playbooks for facility delivery as Anthropic scales its infrastructure footprint"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets proficiency; builds Looker dashboards; demonstrated ability to track and report on complex program metrics and KPIs",
+        "evidence_strength": "weak",
+        "job_requirement": "Prepare and present regular executive reporting on progress versus plan for facility development, supporting forward capacity planning and strategic decision-making"
+      }
+    ],
+    "confidence": 0.68,
+    "estimated_level": "L5",
+    "evidence_strength": 22,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No demonstrated site leadership, construction project management, or hands-on data center delivery experience; background is commercial operations and strategy, not capital infrastructure deployment",
+        "mitigation": "Would require 12\u201318 months of embedded ramp-up on Australian data center construction norms, GC/EPC contractor ecosystems, and site operations before demonstrating independent deal validation and schedule leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of deep expertise in dirt-to-delivery processes: entitlements, permitting, supply chain, commissioning, or hyperscale data center design and construction nuances",
+        "mitigation": "Candidate would need domain-specific training or mentorship; subject-matter expertise gap is foundational to the role's core responsibilities",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in Australia's real estate, construction, or infrastructure market; unfamiliar with local contractual norms, regulatory pathways, or contractor relationships that the JD emphasizes as critical",
+        "mitigation": "Geographic and regulatory ramp-up is substantial; visa sponsorship and relocation logistics add organizational burden",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of lease negotiations, construction contracts, or real estate development strategy\u2014areas the JD flags as bonus but foundational to deal readiness validation",
+        "mitigation": "Candidate could self-teach transactional real estate basics, but absence from profile is notable",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 8+ years in \"highest level of site leadership\" managing data center delivery or infrastructure deployment at scale, with demonstrated expertise in end-to-end dirt-to-delivery processes, deal readiness validation, and cross-functional stakeholder coordination. This maps to established senior-IC ownership or equivalent management scope (L5), though company size/stage context is unstated, reducing precision. No mention of managing managers or executive reporting scope elevates this beyond L5.",
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "This is a Senior Data Center Capacity Delivery Manager role requiring 8+ years of hands-on site leadership, construction project execution, and real estate/entitlements expertise in Australia's hyperscale data center market\u2014a domain and geography fundamentally misaligned with the candidate's Google commercial operations and strategy background. While the candidate demonstrates strong stakeholder coordination and transformation leadership, the role explicitly demands deep construction-site presence, dirt-to-delivery technical acumen (permitting, supply chain, commissioning), GC/EPC contractor relationships, and Australian regulatory/contractual mastery that the candidate's profile does not evidence.",
+    "uncertainties": [
+      "Unclear whether the candidate has any prior exposure to construction, real estate, or capital project management outside commercial operations",
+      "No information on the candidate's familiarity with hyperscale infrastructure requirements or technical facility design",
+      "Company size and stage for Anthropic's infrastructure team are not stated in the JD, affecting confidence in scope interpretation",
+      "Visa sponsorship feasibility for Australia not assessed; candidate profile does not indicate prior Australia work eligibility or visa history"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

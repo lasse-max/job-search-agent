@@ -182,6 +182,20 @@ class PostgresFoundationTest(unittest.TestCase):
         self.assertIn("{provenance,fallback_quality}", migration)
         self.assertIn("migrations/005_stage15_evaluator_v3.sql", workflow)
 
+    def test_evaluator_v4_upgrade_keeps_live_view_current_and_non_fallback(self) -> None:
+        migration = Path("migrations/007_stage19_evaluator_v4.sql").read_text(
+            encoding="utf-8"
+        )
+        workflow = Path(".github/workflows/migrate-postgres.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("WITH (security_invoker = true)", migration)
+        self.assertIn("%|hybrid\\_claude\\_v4", migration)
+        self.assertIn("NOT ILIKE '%deterministic_fallback%'", migration)
+        self.assertIn("{provenance,fallback_quality}", migration)
+        self.assertIn("migrations/007_stage19_evaluator_v4.sql", workflow)
+
     def test_migration_report_redacts_target_and_surfaces_ambiguous_rows(self) -> None:
         report = MigrationReport(
             source_path=Path("data/job_search_agent.sqlite"),

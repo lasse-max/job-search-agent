@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations, territory management, and cross-functional scaling; translated Commercial Operations experience into Revenue Operations domain work.",
+        "evidence_strength": "medium",
+        "job_requirement": "8+ years of experience in new sales, account management, and partner support"
+      },
+      {
+        "candidate_evidence": "Salesforce admin with managed territory budgets and partnered with engineering on feature requests.",
+        "evidence_strength": "medium",
+        "job_requirement": "Highly proficient in using CRM software, specifically in working with leads, opportunities, and other core objects - Salesforce experience is a plus"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; SQL proficient (joins, GROUP BY, subqueries, window functions); builds Looker dashboards; queries BigQuery directly to pull and shape own data.",
+        "evidence_strength": "strong",
+        "job_requirement": "Proficient quantitative skills and proven ability to interpret and apply data throughout your day-to-day day-to-day work"
+      },
+      {
+        "candidate_evidence": "English professional/fluent; native German speaker.",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluency in English plus a second European language preferred"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google; two promotions indicate demonstrated scope escalation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to work at both strategic and tactical levels, with a proven track record to execute in ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Scaling global operations and transformation programs; cross-functional execution demonstrated in target role families.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner cross functionally to address optimization bottlenecks"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 62,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales focus and account management revenue targets; candidate's background is strategy, operations, and transformation rather than direct sales execution and lead pipeline management.",
+        "mitigation": "Candidate's Commercial Operations background covers territory management and CRM administration, but the role emphasizes 'deliver sales growth' and 'leads pipeline or book of business' as core accountability. Ramp would require reframing from strategic operations to direct sales metrics.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hospitality/travel industry domain expertise; 2+ years preferred but not stated as required. Candidate's context is Google Devices and Services (hardware/commercial operations).",
+        "mitigation": "Preferred but not mandatory. Candidate's data fluency, territory management, and host/partner relationship scaling are transferable; learning Airbnb's travel and hosting dynamics is achievable with onboarding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "In-market subject matter expertise for assigned region and local market dynamics; role emphasizes 'go-to source for all information relating to local trends and market dynamics.'",
+        "mitigation": "Candidate can build market knowledge over time; role requires both strategic and tactical execution, but deep local expertise typically develops in-role rather than pre-hire.",
+        "severity": "medium"
+      },
+      {
+        "gap": "New sales experience specifically; role lists '8+ years in new sales, account management, and partner support' as core requirement.",
+        "mitigation": "Candidate has account management and partner support scaled globally; 'new sales' (pipeline building, prospecting) is not evidenced from Commercial Operations background.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 8+ years in sales/account management. posted salary \u00a394\u2013118k indicates mid-market IC or junior team lead scope. No management scope stated. emphasis on individual account ownership, leads pipeline, and quota delivery aligns with L4 senior IC. Company size unknown, limiting confidence. Airbnb scale suggests structured seniority, but title and JD do not indicate manager-of-managers or director scope.",
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "Market Lead role is pure quota-carrying account and sales management with territory ownership, leads-pipeline accountability, and hospitality/travel domain emphasis. Candidate's eight-year track record is strong on operations scale, territory management, CRM, and data skills, but positioning is strategy-and-operations transformation rather than new sales, revenue growth, or account management. Gap between desired role family (Strategy/BizOps/Product Ops) and posted role (Sales/Account Management) is structural and not mitigated by overlapping capabilities.",
+    "uncertainties": [
+      "Role emphasis on 'new sales' vs. account management varies; unclear if account growth within territory or external prospecting is primary",
+      "Hospitality experience is preferred but not mandatory\u2014impact on onboarding ramp unknown",
+      "No stated management scope; unclear if role has growth to team lead or remains individual contributor",
+      "Google Commercial Operations context is not hospitality/travel; domain transfer friction unquantified"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

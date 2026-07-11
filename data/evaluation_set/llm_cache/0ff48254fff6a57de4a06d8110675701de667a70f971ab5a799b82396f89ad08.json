@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience scaling global commercial operations and transformation programs; however, background is strategy and operations/product operations, not customer service or traditional operations",
+        "evidence_strength": "medium",
+        "job_requirement": "8+ years of progressive experience in a customer service or an operations role, with 5 years in a role directly managing staff & the employee lifecycle"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL, BigQuery, advanced Excel/Sheets, Looker, Tableau; designs dashboards and pulls/shapes own data; experience with performance management and trend analysis in commercial operations context",
+        "evidence_strength": "strong",
+        "job_requirement": "Data analysis and reporting to identify performance trends, as well as developing and implementing performance management standards"
+      },
+      {
+        "candidate_evidence": "Eight years in strategy and operations leadership scaling global transformation programs; demonstrates cross-functional stakeholder management and process design",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic thinking and problem-solving abilities to evaluate procedures and identify opportunities for improvement"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in leadership roles; experience with team scaling and development in operations context; however, no explicit evidence of direct hands-on people management, performance planning, or coaching at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Team management and leadership skills; managing staff & employee lifecycle, coaching and upleveling ambassadors"
+      },
+      {
+        "candidate_evidence": "English: professional/fluent; German: native. No Italian language evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in English and Italian"
+      },
+      {
+        "candidate_evidence": "Strategy and operations background with transformation program execution and stakeholder management demonstrates strategy-to-execution capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience translating big picture goals and strategy into implementable and concrete actions for teams, including setting operational or functional targets or performance goals"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 62,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Direct customer service management and operations background; candidate is strategy and operations/product operations, not customer service or support operations",
+        "mitigation": "Transferable coaching, performance management, and process improvement skills; but deep CS/support domain knowledge gap cannot be quickly bridged",
+        "severity": "high"
+      },
+      {
+        "gap": "Fluency in Italian; role explicitly requires fluent Italian for team management and case handling",
+        "mitigation": "Candidate is native German and professional English; Italian fluency not stated; no clear path to meet bilingual requirement",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on people management at line-management scale (directly managing 10\u201315 staff through full employee lifecycle); candidate experience is in strategic operations leadership without explicit evidence of direct coaching, performance reviews, and employee relations at this scale",
+        "mitigation": "Strategy leadership transfers some skills, but CS team leadership demands different daily rhythms (real-time escalation, morale, shift coverage) not evident in candidate profile",
+        "severity": "medium"
+      },
+      {
+        "gap": "Crisis/real-time case severity management and deployment of resources under immediate pressure in a 24/7 support environment",
+        "mitigation": "Commercial operations transformation suggests some crisis/execution experience, but support-operations emergency response is a specialized operational discipline",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 8+ years of progressive experience with 5 years directly managing staff, plus line-management of 10\u201315 people, performance planning, and employee lifecycle ownership. This is standard L4 (Manager/Senior Manager) scope. No company size/stage context narrows confidence slightly, but title and scope are clear for mid-sized, established tech company.",
+    "role_family_fit": 28,
+    "scope_seniority": 72,
+    "summary": "This is a Customer Service/Support Operations manager role at L4 seniority with clear team-management and people-leadership scope. The candidate is a strategy and operations leader with strong data, process, and cross-functional skills, but lacks the required customer service/support domain background and\u2014critically\u2014is not fluent in Italian, a stated requirement for team communication and case handling. The function-family mismatch (strategy/ops vs. customer service management) and language gap are disqualifying for this particular role, despite strong transferable analytical and leadership capabilities.",
+    "uncertainties": [
+      "No explicit evidence of direct hands-on people management, performance reviews, or employee relation coaching at the scale of 10\u201315 direct reports",
+      "No data on candidate's experience with 24/7 real-time support operations, shift management, or crisis case handling",
+      "Company stage/size (Airbnb is known, but role's internal context not stated in JD) creates minor confidence gap in level estimate"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

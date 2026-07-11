@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Advanced Excel and Sheets, SQL proficiency with joins, GROUP BY, subqueries, window functions; builds Looker dashboards; demonstrated spend analysis and optimization experience in commercial operations at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Conduct detailed spend analysis and benchmarking, evaluate market and competitive conditions"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in commercial operations and transformation; global scaling experience; however, this was within a tech-company procurement and operations context, not independent Indirect Procurement category management",
+        "evidence_strength": "medium",
+        "job_requirement": "Deep knowledge of strategic sourcing methodology, category management, and supplier management"
+      },
+      {
+        "candidate_evidence": "Builds dashboards in Looker and Tableau; proficient SQL and BigQuery querying to shape own data; demonstrated analytical rigor in operations optimization and reporting",
+        "evidence_strength": "strong",
+        "job_requirement": "Excellent analytical skills, attention to detail, and work independently; Design and maintain category reporting to senior executives"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations at Google; experience partnering with stakeholders at Google scale; stakeholder management cited as a core strength",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding interpersonal skills with proven ability to build trust and credibility with business partners; strong stakeholder management"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; native German language proficiency",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluency in business English, additional German language skills are a plus"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 68,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Indirect Procurement domain experience: candidate background is commercial operations at a tech giant, not category management, supplier portfolio development, or spend analysis in external indirect procurement contexts",
+        "mitigation": "Analytical and stakeholder-management foundations are strong; domain training and a structured ramp in European CapEx, MRO, and Utilities categories would be required. Spend analysis and benchmarking skills transfer, but supplier relationship building and sourcing strategy execution in procurement are distinct from internal operations scaling.",
+        "severity": "high"
+      },
+      {
+        "gap": "European market and site-specific Indirect Procurement maturity: JD emphasizes European market experience as 'key requirement' and frequent national/international travel to production sites; candidate is Berlin-based but career is Google (US/global enterprise) without stated European procurement or supply-chain operations experience",
+        "mitigation": "Candidate is native German and now Berlin-based, removing relocation friction and enabling rapid on-site engagement. However, learning European procurement vendor ecosystem, regulations, and local site operational constraints is a multi-quarter ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "Proven hands-on experience in CapEx, Material Handling Equipment, Utilities, MRO, and Facilities Management categories: JD states 'Proven hands-on experience in at least some of these categories is essential'; candidate has no explicit category management or procurement execution in these domains",
+        "mitigation": "Candidate's data-analysis, optimization, and reporting capabilities will support category work, but lack of hands-on procurement category ownership, supplier negotiation, contract administration, and vendor portfolio management in these specific verticals is a significant ramp risk.",
+        "severity": "high"
+      },
+      {
+        "gap": "Strategic sourcing and category management methodology specificity: candidate's 'Commercial Operations' background at Google does not clarify experience with formal strategic sourcing frameworks, RFP/RFQ cycles, TCO analysis, or supplier development in procurement",
+        "mitigation": "Standard procurement methodologies are teachable, and candidate's analytical and stakeholder-management foundation supports rapid upskilling. However, first 3\u20136 months will include structured learning in sourcing methodology and category strategy frameworks.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 76,
+    "level_rationale": "Sr. Category Manager reporting to Director-level cluster lead. minimum 7 years experience required (. European-scope multi-category P&L ownership and stakeholder management with senior ops leadership suggest established IC or junior manager responsibility. Role does not indicate management of a team, but strategic category accountability and cross-regional execution align with L5 IC scope. HelloFresh stage/size not stated. large food-tech enterprise context supports L5 estimate rather than L4.",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Sr. Category Manager \u2013 Indirect Procurement is a domain-specific procurement and supply-chain role focused on European CapEx, utilities, MRO, and facilities management. The candidate brings strong analytical, reporting, dashboard-design, and stakeholder-management skills from eight years in commercial operations at Google, plus native German fluency and Berlin base. However, the role requires proven hands-on category management, supplier portfolio development, and strategic sourcing execution in Indirect Procurement\u2014a distinct functional domain from Google's internal operations scaling. Domain ramp, European procurement vendor-ecosystem familiarity, and category-specific supplier and contract management experience are significant gaps; candidate's analytical foundation mitigates some risk but does not eliminate a 4\u20136-month structural learning curve. Role falls outside target families (Strategy and Operations, Product Operations, BizOps) and is a deprioritized function.",
+    "uncertainties": [
+      "HelloFresh company size and stage not stated; large-enterprise context inferred from 90+ nationalities and multi-country production-site scope, but confirms L5 seniority estimate only at medium confidence",
+      "Candidate's 'Commercial Operations' experience at Google not detailed; unclear whether spend analysis, category optimization, and supplier engagement are included or whether role was primarily internal process, reporting, and policy",
+      "No explicit evidence of RFP/RFQ, TCO analysis, vendor selection, or contract negotiation in candidate profile; cannot confirm strategic sourcing methodology hands-on depth",
+      "Readiness to travel 'nationally and abroad' to European production sites not addressed in candidate profile; logistics and travel constraints unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

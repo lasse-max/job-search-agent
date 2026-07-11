@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years leading global commercial operations and transformation programs at Google; experience translates to cross-functional partner negotiation and business scaling, but JD emphasizes BD partnership expertise and quota/growth accountability",
+        "evidence_strength": "medium",
+        "job_requirement": "Own, negotiate, and scale strategic agreements with partners to accelerate subscriber and engagement growth"
+      },
+      {
+        "candidate_evidence": "Demonstrated two promotions and leadership at Google Devices and Services; scaling and transformation track record shows drive and execution capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Multi-talented self-starter with ambition and drive to grow Spotify's Premium distribution partnerships"
+      },
+      {
+        "candidate_evidence": "Google background implies multinational experience; no explicit APAC regional history or emerging-market BD expertise documented in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Report to APAC Director of Business Development and operate in Singapore or Seoul regional context"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Business Development / Strategic Partnerships domain expertise: JD emphasizes partner agreement negotiation, distribution pipeline growth, and subscriber/engagement KPI ownership; candidate background is operations and transformation leadership, not BD",
+        "mitigation": "Senior operator with scaling and stakeholder-management experience could ramp if onboarded with strong BD mentorship; however, quota and partnership velocity are typically owned by native BD leaders",
+        "severity": "high"
+      },
+      {
+        "gap": "APAC market expertise and emerging-market distribution strategy: role requires regional context understanding; candidate profile shows Google global background but no explicit APAC or developing-market partnership depth",
+        "mitigation": "General cross-functional leadership and learning agility may bridge this in first 6\u201312 months; regional hire-to-role fit would benefit from local network and market intuition",
+        "severity": "medium"
+      },
+      {
+        "gap": "Quota and subscriber/engagement growth accountability: JD emphasizes scaling partnerships to drive measurable subscription and engagement uplift; operations background does not directly parallel sales/revenue ownership",
+        "mitigation": "Scaling experience and P&L accountability could transfer; however, BD roles typically own explicit revenue or subscriber targets that differ from operations management",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Senior Manager title with APAC regional scope, reporting to Director-level, and strategic partnership ownership suggests L5 (senior IC) equivalent. No explicit years or manager-of-managers language. company stage (Spotify\u2014established public company) and regional anchor support L5 calibration rather than L4 or L6.",
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "Business Development Senior Manager at Spotify, APAC\u2014a strategic partnership and distribution-growth role reporting to Director level. Candidate is a Strategy &amp; Operations / Product Operations leader with eight years of scaling and transformation at Google; this is not a target family fit. Business Development partnership negotiation, subscriber acquisition accountability, and emerging-market BD expertise are materially distinct from operations and transformation leadership. Role does not cite Strategy, Operations, Product, GTM, or Partner Operations titles or scope. Recommend skip unless candidate has undisclosed BD or partnership-growth background.",
+    "uncertainties": [
+      "JD does not detail specific partner types (carriers, platforms, OEMs, etc.) or revenue/subscriber attribution models; cannot assess whether operations acumen in a different domain would transfer",
+      "APAC regional market stage and competitive context not described; unclear whether this is emerging-market early-stage or mature regional expansion",
+      "No explicit mention of strategy, operations, or transformation ownership; role reads as pure BD/partnership execution, which is outside target families"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

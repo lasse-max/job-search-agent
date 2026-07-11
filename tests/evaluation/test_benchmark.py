@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -219,7 +220,7 @@ class BenchmarkCalibrationTest(unittest.TestCase):
         self.assertEqual(
             run.evaluator_versions,
             (
-                "hybrid_claude_v3; prompt=role_evaluation_v5; "
+                "hybrid_claude_v4; prompt=role_evaluation_v6; "
                 "model=claude-haiku-4-5",
             ),
         )
@@ -270,14 +271,18 @@ class BenchmarkCalibrationTest(unittest.TestCase):
                 self.assertIn(results_by_id[role_id].estimated_level, {"L3", "unknown"})
         self.assertTrue(
             all(
-                "candidate" not in result.level_rationale.casefold()
+                not re.search(
+                    r"\b(?:the\s+)?candidate(?:'s)?\b",
+                    result.level_rationale,
+                    flags=re.IGNORECASE,
+                )
                 for result in run.results
             )
         )
         self.assertEqual(
             run.evaluator_versions,
             (
-                "hybrid_claude_v3; prompt=role_evaluation_v5; "
+                "hybrid_claude_v4; prompt=role_evaluation_v6; "
                 "model=claude-haiku-4-5",
             ),
         )

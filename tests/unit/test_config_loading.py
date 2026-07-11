@@ -16,6 +16,16 @@ from app.services.evaluate import _feasibility, _role_family_fit, _weighted_fit_
 
 
 class ConfigLoadingTest(unittest.TestCase):
+    def test_profile_loads_tools_and_commercial_ops_translation(self) -> None:
+        profile = load_candidate_profile()
+
+        self.assertIn("Salesforce", profile.tools_and_skills)
+        self.assertIn("admin", profile.tools_and_skills["Salesforce"])
+        self.assertIn("window functions", profile.tools_and_skills["SQL"])
+        self.assertIn("basic, actively learning", profile.tools_and_skills["Python"])
+        self.assertIn("Commercial Operations", profile.positioning)
+        self.assertIn("Revenue Operations", profile.positioning)
+
     def test_changing_scoring_yaml_changes_fit_score(self) -> None:
         path = _changed_yaml(
             "scoring_policy.yaml",

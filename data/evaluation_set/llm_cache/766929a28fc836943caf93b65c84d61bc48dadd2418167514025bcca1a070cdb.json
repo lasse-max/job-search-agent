@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations, Commercial Operations, and transformation programs; no stated financial crime compliance, AML/CTF, regulatory, or fintech compliance background",
+        "evidence_strength": "weak",
+        "job_requirement": "5+ years of financial crime compliance experience in a financial institution or payment services / fintech environment, with direct exposure to AML/CTF program execution"
+      },
+      {
+        "candidate_evidence": "Commercial Operations and global transaction/commercial workflow experience at Google, but no stated AML/CTF compliance, suspicious-matter reporting, or financial-crime investigation background",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on experience with SMR investigation and filing (or equivalent STR/SAR process), IFTI or other cross-border reporting, and managing transaction-monitoring and name-screening escalations end-to-end"
+      },
+      {
+        "candidate_evidence": "No stated regulatory compliance, AML/CTF, or Australian financial services background supplied",
+        "evidence_strength": "weak",
+        "job_requirement": "In-depth familiarity with Australian AML/CTF laws, rules and regulatory guidance, and how they apply to digital payments, cross-border flows and e-commerce use-cases"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global operations and transformation at Google, cross-functional collaboration with Product, Commercial, and Operations teams; experience engaging multi-stakeholder programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong stakeholder management skills, with the ability to credibly engage and challenge senior internal stakeholders and external partners (e.g. banks, schemes, regulators)"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No financial crime compliance (AML/CTF) background; core role requires 5+ years of direct exposure to AML/CTF program execution in a regulated financial institution or fintech",
+        "mitigation": "Candidate could undertake AML/CTF compliance certification and intensive product training, but regulatory experience at this depth typically requires domain-specific career focus and cannot be quickly acquired",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with Suspicious Matter Report (SMR) investigation, filing, or equivalent STR/SAR processes; no cross-border financial-crime reporting background",
+        "mitigation": "On-the-job training under strong regulatory leadership is possible, but SMR/IFTI compliance requires legal and regulatory precision that is difficult to learn without prior exposure",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated expertise in Australian AML/CTF Act, Rules, AUSTRAC guidance, or how these apply to digital payments, cross-border flows, and e-commerce use-cases",
+        "mitigation": "Candidate would need to build regulatory expertise through formal study and mentoring, but the JD positions this as a minimum, not developmental, requirement",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated background in regulatory auditing, assurance, or regulator interaction; core JD requirement is demonstrated auditing/assurance background with prior AUSTRAC experience",
+        "mitigation": "Early-career audit or assurance exposure is difficult to acquire without domain entry-level roles; this is a foundational gap",
+        "severity": "high"
+      },
+      {
+        "gap": "No fintech, payments, or regulated financial-services sector background; role requires deep familiarity with fintech compliance environments",
+        "mitigation": "Candidate could transition into fintech operations, but regulatory and compliance roles in payments require immediate credibility with regulators and banking partners",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 80,
+    "level_rationale": "Senior Compliance Manager & Deputy MLRO is a regulatory and governance leadership role in a $8B fintech with 2,200+ employees. The JD requires 5+ years of direct financial crime compliance experience, auditing/assurance background, regulator interaction (specifically AUSTRAC), and in-depth AML/CTF law expertise. This positions the role at L5: established senior individual contributor with explicit regulatory ownership, second-line advisory authority, and cross-functional influence over commercial and product decisions.",
+    "role_family_fit": 5,
+    "scope_seniority": 70,
+    "summary": "This is a Senior Compliance Manager & Deputy MLRO role at Airwallex, requiring 5+ years of direct financial crime compliance (AML/CTF), auditing/assurance background, AUSTRAC experience, in-depth Australian regulatory expertise, and hands-on SMR/IFTI reporting. The candidate brings eight years of Strategy and Operations and Commercial Operations experience at Google, with strong stakeholder management and cross-functional transformation skills. However, there is no stated financial crime compliance, AML/CTF, regulatory, auditing, fintech, or payments sector background\u2014all minimum qualifications for this role. The compliance and regulatory expertise required cannot be quickly acquired from a commercial operations profile, and credibility with AUSTRAC and banking partners is essential. This is a role-family mismatch.",
+    "uncertainties": [
+      "Candidate profile does not disclose any compliance, regulatory, audit, or fintech background; it is possible these experiences exist but are not stated",
+      "Airwallex company stage and team size are stated ($8B, 2,200+ staff) but specific team structure for Legal, Risk & Compliance function is not provided in the JD",
+      "Extent of transformation or process-design opportunity in the Deputy MLRO role is not clearly articulated; if this role has significant strategic compliance program uplift scope, a strong operator could be considered, but the JD emphasizes regulatory execution and compliance precision over transformation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in global commercial operations and transformation programs; has designed, scaled, and led cross-functional operations initiatives.",
+        "evidence_strength": "medium",
+        "job_requirement": "GTM Operations (APAC region, Singapore location)"
+      },
+      {
+        "candidate_evidence": "Demonstrated expertise in transformation programs, process design, stakeholder management, and commercial operations scaling. Advanced Excel, Sheets, SQL, BigQuery, and Looker/Tableau for data analysis and reporting.",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations and process support for GTM functions"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and managing territory budgets via Salesforce administration; experience with CRM, forecasting, and revenue-leakage control.",
+        "evidence_strength": "medium",
+        "job_requirement": "Territory or regional operations (APAC-based role)"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L3",
+    "evidence_strength": 45,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "Title is 'Associate,' implying junior analyst or coordinator scope; job description is incomplete/cached and does not detail specific responsibilities, decision authority, or business impact.",
+        "mitigation": "Request full unabridged JD. If true scope is junior operations execution (data entry, process compliance, meeting coordination), this is below-band and deprioritized per candidate guidelines. If scope is actually strategic operations or program leadership, re-evaluate.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate is L4\u2013L5 (Manager/Senior Manager/Lead scope); estimated role is L3 (Associate/Coordinator). Seniority mismatch is significant.",
+        "mitigation": "Confirm role is not a misclassified step-down or trial position. Verify if company is early-stage or has non-standard leveling.",
+        "severity": "high"
+      },
+      {
+        "gap": "JD text is corrupted (Next.js React chunk dump); unable to extract explicit requirements, responsibilities, reporting line, or domain context (SaaS, enterprise AI, developer tools, etc.).",
+        "mitigation": "Obtain clean, plain-text JD. Current submission is not evaluable.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 25,
+    "level_rationale": "Title \"Associate\" signals L3 (entry\u2013L4 IC or coordinator scope). no years required, management scope, or reporting-line signals are visible in the role JSON. Company size/stage unknown. JD text is corrupted and unreadable, preventing standard anchoring signals. Low confidence.\".",
+    "role_family_fit": 45,
+    "scope_seniority": 25,
+    "summary": "GTM Operations Associate at Cognition (Singapore) is estimated at L3 based on title alone; candidate is L4\u2013L5 (Manager/Senior Manager scope). JD text is corrupted (React chunk dump) and does not contain readable requirements, responsibilities, or scope. Without a clean JD and confirmation of actual business-ownership scope (strategy, transformation, program leadership vs. junior execution), this role cannot be fairly evaluated. Recommendation: obtain unabridged JD before proceeding.",
+    "uncertainties": [
+      "JD is corrupted (Next.js React output); actual requirements and responsibilities are not readable.",
+      "Company size, stage, and GTM function complexity are not stated; Cognition brand suggests growth-stage AI company, but this is not confirmed in Role JSON.",
+      "Unknown whether 'Associate' is a true junior title or a company-specific leveling convention.",
+      "Unclear if role is pure operations execution (data, compliance, coordination) or strategic/program-ownership operations\u2014two very different profiles."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

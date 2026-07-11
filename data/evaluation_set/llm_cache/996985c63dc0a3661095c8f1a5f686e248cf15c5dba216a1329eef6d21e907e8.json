@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; experience translating requirements and managing cross-functional stakeholder engagement.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Sales, Relationship Management, Partnerships to support developers integrating with our platform"
+      },
+      {
+        "candidate_evidence": "Proven ability to communicate complex product logic, requirements, and transformation roadmaps to senior executives and distributed teams; owns LLM agent specifications and directs technical builders.",
+        "evidence_strength": "medium",
+        "job_requirement": "Create and deliver compelling demos, presentations, and technical deep dives for both executive and engineering stakeholders"
+      },
+      {
+        "candidate_evidence": "Eight years in product operations, scaling integrations and transformation programs; experience with UAT, rollout leadership, and requirement logic design.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate closely with product and engineering teams to surface customer feedback and influence the roadmap"
+      },
+      {
+        "candidate_evidence": "Product operations and strategy background with two promotions; demonstrated ability to work across commercial, technical, and senior leadership groups globally.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong communication skills, with the ability to bridge technical and non-technical audiences and influence senior stakeholders"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries/CTEs, window functions); writes BigQuery queries to pull and shape own data; basic Python for data analysis.",
+        "evidence_strength": "medium",
+        "job_requirement": "SQL and API familiarity for integration and data access"
+      }
+    ],
+    "confidence": 0.62,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 28,
+    "gaps": [
+      {
+        "gap": "Production software engineering and hands-on full-stack development experience",
+        "mitigation": "Candidate has basic Python and SQL data-analysis proficiency but no stated full-stack or production-code background. JD explicitly requires 'full-stack development' experience and 'proficiency in at least one programming language' for building POCs and custom integrations. This is core to the role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Solutions architecture or solutions engineering track record",
+        "mitigation": "Candidate's background is product operations and commercial operations, not professional services, solutions engineering, or pre-sales technical leadership. JD requires 8+ years in 'partner engineering, solutions architecture, or sales engineering' roles.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep hands-on API design, integration, and debugging expertise",
+        "mitigation": "Candidate has not demonstrated hands-on design or troubleshooting of complex API integrations, POC development, or commerce/fintech platform implementations.",
+        "severity": "high"
+      },
+      {
+        "gap": "Payments, fintech, or commerce platform domain knowledge",
+        "mitigation": "Candidate's commercial operations experience is at Google Devices & Services; no stated fintech, payments, or Afterpay/Block ecosystem experience.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Technical customer-facing sales-engineering credibility and track record",
+        "mitigation": "This is a Solutions Engineer role embedded in the Sales & Partnerships function. Candidate's career is in Product Ops and Business Ops strategy\u2014not in field engineering, customer-facing technical sales, or pre-sales architecture.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 8+ years in technical customer-facing or solutions-engineering roles, hands-on full-stack development, and enterprise/partner integration leadership. JD explicitly emphasizes engineering depth, API proficiency, POC delivery, and technical domain credibility. This is a senior-IC engineering-heavy role, estimated at L5 in a mid-to-large organization (Block is public). Confidence is moderately high. company stage is known (established public). years required are clear (8+).",
+    "role_family_fit": 18,
+    "scope_seniority": 72,
+    "summary": "Staff Solutions Engineer at Block is a senior (L5) technical customer-facing role embedded in Sales & Commerce Operations. It requires 8+ years of hands-on solutions architecture, full-stack development, and proven enterprise-sales-engineering leadership\u2014not product operations strategy. The candidate's eight years are in commercial-operations and product-operations transformation at Google, with basic SQL/Python and agentic-tooling ownership, but no demonstrated solutions engineering, production coding, API integration, or fintech domain background. Role family fit is poor (not Strategy &amp; Operations, BizOps, or Product Ops leadership); engineering depth and sales-engineering credibility are disqualifying gaps. Advisory: skip.",
+    "uncertainties": [
+      "Candidate's 'designs, specs and directs LLM coding agents' capability might include deeper technical integration experience than conveyed; profile does not clarify whether hands-on API or system design was involved.",
+      "Exact scope of Salesforce admin work (territory budgets, feature partnering) is noted but does not establish full-stack development or solutions-architecture track record.",
+      "No detail on whether commercial operations work at Google involved technical integration problem-solving or remained operations/strategy-focused."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

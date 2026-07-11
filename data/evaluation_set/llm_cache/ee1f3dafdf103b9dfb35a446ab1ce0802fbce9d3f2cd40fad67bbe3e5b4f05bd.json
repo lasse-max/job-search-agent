@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years translating complex requirements and guiding stakeholder alignment; experience in cross-functional advisory with Security, Product, and Sales teams; demonstrated ability to explain technical topics to non-technical and senior audiences",
+        "evidence_strength": "medium",
+        "job_requirement": "Deliver exceptional pre-sales customer experience, providing technical expertise and answering product/API/LLM questions"
+      },
+      {
+        "candidate_evidence": "Designs and directs LLM coding agents; owns evaluation methodology and benchmarking; deep experience in requirements definition, UAT, and rollout planning; translates business problems into technical solutions",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and present demos, scope use cases, recommend architecture patterns, provide technical advisory"
+      },
+      {
+        "candidate_evidence": "Managed Salesforce administration including territory budgets and feature requests; collaborated with engineering teams; no stated security-compliance or audit experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Demonstrate understanding of IT security principles and B2B SaaS customer requirements; provide security/compliance support"
+      },
+      {
+        "candidate_evidence": "Python basic, actively learning (data-analysis/pandas); no stated REST API architecture or hands-on API integration experience; SQL and BigQuery proficiency for data querying, not API design",
+        "evidence_strength": "weak",
+        "job_requirement": "Industry experience with programming languages (Python/Javascript) and REST APIs"
+      },
+      {
+        "candidate_evidence": "Eight years as trusted advisor; experience translating customer needs into product and process design; led cross-functional transformation programs involving customer feedback loops",
+        "evidence_strength": "strong",
+        "job_requirement": "Foster customer advocacy, gather feedback, identify themes, incorporate into product planning"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience in global commercial operations and transformation; stakeholder management across teams; no explicit C-level account ownership or pre-sales relationship narrative supplied",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage C-level technical and business relationships with complex global organizations"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 48,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Pre-sales delivery and live customer demonstrations. Candidate has product-ownership and transformation advisory experience, but no stated history of building prototypes, delivering live demos, or scoping use cases for prospects in a sales-enablement context.",
+        "mitigation": "Strong product and advisory background provides foundation for demo and use-case methodology learning; ability to pick up technical topics quickly mitigates if combined with pre-sales mentorship and structured onboarding on ChatGPT/API patterns. This is a domain/motion shift, not a capability gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "REST API architecture and hands-on integration experience. Role expects recommendation of architectural patterns for API deployment; candidate has SQL and BI tools experience but not production API design, schema thinking, or scaling patterns.",
+        "mitigation": "Candidate owns agentic tooling design and specifications; can learn API architecture through immersion with engineering teams and structured onboarding. OpenAI likely provides curated API guides and reference architectures for customer deployment.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python fluency and programming depth. Role lists Python/Javascript 'industry experience' as a preference; candidate is basic and actively learning. This limits ability to walk through code samples or troubleshoot integration issues live.",
+        "mitigation": "Candidate's data-analysis Python trajectory and agentic-tool specification background suggest faster learning path if paired with engineers during customer calls. For most enterprise use cases, architecture and business value matter more than code depth.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Security and compliance advisory depth. Role expects first-line defense for security/compliance questions and escalation to specialized teams; candidate has no stated audit, SOC 2, or HIPAA compliance experience beyond Salesforce territory management.",
+        "mitigation": "OpenAI likely provides standardized security collateral and escalation playbooks. Candidate's background in cross-functional coordination with Security teams at Google provides foundation for learning enterprise compliance common patterns.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Native customer-facing pre-sales or solutions-engineering experience. Candidate's background is operations, product transformation, and internal stakeholder management\u2014not outbound sales support, prospect qualification, or closing enablement.",
+        "mitigation": "Candidate's stakeholder and advisory skills transfer directly to customer conversation planning and use-case validation. Sales-motion learning (discovery call structure, objection handling, deal cycles) requires mentorship but is teachable.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "5+ years pre-sales required with C-level technical and business stakeholder management at global organizations. architecture and security advisory responsibility. presentations to senior leaders. This anchors to L5 individual-contributor scope (established senior responsibility, customer-facing leadership, complex cross-functional coordination). Confidence modest due to pre-sales role maturity not universally standardized and company stage (OpenAI) not explicitly stated in Role JSON.",
+    "role_family_fit": 35,
+    "scope_seniority": 62,
+    "summary": "Solutions Engineer pre-sales role at OpenAI GTM\u2014technical advisory, demo-building, and use-case scoping for enterprise customers adopting ChatGPT and OpenAI API. Candidate brings eight years of strategic ops and product transformation at Google with domain translation to GTM/RevOps, agentic tooling ownership, and SQL/BI tools, but lacks native pre-sales, customer-facing delivery, and direct Python/API architecture experience. Role expects 5+ years pre-sales, C-level relationship management, security/compliance fluency, and live API/architecture advisory\u2014a customer-success/solutions-consultant responsibility set that sits outside the candidate's primary strategy-and-ops families. Gaps are material (pre-sales delivery, architectural advisory, live customer interactions) and not easily mitigated by existing ops strength.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

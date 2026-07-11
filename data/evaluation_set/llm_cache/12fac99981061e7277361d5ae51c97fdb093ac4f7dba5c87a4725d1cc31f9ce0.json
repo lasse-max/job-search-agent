@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices leading global commercial operations and transformation programs; demonstrated ability to influence and present to cross-functional teams including executives and technical stakeholders.",
+        "evidence_strength": "strong",
+        "job_requirement": "Outstanding presenting skills to both technical and executive audiences"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL\u2014writes joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data.",
+        "evidence_strength": "strong",
+        "job_requirement": "Hands-on expertise with SQL"
+      },
+      {
+        "candidate_evidence": "Eight years in commercial operations with exposure to cloud platforms, data warehousing, and analytics infrastructure at Google scale; builds Looker dashboards and administers Salesforce.",
+        "evidence_strength": "medium",
+        "job_requirement": "Broad range of experience with large-scale Database and/or Data Warehouse technology, ETL, analytics and cloud technologies"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with transformation program ownership; demonstrated capability to align technical capabilities with business outcomes in global scaling context.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to connect specific business problems and Snowflake's solutions"
+      },
+      {
+        "candidate_evidence": "Python at basic level, actively learning on data-analysis/pandas track.",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on Python experience"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Pre-sales Solution Engineering depth: no stated experience presenting Snowflake or competitive data-platform technologies in a presales motion, or working directly with consulting/SI partners to design and validate solutions.",
+        "mitigation": "Candidate's presentation and stakeholder-management skills transfer; SQL and data-warehouse exposure provide technical foundation. Onboarding would require steep learning of Snowflake's platform, competitors, and PSE-specific consulting-partner sales cycles.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on Python experience: stated as basic and learning-stage, while role lists hands-on Python as highly desirable for data-science contexts in presales demos and partner enablement.",
+        "mitigation": "Python gap is not a disqualifier but limits ability to showcase or troubleshoot Python-heavy use cases on day one.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Data science hands-on expertise: not evident in profile; role lists this as highly desirable.",
+        "mitigation": "Not a core blocker; many PSEs come from data-warehouse or ETL backgrounds rather than data science. Would require product knowledge and customer-specific enablement.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Solution Engineering sales-cycle experience: no stated presales engineering, technical proof-of-concept, or partner-enabled sales background. Commercial Operations is strategic but distinct from presales customer/partner technical engagement.",
+        "mitigation": "Transferable: strategic thinking, SQL, cloud infrastructure familiarity, and ability to translate business to technical. Non-transferable: presales cadence, live technical demo confidence, and partner-ecosystem selling.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 4 years industry minimum, 2+ in presales. reports to broader Solution Engineering function at a scaled SaaS company (Snowflake). Broad database/data-warehouse expertise and presenting to execs and technical audiences are IC-level expectations. Company stage and manager title not stated. context suggests L4 individual contributor scope typical for PSE teams at enterprise SaaS scale.",
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "Partner Solution Engineer at Snowflake is a presales technical role requiring 4+ years and 2+ in a presales/SI-partner motion, hands-on SQL, database/data-warehouse breadth, and Python experience. Candidate brings Strategy and Operations leadership at Google with strong presentation and SQL skills but lacks presales Solution Engineering depth, partner-enabled sales experience, hands-on Python, and Snowflake-specific platform knowledge. Strong IC communication and analytics foundations do not offset the core presales and database-specific expertise gaps; this role is outside the candidate's primary strategy-and-operations family and would require substantial product and sales-cycle onboarding.",
+    "uncertainties": [
+      "Snowflake company size and organizational structure not stated in JD; assumed enterprise SaaS scale.",
+      "Extent of partner-consulting experience required vs. customer-facing presales is not sharply delineated; JD emphasizes SI/GSI partnership enablement as primary.",
+      "Data science 'highly desirable' language is ambiguous\u2014unclear whether hands-on data-science implementation or business-acumen awareness of data-science use cases is expected."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

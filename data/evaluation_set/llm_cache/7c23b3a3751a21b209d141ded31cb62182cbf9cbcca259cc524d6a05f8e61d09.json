@@ -1,0 +1,90 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Google commercial operations and SRE-adjacent exposure through scaling platforms and infrastructure transformation; no direct evidence of OIDC, SAML, SSH, TLS, TCP/IP depth or Linux systems administration.",
+        "evidence_strength": "weak",
+        "job_requirement": "Solid understanding of Linux systems and networking fundamentals (OIDC, SAML, SSH, TLS, TCP/IP)"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning (data-analysis/pandas track); no production Go or Python development experience; agentic-tooling directs LLM agents but does not constitute hands-on engineering.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience programming in Go and/or Python to automate security workflows"
+      },
+      {
+        "candidate_evidence": "No Terraform, IaC, or cloud-provisioning experience stated; Google operations role did not center on infrastructure-as-code authoring.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong experience with Terraform for managing cloud resources and security policies"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions; extensive cross-functional stakeholder management and transformation execution demonstrate autonomy and communication; aligns with role's requirement for autonomous operation.",
+        "evidence_strength": "strong",
+        "job_requirement": "Good communication skills and the ability to work autonomously within a fast-paced environment"
+      },
+      {
+        "candidate_evidence": "Active learner (Python/pandas track); Google role involved scaling operations and driving process transformation; cultural fit with trait-based expectations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Actively help yourself (and others) be successful; continuously learn and challenge the status quo"
+      },
+      {
+        "candidate_evidence": "No AWS, IAM, or cloud-identity management experience stated; Google operations role does not substitute for hands-on AWS access-control and multi-account architecture expertise.",
+        "evidence_strength": "weak",
+        "job_requirement": "Production expertise in Amazon Web Services (AWS), specifically with IAM, Organizations, and Multi-account security"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No production software-engineering or infrastructure-as-code (Terraform, CloudFormation) background; Python at basic/learning level, not production-ready; no Go experience",
+        "mitigation": "Would require 6\u201312 months of hands-on infrastructure engineering and programming ramp-up, including Go basics and Terraform proficiency. Candidate's learning velocity is strong, but gap is foundational to the role's core mission.",
+        "severity": "high"
+      },
+      {
+        "gap": "No AWS production experience; no IAM, Organizations, or multi-account security architecture knowledge",
+        "mitigation": "AWS certification (Solutions Architect Associate) and 3\u20136 months of hands-on IAM/access-control labs could establish baseline; however, no prior cloud-infrastructure background to build on.",
+        "severity": "high"
+      },
+      {
+        "gap": "No Teleport, PAM, or JIT provisioning experience",
+        "mitigation": "Teleport documentation and hands-on labs are relatively accessible; 2\u20134 weeks to develop functional competency. Less critical than AWS and Terraform, but foundational tool knowledge.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Linux systems administration, OIDC/SAML/SSH/TLS/TCP/IP networking fundamentals not demonstrated",
+        "mitigation": "Linux Academy, OIDC/SAML training courses, and 2\u20133 months of lab work could build baseline; however, absence from candidate profile suggests no hands-on systems experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "No compliance-framework translation or audit-support background stated; Google operations may have touched policy but not IAM audit trails or regulatory evidence",
+        "mitigation": "Compliance (SOC 2, PCI-DSS, ISO 27001) training and 1\u20132 audit cycles would establish familiarity. Candidate's attention to detail and stakeholder management suggest adaptability.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Experience programming in Go and/or Python to automate security workflows.\" Candidate's Python is basic and actively learning (data-analysis/pandas track), not production-grade. No Go experience. Agentic-tooling direction does not constitute hands-on programming.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"Production expertise in Amazon Web Services (AWS), specifically with IAM, Organizations, and Multi-account security.\" No AWS, IAM, or multi-account architecture experience stated in candidate profile. Google operations does not translate to AWS hands-on expertise.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"Strong experience with Terraform for managing cloud resources and security policies.\" No Infrastructure-as-Code, Terraform, or cloud-provisioning authoring experience in candidate profile.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 65,
+    "level_rationale": "Production AWS/infrastructure ownership, Terraform scaling, and autonomous access-engineering scope suggest L5 senior-IC. no management scope or director title signals single-IC ceiling. Company stage/size unstated in JD. 1,500-person fintech raises confidence modestly. Years required not explicit. implied 6\u20138+ years of hands-on infrastructure depth.",
+    "role_family_fit": 15,
+    "scope_seniority": 50,
+    "summary": "This is a deep-infrastructure SRE/access-engineering role requiring hands-on production expertise in AWS IAM, Teleport/PAM, Terraform, Linux/networking, and Go/Python programming. The candidate has strong operations, transformation, and agentic-tooling leadership experience at Google, but lacks the required production software-engineering background, infrastructure-as-code depth, cloud identity/access management expertise, and hands-on Go/Python development experience that define this role's core mission.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

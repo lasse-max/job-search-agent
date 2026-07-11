@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "SQL proficient with joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data. Looker dashboard building and basic Python for data analysis actively learning.",
+        "evidence_strength": "medium",
+        "job_requirement": "Write high-quality code that scales effectively; examine code, write SQL queries, read logs, and inspect data pipelines"
+      },
+      {
+        "candidate_evidence": "SQL-proficient with intermediate-to-advanced query patterns; Looker and Tableau dashboarding; advanced Excel and Sheets skills demonstrate data-analysis capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Expertise in SQL and data visualization, proven experience analyzing complex datasets"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling commercial operations; designed and directed LLM coding agents to build production systems; evaluated data quality and drove process improvements; experience tracing problems through systems and coordinating technical solutions.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical problem-solving skills, able to understand technical systems using a variety of methods including reading/writing code, reading documentation, debugging, and digging into raw data"
+      },
+      {
+        "candidate_evidence": "Eight-year career at Google in operations and transformation roles; global commercial operations scaling required cross-functional stakeholder management and communication.",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent written and verbal communication across technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Directed LLM coding agents to build production systems; coordinated engineering feature requests and system improvements; led transformation programs requiring process redesign and automation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Identify and automate inefficient or unnecessary manual processes by making direct code changes, or coordinating more complex code changes"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 48,
+    "gap_manageability": 42,
+    "gaps": [
+      {
+        "gap": "No direct Technical Operations, Software Engineering, Solutions Architecture, or Integration Engineering background. Experience is Commercial Operations and Product Operations, not SRE or platform reliability.",
+        "mitigation": "Candidate has demonstrated technical depth in SQL, data analysis, and system problem-solving; however, the role explicitly requires 3+ years in a technical or technical user-facing role (Technical Operations, SWE, Solutions Architecture, Integration Engineer). This is a hard family mismatch, not a skills gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "Code writing at production scale. Candidate directs LLM agents to write code but does not demonstrate direct production software authorship. Role requires writing high-quality code that scales effectively as a core responsibility.",
+        "mitigation": "Candidate has basic Python and is actively learning; this is insufficient for a role where code quality and scaling are minimum requirements. The gap is not reskillable in a short onboarding window.",
+        "severity": "high"
+      },
+      {
+        "gap": "Accounting, financial reporting, and compliance domain expertise. Preferred qualifications list these, and the role owns financial data quality and partner integrations.",
+        "mitigation": "Candidate has commercial operations and revenue operations experience but not formal accounting or compliance audit background. Reskillable with domain mentorship, but not a strength relative to finance-background candidates.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Hands-on partner integration troubleshooting and payment gateway architecture. Role explicitly engages with Stripe's financial partners and must understand payment acquirer protocols and partner specifications.",
+        "mitigation": "Candidate has cross-functional partner coordination but not fintech or payment-specific integration experience. High risk of ramp-up friction in a specialized domain.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "3+ years minimum technical experience required. reporting to unspecified TechOps leadership in a newly formed team. scope is end-to-end technical initiative ownership with coding, SQL, data-pipeline debugging, and partner integration responsibilities. This is consistent with L4 IC scope (senior IC or lead without direct reports).",
+    "role_family_fit": 22,
+    "scope_seniority": 60,
+    "summary": "This is a Technical Operations / SRE-family role at L4 requiring 3+ years of hands-on software engineering, Solutions Architecture, or Integration Engineering\u2014none of which the candidate brings. Although the candidate has strong SQL, data analysis, and LLM-agent direction experience, the role demands direct production code authorship and fintech partner-integration expertise as core responsibilities, not peripheral skills. The function family (strategy, product operations, business transformation) does not overlap with platform reliability engineering. Recommend skip due to function family and production-coding misalignment.",
+    "uncertainties": [
+      "Stripe company size/stage and team growth context not stated in JD; inferred L4 from 3+ years requirement and newly formed team structure.",
+      "Unknown whether the role allows significant onboarding/mentorship for fintech domain; newly formed APAC team may have limited domain expertise to lean on.",
+      "Unclear how much the 'preferred' LLM qualifications matter in relative candidate scoring; if weighted heavily, candidate's agentic-tooling strength could shift evaluation, but it does not offset the core technical family and coding-scale gaps."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

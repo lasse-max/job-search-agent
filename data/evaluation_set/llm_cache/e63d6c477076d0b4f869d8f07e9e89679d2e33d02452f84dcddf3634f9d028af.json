@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions; experience scaling global commercial operations and transformation programs; demonstrates ability to shape organizational processes and strategy.",
+        "evidence_strength": "medium",
+        "job_requirement": "Help define our sales motion: We're an early team, and your work will directly impact how our GTM function operates and succeeds."
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries, window functions), BigQuery, advanced Excel/Sheets, Looker dashboarding; owns data-driven analysis and reporting cadence design.",
+        "evidence_strength": "strong",
+        "job_requirement": "Analytical mindset: Ability to analyze market trends, identify opportunities, and make data-driven decisions."
+      },
+      {
+        "candidate_evidence": "Product Operations and GTM Strategy background with cross-functional program execution; Salesforce admin partnering with engineering on feature requests; experience orchestrating commercial transformation across teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate cross-functionally: Work closely with our broader GTM team, as well as our product, technical and operations orgs to deliver our industry-leading product."
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying enterprise sales (10+ years closing $1M+ deals, prospecting, negotiating, closing complex deals)",
+        "mitigation": "Candidate's revenue-operations and commercial background provides deal-flow understanding and pricing-execution familiarity, but lacks direct hunter/closer sales experience and pipeline-ownership track record.",
+        "severity": "high"
+      },
+      {
+        "gap": "Spanish language fluency required (professional fluency in both Spanish and English)",
+        "mitigation": "Candidate is fluent in English and German; Spanish fluency is not stated. Role is based in Madrid and requires professional bilingual communication with Spanish customers.",
+        "severity": "high"
+      },
+      {
+        "gap": "Enterprise customer relationship management and account ownership",
+        "mitigation": "Candidate has internal and partner stakeholder management but no stated evidence of large-account relationship ownership, customer success ownership, or end-to-end enterprise deal cycle experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "AI industry knowledge and GTM expertise in emerging AI platforms",
+        "mitigation": "Candidate is actively building with LLM agents and understands AI tooling, but no stated background in AI-product GTM, competitive positioning, or enterprise AI sales landscape navigation.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Sales Director at early-stage AI company. 10+ years enterprise sales, $1M+ quota, complex-deal ownership, and GTM-motion definition responsibility. Title and account-scale indicate L5-L6 range. no stated management span. Early-stage context and strategic GTM input push toward upper-L5 / low-L6.",
+    "role_family_fit": 20,
+    "scope_seniority": 55,
+    "summary": "This is a pure quota-carrying enterprise sales role (Sales Director, Spain; 10+ years, $1M+ deals, prospecting/closing/negotiating as core duties). Candidate is a Strategy and Operations leader with commercial and revenue-operations background, not a hunter-closer. Critical blockers: no stated sales experience, no Spanish fluency (role is Madrid-based and requires bilingual Spanish/English), no large-account relationship ownership, and no enterprise deal-cycle closing history. Role family misalignment (belongs to Sales, not Strategy/Ops/Product Ops families) and seniority mismatch (L5\u2013L6 sales role vs. L4\u2013L5 operations/strategy target) make this a fundamental fit gap. Candidate should skip unless she is considering a career pivot into quota-carrying enterprise sales.\"",
+    "uncertainties": [
+      "Company stage (funding, ARR, team size) not stated in JD; assumes Series A/B scaling based on founder profiles and multi-office footprint.",
+      "Spanish fluency not stated in candidate profile; unable to assess Madrid-based bilingual requirement.",
+      "Whether 'define sales motion' suggests a Head of Sales or GTM leadership scope hidden in this IC posting remains ambiguous; if true, role could be L6+, further from target band.",
+      "Candidate's Commercial Operations at Google Devices may have included enterprise segments, but evidence of hunter/closer sales experience or quota ownership is not supplied."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

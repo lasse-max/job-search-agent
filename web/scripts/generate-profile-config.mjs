@@ -87,6 +87,7 @@ const output = {
     ceilingRule: candidate.target_seniority.ceiling_rule
   },
   languages: Object.entries(candidate.languages).map(([name, level]) => ({ name, level })),
+  toolsAndSkills: candidate.tools_and_skills,
   hardBlockers: scoring.true_blockers,
   usuallyDeprioritize: candidate.usually_deprioritize,
   thresholds: {

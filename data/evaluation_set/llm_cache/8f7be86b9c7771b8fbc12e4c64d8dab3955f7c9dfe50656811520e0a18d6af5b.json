@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience scaling global commercial operations and transformation programs; however, no people-management or team-leadership experience documented in strategy and operations context.",
+        "evidence_strength": "weak",
+        "job_requirement": "Provide technical leadership and direction to a team of engineers"
+      },
+      {
+        "candidate_evidence": "SQL proficiency with BigQuery (writes queries, pulls and shapes own data), BigQuery working experience, and advanced Excel and Sheets; however, no infrastructure design, Kubernetes, Terraform, or GitOps experience documented.",
+        "evidence_strength": "weak",
+        "job_requirement": "Design and implement a robust and scalable data infrastructure tailored to meet different needs of the engineering team"
+      },
+      {
+        "candidate_evidence": "Product Operations background with requirements, logic design, UAT, rollout, and transformation experience; designs and specs LLM coding agents to build production systems and owns evaluation methodology. Does not substitute for hands-on software architecture and development of scalable systems.",
+        "evidence_strength": "medium",
+        "job_requirement": "Design and develop scalable software applications or systems that provide good self-service capabilities"
+      },
+      {
+        "candidate_evidence": "Python at basic level, actively learning on data-analysis/pandas track; no production programming or software development background.",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on experience with at least one programming language"
+      },
+      {
+        "candidate_evidence": "Not documented in candidate profile or tools and skills.",
+        "evidence_strength": "weak",
+        "job_requirement": "Demonstrated expertise in Kubernetes, Terraform, and GitOps"
+      },
+      {
+        "candidate_evidence": "Not documented in candidate profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Bonus: Data streaming engineering experience with Kafka, Flink, or Spark"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No hands-on team leadership or people-management experience. Role requires providing technical leadership and direction to a Singapore-based engineering team.",
+        "mitigation": "Candidate has transformation and stakeholder-management experience at scale; could ramp on eng-team dynamics and technical mentorship, but requires structured onboarding and likely a strong co-leader or skip.",
+        "severity": "high"
+      },
+      {
+        "gap": "No Kubernetes, Terraform, GitOps, or infrastructure-as-code expertise. Role mandates demonstrated expertise in these core tools.",
+        "mitigation": "These are specialized infrastructure-platform skills; ramp time would be 6+ months. Not easily self-taught while leading a team.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python at basic/learning level. Role requires hands-on programming competency with at least one language to lead data-infrastructure design and development.",
+        "mitigation": "Candidate's pandas-track learning path is nascent; production-grade systems leadership requires fluency. Gap is structural, not a quick upskill.",
+        "severity": "high"
+      },
+      {
+        "gap": "No data streaming engineering background (Kafka, Flink, Spark). Role lists as bonus; candidate has no documented exposure.",
+        "mitigation": "Bonus requirement; not disqualifying, but indicative of technical depth gap.",
+        "severity": "low"
+      },
+      {
+        "gap": "Background is commercial operations and product transformation, not infrastructure, platform engineering, or DevOps. Role is deeply technical platform/data-infrastructure.",
+        "mitigation": "No compensating transformation mandate or cross-functional strategic ownership in the JD; this is a pure infrastructure role with hands-on engineering expectations.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Bachelor degree or above in computer science or engineering related majors\" \u2014 degree requirement is explicit. Candidate degree not documented in profile.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 6+ years of engineering with team leadership, hands-on infrastructure expertise (Kubernetes, Terraform, GitOps), and direct mentoring scope. This maps to a senior IC or junior-manager track at an established company. Google-equivalent L5 (Senior IC) or borderline L6 (Manager) based on the 6+ year floor, direct reports, and technical leadership mandate. estimated L5 with team-scale ownership starting to bridge toward management.",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "This is a pure infrastructure and data-platform engineering role\u2014not a strategy, operations, or transformation position. The candidate's strength lies in commercial operations, product strategy, and business transformation; the role mandates hands-on Kubernetes, Terraform, and GitOps expertise, team leadership of engineers, and fluent production programming. Critical gaps include no team management background, no infrastructure-as-code or DevOps tooling, basic Python, and a degree requirement not documented in the profile. Role family fit is out of scope; recommendation is skip unless the candidate has undisclosed infrastructure engineering depth or holds the required degree.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

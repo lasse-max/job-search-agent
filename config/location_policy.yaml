@@ -1,4 +1,4 @@
-version: "location_policy_v2"
+version: "location_policy_v3"
 active: true
 profile_display:
   allowed_metros:
@@ -9,17 +9,13 @@ profile_display:
     - "Amsterdam"
     - "Paris"
     - "Copenhagen"
-    - "Stockholm"
-    - "Madrid"
-    - "Milan"
     - "Lisbon"
     - "Zurich"
-    - "Brussels"
-    - "Vienna"
     - "Singapore"
     - "Sydney"
     - "Melbourne"
     - "Perth"
+    - "Brisbane"
   tier1_only: ["Dublin / Ireland"]
   high_friction: ["United States"]
 pre_evaluation_filter:
@@ -31,15 +27,10 @@ pre_evaluation_filter:
     - "\\bamsterdam\\b"
     - "\\bparis\\b"
     - "\\bcopenhagen\\b"
-    - "\\bstockholm\\b"
-    - "\\bmadrid\\b"
-    - "\\bmilan\\b"
     - "\\blisbon\\b"
     - "\\bzurich\\b"
-    - "\\bbrussels\\b"
-    - "\\bvienna\\b"
     - "\\bsingapore\\b"
-    - "\\b(?:sydney|melbourne|perth)\\b"
+    - "\\b(?:sydney|melbourne|perth|brisbane)\\b"
   tier1_only_location_patterns:
     - "\\bdublin\\b"
     - "\\bireland\\b"

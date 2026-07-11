@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong applied AI engineer with hands-on experience building agents, LLM orchestration, context engineering, evals, and RAG systems"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs, demonstrating ability to work within established systems and frameworks",
+        "evidence_strength": "medium",
+        "job_requirement": "Able to reuse internal components and bricks effectively"
+      },
+      {
+        "candidate_evidence": "Multiple promotions and cross-functional program leadership at Google indicate strong stakeholder management and collaboration",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication skills and collaborative attitude"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Role requires hands-on production AI engineering (agent composition, context engineering, orchestration) as core delivery; candidate background is strategy, operations, and business transformation rather than production AI software development",
+        "mitigation": "Candidate owns LLM agent evaluation and agentic-tooling direction, but lacks evidence of shipping production AI/ML systems end-to-end or hands-on orchestration at scale. Mistral's security domain pairing model may partially offset if domain can be learned, but core AI engineering competency gap is substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "Cybersecurity domain expertise is listed as 'a real plus, not mandatory,' but role sits at intersection of agentic systems and cyber/pentest workflows; candidate has no stated security tooling or penetration-testing experience",
+        "mitigation": "JD explicitly states 'we can pair you with pentesters for domain depth,' reducing mandatory severity. However, lack of any security operations or threat-modeling background may slow early value delivery.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of building, deploying, or operating production agentic harnesses or multi-agent systems end-to-end; candidate directs and designs but does not ship AI code herself",
+        "mitigation": "Candidate's foundational agentic-tooling design and evaluation experience is adjacent, but JD expects hands-on composition and orchestration. This is a material capability gap, not a seniority mismatch.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python listed as basic and actively learning; role may expect fluency in Python for agent/context engineering and integration work, though not explicitly stated as required",
+        "mitigation": "JD does not explicitly require Python proficiency, but hands-on agentic and orchestration work typically involves Python tooling. Learning trajectory and willingness to grow may be acceptable if other capabilities are strong.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 60,
+    "level_rationale": "Applied AI Engineer suggests IC L4-L5 scope. JD emphasizes hands-on agent/LLM composition, context engineering, and fast delivery rather than deep SWE leadership or manager scope. No explicit years required, management scope, or reporting line stated. Company stage and hiring volume are unknown, limiting confidence.",
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is an Applied AI Engineer role in Mistral's cyber security solutions, requiring hands-on production agent composition, context engineering, and multi-agent orchestration\u2014core AI software-engineering tasks. The candidate's background is strategy, operations, and transformation leadership at Google, with strength in AI/LLM evaluation methodology and agentic-tooling direction but not in shipping production AI systems or hands-on engineering work. The role family (native applied AI engineering) does not match the candidate's target families (Strategy & Operations, Business Operations, Product Operations). While the candidate's agentic-tooling ownership and evaluation expertise show adjacent knowledge, the gap between directing AI systems and building them hands-on is material and not bridged by the stated pairing model. This role is outside approved-stretch families and represents a functional pivot into production AI engineering rather than strategy or operations.",
+    "uncertainties": [
+      "Mistral's company size, stage, and hiring tier unknown; no reporting line or manager scope stated, limiting confidence in L4 level estimate.",
+      "Degree of hands-on vs. architectural work in 'agentic solutions' role is ambiguous; JD uses 'compose' and 'configure' but does not clarify whether engineering or integration depth is expected.",
+      "Candidate's LLM agent design and agentic-tooling ownership may partially qualify for context engineering and orchestration if the role accepts high-level system design plus collaboration with engineers for implementation.",
+      "Cybersecurity domain knowledge requirement remains soft ('a real plus, not mandatory'), but lack of any security ops background may require extended ramp time."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; designed and directed LLM coding agents to build production systems with evaluation methodology and benchmarking",
+        "evidence_strength": "strong",
+        "job_requirement": "5-7+ years experience in product development of highly technical products"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations with demonstrated stakeholder engagement across levels; experienced in shaping roadmaps and translating business requirements into technical execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience crafting and tailoring a message for potential customers, including executives; become trusted advisors and drive strategic technical strategies for customers"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration; proficient in SQL, BigQuery, Python (basic, actively learning), Excel, Sheets, Looker, Tableau; demonstrates translator role between technical and business teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to communicate highly technical concepts to both non-technical and technically proficient audiences, including recent AI developments"
+      },
+      {
+        "candidate_evidence": "Eight-year track record of cross-functional partnership; transformation program execution at scale; Salesforce admin experience managing territory budgets and partnering with engineering on feature requests",
+        "evidence_strength": "strong",
+        "job_requirement": "Work with engineering and product development teams to scope and implement new features; partner with engineers and customers to build and ship agents"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in product operations and transformation with demonstrable technical depth (SQL, BigQuery, Python, LLM agent ownership); no formal degree stated, but equivalent professional experience clearly present",
+        "evidence_strength": "medium",
+        "job_requirement": "Degree in a technical or related field, or equivalent professional experience"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, scaling commercial operations and transformation programs at enterprise scale; business operations and strategy leadership demonstrated",
+        "evidence_strength": "strong",
+        "job_requirement": "MBA or equivalent professional experience; opportunity to lean into broader business roles"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Native Product Management background and SDLC depth. Candidate's product experience is primarily ownership, requirements, logic design, UAT, rollout, and transformation rather than traditional PM with feature lifecycle, roadmap prioritization, and user research.",
+        "mitigation": "Candidate's transformation and cross-functional execution at Google scale, direct customer engagement skills, and ability to translate technical concepts to executives partially offset this. At a Series growth or venture-backed stage company, execution and business acumen may outweigh pure PM pedigree.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated React, TypeScript, or Go experience. JD lists these as 'Even Better' (nice-to-have), not required, but technical coding exposure would strengthen credibility with engineering partners.",
+        "mitigation": "Candidate has SQL, BigQuery, Python (basic, actively learning), and proven ability to direct LLM agents and understand production constraints. Learning curve for typed web frameworks is manageable with on-the-job exposure.",
+        "severity": "low"
+      },
+      {
+        "gap": "No stated prior AI agent or conversational AI product experience. JD lists AI experience as 'Even Better' (bonus).",
+        "mitigation": "Candidate owns LLM agent direction, evaluation, and benchmarking\u2014direct AI/agentic tooling depth. Agent conversation flow and enterprise requirements are learnable; core AI acumen is present.",
+        "severity": "low"
+      },
+      {
+        "gap": "Limited direct consulting brand and classic case-team experience; background is internal operations and transformation rather than external customer advisory or enterprise solutions selling.",
+        "mitigation": "JD emphasizes customer obsession, technical advisory, and partner influence on roadmap. Candidate's eight-year track record of stakeholder engagement, cross-functional partnership, and transformation execution addresses the underlying capability; the consulting pedigree is not essential.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5-7+ years in technical product development with past PM or senior equivalent experience. Posted title is \"Product Manager, Agent Development\". JD emphasizes direct customer partnership, technical strategy influence, and roadmap scoping with engineering\u2014scope consistent with L5 Senior IC or Lead PM. Reporting line and company stage not stated. Sierra's founder pedigree (ex-Salesforce co-CEO, ex-Google leadership) suggests established venture growth, which moderately raises expected scope. Eight years required + technical depth + customer advisory scope \u2192 L5.",
+    "role_family_fit": 72,
+    "scope_seniority": 76,
+    "summary": "Candidate has eight years at Google scaling commercial operations and transformation with strong stakeholder engagement, LLM agent ownership, and cross-functional partnership credentials. JD seeks a Senior PM for enterprise AI agents with technical communication, customer advisory, and roadmap influence\u2014aligned with candidate's core strengths. Primary gaps are native PM/SDLC background and React/TypeScript/Go coding; these are addressable given candidate's transformation execution, SQL/BigQuery/Python technical foundation, and demonstrated ability to translate complex concepts to executives and engineers. No hard blockers. This is a stretch above the candidate's stated L4-L5 band if estimated correctly at L5, but role fit and capability depth warrant consideration.",
+    "uncertainties": [
+      "Candidate's formal education/degree status not stated; JD requires 'Degree in a technical or related field, or equivalent professional experience.' Equivalent appears met, but clarity would strengthen validation.",
+      "Sierra company stage and team size not explicitly stated in JD; assumes Series growth/established venture based on founder profiles. This affects reporting-line clarity and team ownership scope.",
+      "Candidate's Italian-language capability not mentioned. JD title includes '(Italian speaking)'; unclear if this is job requirement or candidate screening note."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

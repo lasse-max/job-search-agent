@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; demonstrated execution and adaptability across territory management, process design, and stakeholder alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Hands-on and solve problems on the spot; resilient and comfortable with occasional re-prioritization"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets skills, proficient SQL/BigQuery querying, Looker dashboard building; built dashboarding and forecasting cadences in commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Consistently tracking KPIs and metrics in as close to real-time as possible to move fast, spot trends, and react to them early"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "unknown",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No stated supply chain, logistics, distribution, or fulfillment center operations experience",
+        "mitigation": "Candidate's scaling and transformation experience could transfer if paired with domain onboarding, but this is unvalidated",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit People/HR/talent operations background; candidate experience is in commercial and product operations",
+        "mitigation": "Generic operations skills could be applicable, but domain shift is substantial and no People/talent acquisition domain signal is evident",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is a 'Talent Community' placeholder with no concrete scope, level, reporting line, or strategic/transformation mandate visible in JD",
+        "mitigation": "Cannot assess seniority alignment or strategic fit without clarity on actual role responsibilities and scope",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 5,
+    "level_rationale": "JD is a generic talent community holding page with no stated years required, reporting structure, scope, or level indicators. Department is listed as \"People\" but no concrete People Operations or HR responsibilities are defined. Company size/stage context is unknown. Role cannot be reliably estimated.",
+    "role_family_fit": 15,
+    "scope_seniority": 10,
+    "summary": "This is a generic talent community placeholder JD with no concrete role scope, level, reporting line, or strategic mandate. The candidate is a Strategy &amp; Operations / Product Operations leader with deep Google experience in commercial transformation and analytics. There is no stated People Operations, supply-chain operations, or fulfillment domain expertise in the candidate profile. Without clarity on the actual role responsibilities, seniority target, and team structure, alignment cannot be reliably assessed. Recommend skipping pending clarification of the underlying full-time opening.",
+    "uncertainties": [
+      "Role is a talent community intake form, not a concrete job posting\u2014actual role scope, level, team structure, and reporting line are entirely unknown",
+      "No indication whether 'Field Talent Community' maps to fulfillment operations, supply chain, logistics, or a different function",
+      "Company size and stage not stated in JD; HelloFresh maturity/scale context required for seniority calibration",
+      "No strategic, transformation, or business operations mandate stated; unclear if eventual placements are tactical or strategic",
+      "Candidate has no stated supply-chain, logistics, fulfillment, or People/HR operations experience to validate domain fit"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

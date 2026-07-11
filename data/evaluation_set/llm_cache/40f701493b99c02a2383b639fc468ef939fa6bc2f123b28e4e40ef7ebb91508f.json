@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; experience with process design, governance, and operational execution across complex systems",
+        "evidence_strength": "medium",
+        "job_requirement": "Own knowledge management environment end-to-end, defining architecture, establishing governance, and maintaining day-to-day content quality"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration; actively building with agentic tooling",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and implement AI agent integrations that surface the right knowledge assets at the right moment"
+      },
+      {
+        "candidate_evidence": "Transformed commercial operations through technology implementation and process redesign; partnered with engineering on feature requests and system rollouts",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive adoption of technology solutions and workflow automation tools to improve team efficiency"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL, BigQuery, advanced Excel/Sheets, Looker, and Tableau dashboarding; builds dashboards and pulls/shapes own data; translates metrics into strategic insights",
+        "evidence_strength": "strong",
+        "job_requirement": "Develop metrics and analytics to track knowledge usage, platform health, and effectiveness of AI integrations"
+      },
+      {
+        "candidate_evidence": "Eight years managing cross-functional global teams at Google; translated commercial operations across multiple stakeholders; professional English fluency",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding communication skills and ability to build trusted relationships with senior stakeholders globally"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No stated experience in corporate legal, risk, or compliance operations; background is commercial operations at Google, not legal-operations or legal-tech domain",
+        "mitigation": "Domain fundamentals (legal workflows, compliance, contract/privacy/employment pillars) are learnable in 3\u20136 months with onboarding and mentorship from the REAL team; operational discipline and AI/KM expertise transfer across domains",
+        "severity": "medium"
+      },
+      {
+        "gap": "No hands-on Confluence, wiki architecture, or content-governance experience explicitly stated; candidate has advanced Excel/Sheets and BI dashboarding, but not documented wiki/knowledge-platform design",
+        "mitigation": "Confluence architecture is a skill-building opportunity; candidate's design and governance mindset from ops translates; short ramp (2\u20134 weeks) with documentation and best-practice review",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit experience selecting, implementing, or managing legal-tech solutions; candidate has led transformation programs but not documented tech-vendor evaluation in legal domain",
+        "mitigation": "Candidate's AI-agent direction and process-automation background cover vendor evaluation and rollout mechanics; legal-specific tools require functional domain briefing, not new capability building",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires deep operational expertise in legal/compliance, hands-on Confluence/wiki architecture and governance, and successful AI technology selection/implementation. JD signals 5\u20137 years baseline plus demonstrated strategic impact. reporting to REAL ops leadership. company stage not stated. Title and scope align with senior IC or early manager responsibility: L5.",
+    "role_family_fit": 62,
+    "scope_seniority": 68,
+    "summary": "Strong AI agent and analytics capabilities align with knowledge-base modernization and AI integration pillars. Candidate's Google-scale operations and transformation background transfer to end-to-end KM architecture and team efficiency gains. Gap: no direct legal operations, legal-tech stack, or Confluence/wiki governance experience stated; candidate's operations background is commercial, not legal-domain. Fit depends on whether Legal domain-learning curve is acceptable and whether her agentic-tooling expertise outweighs lack of legal-ops precedent.",
+    "uncertainties": [
+      "Xero company size and stage not stated in JD; impacts seniority ceiling and role authority scope",
+      "Candidate's agentic-tooling work scope is not detailed (internal prototypes vs. production deployment vs. vendor-managed); clarity would strengthen AI-integration alignment",
+      "No prior exposure to Confluence, legal-tech stack, or legal-operations workflows stated; ramp timeline and success probability depend on team support and candidate's domain-learning velocity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

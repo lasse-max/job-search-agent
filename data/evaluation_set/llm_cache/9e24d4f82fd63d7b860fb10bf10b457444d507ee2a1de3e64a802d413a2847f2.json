@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations, pricing execution, territory management, and transformation programs; Salesforce admin with territory-budget management experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Revenue Operations and Strategy ownership"
+      },
+      {
+        "candidate_evidence": "SQL/BigQuery proficiency with joins, GROUP BY, subqueries, window functions; Looker/Tableau dashboarding; advanced Excel and Sheets",
+        "evidence_strength": "strong",
+        "job_requirement": "Data analysis and reporting cadence"
+      },
+      {
+        "candidate_evidence": "Documented experience in transformation programs, requirements definition, UAT, and rollout execution at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Process design and execution in transformation"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "No public JD details available; role description limited to title and location",
+        "mitigation": "Request full JD text or job posting details directly from Personio to evaluate specific scope, reporting line, strategic vs. operational balance, and seniority anchors",
+        "severity": "high"
+      },
+      {
+        "gap": "Unknown company size, stage, and team structure context",
+        "mitigation": "Confirm company maturity, team size, and whether 'Senior' title reflects L5 strategic scope or L4-equivalent operational leadership in smaller organization",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited visibility into whether role requires deep product-strategy thinking vs. pure RevOps execution",
+        "mitigation": "Clarify the balance of strategy vs. operations; if heavy execution, candidate's product-operations background may be sufficient; if strategy-first, deeper consulting or enterprise-SaaS experience gap",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct enterprise SaaS RevOps consulting or scaling experience mentioned",
+        "mitigation": "Candidate's Google commercial-operations translation is relevant but not consulting-brand; if role expects that background, interview to assess transferability",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Title 'Senior Revenue Operations & Strategy Manager' suggests L5 IC or L4 lead scope, but without JD text, company stage, reporting line, or team context, confidence is very low. Assume L5 baseline (6+ years, ownership across strategy and execution), but early-stage startup context could make this L4-equivalent.",
+    "role_family_fit": 78,
+    "scope_seniority": 55,
+    "summary": "Candidate has strong Revenue Operations fundamentals (Salesforce admin, SQL/BigQuery, territory/pricing execution, transformation program ownership) and aligns with target family. However, the complete JD is unavailable due to fetch failure, leaving role scope, strategic depth, seniority anchors, and company context unknown. Recommend skip pending full JD retrieval\u2014cannot assess fit or strategic vs. operational balance without it.",
+    "uncertainties": [
+      "JD text unavailable; evaluation based on title and location only",
+      "Company size, stage, and funding context not stated in Role JSON",
+      "Unclear whether role is primarily strategy-focused or operations-execution-focused",
+      "Unknown reporting line and peer team structure",
+      "No visibility into whether role expects consulting brand or SaaS-specific RevOps track record"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

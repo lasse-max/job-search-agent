@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs with two promotions; product operations and business transformation ownership across multiple regions",
+        "evidence_strength": "strong",
+        "job_requirement": "Define and own the end-to-end transformation roadmap for Finance, covering both systems and processes"
+      },
+      {
+        "candidate_evidence": "Designs and specs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration; directs system architecture decisions",
+        "evidence_strength": "medium",
+        "job_requirement": "Architect the future finance systems landscape, mapping current vs. future state and planning the transition; weigh build-versus-buy choices"
+      },
+      {
+        "candidate_evidence": "Managed Salesforce admin territory budgets and partnered with engineering on feature requests; cross-functional stakeholder alignment and change delivery in high-growth contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Finance, Technology, and Business teams to evaluate, select, and implement systems and automation solutions"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations transformation programs; led cross-functional change delivery and user adoption in large-scale rollouts; product-leader mindset for iterative value",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead change management and upskilling initiatives to enable adoption of new tools and processes across global finance teams"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; builds Looker dashboards; proficient SQL including joins, GROUP BY, subqueries, window functions; BigQuery data pulling and shaping; quantifies transformation impact",
+        "evidence_strength": "strong",
+        "job_requirement": "Track, measure, and communicate outcomes of transformation initiatives with clear business cases and accountability"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy background; demonstrated ability to influence senior stakeholders and drive cross-functional alignment in ambiguous, high-growth contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as strategic advisor to broader leadership team on elevating Finance into a competitive advantage"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 75,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No direct finance systems implementation experience (SAP, Oracle, NetSuite) or hands-on platform selection at enterprise scale",
+        "mitigation": "Strong systems architecture and build-vs-buy judgment foundation; rapid upskilling in finance-specific ERP tooling is feasible with domain partnership; prior platform evaluation experience translates",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting or Big Four/top-tier consulting background; experience is primarily within one org (Google)",
+        "mitigation": "Transformation delivery, stakeholder alignment, and change management are transferable; consulting brand not essential for execution-heavy role; advisory thinking and cross-functional problem-solving are demonstrated",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated direct experience with IPO-ready, SOX-compliance, or cross-border finance control frameworks",
+        "mitigation": "Governance, control, and scalability mindset are present; specific compliance domain knowledge can be developed on the job with guidance from Head of Strategic Finance and finance leadership",
+        "severity": "medium"
+      },
+      {
+        "gap": "Finance domain entry is steep\u2014background is Commercial/Product Operations, not finance operations or FP&A",
+        "mitigation": "Core transformation, process redesign, and technology orchestration skills are domain-agnostic; finance acumen grows quickly in execution role; strategic advisor positioning and finance leadership partnership are built into role",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 6+ years in digital transformation/enterprise systems with architecture and delivery scope. Reporting directly to Head of Strategic Finance at a funded fintech scales this to L5 (strong IC ownership, cross-functional leadership, end-to-end program accountability). No manager-of-managers or director-title expectation stated, so L6 is not supported. Bachelor's requirement is met. company size ($8B, 2,200+ employees, post-Series funding) and transformation scope anchor an L5 role.",
+    "role_family_fit": 72,
+    "scope_seniority": 76,
+    "summary": "Strong strategic transformation and change-delivery backbone; advanced data and automation tooling (SQL, BigQuery, Looker, agentic systems); proven ability to scale cross-functional programs and influence senior stakeholders. Main gap is lack of direct finance-systems and consulting domain expertise, plus limited IPO/SOX/cross-border compliance context. Core transformation muscle is intact and portable; finance-specific knowledge is learnable in partnership with Head of Strategic Finance. Recommend for consider\u2014fit is real but domain entry curve is material.",
+    "uncertainties": [
+      "Extent of familiarity with procure-to-pay, order-to-cash, and record-to-report process mechanics\u2014profile does not detail finance workflow depth",
+      "Depth of product operations experience in platforms/systems vs. commercial/go-to-market ops; may skew toward demand-side rather than finance tech",
+      "Specific data-architecture and BI governance experience in regulated or IPO-stage environments not explicitly stated",
+      "Appetite for domain shift from payments/commercial operations to core finance technology transformation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

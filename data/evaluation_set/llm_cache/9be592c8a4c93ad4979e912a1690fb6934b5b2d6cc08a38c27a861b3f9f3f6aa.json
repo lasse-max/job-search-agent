@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designed and directed LLM coding agents to build production systems; proficient in SQL, BigQuery, and advanced Excel/Sheets; built Looker dashboards",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical knowledge of ERP systems and integration technologies"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; SQL proficient with joins, GROUP BY, subqueries, window functions; owns LLM agent evaluation and benchmarking",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven ability to build integrations using APIs, middleware tools, lowcode platform or scripting languages (e.g., Python, JavaScript)"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations; managed territory budgets in Salesforce admin capacity; experienced in pricing execution and revenue-leakage control",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of finance and procurement processes and requirements"
+      },
+      {
+        "candidate_evidence": "Led commercial operations transformation programs; designed specifications and benchmarking methodology for production systems; demonstrated analytical capability via SQL and BigQuery querying",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent problem-solving skills and the ability to troubleshoot system issues"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with cross-functional work; partnered with engineering on Salesforce feature requests; strategic and operations leadership background",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to manage through influence, building relationships with key people and able to influence decisions to achieve the right outcomes"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Production software engineering and hands-on coding. JD requires proven ability to build integrations using APIs, scripting languages, and hands-on system architecture\u2014core technical duties.",
+        "mitigation": "Candidate has basic Python and is actively learning; owns LLM agent evaluation methodology. Onboarding ramp on integration engineering and ERP systems would be substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep ERP system expertise (configuration, administration, development). JD emphasizes ERP as primary domain and certification is preferred.",
+        "mitigation": "Candidate has operational and finance process knowledge from commercial operations but no stated ERP hands-on experience (SAP, Oracle, NetSuite, etc.).",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on technical infrastructure and system architecture experience. Role requires leading technical design and implementation of finance systems, API integrations, and data pipelines.",
+        "mitigation": "Candidate background is commercial operations and strategy, not IT infrastructure or systems engineering. Cross-functional collaboration does not substitute for engineering-focused ownership.",
+        "severity": "high"
+      },
+      {
+        "gap": "Multi-jurisdictional tax and compliance systems knowledge. Preferred, but increasingly important for a global fintech finance systems engineer.",
+        "mitigation": "Candidate has exposure to global commercial operations but not tax or audit-specific system implementation experience.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD requires 5+ years (inferred from \"strong technical knowledge\" and \"proven ability\"), hands-on ERP and integration engineering, leading technical design, and escalation expertise. Role reports to IT FinEng leadership (likely Manager/Director level) at a $8B fintech with 2,200 employees. This maps to a senior-IC or early-management engineering level, approximately L5 (6\u20139 years senior-IC ownership). Confidence slightly reduced because company stage context is clear but exact reporting line is not stated.",
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a Senior IT Engineer role requiring hands-on production software engineering, ERP configuration, and financial-systems architecture\u2014a deeply technical engineering post in the IT FinEng team. The candidate is a Strategy and Operations leader with commercial operations, process design, and transformation expertise, not a software engineer or IT infrastructure specialist. While she brings finance domain knowledge, stakeholder management, and analytical tooling (SQL, BigQuery, LLM agents), the JD's core duties (ERP system design, API integration building, hands-on infrastructure) are outside her core experience. The gap in production coding, ERP administration, and systems engineering is severe and not easily bridged through operations leadership alone.",
+    "uncertainties": [
+      "Whether candidate's LLM coding-agent evaluation and specification work is perceived as sufficient for integration engineering onboarding.",
+      "Exact seniority and scope of the IT FinEng team and reporting line (implied but not explicit in JD).",
+      "Whether internal mobility or rotation at Airwallex would lower the hands-on engineering bar relative to external hire standard."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

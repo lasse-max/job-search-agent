@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google managing global commercial operations and coordinating cross-functional transformation programs with stakeholders across multiple geographies; experience with calendar management and international coordination at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage complex and dynamic calendars across multiple time zones, scheduling meetings, travel, and internal/external engagements."
+      },
+      {
+        "candidate_evidence": "No direct Executive Assistant background; candidate has led strategy and product operations teams and reported to senior leadership, but not in administrative support capacity.",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven experience as an Executive Assistant supporting C-level leaders (CRO/CSO/COO preferred) in fast-growing tech or consulting environments"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; Salesforce admin experience; familiarity with Slack and other collaboration tools through organizational work.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong mastery of Google Suite and/or Microsoft Office; experience with productivity tools (Notion, Slack, CRM systems) is a plus."
+      },
+      {
+        "candidate_evidence": "Extensive experience navigating ambiguity and shifting priorities across Google's global commercial operations and transformation initiatives at scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Comfortable managing shifting priorities and multiple time zones in a fast-paced, high-ambiguity environment."
+      },
+      {
+        "candidate_evidence": "Demonstrated through design and execution of complex transformation programs and commercial operations oversight requiring attention to process, stakeholder needs, and risk mitigation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Highly organized, detail-oriented, and able to anticipate needs before they arise."
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; native German speaker; no stated French proficiency.",
+        "evidence_strength": "medium",
+        "job_requirement": "Exceptional communication skills in English (mandatory) and strong proficiency in French is a plus."
+      }
+    ],
+    "confidence": 0.8,
+    "estimated_level": "L3",
+    "evidence_strength": 25,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No direct Executive Assistant or administrative support background; candidate's experience is in strategy, product operations, and transformation leadership, not C-level administrative support.",
+        "mitigation": "Candidate's organizational and coordination experience at scale could transfer, but lack of direct EA experience creates friction and requires significant retraining in administrative workflows, confidentiality protocols, and traditional executive support patterns.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated French proficiency; JD prefers strong French ability for coordination across Mistral's Paris office and French leadership.",
+        "mitigation": "Candidate is a native German speaker and fluent in English; language learning is feasible, but absence of French limits immediate effectiveness in a distributed Paris-based environment.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Career trajectory and seniority mismatch; candidate targets strategic leadership roles (L4-L5), not L3 administrative support.",
+        "mitigation": "Role does not offer strategic ownership, business transformation scope, or growth into a target-family function; perceived as a significant step backward in career progression and role fit.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Executive Assistant roles supporting C-level leaders typically require 2\u20134 years of administrative or coordination experience, strong organizational skills, and attention to detail. The JD emphasizes scheduling, travel coordination, calendar management, and event support\u2014core L3 administrative duties. No strategic ownership, business unit responsibility, or 5+ years of leadership experience is required or implied.",
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is an Executive Assistant role supporting Mistral AI's CRO\u2014a traditional administrative and coordination function focused on calendar management, travel coordination, event support, and operational continuity. The candidate's background is strategy, product operations, and transformation leadership at scale (8 years at Google), not executive administration. While the candidate has cross-functional coordination and operational experience, this role does not align with Strategy and Operations, Product Operations, or related target families; it falls under junior administrative support without strategic business ownership. The role is L3-L4 administrative scope; the candidate targets L4-L5 strategic and business-operations scope. Strong deprioritization applies.",
+    "uncertainties": [
+      "Mistral AI company size and stage not stated in JD; assumes a high-growth AI startup where organizational processes are less mature, potentially raising administrative complexity. If operations are highly structured, role scope may be narrower.",
+      "Candidate's interest in or appetite for a non-strategic, administrative role is unknown; JD emphasizes 'no job is too small' and immediate impact in startup context, but candidate's background suggests preference for business ownership and strategic execution.",
+      "Extent of candidate's past experience managing executives' calendars, travel logistics, and confidential communications is not detailed; example projects or administrative leadership scenarios would clarify transferability."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

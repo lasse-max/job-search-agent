@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, leading global commercial operations and transformation programs; demonstrated ability to build and scale teams and operations.",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead a team of highly experienced TAMs, building a measurable operation that delivers strong operational results for users."
+      },
+      {
+        "candidate_evidence": "Commercial Operations background translating to Revenue Operations with P&L ownership, territory-budget management (Salesforce), and revenue-leakage control; strong operational execution background.",
+        "evidence_strength": "strong",
+        "job_requirement": "Run this business to successfully deliver revenue, user experience, user value, and scalability goals for the users and Stripe. Own the P&L."
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations with stakeholder management and cross-functional collaboration; experience translating requirements, driving transformations, and managing complex organizational initiatives.",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner closely with senior stakeholders across product, engineering, go-to-market, and support; work directly with our largest users' leaders as a thought partner."
+      },
+      {
+        "candidate_evidence": "Demonstrated capability in SQL (joins, GROUP BY, subqueries, window functions), BigQuery querying, Looker dashboard-building, advanced Excel and Sheets; track record of data-driven decision-making in operations.",
+        "evidence_strength": "strong",
+        "job_requirement": "Set the segment strategy, think globally about metrics, and drive clear accountability for the business. Maintain metrics and analysis of team performance, and provide regular reporting."
+      },
+      {
+        "candidate_evidence": "Two promotions and eight-year tenure at Google signal sustained performance and growth; positioning emphasizes scaling and transformation mindset aligned with coaching and culture-building.",
+        "evidence_strength": "medium",
+        "job_requirement": "Invest in leading and growing a great team and culture, where both new and tenured Stripes can thrive. Build a coaching culture that unlocks Stripes' potential."
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions; management tenure not explicitly stated in profile, though leadership and team-scaling context implied.",
+        "evidence_strength": "medium",
+        "job_requirement": "Minimum of 15 years professional experience, with at least 1 year in management, demonstrating success in building and leading high-impact teams and businesses."
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L6",
+    "evidence_strength": 78,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "15-year minimum requirement: candidate has eight years of professional experience, falling short by approximately seven years.",
+        "mitigation": "Candidate's two promotions, global-scale operations leadership, and demonstrated ability to partner with senior stakeholders (VP-level) suggest above-average trajectory and impact density; early-career acceleration and sustained strategic ownership may offset tenure delta in evaluation of readiness.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct experience leading TAMs, CSMs, or technical premium-support teams in high-growth technology not explicitly demonstrated.",
+        "mitigation": "Commercial Operations and transformation-program leadership translate to team leadership, cross-functional execution, and customer-impact focus; ramp period on TAM-specific operational metrics and playbooks is manageable with strong operational foundation.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Direct fintech and payments-industry domain experience not stated.",
+        "mitigation": "Strong operational, P&L, and revenue-acumen background with proven ability to partner across product and engineering; fintech domain-specific knowledge is acquirable through stakeholder immersion and market education.",
+        "severity": "medium"
+      },
+      {
+        "gap": "API and technical-payment-product familiarity not documented.",
+        "mitigation": "JD lists API familiarity as preferred, not minimum; candidate's strength in translating requirements and partnering with engineering, combined with basic SQL and data-querying capability, provides foundation for technical-product fluency.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 85,
+    "level_rationale": "The JD requires at least 15 years of professional experience, a hard seniority anchor that maps the posted role to L6.",
+    "role_family_fit": 82,
+    "scope_seniority": 76,
+    "summary": "Manager, Technical Account Management at Stripe is a strategic operations and user-success leadership role with strong alignment to candidate's Strategy and Operations, Revenue Operations, and Business Transformation family. Candidate demonstrates eight years of global commercial-operations leadership, proven P&L ownership, stakeholder management, and data-driven execution; strong match on operational acumen, team scaling, and cross-functional collaboration. Primary gaps are tenure shortfall (8 vs. 15 years required), lack of direct TAM/premium-support team leadership, and fintech/payments domain unfamiliarity\u2014all manageable given candidate's operational depth and ability to partner across technical and business teams. Role is estimated at L5 with moderate confidence; candidate is below the posted tenure floor but shows intensity and impact that merit evaluation.",
+    "uncertainties": [
+      "Candidate's direct management tenure (years as people manager) not explicitly stated; assumed from 'leading' teams language but not confirmed.",
+      "Exact scope and team size of candidate's global operations leadership not quantified; inferred from 'scaling' and 'two promotions' at Google scale.",
+      "Company size/stage context for the role (Stripe) is assumed from brand but not stated in JD; this moderates level_confidence slightly.",
+      "Whether candidate has prior direct experience recruiting, training, and building policies for cross-functional technical teams (vs. operations-specialist teams) is unclear."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

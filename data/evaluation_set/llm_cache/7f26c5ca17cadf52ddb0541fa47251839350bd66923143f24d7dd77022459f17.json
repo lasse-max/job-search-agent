@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, scaling global commercial operations and transformation programs; demonstrated ownership of requirements analysis, UAT, rollout and programme maturation",
+        "evidence_strength": "medium",
+        "job_requirement": "Act decisively with minimal guidance, own outcomes end-to-end and initiate solutions without waiting for direction"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; Looker dashboard building; demonstrated ability to translate complex system architectures into structured visual outputs",
+        "evidence_strength": "weak",
+        "job_requirement": "Create clear isometric line art, block diagrams and system flowcharts derived from SolidWorks or electrical schematics"
+      },
+      {
+        "candidate_evidence": "Participated directly in design reviews, UAT and hardware/software validation during transformation programmes at Google; experience working with multidisciplinary engineering teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Participate in design reviews, validation events and hands-on hardware integration sessions"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 8,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No aerospace, defence, robotics or UAV domain background; Commercial Operations and Product Operations experience does not translate to physical product technical documentation in regulated environments",
+        "mitigation": "Candidate would require substantial domain ramp (6\u201312 months minimum) to build fluency in aerospace/defence terminology, regulatory frameworks, compliance standards, and flight-safety procedures. Domain risk is not easily mitigated by operations experience alone.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated expertise with structured technical authoring tools (MadCap Flare, Adobe FrameMaker, LaTeX); no PLM (Windchill, Arena) or version-control (Git, equivalent) administration experience",
+        "mitigation": "These tools are specialist and highly domain-integrated. Candidate has advanced spreadsheet and basic BI skills but no evidence of learning or adopting enterprise technical authoring or PLM platforms.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on CAD (SolidWorks, NX), electrical schematic, PCB layout, or hardware integration experience; cannot independently read and interpret 3D assemblies or electrical wire harnesses",
+        "mitigation": "This is a core job function requiring first-principles ability to extract intent from engineering artefacts. Candidate's experience is operational and strategic, not hardware or electrical domain knowledge.",
+        "severity": "high"
+      },
+      {
+        "gap": "No technical writing background, certification or portfolio; no experience authoring Interface Control Documents, System Architecture Descriptions, Operator Manuals or Maintenance Guides",
+        "mitigation": "Technical writing is a distinct craft requiring structured methodology, traceability discipline, and compliance thinking. No evidence that candidate has developed or supervised technical writing workflows.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of working directly with mechanical, electrical or aerodynamics engineers on detailed system documentation; Commercial Operations experience is not equivalent to multidisciplinary technical authorship",
+        "mitigation": "Candidate has cross-functional collaboration skills but in operational/commercial context. Physical product documentation collaboration requires deep technical engagement and subject-matter fluency that is not demonstrated.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 68,
+    "level_rationale": "Physical product technical writing role requiring multidisciplinary aerospace/defence/UAV domain expertise, direct CAD/schematics interpretation, structured authoring tools (MadCap, FrameMaker, LaTeX), and PLM/version-control fluency. Implies 5\u20138 years of specialist technical documentation experience. ownership of end-to-end documentation maturity and compliance suggests mid-senior IC scope (L4 floor). Company stage unknown (early/growth implied by European mission and hiring velocity). reporting line not stated.",
+    "role_family_fit": 5,
+    "scope_seniority": 50,
+    "summary": "Systems Technical Writer at Helsing is a specialist physical-product documentation role in aerospace/defence requiring deep domain fluency (CAD, schematics, aerodynamics), hands-on hardware integration, and proficiency in enterprise technical authoring tools (MadCap Flare, PLM platforms). Candidate brings strong ownership, multidisciplinary collaboration and complex translation skills from eight years in Commercial/Product Operations at Google, but has no aerospace, defence, robotics, UAV, or technical-writing background; no hands-on CAD or electrical domain knowledge; and no structured technical authoring (MadCap, FrameMaker, PLM) experience. Domain gap and specialist tool/craft deficit are not easily closed and fall substantially outside Strategy and Operations / Product Operations families. Advisory: skip.",
+    "uncertainties": [
+      "Company size and stage not stated; growth-stage or scaling phase implied but unknown funding, headcount, reporting structure",
+      "Specific reporting line, management scope, and team size not stated; assumed individual-contributor mid-senior scope based on 'direct collaboration' and 'end-to-end ownership' language",
+      "Candidate's experience with CAD-adjacent work (e.g., requirements traceability, integration oversight) not explicitly ruled out but not demonstrated in profile; unclear whether any exposure exists"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

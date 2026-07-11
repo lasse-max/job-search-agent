@@ -1,0 +1,46 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; demonstrated ability to work across international teams and stakeholder management",
+        "evidence_strength": "weak",
+        "job_requirement": "Play a critical role in protecting our people and enabling our leaders to operate confidently around the globe"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "Executive Protection Specialist is a security and personal protection role, not a strategy, operations, or business transformation role. This sits in the deprioritized categories (security/specialized function outside target families).",
+        "mitigation": "Candidate profile explicitly focuses on Strategy and Operations, Business Operations, Product Operations, and transformation; no security, protective services, or executive protection background is evident or mentioned.",
+        "severity": "high"
+      },
+      {
+        "gap": "No security clearance, executive protection training, threat assessment, or physical security operations experience is supplied in the profile.",
+        "mitigation": "These are core to the role and cannot be quickly acquired through on-the-job training in a protection context.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role appears to emphasize international travel, on-site protective planning, and operational security\u2014domains orthogonal to the candidate's commercial operations, product operations, and strategy background.",
+        "mitigation": "No mitigation available; role family is fundamentally misaligned.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 50,
+    "level_rationale": "JD does not specify years required, management scope, or reporting line. Role title and responsibilities (protecting leaders, operational security, international travel) suggest a specialized L4 IC or early-management role, but company size/stage is unstated, lowering confidence. No salary posted.",
+    "role_family_fit": 5,
+    "scope_seniority": 45,
+    "summary": "Executive Protection Specialist at Spotify is a security and personal protection role\u2014firmly outside the target families (Strategy and Operations, Business Operations, Product Operations, Product Strategy, GTM/Sales Strategy, Revenue Operations, Partner Operations, Business Transformation, Chief of Staff). The candidate's background is global commercial operations, product transformation, and strategic stakeholder management, not protective services, threat assessment, or security operations. Role family fit is negligible, and core security competencies are absent from the profile. This is a misaligned deprioritized function.",
+    "uncertainties": [
+      "Company size/stage not stated; unable to normalize role level with confidence",
+      "JD does not mention required security clearances, certifications, or prior protective services experience; likelihood of unstated hard requirements is high",
+      "Degree or credential requirements in security/law enforcement/military not shown but may exist in full application materials"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

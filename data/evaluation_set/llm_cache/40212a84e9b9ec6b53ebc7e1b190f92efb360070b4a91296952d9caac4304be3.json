@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience in commercial operations and transformation; no explicit direct management of support engineers",
+        "evidence_strength": "medium",
+        "job_requirement": "3+ years experience in people management, directly managing Technical Support Engineers"
+      },
+      {
+        "candidate_evidence": "AI and agentic tooling design; ownership of evaluation methodology and benchmarking; demonstrated problem-solving in transformation and scaling programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience and skills in troubleshooting and problem-solving technical issues"
+      },
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries, window functions); basic Python actively learning; technical knowledge sufficient to work with development teams on product issues",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience with REST, JSON, HTTP, HTTPS and SQL; must be familiar with common HTTP errors"
+      },
+      {
+        "candidate_evidence": "Specified as capable of working with development teams on product issues and transformation; agentic tooling design and specs indicate technical communication ability",
+        "evidence_strength": "medium",
+        "job_requirement": "Must have sufficient technical knowledge to communicate with software development teams"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No demonstrated experience managing Technical Support Engineers or customer-facing technical support teams in APAC/China or elsewhere",
+        "mitigation": "Candidate's general people-leadership and stakeholder-management experience could transfer to support-team management with ramp-up, but the 3+ years requirement and region-specific constraint are material.",
+        "severity": "high"
+      },
+      {
+        "gap": "No background in fintech, payments, or e-commerce; limited exposure to payment-system troubleshooting, incident management, and payment-specific technical issues",
+        "mitigation": "Technical fundamentals (SQL, REST) are present but the domain knowledge gap is steep for a support role serving 200k+ payment customers.",
+        "severity": "high"
+      },
+      {
+        "gap": "REST, JSON, HTTP/HTTPS, and HTTP error diagnostics are not explicitly demonstrated; SQL is present but payment-system and API-error troubleshooting are absent",
+        "mitigation": "Candidate can learn these quickly if the role were willing to invest in ramp; however, this is a support lead (not junior IC) requiring immediate technical credibility.",
+        "severity": "high"
+      },
+      {
+        "gap": "Mandarin language requirement; only English and German are confirmed",
+        "mitigation": "Role states 'strong willingness to deliver exceptional customer service at scale' and coverage includes China region, implying Mandarin is critical. Candidate's language profile does not confirm this.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role requires 3+ years people management (L4 signal) plus 5+ years customer-facing technical support and technical depth (HTTP, SQL, REST, JSON, troubleshooting). Leadership and technical scope together map to L4. Company size (200k+ customers, $8B valuation) does not elevate the posting significantly beyond the responsibility scope stated.",
+    "role_family_fit": 15,
+    "scope_seniority": 50,
+    "summary": "Technical Support Lead at fintech/payments company. Role requires 3+ years managing Technical Support Engineers in APAC/China, 5+ years customer-facing technical support, and strong HTTP/SQL/REST technical knowledge\u2014domain expertise firmly in customer support and incident management, not strategy, operations, or transformation. Candidate's eight years at Google span strategy, commercial operations, and transformation, not support engineering or support team leadership. No direct evidence of managing support engineers or deep payment/fintech technical support experience. Function fit is poor despite candidate's seniority and operational scope.",
+    "uncertainties": [
+      "Candidate's exact customer-support, incident-management, or technical-troubleshooting experience is not detailed in the profile; positioning focuses on commercial operations and transformation.",
+      "Mandarin fluency is not mentioned; the candidate lists English (fluent) and German (native), but the role explicitly requires Mandarin for China-region customer support.",
+      "Fintech / payments domain depth is not stated; candidate background is in Google Devices and Services, not financial services or payment systems."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

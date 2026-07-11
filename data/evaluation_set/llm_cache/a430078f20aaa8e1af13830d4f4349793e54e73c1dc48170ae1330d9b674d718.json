@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; designed, specified, and directed LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration.",
+        "evidence_strength": "strong",
+        "job_requirement": "synthesise disconnected streams of thought into a cohesive understanding of the most important problem and what the data means"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience with transformation programs requiring deep stakeholder engagement, process design, and cross-functional execution; Commercial Operations background involves territory management and CRM administration requiring detailed workflow understanding.",
+        "evidence_strength": "strong",
+        "job_requirement": "immerse themselves in customers' most intricate workflows, partner with customer teams and explore the data"
+      },
+      {
+        "candidate_evidence": "Product Operations and Product Strategy experience from ownership role; requirements definition, UAT, rollout, and transformation; built dashboards in Looker and Tableau; designed specifications and evaluation methodologies.",
+        "evidence_strength": "medium",
+        "job_requirement": "dive into the product landscape to enable scaling"
+      },
+      {
+        "candidate_evidence": "Transformation and Commercial Operations background requires understanding user pain points and stakeholder motivation; experience across global teams at scale suggests developed empathy and analytical discipline.",
+        "evidence_strength": "medium",
+        "job_requirement": "curious and analytical mindset; strong degree of user empathy"
+      },
+      {
+        "candidate_evidence": "Partnered with engineering on Salesforce feature requests; collaborated on LLM agent evaluation and calibration; demonstrated cross-functional program leadership in transformation roles.",
+        "evidence_strength": "medium",
+        "job_requirement": "work with Engineers, Product Designers, and other Deployment Strategists to deploy software"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL with joins, GROUP BY, subqueries/CTEs, window functions; writes BigQuery queries to pull and shape own data; builds dashboards in Looker and Tableau; advanced Excel and Google Sheets.",
+        "evidence_strength": "strong",
+        "job_requirement": "explore the data and understand what data means in operational context"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No direct Palantir Gotham, AIP, or similar platform experience; unfamiliar with government/defense workflows in operational context",
+        "mitigation": "Deployment Strategist roles explicitly immerse in customer workflows; candidate's transformation and process-design background provide a foundation. Platform-specific knowledge is trainable on the job; problem-solving and data-exploration mindset are the stronger signal.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product experience comes from ownership, requirements, logic design, and rollout rather than native engineering product management or formal PM/SDLC depth",
+        "mitigation": "Role emphasizes collaboration with product and engineers, not primary product ownership; candidate's ability to understand user motivation and data context addresses the core need.",
+        "severity": "low"
+      },
+      {
+        "gap": "Limited direct consulting or case-team background; no stated experience with rapid problem scoping in high-stakes government or defense environments",
+        "mitigation": "Transformation program experience and Commercial Operations at scale provide stakeholder management and execution discipline; government/defense fluency develops through the role.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 68,
+    "level_rationale": "Deployment Strategist role emphasizes immersive stakeholder engagement, problem synthesis, data exploration, and cross-functional software deployment rather than deep technical engineering. No explicit seniority anchors (years, management scope) appear in JD. Title suggests individual-contributor operational strategy, likely requiring 5\u20137 years experience, mapped to L5-equivalent. Confidence is modest due to unclear company stage and whether role involves internal mentorship or solo IC scope.",
+    "role_family_fit": 88,
+    "scope_seniority": 76,
+    "summary": "Strong alignment on transformation, stakeholder immersion, data synthesis, and cross-functional execution\u2014core Deployment Strategist duties. Data querying, dashboard design, and product specification experience map well. Gap: no native Palantir platform knowledge, limited direct consulting case-team background, and product experience comes from requirements and rollout rather than engineering-side PM. Role is an approved stretch family; candidate's Commercial Ops and transformation work translates well to operational problem-solving and customer workflow design.",
+    "uncertainties": [
+      "JD does not state company stage, team size, or seniority reporting line; cannot confirm whether role is individual contributor or has any management component",
+      "Unclear whether 'Echo' department context (government/defense operations) is explicit in the full posting or requires domain fluency not mentioned in JD excerpt",
+      "No salary range or explicit promotion/IC-level title anchor in role JSON; level estimate relies on Deployment Strategist descriptor and operational scope alone"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

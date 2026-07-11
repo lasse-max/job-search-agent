@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years in Global Commercial Operations and Strategy at Google Devices and Services; two promotions; experience scaling operations and transformation programs.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations function (inferred from department and title)"
+      },
+      {
+        "candidate_evidence": "Owned transformation programs and scaling initiatives across global commercial and product operations; managed cross-functional rollouts and UAT.",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional program execution and stakeholder management (inferred from S&O scope)"
+      },
+      {
+        "candidate_evidence": "Advanced Excel, Google Sheets; Looker and Tableau dashboard building; SQL proficiency (joins, GROUP BY, subqueries, CTEs, window functions); BigQuery querying for data shaping.",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven reporting, insights, and dashboard building (likely for markets operations)"
+      },
+      {
+        "candidate_evidence": "Global Commercial Operations background; Salesforce admin experience with territory-budget management; revenue recovery, forecasting/reporting, and pricing execution capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Commercial operations, territory or market management (inferred from 'Markets' title)"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "JD detail and explicit requirements not provided; only job-posting page snapshot available. No stated responsibilities, years required, team scope, reporting line, or market-region context.",
+        "mitigation": "Retrieve full JD from Spotify careers page or request explicit job description to assess domain-specific requirements (e.g., ad-market vs. subscription-market operations, specific revenue levers, region/language needs).",
+        "severity": "high"
+      },
+      {
+        "gap": "Spotify-specific market operations and revenue engine domain knowledge not demonstrated in candidate profile.",
+        "mitigation": "Candidate has transferable global operations, territory management, and commercial-strategy scaling experience; ramp time expected for Spotify's specific market playbook, subscription/ad dynamics, and regional licensing complexity.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of music/media, subscription business, or content licensing operations experience.",
+        "mitigation": "Domain is learnable; core operations, finance/forecasting, and stakeholder-execution skills are transferable. Early-stage learning curve acceptable for hire depending on team support and specific market scope.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 40,
+    "level_rationale": "Role title suggests manager-level S&O contributor, likely 3\u20137 year target seniority, but JD lacks explicit years-of-experience requirement, team-management scope, reporting line, and market-context detail. Spotify's scale and \"Markets\" prefix imply regional or segment responsibility, but role definition is incomplete. Estimated L4 pending full JD retrieval.",
+    "role_family_fit": 85,
+    "scope_seniority": 65,
+    "summary": "Spotify Markets Strategy & Operations Manager is a Strategy & Operations role at L4-L5 seniority with strong core fit to the candidate's primary family and demonstrated skill set. However, the provided Role JSON contains only a job-posting page snapshot with minimal JD detail\u2014no responsibilities, requirements, reporting line, team scope, or market-specific context are present. This severely limits evidence specificity and confidence in gap assessment.",
+    "uncertainties": [
+      "Full role description and explicit requirements not included in Role JSON\u2014only job-listing page snapshot provided.",
+      "No clarity on market scope (geography, revenue stream, team size, reporting line)\u2014required to assess seniority fit and operational complexity.",
+      "No stated years-of-experience target, management expectations, or strategic mandate (e.g., growth, cost, licensing, pricing).",
+      "Unknown whether role requires music/licensing domain expertise or whether operations fundamentals and rapid domain pickup suffice."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

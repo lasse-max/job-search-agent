@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
+    inputs:
+      full_stale_backfill:
+        description: "Re-evaluate every stale current-policy posting in one controlled pass"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   scan:
@@ -41,6 +47,7 @@ jobs:
           DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}
           JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
           MONTHLY_MODEL_SPEND_CAP_USD: "15"
+          STALE_EVALUATION_BACKFILL_LIMIT: ${{ inputs.full_stale_backfill && '10000' || '25' }}
         run: job-agent scan-all
 
       - name: Upload local outputs

@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in strategy and operations roles with commercial operations and transformation program experience; two promotions to senior levels",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Customer Success Manager, Enterprise role in Customer Success department"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling and territory management experience (Salesforce territory-budget administration); customer-facing transformation program delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Enterprise customer relationship and account management responsibility"
+      },
+      {
+        "candidate_evidence": "Commercial operations background translates partially to operational cadence and metrics discipline; however, primary focus has been product transformation and process design rather than customer retention or post-sale value realization",
+        "evidence_strength": "weak",
+        "job_requirement": "Customer Success operational execution and retention focus"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Career positioning is strategy and operations / product operations, not Customer Success or account management",
+        "mitigation": "Candidate could highlight any post-sale program management, customer adoption, or retention metrics work; however, no such evidence is supplied",
+        "severity": "high"
+      },
+      {
+        "gap": "No supplied evidence of quota accountability, customer retention metrics ownership, or churn-reduction leadership",
+        "mitigation": "Customer Success typically requires direct ownership of renewal rates, NPS, or expansion ARR; commercial operations background does not automatically translate",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited visibility into customer success domain knowledge or CS tool stack (e.g., Gainsight, Totango, Salesforce CS cloud)",
+        "mitigation": "Salesforce admin experience is relevant but does not address CS-specific platforms or domain mastery",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD snapshot is corrupted / incomplete; no full role description, requirements, responsibilities, or salary provided",
+        "mitigation": "Low confidence in estimated_level and role seniority; cannot assess full scope of enterprise ownership or management breadth",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Title is Senior Customer Success Manager, Enterprise, suggesting L5 peer or early L5. however, JD snapshot is corrupted and contains only navigation markup, no actual job description, requirements, or scope. Cannot reliably estimate role level or confirm enterprise-account management breadth. Company size and stage stated as unknown.",
+    "role_family_fit": 20,
+    "scope_seniority": 40,
+    "summary": "Senior Customer Success Manager, Enterprise is in the Customer Success department\u2014a deprioritized family for this candidate unless there is meaningful strategy or transformation scope. The candidate's background is strategy and operations / product operations (L5 peer level), not customer success. No supplied evidence demonstrates customer retention metrics ownership, churn reduction, or post-sale value realization\u2014core CS responsibilities. The JD snapshot is corrupted and contains no substantive requirements, making full evaluation impossible. Recommend skip unless the candidate has undocumented CS domain work or the role has atypical transformation scope.",
+    "uncertainties": [
+      "JD snapshot corrupted; no full job description, requirements, or scope visible\u2014only website navigation markup.",
+      "Cannot assess whether 'Enterprise' implies multi-million-dollar account leadership or standard enterprise-segment coverage.",
+      "No indication whether the role involves strategic customer transformation advisory (approved stretch) or pure quota-carrying account management (deprioritized).",
+      "Candidate's commercial operations background partially relevant (operational discipline, territory management) but does not inherently cover customer retention, NPS, or churn-reduction ownership.",
+      "No salary information to cross-check level estimate."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in global commercial operations and transformation programs; designed and scoped LLM coding agents; built dashboards in Looker; proficient SQL and BigQuery querying for data-driven analysis",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience demonstrating value through business data analysis, business process improvement and software deployment, ideally in customer-facing Solution Consulting or IT/Management Consulting with SaaS providers"
+      },
+      {
+        "candidate_evidence": "Led transformation programs at Google; demonstrated product ownership through requirements, logic design, UAT, rollout, and enterprise-wide change initiatives; positioned as transformation leader scaling global operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience in identifying use cases for business process improvement, deploying improvement measures, being a change agent, and training users to realize value"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background (translatable to Revenue Operations in finance/operations functions); eight years scaling global commercial operations suggests domain depth in finance-adjacent operational functions",
+        "evidence_strength": "medium",
+        "job_requirement": "Understanding of Finance and/or Supply Chain domain and strategic transformation initiatives such as Shared Services Transformation"
+      },
+      {
+        "candidate_evidence": "Salesforce admin experience managing territory budgets; proficient SQL with joins, GROUP BY, subqueries, CTEs, window functions; writes BigQuery queries; builds Looker dashboards; basic Python (data-analysis/pandas, actively learning); owns LLM/agentic-tooling design and evaluation",
+        "evidence_strength": "strong",
+        "job_requirement": "Good knowledge of Business Software/SaaS applications (e.g. SAP); experience with implementing RPA and/or BI Tools and/or building dashboards/apps; knowledge of Python and/or SQL and AI"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global programs; led transformation programs and commercial operations; positioned as operations leader managing complex cross-functional delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in planning and managing project scopes, expectations, and timelines; managing multiple projects across aligned accounts at different parts of the value journey"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader; translated Commercial Operations into business impact narratives; eight years managing stakeholder engagement in global operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in preparing and communicating value roadmaps and results to stakeholders and management; excellent communication and presentation skills"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No stated customer-facing Solution Consulting or SaaS presales/value engineering background; experience is internal operations and transformation, not external customer advisory",
+        "mitigation": "Customer-advisory and change-agent skills transfer from internal transformation work; analytical and business-case-building capabilities demonstrated via dashboards, SQL analysis, and process-improvement leadership. Ramp-up on Celonis-specific domain (process mining, use cases) required but foundational skills present.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Finance and Supply Chain domain expertise not explicitly stated; Commercial Operations background is adjacent but may not cover manufacturing/automotive supply chain or shared-services transformation depth",
+        "mitigation": "Eight years in global operations provides operational-thinking foundation; Celonis ramp includes industry-specific workshops and mentoring. Demonstrated ability to learn complex domains and translate data to business impact mitigates pure domain gap.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience with ERP systems (SAP, Oracle) or RPA platform deployment; Salesforce and BI tool experience is present but not the core enterprise-system integration layer",
+        "mitigation": "SQL, BigQuery, and data-integration mindset demonstrate ability to work with complex data architectures; Salesforce admin experience shows SaaS platform literacy. RPA and ERP knowledge can be built through onboarding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated consulting-brand or case-team problem-solving background; acknowledged in honest_gaps as limited classic consulting experience",
+        "mitigation": "Strategic transformation and process-improvement leadership at Google substitutes for consulting framework rigor; analytical skills and stakeholder management demonstrated. Value Engineer role is more execution-focused than pure strategy consulting.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "The JD describes full end-to-end customer value ownership, account expansion, senior stakeholder engagement (C-level), and cross-functional partnership with Sales. Language like \"Lead\" and responsibility for landing, expanding, adopting, and renewing suggests mid-to-senior IC scope without explicit manager-of-people responsibility, mapping to L4 (Senior Manager / Senior IC) in typical SaaS consulting roles. No reporting line or company size stated, slightly lowering confidence.",
+    "role_family_fit": 72,
+    "scope_seniority": 74,
+    "summary": "Candidate brings eight years of strategic transformation and global operations leadership with strong analytical and change-management credentials. Core gaps are external customer-advisory experience (role is presales/customer-success hybrid), manufacturing/automotive supply-chain domain depth, and ERP/RPA platform familiarity. However, demonstrated SQL, BigQuery, dashboarding, Salesforce admin, Python learning, and agentic-tooling ownership address analytics and tool requirements. The role level (L4) aligns with candidate's target band; fit depends on willingness to ramp customer-advisory and domain skills alongside proven execution strength.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

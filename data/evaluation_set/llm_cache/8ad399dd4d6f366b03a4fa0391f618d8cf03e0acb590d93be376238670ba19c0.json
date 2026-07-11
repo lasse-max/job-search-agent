@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; extensive experience scaling global commercial operations and transformation programs; background in Strategy and Operations aligns with corporate finance and GTM domain",
+        "evidence_strength": "strong",
+        "job_requirement": "8+ years in strategic or corporate finance, investment banking, private equity, or management consulting; GTM experience is a plus"
+      },
+      {
+        "candidate_evidence": "Commercial Operations experience translates to Revenue Operations and GTM partnership; demonstrated stakeholder management and cross-functional collaboration on commercial transformation initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Act as the primary Strategic Finance partner for Channel Sales, building strong relationships and partnering on day-to-day decision-making"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations; Salesforce administration background including territory budget management; ability to design and execute planning frameworks and reporting cadence",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead and execute financial, strategic, and planning processes supporting Channel Sales activities, including monthly and quarterly performance reviews, annual and long-range planning, and quota-setting processes"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets proficiency; SQL and BigQuery querying skills; demonstrated ability to translate business problems into data-driven analysis and recommendations",
+        "evidence_strength": "strong",
+        "job_requirement": "Model unit economics and scenario analyses that clarify trade-offs and inform strategies for pricing, customer acquisition incentives, and headcount investment"
+      },
+      {
+        "candidate_evidence": "Eight-year track record at a scaled organization with demonstrated autonomy in defining problems, structuring analyses, and driving transformation outcomes; experience translating complex operational challenges into strategic recommendations",
+        "evidence_strength": "strong",
+        "job_requirement": "Operate with a high degree of autonomy while partnering cross-functionally to turn complex data into clear, actionable recommendations for senior executives"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; proficient in SQL (joins, GROUP BY, subqueries, window functions); designs and directs LLM coding agents to build production systems; Looker and Tableau dashboarding",
+        "evidence_strength": "strong",
+        "job_requirement": "Mastery of Excel / Google Sheets and comfort with SQL and modern AI-assisted analytics tools"
+      }
+    ],
+    "confidence": 0.82,
+    "estimated_level": "L5",
+    "evidence_strength": 88,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No direct investment banking or private equity background; experience is in-house corporate operations and transformation rather than external advisory",
+        "mitigation": "Candidate has 8 years of strategic finance partnership, autonomous problem structuring, and cross-functional execution in a large, complex organization. Demonstrated ability to translate ambiguous business problems into financial models and strategic recommendations is core to the role; external pedigree is listed as a plus, not a requirement.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit management consulting case-team or classic external-strategy background",
+        "mitigation": "Role emphasizes autonomous decision-making, cross-functional partnership, and storytelling to senior stakeholders\u2014all evidenced by eight-year operational track record. Consulting pedigree is neither required nor mentioned in core JD requirements.",
+        "severity": "low"
+      },
+      {
+        "gap": "Limited demonstrated experience with formal pricing strategy or customer-acquisition incentive modeling, though Excel and analytical foundation are strong",
+        "mitigation": "Commercial Operations and territory-budget management provide foundational context for incentive and unit-economics frameworks. GTM modeling is a primary responsibility, not a pre-requisite; the role includes mentoring and process evolution, suggesting scope for ramp.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Senior Manager title with 8+ years required in corporate/strategic finance, GTM operating model leadership, and autonomous strategic decision-making for senior stakeholders. Reporting to Strategic Finance Lead (not VP) and cross-functional scope (Sales, RevOps, Data, Product) suggest established senior-IC or early-manager ownership typical of L5. Company stage/size not explicitly stated, reducing confidence slightly.",
+    "role_family_fit": 92,
+    "scope_seniority": 85,
+    "summary": "Excellent fit. Eight years of Strategy and Operations at scale, with Commercial Operations experience directly translating to Channel Sales GTM financial partnering, quota-setting, and unit-economics modeling. Advanced Excel/Sheets, SQL, and BigQuery proficiency, plus agentic-tooling ownership, directly address the analytical toolkit. Gap: direct investment banking or PE background not present; mitigation is strong operational finance and cross-functional strategic partnership track record at a large organization. Role is at the target band (L4\u2013L5), with clear scope-seniority match. Recommend apply with confidence.",
+    "uncertainties": [
+      "Block company size and stage not explicitly stated in JD; assumed to be large public enterprise based on departmental structure, but this affects L5 vs. L6 confidence",
+      "Degree requirements not mentioned in JD; candidate educational background not provided in profile, so cannot confirm against any unstated degree filter",
+      "Specific experience with Block/Square or financial-services GTM not stated in candidate profile; domain onboarding may require time"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

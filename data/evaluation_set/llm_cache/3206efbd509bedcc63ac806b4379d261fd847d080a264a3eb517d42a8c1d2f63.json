@@ -1,0 +1,48 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google in Strategy and Operations / Commercial Operations with program execution and stakeholder management experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Customer Success Manager role at Harvey"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Role is in Customer Success, a usually-deprioritized family for Strategy and Operations candidates",
+        "mitigation": "If JD reveals strategic account ownership, cross-functional transformation, or revenue recovery scope tied to major customer accounts, reconsider; but baseline CS family fit is low.",
+        "severity": "high"
+      },
+      {
+        "gap": "No JD available to assess specific responsibilities, stakeholder scope, or requirements",
+        "mitigation": "Obtain full JD text from Harvey careers page or recruiter. Reassess after access to job description.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background is commercial operations and strategy, not customer success or account management",
+        "mitigation": "Only relevant if role involves pricing, territory, forecasting, or revenue-operations work embedded in account ownership.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Title \"Majors Customer Success Manager\" and \"Majors\" emphasis suggest senior account or strategic customer tier ownership, likely L4 baseline. However, JD is entirely unavailable (404 error). company size/stage unknown. no scope, reporting line, or responsibility details provided. Estimate is speculative.",
+    "role_family_fit": 25,
+    "scope_seniority": 40,
+    "summary": "JD unavailable (404 error); cannot assess specific role scope, responsibilities, or requirements. Candidate is a Strategy and Operations leader, not a customer-success operator. Without accessible JD details, evaluation is speculative. Recommend skip pending JD access.",
+    "uncertainties": [
+      "JD unavailable (404 error); cannot verify scope, reporting line, or requirements",
+      "Company size and stage unknown; cannot contextualize seniority or title",
+      "Role responsibilities and success metrics not stated",
+      "Unclear whether 'Majors' CSM is a strategic transformation role or quota-carrying account management",
+      "No visibility into Harvey's product, market, or customer base to assess domain fit"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

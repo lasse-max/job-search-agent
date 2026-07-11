@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Proficient in SQL with joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Excellent SQL and data transformation skills (e.g. ideally proficient in dbt or similar)"
+      },
+      {
+        "candidate_evidence": "Builds Looker dashboards; experience translating business and product requirements into analytics structures",
+        "evidence_strength": "medium",
+        "job_requirement": "Design and implement Looker structures (explores, views, etc) which will enable users across the organization to self-serve analytics"
+      },
+      {
+        "candidate_evidence": "Working proficiency with BigQuery (Google Cloud's data warehouse); eight years at Google with internal data stack experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Familiarity with at least one of these Cloud technologies: Snowflake, AWS, Google Cloud, Microsoft Azure"
+      },
+      {
+        "candidate_evidence": "Eight years translating commercial, product, and transformation requirements into data, metrics, and reporting cadences; deep stakeholder and product team collaboration",
+        "evidence_strength": "strong",
+        "job_requirement": "Work closely with data analysts and business teams to understand business requirements and provide data ready for analysis and reporting"
+      },
+      {
+        "candidate_evidence": "Commercial operations and revenue operations background; built forecasting, territory budgeting, and pricing analytics",
+        "evidence_strength": "medium",
+        "job_requirement": "Passionate about sales, finance, customer, marketing and/or product analytics data"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "dbt proficiency required; candidate has SQL and BigQuery but no stated dbt or production data-transformation framework experience",
+        "mitigation": "dbt is learnable for someone with strong SQL and data-warehouse fundamentals; onboarding and mentorship on dbt patterns would be needed",
+        "severity": "high"
+      },
+      {
+        "gap": "Data modeling at scale in large production environments not explicitly demonstrated; experience is analytics and operations-focused rather than data-engineering infrastructure",
+        "mitigation": "Candidate has schema, metric, and reporting design experience but would need structured ramp-up on enterprise data-warehouse modeling patterns",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with version control, testing, or CI/CD in analytics engineering; these are core to the role",
+        "mitigation": "Candidate has worked with Salesforce feature requests and system integrations but SDLC rigor in analytics context is not evidenced",
+        "severity": "medium"
+      },
+      {
+        "gap": "Snowflake is the stated tool; candidate knows BigQuery. Cloud warehouses have syntax and feature differences, though fundamentals transfer",
+        "mitigation": "Snowflake and BigQuery are similar enough that SQL and modeling skills transfer quickly; tool-specific training is standard",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role requires hands-on data engineering, modeling, and SDLC rigor with no management scope or years stated explicitly. Title \"Analytics Engineer\" in a fintech scale-up context, paired with end-to-end data-product ownership and cloud-warehouse infrastructure, suggests mid-level IC (L4). No evidence of senior/principal scope or management-of-managers. company stage not stated, reducing confidence.",
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "Candidate has strong SQL, BigQuery, Looker, and stakeholder-collaboration skills aligned to several core requirements. Critical gaps: no dbt experience (role specifies ideal proficiency), no large-scale data-modeling portfolio, and no stated SDLC/testing/CI-CD rigor in analytics. This is a specialized analytics-engineering role requiring data-infrastructure and SDLC depth; candidate's background is commercial-operations and product-requirement translation, not production data engineering. Skills are partially overlapping but the depth and focus differ materially. Role does not belong to target or approved-stretch families.",
+    "uncertainties": [
+      "dbt experience not mentioned; critical gap but may be learnable",
+      "Candidate's data-modeling experience scope in large-scale environments not detailed; inferred from operations/analytics context",
+      "Snowflake vs. BigQuery syntax and features; transfer feasibility depends on depth of Snowflake-specific patterns",
+      "Company stage, team size, and SDLC maturity at Checkout.com not stated in JD; affects role level and onboarding investment"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "blocked",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; led global commercial-operations transformation programs and scaling initiatives, owning end-to-end execution from design through rollout and cross-functional stakeholder alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive outcomes through autonomy; take independent responsibility for projects, from permit management to supporting cross-functional IT compliance initiatives"
+      },
+      {
+        "candidate_evidence": "Google background in requirements, logic design, UAT, rollout, and transformation; demonstrated ability to convey technical and operational complexity to diverse teams across commercial, engineering, and partner organizations",
+        "evidence_strength": "medium",
+        "job_requirement": "Clear communicator; translate complex legal requirements into actionable advice for technical and non-technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services, a major technology company; exposure to large-scale technical product and operations environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in a fast-paced software or tech environment (nice to have)"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 20,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No export-control, trade-regulation, or compliance domain expertise; role requires independent management of BAFA (German Federal Office of Economics and Export Control) permitting and ITAR/EAR (U.S. export-control law) applications as core duties",
+        "mitigation": "Candidate would require 12\u201318 months of structured mentorship from an experienced export-control specialist and likely formal study of German and U.S. trade law. Helsing would need to accept substantial ramp time before the candidate could independently advise on complex licensing or manage permit applications.",
+        "severity": "high"
+      },
+      {
+        "gap": "No technical goods-classification experience; role requires ability to classify hardware and software against national and international regulatory schemas (BAFA, EAR/ITAR schedules, EU regulations)",
+        "mitigation": "Formal training and extended mentorship in technical classification methodologies required. Classification accuracy is mission-critical; independent capability would require 6\u201312 months of supervised practice and regulatory study.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience managing or coordinating with foreign regulatory authorities (German BAFA, U.S. export-control agencies, EU customs); role requires professional relationship-building with government stakeholders",
+        "mitigation": "Relationship-building and regulatory-communication skills are transferable; however, the candidate lacks domain-specific knowledge of BAFA and U.S. agency workflows. Mentorship and gradual exposure under expert supervision would be required.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No Internal Control Program (ICP) or compliance-training-program design experience; role includes responsibility for implementing ICP and designing compliance awareness initiatives",
+        "mitigation": "Candidate's transformation and process-design background from Google could support ICP rollout execution, but requires subject-matter expert guidance on export-control compliance frameworks and regulatory expectations.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No prior work in defence, aerospace, or highly-regulated industries; defence-sector export control has unique legal and ethical dimensions not encountered in commercial operations",
+        "mitigation": "Industry transition is possible with structured onboarding, but would extend ramp-to-contribution timeline and require significant upfront investment from the hiring team.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD: 'Are a BAFA & ITAR/EAR specialist: You have independently managed complex license applications and understand the nuances of both German (BAFA) and U.S. (re-)export control laws.' Also: 'Have deep operational expertise: You have a proven track record of monitoring and ensuring export control compliance with national, European, and U.S. export control regulations within a high-stakes environment.' Candidate profile contains no export-control, BAFA, ITAR, or EAR experience. This is a core role requirement and a go/no-go qualification for a mission-critical compliance position.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 70,
+    "level_rationale": "Reports to Director (L6 equivalent signal). requires deep domain expertise and independent permit/license ownership within a high-stakes, mission-critical environment. Scope is specialized operational authority rather than broad cross-functional or people leadership. Estimated L4 specialist level, L5 if expertise is genuinely considered senior within the defence export-control domain. Company stage unclear from JD.",
+    "role_family_fit": 5,
+    "scope_seniority": 65,
+    "summary": "This is a specialized export-control compliance and permitting role at a defence AI company, reporting to a Director. The candidate has no demonstrated export-control, BAFA, ITAR/EAR, or regulatory-compliance expertise\u2014these are explicitly disqualifying hard requirements. While the candidate brings strong operational execution, cross-functional stakeholder management, and transformation capabilities from eight years at Google Devices, the role demands deep domain knowledge in German and U.S. trade law, technical goods classification, and permit/license management that is outside the candidate's demonstrated background. Role family fit is fundamentally misaligned: this is a specialist compliance/regulatory function, not Strategy and Operations or Product Operations.",
+    "uncertainties": [
+      "Candidate's German-language proficiency (native) is an asset for BAFA interactions but does not substitute for export-control domain knowledge.",
+      "Helsing company size and stage not stated in JD; unknown whether the role would include mentorship support or immediate solo ownership.",
+      "Degree or professional qualification in trade law, compliance, or related field not mentioned as a requirement\u2014only substantive experience is stated as mandatory.",
+      "Whether Helsing would consider the candidate's Commercial Operations and transformation background as a sufficient foundation for accelerated export-control training."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

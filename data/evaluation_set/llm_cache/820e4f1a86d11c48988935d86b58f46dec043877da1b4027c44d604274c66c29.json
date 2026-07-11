@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions in Strategy & Operations; demonstrated experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations role in Commercial domain with multi-location scope (Sydney/Singapore/London)"
+      },
+      {
+        "candidate_evidence": "Managed territory budgets in Salesforce; partnered with engineering on feature requests and CRM administration; background in commercial operations scalable to revenue operations context",
+        "evidence_strength": "strong",
+        "job_requirement": "Commercial operations, territory management, and revenue discipline"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries, window functions); writes BigQuery queries to pull and shape data; builds Looker dashboards; advanced Excel and Sheets",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven decision-making and analytics capability"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global transformation programs; demonstrated ownership of requirements, logic design, UAT, rollout, and change execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Transformation program execution and cross-functional stakeholder management"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration for agentic-tooling; demonstrates capability to drive systematic improvement",
+        "evidence_strength": "medium",
+        "job_requirement": "Product and process optimization"
+      }
+    ],
+    "confidence": 0.82,
+    "estimated_level": "L5",
+    "evidence_strength": 82,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "Limited explicit consulting or case-team experience in external strategy firms; classic case interview and pitch background not evident",
+        "mitigation": "Eight years of applied strategy and operations at scale at Google; internal transformation and commercial program execution translates directly to problem-solving rigor expected in Commercial S&O roles",
+        "severity": "low"
+      },
+      {
+        "gap": "JD lacks explicit detail on specific scope, reporting line, team size, or seniority signals beyond title",
+        "mitigation": "Role title and department (Strategy & Operations at Google) suggest L4\u2013L5 IC or manager scope; candidate's eight years, promotions, and program-ownership background position them competitively within typical S&O band",
+        "severity": "medium"
+      },
+      {
+        "gap": "Python remains basic and actively learning; agentic-tooling ownership is designs, specs, and direction rather than native Python engineering",
+        "mitigation": "Role is Commercial S&O, not a production ML or software-engineering position; candidate's agentic-tooling direction and evaluation methodology is strategic asset, not code-writing requirement",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role title \"Commercial Strategy & Operations\" at Google with multi-location scope (Sydney/Singapore/London, role-dependent) and Strategy & Operations department suggests established L5 IC or manager-track role. No explicit years-required, reporting line, or team-size signal in truncated JD limits confidence. Estimated L5 based on: title scope (Commercial, not junior analyst), company size (Google), and typical S&O career progression (6\u20139 years or established senior-IC ownership). Company size/stage listed as unknown.",
+    "role_family_fit": 88,
+    "scope_seniority": 80,
+    "summary": "Strong fit for a Commercial Strategy & Operations role at Google. Candidate brings eight years of demonstrated Google S&O experience, two promotions, and proven ability to scale global commercial operations and transformation programs. Strengths include SQL/BigQuery/dashboard analytics, territory-budget and Salesforce administration, and agentic-tooling direction. Gaps are light: no explicit consulting brand and basic Python (neither disqualifying for an S&O role). JD truncation limits confidence in exact scope and reporting structure, but title and department alignment are clear.",
+    "uncertainties": [
+      "JD truncated before full responsibilities, reporting line, team size, or explicit seniority signals are visible; cannot confirm whether role expects manager scope",
+      "Company size/stage noted as 'unknown_unless_stated_in_jd'; cannot calibrate role level against startup-exception patterns",
+      "Specific Commercial S&O domain focus (GTM, pricing, territory, revenue operations, or business transformation) unclear from title alone; candidate's commercial operations experience may require slight domain translation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

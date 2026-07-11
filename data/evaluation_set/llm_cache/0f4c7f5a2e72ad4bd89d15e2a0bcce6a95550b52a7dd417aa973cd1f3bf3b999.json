@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; managed global commercial operations and transformation programs; experience with forecasting/reporting cadence and territory management through Salesforce administration and budget oversight.",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage the full sales cycle from initial contact through discovery, proposal, negotiation, and close, delivering against revenue targets"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation background; experience translating Commercial Operations requirements into strategic insight; data-analysis capability with SQL, BigQuery, and advanced Excel/Sheets.",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyse client and market trends to identify growth opportunities; share competitive intelligence with internal stakeholders"
+      },
+      {
+        "candidate_evidence": "Salesforce administrator; managed territory budgets and partnered with engineering on feature requests; proficient with BigQuery, SQL, and Looker dashboards for analytics and reporting.",
+        "evidence_strength": "medium",
+        "job_requirement": "CRM proficiency: Experience using CRM systems (e.g. HubSpot) for pipeline management, forecasting, and reporting"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 50,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No direct quota-carrying sales track record; candidate background is internal strategy, operations, and transformation rather than direct client acquisition and revenue closing.",
+        "mitigation": "Candidate has business acumen, CRM skills, and analytical capability that could support sales-enablement or sales-operations roles, but would require significant reorientation and onboarding into direct B2B FMCG sales execution and deal closing.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited FMCG commercial consulting or consumer-insights consulting background; experience is primarily Google internal Consumer Device operations.",
+        "mitigation": "Candidate could study FMCG market dynamics and client use cases, but lacks the direct advisory or consulting sales experience typically required to build credible commercial narrative with CPG decision-makers.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of direct sales presentations to senior commercial audiences or deal negotiation and structuring experience.",
+        "mitigation": "Candidate has internal stakeholder management and transformation communication experience; could develop external sales presentation skills, but no proof of ability to close complex commercial deals.",
+        "severity": "medium"
+      },
+      {
+        "gap": "CRM experience is Salesforce; role requires HubSpot proficiency for pipeline management and forecasting.",
+        "mitigation": "CRM platforms share common pipeline, forecasting, and reporting logic; transition to HubSpot is learnable within weeks.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5+ years of direct sales with proven quota achievement and revenue targets\u2014a clear L4 commercial-execution requirement. Reporting line, company size/stage context, and scope confirm L4 independent contributor or manager-equivalent. no indication of director-level managing-manager scope. JD emphasizes direct sales cycle ownership and pipeline accountability over strategic leadership.",
+    "role_family_fit": 25,
+    "scope_seniority": 45,
+    "summary": "This is a quota-carrying direct sales role (Business Development Lead | FMCG at Quantium) requiring 5+ years of proven sales track record, FMCG commercial acumen, and deal-closing experience. The candidate's background is Strategy &amp; Operations and internal Product Operations transformation at Google\u2014not direct sales, not consulting, not FMCG market exposure. While the candidate has strong CRM administration, analytics, and internal stakeholder-management skills, the role is fundamentally outside target families and approved stretches. The high-severity gaps in quota achievement, consultative FMCG selling, and client-facing deal execution cannot be reasonably bridged through analytical skill transfer alone. Recommend skip.",
+    "uncertainties": [
+      "Quantium company size/stage context not stated in JD; 1,200+ employees globally suggests established consulting firm, but no UK-specific team size or growth stage data.",
+      "Degree requirement not explicitly stated in JD; candidate holds bachelor's level or equivalent education, but not flagged as a hard requirement in the JD text.",
+      "Role title 'Business Development Lead' is ambiguous; scope unclear whether it is individual-contributor sales or includes team leadership."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

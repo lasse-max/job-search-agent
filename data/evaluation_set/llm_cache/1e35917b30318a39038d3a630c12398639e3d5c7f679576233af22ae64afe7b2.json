@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and driving transformation programs; demonstrated execution across strategy and implementation in complex, ambiguous scaling scenarios.",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to work at both strategic and tactical levels, with a proven track record to execute in ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL, BigQuery, and advanced Excel/Sheets; builds dashboards in Looker; actively pulls and shapes own data to inform decisions.",
+        "evidence_strength": "strong",
+        "job_requirement": "Comfortable performing data analysis and making decisions based on the results"
+      },
+      {
+        "candidate_evidence": "Salesforce admin experience managing territory budgets and partnering with engineering on feature requests.",
+        "evidence_strength": "strong",
+        "job_requirement": "Highly proficient in using CRM software - Salesforce experience is a plus"
+      },
+      {
+        "candidate_evidence": "Two promotions and scaling responsibilities in global operations indicate proven prioritization and organizational capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong time management and prioritization skills"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English confirmed; no Italian language evidence provided.",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluency in Italian and English"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "Pure B2B quota-carrying sales and direct host/partner acquisition are not primary domain; candidate background is operations, strategy, and transformation rather than field sales or direct supply acquisition.",
+        "mitigation": "Candidate's stakeholder management, territory strategy, and partner-relationship experience from operations roles could translate if onboarded into active sales mode; however, lack of direct sales pipeline and conversion metrics is a material gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hospitality or travel industry experience demonstrated.",
+        "mitigation": "Candidate has proven ability to operate in complex, ambiguous business environments and learn new domains; learning curve on Airbnb product, host behavior, and travel trends would require ramp time.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No Italian language fluency; role is Milan-based and Italian fluency is required.",
+        "mitigation": "Candidate is a German native speaker with professional English; no evidence of Italian language capability. This is a hard requirement for in-market representation and host communication.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct field operations or host/property management experience; background is strategic and platform operations rather than individual-territory supply management.",
+        "mitigation": "Operations and strategy skills transfer; however, the hands-on territory prospecting, pipeline building, and partner management cadence is distinct from platform scaling work.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "6+ years sales experience required, B2B new business development and strategic-plus-tactical execution. reports to Field Operations Manager. Title and scope suggest mid-market individual-contributor sales leadership, consistent with L4 in a travel/hospitality enterprise context.",
+    "role_family_fit": 25,
+    "scope_seniority": 45,
+    "summary": "Market Manager (Acquisition focus) is a quota-carrying B2B sales and field operations role requiring 6+ years direct sales experience, hospitality/travel domain knowledge, and Italian fluency. Candidate brings strong data analysis, Salesforce administration, strategic execution, and ambiguous-environment capability\u2014but lacks primary sales DNA, hospitality background, and critical Italian language. Misalignment on pure sales scope and mandatory regional language make this a low-fit opportunity despite strong operational and analytical strengths.",
+    "uncertainties": [
+      "Company size and Airbnb's go-to-market structure at EMEA level not stated in JD; Field Operations Manager reporting line suggests mid-sized or enterprise sales org, but cannot confirm hiring band or growth context.",
+      "Degree or visa sponsorship requirements not stated; candidate visa status unknown.",
+      "Extent of candidate's transfer to quota-carrying sales roles unclear; primary experience is non-sales operations and strategy.",
+      "Whether Italian language is teachable quickly or functionally required for day-one host interactions unknown."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

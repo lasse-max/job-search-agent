@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration. Advanced Excel and Sheets, Looker, Tableau dashboarding, Salesforce admin experience managing territory budgets.",
+        "evidence_strength": "strong",
+        "job_requirement": "Leverage AI & Sales Tech: Proactively use AI-driven systems (e.g., Salesforce, intent-data tools) and advanced analytics to optimize lead generation, territory planning, and pipeline accuracy."
+      },
+      {
+        "candidate_evidence": "Salesforce admin with territory-budget management experience; BigQuery and SQL proficiency for data querying and analysis; advanced Excel and Sheets skills for operational reporting.",
+        "evidence_strength": "strong",
+        "job_requirement": "Operational Rigor: Maintain a data-backed approach to your territory, utilizing qualification frameworks (like MEDDIC) and keeping the CRM (Salesforce) as a source of truth."
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; demonstrated strategic thinking and cross-functional leadership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic Account Mapping: Conduct in-depth research into organizational structures and competitive landscapes to identify and engage high-value strategic accounts."
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales development: The role is fundamentally a lead-generation and outbound sales position with explicit territory targets, high-performing operating rhythm, and sales-funnel KPIs. Candidate background is strategy/operations/transformation, not individual-contributor sales execution.",
+        "mitigation": "Candidate has demonstrated learning velocity and coachability at Google; could ramp on territory discipline and sales mechanics if organization prioritizes strategic thinking over native sales experience. However, this is primary responsibility, not a minor component.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct sales development or account executive experience: Candidate's Commercial Operations work focused on process design, pricing, territory budgets, and cross-functional enablement rather than direct prospecting, discovery calls, and deal-closing accountability.",
+        "mitigation": "Strong operational and technical fluency could accelerate discovery conversations and deal support; however, the role's core metric is outbound activity and pipeline generation, not operations partnership.",
+        "severity": "high"
+      },
+      {
+        "gap": "Fintech/payments domain expertise: No stated background in payments, fintech, or financial services. The JD emphasizes mastering payment product suites and industry-specific technical research as a core responsibility.",
+        "mitigation": "Candidate demonstrates intellectual curiosity and learning velocity; could develop payments expertise through structured onboarding and product immersion, but entry ramp will be steeper than someone with fintech or SaaS technical sales background.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 3\u20135 years of progressively complex sales development or account-executive experience (implicit in mastery of payments landscape, territory management, and cross-functional deal support). Title '[Commercial] Standard' in a mid-to-large fintech company (Checkout.com processes 10B+ transactions daily) indicates individual-contributor sales function with clear territory ownership and quota accountability. No manager-of-managers or strategic-program scope evident. reports to typical Commercial leadership. Maps to L4 IC sales/revenue track.",
+    "role_family_fit": 22,
+    "scope_seniority": 48,
+    "summary": "Strong operational, analytics, and AI/tool fluency; weak sales execution fit. This is a quota-bearing sales development role requiring direct prospecting, discovery, and territory pipeline ownership\u2014domains not represented in candidate's eight-year Google Commercial Operations background. Strategic account research and Salesforce administration are table stakes but do not offset the core gap: candidate is an operations/strategy builder, not a sales development leader. Recommend skip unless candidate has explicitly stated desire to transition into pure sales and demonstrated sales motion elsewhere.",
+    "uncertainties": [
+      "JD does not specify years of experience required, manager level, or reporting line; seniority inferred from title, territory scope, and functional complexity.",
+      "Role family deprioritization rule applies (pure quota-carrying sales). Unclear whether candidate target band or organization would view this as a valid internal move or exploratory pivot.",
+      "No evidence of prior outbound prospecting, discovery-call leadership, or sales-funnel ownership in supplied profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

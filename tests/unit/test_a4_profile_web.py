@@ -38,13 +38,17 @@ class ProfileConfigContractTest(unittest.TestCase):
             {item["name"]: item["level"] for item in generated["languages"]},
             candidate["languages"],
         )
+        self.assertEqual(generated["toolsAndSkills"], candidate["tools_and_skills"])
         self.assertEqual(
             generated["locations"]["allowedMetros"],
             locations["profile_display"]["allowed_metros"],
         )
+        self.assertEqual(len(generated["locations"]["allowedMetros"]), 14)
         self.assertIn("Perth", generated["locations"]["allowedMetros"])
+        self.assertIn("Brisbane", generated["locations"]["allowedMetros"])
+        self.assertNotIn("Madrid", generated["locations"]["allowedMetros"])
         self.assertIn(
-            "\\b(?:sydney|melbourne|perth)\\b",
+            "\\b(?:sydney|melbourne|perth|brisbane)\\b",
             locations["pre_evaluation_filter"]["allowed_location_patterns"],
         )
         self.assertEqual(generated["hardBlockers"], scoring["true_blockers"])
@@ -127,6 +131,7 @@ class ProfileConfigContractTest(unittest.TestCase):
         ).read_text(encoding="utf-8")
 
         self.assertIn("read-only — edit via config", profile)
+        self.assertIn("Tools + skills", profile)
         self.assertIn("German citizenship", generated)
         self.assertIn("Skilled Worker sponsorship", generated)
         self.assertIn("COMPASS", generated)

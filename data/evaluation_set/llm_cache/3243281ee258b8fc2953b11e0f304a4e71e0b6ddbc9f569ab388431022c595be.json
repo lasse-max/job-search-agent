@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google managing global commercial operations, revenue operations, and transformation programs\u2014no demonstrated compensation, benefits, payroll, or total rewards expertise",
+        "evidence_strength": "weak",
+        "job_requirement": "Compensation & Benefits strategy and execution"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background; no HR, payroll, benefits administration, or people-operations experience in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "People/HR leadership reporting to Head of People"
+      },
+      {
+        "candidate_evidence": "Built global commercial operations and transformation programs at scale, but in Finance/Revenue/Devices context, not People/HR",
+        "evidence_strength": "weak",
+        "job_requirement": "First-class People organization building"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No compensation, benefits, payroll, or total rewards background",
+        "mitigation": "Candidate's program and transformation leadership could accelerate ramp, but comp-benefits domain requires certified HR expertise and deep regulatory/compliance knowledge that is not demonstrated",
+        "severity": "high"
+      },
+      {
+        "gap": "No HR, People Operations, or payroll-system administration experience",
+        "mitigation": "Commercial operations and Salesforce-admin experience are structurally different from HRIS systems, comp-planning software, and benefits administration. Cross-domain transfer is possible but non-standard and high-risk",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience building or scaling People/HR functions",
+        "mitigation": "Candidate scaled Finance and Commercial Operations at Google; People org building requires domain-specific practices, vendor partnerships, compliance, and cultural context that differ substantially from commercial ops",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role reports to Head of People with global scope (Paris-based) at a 600+ SaaS company (Pigment). functional responsibility for comp & benefits strategy. HR/payroll roles typically anchor at L4\u2013L5 depending on organization maturity and hiring pattern. No years-of-experience requirement is stated in JD, company scale is moderately senior context, and title suggests individual-contributor or junior-manager level. L4 is a reasonable estimate absent more explicit seniority signals.",
+    "role_family_fit": 8,
+    "scope_seniority": 55,
+    "summary": "Pigment's Global Total Rewards Manager role is a Compensation & Benefits specialist position in the People/HR department, reporting to Head of People. The candidate has zero background in compensation, benefits, payroll, or total-rewards administration\u2014his expertise is in commercial operations, revenue operations, and strategic transformation at Google. While his scale, transformation leadership, and Salesforce-admin skills are strong in other domains, comp-benefits is a highly specialized function requiring deep regulatory, actuarial, and benefits-architecture knowledge. This is an honest functional mismatch despite strong candidate seniority elsewhere.",
+    "uncertainties": [
+      "JD does not state years-of-experience requirement for the Total Rewards Manager role or specify whether it is an individual-contributor or team-lead scope",
+      "Pigment company stage and HR org maturity not detailed; comp-benefits scope can vary widely depending on outsourcing, in-house HRIS, and vendor management model",
+      "No indication whether candidate has any exposure to benefits-plan design, cost management, or vendor negotiation in adjacent roles"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; demonstrated stakeholder management and strategic advisory experience across cross-functional initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Be a trusted advisor to our customers and drive their AI strategies"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration of AI tooling; owns product requirements, logic design, UAT, and rollout for transformation initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Build, design and refine conversational AI agents, gaining direct exposure to how these products are developed and improved"
+      },
+      {
+        "candidate_evidence": "Eight years of scaling global commercial operations; two promotions; direct experience scoping, building, and shipping transformation programs at scale; leads cross-functional execution and delivery of complex initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects"
+      },
+      {
+        "candidate_evidence": "Commercial operations and transformation background demonstrates cross-functional coordination; product operations experience combining technical and business stakeholder management; Salesforce admin experience managing engineering partnerships on feature requests",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate across technical and non-technical stakeholders through the full agent development lifecycle process"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; proficient SQL with joins, GROUP BY, subqueries, window functions; builds Looker dashboards; writes BigQuery queries to pull and shape own data; demonstrates hands-on analytics capability for decision-making",
+        "evidence_strength": "strong",
+        "job_requirement": "Contribute data-driven, strategic insights to customers and internal team decisions"
+      },
+      {
+        "candidate_evidence": "Eight years of product operations and transformation work; owns conversational design and AI agent development methodology; technical product ownership (requirements, logic, UAT, rollout); Salesforce administration demonstrates technical systems thinking",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of software development, product management and engineering principles, enabling you to act as a strategic partner"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No stated native product-management experience or SDLC depth in traditional product management role titles; product work stems from operations and transformation ownership rather than as PM",
+        "mitigation": "Candidate's operational product ownership, requirements design, UAT leadership, and rollout execution map directly to the agent-development lifecycle described; depth gap is primarily in PM-centric terminology and title, not strategic execution capability",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting experience or case-team background; no stated exposure to advisory customer engagement models typical of consultancies",
+        "mitigation": "Strategist role emphasizes internal coordination and customer partnership as trusted advisor rather than pure consulting services; candidate's stakeholder management and transformation delivery experience translates to advisory relationship-building, though consulting brand/methodology is absent",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated conversational design, NLP, or chatbot/agent platform experience; AI agent work is current and learning-focused",
+        "mitigation": "Candidate actively designs, specs, and directs LLM agents and owns evaluation methodology; hands-on current exposure to AI tooling and production agent systems mitigates lack of prior domain experience; domain expertise builds quickly with immersion",
+        "severity": "medium"
+      },
+      {
+        "gap": "Java, TypeScript, JavaScript, or advanced Python not stated; Python is basic and actively learning",
+        "mitigation": "Role emphasizes strategic partnership and product strategy over production coding; candidate's data-analysis Python (pandas track) and SQL proficiency support analytical contribution without requiring software-engineering-level programming",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Strategist title focusing on agent product strategy, customer advisory, and multi-project execution across technical and non-technical stakeholders. No explicit years or people management scope stated. complexity and strategic responsibility suggest 5\u20137 year senior-IC range. Company stage and reporting context not disclosed, reducing level confidence.",
+    "role_family_fit": 82,
+    "scope_seniority": 76,
+    "summary": "Agent Strategist role at Sierra emphasizes customer advisory, conversational AI design, multi-project delivery, and cross-functional stakeholder coordination\u2014strong fit for Strategy and Operations positioning. Candidate's eight years scaling commercial operations, transformation delivery, and product ownership (requirements, logic design, UAT, rollout), combined with hands-on AI agent methodology and data analytics, directly map to core responsibilities. Gaps are primarily in PM title/SDLC terminology and consulting brand; execution capability, stakeholder management, and strategic problem-solving are well demonstrated. Python remains basic, and agent/conversational-design domain is current learning; both are manageable in strategist role that prioritizes business partnership over production engineering. Estimated level L5 (senior IC); posted role seniority fits upper-L4 to lower-L6 band depending on company scale and reporting line (undisclosed).",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

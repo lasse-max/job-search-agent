@@ -1,6 +1,6 @@
-version: "candidate_profile_v2"
+version: "candidate_profile_v3"
 active: true
-positioning: "Strategy and Operations / Product Operations leader with approximately eight years at Google Devices and Services, two promotions, and experience scaling global commercial operations and transformation programs."
+positioning: "Strategy and Operations / Product Operations leader with approximately eight years at Google Devices and Services, two promotions, and experience scaling global commercial operations and transformation programs. Translate Commercial Operations into Revenue Operations evidence where the requirement is revenue recovery, territory management, CRM administration, forecasting/reporting cadence, pricing execution, or revenue-leakage control; the domain label differs, but these capabilities are demonstrated."
 target_seniority:
   preferred_levels:
     - "Manager"
@@ -31,6 +31,16 @@ target_seniority:
 languages:
   German: "native"
   English: "professional/fluent"
+tools_and_skills:
+  SQL: "proficient — joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data"
+  Salesforce: "admin — managed territory budgets; partnered with engineering on feature requests"
+  Looker: "builds dashboards"
+  Tableau: "yes"
+  Excel: "advanced"
+  Google Sheets: "advanced"
+  BigQuery: "working — writes queries, pulls and shapes own data"
+  Python: "basic, actively learning (data-analysis / pandas track)"
+  AI and agentic tooling: "designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration"
 employer_opt_outs:
   Palantir: "Owner opted out of this employer on 2026-07-08; revisit explicitly before re-enabling."
 brand_floor:
@@ -66,12 +76,13 @@ primary_role_families:
   - "Product Strategy"
   - "GTM / Sales Strategy and Operations"
   - "Revenue Operations at appropriate seniority"
+  - "Partner Operations / Partner Strategy & Operations"
   - "Business Transformation"
-  - "Strategic Programs / Program Leadership"
 approved_stretch_families:
   - "Deployment Strategist"
   - "Forward-Deployed Strategy"
   - "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering"
+  - "Program / Project Management where the role owns business or strategic programs, cross-functional execution, or transformation — not pure engineering-delivery PM"
 role_family_patterns:
   primary:
     - "\\bs\\s*&\\s*o\\b"
@@ -91,14 +102,20 @@ role_family_patterns:
     - "\\brevenue operations\\b"
     - "\\brevenue ops\\b"
     - "\\brevops\\b"
+    - "\\bpartner (?:operations|ops|strateg\\w*)\\b"
+    - "\\bchannel (?:operations|ops)\\b"
+    - "\\bpartner field operations\\b"
+    - "\\bpartnerships? (?:operations|ops|strateg\\w*)\\b"
     - "\\bbusiness transformation\\b"
-    - "\\bstrategic programs?\\b"
     - "\\bchief of staff\\b"
   stretch:
     - "\\bdeployment strategist\\b"
     - "\\bforward[- ]deployed strateg\\w*\\b"
     - "\\bstrategist,?\\s+agent development\\b"
     - "\\bprofessional services operations\\b"
+    - "\\bstrategic program(?:me)? manager\\b"
+    - "\\b(?:business|transformation) (?:program(?:me)?|project) manager\\b"
+    - "\\btechnical (?:program(?:me)?|project) manager\\b.{0,500}\\b(?:business transformation|strategic initiatives?|operating model|go-to-market|cross-functional business)\\b"
 scope_seniority_signals:
   below_level_title_terms:
     - "intern"

@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; Commercial Operations experience translates to revenue operations and pricing/monetisation decision-support.",
+        "evidence_strength": "medium",
+        "job_requirement": "8\u201310 years' experience in GTM, product or strategy roles in deep-tech or SaaS companies, with at least 5 years pricing experience"
+      },
+      {
+        "candidate_evidence": "Product Operations ownership spanning requirements, logic design, UAT, rollout and transformation; commercial operations background with pricing and packaging execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven record designing pricing strategies for technical products (APIs, cloud or developer tools)"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries/CTEs, window functions), BigQuery querying, advanced Excel and Sheets; builds Looker dashboards; own data pull and shaping for analysis.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong analytical and financial modelling skills; comfortable with data-driven experiments"
+      },
+      {
+        "candidate_evidence": "Commercial operations and revenue operations background; no explicit stated experience with PLG motion or subscription/usage model design at SaaS/AI scale.",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep understanding of usage-, seat- and license-based pricing models; familiarity with PLG and enterprise motions"
+      },
+      {
+        "candidate_evidence": "Cross-functional collaboration at scale (Product, Engineering, Sales, Finance); transformation program leadership and commercial operations spanning distributed teams.",
+        "evidence_strength": "strong",
+        "job_requirement": "Excellent stakeholder management and communication skills; able to influence without authority"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets, BigQuery, Looker dashboarding; SQL and data-analysis capability to run exploratory analysis and model pricing scenarios.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build financial models, run A/B tests and analyse usage data to optimise pricing and packaging"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 68,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No demonstrated pricing strategy ownership or PLG motion experience; revenue/pricing background is commercial operations, not native GTM pricing design",
+        "mitigation": "Eight-year background in commercial operations and transformation includes revenue-related decision support and packaging logic; stakeholder management and analytical foundation are strong. Domain-specific pricing strategy knowledge (usage tiers, seat models, LLM economics) would require ramping, but core financial modelling and cross-functional influence skills are in place.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with API, cloud SaaS, or developer-tool pricing; Mistral requires deep-tech and/or LLM pricing levers",
+        "mitigation": "AI and agentic tooling ownership demonstrates comfort with technical platforms and system specification. SaaS pricing models are conceptually adjacent to commercial operations; ramp would focus on API/consumption economics and fine-tuning/custom-model margin calculation rather than foundational analytical or stakeholder skills.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited explicitly demonstrated experience with A/B testing and pricing-experiment design",
+        "mitigation": "Data-driven and analytical background (BigQuery, Looker, advanced Excel) supports rapid ramp into experimental methodology. Transformation and commercial operations roles typically include hypothesis-driven optimization.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD requires 8\u201310 years GTM/product/strategy with \u22655 years pricing. reporting to Head of Product Operations. design, financial modelling, and cross-functional execution scope across pricing and revenue architecture. This aligns with L5 senior IC / established ownership. no managing-manager scope noted. Confidence moderated by lack of stated company size and early-stage capital context.",
+    "role_family_fit": 68,
+    "scope_seniority": 72,
+    "summary": "Strong analytical, stakeholder management, and commercial-operations foundation with eight years at Google and two promotions. Core gap is lack of native pricing-strategy and PLG design ownership; this is a senior individual-contributor monetisation role, not a transformation or operations program. Candidate's Commercial Operations experience translates to revenue decision-support but not demonstrated pricing-lever design (usage tiers, seat vs. consumption, LLM fine-tuning economics). Data and financial-modelling capability are strong. Fit is \"consider\" because analytical and cross-functional skills are solid, but pricing-strategy domain depth and SaaS/API motion experience require meaningful ramp.",
+    "uncertainties": [
+      "Extent of pricing-strategy ownership in Commercial Operations background not explicitly detailed; may include packaging and pricing decisions or may focus on territory management and revenue reporting.",
+      "Whether previous roles included A/B testing or pricing experimentation; financial modelling is stated, but experiment velocity is unclear.",
+      "Candidate's experience with developer-tool or API consumption economics is not stated; Google Devices and Services may include platform or commerce pricing, but depth is not specified.",
+      "Mistral AI company stage and capital context not stated in JD; affects interpretation of growth-stage pricing priorities (early land-and-expand PLG vs. enterprise deal structure)."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

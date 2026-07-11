@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; product ownership across requirements, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years of experience accountable for technical project / program delivery within the domain of Data and AI"
+      },
+      {
+        "candidate_evidence": "Leads cross-functional transformation programs, orchestrates stakeholders, manages escalations and delivery in complex global environments",
+        "evidence_strength": "strong",
+        "job_requirement": "Technical program or project management including account, stakeholder and resource management accountability"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure scaling commercial operations, managing customer outcomes, and driving adoption of platform features through stakeholder leadership and technical credibility",
+        "evidence_strength": "medium",
+        "job_requirement": "Customer-facing pre-sales, technical architecture, customer success, or consulting role"
+      },
+      {
+        "candidate_evidence": "Owns product strategy and delivery roadmaps; designs and executes transformation programs at scale; translates business requirements into technical execution plans",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience conducting discovery workshops, creating strategic roadmaps, business analysis, managing delivery of complex programmes"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries, window functions); working knowledge of BigQuery; basic Python actively learning; owns agentic-tooling design and directs LLM agents to build production systems",
+        "evidence_strength": "medium",
+        "job_requirement": "SQL, Python, Spark, Databricks or similar data platform technical knowledge to contribute to technical debate and design"
+      },
+      {
+        "candidate_evidence": "Eight years managing cross-functional programs in large organizations; demonstrates stakeholder leadership and escalation management in commercial operations context",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience resolving complex and important escalations with senior customer executives"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No direct pre-sales, customer success, or consulting-brand experience; background is internal product and commercial operations rather than external technical advisory",
+        "mitigation": "Candidate has managed customer stakeholders, driven adoption, and led complex technical programs; stakeholder and execution skills transfer, but ramp-in on external customer dynamics and technical credibility-building required",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited hands-on Spark, Databricks, or distributed data-systems engineering; SQL and Python are entry-level to working, not production-depth",
+        "mitigation": "Role is technical accountability and orchestration, not hands-on data engineering; candidate's program leadership, technical communication, and ability to engage in design debate with specialists is sufficient; ramp-in required on Databricks product specifics",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated track record of quota or OKR overachievement; growth accountability is assumed from transformation delivery but not explicitly demonstrated",
+        "mitigation": "Candidate's promotions and role scaling suggest delivery outcomes; JD language is tied to pre-sales growth incentives; advisory value is present even without direct quota history",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 5+ years of technical program delivery accountability, customer-facing technical leadership, complex program orchestration, and executive stakeholder engagement. Reporting to a DSA Manager within a defined field-engineering function and managing strategic accounts indicates senior IC or lead scope. No manager-of-managers language. scope is individual-contributor technical leadership within a large enterprise software vendor. Aligns with L5 (Senior IC or Lead) due to technical accountability, account ownership, and cross-functional orchestration responsibility.",
+    "role_family_fit": 78,
+    "scope_seniority": 75,
+    "summary": "Delivery Solutions Architect is a post-sale technical leadership and customer program management role, asking for 5+ years of technical program delivery, customer engagement, and Spark/data-platform familiarity. Candidate brings eight years of commercial operations and transformation program leadership at Google, with stakeholder orchestration, cross-functional execution, and technical credibility, but lacks direct pre-sales, customer success, or Databricks/Spark engineering depth. Strategic program ownership and customer impact alignment are strong; technical ramp-in on external advisory, Databricks product, and distributed systems is required.",
+    "uncertainties": [
+      "Candidate's agentic-tooling ownership and production-systems direction may or may not translate to Databricks/Spark technical confidence; no stated exposure to Lakehouse, Delta Lake, or distributed query optimization",
+      "Extent of candidate's direct customer-facing technical advisory or support escalation experience is not fully detailed; transformation program context suggests it but does not confirm",
+      "Company size/stage context absent from job description; hiring curve and DSA team maturity unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

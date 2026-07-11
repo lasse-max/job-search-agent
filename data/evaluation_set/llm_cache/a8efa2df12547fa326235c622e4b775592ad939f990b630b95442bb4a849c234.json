@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; Commercial Operations (RevOps-equivalent) scope includes territory-budget management, CRM administration (Salesforce), forecasting/reporting cadence, pricing execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Sales Strategy & Operations domain and responsibility (inferred from title and department)"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries, window functions, BigQuery); advanced Excel and Sheets; Looker dashboard building; basic Python (pandas); owns data extraction and shaping for analysis.",
+        "evidence_strength": "medium",
+        "job_requirement": "Analytical and data capability (not explicitly stated but assumed for S&O role)"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations transformation and scaling programs over eight years at Google; two promotions; experience with multi-stakeholder execution and change rollout.",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional program and transformation leadership (inferred from title and role category)"
+      },
+      {
+        "candidate_evidence": "Salesforce admin experience: managed territory budgets and partnered with engineering on feature requests. Administration is hands-on platform and ecosystem knowledge, though not deep customization or development.",
+        "evidence_strength": "medium",
+        "job_requirement": "Salesforce platform familiarity (critical for Sales Strategy & Operations at Salesforce)"
+      }
+    ],
+    "confidence": 0.28,
+    "estimated_level": "L5",
+    "evidence_strength": 32,
+    "gap_manageability": 58,
+    "gaps": [
+      {
+        "gap": "JD missing: actual role scope, key responsibilities, reporting line, team size, budget authority, and explicit seniority/years anchors are not present in the submitted snapshot.",
+        "mitigation": "Request the complete, readable job description directly from the careers page or recruiter. Re-evaluate once full JD is available.",
+        "severity": "high"
+      },
+      {
+        "gap": "Salesforce platform depth: candidate has admin experience (territory budgets, feature requests); native Salesforce product strategy, architecture, or multi-cloud ecosystem expertise not evidenced.",
+        "mitigation": "Clarify whether the role requires deep platform/product strategy knowledge or primarily operations, revenue metrics, and cross-functional execution. If latter, candidate's Commercial Operations and analytics foundation is strong.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Consulting or case-team brand: candidate positioning emphasizes internal Google scale and transformation, not external advisory, client-facing strategy consulting, or known-brand strategy shop experience.",
+        "mitigation": "Confirm role does not require external consulting background or client engagement. If role is internal Salesforce sales-ops leadership, this gap is minor.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 42,
+    "level_rationale": "Title \"Senior Manager\" typically maps to L5 at enterprise scale (Salesforce is public/large). However, the JD snapshot contains only HTML boilerplate and schema markup with no actual role description, responsibilities, reporting line, team scope, or years required. Estimate relies solely on title and company size. actual JD evidence is absent, severely limiting confidence.",
+    "role_family_fit": 78,
+    "scope_seniority": 65,
+    "summary": "Strong role-family fit: Sales Strategy & Operations is a direct target family. However, the JD snapshot is incomplete (truncated HTML/schema markup rather than actual role scope, requirements, and qualifications). Without clear scope of business ownership, reporting line, strategic vs. operational mandate, team size, budget authority, and explicit years/seniority anchors, confidence in both role level and alignment evidence is substantially lowered. Recommend requesting the complete, readable job description.",
+    "uncertainties": [
+      "JD snapshot is truncated HTML/schema markup; actual role description, requirements, and qualifications are not readable. Unable to assess explicit must-haves, preferred skills, or detailed scope.",
+      "Reporting line, team size, and business ownership scope are not stated; cannot confirm whether role is senior IC, manager-of-managers, or individual-contributor strategic leadership.",
+      "Years of experience required (if any) is not visible in the snapshot.",
+      "Clarity needed on whether 'Sales Strategy & Operations' at Salesforce emphasizes product/platform expertise, revenue operations execution, or go-to-market and territory strategy."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

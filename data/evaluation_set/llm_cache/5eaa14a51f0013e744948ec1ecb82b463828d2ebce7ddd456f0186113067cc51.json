@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, scaled global commercial operations and transformation programs; experience building and coaching teams in a consumption-based business context",
+        "evidence_strength": "medium",
+        "job_requirement": "Build, lead, and scale the pre-sales (Solutions Architect) team, including hiring, coaching, performance management, and career development"
+      },
+      {
+        "candidate_evidence": "Commercial Operations leader with experience in forecasting, reporting cadence, territory-budget management, and revenue-leakage control; translated to Revenue Operations domain",
+        "evidence_strength": "medium",
+        "job_requirement": "Own pre-sales ROI and effectiveness, including coverage models, prioritisation, and impact on win-rate, sales cycles, and customer adoption"
+      },
+      {
+        "candidate_evidence": "Transformation program experience with hands-on execution and cross-functional leadership; product operations background includes UAT, rollout, and process design",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as a player-coach in strategic opportunities, balancing hands-on involvement with building repeatable motions and coaching mechanisms"
+      },
+      {
+        "candidate_evidence": "Product Operations at Google Devices and Services; SQL (proficient), BigQuery (working), Looker (dashboards), Tableau; no deep data engineering or consulting brand experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong background in data engineering, analytics platforms, databases, or data science, gained through engineering, consulting, or technical leadership roles"
+      },
+      {
+        "candidate_evidence": "German native, English professional/fluent",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluent German (highly preferred) and fluent English (required)"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with seniority progression; C-level engagement inferred from scale and scope, not explicitly detailed in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Executive presence with the ability to influence and communicate confidently at C-level"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 58,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Deep data engineering, analytics platform, or data science background from engineering or consulting roles",
+        "mitigation": "Candidate has analytical toolkit (SQL, BigQuery, Looker) and product operations foundation; however, lack of native data-engineering or consulting brand limits credibility for strategic data/AI positioning with C-level Manufacturing and Energy buyers. Ramp-up risk is real.",
+        "severity": "high"
+      },
+      {
+        "gap": "Pre-sales or Solutions Architecture team leadership experience",
+        "mitigation": "Commercial Operations and product operations leadership differ structurally from pre-sales team ownership. No stated experience hiring, coaching, or scaling SAs. Team building and player-coach models are transferable but lack SA-specific context.",
+        "severity": "high"
+      },
+      {
+        "gap": "Consumption-based SaaS business model depth and expansion forecasting mechanics",
+        "mitigation": "Revenue Operations and territory-budget management touch consumption and forecasting; however, no explicit evidence of designing or owning consumption-growth mechanics, upsell models, or PaaS metrics in a usage-driven business.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Data and AI market positioning and executive POV articulation",
+        "mitigation": "Product operations and Google Devices/Services background do not directly map to data/AI market expertise. Building trusted relationships with C-level Manufacturing and Energy buyers requires domain narrative that is not evident.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or forward-deployed technical engagement background",
+        "mitigation": "Honest gaps note limited classic case-team or consulting brand experience. Databricks pre-sales role demands trusted advisor positioning in complex industrial stakeholder environments.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires managing a pre-sales team, reporting to Director, Field Engineering, with ownership of coverage, hiring, performance management, and strategic customer relationships at C-level. Manager-of-managers scope combined with P&L ownership (pre-sales ROI, win-rate impact) and regional leadership representation points to L6. Company stage (10,000+ customers, 50% Fortune 500) and Germany strategic-accounts focus reinforce senior seniority anchor.",
+    "role_family_fit": 42,
+    "scope_seniority": 72,
+    "summary": "Manager, Field Engineering\u2014Strategic Accounts Germany is an L6 pre-sales leadership role requiring team building, player-coach deal involvement, and C-level relationship ownership in the data/AI market. Candidate brings eight years of Google strategy and operations leadership, two promotions, team-scaling and transformation experience, fluent German, and analytical tools (SQL, BigQuery, Looker). However, critical gaps include no deep data engineering or consulting brand, no pre-sales/Solutions Architecture team experience, limited data/AI market POV, and no stated consumption-growth or usage-driven business model depth. Role family fit is weak; candidate's operations and product-ownership background does not overlap substantially with pre-sales leadership for complex industrial data/AI deals.",
+    "uncertainties": [
+      "Extent of candidate's C-level relationship-building and executive presence at Google (not detailed in profile narrative)",
+      "Depth of candidate's data/analytics platform market knowledge and data/AI narrative capability",
+      "Whether product operations transformation experience translates meaningfully to pre-sales team scaling and SA coaching",
+      "Candidate's appetite and readiness to ramp on data-engineering and Lakehouse/Spark fundamentals to credibly engage strategic Manufacturing and Energy buyers"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

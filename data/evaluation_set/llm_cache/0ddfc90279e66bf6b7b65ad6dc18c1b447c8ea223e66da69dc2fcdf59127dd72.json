@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Salesforce admin experience managing territory budgets and partnering on feature requests; no stated Zuora or Intercom experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Internal System Management - Proficiency in Zuora, Salesforce, and Intercom"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling commercial operations and transformation programs; proficient in SQL, BigQuery, and advanced Excel/Sheets for data analysis",
+        "evidence_strength": "strong",
+        "job_requirement": "Numerical aptitude and strong attention to detail when handling sensitive billing information"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with experience designing solutions and translating requirements through UAT and rollout; designs and directs agentic AI systems",
+        "evidence_strength": "strong",
+        "job_requirement": "Problem Solving - Evaluating facts and data to inform recommendations based on customer objectives"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations; experience translating between business and technical teams; demonstrated cross-functional program execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Stakeholder Management and cross-functional coordination across Finance, Sales, and Customer Experience"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; Strategy and Operations role requires strong written comms for requirements, process design, and stakeholder coordination",
+        "evidence_strength": "strong",
+        "job_requirement": "Clear and confident written communication in English"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L3",
+    "evidence_strength": 73,
+    "gap_manageability": 42,
+    "gaps": [
+      {
+        "gap": "No billing or finance operations domain experience; background is commercial operations and product transformation, not accounts receivable or subscription billing",
+        "mitigation": "Billing fundamentals (invoice processing, reconciliation, dispute resolution) are learnable; analytical and data-querying skills transfer. Recommend onboarding plan and Zuora certification if role is reconsidered.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No Zuora or Intercom platform experience; Salesforce admin is adjacent but not a direct substitute",
+        "mitigation": "JD marks both as 'strong advantage' or fast-learnable; candidate has demonstrated ability to own new systems (Salesforce admin, agentic tooling). Expect 4\u20138 week ramp.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role is L3 specialist; candidate targets L4\u2013L5 manager/senior IC scope. Scope and seniority misalignment creates overqualification and retention risk",
+        "mitigation": "Candidate is unlikely to find strategic ownership, cross-functional autonomy, or growth trajectory in transaction-processing scope. Consider only if candidate explicitly seeks operational-execution transition.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Job describes a specialist billing-operations role with no stated people management, no clear 5\u20139 year requirement, and primary scope in transaction processing, payment reconciliation, and customer education in a small distributed team. Language emphasizes individual contributor execution (\"you will be responsible\") with fast-learner expectations on Zuora/Intercom, typical of an L3 operations specialist.",
+    "role_family_fit": 28,
+    "scope_seniority": 35,
+    "summary": "CX Billing Specialist is a pure-operations, transaction-focused role\u2014invoice processing, payment reconciliation, dispute resolution, and Zuora/Intercom administration\u2014fundamentally misaligned with Strategy and Operations or Product Operations. The candidate brings strong analytical and cross-functional capabilities, but the JD does not require or describe strategic scope, process design leadership, or transformation ownership. This is a specialist billing-support position, not an operations strategy role, and falls outside target and approved-stretch families.",
+    "uncertainties": [
+      "Company size and stage (Xero is large; Planday is described as small/distributed team within it) not stated in the JD; lowers role-clarity confidence slightly",
+      "No explicit career-level requirement stated; L3 estimate relies on typical specialist-billing scope inference",
+      "Candidate has no billing-domain or Zuora/Intercom background; learning curve is possible but not a hard blocker"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

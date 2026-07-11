@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices and Services; demonstrated ability to align cross-functional stakeholders and drive strategic initiatives.",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead deal strategy: Define win themes, stakeholder maps, and executive alignment for complex, multi-threaded pursuits."
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; SQL and BigQuery proficiency for own data shaping; Salesforce admin with territory-budget management experience.",
+        "evidence_strength": "medium",
+        "job_requirement": "Structure deal economics: Build ROI/TCO, pricing architectures (usage/SaaS/hybrid), and commercial constructs; partner with Deal Desk, Legal, and Risk."
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy expertise; experience translating requirements into clear use cases and transformation programs; documented process enablement at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Codify 'how we win': Produce playbooks, battlecards, competitor tear-downs, and vertical white papers; enable Enterprise AEs and regions."
+      },
+      {
+        "candidate_evidence": "Product Operations background; demonstrated ability to translate market insight and requirements into product strategy and use-case definition.",
+        "evidence_strength": "medium",
+        "job_requirement": "Inform product & roadmap: Synthesize enterprise requirements and market trends; translate into clear use cases and prioritization for Product."
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions at a major technology company; demonstrated ability to scale operations and lead transformation across global functions.",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive executive engagement: Lead C-suite briefings, POVs, and workshops; establish trusted relationships with business and technical stakeholders."
+      },
+      {
+        "candidate_evidence": "Basic Python and actively learning; proficient SQL and BigQuery querying; designs and directs LLM coding agents to understand system architecture and technical constraints.",
+        "evidence_strength": "weak",
+        "job_requirement": "Technical fluency (not a pure Solution Architect): Acquiring, issuing, wallets/treasury/FX; comfortable engaging at an architectural level to ensure solution fit."
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No stated payments, fintech, treasury, FX, or financial-services domain knowledge.",
+        "mitigation": "Domain is learnable; candidate has strong operations and strategic framework experience. Airwallex' enterprise customers (Brex, Navan, SHEIN) operate in adjacent B2B/fintech, and candidate's ability to synthesize market and product insight should transfer. Ramp may require 2\u20133 months of immersion.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited pre-sales consulting or hands-on solution architecture in an enterprise/consulting context.",
+        "mitigation": "Candidate has driven solution-fit alignment internally (codev, UAT, rollout) and directed technical teams on AI tooling; framework and stakeholder-management skills are translatable. RFP orchestration and Deal Desk partnership can be learned on the job under mentorship.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience with complex multi-product pricing architectures, usage-based or SaaS hybrid models, or ROI/TCO modeling at enterprise scale.",
+        "mitigation": "Advanced Excel/Sheets and SQL proficiency are foundational; pricing logic and ROI frameworks are analytically tractable. Candidate has managed territory budgets in Salesforce; extension to deal-level commercial structuring is incremental.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Consulting brand and case-team experience absent; candidate's strategy work is internal to Google, not advisory.",
+        "mitigation": "External problem-solving mindset and founder-like independence cited as Airwallex values; candidate's Product Ops transformation and cross-functional orchestration demonstrate similar thinking. Not a hard blocker.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "8\u201312+ years required. \"Senior Manager\" title. enterprise GTM and strategy scope. reporting to Global Revenue Strategy department suggests senior individual-contributor or frontline-manager role. Company stage ($8B, 2,200+ headcount) and complexity anchor at L5 (established senior IC / lead role). no explicit manager-of-managers language.",
+    "role_family_fit": 78,
+    "scope_seniority": 77,
+    "summary": "Strong role-family alignment: Strategy & Operations, GTM, and enterprise commercial leadership map directly to candidate's primary families. Deal strategy, RFP orchestration, and playbook codification match core Product Ops and commercial-strategy expertise. Material gaps: no domain expertise in payments, fintech, or treasury/FX; minimal pre-sales consulting or technical architecture experience relative to \"technical fluency\" requirement. Candidate's eight-year tenure and promotion history support seniority fit, but lack of payments-domain knowledge and hands-on solution architecture in consulting or post-sales presales create manageable but real onboarding friction.",
+    "uncertainties": [
+      "Company stage and function-team size not stated in JD; 'Global Revenue Strategy department' suggests established enterprise GTM org, but depth and seniority delegation unknown.",
+      "Extent of candidate's direct C-suite exposure and executive presence at Google not detailed in profile; claimed 'established relationships with decision makers at all levels' requires verification.",
+      "Whether candidate has seen or modeled complex multi-customer contract structures, variable pricing, or deal-desk negotiations; territory budgets in Salesforce suggest process familiarity but not necessarily commercial negotiation depth.",
+      "Candidate's hands-on product-solution design is stated as 'ownership, requirements, logic design, UAT, rollout'; unclear whether this translates to credible technical fluency for APAC enterprise architecture discussions in payments context."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

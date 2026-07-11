@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Python basic, actively learning (data-analysis / pandas track); SQL proficient; BigQuery working; AI and agentic tooling\u2014designs, specs and directs LLM coding agents",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to automate investigative or response workflows using Python, Go, or similar languages"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in strategy and operations leadership; experience scaling global commercial operations and transformation programs; cross-functional stakeholder management with product, sales, and legal",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong written and verbal communication skills, with the ability to communicate clearly with engineers, legal teams, executives, and other stakeholders"
+      },
+      {
+        "candidate_evidence": "Strategy and operations leadership with end-to-end program ownership, transformation execution, and stakeholder coordination at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "A calm, methodical, and pragmatic approach, combined with a strong sense of ownership"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No incident response, cybersecurity, or digital forensics background; role requires hands-on leadership of security investigations and forensic evidence collection across cloud, container, and endpoint environments",
+        "mitigation": "Candidate would require deep reskilling in forensics, SOC operations, and security investigation methodologies\u2014not a typical capability transfer from commercial operations",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on endpoint forensics and cloud-native forensics experience (AWS, GCP, Kubernetes, on-premises); role explicitly requires deep knowledge of these environments",
+        "mitigation": "No evidence of forensic tooling, incident command experience, or evidence preservation practices; this is foundational to the role and cannot be accelerated through program management experience",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with MITRE ATT&CK framework, attacker behavior analysis, or investigation methodologies core to incident response",
+        "mitigation": "Requires domain-specific security expertise; candidate's operations background does not provide direct translation",
+        "severity": "high"
+      },
+      {
+        "gap": "Python at basic/learning level; role expects automation of investigative workflows in Python, Go, or similar, implying hands-on production-level coding capability",
+        "mitigation": "Candidate is actively learning pandas/data-analysis Python but does not have the engineering depth required for forensic automation tooling",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Significant experience leading complex incident response and digital forensics investigations in cloud-native, technology, or similarly high-stakes environments. Demonstrated ability to take command during critical incidents and coordinate multidisciplinary teams under pressure. Strong knowledge of cloud and container forensics, including environments such as AWS, GCP, Kubernetes, and on-premises infrastructure. Hands-on experience with endpoint forensics, ideally including macOS environments. Strong understanding of attacker behaviors, investigation methodologies, evidence handling, and the MITRE ATT&CK framework. Ability to automate investigative or response workflows using Python, Go, or similar languages. These are core, required functions of the role. Candidate profile contains no incident response, cybersecurity, digital forensics, SOC operations, or security investigation experience.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 70,
+    "level_rationale": "Role explicitly stated as Senior/Staff at Mistral AI. reports to SOC Lead. requires significant incident response and forensics experience (multi-year leadership scope). end-to-end incident ownership, incident command, and eventual team-building/mentoring potential indicate L5\u2013L6 scope. Given no company-size context in role JSON, confidence is 70 rather than higher, but title and responsibility scope anchor this as L5 minimum.",
+    "role_family_fit": 5,
+    "scope_seniority": 60,
+    "summary": "This is a senior incident response and digital forensics leadership role at a cloud-native AI company, requiring deep hands-on security investigation expertise, forensic evidence handling, cloud/container/endpoint forensics, MITRE ATT&CK knowledge, and Python automation skills. The candidate is a strong strategy and operations leader with eight years at Google, advanced Excel/Sheets, SQL, Looker, and Salesforce admin skills\u2014but has no incident response, cybersecurity, forensics, or security investigation background. The role falls entirely outside the target family (Strategy & Ops, BizOps, Product Ops, Revenue Ops) and lacks the foundational security expertise required. This is a domain mismatch, not a level stretch or skill gap.",
+    "uncertainties": [
+      "Mistral AI company size and stage not stated in Role JSON; SOC maturity and team structure context inferred only from role narrative",
+      "Degree of incident command vs. hands-on forensics emphasis not granularly decomposed; if incident command is primary and forensics is delegated, some gaps could lower in severity, but JD reads as hands-on, player-coach",
+      "Whether candidate's experience directing LLM coding agents and owning AI tooling evaluation could translate to forensic tooling automation if Python/Go skills were stronger\u2014unlikely given security domain specificity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google with demonstrated attention to detail in compliance, forecasting, and process design",
+        "evidence_strength": "strong",
+        "job_requirement": "Analytical Mindset: High attention to detail, diligence, and the ability to handle confidential and sensitive data securely"
+      },
+      {
+        "candidate_evidence": "Candidate positioned as leader with hands-on execution and transformation ownership at global scale; demonstrates continuous learning (actively learning Python, agentic-tooling design)",
+        "evidence_strength": "strong",
+        "job_requirement": "Hands-on Attitude: A proactive, autonomous working style with a strong bias for action and a high willingness to learn"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; proficient SQL and BigQuery; Salesforce admin; Looker/Tableau dashboarding; proven ability to learn and direct agentic-tooling and LLM-coding systems",
+        "evidence_strength": "strong",
+        "job_requirement": "Comfortable utilizing technology, collaboration suites and learning specialized compliance software"
+      },
+      {
+        "candidate_evidence": "English professional/fluent; German native speaker; Spanish not supplied",
+        "evidence_strength": "medium",
+        "job_requirement": "Professional fluency in English (written and spoken), German and Spanish a plus"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L3",
+    "evidence_strength": 45,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No KYC, AML, CTF, or financial-crime compliance background; candidate background is commercial operations and business transformation, not compliance or regulatory operations",
+        "mitigation": "Candidate's analytical, data-driven approach and process-design skills could theoretically support onboarding, but the role is explicitly pitched as entry-level and designed for law/business/criminology students, not career-switchers from ops",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is internship-level (L3); candidate targets L4\u2013L5 Manager/Senior Manager/Lead scope. No cross-functional transformation, business-program ownership, or strategic scope in the JD",
+        "mitigation": "No meaningful mitigation; this is a fundamental level and family mismatch. Candidate would be significantly overqualified and the role offers no growth trajectory aligned with candidate's profile",
+        "severity": "high"
+      },
+      {
+        "gap": "KYC Operations and financial-crime compliance are explicitly deprioritized unless paired with clear strategic or transformation scope; this JD has no strategic program, transformation, or business-operations ownership",
+        "mitigation": "None; the role is pure specialist compliance operations with no pathway to candidate's approved families",
+        "severity": "high"
+      },
+      {
+        "gap": "Spanish language not supplied; JD lists 'Spanish a plus' in context of German regulatory framework (Law 10/2010) and Sepblac guidelines",
+        "mitigation": "Candidate's German native fluency and English professional fluency may reduce need for Spanish, but this is a secondary advantage only",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 90,
+    "level_rationale": "Internship role explicitly targeting students or recent graduates with no years of experience required, no management scope, entry-level case-investigation and operational-support duties, and flat reporting within a team. High confidence due to clear internship language in title and scope.",
+    "role_family_fit": 15,
+    "scope_seniority": 8,
+    "summary": "This is an internship-level KYC Operations role requiring AML/CTF compliance knowledge, case investigation, and operational process support. The candidate is an L4\u2013L5 Strategy and Operations leader with eight years at Google with strong commercial, transformation, and analytical experience. The role family fit is very poor\u2014KYC operations and financial-crime compliance are specialist, compliance-focused functions explicitly listed as deprioritized unless paired with clear strategic transformation scope, which this JD lacks. The estimated role level (L3 intern) is substantially below the candidate's target band (L4\u2013L5); the role is designed for students or recent graduates and offers no strategic program ownership, cross-functional transformation, or business-operations scope that would justify the candidate's seniority or approved families.",
+    "uncertainties": [
+      "Company stage/size not stated in JD; N26 is a known FinTech, but this has no bearing on role-level or family fit assessment",
+      "No detail on whether the role could evolve into strategic transformation or operations-leadership scope; JD describes static intern duties only",
+      "Candidate's commercial-operations background does not clearly translate to compliance-operations domain; this is a domain gap, not merely a skills gap"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

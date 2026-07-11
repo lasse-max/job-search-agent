@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Business Operations and Growth Lead in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Product Operations experience with transformation programs and scaled operations delivery across global teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Growth and business operations execution"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets skills, SQL proficiency (joins, GROUP BY, subqueries, window functions), BigQuery querying, Looker and Tableau dashboarding",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven decision-making and metrics"
+      },
+      {
+        "candidate_evidence": "Commercial operations transformation and scaling experience; Salesforce admin capability managing territory budgets and feature partnerships",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations execution and process design"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 75,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "JD scope and responsibilities not detailed in cached snapshot; only title and department visible",
+        "mitigation": "Retrieve full JD from Airbnb careers site to confirm expected scope, stakeholder level, and specific growth/ops priorities before final assessment",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated Airbnb market knowledge, Asia-Pacific or Sydney operations experience",
+        "mitigation": "Regional onboarding and market familiarization; operations fundamentals are transferable across platforms",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct marketplace or B2C platform growth experience documented; background is B2B enterprise at Google",
+        "mitigation": "Candidate's scaling operations experience and growth-ops mindset apply to marketplace; learning curve on Airbnb supply/demand dynamics expected",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 55,
+    "level_rationale": "Title \"Business Operations and Growth Lead\" and S&O department context suggest mid-senior IC or lead scope. No years-required, management scope, or reporting-line stated in cached JD snapshot. Estimated L5 based on \"Lead\" in title and growth/ops responsibility. confidence lowered because full JD details are unavailable.",
+    "role_family_fit": 78,
+    "scope_seniority": 60,
+    "summary": "Candidate is a strong core-fit for Strategy & Operations and Business Operations families with eight years' Google S&O experience, two promotions, and transformation/scaling track record. However, the cached JD snapshot is incomplete\u2014only title, department, and location are visible; full responsibilities, stakeholder scope, and growth priorities are missing. Recommend retrieving the complete JD from Airbnb's site to confirm expectations, decision rights, and reporting structure before proceeding. No hard blockers if scope matches L4\u2013L5 expectations.",
+    "uncertainties": [
+      "Cached JD contains only title, department, location, and metadata; full job description text with responsibilities and requirements not provided",
+      "Company size/stage at Airbnb for this role context unknown from JD snapshot",
+      "Specific growth priorities (supply-side, demand-side, pricing, geo-expansion, etc.) not stated",
+      "Reporting line and stakeholder level not visible in snapshot"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

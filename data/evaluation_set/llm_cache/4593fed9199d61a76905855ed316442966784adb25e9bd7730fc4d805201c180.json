@@ -1,0 +1,43 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; led global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Manager role in Strategy & Operations department"
+      }
+    ],
+    "confidence": 0.15,
+    "estimated_level": "L4",
+    "evidence_strength": 5,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Autonomous vehicle domain and vertical expertise",
+        "mitigation": "Candidate's global program leadership and operational-transformation background may transfer, but lack of AV-specific context or industry depth is a gap",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD missing: no role scope, responsibilities, team structure, decision rights, or reporting line provided",
+        "mitigation": "Request full JD before proceeding. Cannot assess fit, growth opportunity, or skill gaps without core role definition",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Title \"Manager\" in Strategy & Operations at an unknown-stage company is a weak anchor for L4. no role scope details (team size, reporting line, budget ownership, cross-functional reach) provided to calibrate. JD contains only metadata and no actual responsibilities. Confidence is very low due to missing context.",
+    "role_family_fit": 45,
+    "scope_seniority": 25,
+    "summary": "Manager, Strategy & Programs role at Grab focused on autonomous vehicle initiatives. JD is incomplete (appears to be a cached snapshot with only header/metadata), preventing full assessment of responsibilities, stakeholder scope, cross-functional ownership, and reporting line. Role title and department (Strategy & Operations) suggest L4-L5 range, but insufficient detail on actual scope, decision rights, and team structure.",
+    "uncertainties": [
+      "JD is incomplete metadata snapshot; actual role responsibilities unknown",
+      "Company size and stage at Grab unknown; cannot calibrate 'Manager' title",
+      "No information on team size, budget ownership, or cross-functional scope",
+      "Reporting line and strategic vs. operational focus unclear",
+      "Grab's organizational maturity and stage context not provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

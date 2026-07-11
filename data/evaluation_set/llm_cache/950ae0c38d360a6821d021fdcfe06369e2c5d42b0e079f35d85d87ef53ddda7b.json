@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, leading global commercial operations and transformation programs; experience scaling teams and cross-functional execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Build, mentor, and scale a team of experienced Account Executives and Solution Strategists; proven track record of inspiring and motivating high-performing teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations / Product Operations background with transformation program ownership and cross-functional alignment experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Define the go-to-market strategy, influence cross-functional teams, and build long-term partnerships"
+      },
+      {
+        "candidate_evidence": "Commercial operations experience, Salesforce administration with territory-budget management; revenue operations capabilities translate to forecasting and resource discipline",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive forecast accuracy, resource planning, and sustainable growth through disciplined execution and performance management"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions at Google; cross-functional transformation and stakeholder management experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong communication, executive presence, and influencing skills with technical and non-technical stakeholders"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No direct enterprise sales leadership experience; background is operations, product strategy, and transformation, not sales team management or quota-carrying sales leadership",
+        "mitigation": "Strategy and operations background may support GTM definition and cross-functional coordination, but does not replace hands-on enterprise sales team coaching and sales-cycle ownership. Ramp would require significant mentoring in sales discipline, forecasting rigor, and account executive development.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct telecommunications vertical expertise; no established relationships with major Australian telcos, government/public-sector procurement frameworks, or telco ecosystem knowledge",
+        "mitigation": "Candidate would need to build vertical knowledge and relationships post-hire. JD emphasizes 'deep understanding' and 'established relationships' as critical; absence is not recoverable in first 6\u201312 months.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in value-based selling frameworks (MEDDPICC, Challenger Sale, Command of the Message) or complex B2B sales-cycle management",
+        "mitigation": "Training is possible but does not substitute for years of field sales leadership in high-complexity environments. Candidate's background is execution and operations, not sales methodology and deal management.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited sales leadership credibility; positioning is Strategy and Operations, not enterprise sales or revenue leadership",
+        "mitigation": "Candidate would face credibility questions when coaching senior Account Executives and managing complex enterprise relationships. Sales team trust and buy-in typically require lived sales leadership experience.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Sales Director role requiring 10+ years in sales leadership, team management, and telco vertical mastery. reporting is assumed regional/enterprise level within Databricks. Scope includes team scaling, GTM strategy, and complex stakeholder management. This is unambiguously L6 (Senior Manager / Director equivalent) in scope and seniority signals.",
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "Sales Director, Enterprise \u2013 Telco is a pure enterprise sales leadership role requiring 10+ years of direct sales team management, telco vertical mastery, and established relationships with major Australian carriers\u2014none of which the candidate possesses. Candidate's background is Strategy and Operations / Product Operations, with commercial operations and transformation experience, which do not transfer to sales team coaching, deal management, or telecommunications industry credibility. Role is outside approved target and stretch families and sits at L6, making career pivot and technical domain gaps jointly disqualifying.",
+    "uncertainties": [
+      "Candidate's exact scope at Google (team size, budget, direct reports, P&L) is not specified in profile; clarity would help assess if any sales leadership experience was embedded in commercial operations role",
+      "Degree of exposure to enterprise sales methodology or SaaS B2B sales cycles during Google tenure is not documented",
+      "Whether candidate has any secondary or adjacent telco/industry connections is not stated"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

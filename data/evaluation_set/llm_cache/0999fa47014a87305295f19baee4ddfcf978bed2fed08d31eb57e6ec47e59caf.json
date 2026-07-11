@@ -1,0 +1,73 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience with ownership, requirements definition, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "Define and own Airwallex's yield product strategy, solution design, roadmap, and delivery plans"
+      },
+      {
+        "candidate_evidence": "Demonstrated capability defining requirements, designing UAT, managing rollouts; designed and directed LLM coding agents to build production systems with evaluation methodology and calibration ownership",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner closely with engineering and design teams to build high-quality, scalable features, driving clarity on requirements, trade-offs and timelines"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations requiring deep understanding of customer needs, market dynamics, and partnership feedback loops; operated at international scale across multiple geographies",
+        "evidence_strength": "medium",
+        "job_requirement": "Deeply understand user needs, target markets, and competitive landscape; leverage customer and partner feedback to inform strategy and prioritization"
+      },
+      {
+        "candidate_evidence": "Commercial operations transformation experience demonstrates managing strategic vision against near-term operational needs; advanced Excel/Sheets, SQL, BigQuery, Looker, and Tableau skills enable data-driven decision-making",
+        "evidence_strength": "strong",
+        "job_requirement": "Manage difficult tradeoffs between long-term product vision and near-term growth, adapting quickly within a data-driven, fast-paced environment"
+      },
+      {
+        "candidate_evidence": "Built Looker dashboards and dashboard reporting; proficient in SQL with joins, GROUP BY, subqueries, window functions; uses advanced analytics to inform strategy and operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Monitor product performance, drive continuous operational improvement, and remain ahead of industry trends"
+      },
+      {
+        "candidate_evidence": "Transformation program execution, UAT ownership, and regulatory/operational complexity management at global scale demonstrate problem structuring and detail orientation; data proficiency across multiple BI/SQL platforms",
+        "evidence_strength": "strong",
+        "job_requirement": "Close attention to detail, structure complex problems and inform decisions with data and first-principle insights"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 75,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Native product management experience and SDLC depth",
+        "mitigation": "Candidate has designed solutions, owned UAT, managed rollouts, and directed technical teams on LLM agents. While not classical PM/SDLC background, demonstrated capability to partner with engineering, set requirements clarity, and manage delivery. Strong learning trajectory on product strategy and operations. Yield is new product line, offering opportunity to learn alongside team.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Direct fintech, payments, or investment-product domain experience",
+        "mitigation": "Candidate scaled global commercial operations with regulatory and operational complexity; understands customer segments, partnerships, and multi-geography execution. Financial domain knowledge (treasury, spend management, embedded finance) is not stated but can be acquired through onboarding. Yield is high-growth unit with aggressive expansion\u2014team likely built to support ramp learning.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Competitive landscape and market research maturity in fintech",
+        "mitigation": "Candidate has demonstrated ability to leverage customer feedback and partner input to inform strategy at scale. Fintech competitive dynamics can be learned rapidly through market immersion, customer conversations, and team collaboration. Not a blocking gap given strong foundation in strategy and operations.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 6+ years professional experience and does not state internship, associate, or junior scope. Title is \"Staff Product Manager\" (often L5-equivalent at mid-to-large tech), owning full product strategy, roadmap, and cross-functional delivery for a fast-growing business unit within a well-funded, multi-billion-dollar platform company. Reporting line not specified. No managing-managers scope stated. 6+ years is L4-L5 coarse anchor. Staff title and full strategy ownership push toward L5.",
+    "role_family_fit": 70,
+    "scope_seniority": 78,
+    "summary": "This is a Staff Product Manager role (L5 estimated) owning full strategy, roadmap, and delivery for Airwallex's fast-growing Yield investment product at a $8B, 2,200-person platform company. Candidate brings eight years at Google Devices/Services with two promotions, demonstrating strong ownership of strategy definition, cross-functional delivery, requirements clarity, and data-driven decision-making across global operations and transformation programs. Primary gap is native product management and fintech domain depth; candidate's strength is operations, strategy, and stakeholder management rather than classical PM/SDLC. This is an approved-stretch role (Product Strategy + Program/Project Management with strategic execution scope). Recommend stretch evaluation: seniority and strategy ownership align well; PM-specific and fintech-domain learning curves are real but manageable given demonstrated capability and team context.",
+    "uncertainties": [
+      "Reporting line and manager-of-people scope not stated in JD; cannot confirm whether role includes team leadership beyond individual IC scope.",
+      "Fintech domain maturity and prior exposure to investment products, yield optimization, or treasury not evident from profile; onboarding timeline unclear.",
+      "Candidate's prior PM/SDLC depth relative to Airwallex's engineering partnership expectations not directly detailed; bridge may require structured onboarding.",
+      "Yield team composition, engineering team location (Sydney-based noted), and cross-timezone complexity not assessed against candidate's prior multi-geography experience.",
+      "Product launch velocity and go-to-market expectations for new verticals not specified; fit depends on team support and candidate's learning pace in fintech context."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

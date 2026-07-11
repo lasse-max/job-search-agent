@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services in Strategy and Operations with product transformation and commercial scaling; no published research record or computational behavior modeling background stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Be a technical leader in the area of computational road user behavior modeling"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning (data-analysis/pandas track); SQL proficient with joins, GROUP BY, subqueries, window functions; BigQuery querying; advanced Excel and Sheets",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong coding and mathematical skills"
+      },
+      {
+        "candidate_evidence": "8 years scaling global commercial operations and transformation programs; cross-functional work with Salesforce engineering on feature requests; AI agentic tooling design and direction",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong collaboration and communication skills"
+      },
+      {
+        "candidate_evidence": "No cognitive science, behavioral science, or computational behavioral modeling background stated; no academic research or publication record supplied",
+        "evidence_strength": "weak",
+        "job_requirement": "Research and develop metrics and computational models of road user cognition and behavior for use in Waymo's safety evaluation methodologies"
+      },
+      {
+        "candidate_evidence": "AI and agentic tooling ownership including evaluation methodology, benchmarking, and calibration; no simulation or research infrastructure productionization experience documented",
+        "evidence_strength": "weak",
+        "job_requirement": "Work closely with Simulation and AI Foundations teams to productionize behavioral metrics/models in simulation infrastructure"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L6",
+    "evidence_strength": 22,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No doctoral degree in computational/mathematical modeling or cognitive/behavioral science; background is Google commercial operations and product transformation",
+        "mitigation": "Candidate would need to pursue advanced academic credentials or demonstrate equivalent self-taught expertise in behavioral modeling and cognitive science frameworks; retraining gap is substantial",
+        "severity": "high"
+      },
+      {
+        "gap": "No published research record or academic conference presence; role requires scientific journal and conference publication expectations",
+        "mitigation": "Would require building publication pipeline from scratch while in role; this is a core performance expectation and differentiator in academic/research contexts",
+        "severity": "high"
+      },
+      {
+        "gap": "Python is basic/learning level; role requires strong coding skills for computational modeling of behavior and research coding",
+        "mitigation": "Candidate actively learning but production-ready computational modeling code in Python requires intermediate-to-advanced proficiency; learning trajectory unclear",
+        "severity": "high"
+      },
+      {
+        "gap": "No background in active inference-based modeling or modern AI-based modeling (world models, learning paradigms); JD lists as preferred but core to research direction",
+        "mitigation": "Teachable if hired, but represents learning curve on research fundamentals while expected to lead in the area",
+        "severity": "medium"
+      },
+      {
+        "gap": "No traffic safety research, road-user behavior research, or autonomous vehicle domain experience",
+        "mitigation": "Domain onboarding required; safety research context and regulatory framing are unfamiliar; would require significant immersion",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'A doctoral degree in a field that involves a combination of computational/mathematical modeling and cognitive science/ behavioral science' and 'At least 5 years of experience, and a strong publication record, in computational modeling of human and/or animal cognition and behavior.' Candidate profile shows 8 years in Google commercial operations and product transformation with no doctoral degree, no cognitive science background, and no publication record in computational behavior modeling.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Role requires a doctoral degree (L6+ signal) and \"at least 5 years...strong publication record\" in specialized computational behavior modeling research, plus technical leadership in research direction and external academic partnerships. Reporting to Senior Staff Safety Researcher, conducting publishable research, and leading metrics/model innovation across Waymo's simulation infrastructure indicate L6 academic-research seniority.",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "This is a Senior Safety Researcher role requiring a Ph.D. in computational/mathematical modeling with cognitive or behavioral science, 5+ years of specialized research experience, and a strong publication record in computational behavior modeling. The candidate brings 8 years of Google commercial operations and product transformation leadership, SQL/BigQuery data skills, and AI tooling ownership, but lacks the required doctoral credential, behavioral science background, research publication track record, and traffic safety domain expertise. This is a specialized research role that falls entirely outside the target Strategy and Operations / Product Operations family and represents a disqualifying domain and credential mismatch.",
+    "uncertainties": [
+      "No information provided on whether candidate has any academic research background, published work, or Ph.D. pursuit that is not stated in the profile JSON",
+      "Candidate's AI agentic tooling and benchmarking work may touch research-adjacent evaluation methodology, but scope and depth relative to computational behavior modeling is unclear",
+      "Python learning trajectory and pace are not quantified; unclear whether 'basic, actively learning' can progress to research-grade computational modeling code within 1\u20132 years"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

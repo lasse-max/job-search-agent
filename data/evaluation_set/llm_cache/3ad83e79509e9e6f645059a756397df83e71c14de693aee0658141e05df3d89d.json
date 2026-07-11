@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions managing global commercial operations and transformation programs; demonstrated ownership of requirements, logic design, UAT, rollout, and multi-workstream execution",
+        "evidence_strength": "strong",
+        "job_requirement": "End-to-end responsibility for implementing technology with customers and solving real-world problems"
+      },
+      {
+        "candidate_evidence": "Product operations background with direct user engagement, requirement elicitation, transformation leadership, and cross-functional coordination at scale; experience translating operational realities into product roadmaps",
+        "evidence_strength": "strong",
+        "job_requirement": "Engaging with users to map workflows, pain points, and operational constraints; acting as bridge between users, product, and engineering"
+      },
+      {
+        "candidate_evidence": "Transformation program delivery expertise with owned roadmap planning, sequencing, and stakeholder alignment; demonstrated ability to frame and prioritize problems",
+        "evidence_strength": "strong",
+        "job_requirement": "Designing iterative delivery plans and translating business goals into structured roadmaps with milestones, dependencies, and acceptance criteria"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; proficient SQL including joins, GROUP BY, subqueries, window functions; designs and directs LLM coding agents; actively learning Python for data analysis; owns evaluation methodology and benchmarking for agentic tooling",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical fluency and sharp sequencing instincts"
+      },
+      {
+        "candidate_evidence": "Demonstrated leadership of global scaling initiatives and complex transformation programs; experience managing dependencies and cross-functional execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Leading technical delivery across interconnected workstreams under pressure with independent decision-making"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning for data analysis; likely bash/terminal familiarity given SQL and data engineering work with BigQuery; LLM agent direction suggests technical command-line comfort",
+        "evidence_strength": "medium",
+        "job_requirement": "Ideally: basic programming ability such as Python or bash scripts, or command-line/terminal familiarity"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No stated defence or defence technology sector experience",
+        "mitigation": "JD marks as ideal/preferred, not required. Candidate's transformation and deployment experience is transferable; domain knowledge can be acquired through customer collaboration and onboarding",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit production software-engineering or native development background",
+        "mitigation": "Role requires technical fluency and sequencing instincts, not production coding ownership. Candidate's LLM agent direction, SQL proficiency, and agentic-tooling design demonstrate sufficient technical depth for deployment strategy and user-engineer translation",
+        "severity": "medium"
+      },
+      {
+        "gap": "Visa/Right to Work in UK and security-clearance eligibility unclear",
+        "mitigation": "Candidate is German native speaker, location unknown. JD requires existing Right to Work in UK and SC security clearance (5+ years continuous UK residency). Must verify before proceeding; may be disqualifying or require relocation/sponsorship negotiation",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience in austere/field-deployment environments or high-travel operational contexts",
+        "mitigation": "Role requires significant travel and on-site customer work in challenging environments. Candidate's track record of transformation and cross-functional delivery suggests adaptability; deployability to field conditions not evidenced but not contradicted",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'this role requires undergoing UK security vetting to Security Check (SC) or above. This normally requires having continuous residency in the UK for at least 5 years' and 'We require that all candidates have an existing Right to Work in the UK at the time of application.' Candidate location and visa status not stated in profile; German nationality alone does not establish UK Right to Work. Security clearance and residency eligibility must be confirmed before proceeding.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "JD emphasizes end-to-end deployment ownership, customer problem framing, cross-functional leadership across users/product/engineering, and independent decision-making under pressure in a well-funded startup environment. No years required or management-of-managers scope stated. Deployment Strategist at growth-stage company with high autonomy and customer outcome accountability aligns with L5 lead or established senior IC. lack of explicit staffing or reporting context and missing company-size confirmation lower confidence to 78.",
+    "role_family_fit": 82,
+    "scope_seniority": 76,
+    "summary": "Strong operational and transformation leadership background with eight years' Google tenure, two promotions, and demonstrated end-to-end delivery, user engagement, and cross-functional stakeholder management. Technical fluency includes SQL, LLM agentic tooling direction, and active Python learning; meets ideals for basic programming and sequencing instincts. Role family fit is strong (Deployment Strategist is approved stretch). Primary gap is visa/Right-to-Work in UK and security-clearance eligibility (5+ years continuous UK residency required), which is disqualifying unless candidate can confirm current UK Right to Work status. Secondary gaps include no defence-sector experience (marked ideal, not required) and no field-deployment context, both mitigable through domain onboarding and demonstrated adaptability. Recommend confirm clearance eligibility before advancing.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

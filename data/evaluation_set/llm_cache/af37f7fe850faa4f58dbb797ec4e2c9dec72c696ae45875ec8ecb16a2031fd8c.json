@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations, global scaling, and transformation programs with two promotions, positioning as Strategy and Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations Business Partner role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs demonstrate cross-functional scope and stakeholder management capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional partnership and stakeholder management across Growth and Tech"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets, SQL proficiency including joins/window functions, BigQuery querying, Looker dashboarding; candidate owns data pulling and shaping",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations metrics, reporting, and analytics capability (implied for OBP role)"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L4",
+    "evidence_strength": 65,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "JD is severely underspecified: no explicit scope, responsibilities, reporting line, years required, team size, or performance metrics",
+        "mitigation": "Request detailed JD with specific OBP scope, Growth team charter, Tech partnership scope, reporting structure, and hiring manager expectations",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of Canva product, SaaS design-platform domain, creator-economy GTM, or Canva-specific operational playbooks",
+        "mitigation": "Domain knowledge is typically learnable for an operations partner; assess openness to Canva's product, user segments, and go-to-market motion in interviews",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated experience with Growth operations, growth marketing, or growth product metrics (funnel, CAC, retention, viral loops)",
+        "mitigation": "Google Commercial Operations background differs structurally from Growth Operations; clarify Growth team's specific OBP scope (demand-gen ops, growth experimentation ops, channel ops, etc.)",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 50,
+    "level_rationale": "Role title and department suggest L4 (Operations Business Partner at Canva). however, JD is a cached navigation snapshot with no actual role description, scope, team size, or reporting line. Without explicit seniority anchors (years required, management scope, reporting level, company-size context), confidence is low. Canva's company size/stage is noted as unknown. no salary posted.",
+    "role_family_fit": 70,
+    "scope_seniority": 50,
+    "summary": "Candidate is a strong Strategy and Operations leader with eight years at Google, commercial operations domain expertise, and advanced analytics skills (SQL, BigQuery, Looker, advanced Excel/Sheets). However, the posted JD is a cached navigation page with no actual role description, responsibilities, scope, reporting line, or performance metrics\u2014only a title and location. The estimated level is L4 based on title and department, but confidence is very low. Without a substantive JD, role-family fit cannot be reliably assessed; Growth operations and Canva's creator-platform domain are not evidenced in the candidate's background.",
+    "uncertainties": [
+      "JD is a cached navigation snapshot with no actual job description, scope statement, or requirements",
+      "Canva company size, stage, and growth-ops structure are unstated",
+      "Unclear whether OBP role focuses on demand-gen ops, growth experimentation, growth product ops, or broader business partnership",
+      "No evidence of growth-marketing operations, user-acquisition funnel metrics, or SaaS growth metrics in candidate background",
+      "Reporting line, team size, and stakeholder scope for OBP role are not specified"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

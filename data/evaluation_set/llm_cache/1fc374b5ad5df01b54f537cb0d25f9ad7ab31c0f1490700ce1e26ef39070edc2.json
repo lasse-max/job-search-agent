@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; advanced Excel, Sheets, and SQL proficiency with data-quality methodology experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute to and audit human data annotations with highest standards of quality"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries, window functions); builds Looker dashboards; writes BigQuery queries to shape data; owns evaluation methodology and benchmarking for agentic-tooling systems",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical skills and keen eye for detail"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L3",
+    "evidence_strength": 45,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No stated experience in human data annotation, labeling, or ML data-pipeline QA. Role sits within Science/Research and focuses on audit and quality assurance of annotation workflows.",
+        "mitigation": "Candidate's data-quality methodology and analytical rigor in evaluation frameworks could transfer, but domain-specific training in annotation best practices, label taxonomy, inter-annotator agreement, and annotation-tool workflows would be required.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of ML/AI training pipeline, model-development context, or research-team operations experience. JD emphasizes 'Human Data Annotation team within the Science organisation'\u2014a research-infrastructure function.",
+        "mitigation": "Candidate's background is Commercial Operations and GTM transformation at Google, not research infrastructure. Willingness to learn research-domain context and annotation-QA processes could narrow this gap, but starting domain knowledge is absent.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is individual-contributor, specialist-level, and Paris-based. Candidate's trajectory is cross-functional strategy and operations leadership at a large tech company, which misaligns with narrower, domain-specific individual-contributor scope.",
+        "mitigation": "Candidate could take a lateral shift into specialist annotation QA, but title, seniority, and growth path appear mismatched to stated career positioning and eight-year tenure in leadership-track roles.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "JD states \"Specialist\" role in a research annotation team with no management scope, no years required, and no reporting-line detail. Title and scope-narrowness imply individual-contributor analyst level, estimated L3. Confidence is moderate. company stage and team size are unknown, which could shift specialist-level interpretation slightly.",
+    "role_family_fit": 15,
+    "scope_seniority": 30,
+    "summary": "Data Annotation Quality Specialist at Mistral is a research-infrastructure, annotation-QA focused role (L3 individual contributor) with no stated management scope or strategic ownership. Candidate brings eight years of Google Commercial Operations and transformation leadership, advanced SQL and analytics rigor, and agentic-tooling evaluation methodology\u2014strong signals for data quality and analytical depth. However, JD emphasizes domain-specific human-annotation audit and labeling QA within a Science team, for which candidate has no demonstrated experience in annotation workflows, ML training pipelines, or research-infrastructure operations. Role sits well outside target Strategy &amp; Operations / RevOps family and represents a specialist individual-contributor scope misaligned with candidate's trajectory and seniority. Gaps in domain knowledge and career-path fit are substantial and not readily bridged by analytics capability alone.",
+    "uncertainties": [
+      "JD does not specify required years of experience, required education, or explicit hard qualifications. Annotation-domain depth and research-team context are implied but not detailed.",
+      "Mistral company size and stage are unknown; role title 'Specialist' and Paris location do not clarify whether this is a small startup or established AI lab. This affects scope interpretation.",
+      "JD does not clarify whether annotation QA requires production ML / data-science engineering depth (which would be a hard blocker) or is primarily manual audit and labeling review.",
+      "Candidate's Commercial Operations and research-infrastructure backgrounds are distinct; no transfer of Commercial Operations to annotation-domain expertise is assumed without further evidence."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

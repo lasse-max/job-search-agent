@@ -1,0 +1,83 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience translates to cross-functional stakeholder management and commercial execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive strategic customer and partner engagements in partnership with Sales, Solution Engineering and GTM teams"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL\u2014joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Hands-on expertise with SQL and SQL analytics"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in commercial operations and transformation; experience managing teams and scaling programs, though background is commercial operations rather than pre-sales/solution engineering leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and lead a team of Partner Solution Engineers who serve as technical sales leaders and trusted advisors"
+      },
+      {
+        "candidate_evidence": "Google background provides exposure to cloud infrastructure and GCP; no explicit evidence of AWS, Azure, or cloud architecture design",
+        "evidence_strength": "weak",
+        "job_requirement": "Understanding of cloud architectures and services involving SaaS solutions with popular cloud providers (AWS, Google Cloud, Azure)"
+      },
+      {
+        "candidate_evidence": "Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation; Salesforce admin experience includes partnering with engineering on feature requests",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive product gaps and roadmap processes as the Voice of the Field with product and engineering"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration",
+        "evidence_strength": "strong",
+        "job_requirement": "AI-native thinker treating AI as a high-trust collaborator core to problem-solving"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 55,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No Solution Engineering, pre-sales, or customer-facing technical sales background; candidate background is Commercial Operations and transformation",
+        "mitigation": "Would require 6-12 months onboarding and mentorship in pre-sales culture, customer technical engagement models, and reference architecture design; unlikely to close fully without prior SE leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated AWS, Azure, or multi-cloud platform architecture and optimization experience; depth of cloud-native design is unclear despite GCP exposure",
+        "mitigation": "Requires self-driven cloud platform certification and hands-on architecture training; background in Devices at Google may not translate to data warehousing cloud strategy",
+        "severity": "high"
+      },
+      {
+        "gap": "No partner ecosystem (GSI, CSP, DCP, strategic alliances) experience; no indication of managing or enabling third-party technical organizations",
+        "mitigation": "Partner channel strategy, co-selling, and joint solution development are distinct from internal transformation; would need external coaching and partner engagement immersion",
+        "severity": "high"
+      },
+      {
+        "gap": "Unclear depth of direct line management and team building at scale (hiring, training, retention); eight years tenure with two promotions, but management scope not detailed",
+        "mitigation": "If candidate has managed 10+ engineers/analysts, foundation exists; if <5 reports, gap is significant for VP headcount and P&L ownership",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product/roadmap voice as field advocate is operations-driven rather than customer/partner-driven solution design; no evidence of working with product teams on technical customer constraints",
+        "mitigation": "Requires reframing from internal process ownership to external customer/partner problem-first mindset; stakeholder listening skills likely present but strategic influence direction differs",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Regional VP with 4+ years direct line management and 15+ years industry experience requirement anchors to L6. Vice-President title, team ownership, P&L responsibility, reporting to VP, and escalation ownership for customers and product leadership across partner tiers and complex enterprise segments (GSI/CSP/DCP/SAP) are L6+ signals. No information on company size/stage provided in Role JSON.",
+    "role_family_fit": 42,
+    "scope_seniority": 72,
+    "summary": "Regional VP role in Solution Engineering leading Partner SE teams across GSI/CSP/DCP tiers, owning P&L, product roadmap voice, and team building. Candidate has strong AI tooling expertise, SQL, dashboarding, and eight years of commercial operations and transformation leadership at Google with two promotions. Critical gaps: no pre-sales or solution engineering background, no demonstrated AWS/Azure/multi-cloud architecture design, no Solution Engineering or partner ecosystem experience, and role requires 15+ years pre-sales/customer-facing expertise with 4+ years direct management\u2014eight years total tenure with unclear line management depth. Role family fit is stretched (commercial ops to pre-sales/partner se leadership). Seniority (L6) exceeds target band (L4\u2013L5), and gaps are substantial and domain-specific rather than quickly developable.",
+    "uncertainties": [
+      "Unclear depth and breadth of candidate's direct line management experience (hiring, training, retention) over the eight years",
+      "No explicit evidence of pre-sales, solution architecture, or customer-facing technical selling background",
+      "AWS, Azure, and multi-cloud architecture experience not demonstrated; depth of cloud knowledge unclear",
+      "Partner ecosystem, ISV/GSI/CSP/DCP engagement experience not stated in profile",
+      "Scope of commercial operations transformation\u2014whether strategic/cross-functional or operational-process focused\u2014not detailed"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

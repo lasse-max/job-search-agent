@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations / Commercial Operations with two promotions and experience scaling global commercial operations and transformation programs.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead Customer Success Manager role in Customer Success department"
+      },
+      {
+        "candidate_evidence": "Positioning emphasizes strategy, operations, and transformation leadership rather than direct customer success team management or account-level customer relationship ownership.",
+        "evidence_strength": "weak",
+        "job_requirement": "Leadership and management of customer success teams or customer-facing operations"
+      },
+      {
+        "candidate_evidence": "Salesforce admin experience; managed territory budgets and partnered with engineering on feature requests. Demonstrates CRM administration capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "CRM and customer operations tools (implied by Customer Success role)"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Core role is Customer Success Management, not Strategy/Operations or Business Transformation.",
+        "mitigation": "Candidate's honesty flags that product experience and transformation expertise differ fundamentally from customer-facing CS team leadership. Only applicable if OutSystems values operations or account-strategy depth over CS team building and customer retention metrics.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated direct management of customer success teams, customer retention programs, or account health ownership.",
+        "mitigation": "Commercial Operations and territory budgeting do not substitute for CS-specific skills: account expansion, churn reduction, customer health scoring, and CS team leadership.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of customer-facing account management, customer success cadences, or CS metrics (NPS, net retention, churn, expansion).",
+        "mitigation": "Candidate's profile does not reference customer success or account management responsibilities; positioning is internal ops and strategy.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited seniority visibility for a Lead CS Manager role at an unknown-stage company.",
+        "mitigation": "OutSystems company size and stage unknown; role level and hiring bar unclear. If this is an L4-L5 leadership role at a large org, candidate's strategy background may be too narrow.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Lead role suggests team or account leadership. title and department both point to Customer Success rather than strategy. Role level likely L4 (senior IC or emerging team lead) based on \"Lead\" title, but company size/stage unknown and JD details limited. No years required, reporting line, or scope statement visible in cached fetch.",
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "Lead Customer Success Manager at OutSystems is fundamentally a Customer Success / account management role, deprioritized for this candidate. The candidate's eight years in Strategy and Operations, Commercial Operations, and transformation programs do not align with CS team leadership, customer retention ownership, or account health metrics. While Salesforce administration and territory budgeting are tangential, the core gap is that this is not a strategy, operations, or transformation role. Honest gap: product experience and transformation expertise differ fundamentally from CS team building and customer-facing account expansion. Recommend skip unless OutSystems explicitly seeks an ops or strategy lens within CS.",
+    "uncertainties": [
+      "JD fetch appears corrupted or incomplete; no clear scope, team size, or explicit requirements visible.",
+      "OutSystems company size and stage unknown; role level confidence reduced.",
+      "Unclear whether Lead CS Manager has team management, account-portfolio, or IC scope.",
+      "Candidate positioning does not mention customer success, account management, or CS metrics; deprioritization flags this as outside primary family."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

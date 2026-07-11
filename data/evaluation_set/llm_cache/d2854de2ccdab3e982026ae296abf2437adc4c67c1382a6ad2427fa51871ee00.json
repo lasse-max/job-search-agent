@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs. Demonstrates sustained operations ownership and program scaling at enterprise scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "7+ years in operations with safety criticality"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with experience in transformation programs and process design. Owns design, specs, and direction of complex systems (LLM coding agents). Demonstrates capability to architect and standardize scaled operations.",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven ability to build systems, frameworks, and standardized processes from scratch"
+      },
+      {
+        "candidate_evidence": "Advanced proficiency in Excel, Google Sheets, Looker, and Tableau dashboarding. Builds dashboards for stakeholder consumption; demonstrated ability to shape and communicate data-driven insights at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Exceptional communication skills with ability to distill complex data into clear, actionable documentation"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling and transformation program leadership implies risk assessment and mitigation planning. Salesforce administration and territory-budget management demonstrate operational control and risk ownership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience with systems and operational risk management"
+      },
+      {
+        "candidate_evidence": "Not stated in candidate profile. Assume met unless explicitly contradicted.",
+        "evidence_strength": "weak",
+        "job_requirement": "Bachelor's degree or equivalent"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 65,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No direct operations safety or safety-criticality domain experience (aviation, nuclear, oil & gas, transportation). Candidate background is in commercial operations and product transformation, not safety-assurance governance.",
+        "mitigation": "Domain immersion through onboarding, mentorship from Waymo safety leadership, and structured study of transportation safety frameworks. Safety-assurance fundamentals (risk assessment, mitigation planning, compliance documentation) transfer from operations scaling; safety-specific vocabulary and regulatory context require deliberate learning.",
+        "severity": "high"
+      },
+      {
+        "gap": "No proven track record of operations manual development or technical documentation production. JD emphasizes 'manual writing' and 'comfort with technical documentation' as core; this is not demonstrated in candidate evidence.",
+        "mitigation": "Candidate's strong communication and data-synthesis skills (dashboarding, complex systems specs) provide a foundation. Structured writing training, shadowing existing safety manual authors, and collaboration with compliance/legal teams can accelerate capability. First 90 days should include hands-on manual authorship with feedback.",
+        "severity": "high"
+      },
+      {
+        "gap": "No road safety, design, or transportation-planning experience. JD lists this as preferred; candidate is from consumer-services and device operations, not transport/mobility sector.",
+        "mitigation": "Waymo operates in autonomous mobility but does not require candidate to possess prior automotive/transport domain knowledge. Product operations and regulatory-environment exposure at scale are transferable. Ramp depends on Waymo's internal knowledge-transfer and mentorship depth.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Reporting structure and scope limited to one region (UK + Europe expansion). JD does not indicate global multi-region ownership or multi-team management; candidate's experience is broader. Potential underutilization of scope capacity.",
+        "mitigation": "Role may grow as European operations scale. Candidate's experience leading transformation across multiple markets positions them well for expansion scope. Clarify with hiring manager whether role is stepping stone to larger operations leadership.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 7+ years in operations with safety criticality and proven ability to build frameworks and standardized processes from scratch. Single reporting line to a Manager (not skip-level to Director/VP), regional scope (UK/Europe expansion), and explicit Bachelor's degree requirement anchor this as a strong L4 IC scope. No manager-of-managers or multi-team leadership indicated. 7+ years and hands-on accountability for safety and process architecture align with L4 IC seniority in operations roles.",
+    "role_family_fit": 72,
+    "scope_seniority": 68,
+    "summary": "Waymo seeks an International Operations Safety & Readiness Manager (7+ years ops, safety criticality, manual/playbook authorship, process frameworks) reporting to a Manager. The role owns safety assurance orchestration, staff readiness, vendor coordination, and risk mitigation across UK and European expansion\u2014substantial operational scope with regulatory compliance flavor, but constrained to one market region and one reporting line below a manager. Candidate brings 8 years Google Devices/Services commercial operations scaling, global transformation leadership, and proven ability to design systems and standardized processes, with Salesforce, SQL, Looker dashboarding, and agentic-tooling ownership. Core gaps: no direct operations safety/regulatory domain depth (aviation, nuclear, transportation), no formal manual-writing or technical-documentation production track record, and no road safety or transportation-design experience. Gap manageability is moderate\u2014transformation and process-design fundamentals are strong, but domain immersion and safety-specific governance rigor are new.",
+    "uncertainties": [
+      "Candidate profile does not state degree or equivalent explicitly; assumes met unless JD is non-negotiable.",
+      "No evidence of prior experience writing or managing formal operational manuals or regulatory compliance documentation; inferred communication capability from dashboarding and systems design, but production manual authorship is not documented.",
+      "Travel requirements (Europe + occasional USA) not assessed against candidate availability or visa sponsorship needs; London location may require relocation or sponsorship clarification.",
+      "Candidate's 'Product Operations' label and transformation focus may emphasize business model/go-to-market over safety-assurance; degree of overlap in risk-management philosophy unknown without deeper conversation."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

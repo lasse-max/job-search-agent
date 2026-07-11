@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and leading transformation programs; demonstrated ability to own strategic initiatives and set direction",
+        "evidence_strength": "medium",
+        "job_requirement": "Define and drive long-term product vision and design strategy across TIDAL's key product areas"
+      },
+      {
+        "candidate_evidence": "Leadership experience within strategy and operations teams at scale, coaching cross-functional stakeholders",
+        "evidence_strength": "medium",
+        "job_requirement": "Mentor designers through feedback, critique, and knowledge sharing"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration for AI-powered workflows",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluency with AI and new technologies\u2014pioneering new approaches and identifying where AI unlocks creative or business potential"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations and built systems/frameworks for transformation programs; experience establishing standards and operational processes",
+        "evidence_strength": "medium",
+        "job_requirement": "Expertise defining design systems and standards that promote cohesive experiences at scale"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No native product design background or portfolio demonstrating visual/craft design and systems thinking at product scale",
+        "mitigation": "Candidate's operations and transformation leadership could transfer to design-systems thinking, but without shipped design work or design-portfolio evidence, this is a significant capability gap",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated graphic design, brand extension, or 360 activation experience across social and product cohesion",
+        "mitigation": "This is a core JD requirement; no operational or commercial experience directly translates to brand and graphic design craft",
+        "severity": "high"
+      },
+      {
+        "gap": "No music industry, artist ecosystem, or creative-economy domain experience stated",
+        "mitigation": "Passion for music and artists is described as desired; candidate's SaaS/commerce background at Google may provide some adjacent ecosystem thinking, but artist-economy expertise is absent",
+        "severity": "medium"
+      },
+      {
+        "gap": "Principal-level design craft, mentorship of designers, and design leadership track record not evidenced",
+        "mitigation": "Candidate has led cross-functional teams and scaled operations, but no demonstrated history of building and elevating design teams or mentoring design professionals",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Principal Designer with 8+ years required, end-to-end ownership of complex product initiatives, mentorship scope, and influence on business strategy maps to L5 IC leadership. Reporting to TIDAL design leadership within a small, strategic team and the expectation of foundational design voice and systems-thinking leadership confirm mid-to-senior IC scope, though company stage/size details are not stated in JD.",
+    "role_family_fit": 15,
+    "scope_seniority": 60,
+    "summary": "This is a Principal Product Designer role at TIDAL (music streaming, part of Block). The candidate is a Strategy and Operations leader with eight years at Google, strong AI/agentic-tooling expertise, and transformation-program ownership. However, the role requires deep product design craft, graphic design and brand-extension expertise, design-systems leadership, and a shipped design portfolio\u2014none of which are evidenced in a candidate whose background is commercial operations, revenue operations, and transformation execution. While the candidate's AI fluency and strategic-leadership capabilities are strong, the core product-design craft, designer mentorship, and creative-industry experience gaps are disqualifying for a Principal Designer role. This is a category mismatch despite seniority and some strategic-leadership overlap.",
+    "uncertainties": [
+      "Candidate profile does not include design portfolio or examples of shipped product design work; cannot assess visual/craft quality or design-systems thinking in practice",
+      "No explicit music or creative-industry domain experience stated; cannot verify passion or ecosystem knowledge beyond positioning statement",
+      "Company stage and reporting structure not specified in JD beyond 'small, nimble team'; adds modest uncertainty to level confidence"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

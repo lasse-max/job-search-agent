@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Professional fluency in English; native German speaker",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate with precision and confidence in both English and German"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs; experience translating requirements into implementation plans through UAT and rollout; structured problem-solving approach documented in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Navigate complex contractual and regulatory quality requirements, translate them into practical quality plans"
+      },
+      {
+        "candidate_evidence": "Led transformation programs at scale requiring cross-functional execution, ambiguity navigation, and data-driven decision-making; demonstrated through BigQuery/SQL querying, advanced Excel/Sheets, and structured analytical mindset",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical and structured thinking skills, approach problems with rigour and pragmatism"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No documented aerospace, defence, or regulated-industry quality assurance experience; no EN 9100, ISO 9001, or AQAP familiarity stated",
+        "mitigation": "Candidate's regulatory/compliance mindset in global commercial operations and transformation governance could transfer, but the JD explicitly requires 5+ years in aerospace/defence/regulated QA. This is a foundational domain gap that cannot be bridged by adjacent operations experience alone.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on audit experience (internal or external) or quality-plan project management in formal quality systems",
+        "mitigation": "Candidate has led compliance reviews and stakeholder audits in transformation contexts, but the JD requires demonstrated audit conduct and QMS plan ownership. Structured learning required.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented software-intensive development assurance or embedded quality lifecycle experience",
+        "mitigation": "Candidate has directed LLM coding agents and understands software development touchpoints through operational programs, but lacks hands-on development-assurance engineering. The role explicitly requires 'working alongside engineering teams to implement' software QA across the lifecycle.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role emphasizes QMS operational ownership (EN 9100, NCRs, OFIs, internal audit cadence) as a primary workstream; candidate's background is commercial operations and transformation, not quality systems administration",
+        "mitigation": "Operational discipline and process-improvement thinking are transferable, but QMS is a specialized domain requiring certification-body liaison, continuous audit scheduling, and defect/OFI trending expertise that candidate has not demonstrated.",
+        "severity": "high"
+      },
+      {
+        "gap": "University degree required; candidate profile does not state degree field or confirm completion",
+        "mitigation": "JD lists as a requirement; if candidate holds a degree outside Quality/Engineering/CS, the gap exists but the final line encourages applications even without all qualifications. Verify before rejection.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5+ years in regulated QA (aerospace/defence minimum signal), hands-on audit conduct, QMS ownership, and software development-assurance expertise. This is a senior IC or lead-QA scope at a defence company, placing it at L4 baseline with potential L5 elements (cross-functional stakeholder management, external regulatory liaison, competing workstreams). Company stage unknown. no salary posted. The 5-year floor and regulated-industry specificity anchor L4. no evidence of management scope or multi-team oversight suggests not L5+.\".",
+    "role_family_fit": 15,
+    "scope_seniority": 60,
+    "summary": "This is a Quality Assurance Engineer role in defence aerospace\u2014a specialist function outside the candidate's target role families (Strategy &amp; Operations, Business Operations, Product Ops, Revenue Ops, GTM Strategy, Transformation). The candidate brings strong bilingual capability, analytical rigor, and cross-functional stakeholder management from eight years in commercial operations and transformation. However, the role requires 5+ years of hands-on quality assurance in aerospace, defence, or regulated industry; deep EN 9100 / AQAP domain knowledge; audit conduct and QMS administration; and software development-assurance engineering\u2014none of which are documented in the candidate's profile. This is a domain mismatch, not a stretch into an approved family. Recommend skip unless candidate's profile explicitly states aerospace/defence QA background.",
+    "uncertainties": [
+      "Candidate's university degree field and completion status not stated; JD requires degree in Quality Management, Engineering, CS, or related field",
+      "No information on candidate's familiarity with audit planning, execution, or quality-defect (NCR/OFI) trending methodologies",
+      "Company size and stage not stated; impacts whether Helsing's L4 scope might stretch to L5 under startup conditions, but does not change role-family or domain fit assessment",
+      "Candidate's exposure to software-intensive development environments and quality-gate participation unclear; LLM-agent direction is adjacent but not equivalent to development-assurance engineering"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

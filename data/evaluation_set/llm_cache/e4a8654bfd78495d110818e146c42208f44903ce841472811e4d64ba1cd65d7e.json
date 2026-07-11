@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience with customer-facing requirements, UAT, and rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Work directly with customers to build AI agents for leading global brands"
+      },
+      {
+        "candidate_evidence": "Product ownership based on requirements logic design, rollout, and transformation rather than native engineering; translates strategy into execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Combine research with real-world impact and focus on practicality"
+      },
+      {
+        "candidate_evidence": "Mission-driven background with transformation and cross-functional execution across global operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Evaluate capabilities and mission alignment with company values"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No explicit AI agent development or LLM platform experience",
+        "mitigation": "Candidate has agentic-tooling ownership and LLM coding-agent direction experience; transferable to agent strategy if given product training and customer immersion",
+        "severity": "high"
+      },
+      {
+        "gap": "JD lacks functional detail; 'Strategist' role scope, responsibilities, and customer-engagement depth are undefined",
+        "mitigation": "Request clarification on whether role is customer-facing strategic advising, product strategy, or transformation leadership; without this, assessment is premature",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit GTM, sales, or customer-success strategy experience mentioned",
+        "mitigation": "Commercial operations and customer-facing transformation may be adjacent, but role may require deeper revenue or sales-enablement perspective",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or case-team background; candidate notes honest gap in 'classic consulting brand and case-team experience'",
+        "mitigation": "Strategic-advising roles often value consulting pedigree; role maturity and customer complexity will determine if this is critical",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Role is titled \"Strategist\" in a growth-stage AI company (founded 2023, well-funded per founders Bret Taylor and Clay Bavor, global offices). Title alone is ambiguous at early-stage. JD mentions direct customer work, mentorship from \"top talent,\" and alignment evaluation but lacks explicit years required, management scope, or reporting line. Coarse signals (strategy title, customer-facing, customer-advising context) suggest L4\u2013L5. stage and title inflation typical at AI startups add downward pressure. Level confidence is low due to missing role-scope detail and company-stage salary context.",
+    "role_family_fit": 45,
+    "scope_seniority": 50,
+    "summary": "Sierra's Strategist, Agent Development role sits at an early-stage conversational AI company with global customer presence. The JD emphasizes customer collaboration, real-world impact, and cultural fit but lacks functional depth on whether the role is customer-facing strategic advising, product strategy, transformation ownership, or a hybrid. The candidate brings Strategy and Operations, transformation, and customer-facing program leadership from Google; experience with agentic tooling; and bilingual capability (English/German native, relevant for Munich location). However, the absence of AI agent or LLM platform domain knowledge, unclear role scope, lack of classic consulting background, and missing customer-success or GTM-strategy depth create material gaps. Recommend clarifying role scope and training approach before advancing.",
+    "uncertainties": [
+      "JD provides no functional role description; unclear if Strategist owns customer success, GTM strategy, product strategy, or transformation",
+      "Company stage and salary not posted; Sierra context inferred only from careers page and founder names",
+      "No clarity on reporting line, team scope, or direct/indirect reports",
+      "Customer-engagement depth unknown\u2014unclear if role is advisory, execution-heavy, or hybrid"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

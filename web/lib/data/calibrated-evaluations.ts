@@ -1,7 +1,7 @@
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
-export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v3";
+export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v4";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
 const CALIBRATION_FLOOR_LIMIT = 5;
 

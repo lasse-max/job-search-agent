@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience in strategic prioritization and roadmap-level decision-making at a comparable global technology company",
+        "evidence_strength": "strong",
+        "job_requirement": "Own, develop, and institutionalize the multi-year global product strategy, translating executive vision and market intelligence into a clear, actionable product roadmap"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and commercial operations scaling at Google; demonstrated ability to design and institutionalize processes across global teams; experience with OKR frameworks and cross-functional operational governance",
+        "evidence_strength": "strong",
+        "job_requirement": "Design, implement, and govern robust Product Development Life Cycle (PDLC) frameworks, OKR tracking, and product prioritization processes"
+      },
+      {
+        "candidate_evidence": "Commercial operations leadership spanning revenue, territory management, pricing execution, and cross-functional alignment; Salesforce administration and budget management demonstrate hands-on stakeholder coordination; experience coordinating engineering feature requests and business outcomes",
+        "evidence_strength": "strong",
+        "job_requirement": "Serve as the key strategic bridge between Product, Engineering, Commercial, Finance, and Legal, ensuring consistent alignment on strategic goals, resource allocation, and go-to-market execution"
+      },
+      {
+        "candidate_evidence": "Advanced Excel, Sheets, and SQL proficiency with BigQuery querying capability; Looker dashboard-building and Tableau experience demonstrate data-driven analytical thinking; designs and directs LLM coding agents with evaluation methodology and benchmarking ownership",
+        "evidence_strength": "strong",
+        "job_requirement": "Mastery of first-principles thinking and advanced analytical problem-solving; ability to absorb information quickly and identify critical aspects to address"
+      },
+      {
+        "candidate_evidence": "Commercial operations strategy experience at scale; analytical tooling proficiency (SQL, BigQuery, advanced Excel) enables independent data modeling; experience identifying opportunities and gaps in transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Direct and conduct sophisticated market analysis, competitive deep dives, and complex data modeling to identify disruptive opportunities and validate big product bets"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions and demonstrated ability to influence at scale; experience translating complex operational and strategic challenges into executable initiatives for senior stakeholders",
+        "evidence_strength": "medium",
+        "job_requirement": "Prepare and deliver high-stakes strategic reviews and proposals to the C-Suite, synthesizing complex strategic challenges into concise, compelling recommendations"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 78,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No fintech, payments, or financial-services domain background; Airwallex description emphasizes payments infrastructure, embedded finance, and treasury operations as core",
+        "mitigation": "Analytical and cross-functional operational skills are transferable; domain learning curve manageable with executive onboarding and guidance from CPO. Candidate's commercial operations background demonstrates ability to master complex multi-stakeholder environments quickly.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting background or evidence of formal market analysis, competitive intelligence, or white-space discovery methodologies emphasized in 'Strategic Market Insights' responsibility",
+        "mitigation": "Strong analytical toolkit (SQL, BigQuery, Excel) and experience identifying gaps in roadmaps provide foundation for building this capability. Structured onboarding and partnership with PMM or market-research functions can accelerate domain-analysis proficiency.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product strategy experience stems from commercial operations, process transformation, and requirements ownership rather than native PM or product lifecycle management",
+        "mitigation": "Commercial ops strategy translates to product strategy in governance, prioritization, and cross-functional alignment; PDLC and OKR frameworks are operational-systems work that candidate has demonstrated at scale.",
+        "severity": "low"
+      },
+      {
+        "gap": "Candidate target band is L4\u2013L5 (Manager/Senior Manager); posted role is Director (L6). No explicit evidence of managing multiple team leads or large-scale manager-of-managers scope",
+        "mitigation": "Eight-year tenure with two promotions at Google and scale of global commercial transformation suggest readiness for step-up; seniority gap is real but surmountable with strong foundation in strategy and operations already in place.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Director-level title with 10+ years required experience. explicit C-level stakeholder management, strategy formulation across global multi-product organization, and governance ownership map to L6 scope. JD emphasizes strategy formulation, operational change at scale, and executive-level influence as core accountabilities, consistent with senior-IC or manager-of-low-managers scope at L6.",
+    "role_family_fit": 78,
+    "scope_seniority": 74,
+    "summary": "Strong alignment on global operations scaling, cross-functional strategic alignment, and analytical rigor. Candidate's eight years at Google in commercial operations and transformation programs, combined with proficiency in data-driven problem-solving (SQL, BigQuery, advanced Excel) and stakeholder coordination, directly address the core strategic-operations and governance responsibilities. Primary gaps: native fintech/payments domain experience and consulting pedigree are preferred; no explicit evidence of market analysis or competitive deep-dive methodology; native product strategy background is lighter than classic PM roles. Level stretch from target band L4\u2013L5 to posted L6 Director role is manageable given scope and strategy-and-operations fit.",
+    "uncertainties": [
+      "Airwallex company stage and actual global team size not stated in JD; 2,200+ employees and $8B valuation suggest mid-to-late-stage, but product organization structure and reporting-line clarity are not specified",
+      "Depth of candidate's M&A and PMI experience not detailed in profile; JD includes 'active participation in M&A and PMI activities' as a responsibility",
+      "No explicit evidence of zero-to-one strategic initiative incubation or transition from incubation into established product groups; candidate experience emphasizes scaling and governance rather than greenfield product creation",
+      "Candidate's experience in CEO/CPO-level communication is inferred from two promotions and tenure at Google; direct examples of C-level presentations or proposal synthesis not supplied"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

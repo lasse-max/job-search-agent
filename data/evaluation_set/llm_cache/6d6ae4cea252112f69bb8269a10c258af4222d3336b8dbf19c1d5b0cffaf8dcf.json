@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with ownership of requirements, logic design, UAT, rollout, and transformation\u2014but product-operations experience rather than native product design leadership",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead end-to-end experience design and set world-class UX/UI standards for complex, data-rich products"
+      },
+      {
+        "candidate_evidence": "Two promotions and scaling of global commercial operations teams at Google, but no direct evidence of building or managing a design team",
+        "evidence_strength": "weak",
+        "job_requirement": "Manage and develop senior and staff-level product designers across London and Singapore studios"
+      },
+      {
+        "candidate_evidence": "Advanced Excel, Sheets, SQL, BigQuery; builds Looker dashboards; proficient with complex data queries and operational systems\u2014analytical depth but not interaction or information-architecture design",
+        "evidence_strength": "medium",
+        "job_requirement": "Deep strengths in interaction design, information architecture, and UX for complex workflows and data-heavy products"
+      },
+      {
+        "candidate_evidence": "Data-informed operations background; no direct evidence of user research, UX research methodology, or design validation practice",
+        "evidence_strength": "weak",
+        "job_requirement": "Familiar with partnering on user research and quantitative analysis to inform decisions and measure impact"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No native product design or UX/UI background; career is strategy, operations, and commercial transformation, not design craft or design leadership",
+        "mitigation": "Candidate would require a fundamental career pivot. Design leadership at director level, managing senior designers, demands deep design craft credibility built over years of hands-on design work.",
+        "severity": "high"
+      },
+      {
+        "gap": "No experience leading or managing product designers; Google experience is operations and commercial teams, not design teams",
+        "mitigation": "Design team leadership and people development in design requires understanding of design critique, craft standards, and design mentorship\u2014outside stated background.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated UX research, design validation, or discovery practice; background is business analytics and operational metrics",
+        "mitigation": "User research, design experimentation, and qualitative design validation differ materially from operational reporting and quantitative analysis.",
+        "severity": "high"
+      },
+      {
+        "gap": "No developer platform, API, SDK, or fintech/payments domain experience cited",
+        "mitigation": "Domain and product context can be learned, but without design foundation, ramp would be steep and role-critical responsibilities would suffer.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Posted role requires 12+ years in product/UX design (design-specific) with 4+ years managing senior designers. Director title, multi-region studio leadership, and mandate to set design vision and standards across complex financial and developer products signal L6 scope. JD does not cite executive/enterprise breadth typical of L7+.",
+    "role_family_fit": 5,
+    "scope_seniority": 72,
+    "summary": "Director of Product Design role is fundamentally a design-craft and design-leadership position requiring 12+ years of native product/UX design experience and 4+ years managing senior designers. Candidate's eight-year track record is strategy, operations, and commercial transformation\u2014not product design, design teams, UX research, or interaction/information-architecture work. While candidate brings data fluency and complex-system thinking, the role's core requirements (design vision, design team leadership, design validation, design craft standards) are outside candidate's expertise domain. This is a category mismatch, not a gap-within-function.",
+    "uncertainties": [
+      "Candidate's actual hands-on design experience or coursework in design/HCI is not detailed in profile",
+      "Airwallex company stage and design-team maturity not stated; context matters for whether director scope is truly L6 or early-stage-inflated",
+      "Candidate's broader portfolio or side design work not documented"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

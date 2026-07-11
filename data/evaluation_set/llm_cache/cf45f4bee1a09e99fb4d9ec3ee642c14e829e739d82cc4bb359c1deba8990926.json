@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years scaling global commercial operations and transformation programs at Google Devices and Services with two promotions; owns strategy, requirements, UAT, rollout, and transformation execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead and manage multiple concurrent client deployments and transformations"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience designing transformation programs, defining requirements, and measuring rollout success through UAT and phased execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop deployment strategies and roadmaps; define success metrics and KPIs"
+      },
+      {
+        "candidate_evidence": "Global commercial operations ownership requiring coordination across product, sales, finance, and operations functions with strategic visibility",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder engagement and executive visibility"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL, BigQuery, advanced Excel and Sheets, Looker dashboards; pulls and shapes own data for analysis and reporting",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven decision-making and analytics"
+      },
+      {
+        "candidate_evidence": "None supplied; no Palantir product knowledge or enterprise data platform deployment experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Palantir platform or enterprise software deployment experience"
+      },
+      {
+        "candidate_evidence": "Limited direct consulting brand and classic case-team experience; transformation and deployment expertise comes from internal operations rather than client-facing delivery",
+        "evidence_strength": "weak",
+        "job_requirement": "Professional Services or consulting delivery background"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "No Palantir product knowledge or enterprise data-platform deployment experience",
+        "mitigation": "If Palantir is willing to invest in product onboarding, candidate's strong analytics and transformation execution could transfer; however, this is a material ramp-up risk for a deployment-facing role",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited Professional Services or consulting delivery background; experience is internal operations transformation rather than external client engagement",
+        "mitigation": "Candidate would need to build client stakeholder management, delivery cadence, and contracting mindset from scratch; Google internal transformation is not an equivalent substitute",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated exposure to enterprise software implementation, technical architecture, or platform administration",
+        "mitigation": "Candidate has strong data-analytics skills and agentic-tooling ownership; may pick up deployment workflow and platform architecture faster than typical operator, but still represents a gap",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "JD emphasizes \"lead and manage multiple concurrent client deployments\" and \"develop deployment strategies\". title \"Deployment Strategist\" suggests 4\u20135 years of deployment or program leadership experience in professional services or consulting. No executive reporting line or manager-of-managers language. scope is senior-IC or lead-level strategy and execution, typical of L4. Company size and stage not stated, lowering confidence slightly.",
+    "role_family_fit": 65,
+    "scope_seniority": 70,
+    "summary": "Candidate has strong transformation and strategy execution experience, proven analytical capability, and demonstrated ownership of complex cross-functional programs at scale. However, this is a Professional Services Deployment Strategist role requiring direct Palantir platform expertise, enterprise client delivery experience, and consulting delivery credibility\u2014none of which the candidate has demonstrated. Internal transformation leadership does not translate directly to external deployment consulting.",
+    "uncertainties": [
+      "JD lacks detail on required Palantir platform exposure; unclear whether this is mandatory or developable",
+      "Professional Services delivery vs. internal transformation operations are distinct career paths; transferability unclear without explicit client or deployment narrative",
+      "No salary or reporting line stated in JD; company stage and team structure unknown, affecting seniority calibration",
+      "Candidate's AI/agentic tooling ownership may not map to Palantir-specific data-platform or deployment tooling"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

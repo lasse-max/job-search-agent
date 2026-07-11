@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Python basic, actively learning (data-analysis / pandas track); SQL proficient (joins, GROUP BY, subqueries, window functions, BigQuery); Looker dashboard-building; advanced Excel/Sheets",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop and implement data analysis tools (e.g. using Python, Databricks, Looker) to improve audit efficiency and effectiveness"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs; designing and speccing LLM coding agents with evaluation methodology and calibration; partnered with engineering on Salesforce feature requests",
+        "evidence_strength": "strong",
+        "job_requirement": "Manage internal business stakeholders, communicate complex risk and compliance issues clearly, and ensure that audit recommendations are understood and implemented"
+      },
+      {
+        "candidate_evidence": "Transformation program experience and requirements logic design, but no direct internal audit, compliance testing, or control assessment background supplied",
+        "evidence_strength": "weak",
+        "job_requirement": "Execute audit fieldwork, assess the design and operating effectiveness of controls, and deliver insightful, actionable reports to senior management and the Audit Committee"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No professional internal audit or financial compliance background; candidate's experience is in strategy, operations, and transformation at a tech company, not fintech or banking regulation.",
+        "mitigation": "Would require 6\u201312+ months of on-the-job mentoring from experienced audit leaders, domain-specific certifications (CIA, CAMS), and deep study of relevant regulators (MAS, FCA, DNB). Not typical for a manager-level hire.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated expertise in financial crime, fraud, card scheme compliance, or enterprise risk management\u2014all core audit skills explicitly required.",
+        "mitigation": "Candidate would need to build compliance and fraud knowledge from scratch while managing a compliance audit portfolio; high execution risk early in tenure.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct banking or fintech experience; candidate's tech-company background does not translate to regulated payment systems, MAS/FCA requirements, or issuing/acquiring card compliance.",
+        "mitigation": "Steep learning curve on regulatory landscape and fintech-specific control requirements; candidate would likely miss nuances in control design and remediation advice.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python at basic/learning level; role calls for data-analysis tools (Python, Databricks, Looker) but also expects proficiency to 'improve audit efficiency and effectiveness'\u2014likely implies intermediate or advanced application.",
+        "mitigation": "Candidate's Looker and SQL skills are transferable; Python learning could accelerate with hands-on audit analytics projects, but time-to-productivity may extend timeline.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 5\u20138 years as professional auditor or financial industry practitioner with specific compliance/fraud/regulatory expertise. Role is Senior Manager/IC-lead equivalent (manager-of-managers scope is not indicated). Title and scope point to L4, with L5 reachable only with deep compliance or audit background, which.",
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "Candidate is a Strategy and Operations leader with strong stakeholder management, transformation execution, and data-analytics tools experience. However, this is an Internal Audit compliance-specialist role requiring 5\u20138 years of professional audit or financial-services regulatory experience, banking/card-scheme compliance expertise, and control-assessment depth. Candidate has no direct audit, financial crime, regulatory compliance, or banking background; honest gaps include no production audit or compliance foundation. Role family fit is poor (Internal Audit is not a target or approved-stretch family). Gap is not learnable in typical 6\u201312 month onboarding.",
+    "uncertainties": [
+      "JD states 'Bachelor's degree or above in Accounting, Finance, Business Administration, or a related field' as minimum; candidate's background (Google, operations) does not confirm formal accounting or finance degree.",
+      "Airwallex company stage and internal audit team maturity not specified; if audit function is new or small, role scope may differ from implied senior-audit structure.",
+      "Candidate's Product Operations and transformation work could indicate familiarity with controls and risk frameworks, but no evidence supplied."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

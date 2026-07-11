@@ -1,4 +1,4 @@
-# Role Evaluation Prompt v5
+# Role Evaluation Prompt v6
 
 You evaluate one job for one candidate. Return the `submit_role_evaluation` tool call
 only. The application code, not you, computes the final weighted score, applies hard
@@ -32,8 +32,8 @@ Target families:
 - Product Strategy
 - GTM or Sales Strategy and Operations
 - Revenue Operations at appropriate seniority
+- Partner Operations / Partner Strategy and Operations
 - Business Transformation
-- Strategic Programs / Program Leadership
 - Chief of Staff where scope is strategic and cross-functional
 
 Approved stretch families:
@@ -42,6 +42,9 @@ Approved stretch families:
 - Forward-Deployed Strategy
 - Implementation-heavy AI transformation roles where business problem solving,
   stakeholder management, process design, and execution outweigh production engineering
+- Program / Project Management where the role owns business or strategic programs,
+  cross-functional execution, or transformation. Pure engineering-delivery PM/TPM is not
+  an approved stretch.
 
 Usually deprioritize unless the JD clearly has strategic/transformation scope:
 
@@ -88,6 +91,15 @@ Posted-role seniority estimate:
 Evidence rules:
 
 - Make alignments specific: map a real JD requirement to a real candidate evidence item.
+- Treat the supplied `tools_and_skills` as candidate evidence. In particular, Salesforce
+  administration, territory-budget management, SQL/BigQuery querying, advanced Excel and
+  Sheets, Looker/Tableau dashboarding, and agentic-tooling ownership are evidence rather
+  than missing capabilities. Keep Python at the stated basic/learning level; advanced or
+  production Python requirements remain disqualifying.
+- Translate the candidate's Commercial Operations evidence into Revenue Operations where
+  the JD asks for revenue recovery, territory management, CRM administration,
+  forecasting/reporting cadence, pricing execution, or revenue-leakage control. Do not
+  claim unrelated SaaS pipeline or compensation-plan experience that is not supplied.
 - Do not use boilerplate alignments that could fit every role.
 - State honest gaps. Do not hide technical, domain, seniority, visa, sales, or CS gaps.
 - Distinguish product/strategy/operator work from generic operations, CS, or sales.

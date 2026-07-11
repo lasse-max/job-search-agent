@@ -1,0 +1,65 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration",
+        "evidence_strength": "strong",
+        "job_requirement": "Support Agent Architects in the design and testing of AI agent workflows for enterprise customers"
+      },
+      {
+        "candidate_evidence": "Owns LLM coding agent evaluation methodology and benchmarking; actively involved in prompt calibration and strategy",
+        "evidence_strength": "strong",
+        "job_requirement": "Research and evaluate LLM prompting strategies, and assist in crafting and refining prompts"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets skills; proficient SQL and BigQuery querying; basic Python actively learning; exposure to API integrations through AI agentic tooling work",
+        "evidence_strength": "strong",
+        "job_requirement": "Comfortable working with tools like Google Docs, Sheets, and Notion; experience with APIs or basic scripting is a plus"
+      },
+      {
+        "candidate_evidence": "Builds Looker dashboards; proficient in SQL with window functions and subqueries; writes BigQuery queries to pull and shape own data; experience with performance analysis at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Analyze conversation logs and performance data to surface patterns and improvement areas for deployed agents"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L3",
+    "evidence_strength": 78,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Role explicitly requires current enrollment in a Bachelor's or Master's program in CS, Computational Linguistics, Cognitive Science, Business Informatics, or related field; candidate is an employed full-time professional with eight years tenure",
+        "mitigation": "No mitigation; this is a structural mismatch. The role is designed for a student, not a senior professional.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is 16\u201320 hours per week with flexibility around university commitments; candidate is a full-time employed manager with competing strategic responsibilities",
+        "mitigation": "No mitigation; employment model and availability structure do not align.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is a 'Working Student' entry-level AI/conversational AI learning opportunity; candidate's eight-year tenure, two promotions, and L4-L5 target scope indicate overqualification and misalignment with learning-stage intent",
+        "mitigation": "Candidate should target mid-level or senior AI/LLM strategy, architecture, or transformation roles, not student internships.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Currently enrolled in a Bachelor's or Master's program in Computer Science, Computational Linguistics, Cognitive Science, Business Informatics, or a related field\" \u2014 candidate is a full-time employed professional, not a currently enrolled student.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 92,
+    "level_rationale": "Working Student role designed for currently enrolled Bachelor's/Master's students in CS or related disciplines, working 16\u201320 hours per week. This is unambiguously L3-equivalent (intern/early-career learning scope), regardless of. The JD's educational requirement, part-time hours, learning-focused framing, and Professional Services support structure all anchor this as a junior, student-focused entry point.\".",
+    "role_family_fit": 42,
+    "scope_seniority": 15,
+    "summary": "This is a Working Student (intern-equivalent, L3) role requiring current enrollment in a CS/Linguistics/related degree program and 16\u201320 hours weekly availability. The candidate is an eight-year, L4-L5-target Strategy and Operations professional at a major tech company. Although candidate evidence strongly aligns with the LLM, conversational AI, and data-analysis tasks (design, prompting, dashboarding, analysis), the role is fundamentally a student learning opportunity, not a mid-level or senior strategic position. The educational and availability requirements are disqualifying hard blockers. Recommend skip.\"",
+    "uncertainties": [
+      "Parloa company size and stage not stated in JD; unable to assess whether any startup-exception leveling applies",
+      "Unclear whether candidate would consider a part-time, student-focused role despite target band; profile suggests full-time strategic scope is the intention"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

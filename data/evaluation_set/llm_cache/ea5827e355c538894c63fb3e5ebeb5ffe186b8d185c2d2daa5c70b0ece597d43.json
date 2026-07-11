@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions leading global commercial operations and transformation programs; experience scaling operations, designing processes, and driving cross-functional execution; designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration",
+        "evidence_strength": "strong",
+        "job_requirement": "partnering with Agent Product Managers and Agent Engineers to scope, build, and ship AI agents; play a central role in agent development, combining product strategy, conversational design, and customer insight"
+      },
+      {
+        "candidate_evidence": "Led transformation programs requiring stakeholder coordination across technical teams and business partners; managed territory budgets and Salesforce administration; owns agentic-tooling systems and directs production-system builds",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects; coordinate across technical and non-technical stakeholders through the full development lifecycle"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries, CTEs, window functions); works with BigQuery; builds Looker dashboards; advanced Excel and Sheets; demonstrates ability to pull, shape, and analyze data independently for strategic decisions",
+        "evidence_strength": "strong",
+        "job_requirement": "Contribute data-driven, strategic insights to customers and internal team decisions"
+      },
+      {
+        "candidate_evidence": "Eight-year track record at Google scaling global operations and leading transformation; fluent English; native German; experience translating technical product and engineering concepts into business-aligned requirements and rollout strategy",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding communication and technical expertise to convey complex technical information to non-technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Limited direct customer-advisory or consulting experience; positioning is internal operations and transformation leader rather than external customer strategy role",
+        "evidence_strength": "weak",
+        "job_requirement": "Be a trusted advisor to customers and drive their AI strategies"
+      },
+      {
+        "candidate_evidence": "Led global commercial-operations scaling and transformation programs requiring problem-solving and risk mitigation; demonstrated analytical capability through SQL, BigQuery, and data-driven decision-making",
+        "evidence_strength": "medium",
+        "job_requirement": "Problem-solving and analytical skills to grasp complex concepts, identify risks and issues, develop mitigation strategies, and handle unexpected challenges"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Limited direct external customer-strategy advisory or consulting experience; background is internal operations and transformation rather than customer-facing strategy role",
+        "mitigation": "Strong stakeholder-management and cross-functional execution experience within Google; deep understanding of AI/ML product development through agentic-tooling ownership; Sierra's values emphasize customer obsession and expects all team members to spend time with customers, providing onboarding opportunity",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit product-management or conversational-design domain background; PM experience comes from requirements logic, UAT, rollout, and transformation ownership rather than native SDLC/native PM discipline",
+        "mitigation": "Demonstrated ability to design, spec, and direct complex product systems (agentic tooling); understands product development lifecycle through transformation and delivery leadership; willing to learn conversational design domain through mentorship and hands-on agent development",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated consulting or case-team experience; limited brand-level visibility in classic strategy consulting",
+        "mitigation": "Proven strategic-thinking and problem-solving through eight years of transformation and global-operations scaling; analytical foundation (SQL, BigQuery, dashboarding) is strong; Sierra values Craftsmanship and self-improvement, implying investment in domain learning",
+        "severity": "low"
+      },
+      {
+        "gap": "Italian-language requirement not addressed in profile",
+        "mitigation": "Profile lists fluent English and native German; no Italian mentioned. Role states London location; clarify whether Italian-language requirement is firm or aspirational given multicultural London office",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD signals L5 equivalent: references \\\"multiple complex, high-visibility projects,\\\" cross-functional leadership across technical and non-technical stakeholders, and trusted-advisor scope to customers. No explicit years, management scope, or reporting line stated, lowering confidence. Title \\\"Strategist\\\" in AI-product context at a well-funded, founder-led platform company (Bret Taylor, Clay Bavor) suggests senior IC or partner-level ownership, consistent with L5. Company stage/size unstated in JD, moderating confidence further.",
+    "role_family_fit": 76,
+    "scope_seniority": 72,
+    "summary": "Candidate brings eight years of strategic operations and transformation experience, including agentic-tooling design and production-system direction, strong analytical and data-querying skills, and cross-functional stakeholder leadership. Core alignment: strategy, execution, and data-driven decision-making. Primary gap: limited external customer-advisory background and no stated conversational-design or native PM expertise, though demonstrated ability to own complex product systems and stakeholder coordination. Italian-language requirement unclear; clarify fit. Role is a stretch into customer-facing product strategy, but candidate's transformation and AI-tooling ownership create meaningful alignment with agent development scope.",
+    "uncertainties": [
+      "Italian-language requirement firm or aspirational (role posted for London, no Italian in candidate profile)",
+      "Company stage/size not stated in JD; confidence in L5 estimate depends on typical Sierra seniority expectations",
+      "Conversational-design domain and customer-advisory scope are material unknowns; no explicit evidence of either in profile",
+      "Nature of 'trusted advisor' role\u2014internal champions vs. external customer engagement\u2014not fully clear from JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

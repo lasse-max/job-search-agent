@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions to senior manager; strategy and operations, product operations, and commercial operations experience with global scaling scope",
+        "evidence_strength": "strong",
+        "job_requirement": "3-6 years of product management experience, with expertise in the consumer product offerings"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; proficient SQL (joins, GROUP BY, subqueries, window functions); BigQuery querying; Looker dashboard building; demonstrated metrics definition and tracking in commercial operations transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven approach: proficiency identifying, defining, tracking and acting upon metrics. Experience identifying critical metrics and working with engineering and analytics on instrumentation and monitoring."
+      },
+      {
+        "candidate_evidence": "Owns LLM coding agent design and directs production system builds; advanced BigQuery and SQL skills; demonstrated platform and technical detail engagement with Salesforce administration and engineering feature requests; led transformation program execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Technical approach: delving into the product, platform and implementation details. Ability to engage with engineering to design scalable and extensible solutions."
+      },
+      {
+        "candidate_evidence": "Eight-year tenure at Google scaling global programs; two promotions; professional English fluency; led cross-company alignment and stakeholder communication in commercial operations and transformation roles",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong written and verbal communication skills: ability to convey strategies, priorities, and tradeoffs at the 30K foot level, as well as produce clear and detailed product and technical specifications"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background translates to revenue-focused resource prioritization; no direct payments, subscriptions, or fintech monetization product experience supplied",
+        "evidence_strength": "medium",
+        "job_requirement": "Aligning teams and prioritizing features/resources to deliver an excellent product in monetization, payments, subscriptions or related fintech space"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services environment; led commercial transformation programs and product rollouts; get-stuff-done demeanor demonstrated in operations scaling",
+        "evidence_strength": "medium",
+        "job_requirement": "Worked in a fast paced environment, with bold priorities, through the product life cycle from planning, development, through to launch"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No demonstrated product management experience in consumer payments, subscriptions, fintech, or monetization. Candidate background is operations and strategy, not native product management for payment/subscription products.",
+        "mitigation": "Candidate's technical approach, data skills, metrics definition, and cross-functional alignment from Google operations could transfer if given significant product-domain ramp. Fast-paced experimentation and monetization mechanics would require learning on the job.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of A/B testing and experimentation methodology design or execution. JD emphasizes experimentation and A/B testing; candidate background shows analytics and metrics but not experiment ownership.",
+        "mitigation": "Data-driven foundation (SQL, BigQuery, Looker) suggests capability to learn experimentation design and instrumentation with PM-specific coaching. Not a disqualifying gap given metrics and analytics strength.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No consumer app, mobile, or gaming-platform experience supplied. Role emphasizes consumer-facing Roblox platform experience; candidate comes from B2B/Commercial operations context at Google.",
+        "mitigation": "Roblox is a learning domain. Candidate's platform and technical detail skills, data methodology, and cross-functional execution could support ramping on consumer context with onboarding and mentorship.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "JD specifies 3-6 years of PM experience and reports to Sr. Director Product, Monetization and Payments (two levels below executive). Salary band ($183.5K\u2013$229K) and scope (lead long-term strategy, consumer-facing monetization, developer partnerships, cross-company alignment) indicate a mid-level individual contributor or lead PM role. No manager-of-managers scope. Estimated L4 based on years, reporting line, and strategic ownership, not.",
+    "role_family_fit": 32,
+    "scope_seniority": 68,
+    "summary": "This is a native Product Manager role in consumer payments and subscriptions at Roblox, a core customer base PM function outside the candidate's target families. Candidate brings strong operations, strategy, technical acumen, data skills, and cross-functional alignment experience from Google, but has no direct payments, subscriptions, monetization, or consumer product PM background. The role requires rapid ramp in fintech/payments domain, A/B testing ownership, and consumer app experience\u2014gaps that are substantial but not impossible with strong onboarding. Role is L4, candidate is L4\u2013L5 capable; the role-family mismatch (PM vs. Ops/Strategy) and domain-specific gaps recommend skip unless seeking to fill a PM-track opening in fintech products.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

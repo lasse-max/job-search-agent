@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in strategy and operations roles with two promotions; mentored team members and directed project execution; experience scaling global operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead technical teams of Applied AI Engineers, providing mentorship, technical guidance, and best practices for deploying state-of-the-art GenAI applications"
+      },
+      {
+        "candidate_evidence": "Translated Commercial Operations and transformation initiatives across cross-functional stakeholders including engineering, product, and global partners; demonstrated ability to communicate requirements and strategic context",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate customer requirements into actionable solutions and communicate Mistral's technological advantages to diverse stakeholders in pre-sales technical discussions"
+      },
+      {
+        "candidate_evidence": "Eight-year background in strategy and operations at Google with documented experience collaborating with product and engineering teams; led transformations requiring cross-functional coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with product managers, researchers, and engineers to ensure seamless integration of customer feedback into product development cycle"
+      },
+      {
+        "candidate_evidence": "Basic Python (actively learning data-analysis track); no demonstrated backend development, full-stack, or API design experience; directed AI agents and owns evaluation methodology but not production software architecture",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong software engineering skills, including API design, backend/full-stack development, and system architecture"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Production software engineering and full-stack development experience. JD requires 'strong software engineering skills, including API design, backend/full-stack development, and system architecture'; candidate has basic Python (learning), no production SWE background.",
+        "mitigation": "Candidate has directed LLM agent development and owns evaluation methodology; could potentially grow into architectural leadership with structured mentoring, but lacks the hands-on depth this hybrid IC+leadership role demands upfront.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep production expertise in fine-tuning LLMs, RAG at scale, PyTorch, and MLOps tools. JD requires 'deep expertise in fine-tuning LLMs, advanced RAG, agentic systems, and deploying NLP applications at scale' and 'proficient in Python, PyTorch, and modern AI frameworks.'",
+        "mitigation": "Candidate's AI and agentic tooling background shows conceptual understanding and direction, not hands-on engineering depth; learning Python on data-analysis track does not cover PyTorch or production model-serving requirements.",
+        "severity": "high"
+      },
+      {
+        "gap": "Advanced academic credential (PhD or Master's in AI/ML/CS) or equivalent domain-deep experience. JD states 'You hold a PhD or Master's degree in AI, Machine Learning, Computer Science, or a related field.'",
+        "mitigation": "No academic background provided; background appears to be commercial operations and strategy, not formal ML/AI education or equivalent self-directed mastery of core ML theory.",
+        "severity": "high"
+      },
+      {
+        "gap": "2+ years in formal technical leadership role (Tech Lead, Engineering Manager, or Solutions Architect) focused on AI products or enterprise solutions. Candidate's leadership has been in commercial operations and transformation strategy.",
+        "mitigation": "Strategic and operational leadership experience transfers partly to cross-functional coordination, but lacks the AI-product and technical-execution focus this role requires.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD: 'You hold a PhD or Master's degree in AI, Machine Learning, Computer Science, or a related field.' No academic credential in AI/ML/CS is stated in the candidate profile. Background is commercial operations and strategy at Google, not formal AI/ML education.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD: 'You possess deep expertise in fine-tuning LLMs, advanced RAG, agentic systems, and deploying NLP applications at scale' and 'proficient in Python, PyTorch, and modern AI frameworks.' Candidate profile lists Python as 'basic, actively learning (data-analysis / pandas track)' with no PyTorch, production model deployment, or fine-tuning engineering experience.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD: 'Deliver as an IC the critical lines of codes of our complex projects, you'll be hands-on and de-risk the critical parts of our complex projects. You'll stay deeply involved in coding, reviewing, and optimizing AI solutions.' Candidate has no production software development background and is learning Python at a basic level; cannot deliver or review production code at the complexity required.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 7\u20138+ years in AI/ML with 2+ years in technical leadership (Tech Lead, Engineering Manager, Solutions Architect) for AI products. involves team leadership, deep technical strategy, and hands-on IC coding in complex systems. This signals L6 (senior IC with team leadership, strategic influence, and complexity ownership) on the Google ladder, typical for a senior engineering or technical-product role with dual IC and mentoring scope.\".",
+    "role_family_fit": 15,
+    "scope_seniority": 62,
+    "summary": "This Applied AI Technical Lead role is a hybrid IC+leadership position at L6 requiring 7\u20138+ years in AI/ML engineering, deep expertise in fine-tuning, RAG, PyTorch, and production deployment, plus 2+ years in technical leadership of AI products. The candidate brings eight years of strategy and operations leadership at Google with cross-functional collaboration, but lacks the production software engineering, PyTorch, and formal AI/ML credentials (PhD/Master's) that are core to the role. The hard blockers\u2014academic credential requirement, production coding and code-review capability, and deep ML framework proficiency\u2014are disqualifying. This role is outside the candidate's primary families (Strategy and Operations, RevOps, BizOps, product operations) and does not qualify as an approved stretch; it is a deep technical AI-engineering position requiring ML fundamentals and production SWE depth the candidate does not possess.\"",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

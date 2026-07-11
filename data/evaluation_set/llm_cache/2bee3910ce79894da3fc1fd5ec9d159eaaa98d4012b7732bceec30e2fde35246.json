@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations at Google, managing complex cross-functional workflows, requirements ingestion, and enterprise-scale execution and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Manage and execute end-to-end merchant assurance requests, security questionnaires, and due diligence inquiries"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration for agentic tooling; basic Python with active learning on data-analysis and pandas track",
+        "evidence_strength": "strong",
+        "job_requirement": "Act as primary architect of the assurance content repository and adapt, train, and optimize AI-based tools to automate merchant requirements and streamline response generation"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to translate complex cross-functional technical domains into executable operations strategy; navigated competing priorities across multiple stakeholder groups in global commercial transformation",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with Subject Matter Experts across Information Security, Data Protection, Legal, and Compliance to extract technical data and translate into clear, commercial-ready responses"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations and transformation programs; managed stakeholder engagement at scale; no direct bid management or proposal-writing background stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with global Bid Managers to support complex, high-value enterprise RFPs and take ownership of risk, security, and compliance sections"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations, designing and optimizing processes to support enterprise-scale growth; experience identifying and removing operational bottlenecks",
+        "evidence_strength": "strong",
+        "job_requirement": "Continuously review and refine the assurance response engine, identify bottlenecks, and design scalable workflows to handle growing commercial volume"
+      },
+      {
+        "candidate_evidence": "Eight years at Google managing competing commercial priorities; demonstrated structured thinking and ability to challenge constructively across global teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Navigate competing priorities and constructively challenge stakeholders to ensure market positioning remains operationally sound"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No direct bid management, proposal writing, or RFP response experience documented",
+        "mitigation": "Core competencies\u2014requirements ingestion, multi-stakeholder coordination, technical-to-commercial translation, and scalable process design\u2014transfer readily; domain training and pairing with bid managers would close this gap within 2\u20133 months",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited stated exposure to financial services, payments, or compliance/data-protection domain specifics",
+        "mitigation": "Role explicitly values structured thinking and ability to navigate technical topics with SME partners rather than domain pre-requisite; compliance and security translation is a learned skill paired with SME collaboration",
+        "severity": "medium"
+      },
+      {
+        "gap": "No background in merchant assurance, security questionnaires, or due-diligence response frameworks",
+        "mitigation": "Candidate's experience operationalizing complex cross-functional content and translating technical requirements into business-facing outcomes applies directly; templates, process standards, and SME pairing would accelerate domain knowledge",
+        "severity": "medium"
+      },
+      {
+        "gap": "Basic Python and early-stage learning; AI adoption mindset present but hands-on AI/ML engineering depth not documented",
+        "mitigation": "Role asks for 'experience with AI-powered tools and proactive mindset,' not production ML engineering; candidate's agentic-tooling design and evaluation ownership satisfies the intent; ongoing pandas/analysis learning fits scope",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 3+ years in assurance/bid/sales operations and explicitly describes senior specialist scope with autonomous execution, stakeholder navigation, and structured thinking in a fast-paced, high-growth environment. No management reporting line or people leadership stated. title 'Manager' is coordinator/functional ownership rather than people management. Equivalent to L4 (Senior IC / Lead specialist) in a growth-stage fintech scale-up context.",
+    "role_family_fit": 72,
+    "scope_seniority": 71,
+    "summary": "Candidate's eight years scaling global commercial operations, multi-stakeholder coordination, and agentic AI ownership align strongly with the core mission: operationalizing merchant assurance at scale and architecting an AI-powered content engine. Key gaps are lack of bid/proposal and payments-domain experience, but the role's emphasis on structured thinking, stakeholder translation, and process design\u2014not domain pre-requisite\u2014makes these manageable within a 2\u20133 month ramp. Sitting within the Bids Team as a senior specialist supporting critical commercial activities sits at the boundary of strategy-operations fit; candidacy depends on hiring team's confidence in transfer-learning and appetite for accelerated ramp-in alongside Bid Manager partners.",
+    "uncertainties": [
+      "Checkout.com company stage and team maturity not fully specified in JD; 'scale-up maturation' language suggests Series B\u2013D but could affect ramp timeline and support",
+      "No explicit mention of whether this role owns hiring or team building; 'develop professionally toward senior bid management role' suggests individual contributor track, but scope ambiguity lowers confidence",
+      "Degree or formal qualification requirements not stated in JD; if unstated internal minimum exists, verify fit",
+      "Python and agentic-tooling expectations for 'architect' role not detailed; confirm whether hands-on implementation or design/direction is the intent"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices and Services; demonstrated commitment to cross-functional collaboration and impact-driven delivery.",
+        "evidence_strength": "medium",
+        "job_requirement": "Are motivated by making sure AI is safe and beneficial for society as a whole"
+      },
+      {
+        "candidate_evidence": "Two promotions and scaling experience in global commercial operations; fluent English and native German; direct mentorship leadership and cross-functional execution track record.",
+        "evidence_strength": "medium",
+        "job_requirement": "Thrive in fast-paced, collaborative environments; can implement ideas quickly and communicate clearly"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets; proficient SQL; working BigQuery; basic Python (actively learning data-analysis/pandas); AI agentic tooling design and specification experience.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical background in computer science, mathematics, or physics"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L3",
+    "evidence_strength": 20,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Fluency in Python programming is mandatory; candidate is at basic level, actively learning on data-analysis track.",
+        "mitigation": "Intensive Python upskilling in pandas/data-analysis could partially close the gap over a 4-month program, but entry assumes production-ready fluency.",
+        "severity": "high"
+      },
+      {
+        "gap": "No prior AI research or empirical research background; role expects transition into or strong background in AI safety/security research domain.",
+        "mitigation": "Anthropic mentorship and structured research onboarding designed for early-career researchers, but candidate's operations and transformation background does not substitute for domain grounding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role workstream (Economics & Policy) requires interest in or prior experience with economics, policy, labor-market analysis, or societal-impact research; candidate background is commercial operations and product transformation.",
+        "mitigation": "Application notes candidate is 'adaptable and collaborative' and can contribute to team priorities; however, no demonstrated economics, policy research, or social-science methodology expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate is not from approved role families (Strategy & Ops, Product Ops, BizOps, GTM/Revenue Ops, Business Transformation); fellowship is AI research/engineering training role outside core positioning.",
+        "mitigation": "Anthropic Fellows Program explicitly encourages applications from non-traditional backgrounds and states 'we encourage you to apply even if you do not believe you meet every single qualification,' but family fit remains misaligned.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "4-month full-time fellowship targeting early-career researchers transitioning into empirical AI research. no seniority ladder clearly stated. described as \"promising technical talent regardless of previous experience.\" Company stage/size not disclosed in fellowship description, lowering confidence. If mapped to IC ladder, consistent with entry-level research roles. interpreted as L3 equivalent absent clearer role structure.",
+    "role_family_fit": 15,
+    "scope_seniority": 25,
+    "summary": "This is a 4-month full-time research fellowship at Anthropic focused on Economics & Policy research within AI safety. The role targets early-career researchers with strong technical foundations (CS, math, physics) and interest in empirical AI research. The candidate is a Strategy and Operations leader without AI research background, production Python expertise, or economics/policy domain experience, making this a significant stretch outside approved families and core requirements.",
+    "uncertainties": [
+      "JD describes fellowship as 'regardless of previous experience' for promising technical talent, but requires 'strong technical background in computer science, mathematics, or physics' and 'fluent in Python.' Candidate's technical foundation is quantitative operations/data tooling, not CS/math/physics training.",
+      "Economics & Policy workstream emphasizes empirical research methodology and social science; candidate's honest gaps note 'limited direct consulting brand and classic case-team experience,' with no supply-chain, survey design, econometric, or policy research evidence.",
+      "Fellowship is 4-month training/research role with ~25-50% conversion to full-time at Anthropic; evaluation as permanent role level (L3) versus short-term fellowship may not be directly comparable to candidate's L4-L5 permanent-role target."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

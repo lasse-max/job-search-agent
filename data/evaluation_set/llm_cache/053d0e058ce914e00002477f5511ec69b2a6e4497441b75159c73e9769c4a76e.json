@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in commercial operations and transformation; no agriculture, fresh produce, or perishable food-category sourcing experience stated",
+        "evidence_strength": "weak",
+        "job_requirement": "6\u20138+ years of strategic procurement or sourcing experience, with a proven track record specifically in fresh produce, agriculture, or highly perishable food categories"
+      },
+      {
+        "candidate_evidence": "No agricultural supply-chain, cold-chain logistics, or agronomic-risk management background evident from profile; strategy and operations background is consumer-electronics and services-focused",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep, systemic understanding of global agricultural supply chains, cold-chain logistics, agronomic risk management, and market economics"
+      },
+      {
+        "candidate_evidence": "Eight years as strategy and operations leader at Google with global scale and cross-functional stakeholder management; specific multi-million-euro portfolio negotiation experience not detailed",
+        "evidence_strength": "medium",
+        "job_requirement": "Expert-level negotiation skills, with experience managing multi-million-euro portfolios and closing complex, long-term international contracts"
+      },
+      {
+        "candidate_evidence": "Two promotions over eight years; described as scaling global operations and transformation programs; executive-stakeholder engagement implied but no explicit mentorship or matrix-leadership examples provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrated ability to influence at the executive level and lead complex matrix teams; natural mentor who elevates performance"
+      },
+      {
+        "candidate_evidence": "Proficient SQL and BigQuery; advanced Excel and Sheets; Looker and Tableau dashboarding; designs LLM agents and evaluation methodology; demonstrates data-analysis capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven mindset; ability to synthesize complex macro-data into clear, strategic roadmaps and business cases"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No fresh produce, agriculture, or perishable-food sourcing experience; all background is consumer electronics and services at Google",
+        "mitigation": "Domain expertise in agricultural supply chains, cold-chain logistics, and agronomic risk would require 2\u20134 months of steep learning; candidate's data and strategic acumen could accelerate adoption, but foundational category knowledge is missing",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with Direct-to-Grower models, cross-docking platforms, or agricultural supply-chain transformation",
+        "mitigation": "Candidate has executed transformation programs at scale; agriculture-specific playbooks and grower relationships would need to be built from scratch with mentorship",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with agricultural macroeconomic trends, climate adaptation planning, agronomic seasonality, or crop-risk management",
+        "mitigation": "Subject-matter expertise would be acquired through hire of domain advisors and partnerships with agricultural consultants; candidate's macro-data synthesis skills are present but domain knowledge is not",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of multi-million-euro procurement portfolio management; Google context is consumer-tech, not food/agriculture procurement",
+        "mitigation": "Negotiation and commercial acumen likely transfer; specific procurement contract design and supplier-agreement complexity in food-sector context would require onboarding",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 6\u20138+ years of strategic procurement with deep agricultural domain expertise, senior matrix leadership, and multi-year portfolio transformation. senior title, executive stakeholder alignment, and mentorship scope point to L5. Company size/stage and reporting line are not stated in JD, lowering confidence slightly.",
+    "role_family_fit": 28,
+    "scope_seniority": 72,
+    "summary": "Senior International Category Manager role at HelloFresh requires 6\u20138+ years of deep fresh produce and agriculture procurement expertise, agricultural supply-chain transformation, and agronomic risk management. Candidate brings eight years of strategy and operations at Google with strong data and transformation acumen, but zero direct experience in food/agriculture sourcing, Direct-to-Grower models, cold-chain logistics, or agronomic seasonality. Gap is domain-specific, not seniority-based, and would require significant learning curve incompatible with immediate senior-portfolio ownership.",
+    "uncertainties": [
+      "Company size, stage, and reporting line not stated in JD; cannot confirm executive-level scope or HR infrastructure to support steep on-boarding",
+      "Role description emphasizes 'refresh strategy 2026+' but does not clarify whether candidate would be stepping into an existing team or building from scratch",
+      "Candidate's commercial operations and transformation experience at Google is detailed; specific sourcing, procurement, or supply-chain negotiation scope is not mentioned",
+      "Role's 'Direct-to-Grower' transformation suggests change-management and supply-chain process redesign\u2014areas where candidate may have relevant operational skills\u2014but agricultural partnership sourcing is completely unaddressed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years owning global commercial operations scaling at Google, with strong data governance, systems thinking, and quality assurance on complex multi-stakeholder initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "End-to-end ownership of nutrition standards, database maintenance, and proactive improvement"
+      },
+      {
+        "candidate_evidence": "Extensive cross-functional stakeholder management and program leadership across product, engineering, legal, sales, and operations teams at scale; proven ability to balance competing priorities",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with Culinary, Kitchen Ops, Procurement, and Regulatory; coordinate across departments to optimize recipes and ensure compliance"
+      },
+      {
+        "candidate_evidence": "Experience building and scaling programs and teams within transformational contexts; talent coordination and execution under resource constraints",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop, manage, and scale a nutrition consultation programme; bring on and coordinate part-time team members"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 5,
+    "gaps": [
+      {
+        "gap": "No Registered Dietitian credential or active EU certification; background is not in nutrition science, dietetics, or healthcare",
+        "mitigation": "None\u2014this is a disqualifying hard requirement and cannot be mitigated by skills or experience transfer. The candidate would need to pursue formal Registered Dietitian qualification and licensure, which is a multi-year credentialing process.",
+        "severity": "high"
+      },
+      {
+        "gap": "No client-facing nutrition coaching, trust-building, or guidance experience; no track record in food science, nutrition claims, or dietary consulting",
+        "mitigation": "The candidate's operations and leadership background does not substitute for domain expertise in nutrition science and client-facing clinical or dietary guidance.",
+        "severity": "high"
+      },
+      {
+        "gap": "No recipe development, product development in food/CPG, or nutrition database and labeling compliance experience",
+        "mitigation": "Transferable product-development process skills exist, but the domain (nutrition, food product formulation, regulatory labeling) is entirely new and requires significant domain onboarding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role family mismatch: this is a specialized Food/CPG Nutrition Operations role, not Strategy and Operations, Product Operations, or Business Transformation",
+        "mitigation": "No direct mitigation. The candidate's target families are strategic/business operations; this role is a functional nutrition-specialist role in a different domain.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"3+ years practising as a Registered Dietitian, with an active certification/licence in the EU.\" The candidate has no background in dietetics, nutrition science, or healthcare and does not hold a Registered Dietitian credential.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 70,
+    "level_rationale": "Requires 3+ years as a Registered Dietitian with active EU certification, plus cross-functional product and program ownership (recipe development, nutrition consultation program build-out, team scaling). Reporting to Head of Product with end-to-end nutrition ownership suggests established single-IC scope. Mid-market food/CPG context and small fast-moving team indicate L4 Senior IC or lead role, not L5+ scale.",
+    "role_family_fit": 5,
+    "scope_seniority": 50,
+    "summary": "This is a Nutrition Manager role requiring a Registered Dietitian designation\u2014a specialized healthcare credential the candidate does not hold. The role is in the Food/CPG operations and product space, not Strategy and Operations or Product Operations. While the candidate brings strong operations, data, transformation, and cross-functional execution skills from Google, the disqualifying hard requirement for an active EU-registered dietitian certification, combined with the mismatch in domain (nutrition science vs. commercial/business operations), makes this a poor fit. Recommend skip.",
+    "uncertainties": [
+      "HelloFresh's company size and strategic priorities are not stated in the Role JSON; estimated level relies on typical mid-market CPG context and team scale.",
+      "Candidate's willingness to pivot from operations/strategy to a specialized nutrition domain is unknown.",
+      "Extent to which the candidate might have adjacent nutrition or food-science interests not mentioned in the profile is not clear."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

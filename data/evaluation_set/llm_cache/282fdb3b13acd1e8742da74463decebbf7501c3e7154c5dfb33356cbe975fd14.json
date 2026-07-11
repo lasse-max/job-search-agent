@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Commercial Operations and transformation programs, with two promotions and global scaling experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations leadership"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in Commercial Operations scaling, transformation program delivery, and directed LLM coding agents to build production systems with evaluation methodology and benchmarking",
+        "evidence_strength": "strong",
+        "job_requirement": "Cross-functional program execution and stakeholder management"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; proficient SQL with joins, GROUP BY, subqueries, window functions; BigQuery query writing; Looker dashboard building",
+        "evidence_strength": "strong",
+        "job_requirement": "Data analysis and reporting capability"
+      },
+      {
+        "candidate_evidence": "Global commercial operations background; Salesforce administration including territory budget management; pricing execution and revenue-leakage control implicit in Commercial Operations scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue or operations domain knowledge"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 65,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "JD fetch failure\u2014no explicit role scope, reporting line, key responsibilities, or success metrics available",
+        "mitigation": "Request the actual JD text or cached structured snapshot. Without role details, cannot assess fit against specific requirements or seniority signal.",
+        "severity": "high"
+      },
+      {
+        "gap": "Uber-specific operational context and geography (Sydney) not addressed in candidate profile",
+        "mitigation": "Clarify whether candidate is open to Sydney relocation and understands Uber's regional Strategy & Operations structure and mandate.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Consulting or case-team brand experience limited; candidate background is primarily Google internal operations",
+        "mitigation": "If the role requires external consulting mindset or rapid problem-framing in unfamiliar domains, deeper case experience is beneficial but not disqualifying given demonstrated strategy work.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 55,
+    "level_rationale": "Title \"Senior Strategy & Operations Manager\" at Uber (mature enterprise) suggests L5 IC leadership or junior management tier. No explicit years-required, reporting-line, or headcount-ownership signals available. Moderate confidence due to missing role scope.",
+    "role_family_fit": 82,
+    "scope_seniority": 60,
+    "summary": "Candidate has strong Strategy & Operations credentials, eight years Google experience, global commercial operations background, and solid analytical toolkit (SQL, BigQuery, Excel, Looker). However, the JD fetch failed, leaving role scope, reporting line, key mandates, and success metrics unknown. Without those details, cannot validate fit against Uber's specific requirements, assess seniority alignment, or determine whether the role's exact scope matches the candidate's target band (L4\u2013L5 Manager/Senior Manager/Lead). Recommend obtaining the full JD before proceeding.",
+    "uncertainties": [
+      "Full JD text unavailable\u2014fetch returned 406 error. Cannot assess explicit requirements, reporting line, team scope, or success metrics.",
+      "Candidate location openness to Sydney not stated in profile.",
+      "Uber's regional Strategy & Operations structure and current priorities in APAC not described.",
+      "Whether role is IC lead (L5) or people manager (L5-L6) unclear from title alone."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

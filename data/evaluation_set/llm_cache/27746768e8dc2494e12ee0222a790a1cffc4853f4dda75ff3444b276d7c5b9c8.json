@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; demonstrated experience scaling global commercial operations and transformation programs; designs, specs and directs LLM coding agents to build production systems; owns AI evaluation methodology, benchmarking and calibration",
+        "evidence_strength": "strong",
+        "job_requirement": "AI Process Transformation Lead \u2013 Strategy & Operations role at AutoScout24"
+      },
+      {
+        "candidate_evidence": "Led transformation programs at Google; commercial operations scaling and restructuring; experience translating requirements into process design and rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Process transformation and business optimization"
+      },
+      {
+        "candidate_evidence": "Global commercial operations at scale; partnered with Salesforce engineering; directs AI tooling teams and coordinates evaluation methodologies across teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management and cross-functional collaboration (inferred from transformation scope)"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "JD heavily garbled / unreadable \u2013 HTML cookie consent code and web markup comprise ~99% of supplied description; substantive role scope, accountabilities, and technical requirements are not legible",
+        "mitigation": "Obtain clean JD text. Cannot fairly assess fit without explicit scope, reporting line, team size, domain expertise requirements, or AI/process methodology requirements.",
+        "severity": "high"
+      },
+      {
+        "gap": "No visible automotive or B2B marketplace domain experience",
+        "mitigation": "Domain onboarding feasible if core process-transformation and AI-tooling capabilities are strong; transferable from scaled SaaS operations.",
+        "severity": "medium"
+      },
+      {
+        "gap": "AI experience is agentic-tooling direction and benchmarking; unclear if role requires deep automotive-data ML pipeline, vehicle-analytics modeling, or core AI product development",
+        "mitigation": "Clarify whether AI remit is (a) LLM-agent applications for operational process automation, (b) data-science modeling, or (c) embedded vehicle/marketplace analytics. Candidate's agentic-tooling ownership maps to (a); production ML engineering gaps exist for (b)\u2013(c).",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 30,
+    "level_rationale": "Role title \"AI Process Transformation Lead\" and Strategy & Operations department suggest L4\u2013L5 scope, but JD text is unreadable. No stated years required, reporting line, team/budget ownership, or company stage provided. Estimate L4 pending legible JD. confidence very low.",
+    "role_family_fit": 65,
+    "scope_seniority": 45,
+    "summary": "Candidate brings eight years of Google strategy and operations expertise, including commercial-transformation programs and AI-agentic-tooling ownership\u2014a genuine fit for an AI Process Transformation Lead role in Strategy & Operations. However, the supplied JD is almost entirely unreadable (dominated by HTML/cookie-consent markup); substantive requirements, scope, reporting line, and AI-domain specificity are not legible. Without a clean JD, fair assessment of domain-fit (automotive/marketplace), AI-methodology alignment (agentic vs. ML engineering), and seniority-band match is impossible. Recommend skip pending receipt of legible JD text and clarification of AI remit.",
+    "uncertainties": [
+      "JD text is corrupted; cannot extract explicit requirements, team scope, or reporting structure",
+      "Company size, maturity, and stage unknown; context for seniority and scope estimation absent",
+      "AI scope ambiguity: agentic-tooling automation vs. data-science modeling vs. embedded analytics \u2013 each has different fit profile",
+      "Automotive/marketplace domain familiarity required but not stated in readable JD",
+      "Process-transformation domain specifics (sales operations, supply chain, customer experience, finance) unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

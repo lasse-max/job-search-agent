@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; designed global commercial operations strategy and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and own the VC & startup ecosystem strategy; define objectives, target partner archetypes and prioritisation"
+      },
+      {
+        "candidate_evidence": "Commercial operations leadership includes stakeholder negotiation, cross-functional alignment on pricing, packaging, and strategic partnership enablement",
+        "evidence_strength": "medium",
+        "job_requirement": "Originate, negotiate and sign high-value partnerships; structure win-win commercial and marketing agreements"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets, proficient SQL with BigQuery querying, Looker dashboard building, Salesforce admin with territory budget management",
+        "evidence_strength": "strong",
+        "job_requirement": "High comfort with data and tools: G-Suite / Excel, Salesforce CRM and ideally BI tools like Looker"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations reporting cadence, forecasting discipline, and revenue-leakage control; built data pipelines and dashboards for visibility",
+        "evidence_strength": "strong",
+        "job_requirement": "Own performance and reporting on partner-sourced pipeline, revenue and portfolio penetration, maintaining strong CRM hygiene and data-driven updates"
+      },
+      {
+        "candidate_evidence": "Scaled transformation programs from greenfield in multiple regions; designed measurement frameworks and iterated based on data signals",
+        "evidence_strength": "medium",
+        "job_requirement": "Data-driven and resilient, using metrics to prioritise and iterate in 0-to-1, ambiguous environments"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "No direct ecosystem or partnerships background; candidate's experience is commercial operations, territory management, and product transformation, not partner-sourcing, ecosystem program design, or VC/startup relationship building",
+        "mitigation": "Domain-transferable: strategy, negotiation, activation, pipeline management, and commercial outcomes are portable. Candidate would require 2-4 months to learn VC/startup ecosystem dynamics, fundraising cycles, and partner incentive structures specific to growth-stage investing.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated exposure to or network in VC, accelerators, incubators, or startup communities; JD requires existing French VC/startup network and 3+ years directly in ecosystem or partnerships roles",
+        "mitigation": "Candidate can rapidly build relationships and has scaling experience; however, pre-existing network and deep-domain context (fundraising, venture, growth metrics) are not demonstrated.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated fintech, payments, or FX product expertise; JD requires strong interest in fintech, international payments, and ability to understand startup use cases",
+        "mitigation": "Candidate is at Google Devices, not a fintech context. Financial services domain knowledge and fintech product acumen are learnable but represent a knowledge gap at entry.",
+        "severity": "medium"
+      },
+      {
+        "gap": "French native fluency required; candidate profile does not state French language capability (English is professional)",
+        "mitigation": "Critical blocker if not present. Cannot serve as primary contact for French VCs and partners without native or near-native French.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Excellent written and verbal communication in French (native) and English (professional) \u2014 French native-level fluency is required. Candidate profile lists English as professional/fluent and German as native but does not state French capability, representing a disqualifying language barrier for a Paris-based, French-market-facing role requiring daily native-language partner and VC engagement.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 6+ years in partnerships/strategy/ecosystem roles in high-growth SaaS/fintech, with 3+ directly in partnerships/ecosystem, plus existing VC/startup network and track record of end-to-end partner program delivery. Reporting to Head of Sales in a greenfield market with owned targets and portfolio responsibility. This signals L4-L5 (Senior Manager or Lead scope) at a scaling stage fintech. lacking manager-of-managers language or multi-year track record in partnerships specifically, L4 is the most conservative estimate.",
+    "role_family_fit": 28,
+    "scope_seniority": 65,
+    "summary": "This is a **Partner Operations / Partner Strategy and Operations** role\u2014an approved target family\u2014at a scaling fintech (Airwallex, $8B valuation). The candidate has strong strategy, operations, data, and transformation credentials from eight years at Google, with demonstrated ability to scale commercial programs, negotiate stakeholder alignment, and drive revenue impact. However, the role requires 3+ years of direct partnerships/ecosystem experience, an existing French VC/startup network, fintech domain expertise, and native French fluency. The candidate's strength lies in commercial operations, not partnership ecosystem building; this is not a gap that translates easily despite comparable seniority and analytical rigor. The **critical blocker is French language**: the JD mandates native fluency, and no evidence of French capability is supplied. Even without that barrier, the lack of direct ecosystem, VC, and fintech experience represents a substantial ramp-up risk in a high-pressure greenfield market role.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

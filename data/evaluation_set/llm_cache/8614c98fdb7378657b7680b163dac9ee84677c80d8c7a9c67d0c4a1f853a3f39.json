@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Led global commercial operations transformation and scaling programs at Google with cross-functional execution and business problem-solving",
+        "evidence_strength": "medium",
+        "job_requirement": "Independently solve complex problems across Xero's products, ensuring technical excellence"
+      },
+      {
+        "candidate_evidence": "Managed global territory budgets and commercial strategy alignment across multiple regions and stakeholder groups",
+        "evidence_strength": "medium",
+        "job_requirement": "Navigate complexity between regional needs and global roadmaps to deliver maximum value"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global operations with demonstrated cross-functional coordination and stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Adept at navigating complex stakeholder environments, building consensus between globally-distributed teams"
+      },
+      {
+        "candidate_evidence": "Two promotions and scaling program leadership suggest some mentoring, but not explicitly demonstrated or primary focus",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience in coaching and mentoring those around you, leading by example in code quality, design discussions, and professional growth"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Production software engineering and hands-on coding: Role requires independently building and shipping complex technical solutions across multiple codebases; candidate has no SWE background and basic Python only",
+        "mitigation": "Candidate brings strong problem-solving and global cross-functional skills, but would require significant ramp-up on core engineering practices, code ownership, and domain-specific technical depth",
+        "severity": "high"
+      },
+      {
+        "gap": "Xero platform and product domain knowledge: No stated experience with accounting, payroll, payments, or Xero's architecture; regional roles require rapid codebase mastery",
+        "mitigation": "JD states 'apply even if experience isn't a perfect match' and emphasizes versatility and ramping quickly; candidate has demonstrated learning agility in new domains",
+        "severity": "high"
+      },
+      {
+        "gap": "Native SaaS product-engineering track record: Candidate's product experience is operations, strategy, and transformation-focused, not engineering-delivery or SDLC-heavy PM",
+        "mitigation": "Not directly applicable; role is engineering-focused, not product management",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Senior Engineer title with independent ownership of complex multi-product features, global stakeholder navigation, and mentoring scope suggests L5 senior IC. No explicit years-required stated. reporting to GM of Engineering (mid-tier report) and high-visibility cross-functional work support L5, not L6. Company size (Xero is mid-market SaaS) and UK regional scope do not elevate above L5.",
+    "role_family_fit": 8,
+    "scope_seniority": 65,
+    "summary": "This is a Senior Engineer (L5) software-delivery role in Xero's UK regional engineering team, requiring independent ownership of complex product features, hands-on coding, and rapid codebase mastery across accounting, payments, and payroll. The candidate is a Strategy and Operations leader with eight years of global commercial operations, transformation, and stakeholder management at Google\u2014strong on cross-functional influence and business problem-solving but with no production software-engineering background, no hands-on coding or architectural ownership, and basic Python only. This is a deep technical-delivery mismatch: the role is engineering-focused; the candidate's primary value is operations strategy and program leadership. The candidate does not fit the target family (Strategy &amp; Ops, Product Ops, GTM/RevOps, Transformation) and is not an approved stretch (no implementation-heavy AI transformation or business-program-delivery PM scope). Recommend skip.",
+    "uncertainties": [
+      "Xero company size and stage not stated in JD; assumed mid-market SaaS based on brand context, but this affects level confidence",
+      "Candidate's mentoring and leadership scope not detailed; extent of past people-leadership or coaching unknown",
+      "JD states 'apply even if experience isn't a perfect match' but does not specify how heavily non-engineering backgrounds are considered for this engineering role"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

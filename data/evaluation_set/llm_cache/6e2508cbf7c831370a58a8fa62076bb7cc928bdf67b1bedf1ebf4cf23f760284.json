@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience designing, specs and directs LLM coding agents to build production systems",
+        "evidence_strength": "medium",
+        "job_requirement": "Scope and implement AI Agent deployments, providing strategic advice and execution support to customers and partners"
+      },
+      {
+        "candidate_evidence": "Owns evaluation methodology, benchmarking and calibration for AI and agentic tooling; basic Python and actively learning data-analysis track",
+        "evidence_strength": "medium",
+        "job_requirement": "Leverage your knowledge of LLM internals (e.g., embeddings) to analyze customer requirements and design precise prompts for reliable, user-aligned behavior"
+      },
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries, window functions); Salesforce admin with territory-budget management and feature-request engineering partnerships; working knowledge of BigQuery",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and configure integrations between customers' systems and Parloa's Platform, connecting external tools (e.g., CRMs, ERPs, ticketing systems) via integration platforms and APIs"
+      },
+      {
+        "candidate_evidence": "Designs and directs LLM coding agents; basic Python, actively learning; no explicit evidence of prompt-engineering depth or advanced LLM technique mastery",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficiency with advanced prompting strategies such as chain-of-thought prompting, few-shot learning"
+      },
+      {
+        "candidate_evidence": "Approximately eight years at Google with two promotions; experience scaling global transformation programs; roles in Strategy and Operations imply cross-functional stakeholder coordination",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong project and stakeholder management skills, with passion for meeting milestones and effective communication"
+      },
+      {
+        "candidate_evidence": "Product experience comes from ownership, requirements, logic design, UAT, rollout; limited evidence of conversational-design specialization or UX-focused conversational work",
+        "evidence_strength": "weak",
+        "job_requirement": "Exceptional attention to detail and logical thinking, with a proven ability to identify and address subtle nuances in conversational flows, ensuring a seamless and engaging user experience"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Conversational design and NLP/NLU specialization: JD emphasizes conversation design, voice output (SSML, Lexicons), and nuanced conversational flows as core expertise; candidate background is operations and transformation, not applied conversational AI or UX design",
+        "mitigation": "Candidate has directed LLM agents and owns evaluation methodology; could ramp on conversational design through onboarding and product immersion, but domain specialization is absent",
+        "severity": "high"
+      },
+      {
+        "gap": "Prompt engineering and advanced LLM techniques: JD requires advanced prompting strategies (chain-of-thought, few-shot learning) and LLM-internals knowledge (embeddings); candidate is at basic Python, actively learning",
+        "mitigation": "Candidate's agentic-tooling ownership and active Python learning suggest capability to acquire prompt-engineering depth, but no demonstrated mastery of LLM-internals or advanced techniques",
+        "severity": "high"
+      },
+      {
+        "gap": "API design and REST/JSON expertise: JD requires proficiency in REST API design, JSON/XML structures, OAuth, JWT, and API testing tools (Postman); candidate has SQL, Salesforce admin, and data-transformation exposure but no stated API-design or REST architecture specialization",
+        "mitigation": "SQL proficiency and integration-partnership experience with engineering translate to API-integration familiarity; API-design depth and authentication-pattern mastery are learnable but require focused ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "Enterprise SaaS platform integration breadth: JD expects hands-on experience reading and consuming API documentation across CRMs, ERPs, and contact-center platforms; candidate's stated Salesforce admin and territory-budget experience is narrower in scope",
+        "mitigation": "Salesforce admin experience and BigQuery/SQL proficiency demonstrate integration-and-data capability; broader SaaS platform exposure is accessible via onboarding",
+        "severity": "medium"
+      },
+      {
+        "gap": "French language fluency: JD states 'Excellent written and spoken French and English skills are required'; candidate reports German native, English professional/fluent; no French stated",
+        "mitigation": "Hard language requirement stated as mandatory; no mitigation unless candidate has undisclosed French capability",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Excellent written and spoken French and English skills are required' as a core requirement. Candidate profile lists English (professional/fluent) and German (native) with no French language capability stated. This is a documented mandatory requirement with no disclosed mitigation.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 3+ years enterprise customer-facing experience, conversational-AI domain expertise, and API-integration proficiency. Title is Senior Agent Architect (customer-facing deployment role). Company size/stage is not stated. Scope involves scoping, designing, and validating AI-agent deployments. collaborating with engineering and product. and guiding customer value realization. This is a specialist senior IC role with customer accountability and cross-functional coordination, estimated at L5 (Senior IC / established specialist owner).\".",
+    "role_family_fit": 35,
+    "scope_seniority": 65,
+    "summary": "Senior Agent Architect at Parloa: customer-facing AI-agent implementation and conversational-design specialist role. Candidate brings eight years of Google operations and transformation experience, agentic-tooling direction, SQL/Salesforce data and integration skills, and strong stakeholder management. However, the role requires conversational-design and NLP/NLU domain expertise, advanced prompt-engineering and LLM-internals knowledge, REST/API-design proficiency, and fluent French\u2014none of which are substantially evidenced in the candidate's profile. A hard blocker on French language fluency (stated as required) makes this role inaccessible unless the candidate has undisclosed capability.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

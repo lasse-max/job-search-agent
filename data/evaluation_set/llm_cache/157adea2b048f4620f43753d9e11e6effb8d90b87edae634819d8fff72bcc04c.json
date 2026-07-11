@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; extensive global commercial operations and transformation program scaling",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years of experience in technical customer-facing roles such as Solutions Architect, Sales Engineer, or Technical Account Manager"
+      },
+      {
+        "candidate_evidence": "Commercial Operations and scaling global programs demonstrates cross-functional stakeholder coordination; no direct enterprise sales cycle navigation evidence provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience working with enterprise customers, navigating complex buying cycles involving multiple stakeholders"
+      },
+      {
+        "candidate_evidence": "Product Operations ownership requiring requirements translation, UAT coordination, transformation rollout, and cross-team communication across Commercial Operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong technical communication skills with the ability to translate customer requirements between technical and business stakeholders"
+      },
+      {
+        "candidate_evidence": "Python basic, actively learning (pandas/data-analysis track); designs, specs, and directs LLM coding agents to build production systems with evaluation methodology and benchmarking ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Comfortable with python; Familiarity with common LLM frameworks and tools"
+      },
+      {
+        "candidate_evidence": "Global commercial operations transformation and program scaling suggest system integration experience; no explicit cloud architecture design evidence in supplied profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience designing scalable cloud architectures and integrating with enterprise systems"
+      },
+      {
+        "candidate_evidence": "Eight years of Product Operations and transformation work requires translating complex changes across engineering, sales, and executive audiences",
+        "evidence_strength": "strong",
+        "job_requirement": "Excellent communication and interpersonal skills, able to convey complicated topics in easily understandable terms to diverse stakeholders"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "Limited direct Solutions Architecture, Sales Engineering, or Technical Account Manager title/brand experience; background is Product Operations and Commercial Operations rather than pre-sales or post-sale technical advisory",
+        "mitigation": "Candidate has eight years of cross-functional stakeholder management, technical-to-business translation, and adoption-stage transformation work; these core advisory and enablement skills transfer to pre-sales architecture, though customer-facing sales cycle navigation and deal architecture patterns would require ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "Python proficiency is basic and actively learning; JD states 'Comfortable with python' and expects familiarity with LLM frameworks",
+        "mitigation": "Candidate already designs and directs LLM coding agents, owns evaluation frameworks, and benchmarking\u2014suggesting practical understanding of LLM behavior and production systems; Python learning curve is shallow for a pre-sales architect who partners with engineers rather than writes production code",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit cloud architecture design or enterprise systems integration experience documented; experience is global operations and commercial systems transformation",
+        "mitigation": "Commercial Operations scaling and territory/CRM administration (Salesforce) demonstrate enterprise system integration; architecture design gap is material but ramp-able with product and engineering partner support, typical for pre-sales onboarding",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting brand or classic case-team experience; no stated work in AI/ML solution consulting or technical advisory firms",
+        "mitigation": "Eight years of transformation program execution and stakeholder management provide equivalent depth; AI agentic tooling ownership and LLM evaluation frameworks position candidate to advise on Claude-specific architecture and integration patterns",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "JD specifies 5+ years in technical customer-facing roles and enterprise stakeholder navigation, suggesting L4-L5 IC scope. Role explicitly requires partnership with Sales and cross-team coordination but does not mention people management or reporting structure. Salary range (\u00a3190k\u2013\u00a3230k) and pre-sales architect scope point to L5 IC or senior L4. company size/stage not stated, lowering confidence by ~10 points.",
+    "role_family_fit": 62,
+    "scope_seniority": 68,
+    "summary": "Candidate brings eight years of Product Operations and global commercial transformation with demonstrated cross-functional stakeholder management and technical-to-business translation skills. However, this is a pre-sales technical advisory role requiring direct enterprise customer-facing expertise, Solutions Architecture brand, and cloud integration patterns\u2014not a target family fit. Gaps in Solutions Engineering title/experience, Python baseline comfort, and explicit cloud architecture design are material but manageable with structured onboarding; strong interpersonal and transformation skills and LLM agentic tooling ownership partially offset the functional shift. Advisory stance: consider as a strategic career pivot with clear ramp plan, not a high-confidence fit.",
+    "uncertainties": [
+      "JD does not state company size or stage; cannot confirm whether pre-sales scope and customer engagement model are typical for Anthropic's market maturity",
+      "No evidence of prior direct customer discovery, scoping, or architecture presentation experience; candidate's stakeholder work is internal transformation and program delivery",
+      "Python 'comfortable' language in JD is ambiguous\u2014unclear if basic + LLM agentic tooling ownership suffices or if hands-on coding/architecture patterns require higher proficiency",
+      "Cloud architecture experience is inferred from 'global operations scaling' but not explicitly demonstrated; gap size depends on depth expected for typical pre-sales architect role"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

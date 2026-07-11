@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience leading global commercial operations and transformation programs; however, background is Strategy and Operations, not product design",
+        "evidence_strength": "weak",
+        "job_requirement": "8+ years of experience in product design with a proven track record in consumer-facing products, including two years in a lead capacity"
+      },
+      {
+        "candidate_evidence": "No demonstrated experience in UX/UI design, multimodal interaction design, or consumer-facing interface work; background is in operations, strategy, and transformation execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong expertise in designing multimodal experiences, ideally across voice, chat, and mobile"
+      },
+      {
+        "candidate_evidence": "No portfolio, design background, or user-centered design methodology evidence provided; candidate expertise is in process design, operational transformation, and stakeholder management",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong interaction and visual design skills, with a portfolio that demonstrates elegant, user-centered solutions in consumer contexts"
+      },
+      {
+        "candidate_evidence": "Demonstrated cross-functional collaboration and influence in transformation programs at Google; however, context is operational/strategic execution, not product design leadership or design-driven outcomes",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience collaborating with product managers and engineers to drive outcomes and influence priorities"
+      },
+      {
+        "candidate_evidence": "Advanced Excel/Sheets, SQL, BigQuery, Looker, and Tableau skills demonstrate data literacy and analytical mindset; however, no evidence of UX research, usability testing, or consumer research methodology",
+        "evidence_strength": "medium",
+        "job_requirement": "A research-driven mindset, grounded in user research, usability testing, and data-informed decision making"
+      },
+      {
+        "candidate_evidence": "Eight years of transformation program leadership and global scaling work at Google implies strong communication and alignment capability; however, in an operational/strategic context rather than design communication",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication and storytelling skills, with the ability to align and inspire cross-functional teams"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 32,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No product design background or UX/UI design credentials; candidate is a Strategy and Operations leader, not a designer",
+        "mitigation": "Would require a career change into design discipline, formal design training, or apprenticeship; not a gap that typical on-the-job learning or mentorship can close",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated multimodal interaction design experience; no portfolio of consumer-facing design work",
+        "mitigation": "Role requires 8+ years of product design experience with 2+ years in a lead design capacity; candidate's eight years are in operations and strategy, not design discipline",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented user research, usability testing, or UX research methodology experience",
+        "mitigation": "Role explicitly requires research-driven mindset grounded in UX research and usability testing; this is outside candidate's demonstrated expertise",
+        "severity": "high"
+      },
+      {
+        "gap": "No voice, chat, or conversational UI design background despite AI/agentic tooling familiarity",
+        "mitigation": "Candidate's AI and agentic tooling experience is in direction and evaluation methodology, not in interface design or multimodal UX for conversational products",
+        "severity": "medium"
+      },
+      {
+        "gap": "No design system, accessibility, or inclusive design methodology evidence",
+        "mitigation": "These are listed as nice-to-have; candidate has no documented background in design systems or accessibility-focused work",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Staff Product Designer role at scale: 8+ years product design experience with 2+ years lead capacity indicates L5-L6 design IC level. \"Staff\" title, multimodal and consumer-scale scope, and cross-functional design leadership ownership align with L5 baseline. Company size/stage (post-Series B/C based on investor mentions) supports mid-to-senior IC level. No VP/Director/Head signal present in JD. Estimated L5 as senior IC design leader without manager-of-managers scope.",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "This is a Staff Product Designer role focused on consumer-facing, multimodal interaction design (voice, chat, graphical) at an enterprise AI platform company. The candidate is a Strategy and Operations leader with eight years at Google, two promotions, and deep expertise in commercial operations, transformation execution, and agentic AI tooling direction\u2014not a product designer. The role requires 8+ years of product design experience with 2+ years in a lead design capacity, strong multimodal UX/UI skills, a design portfolio, user research and usability testing methodology, and design-driven decision-making. The candidate has no background in design discipline, no UX/UI portfolio, no user research experience, and no multimodal interface design evidence. This is a functional mismatch; while the candidate's cross-functional leadership and data literacy are assets, they do not substitute for the core design expertise, discipline, and portfolio required. Recommendation: skip.",
+    "uncertainties": [
+      "Candidate's AI and agentic tooling experience involves direction and evaluation, not interface design; unclear if this translates to conversational UI or multimodal experience design",
+      "Parloa's exact stage and team structure not stated in JD; cannot determine mentorship or skill-building resources available to close design-discipline gap",
+      "No evidence of whether candidate has taken formal design training, HCI coursework, or design-adjacent roles that might indicate design-related capability"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

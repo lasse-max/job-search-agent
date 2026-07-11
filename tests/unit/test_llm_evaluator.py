@@ -30,6 +30,7 @@ from app.services.llm_evaluator import (
     ModelSpendTracker,
     PROMPT_PATH,
     PROMPT_VERSION,
+    build_role_prompt,
     _evaluation_tool_schema,
     _cache_path,
     _parse_tool_output,
@@ -38,6 +39,21 @@ from app.services.llm_evaluator import (
 
 
 class LlmEvaluatorTest(unittest.TestCase):
+    def test_prompt_carries_tools_and_revops_translation_as_candidate_evidence(self) -> None:
+        prompt = build_role_prompt(
+            LLMRoleRequest(
+                row=_row("Revenue Operations Manager"),
+                company=_company(),
+                profile=load_candidate_profile(),
+            )
+        )
+
+        self.assertIn('"Salesforce": "admin', prompt)
+        self.assertIn('"Excel": "advanced"', prompt)
+        self.assertIn("Commercial Operations", prompt)
+        self.assertIn("Revenue Operations", prompt)
+        self.assertIn("production Python requirements remain disqualifying", prompt)
+
     def test_llm_dimensions_feed_deterministic_final_score_and_band(self) -> None:
         row = _row("Strategic Operations Lead")
         company = _company()
@@ -208,6 +224,14 @@ class LlmEvaluatorTest(unittest.TestCase):
         with self.assertRaises(LLMProviderError):
             _parse_tool_output(_claude_payload(payload))
 
+        payload["level_rationale"] = (
+            "The JD describes a Manager-level role with a promotion path and no direct reports."
+        )
+        self.assertIn(
+            "promotion path",
+            _parse_tool_output(_claude_payload(payload)).level_rationale,
+        )
+
     def test_online_provider_normalizes_hard_seniority_anchor_before_cache(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             provider = ClaudeLLMProvider(
@@ -268,7 +292,7 @@ class LlmEvaluatorTest(unittest.TestCase):
         )
 
         prompt = PROMPT_PATH.read_text(encoding="utf-8")
-        self.assertEqual(PROMPT_VERSION, "role_evaluation_v5")
+        self.assertEqual(PROMPT_VERSION, "role_evaluation_v6")
         self.assertIn("Estimate the role before comparing it with the target band", prompt)
         self.assertIn("an intern role is not l4", prompt.casefold())
         self.assertIn("manager-of-managers role cannot be below l6", prompt.casefold())

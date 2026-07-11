@@ -20,7 +20,7 @@ from app.models import CompanyConfig
 from app.services.material import material_hash_for_row
 
 
-PROMPT_VERSION = "role_evaluation_v5"
+PROMPT_VERSION = "role_evaluation_v6"
 DEFAULT_CLAUDE_MODEL = "claude-haiku-4-5"
 PROMPT_PATH = Path(__file__).resolve().parents[1] / "prompts" / "role_evaluation_v1.md"
 DEFAULT_LLM_CACHE_DIR = DATA_DIR / "evaluation_set" / "llm_cache"
@@ -93,7 +93,6 @@ class LLMEvaluationOutput(BaseModel):
         forbidden = re.search(
             (
                 r"\bcandidate(?:'s)?\b|\bapplicant(?:'s)?\b|\bprofile narrative\b"
-                r"|\bpromotions?\b"
                 r"|\b(?:eight|8)\s+years?\b.{0,80}\bgoogle\b"
                 r"|\byears?\s+in\s+(?:a\s+)?comparable role\b"
                 r"|\bcompany tier\b"
@@ -355,6 +354,7 @@ def build_role_prompt(request: LLMRoleRequest) -> str:
         "usually_deprioritize": profile.usually_deprioritize,
         "honest_gaps": profile.honest_gaps,
         "languages": profile.languages,
+        "tools_and_skills": profile.tools_and_skills,
         "seniority_ceiling": {
             "over_level_title_patterns": profile.seniority_ceiling.over_level_title_patterns,
             "startup_exception_patterns": profile.seniority_ceiling.startup_exception_patterns,

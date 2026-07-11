@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Led product strategy and transformation programs at Google, defining system requirements and driving execution; experience scaling global operations and transforming commercial processes",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead the technical development of system architectures and define requirements for Safety Critical Systems"
+      },
+      {
+        "candidate_evidence": "Eight years cross-functional stakeholder management at Google, translating requirements, scaling teams, and driving transformations; experience reporting to senior leadership on complex program status",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with internal and external stakeholders; Provide regular reporting on project status and technical changes to Chief Engineering and Programme Management"
+      },
+      {
+        "candidate_evidence": "Demonstrated communication and stakeholder management across Google's global commercial operations and transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication skills and the ability to report and present results clearly and effectively to both internal and external stakeholders"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L6",
+    "evidence_strength": 15,
+    "gap_manageability": 5,
+    "gaps": [
+      {
+        "gap": "No aerospace engineering degree (Bachelor's or Master's in Aerospace Engineering, Electrical Engineering, Computer Science, or related field)",
+        "mitigation": "Candidate holds an unspecified degree from Google experience; however, aerospace or electrical engineering is explicitly required. No substitute qualification is evident in the profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "No experience leading design and development of safety critical hardware and software for airborne platforms",
+        "mitigation": "Candidate's background is commercial operations and product strategy, not avionics or safety-critical systems engineering. This is a core functional requirement and cannot be learned quickly.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated knowledge of avionics HW/SW development, ARP4754, ARP4761, DO-178C, or DO-254 standards",
+        "mitigation": "These are deep domain certifications and engineering standards specific to aviation and safety-critical systems. Candidate has no production engineering or certification background.",
+        "severity": "high"
+      },
+      {
+        "gap": "No established relationship with civil or military aviation authorities",
+        "mitigation": "Candidate's network is in commercial technology operations, not aviation or defence. Rebuilding this network would take significant time.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No documented deep knowledge of Guidance Navigation & Control and air vehicle management systems",
+        "mitigation": "This is specialized avionics domain knowledge. Candidate's expertise is in commercial operations, not flight control or vehicle management.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Hold a relevant degree such as a Bachelor's or Master's in Aerospace Engineering, Electrical Engineering, Computer Science, or a related field\" combined with \"Have led the design and development of safety critical hardware and software for an airborne platform\" \u2014 these are minimum qualifications for the core avionics engineering role. The candidate's background is commercial operations and product strategy with no aerospace, electrical engineering, or production software-engineering credentials, and no airborne systems experience.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role requires leadership of technical systems-engineering lifecycle for safety-critical avionics, reporting to Chief Engineering and Programme Management. Deep domain expertise (ARP4754, ARP4761, DO-178C, DO-254), aviation authority relationships, and Guidance Navigation & Control specialization are non-negotiable. This is a senior technical leadership position (L6 equivalent) in a specialized domain where 8-12+ years of avionics/aerospace background is implicit.",
+    "role_family_fit": 5,
+    "scope_seniority": 72,
+    "summary": "Helsing's Avionics Systems Engineer role is a deep technical leadership position in safety-critical flight systems engineering, requiring aerospace/electrical engineering credentials, demonstrated avionics HW/SW design leadership, and mastery of aviation certification standards (DO-178C, DO-254, ARP4754/4761). The candidate's background is Strategy and Operations, product transformation, and commercial leadership at Google\u2014a fundamentally different domain. No production software engineering, aerospace background, avionics systems experience, or aviation authority relationships are evident. The role and candidate profile are misaligned across all technical and domain dimensions.",
+    "uncertainties": [
+      "Candidate's specific educational degree not stated in profile; only implied Google employment context",
+      "Whether any component of Google Devices and Services work touched hardware, safety-critical systems, or aviation-adjacent domains (not supplied)",
+      "Company stage and team size for Helsing not provided in JD, though defence-contracting and 'relatively young company' language suggest established-but-scaling stage"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

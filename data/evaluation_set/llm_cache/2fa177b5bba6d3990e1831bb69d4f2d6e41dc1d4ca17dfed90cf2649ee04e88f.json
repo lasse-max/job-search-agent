@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Commercial Operations with two promotions and global scaling experience; Commercial Operations translates to Revenue Operations expertise in territory management, CRM administration, forecasting/reporting cadence, and revenue-leakage control.",
+        "evidence_strength": "strong",
+        "job_requirement": "Revenue Operations management and strategic execution"
+      },
+      {
+        "candidate_evidence": "Salesforce admin background with territory budget management and feature-request partnership with engineering.",
+        "evidence_strength": "medium",
+        "job_requirement": "Salesforce administration and CRM management"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries/CTEs, window functions); writes BigQuery queries to pull and shape own data; builds Looker dashboards.",
+        "evidence_strength": "strong",
+        "job_requirement": "Data querying and analytics (SQL, BigQuery, reporting dashboards)"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets proficiency demonstrated through Commercial Operations work.",
+        "evidence_strength": "medium",
+        "job_requirement": "Advanced Excel and Sheets skills for financial modeling and analysis"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L5",
+    "evidence_strength": 62,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "JD is corrupted/truncated; substantive role responsibilities, reporting line, company size, and seniority anchors are missing.",
+        "mitigation": "Request a clean JD snapshot from Wise careers page or directly from the hiring team to assess scope, strategic ownership, cross-functional stakeholder level, and whether this is a manager or senior IC track.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of Wise or fintech/payments domain experience.",
+        "mitigation": "Candidate's Google commercial ops and transformation experience in a large-scale tech environment is transferable, but onboarding to Wise's platform architecture, regulatory environment, and revenue model would require domain ramp-up.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or classic case-team strategy background; expertise is ownership-driven rather than external advisory.",
+        "mitigation": "Candidate's product-ownership and transformation execution approach may align better with internal execution-heavy roles than pure strategy consulting.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Title implies Senior Manager or L5 IC scope. \"Senior Revenue Operations Manager\" typically anchors at 6\u20138 years of demonstrated ops leadership. However, JD is severely corrupted (truncated to boilerplate HTML/CSS), so reporting line, team size, budget ownership, and strategic mandate are unreadable. Company size/stage unknown. Cannot confidently estimate level without seeing actual scope and responsibilities.",
+    "role_family_fit": 72,
+    "scope_seniority": 45,
+    "summary": "Candidate's Commercial Operations and transformation background at Google maps well to Revenue Operations domain (territory management, CRM, forecasting, pricing execution). However, the JD is corrupted and unreadable\u2014boilerplate and CSS override nearly all substantive role text. Seniority intent appears to be L5, but cannot assess scope, stakeholder level, reporting line, or strategic ownership. Recommend skip unless and until a clean JD is available; evaluation is premature and unreliable.",
+    "uncertainties": [
+      "JD is truncated to HTML/CSS boilerplate; actual role responsibilities and reporting structure not visible.",
+      "Company size, stage, and team structure for Wise Platform division unknown.",
+      "Whether role is manager-track or senior-IC track unclear from corrupted JD.",
+      "Strategic vs. execution-focused mandate cannot be assessed from available text.",
+      "Specific revenue recovery, territory, or pricing initiatives not disclosed in JD snapshot."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

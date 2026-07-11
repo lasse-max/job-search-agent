@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; demonstrated ability to drive customer strategy and operational outcomes",
+        "evidence_strength": "medium",
+        "job_requirement": "Be a trusted advisor to our customers and drive their AI strategies"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration; product experience from ownership, requirements, logic design, UAT, rollout",
+        "evidence_strength": "strong",
+        "job_requirement": "Build, design and refine conversational AI agents, gaining direct exposure to how these products are developed and improved"
+      },
+      {
+        "candidate_evidence": "Demonstrated execution and delivery of transformation programs at scale; manages multiple projects simultaneously with cross-functional coordination",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects"
+      },
+      {
+        "candidate_evidence": "Commercial operations background with stakeholder management across engineering, product, and business teams; translates complex concepts across technical and non-technical audiences",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate across technical and non-technical stakeholders through the full agent development lifecycle"
+      },
+      {
+        "candidate_evidence": "Professional fluency in English and native German; experience communicating operational strategy to diverse stakeholder groups at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent verbal and written communication skills to convey complex technical information to non-technical stakeholders"
+      },
+      {
+        "candidate_evidence": "SQL proficiency with joins, GROUP BY, subqueries/CTEs, window functions; builds Looker dashboards; advanced Excel and Sheets; data-driven decision-making in commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong analytical and critical thinking skills to grasp complex concepts, identify risks and issues, develop mitigation strategies"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No native Product Manager or Software Development background; product experience derived from operational transformation, requirements definition, and UAT rather than PM/SDLC ownership",
+        "mitigation": "Agentic tooling design and direction, plus transformation-program delivery, directly mirror agent-development responsibilities; cross-functional coordination and stakeholder management are demonstrated strengths",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited classic consulting brand or case-team experience; customer advisory depth not explicitly documented",
+        "mitigation": "Eight years of scaling operations and driving customer outcomes at a tier-one tech company provides substantive customer-strategy foundation; advisement can be developed with onboarding",
+        "severity": "medium"
+      },
+      {
+        "gap": "Arabic language not mentioned; role title specifies 'Arabic speaking' as a differentiator",
+        "mitigation": "Confirm Arabic fluency or equivalent customer-facing language capability; if not present, role fit diminishes unless language requirement is context-dependent or has flex",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated conversational-design, chatbot, or dialogue-system domain experience; agent-development best practices unfamiliar",
+        "mitigation": "Agent-product ownership and LLM-agent design patterns are learnable; hiring team should assess willingness and speed on conversational AI specifics",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD calls for degree in CS/Engineering/Math or equivalent. requires strong software development and product management understanding. scope spans agent design, multi-project execution, technical-stakeholder leadership, and customer advisory strategy. These signals and the customer-advisor scope suggest L5 IC or equivalent senior operator. company stage (founded by ex-Google/Salesforce/Facebook leaders, multi-office global presence) supports L5 baseline.",
+    "role_family_fit": 76,
+    "scope_seniority": 74,
+    "summary": "Agent Strategist role at Sierra is a high-visibility, cross-functional IC position requiring product-strategy, technical-partnership, and customer-advisory leadership to design and deliver AI agents at scale. Candidate brings eight years of commercial operations transformation, stakeholder management, agentic tooling design, and multi-project execution; strong fit on execution, coordination, and data-driven problem-solving. Critical gap: Arabic fluency required by role title; conversational-AI domain and classic PM/SDLC background are secondary gaps but learnable with intent. Advisory: Consider if Arabic fluency is confirmed or negotiable; strong transformation and operational-strategy foundation aligns with scope and intensity.",
+    "uncertainties": [
+      "Arabic language requirement not addressed in candidate profile; clarity needed on whether this is mandatory or preferred for London-based role",
+      "Conversational-AI and chatbot-design domain depth not indicated; uptake speed in LLM/agent specifics unknown",
+      "Company stage and team size not stated; exact reporting line and peer-IC/manager scope not detailed in JD",
+      "Customer-advisory scope depth and expected strategic depth (e.g., quarterly planning, roadmap influence) not granular in JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

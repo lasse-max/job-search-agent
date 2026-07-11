@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; experience aligning cross-functional teams (Commercial, Product, Sales) on strategic initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate closely with Snowflake's Partner, Sales, and Solutions Engineering teams to promote and implement optimal solutions"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and operational rollouts at scale; designed and executed implementation strategies, but limited direct technical training or certification delivery evidence",
+        "evidence_strength": "weak",
+        "job_requirement": "Design and deliver technical training, workshops, and certifications to upskill partner teams on Snowflake architecture and best practices"
+      },
+      {
+        "candidate_evidence": "Owns strategic roadmaps and transformation programs at Google; experience in scaling global operations, but no demonstrated experience with partner ecosystems, reference architectures, or data-platform delivery methodologies",
+        "evidence_strength": "weak",
+        "job_requirement": "Own the technology roadmap with the partners, to build and scale their Snowflake practices with reference architectures and delivery methodologies"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries/CTEs, window functions); working knowledge of BigQuery; no demonstrated cloud data warehouse platform expertise (Snowflake, Redshift, BigTable) or data warehousing architecture experience",
+        "evidence_strength": "medium",
+        "job_requirement": "SQL and data warehousing fundamentals; cloud data warehouse experience preferred"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background includes territory budgeting and revenue metrics; no demonstrated experience working directly with System Integrators, Cloud Service Providers, or Technology Partners, or understanding their business models and delivery challenges",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep comprehension of Partner revenue models, industry priorities and challenges they navigate"
+      },
+      {
+        "candidate_evidence": "No evidence of DevOps, CI/CD pipeline management, or infrastructure-as-code experience; background is commercial operations and transformation strategy, not deployment engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on technical experience with DevOps and CI/CD processes and tools (Azure DevOps, Jenkins, AWS CodePipeline, Google Cloud Build)"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 28,
+    "gaps": [
+      {
+        "gap": "No hands-on technical experience with DevOps, CI/CD tools (Azure DevOps, Jenkins, AWS CodePipeline, Google Cloud Build), or infrastructure deployment practices",
+        "mitigation": "Candidate has AI/LLM agentic-tooling ownership and can rapidly learn infrastructure tooling through self-directed study and partner mentorship; however, this is a core technical requirement in the JD and would require significant ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience designing, building, or scaling data pipelines using Spark, Kafka, or other big-data ingestion frameworks",
+        "mitigation": "SQL and BigQuery proficiency provide a foundation, but hands-on pipeline architecture and streaming-data experience are missing; role demands this for credible partner enablement",
+        "severity": "high"
+      },
+      {
+        "gap": "No working knowledge of Snowflake, major cloud data platforms (Azure Synapse, AWS Redshift, Google BigQuery as a data warehouse), or cloud data-warehouse architecture and best practices",
+        "mitigation": "SQL fundamentals and BigQuery exposure are a foundation, but deep platform knowledge required to guide partner reference architectures and deliver training is absent",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct experience working with System Integrators, Cloud Service Providers, Technology Partners, or ISV ecosystems; partner business models and revenue structures are unfamiliar territory",
+        "mitigation": "Commercial Operations background provides stakeholder-management and revenue-alignment skills; however, partner-specific dynamics (margin constraints, resale models, certification programs) would require significant on-the-job learning",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated experience in technical enablement, certification program design, or upskilling teams on complex data platforms",
+        "mitigation": "Transformation and scaling experience shows ability to drive adoption and change management; however, technical training delivery and curriculum design are distinct skills not evidenced in profile",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Role requires 10+ years of relevant industry experience, hands-on design of data pipelines (Spark, Kafka), DevOps/CI/CD execution, deep cloud platform architecture knowledge, and technical authority in partner enablement. These signals align with L5 senior IC or L5\u2013L6 boundary (strong technical depth + strategic partnership scope). Company size context (unknown) and regional partner focus (ASEAN) lower confidence slightly, but 10+ years + technical hands-on requirements are strong L5+ anchors.",
+    "role_family_fit": 35,
+    "scope_seniority": 62,
+    "summary": "This is a technical partner enablement and ecosystem-growth role at L5 level, requiring 10+ years, hands-on data-pipeline architecture (Spark, Kafka), DevOps/CI/CD tooling, cloud data-warehouse expertise, and deep partner-ecosystem familiarity. The candidate brings eight years of Google Devices commercial operations and transformation leadership, strong SQL and BigQuery fundamentals, and cross-functional stakeholder management, but lacks hands-on DevOps/pipeline-engineering experience, Snowflake/cloud-DW platform depth, and direct System Integrator / CSP / ISV partner ecosystem exposure. The role is not a strong family fit (Solution Engineering is outside target families); the gaps are substantial and technical in nature, not readily mitigated by operations or transformation background. Recommend skip unless candidate has significant undisclosed data-engineering or partner-channel experience.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations role in Global Partnerships function"
+      },
+      {
+        "candidate_evidence": "Experience in scaling global commercial operations and transformation programs indicates cross-functional partnership and stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner-focused strategy and business development scope"
+      },
+      {
+        "candidate_evidence": "Demonstrated in scaling global commercial operations, CRM administration (Salesforce), forecasting and reporting cadence",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations execution and process design"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets, SQL proficiency with BigQuery, Looker dashboarding, Python basic data analysis track",
+        "evidence_strength": "strong",
+        "job_requirement": "Data analysis and reporting capability"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 65,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "JD is heavily corrupted and does not contain substantive scope, responsibilities, requirements, or partnership/global context beyond title and location",
+        "mitigation": "Request clean JD extraction; cannot assess role level, seniority, partnership strategy scope, or specific operational requirements without readable content",
+        "severity": "high"
+      },
+      {
+        "gap": "No visibility into partner-strategy depth, channel management, alliance operations, or cross-regional coordination expectations",
+        "mitigation": "Clarify whether role owns partner selection, commercial terms, enablement, or strategic alignment; candidate has commercial operations and transformation background but partner-strategy specificity is unverified",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct partner operations or alliance management experience explicitly documented",
+        "mitigation": "Candidate's commercial operations and transformation work may translate, but explicit partner P&L, channel conflict resolution, or ecosystem design work is not confirmed",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 25,
+    "level_rationale": "JD is unreadable. cannot extract years-required, reporting line, or scope signals. Estimated L5 based on title \"Strategy & Operations\" and Stripe scale, but confidence is very low without substantive role context.",
+    "role_family_fit": 70,
+    "scope_seniority": 40,
+    "summary": "Candidate's eight-year Google Devices & Services tenure and global commercial operations scaling align with Strategy & Operations target family and partner-adjacent responsibilities. However, the JD is severely corrupted\u2014containing only title, location, and navigation cruft\u2014preventing assessment of scope, partnership strategy depth, regional accountability, or specific operational requirements. Partner Operations is an approved target family, but cannot verify fit without readable role content. Recommend obtaining clean JD before proceeding.",
+    "uncertainties": [
+      "JD content is corrupted web-page HTML/JavaScript fragments; substantive role description is not extractable",
+      "Role seniority cannot be reliably estimated without readable scope, years-required, and reporting-line signals",
+      "Partnership strategy scope and global coordination accountability are unknown",
+      "Specific operational, commercial, or geographic accountability areas cannot be mapped to candidate evidence"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

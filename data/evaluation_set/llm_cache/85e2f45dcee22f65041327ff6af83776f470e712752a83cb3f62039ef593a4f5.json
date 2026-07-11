@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "No accounting or CPA background; career is entirely Google Devices/Services commercial operations and product strategy.",
+        "evidence_strength": "weak",
+        "job_requirement": "You're an Accounting Professional: Ideally CPA-qualified, or with significant experience in an accounting practice"
+      },
+      {
+        "candidate_evidence": "Demonstrated stakeholder management and cross-functional collaboration in global commercial operations and transformation programs; experience building trusted advisor relationships with partners and internal teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "You're a Natural Relationship Builder: You enjoy connecting with people and are skilled at building rapport and trust."
+      },
+      {
+        "candidate_evidence": "Proven problem-solving in scaling commercial operations, designing transformation programs, and advising on business process optimization; experience translating complex requirements into actionable solutions.",
+        "evidence_strength": "medium",
+        "job_requirement": "You're Solutions-Oriented: You're a problem-solver who can identify needs and offer practical solutions."
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions managing global programs and territories; demonstrated autonomy in running commercial operations and transformation initiatives.",
+        "evidence_strength": "strong",
+        "job_requirement": "Work autonomously within your allocated territory, with significant scope for professional development and career progression."
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No CPA or accounting-practice background; role explicitly targets accounting professionals with deep domain expertise in accounting operations and regulatory knowledge.",
+        "mitigation": "Candidate could undertake CPA study or seek accounting-domain mentorship, but this is a fundamental domain pivot away from commercial operations expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "SaaS sales advisory role requires translating accounting practice challenges into Xero solutions; candidate lacks specific knowledge of accounting software, practice workflows, compliance requirements, and Xero platform.",
+        "mitigation": "Intensive product and domain training would be required; transferable consulting/advisory skills exist but accounting-practice domain knowledge is absent.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role emphasizes partner/practice advisory and relationship-building within accounting ecosystem; candidate experience is internal Google operations and external territory/partner management, not accounting-firm advisory.",
+        "mitigation": "Relationship-building and territory-autonomy skills transfer; accounting-practice dynamics and pain points would require significant learning.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 80,
+    "level_rationale": "Role requires 3\u20135+ years of accounting-practice or CPA experience and emphasizes autonomous territory management and relationship-building within a structured SaaS environment. JD signals L4 Manager or Senior IC scope\u2014responsible for territory outcomes and advisory delivery\u2014but does not clearly indicate management of managers or executive reporting. Assigned L4 based on autonomous territory scope, cross-functional advisory, and career-progression language. company stage not stated, lowering specificity.",
+    "role_family_fit": 25,
+    "scope_seniority": 72,
+    "summary": "This is a SaaS relationship-advisory role targeting accounting professionals (ideally CPA) to guide practices through digital transformation with Xero. The candidate brings strong autonomy, territory management, and strategic advisory experience from eight years in Google commercial operations, but lacks the fundamental CPA/accounting-practice background the role explicitly requires. The domain pivot (accounting operations to commercial operations) is substantial and not addressed by any transferable accounting expertise. While relationship-building and problem-solving skills align, the role family (accounting/practice advisory) falls far outside target and approved-stretch families. Recommend skip unless candidate has direct accounting-practice or CPA background.",
+    "uncertainties": [
+      "Xero company size and stage not stated in JD; assumed mid-scale SaaS but could alter L4 calibration.",
+      "Whether role is truly independent-contributor territory advisory or has sales-quota component masked by 'not traditional sales' language\u2014if quota-heavy, deprioritization strengthens.",
+      "Candidate's willingness and timeline to acquire CPA or accounting-practice domain knowledge unknown."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

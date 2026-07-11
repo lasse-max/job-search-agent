@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; demonstrated commercial operations execution and GTM strategy alignment.",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive revenue growth by optimising the go-to-market strategy for Airwallex products and channels in EMEA with detailed local market knowledge"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL, BigQuery, advanced Excel and Sheets; builds Looker dashboards; owns data modelling and revenue-operation reporting cadence as demonstrated Commercial Operations experience.",
+        "evidence_strength": "strong",
+        "job_requirement": "Build & maintain operational and financial models to support everyday business operations, including revenue forecasting, reporting and ad hoc analyses"
+      },
+      {
+        "candidate_evidence": "Salesforce administration with territory budget management; demonstrated pricing execution and revenue-leakage control in Commercial Operations; data-driven strategy and experimentation execution.",
+        "evidence_strength": "strong",
+        "job_requirement": "Support commercial teams in key initiatives and decisions (e.g. lead market research to identify business opportunities, analyse pricing strategies, implement data-driven vertical strategies and go-to-market experiments)"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader working across multiple global functions at Google; cross-functional commercial transformation experience; proven ability to influence and drive adoption at scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate seamlessly across functions and cultures, excelling at influencing without authority and building trust with senior stakeholders"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL and BigQuery; builds Looker dashboards; advanced Excel and Sheets; Python basic and actively learning for data analysis.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong analytical skills, including data modelling and working with data reporting tools (Looker, Tableau)"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in Strategy and Operations and Product Operations; global commercial operations and transformation leadership.",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years of work experience, ideally with a mix of top-tier strategy consulting, high-growth startups, and/or commercial/product leadership roles"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 88,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "No direct fintech or financial-services industry background; experience is in Google Devices and Services payments/commerce context rather than native fintech product development",
+        "mitigation": "The JD frames fintech experience as 'a strong advantage' not a must-have; candidate's deep commercial and operational expertise in payments-adjacent domain and proven ability to navigate complex cross-functional ecosystems mitigates domain transfer risk. Ramp curve steeper but not disqualifying.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited prior exposure to navigating product roadmaps and complex ecosystem requirements; experience emphasizes commercial operations and transformation rather than native product strategy leadership",
+        "mitigation": "Candidate has demonstrated product operations ownership, requirements logic design, and transformation delivery at scale at Google; these skills translate directly to supporting product roadmap collaboration and ecosystem navigation in a high-growth fintech. Mentorship and deeper product partnership alignment in first 90 days recommended.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated prior consulting or top-tier case-team experience; operates within a single large tech company rather than multi-sector consulting exposure",
+        "mitigation": "JD asks for 'a mix' of consulting, startups, and commercial/product leadership\u2014not all three; candidate delivers the latter two strongly, with eight years of structured problem-solving and multi-functional influence at a world-class organization. Consulting lens can be developed through structured problem-framing in the role.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Employer is well-funded ($8B valuation), global scale (2,200+ people, 26 offices), and mature-startup stage. context supports L5 seniority. Required years 5+, but scope includes product strategy direction, market expansion leadership, and financial-modelling ownership\u2014these are senior-IC anchors consistent with L5-equivalent.\".",
+    "role_family_fit": 92,
+    "scope_seniority": 87,
+    "summary": "Strong fit for a core Strategy and Operations role at a high-growth, well-funded fintech. The candidate brings eight years of commercial operations and transformation leadership at scale, with proven analytical rigor (SQL, BigQuery, Looker), cross-functional influence, and strategic execution. Primary gaps are fintech-domain expertise (positioned as 'advantage' not requirement) and native product-roadmap navigation\u2014both manageable with onboarding support. The role aligns directly with candidate's target seniority band and primary role families; level confidence is high despite lack of explicit company-stage detail in the JD.",
+    "uncertainties": [
+      "Company growth stage and team structure for the EMEA Revenue Strategy & Operations function not explicitly stated; assumed mature-startup context based on valuation, headcount, and office footprint, but early-stage org dynamics could elevate scope seniority.",
+      "Depth of 'product strategy' ownership expected\u2014whether this is close collaboration with product leadership or end-to-end strategy ownership. Candidate has strong product operations experience but not native PM background.",
+      "Fintech regulatory and compliance complexity at Airwallex (particularly across EMEA) may require steeper learning curve than commercial operations at Google, though not a disqualifier."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

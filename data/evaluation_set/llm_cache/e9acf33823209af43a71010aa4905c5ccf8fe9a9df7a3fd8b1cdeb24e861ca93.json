@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; designed and executed territory budget strategy for EMEA and APAC; led cross-regional adoption programs.",
+        "evidence_strength": "medium",
+        "job_requirement": "Set and execute the APAC consumer and product communications strategy, aligned with regional priorities and global narratives"
+      },
+      {
+        "candidate_evidence": "Led cross-functional rollout and transformation programs, partnering with product, legal, and policy teams; translated complex requirements into executable local plans.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work with local comms leads to turn global launches, product updates, and research into locally relevant stories, campaigns, and media moments"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions; drove strategic initiatives at board-reporting scale; advised senior stakeholders on complex, ambiguous commercial and product transformation.",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience operating at exec level and advising leaders in high-profile, ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Cross-functional background in commercial operations and product transformation; has partnered with engineering, product, legal, and policy on feature requests and requirements translation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience partnering closely with product, marketing, legal, policy, and research teams"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in commercial operations and transformation; product ownership, requirements, logic design, UAT, and rollout experience, but not native communications or media relations.",
+        "evidence_strength": "weak",
+        "job_requirement": "12+ years' experience in consumer, product, or technology communications"
+      },
+      {
+        "candidate_evidence": "Product transformation and translation experience through requirements logic and stakeholder management; no evidence of consumer narrative development, marketing copy, or media-relations storytelling.",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep experience developing consumer-facing narratives for technology products and translating complex capabilities into clear, relatable benefits"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 28,
+    "gaps": [
+      {
+        "gap": "12+ years in consumer, product, or technology communications; candidate has eight years in commercial operations and product transformation, not communications or media relations",
+        "mitigation": "None practical; this is a domain specialization gap. Candidate would need to transition into communications and rebuild credibility in narrative development and media relationships, which cannot be accelerated.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep consumer-facing narrative development and storytelling; candidate experience is in operational requirements translation and stakeholder management, not marketing copy, product storytelling, or narrative design",
+        "mitigation": "Candidate could study narrative frameworks and media case studies, but lacks demonstrable portfolio or client/audience feedback. Ramp would be measured in quarters, not weeks.",
+        "severity": "high"
+      },
+      {
+        "gap": "Strong earned-media relationships across consumer, technology, lifestyle, culture, and creator media; candidate has no evidence of journalism contacts, media pitching, or PR/comms network",
+        "mitigation": "Earned-media relationships are built over years. Candidate would start with no existing APAC comms network.",
+        "severity": "high"
+      },
+      {
+        "gap": "APAC regional operating context; candidate has APAC experience from Google commercial operations, but not comms-specific market dynamics, regulatory nuance, or media landscape",
+        "mitigation": "Candidate could learn APAC comms strategy and media landscape with onboarding and partnership with local leads, but would start behind.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 85,
+    "level_rationale": "The JD requires at least 12 years of professional experience, a hard seniority anchor that maps the posted role to L6.",
+    "role_family_fit": 18,
+    "scope_seniority": 76,
+    "summary": "This is a senior consumer and product communications lead role (L5, APAC regional strategy and earned-media ownership) at OpenAI, reporting to Head of Communications. The candidate brings eight years of Google experience in commercial operations, transformation, and cross-functional partnership\u2014strong signals for strategic scope, executive advising, and ambiguous environments. However, the role explicitly requires 12+ years of communications, deep consumer-narrative development, earned-media relationships, and media-relations expertise. The candidate's background is operations and product transformation, not communications, marketing, or journalism. While cross-functional partnership and strategy strength are genuine, the absence of narrative development, media relations, and consumer communications experience is a significant, hard-to-close gap for a senior comms lead role. Family fit is deprioritized (Communications is not a target family), and the seniority ceiling does not exclude the role, but the core-function mismatch and domain gap make this a skip.",
+    "uncertainties": [
+      "JD does not specify company size/stage, so confidence in L5 vs. L6 placement is moderate (72%)",
+      "Candidate has not articulated whether they have any interest or experience in communications, marketing, or narrative work\u2014this could be a complete domain pivot",
+      "No clarity on whether 'product ownership' and 'requirements translation' at Google included any consumer-facing messaging, positioning, or comms collaboration"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

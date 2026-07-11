@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google; proven cross-functional execution across engineering, product, and business teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate across technical and non-technical stakeholders through the full agent development lifecycle process"
+      },
+      {
+        "candidate_evidence": "Commercial Operations leadership with responsibility for customer outcomes and revenue recovery; experience translating customer needs into product requirements and execution roadmaps",
+        "evidence_strength": "strong",
+        "job_requirement": "Be a trusted advisor to our customers and drive their AI strategies"
+      },
+      {
+        "candidate_evidence": "Managed global transformation programs at scale; demonstrated ability to own complex multi-workstream initiatives and deliver results across distributed teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; proficient SQL (joins, GROUP BY, subqueries, window functions); builds Looker dashboards; writes BigQuery queries to pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Contribute data-driven, strategic insights to customers and internal team decisions"
+      },
+      {
+        "candidate_evidence": "Eight years in tech operations; designs and directs LLM coding agents; manages Salesforce admin and engineering feature requests; experience with product requirements, UAT, and rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of software development, product management and engineering principles"
+      },
+      {
+        "candidate_evidence": "Professional English fluency; eight years delivering complex technical programs across global stakeholders; positioned as operations and strategy leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent verbal and written communication skills to convey complex technical information to non-technical stakeholders"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Product experience is primarily operations, requirements, UAT, and rollout rather than native product management or SDLC depth",
+        "mitigation": "Role emphasizes conversational design and agent development strategy over PM methodology; candidate's transformation and execution focus aligns with agent-scoping and customer advisory work. Shadowing and onboarding can bridge PM-specific practices.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting or forward-deployed customer strategy experience; unclear depth of direct customer advisory relationships",
+        "mitigation": "JD emphasizes trusted advisor role and customer strategy, but does not require prior consulting or FDE background. Candidate's global ops leadership and multi-stakeholder coordination provide adjacent skills; customer-facing mentoring and structured advisory programs can accelerate.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Technical understanding is broad and systems-level; no prior experience designing or shipping conversational AI agents",
+        "mitigation": "Role is strategist and coordinator, not engineer. Candidate's AI/LLM tooling direction and agent evaluation methodology, combined with execution experience, provide a foundation. Product and design immersion during onboarding is standard for this function.",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD preferred: CS/Engineering degree or MBA; candidate has neither explicitly stated",
+        "mitigation": "Degree preference is marked 'strong plus,' not required. Eight years of technical operations leadership at Google and equivalent practical expertise satisfy the equivalence clause.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 68,
+    "level_rationale": "JD emphasizes complex multi-project execution, customer advisory, stakeholder coordination, and strategic decision-making across full development lifecycle. reporting and company context (Sierra founded by Google/Salesforce executives, scaling AI platform) suggest established-stage growth role. No explicit years posted. \"Strategist\" title at product-stage company with cross-functional scope and trusted-advisor accountability point toward L5 IC or Lead-level equivalent. Confidence is moderate due to ambiguity in exact seniority signaling and lack of posted years requirement.",
+    "role_family_fit": 82,
+    "scope_seniority": 79,
+    "summary": "Strategist, Agent Development is a strong role-family fit for a Strategy and Operations leader. Candidate's eight-year track record in global commercial transformation, cross-functional execution, stakeholder coordination, and data-driven decision-making map directly to agent development scoping, customer advisory, and multi-project delivery. Key gaps\u2014native product management depth, direct customer consulting, and prior conversational AI experience\u2014are manageable and typical for someone transitioning into a new product domain at this level. Communication and analytical skills are well-evidenced; technical understanding is broad but not production-engineering focused, which matches the strategist and coordinator scope of the role.",
+    "uncertainties": [
+      "Company size and stage context not stated in JD; no salary posted to triangulate level",
+      "Exact reporting line and manager seniority not specified",
+      "Unclear how much of the role is internal strategy vs. direct customer engagement depth",
+      "No explicit requirement for prior conversational AI or agent-development exposure, but extent of expected fluency during onboarding is unstated"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

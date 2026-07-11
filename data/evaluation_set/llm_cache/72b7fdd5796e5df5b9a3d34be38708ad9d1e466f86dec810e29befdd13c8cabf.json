@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions; scaled global commercial operations and transformation programs; leads cross-functional teams in strategy, operations, and execution.",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead a cross-functional industry team across Value Engineering, Sales, AI Builders and define the processes/structure required"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation background includes extensive customer engagement, requirements definition, UAT, and rollout execution; strategic problem-solving at enterprise scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Work side-by-side with customers to align manufacturing solutions against their business strategy"
+      },
+      {
+        "candidate_evidence": "Experience translating commercial operations into revenue operations; owns LLM agentic-tooling design and evaluation methodology; proven ability to scope, build, and scale enterprise solutions.",
+        "evidence_strength": "medium",
+        "job_requirement": "Identify and package scalable use cases, driving innovation and expanding offerings"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with demonstrated ability to move between sales, product, customer, and technical stakeholders; bilingual (English/German); positions insights for enterprise audiences.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong communication and collaboration skills, translating complex concepts into actionable insights for diverse stakeholders"
+      },
+      {
+        "candidate_evidence": "Cross-functional leadership at Google spanning commercial operations, product requirements, engineering partnerships, and GTM alignment; owned transformation programs requiring multi-team coordination.",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate with Product, Engineering & GTM organizations to inform future product development based on customer feedback"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 78,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No proven track record in manufacturing industry vertical or process mining/process intelligence domain",
+        "mitigation": "Candidate has translated commercial operations expertise across multiple domains at scale; deep customer engagement and solution-packaging skills are transferable. Manufacturing domain expertise can be built through immersion with customers and cross-functional product/engineering teams.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited classic management-of-managers experience documented; eight-year tenure appears to be individual-contributor and team-lead scope",
+        "mitigation": "Role is described as 'Head of Industry Practice' at a high-growth SaaS with 100+ team members in manufacturing footprint; role description emphasizes 'autonomous leadership' and 'build and lead a cross-functional team' rather than deep org-chart management. Candidate's transformation and scaling experience may suffice, but formal P&L and org leadership gaps are real.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No deep product development or engineering background; experience is operations, strategy, and transformation-focused",
+        "mitigation": "JD emphasizes strategy, vision, customer alignment, and cross-functional leadership over native product/engineering expertise. Candidate owns requirements definition, scoping, UAT, and rollout\u2014operational product skills\u2014and directs LLM agentic tooling design. Engineering and product leadership are expected collaboration partners, not primary accountability.",
+        "severity": "low"
+      },
+      {
+        "gap": "No demonstrated experience building 0\u21921 software solutions from scratch",
+        "mitigation": "Candidate has scaled global operations programs and transformation initiatives; '0\u21921' language in JD may refer to new vertical/go-to-market strategy rather than literal product engineering. Transformation and process-design experience are relevant; explicit startup/founding background is absent.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role titled \"Head of Industry \u2013 Manufacturing\" at a high-growth enterprise SaaS (~300+ manufacturing accounts, 100+ dedicated team members). Requires autonomous cross-functional leadership, 0\u21921 initiative building, and external thought leadership. Reports to value-engineering or GTM leadership (implied by industry-practice structure). These signals\u2014head-of-function scope, cross-organizational influence, and strategic enterprise ownership\u2014indicate L6 (Senior Manager / Senior Leader equivalent).",
+    "role_family_fit": 82,
+    "scope_seniority": 75,
+    "summary": "Strong alignment on cross-functional leadership, customer strategy, stakeholder collaboration, and transformation execution. Candidate brings eight years of Google-scale commercial operations and transformation programs; can lead teams and package enterprise solutions. Manufacturing domain and explicit 0\u21921 product-building background are gaps. Role is L6 (above target L4\u2013L5 band), requiring autonomous head-of-function scope; candidate's team-lead and scaling experience is notable but formal multi-level management and startup-founding experience are unproven. Recommend as stretch: domain and seniority gaps are manageable if cross-functional GTM/product/engineering teams provide industry and engineering execution depth.",
+    "uncertainties": [
+      "Company stage and investment/growth trajectory not stated in JD; unclear if L6 estimate holds at different company scale",
+      "Reporting line and formal org structure not specified; 'nebulous problem space' language suggests entrepreneurial scope but may understate traditional P&L/hierarchy",
+      "Candidate's formal management-of-managers experience not detailed; eight-year tenure and two promotions do not clarify IC-vs.-manager path",
+      "Manufacturing industry knowledge and process-mining domain familiarity are zero; immersion timeline and ramp risk unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations, with product-ownership experience spanning requirements, logic design, UAT, rollout, and transformation programs; proven ability to manage cross-functional execution and drive adoption at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Deploy and scale AI solutions across enterprise customers; drive customer adoption and business impact"
+      },
+      {
+        "candidate_evidence": "Directed LLM coding agents, owned evaluation methodology and benchmarking; designed and executed transformation programs that required translating technical capabilities into operational outcomes",
+        "evidence_strength": "strong",
+        "job_requirement": "Translate AI capabilities into customer business value; design solutions for customer workflows and problems"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations teams with cross-functional stakeholder management; managed territory budgets and revenue-leakage control; demonstrated ability to coordinate engineering partners on feature requests and implementation",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner with customers, customer success, and internal teams to identify and solve business problems"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; proficient SQL and BigQuery querying; builds Looker and Tableau dashboards; designs and specs systems for data-driven decision-making",
+        "evidence_strength": "strong",
+        "job_requirement": "Analyze customer workflows and operational metrics; design deployment strategies"
+      },
+      {
+        "candidate_evidence": "Product-ownership background in transformation programs with UAT, rollout, and execution at scale; led scaling initiatives across global operations; managed implementation-heavy changes in commercial systems",
+        "evidence_strength": "strong",
+        "job_requirement": "Own implementation and rollout execution; manage change and adoption"
+      },
+      {
+        "candidate_evidence": "Actively directs LLM coding agents to build production systems; owns evaluation methodology and calibration; basic Python (actively learning); demonstrated ability to spec and communicate system requirements to engineering teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Work with and understand AI/LLM capabilities and limitations; communicate AI value to customers"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No hands-on AI product deployment or customer implementation experience; background is commercial operations and transformation, not services-delivery or AI-platform rollout",
+        "mitigation": "Customer problem-solving, stakeholder coordination, change management, and adoption strategy from eight years of transformation work directly apply; can ramp on AI/LLM product domain through onboarding and cross-functional pairing with product and customer-success teams",
+        "severity": "medium"
+      },
+      {
+        "gap": "No consulting background or case-team experience; limited external customer-facing brand",
+        "mitigation": "Eight years of internal cross-functional leadership, global team coordination, and transformation execution provide equivalent rigor for managing customer relationships and designing solutions; consultant skills are learned on the job",
+        "severity": "low"
+      },
+      {
+        "gap": "Python is basic and actively learning; not a production developer",
+        "mitigation": "Role is strategist/deployment lead, not engineer; data-analysis Python for workflow modeling and metrics is sufficient; can escalate technical questions to engineering and AI teams",
+        "severity": "low"
+      },
+      {
+        "gap": "No explicit revenue operations or SaaS pipeline experience; Commercial Operations background may not fully map to Mistral's sales or revenue models",
+        "mitigation": "Territory management, budget control, forecasting/reporting cadence, and pricing execution from Google commercial ops are transferable; customer value articulation will depend on Mistral's deployment and pricing strategy",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "JD title is \"AI Deployment Strategist\" with \"Professional Services Operations\" scope. no explicit years, management scope, or reporting line stated. Infer L4 (senior IC/lead level) based on deployment-strategy ownership, customer-partnership scope, and multi-stakeholder execution. company size/stage unknown, limiting confidence.",
+    "role_family_fit": 82,
+    "scope_seniority": 75,
+    "summary": "Strong alignment on business problem-solving, stakeholder management, transformation execution, and data literacy; fits approved-stretch \"deployment strategist\" and \"implementation-heavy AI transformation\" families. Gaps: no direct AI/LLM product deployment experience in customer-facing roles, and no classic consulting/case-team brand. Candidate's operations, scaling, and adoption-leadership background translates well if Mistral prioritizes execution and business outcomes over AI engineering depth.",
+    "uncertainties": [
+      "JD snapshot appears truncated (HTML artifacts visible); full responsibilities and success metrics unclear",
+      "Company size, stage, and Professional Services org maturity not stated in Role JSON",
+      "No explicit years of experience or reporting line in JD to ground level estimate",
+      "Specific AI/LLM products and deployment domains (e.g., RAG, finetuning, inference infrastructure) not detailed",
+      "Whether role requires hands-on AI engineering or prioritizes customer/operational execution unclear from truncated text"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

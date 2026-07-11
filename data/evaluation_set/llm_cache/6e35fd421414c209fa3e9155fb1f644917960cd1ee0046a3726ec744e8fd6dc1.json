@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "blocked",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations / Commercial Operations roles with no production software-engineering background stated",
+        "evidence_strength": "weak",
+        "job_requirement": "10+ years in backend software development"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning (data-analysis / pandas track); no Typescript or Javascript mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficiency in Python, Typescript or Javascript"
+      },
+      {
+        "candidate_evidence": "No evidence of distributed-systems architecture or production system design; background is commercial operations and transformation, not backend infrastructure",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience in design and development of large-scale distributed, high concurrency, high load, high availability systems"
+      },
+      {
+        "candidate_evidence": "No degree information provided in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "A relevant degree in Computer Science, Mathematics or related fields"
+      }
+    ],
+    "confidence": 0.9,
+    "estimated_level": "L6",
+    "evidence_strength": 15,
+    "gap_manageability": 5,
+    "gaps": [
+      {
+        "gap": "10+ years backend software engineering required; candidate has zero production SWE background and eight years in commercial operations / strategy roles",
+        "mitigation": "None feasible; this is a disqualifying domain mismatch and foundational engineering experience gap spanning the entire career history",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficiency in Python, Typescript or Javascript required for backend AI systems; candidate has only basic Python (data-analysis level) and is actively learning",
+        "mitigation": "Candidate's Python level is insufficient for backend system development and is not closeable within a typical onboarding window for a Staff-level role",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience designing and deploying large-scale distributed, high-concurrency systems required; candidate's experience is commercial operations and transformation programs",
+        "mitigation": "No evidence of systems architecture or infrastructure work; this is a core technical competency for the role",
+        "severity": "high"
+      },
+      {
+        "gap": "Vector database experience required; no mention in candidate profile",
+        "mitigation": "Candidate has no stated vector database or database-systems experience",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"10+ years in backend software development, with a passion for AI and language technologies\" (MINIMUM QUALIFICATIONS). Candidate has zero production software engineering background and eight years in commercial operations / strategy roles at Google. This is a foundational domain mismatch, not a skill-gap that can be mitigated on the job at Staff level.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"Proficiency in Python, Typescript or Javascript\" (MINIMUM QUALIFICATIONS). Candidate's stated Python level is basic and actively learning (data-analysis / pandas track). No evidence of Typescript or Javascript. Proficiency in at least one of these languages is non-negotiable for backend AI system development.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"Experience in design and development of large-scale distributed, high concurrency, high load, high availability systems\" (MINIMUM QUALIFICATIONS). Candidate's entire professional history is in commercial operations and transformation strategy; no backend infrastructure, systems architecture, or production-scale engineering experience is evident.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Staff Engineer role requiring 10+ years backend SWE, distributed-systems design, and proficiency in production languages is a strong L6 signal. The scope is setting technical vision, architecture design, and driving AI platform strategy for a mature, well-funded fintech platform ($8B valuation, 2,200+ employees). Reporting and scope imply senior IC or lead-engineer level, consistent with L6.",
+    "role_family_fit": 5,
+    "scope_seniority": 72,
+    "summary": "This is a Staff AI Engineer role requiring 10+ years of backend software development, proficiency in Python/Typescript/Javascript, and hands-on experience designing large-scale distributed systems and vector databases. The candidate has eight years in commercial operations and transformation strategy at Google with no production software engineering background, basic-level Python (data-analysis track), and no systems architecture or infrastructure experience. The role is fundamentally a deep-engineering position; the candidate's strategy-and-operations expertise does not transfer to this domain. Hard blockers apply: minimum backend-engineering years, language proficiency, and distributed-systems design are disqualifying gaps.",
+    "uncertainties": [
+      "Candidate's educational background (CS/Mathematics degree) is not stated; JD requires a relevant degree",
+      "Candidate's AI / LLM domain knowledge not detailed; JD emphasizes passion for AI and language technologies"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

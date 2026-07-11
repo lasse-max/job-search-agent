@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions; global commercial operations scaling and transformation program leadership demonstrates strategy definition and operating model design at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Define and execute EMEA GTM partnerships strategy, operating model, and business objectives"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background translates to Revenue Operations; experience scaling global commercial operations and managing territory budgets in Salesforce; however, no explicit evidence of partner-driven revenue ownership or ecosystem-level business outcome accountability",
+        "evidence_strength": "weak",
+        "job_requirement": "Own partner-sourced, partner-influenced, and partner-delivered business outcomes across EMEA"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and global operations scaling imply governance and operational rigor; SQL, Looker, and BigQuery proficiency enable data-driven performance management and reporting cadence",
+        "evidence_strength": "medium",
+        "job_requirement": "Establish governance frameworks, operating rhythms, and performance management systems for the partner ecosystem"
+      },
+      {
+        "candidate_evidence": "Two promotions within Google suggest leadership growth, but profile does not explicitly detail direct team leadership scope, hiring, or distribution-team management across multiple countries",
+        "evidence_strength": "weak",
+        "job_requirement": "Recruit, develop, and lead a high-performing team of GTM Partner Directors across EMEA"
+      },
+      {
+        "candidate_evidence": "Eight years at Google; no indication of AI platform, enterprise software, consulting, or partnership ecosystem prior roles; profile does not surface seniority comparable to 15-year requirement",
+        "evidence_strength": "weak",
+        "job_requirement": "Have 15+ years of experience in enterprise technology, cloud, AI, SaaS, consulting, business development, partnerships, or ecosystem leadership"
+      },
+      {
+        "candidate_evidence": "Global operations scaling at Google; no explicit evidence of strategic alliance program ownership, multi-country partnership portfolio management, or ecosystem-led GTM",
+        "evidence_strength": "weak",
+        "job_requirement": "Have built and managed large-scale strategic alliance programs across multiple countries and markets"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Direct partnership ecosystem ownership and partner-driven revenue accountability. Role requires owning partner-sourced and partner-influenced bookings; candidate background is Commercial Operations and transformation, not partnership strategy or alliance management.",
+        "mitigation": "Candidate's governance, stakeholder management, and cross-functional collaboration skills are transferable; however, lack of demonstrated GSI/consulting-firm relationship building or ecosystem-led sales strategy is a material gap that would require 6\u201312 months of on-the-job learning.",
+        "severity": "high"
+      },
+      {
+        "gap": "Distributed multi-country team leadership across EMEA. Role requires building and scaling a regional leader organization; candidate profile does not demonstrate direct hiring, team scaling, or management-of-managers scope across multiple geographies.",
+        "mitigation": "Two promotions and transformation program leadership suggest capacity for growth into larger leadership scope; explicit evidence of distributed team building is absent and would need clarification in conversation.",
+        "severity": "high"
+      },
+      {
+        "gap": "Enterprise consulting, cloud platform, or AI ecosystem experience. Role heavily weighted toward understanding GSI/consulting economics, AI transformation programs, and enterprise technology partnerships; candidate's Google commercial operations background does not surface exposure to these verticals.",
+        "mitigation": "Candidate's strategic operations and transformation work may include enterprise customer engagement; however, lack of stated AI platform, consulting, or hyperscaler partnership experience is a notable gap for a platform company GTM role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Seniority delta. Role requires 15+ years and 'Head of' title with VP-equivalent scope; candidate has eight years at one company with two promotions, likely placing them in L4\u2013L5 range. This is a two-level structural gap.",
+        "mitigation": "None. This is a seniority mismatch that cannot be bridged by adjacent skills; the role is explicitly scoped for a seasoned SVP or VP-track leader.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "15+ years required, multi-country team leadership ('recruit, develop, and lead GTM Partner Directors across EMEA'), VP-equivalent P&L and strategic ecosystem ownership, executive engagement with CEOs and Managing Partners, and explicit 'Head of' title anchor this to L6. No company stage/size context in JD, but role scope and explicit tenure anchors support L6 classification with high confidence.",
+    "role_family_fit": 60,
+    "scope_seniority": 35,
+    "summary": "This is a Head of GTM Partnerships role at L6 seniority, requiring 15+ years of enterprise technology, consulting, or partnership ecosystem leadership, multi-country team building, and owned partner-driven revenue at scale. Candidate brings eight years of global commercial operations and transformation strategy at Google, demonstrating governance design, stakeholder alignment, and data-driven operations; however, the profile lacks explicit partnership ecosystem ownership, strategic alliance program management, GSI/consulting firm relationship experience, and the distributed team leadership scope the role demands. The seniority gap (L4\u2013L5 likely vs. L6 required) combined with material gaps in partner-driven revenue accountability and enterprise consulting domain experience make this a structural mismatch despite solid transferable operations and transformation credentials.",
+    "uncertainties": [
+      "Explicit scope and title of candidate's leadership roles within Google are not detailed; cannot confirm managing-manager or SVP-track scope.",
+      "Candidate's enterprise customer engagement and consulting-firm relationship experience is not surfaced; may exist but not stated.",
+      "No clarity on whether candidate's global operations work included multi-country team building or P&L ownership across regions.",
+      "AI platform, hyperscaler partnership, or enterprise software ecosystem exposure is not documented."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

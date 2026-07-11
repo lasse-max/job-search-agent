@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with product operations, commercial operations, and transformation program ownership; product experience grounded in requirements, logic design, UAT, rollout, and transformation rather than native PM with extensive SDLC depth",
+        "evidence_strength": "medium",
+        "job_requirement": "5-7+ years experience in product development of highly technical products"
+      },
+      {
+        "candidate_evidence": "Global commercial operations and transformation program leadership at scale; demonstrated ability to engage stakeholders across levels",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience crafting and tailoring a message for potential customers, including executives"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration; active learning in Python data-analysis track",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to communicate highly technical concepts to both non-technical and technically proficient audiences, including recent AI developments"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with two promotions and senior IC/manager track; product experience comes from transformation ownership and requirements rather than native PM cycle",
+        "evidence_strength": "medium",
+        "job_requirement": "Past experience in Product Management or other similar product development roles at or above the level of Senior Product Manager"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 62,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Native Product Management background and SDLC depth: Candidate's product experience is grounded in operations, transformation, and requirements work rather than end-to-end product development cycles, feature prioritization, roadmap ownership, or working within engineering-driven product organizations",
+        "mitigation": "Candidate's AI/agentic tooling knowledge and ability to scope and communicate technical requirements could bridge this gap with structured PM onboarding and pairing with experienced PM mentors; however, this is a PM-specialized role and native PM experience is explicitly preferred",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on React, TypeScript, or Go coding experience: JD lists coding in these languages as 'even better'; candidate has basic Python (data-analysis track) and no stated React/TS/Go background",
+        "mitigation": "Not a hard blocker; many PMs come without production coding. Candidate's ability to direct LLM agents and work with engineers on feature requests suggests technical fluency sufficient for PM communication, though lack of modern web-stack experience may slow ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct AI product experience mentioned: While candidate owns AI/agentic tooling, no evidence of shipping AI agent products, iterating on AI-specific user workflows, or building AI product features at scale",
+        "mitigation": "Candidate's LLM agent work, evaluation methodology, and benchmarking ownership demonstrate AI understanding; however, this role requires partnering directly with customers on AI agent behavior and product roadmap\u2014a more specialized customer-facing AI PM motion",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated consulting, advisory, or forward-deployed strategy background: Role emphasizes becoming 'trusted advisors' and 'strategic technical strategies for customers'; candidate background is internal operations and transformation",
+        "mitigation": "Commercial operations and customer-facing engagement at scale may provide stakeholder skills; however, this role is enterprise AI product advisory, not internal operations, and may require consulting or systems-integration mindset not evident in profile",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD explicitly requires 5-7+ years in product development of highly technical products and past PM experience at or above Senior PM level. No manager-of-managers scope mentioned. Early-stage PM context and co-founder PM backgrounds (Bret Taylor, Clay Bavor) suggest mid-senior IC shape. Normalize to L5 (Senior IC / established PM leadership scope with 5-7+ years and senior-level PM requirement).",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader with eight years at Google and demonstrated AI/agentic tooling ownership, but this is a native Product Manager role requiring end-to-end PM SDLC experience, customer-facing AI product advisory, and hands-on feature roadmap ownership. While candidate has strong stakeholder and transformation skills, the gap between product operations and product management is substantial; candidate's product background is requirements, UAT, rollout, and transformation, not native PM cycles or strategic product leadership. Role fit is weak despite candidate's seniority and AI knowledge. Limited consulting or forward-deployed advisory experience, no stated shipping of AI products, and lack of React/TypeScript background further reduce fit. Recommend skip unless role is willing to hire primarily for operations-backed transformation and retrain on PM methodology.",
+    "uncertainties": [
+      "Company stage and size not stated; context inferred from founders and multi-office footprint suggests growth-stage but not explicit",
+      "Degree requirement stated; candidate has no stated bachelor's degree\u2014could be a hard blocker if strictly enforced, though JD says 'or equivalent professional experience'",
+      "Unclear whether 'Product Manager, Agent Development' means ownership of the Agent PM product surface or primarily a PM working within agent development; former would emphasize external customer product strategy, latter might emphasize internal product roadmap and engineering collaboration"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

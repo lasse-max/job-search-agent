@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration",
+        "evidence_strength": "medium",
+        "job_requirement": "becoming an AI-native company; you'll be empowered and expected to use AI tools and thinking"
+      },
+      {
+        "candidate_evidence": "Eight years of experience scaling global commercial operations and transformation programs at Google Devices and Services",
+        "evidence_strength": "weak",
+        "job_requirement": "foundational and reusable systems, services and architecture"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Production software engineering and platform engineering experience. Role requires hands-on ownership of platform reliability, security architecture, and system infrastructure; candidate has no software engineering background.",
+        "mitigation": "Candidate would need to transition from operations and strategy into production engineering, a multiyear re-skilling effort. AI tooling and SQL/BigQuery skills provide a modest technical foundation, but this does not close the core platform security engineering gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No platform security or infrastructure security engineering background. Role explicitly focuses on 'reliability and security aspects of system services and infrastructure'\u2014a specialized domain.",
+        "mitigation": "Candidate has no demonstrated security engineering, threat modeling, incident response, or compliance-as-code experience. This is a core responsibility, not a learnable skill in the onboarding period.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on experience building production code, deploying systems, or operating large-scale infrastructure. Role leads 'the build of key technical projects.'",
+        "mitigation": "Candidate's Python remains basic and learning-stage. No CI/CD, observability, SRE, or production incident management background. The role requires deep technical execution ownership.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated native Product Manager or engineering product strategy background. Candidate's product experience is transformation and requirements-driven, not SDLC, technical PM, or roadmap ownership.",
+        "mitigation": "While not explicitly required in the JD, platform engineering leadership roles benefit from deeper technical product thinking and roadmap accountability than candidate has shown.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD: 'lead the build of key technical projects that keeps Deputy's production platform reliable, safe and recoverable... Lead Software Engineer (Platform, Reliability)... looking after the reliability and security aspects of system services and infrastructure.' This role is a hands-on production software engineering and platform security engineering position. The candidate profile explicitly states 'No production software-engineering background' and is positioned as a commercial and product operations leader, not an engineer. The gap between operations/strategy leadership and platform security engineering is fundamental and disqualifying.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 70,
+    "level_rationale": "Lead Software Engineer at a unicorn-stage SaaS company with platform/reliability and security ownership scope, leading key technical projects and cross-team architecture. No years-required or management-scope language in JD. \"Lead\" title typically maps to L5 IC. Company stage and \"leading the build\" suggest established ownership, but early-stage context is unstated.",
+    "role_family_fit": 5,
+    "scope_seniority": 25,
+    "summary": "This is a production software engineering and platform security role at a unicorn-stage SaaS company\u2014fundamentally outside the Strategy and Operations target family. The candidate is a commercial and product operations leader with no native software engineering, platform reliability, security engineering, or production coding background. While the candidate has AI and agentic-tooling ownership, SQL/BigQuery capability, and basic Python learning, the role requires hands-on platform security engineering, production system ownership, and technical architecture leadership. The candidate's strength in business transformation, operational strategy, and cross-functional program execution is not leveraged by this engineering leadership position.",
+    "uncertainties": [
+      "No stated reporting line, management scope, or org context in JD\u2014scope of 'Lead' title and cross-team influence cannot be fully determined",
+      "Company stage is 'unicorn'\u2014established, but no breakdown of team size, platform maturity, or security domain complexity provided",
+      "Candidate's agentic-tooling ownership is strong but directs external LLM agents; unclear whether this translates to platform security or infra engineering acumen"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

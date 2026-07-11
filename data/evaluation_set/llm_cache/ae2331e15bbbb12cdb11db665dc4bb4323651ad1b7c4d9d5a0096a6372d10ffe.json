@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly); Python basic, actively learning (data-analysis/pandas track)",
+        "evidence_strength": "strong",
+        "job_requirement": "Basic knowledge or hands-on experience in SQL and/or Python"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with experience in transformation programs, scaling global commercial operations, and designing/directing LLM coding agents to build production systems; demonstrates strategic problem-solving and creative application of advanced capabilities",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to think analytically and creatively, especially in applying technology solutions to core business problems"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in senior-scope roles (Manager, Senior Manager, Lead, Principal IC); regular executive engagement and cross-functional leadership; fluent in English and German",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to build relationships with senior management and influence decision-makers; confident to present to C-level executives"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations and transformation programs; owns AI and agentic tooling methodology, benchmarking, and calibration; demonstrates proactive execution and systems thinking",
+        "evidence_strength": "medium",
+        "job_requirement": "Entrepreneurial mindset and ability to multi-task, prioritize and execute"
+      },
+      {
+        "candidate_evidence": "Fluent in English and German (native); no Japanese language stated in profile; willing to relocate per role location requirement (Madrid 12 months, then Tokyo)",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in English and Japanese; willing to travel to Japan region"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L3",
+    "evidence_strength": 45,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "No Japanese language fluency; role explicitly requires 'fluent in English and Japanese'",
+        "mitigation": "Candidate may undertake intensive Japanese language training during the 12-month Madrid period and Celonis onboarding. Program structure includes mentorship and continuous learning; language courses could be part of enablement plan.",
+        "severity": "high"
+      },
+      {
+        "gap": "Native value engineering, solution engineering, or customer-facing technical sales experience not evidenced; background is strategy/operations/transformation rather than direct customer engagement in SaaS",
+        "mitigation": "Orbit program is designed to onboard career starters through hands-on learning, mentorship, and structured training in VE skills. Eight years of stakeholder management and executive engagement transfers; domain-specific VE training is provided.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated exposure to process mining principles or Celonis platform prior to application",
+        "mitigation": "Role offers hands-on enablement, Celonis training modules, and Rising Star program completion; candidate demonstrates rapid platform learning capability and curiosity.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Entry-level graduate/Orbit program targeting career starters. No years requirement specified. positioning as 12-month internship-like experience for early-career professionals. Reports to Value Engineering CoE leadership in a structured mentorship program.",
+    "role_family_fit": 35,
+    "scope_seniority": 25,
+    "summary": "Associate AI Engineer (Orbit graduate program) is an L3 entry-level role designed for career starters in enterprise SaaS value engineering, requiring technical fluency in SQL/Python and ability to present to C-level clients. Candidate brings eight years of Google leadership in strategy, operations, and AI transformation with strong executive communication and analytical problem-solving but lacks native value-engineering/SaaS customer-engagement experience and\u2014critically\u2014does not meet the explicit Japanese-language fluency requirement. The business-acumen and technical-foundation gaps are program-addressable; the language barrier is substantial.",
+    "uncertainties": [
+      "Japanese language capability not disclosed; role states requirement as 'fluent in English and Japanese'\u2014candidate profile lists English and German only",
+      "Company size/stage context for Celonis not stated in Role JSON; assumed high-growth enterprise SaaS based on public positioning",
+      "Specific Celonis platform and process-mining domain familiarity unknown; candidate technical stack is BigQuery/SQL/Python, not Celonis-specific",
+      "Whether Orbit program's 12-month Madrid onboarding is structured to accommodate intensive language training"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

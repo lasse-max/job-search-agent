@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs; two promotions; demonstrated strategic scope in operations leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and transformation leadership in professional services operations"
+      },
+      {
+        "candidate_evidence": "Commercial operations scaling with transformation program ownership; process-driven background translatable to PS operations context",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations process design, execution, and stakeholder management across cross-functional teams"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; proficient SQL; BigQuery querying; Looker dashboard building; analytics-driven operations background",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven decision-making and reporting infrastructure"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L5",
+    "evidence_strength": 62,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Professional Services Operations domain depth \u2014 candidate background is Google commercial/devices operations, not PS deployment, customer success, or consulting-engagement operations",
+        "mitigation": "PS operations shares process design, stakeholder coordination, and scaling challenges; operations fundamentals are transferable, but domain context requires onboarding",
+        "severity": "high"
+      },
+      {
+        "gap": "Databricks product, data-platform ecosystem, and PS methodology knowledge \u2014 no stated exposure to data-stack platforms, ML Ops, or Databricks' customer deployment workflows",
+        "mitigation": "Deployment Strategist role is approved-stretch for operations leaders; product learning curve is normal; candidate's agentic-tooling and data-analysis exposure suggest technical fluency",
+        "severity": "high"
+      },
+      {
+        "gap": "Consulting or forward-deployed operations experience \u2014 candidate's background is internal ops, not client-facing engagement scaling or PSO strategy",
+        "mitigation": "Strategic transformation and stakeholder management from Google ops are relevant; consulting-engagement specifics (delivery KPIs, resource planning, engagement health) will require ramp",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Deployment Strategist title at a high-growth data-infrastructure company (Databricks) combined with Professional Services Operations context suggests established IC or early-management scope responsible for PS strategy, deployment processes, and cross-functional execution. No explicit years or management scope stated in JD. company stage unknown. Title, domain, and operational responsibility suggest L5 (established IC or lead-level ownership), though lower confidence due to incomplete JD visibility.",
+    "role_family_fit": 48,
+    "scope_seniority": 72,
+    "summary": "Candidate is a strong operations and strategy leader with eight years at Google, advanced analytics, and transformation experience. However, the role is a Deployment Strategist in Professional Services Operations at Databricks\u2014a domain (PS ops, data-platform ecosystem) substantially different from the candidate's commercial operations background. While the operations fundamentals, stakeholder management, and data capabilities transfer, the PS-specific context (customer deployment workflows, engagement scaling, data-platform knowledge) represents a significant onboarding burden. The role is approved-stretch territory but carries high domain-mismatch risk.",
+    "uncertainties": [
+      "JD snapshot is heavily contaminated with cached website CSS/JavaScript; actual role scope, responsibilities, reporting line, team size, and key requirements are not cleanly extracted",
+      "Databricks company stage and Professional Services organization maturity unknown; cannot calibrate role level or PS ops scope expectations",
+      "No clarity on whether Deployment Strategist owns strategy/process or is primarily customer-engagement execution; materially changes fit",
+      "Candidate's Commercial Operations background does not explicitly state revenue operations, CRM, territory, or forecasting scope; translation to PS operations assumptions may overstate transferability"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

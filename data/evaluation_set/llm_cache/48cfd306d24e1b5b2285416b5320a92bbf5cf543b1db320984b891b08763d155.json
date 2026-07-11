@@ -1,0 +1,60 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Strategy and Operations leader with eight years at Google scaling commercial operations and transformation programs; deep experience in AI and agentic tooling (designs, specs, directs LLM coding agents), advanced data analytics (SQL, BigQuery, Sheets), and business-critical programs.",
+        "evidence_strength": "medium",
+        "job_requirement": "Mission-driven technical contribution in defence AI"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L3",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Role is explicitly closed to Formula Student Germany participants only; candidate is not a current FSG participant and profile indicates eight years post-education professional tenure.",
+        "mitigation": "No mitigation\u2014this is an eligibility exclusion, not a skill gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role targets early-career undergraduates or recent graduates transitioning from study; candidate is a senior manager post-L4/L5 promotions at Google, fundamentally misaligned in seniority and career stage.",
+        "mitigation": "No mitigation\u2014career stage is misaligned.",
+        "severity": "high"
+      },
+      {
+        "gap": "Described as engineering and technical talent pathway (Autonomous Systems, Aerodynamics, Mechatronics, AI & Software); candidate background is commercial operations, business strategy, and product transformation, not core engineering discipline.",
+        "mitigation": "No mitigation\u2014functional family is deprioritized (not Strategy and Operations at Helsing scope).",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of production software engineering, vehicle/aerospace systems, or defence engineering; Python is basic and learning-stage, not production engineering capability.",
+        "mitigation": "None.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"This is a closed advertisement, exclusively available to members of the Formula Student Germany programme for the current year.\" Candidate is not a current FSG participant and is eight years post-graduation with senior Google tenure.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "\"This opportunity is relevant to you if you are a current Formula Student Germany participant and are considering one of the following pathways within the next two years: Working Student Opportunities... Full-Time Roles... approaching or planning the transition from study to full-time employment.\" Candidate is an established senior manager, not a student or early-career graduate.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Role is explicitly for current Formula Student Germany participants considering working-student or transition-to-full-time pathways. JD describes early-career hiring targeting undergraduates and recent graduates, not experienced hires. No seniority indicators (team size, span, reporting line, budget) in JD. context and eligibility exclusion alone establish L3 (intern/entry pathway).",
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "This is a closed opportunity exclusively for current Formula Student Germany participants seeking working-student or early-career entry-level roles in defence AI engineering (Autonomous Systems, Aerodynamics, Mechatronics, AI & Software). The candidate is a senior Strategy and Operations manager eight years post-graduation with two Google promotions, fundamentally misaligned in career stage, eligibility, and functional family. The role targets engineering and technical disciplines; candidate background is commercial operations and product transformation. Hard blockers: eligibility exclusion and career-stage mismatch.",
+    "uncertainties": [
+      "JD does not specify company stage or team size beyond 'relatively young company'; eligibility is the controlling disqualifier",
+      "Role does not name a salary or explicit level; estimated as L3 based solely on FSG-participant, early-career/student eligibility",
+      "No explicit Operations, Strategy, or transformation scope in JD\u2014it is an engineering-discipline role"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

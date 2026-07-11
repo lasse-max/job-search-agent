@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "SQL proficient with joins, GROUP BY, subqueries/CTEs, window functions; BigQuery querying; Python basic, actively learning (data-analysis/pandas track)",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficient in programming, debugging, and problem-solving using SQL and Python"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services; no explicit cloud architecture, deployment, or solution-building experience documented",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on experience building solutions within major public cloud environments (AWS, Azure, or GCP)"
+      },
+      {
+        "candidate_evidence": "Commercial operations and transformation programs at Google; no documented GSI/consulting partner collaboration",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience collaborating with Global System Integrators (GSIs) and third-party consulting organizations to drive customer outcomes"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions scaling global commercial operations; demonstrated stakeholder influence and GTM leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to influence technical executives and drive security strategy and product adoption"
+      },
+      {
+        "candidate_evidence": "No documented security operations, SOC, SIEM, detection engineering, or cybersecurity background; AI/agentic tooling design and direction in non-security context",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep experience in security operations, data engineering, data warehousing, AI/ML for security, data governance, or streaming"
+      },
+      {
+        "candidate_evidence": "Designs and directs LLM coding agents; no documented anomaly detection, behavioral analytics, security-domain agentic workflows",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with design and implementation of data and AI applications including anomaly detection, behavioral analytics, agentic AI workflows"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 28,
+    "gap_manageability": 22,
+    "gaps": [
+      {
+        "gap": "Cybersecurity domain expertise and SecOps/security operations background; no SIEM, detection engineering, EDR/XDR, identity, or telemetry landscape experience",
+        "mitigation": "Candidate would require 12\u201318 months of intensive security-domain immersion, mentorship from security architects, and hands-on SIEM tuning/deployment to credibly advise CISOs and SOC teams. Unlikely to close at this role's tier-3 escalation scope.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited customer-facing pre-sales, consulting, or solutions architecture experience in technical engagements; background is commercial operations and transformation rather than technical positioning and POC delivery",
+        "mitigation": "Requires direct mentorship in technical discovery, RFP response, POC scoping, and security-specific customer advisory patterns. Timeline to independent contribution is 9\u201312 months.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with cloud-native security logging, public-cloud architecture, or hands-on solution deployment on AWS/Azure/GCP",
+        "mitigation": "Foundational cloud learning is accessible; however, security-specific cloud telemetry (CloudTrail, Activity Log, Audit logs) and SIEM migration strategies require domain context not in profile.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Python remains at basic/learning level; role requires proficiency in debugging and production problem-solving with Python",
+        "mitigation": "Python can be upskilled to intermediate in 3\u20136 months; senior SQL and agentic-AI-tool direction provide partial mitigation, but depth in Python-based anomaly detection and triage workflows is missing.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No GSI or third-party consulting partner collaboration experience; no demonstrated ability to orchestrate complex multi-party security transformation engagements",
+        "mitigation": "Partner collaboration models are learnable through mentoring and initial engagements; not a core blocker but requires ramp.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 5+ years customer-facing pre-sales/consulting in security, with deep SecOps, SIEM, detection engineering, and security-product roadmap influence. Tier-3 technical escalation scope and CISO/SOC advisory role point to L5 IC with established security-domain credibility. No managing scope documented. role maps to L5 seniority floor in Databricks field-solutions hierarchy.",
+    "role_family_fit": 24,
+    "scope_seniority": 72,
+    "summary": "This is a security-specialized Solutions Architect role requiring 5+ years of SecOps, SIEM, and detection-engineering expertise with deep customer-facing consulting and pre-sales credentials. Candidate has strong GTM and stakeholder-influence background but no cybersecurity domain experience, SIEM/SOC knowledge, detection-engineering expertise, or hands-on security-solutions delivery. Gap is not upskillable within realistic ramp timeline; role demands tier-3 escalation credibility with CISOs and security architects from day one. Function fit is poor; seniority and leadership capability alone do not close domain and customer-facing technical gaps.",
+    "uncertainties": [
+      "Candidate's full experience with data-engineering and cloud-architecture depth at Google Devices is not fully documented; unknown whether prior roles included security-domain application experience",
+      "Extent of candidate's hands-on security-analytics background beyond commercial operations not specified in profile",
+      "Timeline and appetite for domain pivot from commercial operations to specialized cybersecurity pre-sales unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

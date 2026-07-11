@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioning as Strategy and Operations / Product Operations leader scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "6+ years of Product Management experience, ideally in payments, fintech, or financial crime prevention"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (joins, GROUP BY, subqueries/CTEs, window functions); writes BigQuery queries to pull and shape own data; advanced Excel and Sheets; builds Looker dashboards",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong data-driven mindset with the ability to analyse transaction data, alerts, and rule performance; comfortable working with SQL and data tools"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs; strategy-and-operations leadership with demonstrated cross-functional execution; product experience from requirements, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven ability to work cross-functionally with Risk, Compliance, Operations, Data, and Engineering teams; strong stakeholder management"
+      },
+      {
+        "candidate_evidence": "Transformation-program leadership at Google Services; Commercial Operations to Revenue Operations evidence in territory management, CRM administration (Salesforce admin), forecasting/reporting cadence, pricing execution; experience with compliance and operational frameworks at global scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience building scalable, automated systems in regulated environments while balancing risk, operational efficiency, and customer experience"
+      },
+      {
+        "candidate_evidence": "Product ownership through requirements design and logic; no direct fraud, AML, or transaction-monitoring platform ownership stated; Commercial Operations domain does not directly translate to financial-crime detection",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience defining risk detection logic, monitoring rules, and thresholds; owning transaction monitoring, fraud detection, or AML systems"
+      },
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration; actively learning Python (data-analysis/pandas track); preferred qualification only",
+        "evidence_strength": "strong",
+        "job_requirement": "Exposure to machine learning or AI-driven risk systems (preferred); identify opportunities to leverage AI and advanced analytics"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No direct experience owning or building transaction monitoring, fraud detection, or AML systems; product background is Commercial Operations and strategic transformation, not financial-crime prevention",
+        "mitigation": "Strong product-operations and cross-functional foundation can be applied to learn transaction-monitoring domain; SQL, data-analysis, and AI-tooling skills directly applicable to rule optimization and detection systems; onboarding and mentorship from Risk and Compliance teams during ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct exposure to case-management, investigation tooling, or manual-review workflows in a risk or compliance context",
+        "mitigation": "Experience with workflow automation and process design from transformation programs transfers to investigator-productivity optimization; learning on the job with Risk Operations partnership as stated in role responsibilities",
+        "severity": "medium"
+      },
+      {
+        "gap": "Python is basic and actively learning; advanced or production ML engineering is not a core strength, though AI-tooling direction and evaluation methodology are demonstrated",
+        "mitigation": "Role requires exposure to and leverage of AI/ML-driven systems, not implementation; candidate's agentic-tooling and benchmarking ownership plus active Python learning are sufficient for AI-opportunity identification and Data/Engineering collaboration",
+        "severity": "low"
+      },
+      {
+        "gap": "No stated background in payments, fintech, or financial-services product architecture; Google Devices and Services is hardware and consumer services, not FinTech",
+        "mitigation": "Product fundamentals, data literacy, and cross-functional execution are domain-agnostic; payments and fintech concepts are learnable with domain immersion and partnership with Risk, Compliance, and Operations teams",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Posted role requires 6+ years of PM experience with stated seniority as \"Senior Product Manager\" owning end-to-end product strategy, rule design, compliance alignment, and cross-functional leadership across Risk, Compliance, Data, and Engineering. 6+ years and senior IC ownership map to L5. company stage ($8B, 2,200+ employees, global operations) and regulated-domain complexity support this anchor. No manager-of-managers scope stated, which would push to L6.",
+    "role_family_fit": 45,
+    "scope_seniority": 72,
+    "summary": "Senior Product Manager, Transaction Monitoring at Airwallex is a domain-specialist role (fintech, fraud, AML) at L5 with strong ownership, regulatory complexity, and cross-functional scope. Candidate brings eight years of product-operations and transformation leadership, advanced data and SQL skills, AI-tooling ownership, and proven cross-functional execution. Core gap is no direct transaction-monitoring, fraud-detection, or AML-platform ownership; product background is Commercial Operations, not financial crime. Strong fundamentals and learning velocity can close domain gap with mentorship and immersion, but this remains a high-domain-specialist stretch outside the candidate's primary expertise and approved stretch families.",
+    "uncertainties": [
+      "Candidate's product experience derives from requirements, logic design, UAT, rollout, and transformation rather than native PM/SDLC; unclear how deeply she has owned rule design, alert optimization, or detection-logic definition in any domain",
+      "No indication of familiarity with fraud, AML, or compliance terminology; domain learning curve and time-to-productivity unknown",
+      "Salesforce admin and Commercial Operations experience do not directly translate to case-management or investigation-tooling ownership; risk-operations partnership required to validate fit",
+      "SQL and data-analysis skills are present but no explicit example of optimizing detection rules, tuning thresholds, or analyzing fraud signals provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

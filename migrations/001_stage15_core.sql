@@ -130,7 +130,7 @@ WHERE re.id = (
   SELECT MAX(latest.id)
   FROM role_evaluations latest
   WHERE latest.job_posting_id = re.job_posting_id
-    AND latest.model_version LIKE '%|hybrid\_claude\_v3' ESCAPE '\'
+    AND latest.model_version LIKE '%|hybrid\_claude\_v4' ESCAPE '\'
     AND latest.model_version NOT ILIKE '%deterministic_fallback%'
     AND COALESCE(
       lower(latest.evaluation_json::jsonb #>> '{provenance,fallback_quality}'),

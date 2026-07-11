@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; scaled global commercial operations and transformation programs, demonstrating people leadership and organizational impact",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage a high-performing team of Lakebase Sales Specialists; recruit, hire, and provide direct coaching"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background translates to territory management, pipeline strategy, and execution cadence (demonstrated Salesforce admin and budget territory management skills)",
+        "evidence_strength": "medium",
+        "job_requirement": "Execute and scale repeatable sales plays; drive revenue growth and meet quarterly/annual targets"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation background; owns requirements, logic design, UAT, rollout; designs and directs LLM coding agents, demonstrating ability to bridge technical and business audiences",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate complex technical platform capabilities into tangible business value for executives and developers"
+      },
+      {
+        "candidate_evidence": "Eight years driving transformation programs and commercial operations scaling at Google; cross-functional stakeholder engagement and strategy translation demonstrated",
+        "evidence_strength": "medium",
+        "job_requirement": "Provide field feedback to Product and GTM; partner with Product Marketing on messaging and positioning"
+      },
+      {
+        "candidate_evidence": "Product Operations owner; basic Python actively learning; no stated experience with microservices, distributed systems, or application architecture design",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical baseline and understanding of modern application architectures, APIs, microservices, real-time systems, distributed applications"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 55,
+    "gap_manageability": 42,
+    "gaps": [
+      {
+        "gap": "No direct sales leadership or team management in quota-carrying, revenue-accountable enterprise sales teams; candidate's background is operations, strategy, and transformation, not sales management",
+        "mitigation": "Candidate's cross-functional stakeholder management and execution experience could transfer if coached on sales-specific metrics, forecasting rigor, and sales-team incentive structures; training on enterprise sales cycles and specialised GTM motion execution would be required",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited technical depth in application modernisation, legacy database consolidation, microservices, real-time systems, and operational workloads; Product Ops background differs from solution selling in database/platform space",
+        "mitigation": "Candidate can own technical learning and partner closely with Product, Engineering, and Solution Architects; internal enablement on Lakebase capabilities, Lakehouse architecture, and competitive positioning against traditional databases could bridge this gap over 3\u20136 months",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in Lakebase, Delta Lake, Lakehouse, Apache Spark, or Databricks ecosystem; unfamiliar with data platform or database product sales plays",
+        "mitigation": "New product knowledge is learnable through Databricks enablement; however, the role expects immediate credibility selling to CIOs and CTOs on database consolidation and operational workloads",
+        "severity": "medium"
+      },
+      {
+        "gap": "No track record of selling into CIO, CTO, Chief Architect organisations, or leading application modernisation deals; specialist sales motion execution is untested",
+        "mitigation": "Sales leadership and architecture-level engagement are teachable through structured coaching and co-selling with regional leadership; however, initial quarters would rely heavily on mentoring and guided execution",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Director-level title with explicit team management scope (recruit, hire, coach a regional specialist team), revenue ownership (quarterly and annual targets), and global stakeholder coordination (VP-level sales leadership, Product, Engineering) indicate L6. No manager-of-managers or enterprise P&L scope stated, keeping role at senior individual contributor + team leadership band rather than L7+.",
+    "role_family_fit": 28,
+    "scope_seniority": 72,
+    "summary": "This is a L6 enterprise sales leadership role managing a regional specialist team with revenue targets, product domain expertise, and executive customer engagement\u2014a significant mismatch with the candidate's Strategy and Operations, Product Operations, and Commercial Operations background. While the candidate demonstrates people leadership, cross-functional execution, and transformation impact at Google, this role requires direct sales team management, quota accountability, C-suite selling (CIO/CTO), and deep technical knowledge of database platforms and application modernisation\u2014none of which are evidenced in the profile. Hard gaps in sales motion execution, Lakebase/Lakehouse expertise, and enterprise sales leadership place this as a stretch-beyond-advisable fit.",
+    "uncertainties": [
+      "Databricks company size and sales-org maturity not stated in JD; may affect team size, quota, and onboarding timeline expectations",
+      "Unclear whether candidate's Google Devices and Services experience included go-to-market execution, sales enablement, or revenue-facing roles versus pure operations",
+      "No information on candidate's appetite for quota-carrying accountability or sales-team leadership versus operational/strategic roles"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

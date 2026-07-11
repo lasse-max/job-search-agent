@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google translating complex Commercial Operations and transformation programs across global teams; demonstrated ability to bridge engineering and business stakeholders in AI/LLM agentic tooling and data platform modernization.",
+        "evidence_strength": "strong",
+        "job_requirement": "A proven ability to communicate sophisticated data concepts clearly to senior leadership and non-technical stakeholders."
+      },
+      {
+        "candidate_evidence": "Led transformation programs and platform initiatives at scale with global scope; positioned as Strategy and Operations leader requiring independent decision-making across multidisciplinary teams.",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience operating autonomously in ambiguous environments, making confident decisions without a clear-cut path forward."
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations with Commercial Operations background (revenue recovery, territory management, CRM administration, forecasting); territory budget management via Salesforce administration demonstrates direct portfolio ownership.",
+        "evidence_strength": "medium",
+        "job_requirement": "A strong commercial mindset with a background in handling marketing or sales data portfolios."
+      },
+      {
+        "candidate_evidence": "Eight years scaling commercial operations across global teams; experience aligning cross-functional stakeholder needs and transformation delivery.",
+        "evidence_strength": "medium",
+        "job_requirement": "Skill in managing conflicting priorities from demanding business units such as marketing and sales."
+      },
+      {
+        "candidate_evidence": "Directed LLM coding agents and agentic tooling systems; owns evaluation methodology and benchmarking; worked with engineering on Salesforce feature requests and system design.",
+        "evidence_strength": "medium",
+        "job_requirement": "Comfort partnering closely with cross-functional engineering and data science panels to assess technical feasibility."
+      }
+    ],
+    "confidence": 0.62,
+    "estimated_level": "L5",
+    "evidence_strength": 68,
+    "gap_manageability": 42,
+    "gaps": [
+      {
+        "gap": "Deep technical familiarity with complex, large-scale big data systems and real-time data products",
+        "mitigation": "Candidate has SQL, BigQuery, and Looker experience suitable for reporting and dashboarding; AI/agentic tooling ownership demonstrates systems thinking. However, modernizing a 15-year-old data platform and embedding AI into frontline workflows likely requires deeper big-data architecture (stream processing, data lakes, warehouse design) and real-time systems knowledge beyond BI/analytics tooling.",
+        "severity": "high"
+      },
+      {
+        "gap": "Native Product Manager discipline and SDLC-based requirements definition",
+        "mitigation": "Candidate's product experience comes from ownership, requirements logic design, UAT, rollout, and transformation\u2014not classical PM/feature team development cycles. The role explicitly requires assessing technical feasibility with engineering and data science leads; this suggests PM-style resource planning and trade-off management.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Hands-on architecture and large-scale data modernization leadership",
+        "mitigation": "No evidence of leading architectural upgrades, data platform migrations, or data ecosystem modernization. The role centers on modernizing legacy frameworks and establishing a single source of truth\u2014core data engineering transformation work. Candidate's strengths lie in requirements translation and cross-functional alignment rather than technical architecture ownership.",
+        "severity": "high"
+      },
+      {
+        "gap": "Product Operations vs. Technical Product Management",
+        "mitigation": "Candidate's positioning is Strategy and Operations / Product Operations; this role is Technical Product Manager for a data platform. While both involve cross-functional work, TPM roles typically own product roadmap, release planning, technical trade-offs, and deeper SDLC integration with engineering. This role's emphasis on 'dismantling data silos' and 'legacy framework modernization' is distinctly architecture-heavy.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 'deep technical familiarity with complex, large-scale big data systems' and autonomous leadership of a 15-year-old platform modernization spanning 50+ specialist team and four geographies. These signals (cross-region scope, technical depth requirement, leading architecture transformation) point to L5 established senior IC or early manager-of-managers scope. No explicit management chain or director title, but the autonomy, scale, and technical bar suggest L5. confidence is moderate because company size/stage is not stated.",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Strong communicator and transformation leader with eight years scaling global commercial operations and proven cross-functional stakeholder management. However, this is a deeply technical Product Manager role requiring hands-on architecture leadership, big-data systems modernization, and SDLC-based product discipline. Candidate's strength is in translating requirements and driving transformation delivery; the role centers on technical architecture, platform modernization, and deep data-systems expertise. The gap between Product Operations strategy work and Technical Product Manager for a legacy data platform is substantial and unlikely to close through onboarding alone.",
+    "uncertainties": [
+      "Company size and stage not stated; inferred seniority estimate is L5 but would benefit from confirmation of org structure and reporting line.",
+      "Degree of PM vs. technical architect ownership unclear\u2014role description blends product strategy ('translate business strategies into requirements') with engineering leadership ('modernizing framework'). Candidate's native TPM experience is limited.",
+      "Python skill is 'basic and actively learning'; no evidence of data-pipeline or ETL engineering background needed for real-time data-product work.",
+      "Commercial Operations domain differs from data-product strategy; while both involve data, the skillset (forecasting, territory management) does not directly transfer to big-data architecture or analytics platform modernization."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

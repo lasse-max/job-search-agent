@@ -1,0 +1,48 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services, two promotions, scaling global commercial operations and transformation programs; GTM and Sales Strategy & Operations listed as target family",
+        "evidence_strength": "medium",
+        "job_requirement": "Sales Strategy and Operations role (title-inferred)"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Complete JD inaccessible: actual requirements, scope, team/stakeholder structure, years-required, and seniority signals unknown",
+        "mitigation": "Obtain accessible JD text or fetch from wayback/cached source; confirm regional reporting line, headcount responsibility, and revenue scope",
+        "severity": "high"
+      },
+      {
+        "gap": "Location constraint (Sydney, Australia) not discussed with candidate; visa sponsorship, relocation willingness, and Australia work authorization unknown",
+        "mitigation": "Clarify candidate location flexibility and work-right status before proceeding",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of ANZ-region market knowledge, local sales channel experience, or regional P&L management",
+        "mitigation": "If role involves regional pricing, compensation, or local-channel strategy, surface candidate's geographic / regional experience or learning curve",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Title suggests regional sales strategy leadership (ANZ scope), which typically maps to L4-L5 seniority, but the actual JD is inaccessible (403 Forbidden). Without explicit years-required, team size, reporting line, or scope details, confidence is low. Company size/stage unknown beyond OpenAI brand context.",
+    "role_family_fit": 72,
+    "scope_seniority": 45,
+    "summary": "The role is titled Sales Strategy and Operations for OpenAI's ANZ region, a strong family match for the candidate's Strategy & Operations and GTM/Sales Strategy background. However, the JD is entirely inaccessible (403 Forbidden fetch), blocking evaluation of specific requirements, responsibilities, scope, and seniority signals. Without actual job content, alignment evidence cannot be mapped, gaps cannot be assessed, and location (Sydney, Australia) introduces an unstated constraint. Recommend deferring until the JD is available.",
+    "uncertainties": [
+      "JD is completely inaccessible; all specifics (requirements, scope, reporting, seniority) are unknown",
+      "Estimated level (L4) is a guess based on 'Sales Strategy and Operations' title and ANZ regional scope; actual scope could range L4\u2013L5",
+      "Candidate's Commercial Operations (Google-internal framing) to Revenue Operations translation cannot be validated without explicit RO/sales-ops requirements in the JD",
+      "OpenAI company size, stage, and sales-ops team structure unknown; cannot assess scope clarity or stakeholder level",
+      "No information on whether role involves technical product-operations (API/platform), enterprise SaaS, or other sales-ops domain"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

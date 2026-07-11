@@ -35,7 +35,7 @@ from app.services.text_rules import unsupported_language_requirement
 
 
 DETERMINISTIC_FALLBACK_VERSION = "deterministic_fallback_v1"
-HYBRID_EVALUATOR_VERSION = "hybrid_claude_v3"
+HYBRID_EVALUATOR_VERSION = "hybrid_claude_v4"
 
 
 @dataclass(frozen=True)
@@ -78,7 +78,14 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
     if _government_defense_or_clearance_scope(requirement_text):
         return RelevanceDecision(False, "government_defense_clearance_declined")
 
-    if _matches_any(title_department, filter_config.excluded_title_department_patterns):
+    business_program_stretch = _business_program_management_stretch(
+        title_department,
+        requirement_text,
+    )
+    if (
+        _matches_any(title_department, filter_config.excluded_title_department_patterns)
+        and not business_program_stretch
+    ):
         return RelevanceDecision(False, "excluded_title_department_function")
 
     if _matches_any(title_department, role_family_patterns):
@@ -694,7 +701,7 @@ def _market_for_location(
     location_policy: LocationPolicyConfig,
 ) -> MarketPolicyConfig | None:
     market_aliases = {
-        "Australia": ("sydney", "melbourne", "perth", "australia"),
+        "Australia": ("sydney", "melbourne", "perth", "brisbane", "australia"),
         "UK": ("london", "united kingdom", "uk"),
         "Singapore": ("singapore",),
         "EU": ("germany", "munich", "berlin", "paris", "amsterdam", "madrid", "europe"),
@@ -827,7 +834,17 @@ def _off_function_title_department(text: str) -> bool:
 
 
 def _native_product_manager_function(text: str) -> bool:
-    if not re.search(r"\bproduct manager\b", text, flags=re.IGNORECASE):
+    if not re.search(
+        (
+            r"\bproduct manager\b"
+            r"|\bproduct director\b"
+            r"|\bdirector,?\s+product\b"
+            r"|\bhead of product\b"
+            r"|\bproduct lead\b"
+        ),
+        text,
+        flags=re.IGNORECASE,
+    ):
         return False
     if _agent_development_product_manager(text):
         return False
@@ -1130,33 +1147,34 @@ def _enforceable_disqualifying_fragments(
 
 
 def _degree_requirement(text: str) -> bool:
-    if not _technical_degree_mention(text):
-        return False
-    has_nontechnical_field = bool(
-        re.search(
-            r"\b(?:business|economics|finance|management|commerce|strategy|operations|"
-            r"social sciences?|liberal arts)\b",
-            text,
-            flags=re.IGNORECASE,
+    for match in re.finditer(_TECHNICAL_DEGREE_PATTERN, text, flags=re.IGNORECASE):
+        degree_clause = match.group(0)
+        has_nontechnical_field = bool(
+            re.search(
+                r"\b(?:business|economics|finance|management|commerce|strategy|operations|"
+                r"social sciences?|liberal arts)\b",
+                degree_clause,
+                flags=re.IGNORECASE,
+            )
         )
-    )
-    has_alternative_list = bool(re.search(r"\b(?:or|and/or)\b|[,/]", text, re.IGNORECASE))
-    return not (has_nontechnical_field and has_alternative_list)
+        has_alternative_list = bool(
+            re.search(r"\b(?:or|and/or)\b|[,/]", degree_clause, re.IGNORECASE)
+        )
+        if not (has_nontechnical_field and has_alternative_list):
+            return True
+    return False
 
 
 def _technical_degree_mention(text: str) -> bool:
-    return bool(
-        re.search(
-            (
-                r"\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\b"
-                r".{0,100}\b(?:computer science|software engineering|engineering)\b"
-                r"|\b(?:computer science|software engineering|engineering)\b"
-                r".{0,100}\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\b"
-            ),
-            text,
-            flags=re.IGNORECASE,
-        )
-    )
+    return bool(re.search(_TECHNICAL_DEGREE_PATTERN, text, flags=re.IGNORECASE))
+
+
+_TECHNICAL_DEGREE_PATTERN = (
+    r"\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\b"
+    r".{0,100}\b(?:computer science|software engineering|engineering)\b"
+    r"|\b(?:computer science|software engineering|engineering)\b"
+    r".{0,100}\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\b"
+)
 
 
 def _technical_depth_requirement(text: str) -> bool:
@@ -1536,10 +1554,45 @@ def _is_stretch_family(
 ) -> bool:
     profile = profile or load_candidate_profile()
     combined = f"{title} {department}".lower()
+    if _business_program_management_stretch(combined, text):
+        return True
     return _matches_any(combined, profile.stretch_role_family_patterns) or _matches_any(
         text,
         profile.stretch_role_family_patterns,
     )
+
+
+def _business_program_management_stretch(title_department: str, text: str) -> bool:
+    combined = f"{title_department} {text}".lower()
+    if not re.search(
+        r"\b(?:technical |strategic |business |transformation )?(?:program(?:me)?|project) manager\b",
+        title_department,
+        flags=re.IGNORECASE,
+    ):
+        return False
+    strategic_scope = bool(
+        re.search(
+            (
+                r"\bbusiness transformation\b"
+                r"|\bstrategic initiatives?\b"
+                r"|\boperating model\b"
+                r"|\bgo-to-market\b"
+                r"|\bcross-functional business\b"
+                r"|\bcommercial operations\b"
+                r"|\bchange management\b"
+            ),
+            combined,
+            flags=re.IGNORECASE,
+        )
+    )
+    explicitly_strategic_title = bool(
+        re.search(
+            r"\b(?:strategic|business|transformation) (?:program(?:me)?|project) manager\b",
+            title_department,
+            flags=re.IGNORECASE,
+        )
+    )
+    return strategic_scope or explicitly_strategic_title
 
 
 def _role_text(row: sqlite3.Row) -> str:

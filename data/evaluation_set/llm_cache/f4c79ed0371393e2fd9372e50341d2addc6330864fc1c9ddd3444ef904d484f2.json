@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in operations scaling and program execution; strong organizational and oversight capabilities.",
+        "evidence_strength": "medium",
+        "job_requirement": "\u00dcberwache die sichere Bef\u00f6rderung unserer Reisenden auf der gesamten Strecke"
+      },
+      {
+        "candidate_evidence": "Commercial Operations and transformation program background; experience optimizing processes and driving organizational improvements.",
+        "evidence_strength": "medium",
+        "job_requirement": "Trage zur stetigen Verbesserung unserer Service- und Betriebsprozesse bei"
+      },
+      {
+        "candidate_evidence": "No evidence of shift-work availability, overnight-travel readiness, or schedule flexibility in candidate profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Schichtarbeit: Individuelle Schichten, beispielweise nachts, an Wochenenden oder an Feiertagen"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L3",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Licensed train driver/conductor (Zugf\u00fchrer:in/Zugchef:in) qualification required; candidate has no transportation or railway operations background.",
+        "mitigation": "None\u2014this is a disqualifying legal/professional credential. The role explicitly states no entry-level training is offered.",
+        "severity": "high"
+      },
+      {
+        "gap": "Shift work, overnight travel, and external-home accommodations required; candidate positioning implies typical corporate office work schedule.",
+        "mitigation": "Only candidate can confirm willingness; no evidence provided.",
+        "severity": "high"
+      },
+      {
+        "gap": "On-board passenger service and ticketing operations; candidate's background is internal strategy and operations, not customer-facing transportation service.",
+        "mitigation": "Transferable communication and service orientation evident but no direct hospitality or public-transport service experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "Technical train operations (brake tests, wagon inspection, marshalling); no engineering, transport, or technical-operations background evident.",
+        "mitigation": "None\u2014specialized technical certification and on-the-job training required.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Du hast eine abgeschlossene Qualifizierung als Zugpersonal (z. B. Zugf\u00fchrer:in/ Zugchef:in)\" and \"Achtung: Wir bieten keinen Quereinstieg und keine Ausbildung f\u00fcr diese Position an, sondern suchen nach vorqualifizierten und ausgebildeten Zugchef:innen/ Zugf\u00fchrer:innen f\u00fcr den Fernverkehr.\" Candidate has no railway operations, train-driving, or conductor licensing background.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Operationally-focused on-board conductor and train-operations role with no management scope, structured shift scheduling, and compliance-driven responsibilities. Typical German railway conductor salary range (\u20ac3,500 fixed base) aligns with experienced entry-level to junior operational role. Estimated L3 based on specialized technical credential requirement, operational execution focus, and absence of strategic or leadership scope.",
+    "role_family_fit": 5,
+    "scope_seniority": 20,
+    "summary": "This is a specialized FlixTrain conductor (Zugf\u00fchrer:in) role requiring a completed railway-operations certification, technical train-handling qualifications (brake tests, wagon inspection), on-board passenger service, and shift-work availability including overnight travel. The candidate is a Strategy and Operations leader with corporate Google background, no transportation or railway background, no conductor/train-driver license, and no evidence of willingness for shift work or external accommodation. The JD explicitly states no entry-level training is offered and pre-qualified licensed conductors are required. This is a hard-disqualifying mismatch: the role is out-of-family (not strategy, operations, or transformation), requires non-transferable technical credentials the candidate cannot provide, and no mitigation exists.",
+    "uncertainties": [
+      "Candidate's willingness to pursue railway-conductor licensing and shift-work schedule is not stated.",
+      "Company stage/size context not provided in JD; assumed mid-market mobility operator based on brand.",
+      "Whether candidate has any latent interest in transportation operations or willingness for lifestyle change."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

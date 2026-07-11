@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions; primary role families include Strategy and Operations, Business Operations, and Product Operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations department focus"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs at Google; positioning emphasizes transformation capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations and transformation program ownership"
+      },
+      {
+        "candidate_evidence": "Proficient SQL (BigQuery joins, GROUP BY, subqueries, window functions), advanced Excel and Sheets, Looker and Tableau dashboarding, basic Python for data analysis",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven decision-making and analytics"
+      },
+      {
+        "candidate_evidence": "Global commercial operations experience implies large-scale cross-functional coordination; scaling programs typically requires senior executive alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management and executive communication"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 75,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "JD is a cached snapshot with minimal substantive content; core responsibilities, success metrics, reporting line, team scope, and strategic priorities are not provided",
+        "mitigation": "Request full current JD from Airwallex; confirm whether role owns strategic planning, operational transformations, financial/revenue operations, or other specific domains",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of fintech, payments, cross-border settlement, or B2B SaaS operator experience",
+        "mitigation": "Identify whether Airwallex prioritizes domain expertise or will train a strong operator; assess candidate's ability to learn FinTech fundamentals on the job",
+        "severity": "medium"
+      },
+      {
+        "gap": "London-based role; candidate location and visa status not specified",
+        "mitigation": "Confirm candidate's willingness and eligibility to work in London",
+        "severity": "medium"
+      },
+      {
+        "gap": "Company size and stage not stated in JD; unclear whether Airwallex is early-stage (Head of Ops may be L4\u2013L5) or larger enterprise (Senior Manager typically L5\u2013L6)",
+        "mitigation": "Research Airwallex's scale and funding stage to validate level estimate; confirm organizational structure and team size",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 55,
+    "level_rationale": "Senior Manager title typically maps to L5 (individual contributor lead or manager of small teams) in established companies. no explicit reporting line, team size, or strategic scope provided in cached JD. Company stage and size unknown, limiting confidence in level estimate.",
+    "role_family_fit": 78,
+    "scope_seniority": 50,
+    "summary": "Strong alignment on Strategy & Operations family and operations-transformation background; candidate has eight years of Google Ops experience with proven analytics and program-management skill. Critical blocker: JD is a cached snapshot with near-zero substantive content\u2014no responsibilities, success criteria, reporting structure, team scope, or strategic domain are defined. Without full JD, confidence in fit is low. Additionally, no evidence of fintech or payments experience, and location/visa status unclear. Recommend requesting current complete JD and clarifying Airwallex's scale, team structure, and specific strategic priorities before proceeding.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v6"
+}

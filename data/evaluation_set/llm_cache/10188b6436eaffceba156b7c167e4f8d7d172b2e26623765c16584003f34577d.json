@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Manager, Strategy & Operations role in Strategy & Operations department at DoorDash"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in transformation programs and commercial operations scaling at global scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations leadership requiring cross-functional program management and execution"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Sheets, proficient SQL with BigQuery querying, builds Looker dashboards, can pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-driven decision-making and analytics"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background translatable to marketplace and GTM process design; Salesforce admin experience with territory budget management",
+        "evidence_strength": "medium",
+        "job_requirement": "Systems and process design for operational efficiency"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global operations indicates sustained cross-functional collaboration; Salesforce partnerships with engineering teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management across functional teams"
+      },
+      {
+        "candidate_evidence": "Designs and directs LLM coding agents for production systems; owns evaluation methodology and benchmarking; actively learning Python for data analysis",
+        "evidence_strength": "medium",
+        "job_requirement": "Emerging technology integration and tooling"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 75,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Marketplace or food-delivery domain experience not evident in profile",
+        "mitigation": "Commercial operations fundamentals (territory management, CRM, forecasting, process design) transfer across verticals; can ramp on DoorDash merchant/driver ecosystem and marketplace dynamics in first 90 days with onboarding",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD is incomplete: no explicit business scope, KPIs, team size, or reporting line; limits confidence in role-level and candidate-role fit calibration",
+        "mitigation": "Candidate's proven scalability (two promotions, global programs) suggests adaptability; recommend interview discovery on team structure, P&L ownership, and transformation priorities",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or external S&O advisory background; primarily internal large-tech experience",
+        "mitigation": "Eight years building systems and stakeholder alignment at scale are sufficient; external brand not critical for internal ops role",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Manager title at established company (DoorDash scale not stated but implied mid-to-large) aligns with L4. JD does not explicitly state years required, reporting line, or executive scope. title suggests IC or first-line manager role. Assuming 3\u20135 year profile for the posted level given standard Manager seniority.",
+    "role_family_fit": 90,
+    "scope_seniority": 78,
+    "summary": "Strong fit: eight years in Strategy and Operations at Google with proven program ownership, analytics depth (SQL, BigQuery, Looker), and commercial operations scale. Commercial Operations experience translates directly to marketplace and GTM operations. Gap: JD is incomplete (no full scope or KPIs stated), and candidate lacks explicit DoorDash-domain or marketplace verticalization experience, but core S&O capabilities and emerging-tech integration (LLM tooling) mitigate risk.",
+    "uncertainties": [
+      "JD snapshot is incomplete; full responsibilities, team scope, and reporting structure are not provided in cached text",
+      "DoorDash company size/stage context not stated in Role JSON, limiting level confidence",
+      "Specific marketplace, merchant, or driver-operations focus not explicit in provided JD snippet",
+      "Candidate's Commercial Operations terminology vs. Revenue Operations alignment assumed but should be confirmed in conversation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

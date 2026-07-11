@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration. Eight years at Google with deep AI and agentic tooling experience.",
+        "evidence_strength": "strong",
+        "job_requirement": "3+ years of experience in ML evaluation, benchmarking for LLM or agentic systems"
+      },
+      {
+        "candidate_evidence": "Product Operations leader with demonstrated capacity to own AI/agentic-tooling evaluation methodology and benchmarking; capable of designing and directing complex ML systems.",
+        "evidence_strength": "medium",
+        "job_requirement": "Deep understanding of concepts and algorithms underlying machine learning and LLMs"
+      },
+      {
+        "candidate_evidence": "Eight years in Strategy and Operations roles at scale; demonstrated stakeholder management and cross-functional communication at Google across products and transformations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to explain complex technical concepts in simple terms with technical and non-technical audiences"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 62,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Strong technical coding skills in Python (required). Candidate states basic Python, actively learning data-analysis/pandas track.",
+        "mitigation": "Candidate has demonstrated ability to learn and scale technical capabilities; owns agentic-tooling evaluation. Python basics with focused pandas/data-analysis learning may suffice for evaluation infrastructure if not blocked by hiring team's interpretation of 'strong.'  However, this is a stated requirement for an ML evaluation engineering role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Production ML engineering background. Candidate's ML evaluation work is design/direction/methodology-focused rather than hands-on engineering implementation.",
+        "mitigation": "None. Role requires building scalable evaluation pipelines and infrastructure; candidate has no stated production software-development or ML-engineering background. Honest gap: 'No production software-engineering background.'",
+        "severity": "high"
+      },
+      {
+        "gap": "Open-source ML framework contributions or published research (nice-to-have). Candidate has no stated history.",
+        "mitigation": "Stated as 'ideally' not required. Not a hard blocker.",
+        "severity": "low"
+      },
+      {
+        "gap": "ML frameworks (PyTorch, HuggingFace Transformers). No evidence supplied.",
+        "mitigation": "Stated as 'ideally' preferred. Candidate owns AI/agentic evaluation methodology but no stated hands-on framework experience.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Strong technical coding skills in Python\" (required, in \"About you\" section). Candidate profile states \"Python: basic, actively learning (data-analysis / pandas track).\" Role is an ML evaluation engineering position requiring production-grade evaluation infrastructure and pipelines; basic Python is below the threshold for a hands-on engineering build role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 70,
+    "level_rationale": "Role requires 3+ years in ML evaluation/benchmarking plus proven hands-on implementation and strong Python. independently responsible for designing evaluation infrastructure and frameworks across customer verticals. Reports to Applied AI leadership (implied). cross-functional ownership of research-to-production pipeline. Estimated L5 IC or early-lead scope. Company stage (founded ~2023, Series B-C inferred) and role positioning as 'first' in this function suggest senior IC expectations. Confidence reduced due to Paris-based role and absence of explicit salary or team-size context in JD.\".",
+    "role_family_fit": 28,
+    "scope_seniority": 62,
+    "summary": "Evaluation Engineer is a specialized ML engineering role requiring strong hands-on Python, production infrastructure-build experience, and 3+ years in ML evaluation/benchmarking\u2014outside the candidate's core Strategy and Operations, Product Operations, or transformation-program families. Candidate excels in AI/agentic-tooling evaluation methodology and direction but has no production software-engineering background and only basic Python. The hard blocker (strong Python required vs. basic + learning) and mismatch in engineering scope recommend skipping this role despite strong methodology and stakeholder-management foundations.",
+    "uncertainties": [
+      "Mistral AI company size and maturity beyond inferred Series B-C; impact on scope and team structure unclear.",
+      "Whether 'strong technical coding skills in Python' is a strict gate or negotiable for a methodology-forward evaluation leader.",
+      "Depth of candidate's hands-on agentic-tooling evaluation work (design/direction/methodology vs. actual pipeline/infrastructure implementation).",
+      "Whether candidate's BigQuery, SQL, Looker, and Tableau skills could partially compensate for Python baseline in evaluation infrastructure roles (likely not for this role)."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

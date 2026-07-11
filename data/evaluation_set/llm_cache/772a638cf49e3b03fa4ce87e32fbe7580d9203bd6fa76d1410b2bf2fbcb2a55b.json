@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Led and scaled global commercial operations teams at Google Devices and Services over eight years with two promotions; demonstrated team leadership and growth experience in hyper-growth environments.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience managing a team of successful Big Data, Cloud, or SaaS professionals"
+      },
+      {
+        "candidate_evidence": "Designed and rolled out global commercial operations transformation programs; built scalable processes for teams and cross-functional execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Success in instituting processes for technical field members to lead efficiency and product focus"
+      },
+      {
+        "candidate_evidence": "Translated Commercial Operations into Revenue Operations; partnered with sales, field teams, and internal stakeholders on territory management, forecasting, and execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to partner and collaborate with Sales and other cross-functional leaders"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English and native German; documented experience translating complex operations logic and driving stakeholder alignment in global teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong communication skills"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 55,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "No direct Solutions Architecture, pre-sales, or field engineering management experience",
+        "mitigation": "Candidate has operations and team leadership; pre-sales/SA domain knowledge gap would require onboarding and field ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated technical background in Data Engineering, Database technologies, or Data Science as required",
+        "mitigation": "Background is operations and transformation rather than deep technical or data specialization; JD explicitly seeks technical or consulting background in these domains.",
+        "severity": "high"
+      },
+      {
+        "gap": "Italian language fluency not mentioned; JD requires Italian native speaker",
+        "mitigation": "Role is Milan-based and explicitly requires Italian native speaker; candidate profile shows German native and professional English only.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited consumption-based business model or SaaS consumption revenue experience documented",
+        "mitigation": "Commercial Operations background differs from explicit 'consumption-based business environments' requirement; translation unclear.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Italian native-speaker and fluent in English. Required for Milan-based role; candidate profile lists German native and professional English, with no mention of Italian.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Manager of a pre-sales technical team reporting to likely Sales or SVP. requires mentoring and scaling experience, cross-functional partnership, and regional leadership scope. Salary band \u20ac107.6k\u2013\u20ac147.9k and team-leadership scope suggest L5 IC or L4\u2013L5 manager-equivalent. title and regional ownership anchor to L5 baseline in mid-market SaaS context (Databricks scale).",
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "Manager, Field Engineering Italy is a regional team-leadership role in pre-sales and solutions architecture at Databricks. Candidate has strong operations and team-leadership experience at Google but lacks direct pre-sales, Solutions Architecture, or field engineering background; more critically, the JD requires Italian native speaker (Milan-based, explicit requirement), which candidate does not possess (German native, professional English only). Technical domain background in Data Engineering, Database, or Data Science is also not evident. Operational leadership translates partially to field-team management, but pre-sales domain gap and language barrier create substantial onboarding risk.",
+    "uncertainties": [
+      "Company size and stage not stated in JD; Databricks scale inferred from description (10k+ customers, Fortune 500) but impact on level estimate modest.",
+      "Whether candidate has any Italian language capability or prior Europe-based leadership not documented in profile.",
+      "Depth and recency of candidate's SaaS or consumption-based business model experience not detailed.",
+      "Extent to which Operations/Commercial background translates to pre-sales field leadership culture and execution model."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

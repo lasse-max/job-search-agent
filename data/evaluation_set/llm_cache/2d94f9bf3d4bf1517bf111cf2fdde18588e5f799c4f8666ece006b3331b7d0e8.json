@@ -1,0 +1,75 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Python basic, actively learning (data-analysis / pandas track); advanced Excel and Sheets; SQL proficiency including BigQuery and subqueries; demonstrated ability to design and direct LLM coding agents for system building.",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficiency in scripting and automation using languages like Node.js, Python, or PowerShell, leveraging config-as-code and policy-as-code principles"
+      },
+      {
+        "candidate_evidence": "Eight years leading strategy and operations at Google with proven cross-functional transformation programs; experience partnering with engineering teams and managing stakeholder alignment.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with cross-functional teams to gather IAM requirements and translate them into technical designs; strong communication and collaboration skills"
+      },
+      {
+        "candidate_evidence": "Extensive global commercial operations and transformation experience at Google, a highly regulated enterprise; no direct fintech, banking, or payments compliance background stated.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience operating within regulated environments (e.g., Finance, Banking, Insurance), ensuring compliance with standards and frameworks"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 8,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Core technical requirement: hands-on Okta experience (Okta Identity Engine, Okta Org-to-Org, Okta Workflows, Okta Device Access) is a primary job function; candidate has no stated Okta or IAM platform expertise.",
+        "mitigation": "On-the-job learning during onboarding if candidate can rapidly acquire platform-specific knowledge; however, this is a hands-on engineering role, not a strategy role, and transfer risk is substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "Production scripting and automation at scale: Python is at basic/learning level; Node.js, PowerShell, Terraform, and CI/CD pipeline experience not mentioned. Core daily delivery tool gaps.",
+        "mitigation": "Candidate's agentic-tooling and data-automation skills show systems-thinking, but production IAM scripting and IaC require engineering depth beyond current demonstrated level.",
+        "severity": "high"
+      },
+      {
+        "gap": "AWS IAM, GCP IAM, and cloud-platform identity administration: no cloud IAM or infrastructure admin background evident in profile.",
+        "mitigation": "Can be learned, but requires foundational cloud systems knowledge and hands-on practice; not a stretch for operations or strategy background alone.",
+        "severity": "high"
+      },
+      {
+        "gap": "SAML, OIDC/OAuth, SCIM protocol integration expertise: no authentication protocol or API integration experience documented.",
+        "mitigation": "Technical prerequisite for the core role; beyond typical strategy or operations background.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role family mismatch: this is a hands-on IT engineering and platform administration role, not Strategy, Operations, BizOps, or transformation leadership; scope is technical execution, not strategic decision-making or cross-functional business alignment.",
+        "mitigation": "Candidate's primary strength in strategy, operations, and transformation does not align with the technical platform-engineering and systems-administration job family.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Job description: 'Hands-on experience with Okta, including Okta Identity Engine, Okta Org-to-Org, Okta Workflows, and Okta Device Access.' This is a primary responsibility ('Administration of Checkout's Identity platform, including Okta'), not a preferred skill. Candidate has no stated Okta or IAM platform experience.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "Job description: 'Proficiency in scripting and automation using languages like Node.js, Python, or PowerShell, leveraging config-as-code and policy-as-code principles (e.g., Terraform, CI/CD pipelines).' Candidate's Python is at basic/learning level; no Node.js, PowerShell, Terraform, or CI/CD pipeline experience documented. This is core job function, not nice-to-have.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 60,
+    "level_rationale": "Senior Engineer title in IT/IAM systems administration with Okta platform expertise, scripting, and cross-functional collaboration scope suggests mid-level IC track (L4). No management scope or strategic business leadership dimension noted. Company stage/size context missing. \"Senior\" in different contexts varies widely. Typical for infrastructure/engineering teams, this is likely 5\u20137 years IC depth.",
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "Senior Engineer, Workplace Technology (Okta) is a hands-on IT engineering and IAM systems-administration role at Checkout.com, not a strategy, operations, or transformation position. The role requires Okta platform expertise (Identity Engine, Workflows, Device Access), production-grade scripting (Python/Node.js/PowerShell), cloud IAM administration (AWS, GCP), and authentication protocol integration (SAML, OIDC/OAuth, SCIM)\u2014core technical competencies absent from a strategy-and-operations leader's profile. While the candidate demonstrates strong cross-functional collaboration, stakeholder management, and learning agility, the job family, technical depth requirements, and platform-specific knowledge create a high-risk, low-alignment fit.",
+    "uncertainties": [
+      "Company size and stage context not stated in role JSON; cannot confirm whether 'Senior Engineer' aligns with typical enterprise or startup engineering seniority anchor.",
+      "Unclear whether Okta platform administration experience is available through equivalent identity-and-access-management platforms (e.g., Azure AD/Entra); JD appears Okta-specific.",
+      "No indication of whether candidate's LLM and agentic-tooling experience extends to production infrastructure automation or IaC toolchains (Terraform, CI/CD)."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

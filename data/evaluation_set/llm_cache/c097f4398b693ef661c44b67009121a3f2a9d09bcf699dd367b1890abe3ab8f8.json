@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly); Python basic, actively learning (data-analysis/pandas track)",
+        "evidence_strength": "strong",
+        "job_requirement": "Bring at least basic knowledge or hands-on experience in SQL and/or Python"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration; actively learning Python for data analysis",
+        "evidence_strength": "strong",
+        "job_requirement": "Have a passion for technology, data and AI and the impact it can have on the world"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; designs AI agent specifications and evaluation methodologies to solve business problems",
+        "evidence_strength": "strong",
+        "job_requirement": "Are able to think analytically and creatively, especially in applying technology solutions to core business problems"
+      },
+      {
+        "candidate_evidence": "Google career demonstrates stakeholder management at scale; directs engineering partners on LLM agent feature requests; experience with transformation and change management",
+        "evidence_strength": "medium",
+        "job_requirement": "Are able to build relationships with senior management and influence decision-makers; confident to present to C-level executives"
+      },
+      {
+        "candidate_evidence": "Fluent English (professional); no Dutch language evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Are fluent in Dutch and English"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 72,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No Dutch language fluency; English-only proficiency against stated requirement of 'fluent in Dutch and English'",
+        "mitigation": "Candidate could pursue accelerated Dutch language training (6\u201312 months) if seriously interested; Celonis may consider conditional offer with language-learning clause for onboarding in Madrid",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is junior graduate/early-career program (L3 equivalent); candidate is L4\u2013L5 seniority with eight years' experience and two promotions at Google",
+        "mitigation": "Significant overqualification limits career fit and retention risk; candidate would enter a structured mentorship program designed for recent graduates, not experienced senior ICs",
+        "severity": "high"
+      },
+      {
+        "gap": "Value Engineering is not a target role family; pure customer engineering with sales partnering lacks the strategy/transformation/business operations scope that defines target families",
+        "mitigation": "If role required deep process mining or strategic process automation consulting, fit would be stronger; as described, it is a customer delivery and sales-support function",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated process mining, Celonis platform, or enterprise SaaS deep-dive experience",
+        "mitigation": "Onboarding program includes training; candidate's SQL and Python basics are entry points, but 12-month ramp typical for graduates",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Explicit graduate/internship-level program (Orbit, 12-month cohort structure) with stated bachelor/master degree and work/internship experience typical for L3 entry roles. No management scope or senior-IC ownership required.",
+    "role_family_fit": 28,
+    "scope_seniority": 32,
+    "summary": "Associate Applied AI Engineer is an explicit L3 graduate program (Orbit) in customer Value Engineering\u2014a sales-support and customer delivery function, not a target Strategy & Operations, Product Operations, or Business Transformation family. Candidate is L4\u2013L5 experienced with eight years and two Google promotions, causing significant overqualification and career-fit misalignment. Critical gap: Dutch language fluency is stated as a requirement; candidate has only English. Technical (SQL, Python basics, AI agent design) and analytical skills are present, but seniority mismatch, non-target role family, and language requirement make this a poor strategic fit.",
+    "uncertainties": [
+      "Company size/stage context not stated; this is noted but does not affect core recommendation since role is explicitly junior graduate program",
+      "Candidate's German native language could support relocation to Germany/Munich HQ, but Madrid onboarding and Benelux client base center on Dutch",
+      "Extent of candidate's interest in customer delivery and AI prototyping vs. strategy/transformation unclear from profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration. Eight years at Google scaling transformation programs and owning strategic initiatives.",
+        "evidence_strength": "strong",
+        "job_requirement": "Translate complex business problems into scalable AI solution architectures combining Process Intelligence platform with modern AI technologies"
+      },
+      {
+        "candidate_evidence": "Product operations background with requirements design, UAT, rollout, and transformation delivery. Advanced Excel/Sheets, Looker dashboards, and agentic-tooling direction.",
+        "evidence_strength": "medium",
+        "job_requirement": "Rapidly build prototypes and proof-of-value solutions demonstrating tangible outcomes to business and technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions at Google; experience scaling global operations and leading transformation programs implies sustained stakeholder engagement.",
+        "evidence_strength": "medium",
+        "job_requirement": "Communicate complex technical concepts to business and executive stakeholders; demonstrate strong presentation skills"
+      },
+      {
+        "candidate_evidence": "Designs and directs LLM coding agents for production systems; owns evaluation and benchmarking methodology.",
+        "evidence_strength": "strong",
+        "job_requirement": "Familiarity with Generative AI architectures such as RAG, prompt engineering, or agent-based systems"
+      },
+      {
+        "candidate_evidence": "Python at basic/actively learning level (data-analysis/pandas track); not production-level Python development.",
+        "evidence_strength": "weak",
+        "job_requirement": "Some experience prototyping solutions with Python and modern AI frameworks"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Native-level French proficiency required for customer-facing role (workshops, executive presentations, stakeholder interactions in French)",
+        "mitigation": "Candidate is German native with English fluency but French fluency not stated. Language requirement is non-negotiable for Paris-based role and executive customer interactions.",
+        "severity": "high"
+      },
+      {
+        "gap": "Production-level Python prototyping with modern AI frameworks (LangChain, LlamaIndex, RAG implementations)",
+        "mitigation": "Candidate's Python is basic/learning level. While agentic-tooling direction is strong, hands-on prototyping capability appears limited. Role expects demonstrable Python-based proof-of-value delivery.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct solutions consulting, data/AI consulting, or technical pre-sales background not evidenced",
+        "mitigation": "Candidate's background is internal Google operations and transformation. Commercial/customer-facing solutions design and pre-sales cycles differ materially from internal strategic program ownership.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Industry domain expertise in Supply Chain, Finance, or Operations specific to external customer advisory",
+        "mitigation": "Candidate's expertise is internal Google commercial operations scaling and process design. External domain consulting depth and cross-sector pattern recognition not evidenced.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Native-level French proficiency is required for this role. Candidates must be able to lead customer workshops, conduct executive presentations, and manage stakeholder interactions in French.\" The candidate profile states English (professional/fluent) and German (native) but no French proficiency is indicated. The JD states this as an explicit requirement, not a nice-to-have.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role title is \"Senior/Lead Value Engineer\" with 5+ years required in solutions consulting, pre-sales, or value engineering. customer-facing accountability. and executive-presentation scope. This maps to L5 (established IC or senior-track responsibility). Company stage and reporting line are not stated, lowering confidence slightly.",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "This role is a customer-facing, AI-focused value engineer with ownership of customer problem framing, solution architecture, prototyping, and business-impact delivery at executive level\u2014strong strategic execution scope. However, three critical gaps block recommendation: (1) **hard blocker: native-level French required, not indicated in candidate profile**; (2) production Python prototyping at the depth expected (LangChain, RAG, AI frameworks) versus candidate's basic/learning level; and (3) customer-consulting and pre-sales background versus internal Google operations pedigree. While agentic-tooling direction and AI leadership are strong, the role family (customer-facing technical pre-sales/solutions consulting) is outside approved stretches, and the language requirement is disqualifying.",
+    "uncertainties": [
+      "Candidate's French proficiency not stated; native-level French is an explicit requirement for Paris-based customer engagement",
+      "Depth of hands-on Python and LLM-framework prototyping capability unclear; candidate self-describes as 'basic, actively learning'",
+      "Direct customer-facing solutions-design and pre-sales experience not evidenced; internal Google transformation leadership may not transfer to external advisory consulting model",
+      "Public Sector & Defense domain specialism not addressed in JD detail; candidate domain experience not provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

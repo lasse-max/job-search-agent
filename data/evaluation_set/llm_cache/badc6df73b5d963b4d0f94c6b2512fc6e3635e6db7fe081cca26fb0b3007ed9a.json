@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Professional/fluent English; eight years at Google with demonstrated cross-functional and stakeholder communication across global teams.",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluent in English with excellent communication skills"
+      },
+      {
+        "candidate_evidence": "Positioned as collaborative team member within Google's culture; active learning in Python (pandas track) demonstrates growth mindset.",
+        "evidence_strength": "medium",
+        "job_requirement": "Low-ego, collaborative, eager to learn"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 20,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Expert PyTorch or JAX required; candidate has basic Python only",
+        "mitigation": "No practical path to deep learning framework expertise within typical onboarding; would require months of foundational study before contributing to pre-training/post-training pipelines.",
+        "severity": "high"
+      },
+      {
+        "gap": "Production software engineering and high-performance Python code; candidate background is strategy/operations with no SWE or ML engineering",
+        "mitigation": "Candidate has designed LLM tooling specs and owns evaluation methodology, but no hands-on development of production ML systems, GPU cluster orchestration, or CUDA/NCCL troubleshooting.",
+        "severity": "high"
+      },
+      {
+        "gap": "Large codebase contribution and ML model training/evaluation pipeline development; candidate's Python is data-analysis focused",
+        "mitigation": "Honest gap stated in profile: 'Product experience comes from ownership, requirements, logic design, UAT, rollout... rather than native engineering product management.'",
+        "severity": "high"
+      },
+      {
+        "gap": "Data generation and curation for pre-training/post-training at scale; no ML research or academia background stated",
+        "mitigation": "Candidate's strength is scaling commercial operations and transformation; no evidence of research methodology, dataset design, or model evaluation in academic/research contexts.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires expert PyTorch/JAX, production ML engineering, GPU cluster troubleshooting, and state-of-the-art model training on thousands of GPUs. This is senior IC ML engineering (L5\u2013L6 range). JD emphasizes independent shipping, high-performance code, and deep ML infrastructure ownership. PhD/Master preferred but not hard-blocked. however, core duties are unmistakably production ML engineering.",
+    "role_family_fit": 5,
+    "scope_seniority": 75,
+    "summary": "Applied Scientist/Research Engineer at Mistral AI is a pure ML engineering role requiring expert PyTorch/JAX, production Python, GPU cluster orchestration, and research methodology\u2014not a strategy, operations, or transformation position. Candidate's eight-year background is Strategy and Operations at Google, with basic Python, no SWE or ML engineering experience, and no research publication or large-codebase contribution record. Misalignment is fundamental; role is far outside target family and candidate capabilities.",
+    "uncertainties": [
+      "Company stage/size not stated in JD; Mistral is well-funded but context for onboarding curve unclear.",
+      "Whether 'expert' PyTorch/JAX could be acquired through aggressive ramp vs. minimum baseline\u2014JD tone suggests immediate competence required.",
+      "Candidate's 'designs, specs and directs LLM coding agents' may involve some hands-on evaluation tooling, but scope and depth not detailed."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

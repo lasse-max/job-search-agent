@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations role working in CEO Office"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in global commercial operations transformation programs with ability to drive execution across functions",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management and execution at senior levels"
+      },
+      {
+        "candidate_evidence": "Ownership of requirements, logic design, UAT, rollout, and transformation initiatives; advanced Excel and Google Sheets, SQL/BigQuery proficiency for data-driven decision-making",
+        "evidence_strength": "strong",
+        "job_requirement": "Business problem-solving and strategic planning"
+      },
+      {
+        "candidate_evidence": "Proficient with SQL, BigQuery, Looker dashboards, advanced Excel; builds own analytics and shapes data independently",
+        "evidence_strength": "strong",
+        "job_requirement": "Data analysis and reporting cadence management"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations; experience with Salesforce administration, territory budgets, and CRM integration",
+        "evidence_strength": "medium",
+        "job_requirement": "Process design and operational efficiency"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Sparse job description lacks explicit requirements, responsibilities, team size, reporting line clarity, and company context (scale, growth stage, payment domain focus)",
+        "mitigation": "Candidate's broad Google Devices & Services background in strategy, operations, and transformation is transferable to CEO Office roles across industries; fintech domain knowledge can be acquired during onboarding given strong operations and problem-solving foundation",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct fintech/payments payments platform or SaaS scaling experience",
+        "mitigation": "Eight years at Google scaling global operations, combined with transformation and process-design experience, provides strong foundational ability to learn domain; CEO Office roles often value general strategic thinking and execution over domain specificity",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited stated consulting, advanced AI transformation execution, or deployment-strategist background",
+        "mitigation": "Current skill in AI and agentic tooling design (specs, LLM agents, evaluation methodology) and data-driven analysis may provide partial fit if role includes AI transformation or modernization scope; however, consulting case-team experience not demonstrated",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 60,
+    "level_rationale": "CEO Office role in a payments fintech implies senior IC or manager scope, reporting directly to CEO/executive leadership, and requiring broad enterprise strategic thinking. No minimum years or management scope explicitly stated in JD. Likely L5 IC or L5-L6 manager equivalent. lower confidence due to missing company stage/size and sparse JD detail.",
+    "role_family_fit": 85,
+    "scope_seniority": 72,
+    "summary": "Strong fit for core Strategy & Operations and Business Transformation families; eight years of Google scaling experience and demonstrated commercial operations and transformation execution. CEO Office context and London location suggest strategic IC or senior manager ownership. Gaps: JD is sparse and lacks explicit requirements; no stated fintech/payments domain expertise; unclear whether role needs domain ramp or prior SaaS scaling at this company stage.",
+    "uncertainties": [
+      "Job description is severely truncated; actual scope, hiring manager level, team size, and specific responsibilities are unclear",
+      "Company stage and size stated as 'unknown unless in JD'; fintech growth-stage context unknown",
+      "Unclear whether role is individual contributor, manager, or strategic advisor to CEO",
+      "No explicit revenue operations, payments, or fintech domain requirements stated or inferred"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

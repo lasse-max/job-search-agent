@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Salesforce admin experience with territory-budget management and feature-request collaboration; advanced Excel and Google Sheets; Looker and Tableau dashboard experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Comfort working within structured systems, dashboards, and CRM tools like Salesforce"
+      },
+      {
+        "candidate_evidence": "Eight years at Google managing commercial operations with focus on documentation, process design, and operational rigor; systems and dashboarding expertise",
+        "evidence_strength": "strong",
+        "job_requirement": "Ensuring high-quality notes, clear qualification detail, and accurate next steps are kept in Salesforce"
+      },
+      {
+        "candidate_evidence": "Eight years in global commercial operations and transformation programs; experience bridging cross-functional stakeholder groups and presenting to leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent written and verbal communication skills to build trust and rapport with different stakeholders"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and commercial operations scaling at Google; track record of building systematic approaches and operational excellence",
+        "evidence_strength": "strong",
+        "job_requirement": "High ownership, process-driven mindset, and strong attention to detail"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 72,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Phone-based lead-qualification and business-development role experience",
+        "mitigation": "Candidate has commercial operations and stakeholder-engagement experience but no stated background in phone-intensive prospecting, lead qualification, or account development. This is a core duty of the role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Inbound and outbound sales-activity management and lead-nurturing cadence",
+        "mitigation": "Candidate's background is operations and transformation; no evidence of managing prospect pipelines, follow-up cadences, or sales-motion execution.",
+        "severity": "high"
+      },
+      {
+        "gap": "Partner-channel or indirect-sales experience",
+        "mitigation": "Candidate's domain is Google commercial operations; no stated exposure to partner-ecosystem engagement, partner qualification, or go-to-market through channels.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role scope is significantly below candidate seniority ceiling",
+        "mitigation": "This is an individual-contributor, quota-influenced business-development representative role. Candidate's eight-year track record and two promotions position them well above entry-level scope.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role is an individual-contributor, phone-based Partner Development Representative with no stated management scope, no years-experience requirement, and responsibility limited to lead qualification and handoff. Title and duties map to L3 graduate or early-career commercial role. Company size/stage not stated in JD (lowers confidence modestly).",
+    "role_family_fit": 15,
+    "scope_seniority": 20,
+    "summary": "This role is a phone-based Partner Development Representative focused on inbound/outbound lead qualification and handoff to a partner sales team\u2014core duties of a junior business-development function, not a Strategy and Operations, Revenue Operations, or Business Transformation role. Although the candidate has strong Salesforce administration, systems thinking, and stakeholder-communication skills, the absence of phone-based prospecting, lead-nurturing, or partner-channel experience, combined with a significant seniority mismatch (eight-year senior-IC tenure to entry-level BDR scope), places this outside target or approved-stretch families. Recommend skip: candidate's background and seniority trajectory do not align with the role's scope or family.\"",
+    "uncertainties": [
+      "Company size and stage not stated in JD; Xero brand reputation does not substitute for posted context",
+      "No explicit indication whether the role expects multi-language capability or Australian market experience; candidate is German native and English fluent",
+      "Partner channel strategy/ecosystem depth not evident in JD; unclear whether this role has hidden scope or strategic upside"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

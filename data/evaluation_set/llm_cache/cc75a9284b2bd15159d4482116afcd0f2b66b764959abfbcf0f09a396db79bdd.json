@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaled global commercial operations and transformation programs, owns product requirements, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "Own end-to-end product strategy for real-time and post-transaction monitoring, rule design, alert optimisation, workflow automation, and client-specific risk controls"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries/CTEs, window functions); writes BigQuery queries directly to pull and shape own data; builds Looker dashboards; advanced Excel/Sheets; designs and directs AI/LLM agents for production systems with evaluation methodology and benchmarking",
+        "evidence_strength": "strong",
+        "job_requirement": "Optimise monitoring rules and thresholds to improve detection quality and significantly reduce false positives; data-driven mindset with ability to analyse transaction data and rule performance"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations across multiple functions at Google; experience with Salesforce administration and partnering with engineering on feature requests; directs LLM coding agents on cross-functional production systems",
+        "evidence_strength": "strong",
+        "job_requirement": "Work cross-functionally with Risk, Compliance, Operations, Data, and Engineering teams; translate regulatory and risk requirements into scalable product solutions"
+      },
+      {
+        "candidate_evidence": "Eight years at scale; led transformation programs; experience in Commercial Operations (translates to Revenue Operations: territory management, reporting cadence, control frameworks); designs and specs automated systems with AI/agentic tooling",
+        "evidence_strength": "medium",
+        "job_requirement": "Build scalable, automated systems in regulated environments while balancing risk, operational efficiency, and customer experience"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background managing territory budgets and merchant/customer operations; led global scaling and optimization initiatives; no direct fraud/AML case-management experience documented",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with Risk Operations to optimise alert triage, case management, and investigator productivity; design client-specific risk controls for large and complex merchants"
+      },
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration; applies AI to work smarter and solve problems",
+        "evidence_strength": "strong",
+        "job_requirement": "Identify opportunities to leverage AI and advanced analytics to improve detection accuracy and reduce manual operational effort"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No direct fraud, AML, or transaction monitoring product experience; domain is payments/fintech risk infrastructure, not commercial/revenue operations",
+        "mitigation": "Strong data, SQL, analytics, and cross-functional execution foundation transfers; AML/fraud rules and case-management patterns can be learned with embedded risk/compliance guidance; eight-year track record of navigating complex regulated environments (Google Services) demonstrates regulatory fluency",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited documented exposure to case-management or investigator-workflow tooling, or AML/fraud-detection platform administration",
+        "mitigation": "Candidate has designed and optimized complex multi-stakeholder workflows (global Commercial Ops); Salesforce admin and partnering with engineers show ability to learn operational platforms; can accelerate on domain via on-the-job mentoring from Risk/Ops teams",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated background in machine learning or advanced analytics model governance; preferred qualification listed in JD",
+        "mitigation": "Candidate actively learns Python (data-analysis/pandas); designs AI/agentic evaluation methodology and benchmarking; not a production ML engineer role; can partner with Data team on advanced-analytics upskilling",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Senior PM role requires 6+ years PM experience. JD emphasizes end-to-end product ownership, cross-functional leadership across Risk/Compliance/Ops/Data/Eng, and regulatory navigation in scaled fintech. Title + scope maps to L5 senior IC in Google ladder. no manager-of-managers signal present, ruling out L6.",
+    "role_family_fit": 62,
+    "scope_seniority": 76,
+    "summary": "Candidate brings eight years of scaled product operations and transformation experience with strong data/SQL/analytics foundation and proven ability to design cross-functional systems in regulated environments. Core gap is domain depth\u2014no direct fraud/AML/transaction-monitoring ownership\u2014but Commercial Operations background, data-query proficiency, and AI/agentic-tooling design address core PM responsibilities. Risk-product strategy differs from commercial-ops strategy; manageability depends on embedded mentoring and domain access during ramp.",
+    "uncertainties": [
+      "Candidate's Commercial Operations experience at Google and its specific regulatory/compliance scope relative to fintech fraud/AML governance not detailed; level of intersection unclear",
+      "Depth of Salesforce admin and case-management tooling experience not specified; relevance to Airwallex investigation workflows unknown",
+      "Company stage and team maturity at Airwallex not stated in JD; timeline for domain ramp-up dependency unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

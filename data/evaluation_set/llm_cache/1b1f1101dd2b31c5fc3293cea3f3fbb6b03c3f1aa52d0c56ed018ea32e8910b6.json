@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services building and scaling global commercial operations with cross-functional stakeholder management and partnership ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and nurture long-term relationships with key clients, serving as their primary point of contact for technical matters"
+      },
+      {
+        "candidate_evidence": "Product Operations and Commercial Operations leadership experience identifying optimization and scaling opportunities across global operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Understand clients' business needs and goals, proactively identify opportunities to optimize their payment solutions"
+      },
+      {
+        "candidate_evidence": "Eight years of strategy and operations experience with strong analytical capabilities: SQL/BigQuery, advanced Excel/Sheets, Looker/Tableau dashboarding; manages stakeholders across technical and commercial teams",
+        "evidence_strength": "strong",
+        "job_requirement": "3 years of experience in an analytical or technical role with experience managing internal and external stakeholders"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leadership background with demonstrated cross-functional communication and training/enablement at Google scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Effective presentation skills and ability to engage with both technical and non-technical stakeholders"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 68,
+    "gap_manageability": 42,
+    "gaps": [
+      {
+        "gap": "No Customer Success, account management, or dedicated TAM experience; background is strategy and operations, not quota-carrying CS or client-facing support",
+        "mitigation": "Commercial operations and stakeholder management translate partially to account relationships, but pure CS/TAM domain knowledge and rhythms would require ramp-up",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated payments or fintech domain experience; Checkout.com role assumes deep knowledge of payment methods, 3DS/SCA/AVS/MIT, PCI-DSS/PSD2, and API-based payment integrations",
+        "mitigation": "Candidate has strong analytical foundations and process-design capability to learn payments domain, but domain depth is material gap for a TAM role",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on technical depth in front-end/back-end technologies (JavaScript, CSS, HTML) required to debug integrations and provide technical guidance on payment flows",
+        "mitigation": "Basic Python and SQL proficiency exist, but deeper front-end/API troubleshooting experience is not evident; would require domain-specific upskilling",
+        "severity": "medium"
+      },
+      {
+        "gap": "No crypto or iGaming vertical expertise called out in title and role context",
+        "mitigation": "Operational principles transfer, but vertical-specific regulatory and technical nuances (crypto AML, gaming licensing, chargebacks) require onboarding",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Scope centers on client relationship ownership, technical troubleshooting, project coordination, and product feedback\u2014typical L4 (Senior Manager / Senior IC) specialist / account role. Company stage (10B daily transactions, 20 global offices) and explicit 3-year requirement support L4. No manager-of-managers or VP-level scope indicated.",
+    "role_family_fit": 32,
+    "scope_seniority": 58,
+    "summary": "Technical Account Management role for Checkout.com's Crypto & iGaming vertical. Candidate brings strong operations and stakeholder-management experience but lacks Customer Success, payments-domain, and dedicated fintech/TAM background. Role requires deep knowledge of payment flows, compliance frameworks (3DS, PCI-DSS, PSD2), API integrations, and vertical-specific regulations (crypto AML, gaming chargeback rules). This is a deprioritized function family (CS/account management without strategic transformation scope) for the candidate's target profile, and domain and function mismatch is material despite strong analytical and process-design foundations.",
+    "uncertainties": [
+      "Company size and stage not explicit in role JSON; inferred from description (10B transactions, 20 offices) but formal org context missing",
+      "Reporting structure and broader scope of 'Senior Specialist' title not specified\u2014could indicate individual contributor or light team scope",
+      "Crypto and iGaming vertical-specific requirements and regulatory complexity not detailed; assumed material based on title",
+      "Degree requirement stated as 'desirable' rather than 'required,' supporting equivalent practical experience equivalence"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

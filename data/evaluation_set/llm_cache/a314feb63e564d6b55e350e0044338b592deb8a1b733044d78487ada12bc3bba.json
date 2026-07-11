@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience translates to partner operations context.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner-facing role managing excellence, relationships, and strategic alignment"
+      },
+      {
+        "candidate_evidence": "Transformation program ownership and commercial operations scaling demonstrate process design and execution capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Performance management and planning enablement"
+      },
+      {
+        "candidate_evidence": "Global commercial operations at scale requires multi-stakeholder coordination and program execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management and cross-functional alignment"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "Partner operations or dedicated partner success/excellence background not evident in profile; candidate background is commercial operations and internal transformation, not customer-facing or partner-management roles.",
+        "mitigation": "Eight years of stakeholder management and transformation program execution can transfer to partner-excellence context with domain onboarding on Pigment's partner ecosystem and success metrics.",
+        "severity": "medium"
+      },
+      {
+        "gap": "SaaS or fast-growing technology partner ecosystem exposure not stated; Pigment operates in FP&A/business planning SaaS with a partner-driven go-to-market model.",
+        "mitigation": "Commercial operations at scale at Google transfers broad business acumen and process discipline; partner program mechanics and SaaS partner types would require ramp.",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD does not specify years of experience, team size, or detailed success criteria; estimated level L4 based on 'Manager' phrasing and partner-excellence scope, but seniority anchor is unclear.",
+        "mitigation": "Apply clarifying questions about team size, reporting line, and whether this role manages partner program staff or is an individual contributor focused on partner relationship strategy.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "JD title is \"Partner Excellence Manager\" with no explicit years required or team-size scope. At a 600+-person SaaS company, \"Manager\" typically maps to L4 (3\u20135 years, team or functional ownership, early-career IC or lead). Estimated confidence is moderate because the role does not specify whether it is IC or team-management, and company growth stage does not fully clarify seniority band.",
+    "role_family_fit": 45,
+    "scope_seniority": 60,
+    "summary": "Partner Excellence Manager at Pigment is a Professional Services / partner operations role at an estimated L4 level, not a target Strategy and Operations or Product Operations family. While the candidate demonstrates strong stakeholder management, transformation program execution, and commercial operations scaling at Google, her background is internal-facing commercial operations and transformation, not customer/partner success or partner-excellence strategy. Role family fit is below target (partner ops is a stretch family only when scope is strategic and cross-functional partner program design; this JD emphasizes relationship excellence and success metrics without clear program-strategy ownership). Gap manageability is moderate: domain transition and partner-ecosystem familiarization are manageable, but lack of dedicated CS or partner-background experience is a material gap. Recommended to skip unless partner-operations transformation scope is explicitly confirmed in conversations.",
+    "uncertainties": [
+      "JD does not specify team size, reporting line, or cross-functional program-ownership scope; cannot confirm whether role is strategic partner-program design or customer/partner success individual contribution.",
+      "No detail on Pigment's partner ecosystem structure, go-to-market model, or partner-excellence priorities.",
+      "Candidate's 'partner operations' family is listed as target, but profile evidence is internal commercial operations and transformation, not partner-facing or dedicated partner-success background."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

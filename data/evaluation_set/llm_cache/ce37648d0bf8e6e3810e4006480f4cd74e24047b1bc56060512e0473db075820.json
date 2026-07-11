@@ -1,0 +1,85 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Advanced Excel and Sheets; SQL proficiency with joins, GROUP BY, subqueries, and window functions; BigQuery querying and data shaping; Looker dashboarding\u2014demonstrates technical data analysis capability but no stated experimentation methodology or causal inference background",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience in experimentation and causal inference to drive data-informed product decisions"
+      },
+      {
+        "candidate_evidence": "AI/agentic tooling: designs specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking, and calibration. Eight years at Google Devices and Services with scaling experience and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with engineering teams to design and build tools and infrastructure to enable optimization at scale and deploy ML systems to production"
+      },
+      {
+        "candidate_evidence": "Eight years in Strategy and Operations with demonstrated cross-functional partnership and stakeholder influence; commercial operations leadership at Google suggests communication and influence capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Clearly and persuasively communicate complex data insights and technical recommendations to both technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions suggests seniority and leadership exposure, but no explicit mentoring, coaching, or team leadership evidence supplied",
+        "evidence_strength": "weak",
+        "job_requirement": "Mentor and coach junior data scientists and engineers"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Advanced degree (PhD or MS) in quantitative field required; candidate profile does not state degree or field",
+        "mitigation": "Confirm educational background. If bachelor's only, gap is disqualifying per JD language 'Advanced degree (PhD or MS)'\u2014this is a hard minimum, not preferred.",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years industry data science or applied ML: candidate background is Strategy and Operations, not data science or ML engineering",
+        "mitigation": "Candidate's eight years at Google may include some data-driven strategy, but no explicit data science project ownership, model development, or ML systems delivery is stated in profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficient in SQL and Python/R: candidate has proficient SQL and basic Python (data analysis / pandas track, actively learning), not production-grade Python or R",
+        "mitigation": "SQL is covered; Python is basic and learning\u2014does not meet 'proficient' standard for a Staff-level data scientist role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Strong experience deploying ML systems to production: candidate's production background is AI/agentic tooling direction and evaluation, not classical ML model deployment or production ML infrastructure",
+        "mitigation": "LLM agent work is not classical ML deployment; gap remains material for a core Staff Data Scientist function.",
+        "severity": "high"
+      },
+      {
+        "gap": "Technical leadership in data science and ML algorithms (contextual bandits, experimentation design, causal inference): no stated background in these domains",
+        "mitigation": "Candidate's strength is cross-functional operations and AI tooling direction, not foundational data science or algorithmic research.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Advanced degree (PhD or MS) in a quantitative field such as Statistics, Engineering, Computer Science, Economics, or related disciplines.' This is a minimum qualification, not preferred. Candidate profile does not provide educational background. If candidate holds only a bachelor's degree, this is a hard blocker per JD language.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires '5+ years of industry experience in data science or applied ML.' Candidate's eight years are in Strategy and Operations / Commercial Operations, not data science or applied ML. No stated projects building, training, deploying, or optimizing ML models, conducting experimentation frameworks, or owning data science initiatives.",
+        "type": "disqualifying_hard_requirement"
+      },
+      {
+        "evidence": "JD requires 'Proficient in SQL and Python/R.' Candidate is proficient in SQL but has 'basic, actively learning' Python (data-analysis / pandas track). No R stated. Basic Python does not meet 'proficient' standard for a Staff-level data science role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Staff Data Scientist IC role with 5+ years required data science experience, advanced degree mandate, production ML deployment, and algorithm/experimentation thought leadership. Reports to leadership driving payments optimization at scale. This is a senior technical IC with substantial scope (L6 in Google-equivalent terms). Company stage (unicorn, 2,200 employees, global) and role criticality support L6 floor.\".",
+    "role_family_fit": 5,
+    "scope_seniority": 72,
+    "summary": "This is a Staff Data Scientist role requiring advanced degree, 5+ years data science/ML, proficiency in Python/R, and production ML deployment experience. Candidate is a Strategy and Operations leader with eight years at Google, strong SQL, basic Python, and AI/agentic tooling direction, but no stated background in classical data science, ML engineering, experimentation frameworks, or causal inference. The role is a hard mismatch on domain, education, and technical depth; this is not an approved stretch or target family. Not recommended.",
+    "uncertainties": [
+      "Candidate profile does not supply educational background (degree type/field); if bachelor's only, advanced-degree requirement is disqualifying per JD language.",
+      "Extent of candidate's data science project involvement at Google is not detailed; assumed minimal based on Strategy and Operations positioning.",
+      "Whether candidate's AI/agentic tooling work includes classical ML model training, deployment, or evaluation is unclear.",
+      "Production ML systems experience likely refers to directing LLM agents, not classical ML model delivery pipeline."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with operations and transformation background; no demonstrated railway/transit operations regulatory expertise",
+        "evidence_strength": "weak",
+        "job_requirement": "Sehr sicheres Beherrschen des eisenbahnbetrieblichen Regelwerks, inkl. europ\u00e4ischer Regelungen und grenznahen Auslands"
+      },
+      {
+        "candidate_evidence": "No evidence of locomotive driver training or certification in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Abgeschlossene Ausbildung als Triebfahrzeugf\u00fchrer"
+      },
+      {
+        "candidate_evidence": "Profile indicates global commercial operations experience; willingness for German nationwide travel, weekend/holiday/night shifts, and on-call duty not stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Hohe Reisebereitschaft deutschlandweit; Bereitschaft zur Arbeit an Wochenenden, Feiertagen und nachts; Rufbereitschaften"
+      },
+      {
+        "candidate_evidence": "Eight years in operations and transformation roles at Google implies stakeholder management and cross-functional communication capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Ausgepr\u00e4\u00adgte kommunikative Sensibilit\u00e4t im Umgang mit Mitarbeitenden und Beh\u00f6rden"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No railway/transit operations regulatory expertise or regulatory-compliance background",
+        "mitigation": "Domain knowledge is learnable but requires substantial ramp; candidate would need railway operations onboarding and regulatory certification pathways",
+        "severity": "high"
+      },
+      {
+        "gap": "No locomotive driver (Triebfahrzeugf\u00fchrer) training or certification",
+        "mitigation": "This appears to be a formal requirement; acquiring certification is a lengthy and specialized process outside typical ops-to-transit transitions",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in safety-critical operations inspection or regulatory audit/compliance work",
+        "mitigation": "Safety Inspector role requires hands-on field inspection and fault-finding expertise; Google ops experience is office/strategic-based, not field/safety-inspection-based",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited visibility on willingness for German nationwide travel, weekend/holiday/night shift work, and on-call duty",
+        "mitigation": "Candidate profile does not confirm flexibility for these operational demands; role requires high availability",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "FlixTrain Safety Inspector (Betriebskontrolleur) requires formal locomotive driver certification (Triebfahrzeugf\u00fchrer) and deep railway operations regulatory knowledge. field inspection scope and individual-contributor safety accountability map to L4 IC. No management scope evident. JD does not state company stage, complicating confidence slightly.",
+    "role_family_fit": 5,
+    "scope_seniority": 50,
+    "summary": "FlixTrain's Safety Inspector (Betriebskontrolleur) is a field-based safety and regulatory compliance role in railway operations, fundamentally misaligned with the candidate's Strategy and Operations / Product Operations background. The role requires mandatory locomotive driver certification, deep railway regulatory expertise, hands-on train-based inspection work, and high on-call/weekend availability. The candidate's eight years of office-based commercial operations and transformation at Google do not transfer to safety-critical field inspection, regulatory compliance, or transit-domain knowledge. This is a deprioritized domain and function (regulatory safety inspector, not strategic operations) with unmet hard prerequisites.",
+    "uncertainties": [
+      "Company stage and hiring flexibility for domain-switcher candidates not stated",
+      "Whether certification pathways are internally supported or must be completed pre-hire",
+      "Candidate's actual availability for German nationwide travel and shift-work demands not confirmed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

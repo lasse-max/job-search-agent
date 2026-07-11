@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration.",
+        "evidence_strength": "strong",
+        "job_requirement": "Help to design and build AI skills that increase technical support engineering productivity, quality and speed."
+      },
+      {
+        "candidate_evidence": "Python basic, actively learning (data-analysis / pandas track).",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficient in scripting languages such as Python or Bash."
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs with process design and execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Create and maintain high-quality technical documentation, including knowledge base articles and runbooks."
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with stakeholder management and cross-functional coordination.",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as a technical liaison between customers and internal teams, translating customer feedback into actionable product insights."
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "5+ years in technical support or customer-facing engineering role in SaaS, DevOps, or observability environment.",
+        "mitigation": "Candidate has eight years at Google in commercial operations and transformation, not technical support or customer-facing engineering. Cross-functional coordination is not equivalent to hands-on technical support depth.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep familiarity with operating systems (Linux, Unix, macOS, and Windows) and modern networking concepts.",
+        "mitigation": "No evidence of OS administration, troubleshooting, or networking expertise in candidate profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficient scripting (Python or Bash) and strong diagnostic/debugging skills across complex distributed systems.",
+        "mitigation": "Python is basic and learning-level; no evidence of production scripting, debugging distributed systems, or infrastructure troubleshooting.",
+        "severity": "high"
+      },
+      {
+        "gap": "Working knowledge of Kubernetes, cloud platforms (AWS, Azure, GCP), and hands-on infrastructure deployment/troubleshooting.",
+        "mitigation": "No demonstrated experience with Kubernetes, cloud infrastructure, or deployment tooling (Terraform, CI/CD).",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience with observability/monitoring tools (Prometheus, Grafana, Jaeger, Loki) and OpenTelemetry.",
+        "mitigation": "No evidence of observability platform or monitoring tool experience; agentic AI design does not translate to observability domain knowledge.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Bachelor's degree in Computer Science, Information Technology, or a related technical field. ... Proficient in scripting languages such as Python or Bash. ... Experience with cloud platforms like AWS, Azure, or Google Cloud Platform. ... Working knowledge of Kubernetes; particularly in troubleshooting, scaling, and deployment contexts. ... Strong diagnostic and debugging skills across complex distributed systems.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 5+ years technical support/SaaS, mentoring scope, high-stakes on-call ownership, and technical leadership (designing AI skills, driving engineering coordination). This spans senior-IC and early-manager expectations, consistent with L5 (6\u20139 years established senior ownership). Confidence is 78 because company stage is not stated in JD or Role JSON.\".",
+    "role_family_fit": 8,
+    "scope_seniority": 45,
+    "summary": "This is a hands-on technical support engineering role requiring 5+ years of customer-facing SaaS/DevOps troubleshooting, deep OS/networking/Kubernetes expertise, proficient scripting, and cloud infrastructure knowledge. The candidate is a Strategy and Operations leader with AI agentic design and commercial transformation experience, not technical support, infrastructure, or observability domain depth. The mismatch is structural: the role is fundamentally engineering-focused support, not strategy, operations, or transformation. The candidate's AI skills (agentic tooling) offer one narrow alignment but cannot overcome the missing core technical support, infrastructure, and scripting requirements.\"",
+    "uncertainties": [
+      "Company size/stage context for role calibration not provided in JD.",
+      "Depth of customer-facing technical support culture at Snowflake Observe not evident from JD alone.",
+      "Whether 'hands-on' AI-skill design role is distinct from production coding requirement or falls within hard blocker scope."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

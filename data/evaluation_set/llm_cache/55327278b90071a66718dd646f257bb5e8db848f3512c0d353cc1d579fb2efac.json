@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Designs, specs, and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration. Eight years scaling global commercial operations and transformation programs demonstrates deep business problem-solving at scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Translate complex business problems into scalable Pigment models using AI agents, formulas, dimensions, and advanced logic"
+      },
+      {
+        "candidate_evidence": "Eight years at Google leading commercial operations transformation; experience translating business requirements into implementation, UAT, rollout, and adoption at scale. Track record scaling global programs and driving strategic alignment across stakeholders.",
+        "evidence_strength": "strong",
+        "job_requirement": "Own end-to-end implementation of Pigment for key customers and act as a trusted advisor, guiding customers on best practices"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with transformation program expertise. Experience partnering with engineering on Salesforce feature requests and owning cross-functional implementation logistics.",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate with Customer Success, Solutions Architects, and Product teams; translate customer feedback into clear product requirements and specifications"
+      },
+      {
+        "candidate_evidence": "SQL proficient (joins, GROUP BY, subqueries/CTEs, window functions); BigQuery working knowledge; advanced Excel and Sheets. Builds Looker dashboards. Eight years managing data-driven commercial operations and transformation.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong analytical and problem-solving skills with data modeling, analytics, or business logic design; proficiency with formulas, logic, and structured modeling"
+      },
+      {
+        "candidate_evidence": "SQL proficient; BigQuery working knowledge. Python basic and actively learning on data-analysis/pandas track.",
+        "evidence_strength": "medium",
+        "job_requirement": "Programming (Python, SQL, or similar is a plus)"
+      },
+      {
+        "candidate_evidence": "Salesforce admin with territory-budget management experience. Eight years scaling SaaS operations at Google Devices and Services. Agentic-tooling ownership implies API and system integration exposure.",
+        "evidence_strength": "medium",
+        "job_requirement": "Familiarity with SaaS platforms or planning tools, APIs, data pipelines, and system integration concepts"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Required engineering or computer science degree from top-tier institution; candidate background is not stated",
+        "mitigation": "Candidate's eight years at Google (infrastructure-adjacent company) and agentic-tooling design/specification work may satisfy intent of technical rigor. Degree requirement may be waived by hiring team given strong hands-on technical depth in SQL, BigQuery, analytics, and AI tooling.",
+        "severity": "high"
+      },
+      {
+        "gap": "Applied AI/ML engineering depth; Python is basic and actively learning rather than production-level",
+        "mitigation": "Role emphasizes business problem-solving and implementation over production ML engineering. Candidate's agentic-tooling direction and evaluation methodology suggest applied AI judgment at scale. Python gap is manageable if core duty is not production model development.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated FP&A, financial modeling, or business planning workflow background (nice-to-have)",
+        "mitigation": "Commercial operations and global scaling experience translates to planning and process discipline. FP&A-specific domain can be acquired on the job.",
+        "severity": "low"
+      },
+      {
+        "gap": "Pigment platform-specific experience not stated",
+        "mitigation": "Role is framed as enabling candidates to learn and deploy on Pigment; no prior platform experience stated as hard requirement.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 2\u20135 years in technical, client-facing, or implementation roles (L4 anchor). reports to Professional Services function with cross-functional engineering/product partnership. No management scope or title escalation evident. Company size (600+, $400M raised, Gartner Visionary) suggests established growth-stage SaaS. no director/manager-of-managers signal. Estimate L4 with moderate confidence. lack of company stage detail and ambiguity on customer scope reduce certainty.",
+    "role_family_fit": 89,
+    "scope_seniority": 81,
+    "summary": "Strong fit for AI Deployment Strategist role. Candidate brings eight years of Commercial Operations strategy and transformation at scale\u2014directly translatable to end-to-end Pigment implementation, customer advisory, and cross-functional product feedback. Proficient in SQL, BigQuery, advanced analytics, and agentic-tooling direction. Primary gap is stated engineering/CS degree requirement (not confirmed) and Python at basic level; both manageable if hiring team prioritizes business problem-solving and implementation ownership over production ML engineering. Advisory: apply now.",
+    "uncertainties": [
+      "Candidate education background (degree type/institution) not stated; role lists engineering/CS degree from top-tier as required.",
+      "Depth of candidate's agentic-tooling ownership unclear\u2014directs/specs vs. hands-on engineering implementation.",
+      "No explicit Pigment, FP&A, or financial-planning platform experience disclosed; onboarding timeline unknown.",
+      "Customer scope (SMB, mid-market, enterprise) not specified in JD; may affect implementation complexity fit."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

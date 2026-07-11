@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; owns core product logic, UAT, rollout, and cross-functional delivery end-to-end",
+        "evidence_strength": "strong",
+        "job_requirement": "6+ years owning complex, scalable platform/B2B products (SaaS, payments, infra) from discovery to rollout"
+      },
+      {
+        "candidate_evidence": "Scaled commercial operations at Google; experience aligns with cross-functional coordination, but domain is not fintech/banking/payments-specific; however, structured alignment and policy navigation skills are demonstrated",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong track record in regulated, policy-heavy environments (fintech, banking, security), cross-functional alignment across Engineering, Risk, Compliance, Legal"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries, CTEs, window functions); writes BigQuery queries; advanced Excel/Sheets; builds Looker dashboards; owns AI/agentic tooling evaluation methodology and benchmarking",
+        "evidence_strength": "strong",
+        "job_requirement": "Data-Driven & Execution-Focused: Expert at defining product metrics, self-serve analyses (SQL/dashboards), distilling complex concepts for engineers and executives"
+      },
+      {
+        "candidate_evidence": "Directs LLM coding agents on production systems; owns evaluation methodology; partners with engineering on Salesforce feature requests; demonstrated ability to spec and align on technical systems",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven technical fluency to debate architecture, APIs, and data pipelines with engineering"
+      },
+      {
+        "candidate_evidence": "Owns requirements, logic design, UAT, and rollout for transformation programs; no explicit identity/authentication or payments-specific customer journey evidence in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Customer journey design, onboarding decisioning, user authentication, account recovery, authorization, and notifications across multiple customer types and regions"
+      },
+      {
+        "candidate_evidence": "No demonstrated IAM, authentication, or notification-systems expertise; platform systems experience is inferred from B2B product and transformation work, not identity-specific",
+        "evidence_strength": "weak",
+        "job_requirement": "Platform & Identity Expertise: scalable platform capabilities (APIs, SDKs) consumed by multiple teams, IAM, authN/authZ, policy engines, or global notification systems"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 65,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "No fintech, banking, or payments domain experience; Airwallex is a regulated payments platform requiring deep understanding of compliance, fraud prevention, KYC, and risk-mitigated customer onboarding",
+        "mitigation": "Candidate's experience scaling global operations and navigating cross-functional alignment (Engineering, Risk, Compliance) provides a foundation; payments domain knowledge is learnable with strong technical PM foundation and dedicated onboarding; prioritize pairing with compliance and risk stakeholders",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit identity, authentication, authorization, or account-security systems experience; role requires IAM, policy engines, user authentication, and multi-factor authentication expertise",
+        "mitigation": "Candidate has proven ability to own complex system design, logic flows, and cross-functional delivery; identity and authentication domains are learnable by a strong PM with technical fluency and support from Security and Product Engineering teams",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit global notification or customer-communication systems experience; role owns notification strategy across lifecycle, channels, compliance, fraud signals, and deliverability",
+        "mitigation": "Candidate owns customer journey logic and transformation programs; notification systems are a subset of customer-lifecycle design and can be ramped on with product and operations support",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct security and fraud-prevention background; role requires designing cost-effective mitigations against vectors like phishing, SMS pumping, and account abuse",
+        "mitigation": "Candidate can learn fraud and security patterns through mentorship with Security, Risk, and Compliance teams; technical fluency and data-analysis skills support defining metrics and running experiments on abuse vectors",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 80,
+    "level_rationale": "6+ years required, strategic platform/B2B product ownership from discovery to rollout, cross-functional leadership (Product, Engineering, Risk, Compliance), and technical fluency (APIs, data pipelines, architecture debate) align with L5 senior IC or lead scope. No management-of-managers or senior director title/reporting signal observed, and company stage/size context is not detailed in JD. confidence is high on seniority anchors but modest on organizational context. Singapore/Sydney role suggests established market, not startup exception.",
+    "role_family_fit": 72,
+    "scope_seniority": 75,
+    "summary": "Strong technical PM fundamentals: 8 years of platform/B2B product ownership, data-driven execution (SQL, dashboards, analytics), and cross-functional delivery align with the core PM competencies. Critical gaps: no fintech/payments/identity domain expertise, no fraud-prevention or security-systems background, and no explicit authentication/authorization platform work. Role requires navigating regulated environments and designing identity systems; these are significant but not disqualifying for a strong L5 PM willing to ramp fintech and security-specific knowledge with dedicated support.",
+    "uncertainties": [
+      "Company stage and organizational structure not detailed; Airwallex is $8B-valued but team size and reporting context are not specified in JD",
+      "Extent of Product's collaboration with Risk/Compliance/Legal unclear; candidate's cross-functional experience may not fully translate to fintech policy-heavy environments",
+      "Nature of 'transformation programs' at Google Devices not detailed; unclear whether these involved customer-facing or compliance-heavy systems",
+      "Candidate's willingness to relocate to Singapore or Sydney and ramp fintech/security domain knowledge not stated"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

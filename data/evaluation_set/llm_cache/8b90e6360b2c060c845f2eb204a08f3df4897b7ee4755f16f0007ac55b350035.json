@@ -1,0 +1,46 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with commercial operations and transformation program experience; no policy analysis, regulatory affairs, or government relations background stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Understanding global and local policy landscape in relation to Spotify's business objectives"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No government affairs, regulatory affairs, or public policy background",
+        "mitigation": "Fundamental function mismatch; no evidence of legislative advocacy, regulatory strategy, policy analysis, or government relations experience",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with legislators, regulators, or civil-society stakeholders",
+        "mitigation": "Role requires representing company before legislators and regulators; candidate background is entirely internal product and commercial operations",
+        "severity": "high"
+      },
+      {
+        "gap": "No policy landscape or regulatory-risk mitigation background",
+        "mitigation": "JD emphasizes understanding policy landscape, seeing around corners, and mitigating regulatory risks; no policy or compliance experience supplied",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Senior Manager title reporting to Senior Director in a large public company implies established IC or junior-manager scope. Title and reporting line suggest L5 (senior IC or entry manager). no explicit years-of-experience or manager-of-managers language in JD, so L5 rather than L6.",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "This is a Government Affairs and policy-advocacy role, not a Strategy and Operations, Product Operations, or Business Transformation role. The candidate's experience is in commercial operations, technology product ownership, and internal transformation at Google\u2014none of which translates to regulatory affairs, policy analysis, legislative advocacy, or the civil-society and political-stakeholder relationships that define this function. The function family mismatch is disqualifying.",
+    "uncertainties": [
+      "JD does not specify minimum years in government affairs or policy roles",
+      "Scope of 'advisory and external advocacy' is not fully detailed in JD",
+      "Company size and stage not stated; cannot fully contextualize reporting-line seniority"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

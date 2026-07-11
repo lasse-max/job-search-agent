@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; demonstrates sustained analytical rigor and execution across complex, cross-functional initiatives.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical, advisory skills, high quality standards and attention to detail"
+      },
+      {
+        "candidate_evidence": "Leadership experience scaling and upskilling global commercial operations teams; demonstrated cross-functional stakeholder management at a large technology organization.",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication skills and ability to work with a wide variety of stakeholders"
+      },
+      {
+        "candidate_evidence": "Two promotions and sustained tenure at Google indicate team impact and organizational trust; experience coaching and upskilling operations analysts on multiple commercial programs.",
+        "evidence_strength": "medium",
+        "job_requirement": "Hardworking, strong team player, benevolent and resilient"
+      }
+    ],
+    "confidence": 0.5,
+    "estimated_level": "L4",
+    "evidence_strength": 22,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No Anti-Financial Crime (AML-CFT) background or domain expertise; candidate has commercial operations and product operations experience only.",
+        "mitigation": "Candidate is an excellent researcher and learner with strong operations fundamentals; however, AML-CFT investigations, SAR drafting, and regulatory compliance require deep domain knowledge typically built over years. A 6-month CDD role leaves minimal onboarding time.",
+        "severity": "high"
+      },
+      {
+        "gap": "No SAR (Suspicious Activity Report) drafting or Tracfin regulatory experience; the role explicitly requires this as core duty and experience is preferred or required.",
+        "mitigation": "SAR writing and Tracfin compliance are specialized regulatory skills. While candidate can learn compliance frameworks quickly, SAR drafting quality is directly audited; this is not a capability that can be acquired in weeks.",
+        "severity": "high"
+      },
+      {
+        "gap": "No transaction monitoring, sanctions screening, or adverse media investigation background mentioned in profile or tools.",
+        "mitigation": "Role lists these as proven operational functions. Candidate's commercial operations work does not include financial crime investigations or sanctions compliance.",
+        "severity": "high"
+      },
+      {
+        "gap": "No law degree (\u00c9cole de droit / Master II) or Grande \u00c9cole diploma explicitly noted in profile.",
+        "mitigation": "JD states 'Graduated in law or from a Grande Ecole - or alike.' Profile does not confirm educational background; this is a hard eligibility gate in most regulated financial crime teams.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Fixed-term 6-month role; candidate career pattern shows sustained, strategic tenure roles at large organizations. Role is likely not strategic or transformational in nature.",
+        "mitigation": "Candidate's positioning and track record indicate preference for longer-term strategic impact and team scaling. A short-term compliance delegation role is structurally misaligned with seniority and interests.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 3+ years' professional experience in AML-CFT operations, a law or Grande \u00c9cole degree, and independent SAR authority (D\u00e9clarant Tracfin) with oversight of team guidance and regulatory submissions. These are L4-equivalent IC responsibilities in financial crime, not L3. Regulatory accountability, investigation sign-off, and template/procedure design map to senior-specialist scope. Fixed-term contract and French regulatory specificity do not adjust level but signal short-tenure, compliance-delivery intent rather than strategic growth.",
+    "role_family_fit": 8,
+    "scope_seniority": 52,
+    "summary": "AFC Associate / SAR Delegate role is a specialized, compliance-focused, fixed-term (6-month) position requiring deep AML-CFT domain expertise, SAR drafting authority, and law or Grande \u00c9cole credentials. Candidate is a Strategy & Operations / commercial transformation leader with no financial crime background, no AML-CFT regulatory knowledge, no SAR drafting or Tracfin experience, and no indication of a law degree. While candidate demonstrates strong analytical, team, and stakeholder-management fundamentals, the domain, regulatory accountability, and short-term structure are orthogonal to candidate's positioning, expertise, and seniority profile. Role is entirely outside target and approved-stretch families.",
+    "uncertainties": [
+      "Candidate's educational credentials (law degree, Grande \u00c9cole, or equivalent) not stated in profile.",
+      "N26 company size and Risk function reporting structure not detailed in JD; assumes mid-market fintech regulatory team.",
+      "Whether candidate has any financial services, compliance, or regulated-industry experience not mentioned in profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}

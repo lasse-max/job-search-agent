@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import os
 from pathlib import Path
 
 from app.adapters import get_adapter
@@ -34,7 +35,18 @@ from app.services.evaluate import (
 )
 from app.services.llm_evaluator import LLMProviderError, ModelSpendCapExceeded
 
-STALE_EVALUATION_BACKFILL_LIMIT = 25
+DEFAULT_STALE_EVALUATION_BACKFILL_LIMIT = 25
+
+
+def stale_evaluation_backfill_limit() -> int:
+    raw = os.getenv(
+        "STALE_EVALUATION_BACKFILL_LIMIT",
+        str(DEFAULT_STALE_EVALUATION_BACKFILL_LIMIT),
+    )
+    try:
+        return max(0, int(raw))
+    except ValueError as exc:
+        raise ValueError("STALE_EVALUATION_BACKFILL_LIMIT must be an integer") from exc
 
 
 @dataclass(frozen=True)
@@ -136,7 +148,7 @@ def run_scan(
             conn,
             source_id,
             evaluator_version=HYBRID_EVALUATOR_VERSION,
-            limit=STALE_EVALUATION_BACKFILL_LIMIT,
+            limit=stale_evaluation_backfill_limit(),
         )
         evaluation_policy_version = current_evaluation_policy_version(
             HYBRID_EVALUATOR_VERSION

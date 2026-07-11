@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google; experience designing process systems and driving cross-functional execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and execute GTM talent acquisition strategy for fast-growing SaaS company"
+      },
+      {
+        "candidate_evidence": "Demonstrated stakeholder management across business teams; experience translating business requirements into operational systems",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with GTM leadership and hiring managers to define talent needs and recruit top performers"
+      },
+      {
+        "candidate_evidence": "Process design and transformation experience; no direct recruitment operations or talent acquisition background supplied",
+        "evidence_strength": "weak",
+        "job_requirement": "Own recruitment pipeline, candidate sourcing, and hiring processes"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No direct talent acquisition, recruitment operations, or HR background",
+        "mitigation": "Strong operations and process-design foundation could support onboarding, but domain-specific sourcing, candidate evaluation, and TA metrics expertise would require substantial ramp-up",
+        "severity": "high"
+      },
+      {
+        "gap": "No GTM-specific recruiting strategy or sales/revenue team hiring experience",
+        "mitigation": "Commercial operations background demonstrates GTM stakeholder exposure, but lacks proof of GTM talent pipeline ownership or sales hiring execution",
+        "severity": "high"
+      },
+      {
+        "gap": "Unknown experience with recruiting platforms, ATS systems, and TA-specific tooling beyond general Salesforce admin",
+        "mitigation": "Salesforce admin experience is transferable; platform-specific tools can be learned, but gap adds onboarding time",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role title \"Talent Acquisition Manager\" suggests individual contributor or small-team leadership. no management-of-managers scope cited. Company is 600+ person SaaS (scaling stage) with strong funding. Role appears L4 based on typical TA manager scope and company maturity.",
+    "role_family_fit": 15,
+    "scope_seniority": 60,
+    "summary": "This role is a Talent Acquisition Manager for a 600+ person SaaS company's GTM hiring, firmly in the HR/People function\u2014explicitly deprioritized in the candidate profile. While the candidate demonstrates strong operations, process design, and transformation leadership at scale, there is no direct recruitment, talent acquisition, or HR background. The gap from commercial operations to GTM talent recruiting is domain-specific and high-effort. Role fit is poor; recommend skip.",
+    "uncertainties": [
+      "Company stage and TA team structure not fully described in JD; could affect whether ramp-up is feasible",
+      "Candidate's exposure to recruiting or people operations at Google not detailed in profile",
+      "GTM hiring intensity and TA headcount at Pigment unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v6"
+}
