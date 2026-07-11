@@ -1,8 +1,8 @@
 {
   "versions": {
-    "candidate": "candidate_profile_v1",
-    "location": "location_policy_v1",
-    "scoring": "scoring_policy_v1"
+    "candidate": "candidate_profile_v2",
+    "location": "location_policy_v2",
+    "scoring": "scoring_policy_v2"
   },
   "targetRoleFamilies": [
     "Strategy and Operations",
@@ -30,7 +30,7 @@
     ],
     "principle": "Judge level by scope and responsibilities, not by title word alone.",
     "inScopeNote": "Associate or Senior Associate on a strategy team at a strong company can be L4-appropriate when the role owns meaningful strategic programs.",
-    "ceilingRule": "Target band is L4-L5. Head of / Director / VP / C-suite roles at established companies are over-leveled and should skip on level, not function. Small-startup Head-of roles can remain in-scope when scope is roughly L4-L5."
+    "ceilingRule": "Target band is L4-L5. Estimate seniority from scope and flag roles above or below the band; level alone must never skip or block a role. A modest fit down-rank may sort an above-band role below an otherwise similar in-band role. Small-startup Head-of roles can remain L4-L5-equivalent."
   },
   "languages": [
     {
@@ -80,7 +80,8 @@
       "Vienna",
       "Singapore",
       "Sydney",
-      "Melbourne"
+      "Melbourne",
+      "Perth"
     ],
     "tier1Only": [
       "Dublin / Ireland"
@@ -134,6 +135,45 @@
   "watchlist": {
     "total": 92,
     "enabled": 31,
+    "coverage": {
+      "scanned": 31,
+      "total": 92,
+      "percentage": 34,
+      "tone": "red",
+      "dark": 61,
+      "byTier": [
+        {
+          "tier": 1,
+          "scanned": 10,
+          "total": 20,
+          "percentage": 50,
+          "tone": "amber",
+          "dark": 10
+        },
+        {
+          "tier": 2,
+          "scanned": 13,
+          "total": 45,
+          "percentage": 29,
+          "tone": "red",
+          "dark": 32
+        },
+        {
+          "tier": 3,
+          "scanned": 8,
+          "total": 27,
+          "percentage": 30,
+          "tone": "red",
+          "dark": 19
+        }
+      ],
+      "darkByReason": {
+        "missing_source": 44,
+        "adapter_ready_disabled": 14,
+        "dead_feed": 3,
+        "manual_only": 0
+      }
+    },
     "companies": [
       {
         "name": "Google",
@@ -146,7 +186,16 @@
           "London",
           "Munich",
           "US"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.google.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Databricks",
@@ -156,7 +205,16 @@
         "targetLocations": [
           "Sydney",
           "London"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "databricks",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 757,
+        "careersUrl": "https://www.databricks.com/company/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/databricks/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "OpenAI",
@@ -167,7 +225,16 @@
           "Sydney",
           "Singapore",
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "openai",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 709,
+        "careersUrl": "https://openai.com/careers/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Stripe",
@@ -179,7 +246,16 @@
           "Melbourne",
           "Singapore",
           "London"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "stripe",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 496,
+        "careersUrl": "https://stripe.com/jobs",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Airbnb",
@@ -190,7 +266,16 @@
           "Sydney",
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "airbnb",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 218,
+        "careersUrl": "https://careers.airbnb.com/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "DoorDash",
@@ -201,7 +286,16 @@
           "Sydney",
           "Melbourne",
           "London"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careersatdoordash.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Uber",
@@ -212,7 +306,16 @@
           "Sydney",
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.uber.com/global/en/careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Canva",
@@ -221,7 +324,16 @@
         "coverageState": "Needs configuration",
         "targetLocations": [
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.lifeatcanva.com/en/jobs/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Atlassian",
@@ -231,7 +343,16 @@
         "targetLocations": [
           "Sydney",
           "London"
-        ]
+        ],
+        "atsType": "lever",
+        "sourceKey": "atlassian",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 0,
+        "careersUrl": "https://www.atlassian.com/company/careers",
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/atlassian?mode=json",
+        "manualFallback": "Lever source_key=atlassian returns 0 jobs; use manual URL/text intake for promising Atlassian roles until the real ATS feed is found.",
+        "notes": "Disabled 2026-06-27: Lever key appears dead/silent-zero. Tier-1 company; keep manual intake active while finding the real Atlassian ATS feed.",
+        "darkReasonCode": "dead_feed"
       },
       {
         "name": "Black Forest Labs",
@@ -243,7 +364,16 @@
           "Berlin",
           "London",
           "Remote - EU"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "blackforestlabs",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 12,
+        "careersUrl": "https://bfl.ai/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/blackforestlabs/jobs",
+        "manualFallback": "Greenhouse feed live; if it ever returns zero, use manual URL/text intake.",
+        "notes": "Added 2026-06-30 by owner. Greenhouse source_key=blackforestlabs verified live (12 jobs at audit). German AI lab, Freiburg — strong location fit; mostly research/eng today, watch for S&O/BizOps/partnerships roles.",
+        "darkReasonCode": null
       },
       {
         "name": "Airwallex",
@@ -254,7 +384,16 @@
           "Sydney",
           "Singapore",
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "airwallex",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 582,
+        "careersUrl": "https://careers.airwallex.com/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/airwallex?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Sierra",
@@ -266,7 +405,16 @@
           "Sydney",
           "Singapore",
           "Munich"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "sierra",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 135,
+        "careersUrl": "https://sierra.ai/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/sierra?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Mistral AI",
@@ -277,7 +425,16 @@
           "Munich",
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "lever",
+        "sourceKey": "mistral",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 172,
+        "careersUrl": "https://jobs.lever.co/mistral",
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/mistral?mode=json",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Palantir",
@@ -287,7 +444,16 @@
         "targetLocations": [
           "London",
           "Sydney / Canberra"
-        ]
+        ],
+        "atsType": "lever",
+        "sourceKey": "palantir",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 237,
+        "careersUrl": "https://www.palantir.com/careers/",
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/palantir?mode=json",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Amazon / AWS",
@@ -298,7 +464,16 @@
           "Sydney",
           "Singapore",
           "London"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.amazon.jobs/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Apple",
@@ -310,7 +485,16 @@
           "Singapore",
           "London",
           "Munich"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://jobs.apple.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Netflix",
@@ -321,7 +505,16 @@
           "Sydney",
           "Singapore",
           "London"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://jobs.netflix.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "SafetyCulture",
@@ -330,7 +523,16 @@
         "coverageState": "Needs configuration",
         "targetLocations": [
           "Sydney"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "safetyculture",
+        "supportedAdapter": null,
+        "jobCountAtAudit": 0,
+        "careersUrl": "https://safetyculture.com/careers/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/safetyculture?includeCompensation=false",
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": "Feed endpoint responded with zero jobs; verify expected volume before enabling.",
+        "darkReasonCode": "dead_feed"
       },
       {
         "name": "NEURA Robotics",
@@ -340,7 +542,16 @@
         "targetLocations": [
           "Metzingen",
           "Munich area"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://jobs.neura-robotics.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Helsing",
@@ -351,7 +562,16 @@
           "Munich",
           "Berlin",
           "London"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "helsing",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 132,
+        "careersUrl": "https://helsing.ai/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/helsing/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Anthropic",
@@ -361,7 +581,16 @@
         "targetLocations": [
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "anthropic",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 375,
+        "careersUrl": "https://www.anthropic.com/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Xero",
@@ -372,7 +601,16 @@
           "Sydney",
           "Melbourne",
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "xero",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 104,
+        "careersUrl": "https://careers.xero.com/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/xero?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Rokt",
@@ -383,7 +621,16 @@
           "Sydney",
           "New York",
           "London"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.rokt.com/company/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Wise",
@@ -393,7 +640,16 @@
         "targetLocations": [
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://wise.jobs/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Spotify",
@@ -402,7 +658,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "lever",
+        "sourceKey": "spotify",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 134,
+        "careersUrl": "https://www.lifeatspotify.com/jobs",
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/spotify?mode=json",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Checkout.com",
@@ -411,7 +676,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "checkout.com",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 208,
+        "careersUrl": "https://jobs.ashbyhq.com/checkout.com",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/checkout.com?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Grab",
@@ -420,7 +694,16 @@
         "coverageState": "Needs configuration",
         "targetLocations": [
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.grab.careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Salesforce",
@@ -431,7 +714,16 @@
           "London",
           "Sydney",
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.salesforce.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Snowflake",
@@ -442,7 +734,16 @@
           "London",
           "Sydney",
           "Singapore"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "snowflake",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 413,
+        "careersUrl": "https://careers.snowflake.com/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/snowflake?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "ServiceNow / Moveworks",
@@ -453,7 +754,16 @@
           "London",
           "Sydney",
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.servicenow.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Meta",
@@ -464,7 +774,16 @@
           "London",
           "Singapore",
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.metacareers.com/jobs/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Microsoft",
@@ -476,7 +795,16 @@
           "Singapore",
           "London",
           "Munich"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://jobs.careers.microsoft.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "LinkedIn",
@@ -487,7 +815,16 @@
           "London",
           "Singapore",
           "Sydney"
-        ]
+        ],
+        "atsType": "lever",
+        "sourceKey": "linkedin",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 20,
+        "careersUrl": "https://careers.linkedin.com/",
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/linkedin?mode=json",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Disney",
@@ -498,7 +835,16 @@
           "London",
           "Singapore",
           "Sydney / Melbourne"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "disney",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 1,
+        "careersUrl": "https://jobs.disneycareers.com/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/disney/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "OutSystems",
@@ -510,7 +856,16 @@
           "Singapore",
           "Germany",
           "remote Europe"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.outsystems.com/careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Celonis",
@@ -520,7 +875,16 @@
         "targetLocations": [
           "Munich",
           "London"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "celonis",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 201,
+        "careersUrl": "https://careers.celonis.com/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/celonis/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Harvey",
@@ -529,7 +893,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "harvey",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 292,
+        "careersUrl": "https://www.harvey.ai/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/harvey?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Glean",
@@ -540,7 +913,16 @@
           "London",
           "Singapore",
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.glean.com/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Cohere",
@@ -550,7 +932,16 @@
         "targetLocations": [
           "London",
           "remote Europe"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "cohere",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 132,
+        "careersUrl": "https://cohere.com/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "ElevenLabs",
@@ -560,7 +951,16 @@
         "targetLocations": [
           "London",
           "remote Europe"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "elevenlabs",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 153,
+        "careersUrl": "https://elevenlabs.io/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Pigment",
@@ -569,7 +969,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "lever",
+        "sourceKey": "pigment",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 95,
+        "careersUrl": "https://www.pigment.com/careers",
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/pigment?mode=json",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Personio",
@@ -579,7 +988,16 @@
         "targetLocations": [
           "Munich",
           "London"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.personio.com/careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "N26",
@@ -589,7 +1007,16 @@
         "targetLocations": [
           "Berlin",
           "Barcelona"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "n26",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 65,
+        "careersUrl": "https://n26.com/en-eu/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/n26/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "TikTok",
@@ -600,7 +1027,16 @@
           "Singapore",
           "London",
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.tiktok.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Booking.com",
@@ -611,7 +1047,16 @@
           "London",
           "Singapore",
           "Amsterdam"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.booking.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Deliveroo",
@@ -620,7 +1065,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "deliveroo",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 206,
+        "careersUrl": "https://careers.deliveroo.co.uk/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Block",
@@ -631,7 +1085,16 @@
           "London",
           "Australia",
           "remote"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "block",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 210,
+        "careersUrl": "https://block.xyz/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/block/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "DeepL",
@@ -641,7 +1104,16 @@
         "targetLocations": [
           "Germany",
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "deepl",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 22,
+        "careersUrl": "https://www.deepl.com/en/jobs",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/deepl?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Parloa",
@@ -651,7 +1123,16 @@
         "targetLocations": [
           "Berlin",
           "Munich"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "parloa",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 54,
+        "careersUrl": "https://www.parloa.com/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/parloa/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "SAP",
@@ -663,7 +1144,16 @@
           "London",
           "Singapore",
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://jobs.sap.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Expedia Group",
@@ -673,7 +1163,16 @@
         "targetLocations": [
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.expediagroup.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Adobe",
@@ -684,7 +1183,16 @@
           "London",
           "Singapore",
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.adobe.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Visa",
@@ -695,7 +1203,16 @@
           "Singapore",
           "London",
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://corporate.visa.com/en/jobs/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Mastercard",
@@ -706,7 +1223,16 @@
           "Singapore",
           "London",
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.mastercard.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Revolut",
@@ -716,7 +1242,16 @@
         "targetLocations": [
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.revolut.com/careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Vercel",
@@ -726,7 +1261,16 @@
         "targetLocations": [
           "London",
           "remote Europe"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "vercel",
+        "supportedAdapter": null,
+        "jobCountAtAudit": 0,
+        "careersUrl": "https://vercel.com/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/vercel?includeCompensation=false",
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": "Feed endpoint responded with zero jobs; verify expected volume before enabling.",
+        "darkReasonCode": "dead_feed"
       },
       {
         "name": "Quantexa",
@@ -737,7 +1281,16 @@
           "London",
           "Singapore",
           "Sydney"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "quantexa",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 25,
+        "careersUrl": "https://www.quantexa.com/careers/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/quantexa?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Synthesia",
@@ -746,7 +1299,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "synthesia",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 80,
+        "careersUrl": "https://www.synthesia.io/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Encord",
@@ -755,7 +1317,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "encord",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 48,
+        "careersUrl": "https://encord.com/careers/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/encord?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Lovable",
@@ -765,7 +1336,16 @@
         "targetLocations": [
           "Stockholm",
           "London / remote Europe"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "lovable",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 79,
+        "careersUrl": "https://lovable.dev/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/lovable?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Magentic",
@@ -774,7 +1354,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "magentic",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 9,
+        "careersUrl": "https://www.magentic.ai/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/magentic?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Aleph Alpha",
@@ -784,7 +1373,16 @@
         "targetLocations": [
           "Heidelberg",
           "Berlin"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "alephalpha",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 10,
+        "careersUrl": "https://aleph-alpha.com/careers/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/alephalpha?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Decagon",
@@ -793,7 +1391,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "decagon",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 108,
+        "careersUrl": "https://jobs.ashbyhq.com/decagon",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/decagon?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Cognition",
@@ -803,7 +1410,16 @@
         "targetLocations": [
           "Singapore",
           "London / remote"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "cognition",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 68,
+        "careersUrl": "https://cognition.ai/careers",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/cognition?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Fortescue",
@@ -812,7 +1428,16 @@
         "coverageState": "Needs configuration",
         "targetLocations": [
           "Perth"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.fortescue.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Zendesk",
@@ -823,7 +1448,16 @@
           "Sydney",
           "Singapore",
           "London"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://jobs.zendesk.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Deputy",
@@ -832,7 +1466,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "Sydney"
-        ]
+        ],
+        "atsType": "lever",
+        "sourceKey": "deputy",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 11,
+        "careersUrl": "https://www.deputy.com/careers",
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/deputy?mode=json",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Culture Amp",
@@ -843,7 +1486,16 @@
           "Sydney",
           "Melbourne",
           "London"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "cultureamp",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 13,
+        "careersUrl": "https://www.cultureamp.com/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/cultureamp/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Harrison.ai",
@@ -852,7 +1504,16 @@
         "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://harrison.ai/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Quantium",
@@ -861,7 +1522,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "Sydney"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "quantium",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 25,
+        "careersUrl": "https://www.quantium.com/careers/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/quantium/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Nearmap",
@@ -870,7 +1540,16 @@
         "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.nearmap.com/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Macquarie Group",
@@ -879,7 +1558,16 @@
         "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.macquarie.com/au/en/careers.html",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Woodside Energy",
@@ -888,7 +1576,16 @@
         "coverageState": "Manual fallback",
         "targetLocations": [
           "Perth"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.woodside.com/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "BHP",
@@ -899,7 +1596,16 @@
           "Perth",
           "Brisbane",
           "Melbourne"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.bhp.com/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Rio Tinto",
@@ -910,7 +1616,16 @@
           "Perth",
           "Brisbane",
           "London"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.riotinto.com/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Wesfarmers",
@@ -920,7 +1635,16 @@
         "targetLocations": [
           "Perth",
           "Melbourne"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.wesfarmers.com.au/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Klarna",
@@ -930,7 +1654,16 @@
         "targetLocations": [
           "London",
           "Berlin"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.klarna.com/careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Zalando",
@@ -939,7 +1672,16 @@
         "coverageState": "Manual fallback",
         "targetLocations": [
           "Berlin"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://jobs.zalando.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Trade Republic",
@@ -948,7 +1690,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "Berlin"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "traderepublic",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 1,
+        "careersUrl": "https://traderepublic.com/careers",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/traderepublic/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Delivery Hero",
@@ -958,7 +1709,16 @@
         "targetLocations": [
           "Berlin",
           "Singapore"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.deliveryhero.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "HelloFresh",
@@ -967,7 +1727,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "Berlin"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "hellofresh",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 369,
+        "careersUrl": "https://careers.hellofresh.com/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/hellofresh/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Flix",
@@ -977,7 +1746,16 @@
         "targetLocations": [
           "Munich",
           "Berlin"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "flix",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 138,
+        "careersUrl": "https://flix.careers/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/flix/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "Skyscanner",
@@ -987,7 +1765,16 @@
         "targetLocations": [
           "London",
           "Singapore"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "skyscanner",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 18,
+        "careersUrl": "https://www.skyscanner.net/jobs",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/skyscanner?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Plaid",
@@ -996,7 +1783,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "ashby",
+        "sourceKey": "plaid",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 105,
+        "careersUrl": "https://plaid.com/careers/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=false",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Waymo",
@@ -1006,7 +1802,16 @@
         "targetLocations": [
           "US",
           "potential international future"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "waymo",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 398,
+        "careersUrl": "https://waymo.com/joinus/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/waymo/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "X, the Moonshot Factory",
@@ -1015,7 +1820,16 @@
         "coverageState": "Manual fallback",
         "targetLocations": [
           "United States"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://x.company/careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Noah Labs",
@@ -1024,7 +1838,16 @@
         "coverageState": "Manual fallback",
         "targetLocations": [
           "Berlin"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.noah-labs.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Roblox",
@@ -1033,7 +1856,16 @@
         "coverageState": "Supported",
         "targetLocations": [
           "London"
-        ]
+        ],
+        "atsType": "greenhouse",
+        "sourceKey": "roblox",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 229,
+        "careersUrl": "https://careers.roblox.com/",
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/roblox/jobs",
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": null,
+        "darkReasonCode": null
       },
       {
         "name": "BCG / BCG X",
@@ -1045,7 +1877,16 @@
           "Singapore",
           "London",
           "Perth"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://careers.bcg.com/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "McKinsey / QuantumBlack",
@@ -1057,7 +1898,16 @@
           "Singapore",
           "London",
           "Munich"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.mckinsey.com/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Bain / Vector",
@@ -1069,7 +1919,16 @@
           "Singapore",
           "London",
           "Munich"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.bain.com/careers/",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       },
       {
         "name": "Accenture",
@@ -1081,7 +1940,16 @@
           "Singapore",
           "London",
           "Germany"
-        ]
+        ],
+        "atsType": "unknown",
+        "sourceKey": null,
+        "supportedAdapter": null,
+        "jobCountAtAudit": null,
+        "careersUrl": "https://www.accenture.com/us-en/careers",
+        "sourceEvidenceUrl": null,
+        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
+        "notes": null,
+        "darkReasonCode": "missing_source"
       }
     ]
   }

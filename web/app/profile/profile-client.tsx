@@ -84,34 +84,7 @@ export function ProfileClient({ data, userEmail }: { data: ProfileData; userEmai
             </Panel>
           </div>
 
-          <Panel className="mt-5" title={`Company watchlist · ${config.watchlist.total} configured / ${config.watchlist.enabled} enabled`}>
-            <p className="mb-4 text-[12px] leading-5 text-chart-muted">
-              Config totals are separate from the migrated database count so source changes remain visible.
-            </p>
-            {[1, 2, 3].map((tier) => {
-              const companies = config.watchlist.companies.filter((company) => company.tier === tier);
-              return (
-                <details className="border-t border-white/5 py-3" key={tier} open={tier === 1}>
-                  <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.14em] text-chart-teal">
-                    Tier {tier} · {companies.length} companies
-                  </summary>
-                  <div className="mt-3 grid grid-cols-3 gap-2">
-                    {companies.map((company) => (
-                      <div className="rounded border border-white/5 bg-chart-card px-3 py-2" key={company.name}>
-                        <div className="flex items-center justify-between gap-2 text-[12.5px]">
-                          <span>{company.name}</span>
-                          <span className={company.enabled ? "text-chart-green" : "text-chart-faint"}>
-                            {company.enabled ? "enabled" : "manual / off"}
-                          </span>
-                        </div>
-                        <div className="mt-1 truncate font-mono text-[9px] text-chart-faint">{company.coverageState}</div>
-                      </div>
-                    ))}
-                  </div>
-                </details>
-              );
-            })}
-          </Panel>
+          <WatchlistCoverage data={data} />
         </div>
       </section>
     </main>
@@ -121,10 +94,10 @@ export function ProfileClient({ data, userEmail }: { data: ProfileData; userEmai
 function ScanStrip({ data }: { data: ProfileData }) {
   const stats = [
     ["config companies", data.config.watchlist.total],
-    ["database companies", data.live.databaseCompanies],
-    ["enabled in database", data.live.enabledCompanies],
+    ["enabled in config", data.config.watchlist.enabled],
+    ["coverage", `${data.config.watchlist.coverage.percentage}%`],
     ["postings last scan", data.live.fetchedPostings],
-    ["sources last scan", data.live.successfulSources]
+    ["companies last scan", data.live.scannedCompanies]
   ] as const;
   return (
     <div className="mt-6 flex rounded-lg border border-white/10 bg-chart-panel px-2 py-3">
@@ -140,6 +113,113 @@ function ScanStrip({ data }: { data: ProfileData }) {
       </div>
     </div>
   );
+}
+
+function WatchlistCoverage({ data }: { data: ProfileData }) {
+  const { coverage, companies } = data.config.watchlist;
+  const scanReach =
+    data.live.fetchedPostings === null || data.live.scannedCompanies === null
+      ? "Latest scan reach is unavailable."
+      : `Scanned ${data.live.fetchedPostings.toLocaleString("en-GB")} postings across ${data.live.scannedCompanies} companies this run.`;
+
+  return (
+    <Panel className="mt-5" title="Watchlist coverage · B-27">
+      <div className="grid grid-cols-[220px_1fr] gap-5">
+        <div className={`rounded-lg border bg-chart-card p-5 ${coverageTone(coverage.tone)}`}>
+          <div className="font-mono text-[10px] uppercase tracking-[0.14em]">Coverage</div>
+          <div className="mt-2 font-mono text-[42px] leading-none">{coverage.percentage}%</div>
+          <div className="mt-3 text-[12px] leading-5 text-chart-muted">
+            {coverage.scanned} of {coverage.total} companies scanned
+          </div>
+        </div>
+        <div>
+          <div className="grid grid-cols-3 gap-3">
+            {coverage.byTier.map((tier) => (
+              <div
+                className={`rounded-lg border bg-chart-card p-4 ${coverageTone(tier.tone)}`}
+                key={tier.tier}
+              >
+                <div className="font-mono text-[9.5px] uppercase tracking-[0.12em]">
+                  Tier {tier.tier}
+                </div>
+                <div className="mt-2 font-mono text-[21px]">
+                  {tier.scanned}/{tier.total} <span className="text-[12px]">({tier.percentage}%)</span>
+                </div>
+                <div className="mt-1 text-[10px] text-chart-faint">{tier.dark} dark</div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 font-mono text-[10.5px] text-chart-muted">{scanReach}</p>
+          {data.live.enabledCountMismatch ? (
+            <p className="mt-2 text-[11px] leading-5 text-chart-warn">
+              Config/database drift. Missing or disabled in Postgres: {data.live.missingConfiguredCompanies.join(", ") || "none"}. Extra enabled in Postgres: {data.live.extraDatabaseEnabledCompanies.join(", ") || "none"}. Coverage uses config.
+            </p>
+          ) : null}
+        </div>
+      </div>
+
+      <Subhead>Dark companies · highest-cost gaps first</Subhead>
+      {[1, 2, 3].map((tier) => {
+        const darkCompanies = companies.filter(
+          (company) => company.tier === tier && !company.enabled
+        );
+        return (
+          <details className="border-t border-white/5 py-3" key={tier} open={tier === 1}>
+            <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.14em] text-chart-teal">
+              Tier {tier} · {darkCompanies.length} not scanned
+            </summary>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              {darkCompanies.map((company) => (
+                <div className="rounded border border-white/5 bg-chart-card px-3 py-3" key={company.name}>
+                  <div className="flex items-start justify-between gap-3">
+                    <a
+                      className="text-[12.5px] text-chart-ink hover:text-chart-teal"
+                      href={company.careersUrl ?? "#"}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {company.name}
+                    </a>
+                    <span className="font-mono text-[8.5px] uppercase text-chart-warn">
+                      {darkReasonLabel(company)}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-[10.5px] leading-5 text-chart-faint">
+                    {company.manualFallback}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </details>
+        );
+      })}
+    </Panel>
+  );
+}
+
+function coverageTone(tone: string) {
+  if (tone === "red") return "border-chart-warn/45 text-chart-warn";
+  if (tone === "amber") return "border-chart-gold/45 text-chart-gold";
+  return "border-chart-green/45 text-chart-green";
+}
+
+function darkReasonLabel(
+  company: ProfileData["config"]["watchlist"]["companies"][number]
+) {
+  if (company.darkReasonCode === "dead_feed") {
+    return `dead feed · ${company.atsType}:${company.sourceKey ?? "unknown"}`;
+  }
+  if (company.darkReasonCode === "adapter_ready_disabled") {
+    return `${company.supportedAdapter ?? company.atsType} ready · disabled`;
+  }
+  if (company.darkReasonCode === "missing_source") {
+    if (company.atsType === "unknown" && company.sourceKey === null) {
+      return "ats_type: unknown · source_key: null";
+    }
+    if (company.atsType === "unknown") return "ats_type: unknown";
+    return "source_key: null";
+  }
+  return "manual only";
 }
 
 function Panel({ children, className = "", title }: { children: ReactNode; className?: string; title: string }) {

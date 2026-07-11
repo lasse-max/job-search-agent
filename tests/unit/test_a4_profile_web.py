@@ -42,6 +42,11 @@ class ProfileConfigContractTest(unittest.TestCase):
             generated["locations"]["allowedMetros"],
             locations["profile_display"]["allowed_metros"],
         )
+        self.assertIn("Perth", generated["locations"]["allowedMetros"])
+        self.assertIn(
+            "\\b(?:sydney|melbourne|perth)\\b",
+            locations["pre_evaluation_filter"]["allowed_location_patterns"],
+        )
         self.assertEqual(generated["hardBlockers"], scoring["true_blockers"])
         self.assertEqual(
             generated["thresholds"],
@@ -56,6 +61,62 @@ class ProfileConfigContractTest(unittest.TestCase):
             generated["watchlist"]["enabled"],
             sum(bool(company["enabled"]) for company in watchlist["companies"]),
         )
+        generated_companies = {
+            company["name"]: company for company in generated["watchlist"]["companies"]
+        }
+        for company in watchlist["companies"]:
+            generated_company = generated_companies[company["name"]]
+            self.assertEqual(generated_company["tier"], company["tier"])
+            self.assertEqual(generated_company["enabled"], bool(company["enabled"]))
+            self.assertEqual(generated_company["atsType"], company.get("ats_type", "unknown"))
+            self.assertEqual(generated_company["sourceKey"], company.get("source_key"))
+            self.assertEqual(
+                generated_company["supportedAdapter"], company.get("supported_adapter")
+            )
+            self.assertEqual(
+                generated_company["jobCountAtAudit"], company.get("job_count_at_audit")
+            )
+            self.assertEqual(generated_company["careersUrl"], company.get("careers_url"))
+            self.assertEqual(
+                generated_company["sourceEvidenceUrl"],
+                company.get("source_evidence_url"),
+            )
+            self.assertEqual(
+                generated_company["manualFallback"], company.get("manual_fallback")
+            )
+            self.assertEqual(generated_company["notes"], company.get("notes"))
+            self.assertEqual(
+                generated_company["darkReasonCode"],
+                _expected_dark_reason(company),
+            )
+
+        expected_coverage = _expected_coverage(watchlist["companies"])
+        expected_coverage["byTier"] = [
+            {"tier": tier, **_expected_coverage(
+                [company for company in watchlist["companies"] if company["tier"] == tier]
+            )}
+            for tier in (1, 2, 3)
+        ]
+        expected_coverage["darkByReason"] = {
+            reason: sum(
+                _expected_dark_reason(company) == reason
+                for company in watchlist["companies"]
+            )
+            for reason in (
+                "missing_source",
+                "adapter_ready_disabled",
+                "dead_feed",
+                "manual_only",
+            )
+        }
+        self.assertEqual(generated["watchlist"]["coverage"], expected_coverage)
+        self.assertEqual(generated_companies["Google"]["darkReasonCode"], "missing_source")
+        self.assertEqual(generated_companies["Atlassian"]["darkReasonCode"], "dead_feed")
+        self.assertEqual(
+            generated_companies["Cohere"]["darkReasonCode"],
+            "adapter_ready_disabled",
+        )
+        self.assertIsNone(generated_companies["Databricks"]["darkReasonCode"])
 
     def test_profile_is_read_only_and_contains_real_authorization_not_mock_identity(self) -> None:
         profile = (
@@ -71,6 +132,60 @@ class ProfileConfigContractTest(unittest.TestCase):
         self.assertIn("COMPASS", generated)
         self.assertNotIn("US citizen", profile + generated)
         self.assertNotRegex(profile, r"(?:insert|update|delete|upsert)\(")
+
+    def test_watchlist_coverage_is_actionable_and_reconciles_to_config(self) -> None:
+        profile = (
+            REPO_ROOT / "web" / "app" / "profile" / "profile-client.tsx"
+        ).read_text(encoding="utf-8")
+        data_layer = (
+            REPO_ROOT / "web" / "lib" / "data" / "profile.ts"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("Watchlist coverage · B-27", profile)
+        self.assertIn("Coverage", profile)
+        self.assertIn("Dark companies · highest-cost gaps first", profile)
+        self.assertIn("Tier {tier} · {darkCompanies.length} not scanned", profile)
+        self.assertIn("dead feed ·", profile)
+        self.assertIn("ats_type: unknown · source_key: null", profile)
+        self.assertIn("adapter_ready_disabled", profile)
+        self.assertIn('tone === "red"', profile)
+        self.assertIn('tone === "amber"', profile)
+        self.assertIn("text-chart-warn", profile)
+        self.assertIn("Scanned ${data.live.fetchedPostings.toLocaleString", profile)
+        self.assertIn('supabase.from("job_sources").select("*")', data_layer)
+        self.assertIn("configuredEnabledNames", data_layer)
+        self.assertIn("missingConfiguredCompanies", data_layer)
+        self.assertIn("extraDatabaseEnabledCompanies", data_layer)
+        self.assertIn("enabledCountMismatch", data_layer)
+
+
+def _expected_dark_reason(company: dict[str, object]) -> str | None:
+    if company["enabled"]:
+        return None
+    if company.get("job_count_at_audit") == 0:
+        return "dead_feed"
+    if not company.get("source_key") or company.get("ats_type") == "unknown":
+        return "missing_source"
+    if (
+        company.get("supported_adapter") in {"ashby", "greenhouse", "lever"}
+        and company.get("ats_type") in {"ashby", "greenhouse", "lever"}
+    ):
+        return "adapter_ready_disabled"
+    return "manual_only"
+
+
+def _expected_coverage(companies: list[dict[str, object]]) -> dict[str, object]:
+    scanned = sum(bool(company["enabled"]) for company in companies)
+    total = len(companies)
+    percentage = int((scanned / total * 100) + 0.5) if total else 0
+    tone = "red" if percentage < 50 else "amber" if percentage <= 80 else "green"
+    return {
+        "scanned": scanned,
+        "total": total,
+        "percentage": percentage,
+        "tone": tone,
+        "dark": total - scanned,
+    }
 
 
 if __name__ == "__main__":

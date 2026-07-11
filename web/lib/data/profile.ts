@@ -3,6 +3,8 @@ import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
 type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
+type CompanyRow = Database["public"]["Tables"]["companies"]["Row"];
+type JobSourceRow = Database["public"]["Tables"]["job_sources"]["Row"];
 type SourceRunRow = Database["public"]["Tables"]["source_runs"]["Row"];
 
 export type ProfileData = {
@@ -13,41 +15,89 @@ export type ProfileData = {
     latestScanAt: string | null;
     fetchedPostings: number | null;
     successfulSources: number | null;
+    scannedCompanies: number | null;
+    enabledCountMismatch: boolean;
+    missingConfiguredCompanies: string[];
+    extraDatabaseEnabledCompanies: string[];
   };
   loadError: string | null;
 };
 
 export async function loadProfileData(supabase: AppSupabaseClient): Promise<ProfileData> {
-  const [{ count: databaseCompanies, error: companiesError }, { count: enabledCompanies }, runs] =
-    await Promise.all([
-      supabase.from("companies").select("id", { count: "exact", head: true }),
-      supabase.from("companies").select("id", { count: "exact", head: true }).eq("enabled", 1),
-      supabase.from("source_runs").select("*").order("id", { ascending: false }).limit(160)
-    ]);
+  const [companies, sources, runs] = await Promise.all([
+    supabase.from("companies").select("*"),
+    supabase.from("job_sources").select("*"),
+    supabase.from("source_runs").select("*").order("id", { ascending: false }).limit(500)
+  ]);
 
-  if (companiesError || runs.error) {
-    throw new Error(companiesError?.message ?? runs.error?.message ?? "Profile stats unavailable");
+  if (companies.error || sources.error || runs.error) {
+    throw new Error(
+      companies.error?.message ??
+        sources.error?.message ??
+        runs.error?.message ??
+        "Profile stats unavailable"
+    );
   }
+  const companyRows = (companies.data ?? []) as CompanyRow[];
+  const sourceRows = (sources.data ?? []) as JobSourceRow[];
   const runRows = (runs.data ?? []) as SourceRunRow[];
-  const successfulRuns = runRows.filter((run) =>
-    ["success", "degraded"].includes(run.status)
+  const configuredEnabledNames = new Set(
+    profileConfig.watchlist.companies
+      .filter((company) => company.enabled)
+      .map((company) => company.name)
   );
-  const latestScanAt = successfulRuns[0]?.started_at ?? null;
-  const latestDay = latestScanAt?.slice(0, 10);
-  const latestRuns = latestDay
-    ? successfulRuns.filter((run) => run.started_at.slice(0, 10) === latestDay)
-    : [];
+  const configuredCompanyIds = new Set(
+    companyRows
+      .filter((company) => configuredEnabledNames.has(company.name))
+      .map((company) => company.id)
+  );
+  const relevantSources = sourceRows.filter(
+    (source) => configuredCompanyIds.has(source.company_id) && source.source_type !== "manual"
+  );
+  const relevantSourceIds = new Set(relevantSources.map((source) => source.id));
+  const relevantRuns = runRows.filter((run) => relevantSourceIds.has(run.job_source_id));
+  const latestRunBySource = new Map<number, SourceRunRow>();
+  for (const run of relevantRuns) {
+    if (!latestRunBySource.has(run.job_source_id)) {
+      latestRunBySource.set(run.job_source_id, run);
+    }
+  }
+  const latestRuns = [...latestRunBySource.values()];
+  const latestScanAt = latestRuns[0]?.started_at ?? null;
+  const sourceCompanyById = new Map(
+    relevantSources.map((source) => [source.id, source.company_id])
+  );
+  const scannedCompanyIds = new Set(
+    latestRuns
+      .map((run) => sourceCompanyById.get(run.job_source_id))
+      .filter((companyId): companyId is number => companyId !== undefined)
+  );
+  const databaseEnabledCompanies = companyRows.filter((company) => company.enabled === 1).length;
+  const databaseEnabledNames = new Set(
+    companyRows.filter((company) => company.enabled === 1).map((company) => company.name)
+  );
+  const missingConfiguredCompanies = [...configuredEnabledNames]
+    .filter((name) => !databaseEnabledNames.has(name))
+    .sort();
+  const extraDatabaseEnabledCompanies = [...databaseEnabledNames]
+    .filter((name) => !configuredEnabledNames.has(name))
+    .sort();
 
   return {
     config: profileConfig,
     live: {
-      databaseCompanies: databaseCompanies ?? null,
-      enabledCompanies: enabledCompanies ?? null,
+      databaseCompanies: companyRows.length,
+      enabledCompanies: databaseEnabledCompanies,
       latestScanAt,
-      fetchedPostings: latestDay
+      fetchedPostings: latestRuns.length
         ? latestRuns.reduce((total, run) => total + run.fetched_count, 0)
         : null,
-      successfulSources: latestDay ? latestRuns.length : null
+      successfulSources: latestRuns.length || null,
+      scannedCompanies: latestRuns.length ? scannedCompanyIds.size : null,
+      enabledCountMismatch:
+        missingConfiguredCompanies.length > 0 || extraDatabaseEnabledCompanies.length > 0,
+      missingConfiguredCompanies,
+      extraDatabaseEnabledCompanies
     },
     loadError: null
   };
@@ -61,7 +111,11 @@ export function profileDataWithoutStats(message: string): ProfileData {
       enabledCompanies: null,
       latestScanAt: null,
       fetchedPostings: null,
-      successfulSources: null
+      successfulSources: null,
+      scannedCompanies: null,
+      enabledCountMismatch: false,
+      missingConfiguredCompanies: [],
+      extraDatabaseEnabledCompanies: []
     },
     loadError: message
   };
