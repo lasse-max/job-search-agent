@@ -1,5 +1,26 @@
 version: "location_policy_v1"
 active: true
+profile_display:
+  allowed_metros:
+    - "London"
+    - "Munich"
+    - "Hamburg"
+    - "Berlin"
+    - "Amsterdam"
+    - "Paris"
+    - "Copenhagen"
+    - "Stockholm"
+    - "Madrid"
+    - "Milan"
+    - "Lisbon"
+    - "Zurich"
+    - "Brussels"
+    - "Vienna"
+    - "Singapore"
+    - "Sydney"
+    - "Melbourne"
+  tier1_only: ["Dublin / Ireland"]
+  high_friction: ["United States"]
 pre_evaluation_filter:
   enabled: true
   policy_note: "Posted-location gate only; visa feasibility is evaluated separately under markets."

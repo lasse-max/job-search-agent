@@ -1,0 +1,1088 @@
+{
+  "versions": {
+    "candidate": "candidate_profile_v1",
+    "location": "location_policy_v1",
+    "scoring": "scoring_policy_v1"
+  },
+  "targetRoleFamilies": [
+    "Strategy and Operations",
+    "Business Operations",
+    "Product Operations",
+    "Product Strategy",
+    "GTM / Sales Strategy and Operations",
+    "Revenue Operations at appropriate seniority",
+    "Business Transformation",
+    "Strategic Programs / Program Leadership"
+  ],
+  "approvedStretchFamilies": [
+    "Deployment Strategist",
+    "Forward-Deployed Strategy",
+    "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering"
+  ],
+  "seniority": {
+    "preferredLevels": [
+      "Manager",
+      "Senior Manager",
+      "Lead",
+      "Principal",
+      "Senior IC",
+      "Senior Associate"
+    ],
+    "principle": "Judge level by scope and responsibilities, not by title word alone.",
+    "inScopeNote": "Associate or Senior Associate on a strategy team at a strong company can be L4-appropriate when the role owns meaningful strategic programs.",
+    "ceilingRule": "Target band is L4-L5. Head of / Director / VP / C-suite roles at established companies are over-leveled and should skip on level, not function. Small-startup Head-of roles can remain in-scope when scope is roughly L4-L5."
+  },
+  "languages": [
+    {
+      "name": "German",
+      "level": "native"
+    },
+    {
+      "name": "English",
+      "level": "professional/fluent"
+    }
+  ],
+  "hardBlockers": [
+    "Posting is closed or unavailable at first discovery.",
+    "Mandatory active security/government clearance that the candidate cannot obtain.",
+    "Posting explicitly requires existing local work authorization and states sponsorship is unavailable.",
+    "Production software engineering, production coding, or deep ML engineering is a central duty.",
+    "Role is clearly junior based on responsibilities and required experience, not title alone.",
+    "Location is genuinely impossible under the current stored policy."
+  ],
+  "usuallyDeprioritize": [
+    "Customer Success or account management without meaningful strategy or transformation scope",
+    "Pure quota-carrying sales",
+    "Junior analyst or associate scope",
+    "Pure Product Manager roles requiring extensive native PM or SDLC history",
+    "Deeply technical FDE, SWE, or ML engineering roles"
+  ],
+  "thresholds": {
+    "applyNow": 80,
+    "consider": 70,
+    "stretch": 60
+  },
+  "locations": {
+    "allowedMetros": [
+      "London",
+      "Munich",
+      "Hamburg",
+      "Berlin",
+      "Amsterdam",
+      "Paris",
+      "Copenhagen",
+      "Stockholm",
+      "Madrid",
+      "Milan",
+      "Lisbon",
+      "Zurich",
+      "Brussels",
+      "Vienna",
+      "Singapore",
+      "Sydney",
+      "Melbourne"
+    ],
+    "tier1Only": [
+      "Dublin / Ireland"
+    ],
+    "highFriction": [
+      "United States"
+    ],
+    "markets": [
+      {
+        "name": "EU",
+        "authorization": "authorized",
+        "sponsorshipRequired": false,
+        "availability": null,
+        "confidence": "high",
+        "notes": "German citizenship."
+      },
+      {
+        "name": "UK",
+        "authorization": "viable",
+        "sponsorshipRequired": true,
+        "availability": null,
+        "confidence": "high",
+        "notes": "Skilled Worker sponsorship needed, but routine for a German candidate at sponsoring employers; do not down-rank."
+      },
+      {
+        "name": "Australia",
+        "authorization": "viable_after_spousal_visa_lead_time",
+        "sponsorshipRequired": false,
+        "availability": "arrival_plus_3_months",
+        "confidence": "high",
+        "notes": "Spousal visa path; work eligibility expected roughly three months after arrival. Treat as an inconvenience flag, not a down-rank."
+      },
+      {
+        "name": "Singapore",
+        "authorization": "viable_with_sponsorship",
+        "sponsorshipRequired": true,
+        "availability": null,
+        "confidence": "high",
+        "notes": "Sponsorship is available through ample sponsoring employers; COMPASS noted, not penalized."
+      },
+      {
+        "name": "United States",
+        "authorization": "not_authorized_high_friction",
+        "sponsorshipRequired": true,
+        "availability": null,
+        "confidence": "medium",
+        "notes": "No assumed ongoing work authorization; require credible sponsorship, transfer path, or warm route."
+      }
+    ]
+  },
+  "watchlist": {
+    "total": 92,
+    "enabled": 31,
+    "companies": [
+      {
+        "name": "Google",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London",
+          "Munich",
+          "US"
+        ]
+      },
+      {
+        "name": "Databricks",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney",
+          "London"
+        ]
+      },
+      {
+        "name": "OpenAI",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London"
+        ]
+      },
+      {
+        "name": "Stripe",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney",
+          "Melbourne",
+          "Singapore",
+          "London"
+        ]
+      },
+      {
+        "name": "Airbnb",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney",
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "DoorDash",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "Melbourne",
+          "London"
+        ]
+      },
+      {
+        "name": "Uber",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Canva",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Atlassian",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney",
+          "London"
+        ]
+      },
+      {
+        "name": "Black Forest Labs",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Freiburg",
+          "Berlin",
+          "London",
+          "Remote - EU"
+        ]
+      },
+      {
+        "name": "Airwallex",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London"
+        ]
+      },
+      {
+        "name": "Sierra",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Sydney",
+          "Singapore",
+          "Munich"
+        ]
+      },
+      {
+        "name": "Mistral AI",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Munich",
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Palantir",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Sydney / Canberra"
+        ]
+      },
+      {
+        "name": "Amazon / AWS",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London"
+        ]
+      },
+      {
+        "name": "Apple",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London",
+          "Munich"
+        ]
+      },
+      {
+        "name": "Netflix",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London"
+        ]
+      },
+      {
+        "name": "SafetyCulture",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney"
+        ]
+      },
+      {
+        "name": "NEURA Robotics",
+        "tier": 1,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Metzingen",
+          "Munich area"
+        ]
+      },
+      {
+        "name": "Helsing",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Munich",
+          "Berlin",
+          "London"
+        ]
+      },
+      {
+        "name": "Anthropic",
+        "tier": 1,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Xero",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney",
+          "Melbourne",
+          "London"
+        ]
+      },
+      {
+        "name": "Rokt",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "New York",
+          "London"
+        ]
+      },
+      {
+        "name": "Wise",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Spotify",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Checkout.com",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Grab",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Salesforce",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Sydney",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Snowflake",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Sydney",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "ServiceNow / Moveworks",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Sydney",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Meta",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Microsoft",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London",
+          "Munich"
+        ]
+      },
+      {
+        "name": "LinkedIn",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Disney",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Sydney / Melbourne"
+        ]
+      },
+      {
+        "name": "OutSystems",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Germany",
+          "remote Europe"
+        ]
+      },
+      {
+        "name": "Celonis",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Munich",
+          "London"
+        ]
+      },
+      {
+        "name": "Harvey",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Glean",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Cohere",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "remote Europe"
+        ]
+      },
+      {
+        "name": "ElevenLabs",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "remote Europe"
+        ]
+      },
+      {
+        "name": "Pigment",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Personio",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Munich",
+          "London"
+        ]
+      },
+      {
+        "name": "N26",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Berlin",
+          "Barcelona"
+        ]
+      },
+      {
+        "name": "TikTok",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Singapore",
+          "London",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Booking.com",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Amsterdam"
+        ]
+      },
+      {
+        "name": "Deliveroo",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Block",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Australia",
+          "remote"
+        ]
+      },
+      {
+        "name": "DeepL",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Germany",
+          "London"
+        ]
+      },
+      {
+        "name": "Parloa",
+        "tier": 2,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Berlin",
+          "Munich"
+        ]
+      },
+      {
+        "name": "SAP",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Germany",
+          "London",
+          "Singapore",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Expedia Group",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Adobe",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Visa",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Singapore",
+          "London",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Mastercard",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Singapore",
+          "London",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Revolut",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Vercel",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "London",
+          "remote Europe"
+        ]
+      },
+      {
+        "name": "Quantexa",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Singapore",
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Synthesia",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Encord",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Lovable",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Stockholm",
+          "London / remote Europe"
+        ]
+      },
+      {
+        "name": "Magentic",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Aleph Alpha",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Heidelberg",
+          "Berlin"
+        ]
+      },
+      {
+        "name": "Decagon",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Cognition",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Singapore",
+          "London / remote"
+        ]
+      },
+      {
+        "name": "Fortescue",
+        "tier": 2,
+        "enabled": false,
+        "coverageState": "Needs configuration",
+        "targetLocations": [
+          "Perth"
+        ]
+      },
+      {
+        "name": "Zendesk",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London"
+        ]
+      },
+      {
+        "name": "Deputy",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Culture Amp",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney",
+          "Melbourne",
+          "London"
+        ]
+      },
+      {
+        "name": "Harrison.ai",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Quantium",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Nearmap",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Macquarie Group",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney"
+        ]
+      },
+      {
+        "name": "Woodside Energy",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Perth"
+        ]
+      },
+      {
+        "name": "BHP",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Perth",
+          "Brisbane",
+          "Melbourne"
+        ]
+      },
+      {
+        "name": "Rio Tinto",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Perth",
+          "Brisbane",
+          "London"
+        ]
+      },
+      {
+        "name": "Wesfarmers",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Perth",
+          "Melbourne"
+        ]
+      },
+      {
+        "name": "Klarna",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "London",
+          "Berlin"
+        ]
+      },
+      {
+        "name": "Zalando",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Berlin"
+        ]
+      },
+      {
+        "name": "Trade Republic",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Berlin"
+        ]
+      },
+      {
+        "name": "Delivery Hero",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Berlin",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "HelloFresh",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Berlin"
+        ]
+      },
+      {
+        "name": "Flix",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "Munich",
+          "Berlin"
+        ]
+      },
+      {
+        "name": "Skyscanner",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London",
+          "Singapore"
+        ]
+      },
+      {
+        "name": "Plaid",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "Waymo",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "US",
+          "potential international future"
+        ]
+      },
+      {
+        "name": "X, the Moonshot Factory",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "United States"
+        ]
+      },
+      {
+        "name": "Noah Labs",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Berlin"
+        ]
+      },
+      {
+        "name": "Roblox",
+        "tier": 3,
+        "enabled": true,
+        "coverageState": "Supported",
+        "targetLocations": [
+          "London"
+        ]
+      },
+      {
+        "name": "BCG / BCG X",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London",
+          "Perth"
+        ]
+      },
+      {
+        "name": "McKinsey / QuantumBlack",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London",
+          "Munich"
+        ]
+      },
+      {
+        "name": "Bain / Vector",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London",
+          "Munich"
+        ]
+      },
+      {
+        "name": "Accenture",
+        "tier": 3,
+        "enabled": false,
+        "coverageState": "Manual fallback",
+        "targetLocations": [
+          "Sydney",
+          "Singapore",
+          "London",
+          "Germany"
+        ]
+      }
+    ]
+  }
+}

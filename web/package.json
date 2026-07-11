@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "generate-profile": "node scripts/generate-profile-config.mjs",
+    "prebuild": "pnpm generate-profile",
     "build": "next build",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit"
@@ -13,7 +15,8 @@
     "@supabase/supabase-js": "^2.45.4",
     "next": "^15.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "yaml": "2.8.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
