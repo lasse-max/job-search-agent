@@ -1,14 +1,17 @@
 "use client";
 
 import { createBrowserClient } from "@supabase/ssr";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
 export default function LoginForm({
   error
 }: {
   error?: string;
 }) {
+  const router = useRouter();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const supabase = useMemo(
@@ -20,18 +23,28 @@ export default function LoginForm({
     []
   );
 
+  useEffect(() => {
+    if (error === "unauthorized") {
+      void supabase.auth.signOut();
+      setMessage(null);
+    }
+  }, [error, supabase]);
+
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitting(true);
     setMessage(null);
-    const { error: signInError } = await supabase.auth.signInWithOtp({
+    const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`
-      }
+      password
     });
     setSubmitting(false);
-    setMessage(signInError ? signInError.message : "Check your inbox for the sign-in link.");
+    if (signInError) {
+      setMessage("Invalid email or password.");
+      return;
+    }
+    router.replace("/");
+    router.refresh();
   }
 
   return (
@@ -49,7 +62,27 @@ export default function LoginForm({
           className="mt-2 w-full rounded-md border border-white/10 bg-chart-card px-3 py-2 text-sm text-chart-ink outline-none ring-chart-teal/40 focus:border-chart-teal focus:ring-2"
           type="email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            setMessage(null);
+          }}
+          autoComplete="email"
+          required
+        />
+      </label>
+      <label className="block">
+        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-chart-faint">
+          Password
+        </span>
+        <input
+          className="mt-2 w-full rounded-md border border-white/10 bg-chart-card px-3 py-2 text-sm text-chart-ink outline-none ring-chart-teal/40 focus:border-chart-teal focus:ring-2"
+          type="password"
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+            setMessage(null);
+          }}
+          autoComplete="current-password"
           required
         />
       </label>
@@ -58,7 +91,7 @@ export default function LoginForm({
         type="submit"
         disabled={submitting}
       >
-        {submitting ? "Sending..." : "Send magic link"}
+        {submitting ? "Signing in..." : "Sign in"}
       </button>
       {message ? <p className="text-sm text-chart-muted">{message}</p> : null}
     </form>

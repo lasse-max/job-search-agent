@@ -42,14 +42,30 @@ JOB_AGENT_DATABASE_URL=
 
 ## Supabase Auth Redirects
 
-Before deploying, configure Supabase Auth URL settings for the Vercel domain:
+The production login uses Supabase email + password auth, so normal sign-in
+does not need an email round-trip or `/auth/callback`. Keep the callback route
+configured for a future OAuth provider:
 
 - Site URL: `https://<vercel-domain>`
-- Additional Redirect URL: `https://<vercel-domain>/auth/callback`
-- Local development Redirect URL: `http://localhost:3000/auth/callback`
+- Optional OAuth Redirect URL: `https://<vercel-domain>/auth/callback`
+- Optional local OAuth Redirect URL: `http://localhost:3000/auth/callback`
 
-Without the `/auth/callback` redirect URL, passwordless or OAuth sign-in can
-complete in Supabase but fail to establish the web session.
+## Supabase Auth User Setup
+
+This is a single-user app. Do not enable open sign-up.
+
+In Supabase:
+
+1. Enable the Email provider with password sign-in.
+2. Create or update the owner in Authentication -> Users.
+3. Set the owner's password in the dashboard.
+4. Mark the owner email as confirmed / auto-confirmed so login returns a session directly.
+
+The owner email must match both `OWNER_EMAIL` in Vercel and the allow-list row in
+`app_allowed_users`. The RLS + allow-list gate remains the source of truth after
+the password session is created.
+
+Vercel auto-redeploys this app on merge / push to `main`.
 
 ## Database Setup
 

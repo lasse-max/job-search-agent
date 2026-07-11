@@ -15,7 +15,8 @@ export default async function LoginPage({
           <span className="relative -top-1 h-2 w-2 rotate-45 bg-chart-tealDeep" />
         </div>
         <p className="mt-3 text-sm leading-6 text-chart-muted">
-          Private owner-only access. Sign in with the email allowed in Supabase Auth.
+          Private owner-only access. Sign in with the owner email and password configured in
+          Supabase Auth.
         </p>
         <LoginForm error={params.error} />
       </div>
