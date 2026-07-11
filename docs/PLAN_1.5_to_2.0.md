@@ -78,3 +78,28 @@ Only after 1.5 is stable and *used* — live usage tells us which of these actua
 - **Light theme.**
 
 Which of these leads 2.0 is decided *after* Phase B, informed by what the owner actually reached for.
+
+---
+
+## 1.5 Close-out checklist (George tracks against the phases)
+
+**Build & cutover (mechanical — next few sessions):**
+- [ ] A2 Potential Matches (`e63ac6e`) — Cato review clean.
+- [ ] **Cutover run:** owner triggers "One-off SQLite to Postgres Migration" workflow → verify row-count parity + orphan check (`postings with no opportunity_reviews row = 0`) → Cato clears `ff5efcb`. First time A2 shows real data.
+- [ ] A3 Applied tracker — build → Cato → owner.
+- [ ] A4 To Apply + Profile (read-only) — build → Cato → owner.
+- [ ] Calibration Sweep 3 (`codex-calibration-sweep-3.md`) — language filter, CS-degree disqualifier, dedup/crowding, Palantir skip — build → Cato → one live digest confirms.
+- [ ] Housekeeping: commit the uncommitted docs; **after cutover verifies, flip Supabase MCP to read-only.**
+
+**Live use & trust (Phase B — real calendar time; the actual point):**
+- [ ] Owner runs the daily search *through the app*: triage Potential Matches → mark to apply → apply → track in Applied.
+- [ ] Interim `.xlsx` tracker retired.
+- [ ] Disagreements logged to `live_calibration_notes.md`; tuned to trusted precision. B-15 stretch-band finalized.
+
+**Exit gate (Phase C — all three must hold):**
+- [ ] All four pages built + Cato-cleared.
+- [ ] Owner runs the search through the app daily without falling back to the spreadsheet.
+- [ ] Calibration trustworthy enough to act on bands without second-guessing.
+- [ ] → George stamps STATUS, freeze 1.5. The search comes first.
+
+**Do NOT call 1.5 done at "four pages shipped"** — the bar is *used and trusted*, not *built*.

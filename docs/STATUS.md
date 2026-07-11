@@ -2,7 +2,32 @@
 
 Living status doc. Single source of truth for *where things stand right now and who's holding what*. Complements `DECISIONS.md` (why), `ROADMAP.md` (direction), and `docs/briefs/` (what to build). Update at each checkpoint. **Owner of this doc:** George (coordinator).
 
-**Last updated:** 2026-07-08 · **Branch:** `main`
+**Last updated:** 2026-07-10 · **Branch:** `main`
+
+## 🟢 A3 SHIPPED · SWEEP-3 GATE CLEARED — 3 of 4 pages live (2026-07-10)
+
+- **A3 Applied tracker shipped + Cato SHIP** (`c832455` schema/RPCs + `a85f57a` UI). **Migration 003 applied to live Supabase by owner** (SQL Editor, success). Cato found no privilege-escalation / RLS-bypass / immutability-bypass / fallback-capture path: the three write RPCs are `SECURITY DEFINER` + `search_path=''` with an internal owner re-check; writes are RPC-only through a single gated create path; `application_events` and the eval snapshot are **database-immutable even against the RPCs**; snapshots can only come from the calibrated view.
+- **`cdf0128` "Preserve historical application snapshots" — Cato SHIP.** Fixes the 🟡 that would have silently hidden all applied history at the next evaluator bump. **Principle logged as ADR #68: _version-filter live reads; validate — but never version-filter — historical records._** (A live filter had been copy-pasted onto an immutable historical record.) Also: explicit `REVOKE EXECUTE` on `private.*` trigger fns; DB host/user/password scrubbed from verify crash artifacts (adversarially probed, zero leaks). Closes all open items from the A3 and `0d3b283` reviews.
+- **⛔→✅ Calibration Sweep 3 is now UNBLOCKED** (it was gated on `cdf0128`, since adding `estimated_level` bumps the evaluator version).
+- 🔵 open (trivial): resolved server IP not redacted in crash artifacts — infrastructure info, not a credential. Fold into any next commit.
+
+**Sequence:** A4 (To Apply + Profile) in build → Cato → then **Calibration Sweep 3** (incl. **estimated level**, spec: `docs/specs/estimated-level.md`) → then **Phase B: owner runs the daily search through the app, retires the spreadsheet.**
+
+**Owner loose ends:** flip Supabase MCP to **read-only** · commit the planning docs (STATUS, PLAN, BACKLOG B-25/B-26, `docs/specs/estimated-level.md`, `codex-calibration-sweep-3.md`) — Otto cannot git from his environment.
+
+---
+
+## 🎉 A2 LIVE — the app is deployed and rendering real data (2026-07-10)
+
+**`https://job-search-agent-gilt-rho.vercel.app` is live.** Next.js/Tailwind (root `web/`) on Vercel, reading the shared Supabase Postgres store; **Potential Matches renders the real 299-eval calibrated pool.** Owner confirms the Sextant UI looks right. Full chain now works end-to-end: daily scan → calibrated evaluator → Postgres → web app.
+
+- **Auth: switched magic-link → email + password (`bf40afe`).** Supabase's built-in magic-link email is rate-limited (a few/hour) and the redirect round-trip was brittle; password auth needs no email at all. Owner-only model unchanged (middleware + RLS + `app_allowed_users`). Owner user created in Supabase dashboard with auto-confirm. **Ops note:** the login email must match BOTH the `app_allowed_users` seed and the Vercel `OWNER_EMAIL` env var.
+- **Vercel setup:** root dir `web/`, env = `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `OWNER_EMAIL`. **No service-role key** (read-only over RLS via anon key). Auto-redeploys on merge to `main`.
+- **Expected-not-broken:** To Apply / Applied / Profile pages and the pipeline action buttons are inert — those ship with **A3** and **A4**. A2 is read-only by design (`web/README.md` scope boundary).
+
+**Open loose ends:** Cato reviews pending on `0d3b283` (verify hardening) + `bf40afe` (password auth) · flip Supabase MCP to **read-only** (migration done — no standing write access needed) · commit the uncommitted planning docs · Calibration Sweep 3 (`codex-calibration-sweep-3.md`) queued. **Next build slice: A3 — Applied tracker.**
+
+---
 
 ## 🟢 STAGE 1.5 — web-app gate CLEARED; build unblocked (2026-07-08)
 
@@ -18,7 +43,7 @@ Living status doc. Single source of truth for *where things stand right now and 
 
 **Cutover workflow pushed — `ff5efcb` "Add Supabase cutover workflow" (CI green, run `28993221576`).** `.github/workflows/migrate-postgres.yml`: restores the SQLite Actions cache, runs `job-agent migrate-postgres` in CI only, applies the RLS/auth migration after import, uploads `output/sqlite_to_postgres_migration_report.md` + `output/postgres_verification.md` (checks row-count parity, RLS/policies, allowed-owner row, calibrated-view safety). Owner email comes from the `DIGEST_RECIPIENT_EMAIL` secret (no real email committed). Codex also patched `current_calibrated_role_evaluations` to **exclude fallback provenance**, not just old evaluator versions (closes 🟡C at the view level). Brief: `docs/briefs/supabase-cutover-brief.md`.
 
-**▶ OWNER NEXT ACTION:** in GitHub Actions, run **"One-off SQLite to Postgres Migration"** manually, then send Codex the run id/status → Codex pulls the reports + verifies counts. After verify: flip the Supabase MCP to read-only, run one live digest (A1.5 check), then A2 (Potential Matches).
+**✅ CUTOVER DONE + VERIFIED (2026-07-10).** After a multi-run saga (run 1 = 41-min unbatched import + verify `%`-bug crash; runs 2–3 = "Re-run jobs" re-executed the stale `e63ac6e` commit, not the fix; then a fresh **Run workflow on `main`/`4a50433`** ran the hardened path), the migration landed clean: report `imported 28432, skipped 0, ambiguous 0, replace=true`. Independently verified in Supabase SQL editor: companies **32**, job_postings **8633**, role_evaluations **2010**, opportunity_reviews **8633** (= job_postings → 0 orphans, INNER JOIN safe on real data), **current_calibrated 299** (healthy pool for A2). Fix commits: `4a50433` (batched upserts, `--replace-target` truncate-and-reload, read-only SQLite, pooler keepalives, verify `%%` escape) — Cato SHIP. **Ops lessons for the runbook:** (1) use **Run workflow on `main`**, never "Re-run jobs" (that repeats the old commit); (2) never run the migration concurrent with the 6am scan. **Remaining:** the in-workflow verify *script* still errors after a successful load (threw before writing `postgres_verification.md`) — Codex fixing; NOT a data problem, do not re-import. **Next:** flip Supabase MCP to read-only; confirm A2 renders the 299-eval pool; then A3.
 
 ---
 
