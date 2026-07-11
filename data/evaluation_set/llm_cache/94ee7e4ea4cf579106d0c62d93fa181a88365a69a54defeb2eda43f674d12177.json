@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations / Product Operations",
+        "evidence_strength": "weak",
+        "job_requirement": "20+ years of relevant experience, including proven track record of managing Enterprise Architects or technical teams"
+      },
+      {
+        "candidate_evidence": "Global commercial operations and transformation programs scaling at Google; strategy and product operations leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic Vision: Proven ability to connect technical solutions to business value and customer objectives"
+      },
+      {
+        "candidate_evidence": "Transformation program experience with cross-functional stakeholder management at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-Functional Alignment: Leadership bridge between product & engineering and client teams"
+      },
+      {
+        "candidate_evidence": "Not explicitly documented in candidate profile; inferred from leadership scope at Google but unverified",
+        "evidence_strength": "weak",
+        "job_requirement": "Communication: Excellent written and verbal skills, navigating complex negotiations and presenting to C-level executives"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "20+ years experience; candidate has eight years",
+        "mitigation": "This is a hard gap; no rapid experience acceleration closes a 12-year tenure differential for an executive architecture leadership role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep technical architecture expertise (MSc CS/IT, SQL, Python, cloud-native, SaaS ecosystems, legacy enterprise systems); candidate background is operations-focused",
+        "mitigation": "Product operations and transformation do not substitute for hands-on technical architecture depth required to credibly lead Enterprise Architects and mentor technical teams.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented Capability Mapping, Enterprise Modernization, or Agentic AI expertise",
+        "mitigation": "These are core technical leadership domains; no evidence of this specialization in candidate profile.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No consulting firm or software vendor technical leadership background",
+        "mitigation": "JD seeks 20+ years at top consulting or software vendor managing technical teams; Google device/services operations is a different career arc.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No documented security posture, API ecosystem, or legacy enterprise architecture expertise",
+        "mitigation": "JD requires strong cybersecurity fundamentals and legacy on-premise enterprise knowledge; operations background does not demonstrate these.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"MSc degree in Computer Science or an equivalent in an Information Technology-related field\" and \"Strong background in Data Architecture, system integrations, data operations, automation capabilities, and data-related languages (SQL, Python, etc.).\" Candidate profile explicitly states \"No production software-engineering background\" and \"Python basic and actively learning.\" The JD requires hands-on technical depth and formal CS/IT credentials for a team leading Enterprise Architects; candidate lacks both the degree and the technical foundation.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 80,
+    "level_rationale": "20+ years required, manager-of-managers scope (Enterprise Architects team), C-suite engagement, and strategic architecture ownership signals L6. Role requires deep technical architecture expertise (MSc CS or IT, SQL/Python, cloud-native, SaaS ecosystem, enterprise legacy systems).",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "Enterprise Architect Director is an L6 strategic technical leadership role requiring 20+ years, MSc CS/IT, and deep hands-on expertise in enterprise architecture, data systems, and cloud-native ecosystems. Candidate brings eight years of Strategy and Operations leadership at Google with strong transformation and cross-functional scope, but lacks the required technical depth (CS degree, SQL/Python expertise), industry-specific architecture knowledge (Capability Mapping, Enterprise Modernization, legacy enterprise systems), and the 12-year tenure gap is not bridgeable for a hands-on technical leadership role. Hard blocker on degree and technical foundation; recommend skip.",
+    "uncertainties": [
+      "Candidate's exact depth in cloud-native architectures, SaaS integrations (Salesforce, SAP, ServiceNow), and legacy enterprise systems is undocumented",
+      "No evidence of prior C-suite executive engagement or customer-facing architecture presentations",
+      "Celonis company size and stage not stated; unable to assess whether startup-exception patterns apply"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services scaling global commercial operations and transformation programs; experience with discovery, requirements definition, UAT, and rollout at enterprise scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Own the technical relationship with Stripe's most strategic users from initial discovery through to live integration and ongoing optimisation"
+      },
+      {
+        "candidate_evidence": "Led cross-functional transformation programs and commercial operations; demonstrated ability to translate between technical and business stakeholders; however, no direct API-level or payments-domain technical depth",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead strategic technical conversations, articulating how Stripe works from both a product feature and API architecture perspective"
+      },
+      {
+        "candidate_evidence": "Eight years in commercial operations and transformation; proven track record of cross-functional program leadership and stakeholder alignment at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate with Sales, Solution Architecture, and Implementation teams to drive user engagement and commercial outcomes"
+      },
+      {
+        "candidate_evidence": "Transformation and operations background implies analytics and reporting work; no explicit evidence of dashboard-building, SQL, or custom data reporting in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Build tools and analytics\u2014including dashboards, queries, and custom data reports\u2014to support user business reviews and operational needs"
+      },
+      {
+        "candidate_evidence": "Strong history of translating business requirements into executable plans and transformations; lacks payments-domain and API architecture foundational knowledge",
+        "evidence_strength": "medium",
+        "job_requirement": "Able to lead technical conversations and clearly explain how Stripe works from both a product feature and API architecture perspective; user-first mindset mapping business requirements to technical solutions"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "4+ years software engineering or integration engineering: candidate has none; background is operations and transformation, not production code or formal engineering",
+        "mitigation": "Strategic advisory and program leadership experience translates to enterprise stakeholder management, but core technical credibility and hands-on debugging ability in payments/API context must be acquired on the job",
+        "severity": "high"
+      },
+      {
+        "gap": "Ability to write and debug code in Go, Java, C/C++, and similar languages; comfortable with code-level debugging (Stripe and user code)",
+        "mitigation": "Candidate has basic Python and no production software-development background; would require significant ramp on core engineering practices and language proficiency",
+        "severity": "high"
+      },
+      {
+        "gap": "Understanding of payments domain and API security principles",
+        "mitigation": "No prior payments-domain experience evident; security principles can be learned, but domain knowledge is typically a significant enabler for technical credibility with enterprise customers",
+        "severity": "high"
+      },
+      {
+        "gap": "Strong technical writing for complex integration guidance and processes",
+        "mitigation": "Operations and transformation background likely includes documentation; however, no evidence of deep technical writing on API-level integrations or implementation runbooks",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Minimum requirements: '4+ years of experience in a software engineering or integration engineering role' and 'Ability to write and debug code in languages such as Go, Java, C/C++, or similar.' Candidate has zero software engineering experience and basic Python only; does not meet the stated minimum qualification.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 4+ years software engineering with hands-on code ownership, API-level debugging, and payments-domain knowledge; independent technical credibility with enterprise customers; collaboration with engineering and product. Scope is senior IC or Principal engineer equivalent, placing it at L5 (6\u20139 years mid-to-senior engineering experience expected). Company stage is not stated in the JD; Stripe's maturity and scale imply established L-leveling.",
+    "role_family_fit": 20,
+    "scope_seniority": 70,
+    "summary": "This is a senior integration-engineering role requiring 4+ years of hands-on software-engineering experience, API-level debugging, and payments-domain knowledge to lead strategic technical engagements with Stripe's largest customers. The candidate is a Strategy and Operations leader with eight years at Google and strong cross-functional program ownership, but lacks the core software-engineering background, coding proficiency (Go, Java, C/C++), and payments-domain depth that are disqualifying hard requirements for this technical role. While the candidate's consultative and stakeholder-management skills are valuable, the role is fundamentally a senior IC engineering position, not a consulting or operations strategy role, making this a poor fit despite strong seniority and leadership credibility in a different domain.",
+    "uncertainties": [
+      "Extent of candidate's ability to ramp on Go, Java, or C++ given basic Python proficiency and no production software-development history",
+      "Whether 'transformation' work involved any code-level architecture review, debugging, or technical writing that could accelerate payments-domain onboarding",
+      "Stripe company stage and team size context not stated in JD; assumes tier-1 maturity and L-leveling based on brand",
+      "Whether candidate's 'proof-of-concept' or tool-building experience in operations included hands-on SQL, debugging, or API integration work"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

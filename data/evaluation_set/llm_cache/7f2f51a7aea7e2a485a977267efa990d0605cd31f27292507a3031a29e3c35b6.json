@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google across commercial operations, revenue strategy, and partner ecosystem work; led multi-country commercial transformation and account strategy. No direct phone-based BDR, SDR, or quota-carrying sales background documented.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience in phone-based role, business development, lead qualification, or similar commercial position"
+      },
+      {
+        "candidate_evidence": "Extensive stakeholder management and cross-functional engagement at strategic level; no documented experience in high-volume call handling, call scripts, or phone-based discovery cadences.",
+        "evidence_strength": "weak",
+        "job_requirement": "Confident approach to managing both inbound and outbound calls in consistent and timely way"
+      },
+      {
+        "candidate_evidence": "Led requirements analysis, UAT, and partner program design in commercial transformation context. However, partner qualification here is tactical handoff-to-sales discovery, not strategic opportunity assessment.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong discovery and qualification capabilities to assess partner needs, readiness, and fit"
+      },
+      {
+        "candidate_evidence": "Documented track record of leading global transformation programs, scaling operations, and driving accountability. Well-aligned with ownership and process discipline, though at strategic rather than execution level.",
+        "evidence_strength": "strong",
+        "job_requirement": "High ownership, process-driven mindset, strong attention to detail"
+      },
+      {
+        "candidate_evidence": "Eight years in cross-functional, multi-country leadership roles requiring executive-level communication and stakeholder alignment.",
+        "evidence_strength": "strong",
+        "job_requirement": "Excellent written and verbal communication; build trust and rapport with stakeholders"
+      },
+      {
+        "candidate_evidence": "No explicit CRM or Salesforce experience mentioned. Background is strategic program and operational systems design, not sales-tech administration.",
+        "evidence_strength": "weak",
+        "job_requirement": "Comfort working within structured systems, dashboards, CRM tools like Salesforce"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L3",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No BDR, SDR, or quota-carrying sales phone-based experience. Background is strategy and operations leadership, not sales development or lead qualification mechanics.",
+        "mitigation": "Candidate's strong process discipline and commercial understanding could enable rapid onboarding to BDR fundamentals; however, this represents a significant career downshift and is unlikely to retain high-caliber talent.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented Salesforce or CRM administration experience. Role requires daily use of structured CRM workflow and data hygiene.",
+        "mitigation": "CRM tools can be learned quickly; however, the broader gap is functional fit, not technical enablement.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Partner qualification focus here is tactical lead-screening and handoff, not strategic partner ecosystem or account strategy development.",
+        "mitigation": "Candidate's partner and commercial strategy expertise is over-indexed for this role and unlikely to find meaningful challenge or growth in execution-only scope.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD emphasizes phone-based qualification, inbound/outbound call management, Salesforce data entry, and handoff to sales\u2014entry-level commercial progression. No management scope, strategy ownership, or years-of-experience requirement stated. Company stage unknown; title and responsibilities suggest early-career BDR/SDR track, typically L3.",
+    "role_family_fit": 12,
+    "scope_seniority": 8,
+    "summary": "Partner Development Representative at Xero is a quota-light business development and lead qualification role focused on inbound/outbound activity, discovery, and handoff to sales. The candidate is an 8-year Google Strategy & Operations leader whose experience centers on global commercial transformation, partner ecosystem strategy, and cross-functional program leadership\u2014a significantly higher level and different functional arc than this phone-based, CRM-driven, rep-track position.",
+    "uncertainties": [
+      "Xero company size and stage not stated; unable to confirm whether this is a classic BDR track or a hybrid program-development role.",
+      "Candidate's appetite for a downward-level move into quota-light rep work is unknown.",
+      "Whether Xero has a visible partner ops, ecosystem strategy, or revenue operations track that could become a migration path is unclear from the JD."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

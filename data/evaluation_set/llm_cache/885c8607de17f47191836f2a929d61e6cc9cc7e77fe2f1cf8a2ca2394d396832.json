@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Devices and Services with two promotions; experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner Excellence Manager role in Professional Services at fast-growing SaaS (Pigment, 600+ team, $400M raised)"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Transformation focus; experience with product ownership, requirements, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "medium",
+        "job_requirement": "Pigment is an AI-powered business planning platform; role sits in Professional Services"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Role title 'Partner Excellence Manager' suggests customer-facing partner success or account-management scope, not strategic operations or transformation leadership",
+        "mitigation": "Request full JD to clarify partner-management, strategic advisory, or implementation leadership scope; if strategic transformation or deployment-strategy elements exist, gap severity may lower",
+        "severity": "high"
+      },
+      {
+        "gap": "Professional Services context (partner delivery, customer success, account management) is typically in the deprioritized-unless-clear-strategic-scope bucket",
+        "mitigation": "Confirm whether role includes cross-functional strategy, business transformation, or process-design scope beyond partner satisfaction or account health",
+        "severity": "high"
+      },
+      {
+        "gap": "JD text does not specify role responsibilities, reporting line, team scope, or partner-management domain (implementation, training, account success, strategic advisory)",
+        "mitigation": "Full job description is essential to assess seniority, strategic fit, and whether this is a partner-satisfaction/success role or a strategic implementation-leadership role",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Estimated L4 based on Professional Services Manager context at a 600+ SaaS company; title and department alone suggest middle-management or senior IC scope, but absence of detailed JD responsibilities, team size, reporting level, and strategic mandate lowers confidence significantly. Partner Excellence Manager is inherently ambiguous without scope detail.",
+    "role_family_fit": 30,
+    "scope_seniority": 35,
+    "summary": "Role title and Professional Services context strongly suggest customer-success or partner-account-management scope, which falls outside the candidate's target Strategy and Operations families unless the full JD demonstrates strategic transformation, deployment-strategy, or cross-functional business-problem-solving responsibilities. Candidate positioning is Strategy and Operations leader; this role appears to be customer/partner-success-oriented. Critical: the provided Role JSON contains only company background and location; no role responsibilities, reporting line, team scope, or partner-management mandate are specified. Recommend requesting full JD before proceeding.",
+    "uncertainties": [
+      "No role responsibilities, success metrics, or partner-management domain specified in Role JSON",
+      "Ambiguous whether 'Partner Excellence' is account-management, customer-success, implementation-leadership, or strategic-advisory in nature",
+      "No reporting line, team size, or strategic mandate stated",
+      "Unclear whether Pigment's Professional Services org has transformation or strategic deployment scope"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

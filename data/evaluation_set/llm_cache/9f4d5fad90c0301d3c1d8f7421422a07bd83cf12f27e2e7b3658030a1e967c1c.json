@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in strategy and operations roles with experience scaling global commercial operations and transformation programs; product ownership including requirements definition, logic design, and UAT.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead the technical development of system architectures and define requirements for Safety Critical Systems"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations indicates broad stakeholder management; transformation program leadership implies executive-level communication and reporting.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with internal and external stakeholders; provide regular reporting to Chief Engineering and Programme Management"
+      },
+      {
+        "candidate_evidence": "Positioning as Strategy and Operations leader with eight years at Google, including scaling programs and transformation work; professional English fluency.",
+        "evidence_strength": "medium",
+        "job_requirement": "Possess excellent communication skills and the ability to report and present results clearly and effectively to both internal and external stakeholders"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No aerospace engineering background; Bachelor's or Master's in Aerospace Engineering required",
+        "mitigation": "Candidate would need to undertake formal aerospace engineering education or intensive crash course; unlikely to close quickly without degree-level study.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on avionics hardware/software development experience; JD requires 'led the design and development of safety critical hardware and software for an airborne platform'",
+        "mitigation": "Would require months to years of direct avionics systems engineering experience in a safety-critical airborne context; cannot be mitigated through operations or strategy background alone.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated knowledge of ARP4754, ARP4761, DO-178C, DO-254 aviation standards; these are explicitly required",
+        "mitigation": "Certification standards are taught in formal avionics and aerospace engineering programs or through specialized industry training; does not map to operational or strategy domain knowledge.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated background in Guidance Navigation & Control or air vehicle management systems; role requires 'deep knowledge'",
+        "mitigation": "These are specialized aerospace subsystems requiring formal engineering education and domain-specific project experience.",
+        "severity": "high"
+      },
+      {
+        "gap": "No established relationship with civil or military aviation authority; JD explicitly requires this",
+        "mitigation": "Could potentially be developed through engagement in a new role, but candidate has no aviation regulatory experience to date.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Hold a relevant degree such as a Bachelor's or Master's in Aerospace Engineering, Electrical Engineering, Computer Science, or a related field; Have led the design and development of safety critical hardware and software for an airborne platform including tasks related to systems engineering, safety, aircraft certification, and avionics integration; Have a deep knowledge of the development of avionics complex HW & SW development and have experience in the application of system level (ARP4754 and ARP4761) and SW/HW level (DO-178C and DO-254) standards to safety critical systems. Candidate profile shows no aerospace engineering degree, no avionics or airborne hardware/software development experience, and no stated knowledge of aviation certification standards.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role requires led design and development of safety-critical airborne systems, planning and leading systems engineering lifecycle, reporting to Chief Engineering and Programme Management, plus deep domain expertise in avionics, GN&C, and aviation standards. These signal established senior individual-contributor or lead responsibility in a specialized, high-stakes domain. Estimated L5 based on ownership scope and technical leadership accountability, though company stage (stated as unknown unless in JD) lowers confidence slightly.",
+    "role_family_fit": 5,
+    "scope_seniority": 68,
+    "summary": "This is a specialist safety-critical avionics systems engineering role requiring aerospace engineering degree, led airborne HW/SW development, and deep knowledge of aviation standards (ARP4754, ARP4761, DO-178C, DO-254). The candidate is a Strategy and Operations leader with eight years at Google\u2014strong in scaling operations, transformation, and stakeholder management, but with no aerospace engineering education, no avionics or airborne hardware/software development background, and no aviation regulatory experience. The role family (deep technical engineering in a safety-critical domain) is orthogonal to the candidate's strategic operations positioning. Fundamental domain expertise and engineering credentials are missing and cannot be rapidly bridged through operations or strategy experience alone.",
+    "uncertainties": [
+      "Candidate's specific product engineering work (requirements, UAT, rollout) at Google Devices is not detailed; unclear whether any of this touched hardware safety criticality or regulatory compliance domains.",
+      "Helsing company stage and team structure not stated in JD; level estimate assumes established engineering governance, but early-stage context could shift scope.",
+      "No information on whether candidate has pursued any aerospace or formal systems engineering study post-Google."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations at Google Devices and Services with experience in pricing, revenue, and cross-functional commercial decision-making",
+        "evidence_strength": "strong",
+        "job_requirement": "Commercial Steering: support pricing, revenue management, sales, and marketing levers to achieve targets"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to drive revenue-focused transformation programs and deliver data-driven insights; comfortable with analytics and stakeholder influence",
+        "evidence_strength": "medium",
+        "job_requirement": "Performance & Insights: track demand, competition, and KPIs; deliver clear, data-driven recommendations to improve revenue"
+      },
+      {
+        "candidate_evidence": "Leadership on commercial operations scaling suggests strategy input and competitive positioning experience; direct region-level execution experience is unstated",
+        "evidence_strength": "medium",
+        "job_requirement": "Regional Commercial Strategy: maintain competitive positioning insights, support planning cycles with market briefings"
+      },
+      {
+        "candidate_evidence": "Proven cross-functional stakeholder management across multiple teams at Google; transformation program leadership requires broad coalition building",
+        "evidence_strength": "strong",
+        "job_requirement": "Cross-Functional Collaboration: align with Revenue Management, Marketing, Sales, Network Planning, and Product teams"
+      },
+      {
+        "candidate_evidence": "Experienced in analytics and data-driven decision-making; SQL experience not clearly stated; Excel and BI tool proficiency not confirmed in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Analytics & Stakeholder Support: use analytics and tools (Excel, BI, SQL) to inform decisions"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "Direct Revenue Management or Pricing expertise: JD emphasizes revenue management and pricing as core levers; candidate profile focuses on commercial operations and transformation rather than deep pricing strategy or yield management",
+        "mitigation": "Revenue management and pricing fundamentals are learnable and candidate has demonstrated analytical and commercial strategy foundation; ramp period likely 3\u20134 months with mentoring from Flix yield management team",
+        "severity": "medium"
+      },
+      {
+        "gap": "Transportation/Mobility/Hospitality domain experience: JD lists these sectors as 'ideally' preferred; candidate's experience is at Google Devices and Services",
+        "mitigation": "Domain-agnostic commercial operations and pricing logic transfer well; Flix's travel/mobility context is straightforward to acquire; no hard blocker stated",
+        "severity": "low"
+      },
+      {
+        "gap": "Confirmed SQL and BI tool proficiency: JD requires 'Advanced Excel' and lists Power BI or similar as 'strong plus'; candidate SQL and BI experience not documented in profile",
+        "mitigation": "Excel expertise confirmed; BI tool adoption (Power BI, Tableau, Looker) is typical onboarding for analytics-minded operations leaders; SQL can be learned or delegated",
+        "severity": "medium"
+      },
+      {
+        "gap": "Direct market-level P&L or regional budget ownership unclear: role involves 'regional commercial strategy' for Central European portfolio; candidate background in global operations may not include direct market P&L accountability",
+        "mitigation": "Cross-functional commercial steering and revenue target collaboration are demonstrated; formal P&L ownership can be clarified at interview; responsibility scope alignment critical for success",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "JD requires 2+ years in Revenue Management, Pricing, or Commercial Strategy; regional market portfolio ownership in Central Europe with cross-functional collaboration (Marketing, Sales, Network Planning, Product) suggests mid-level IC scope. Title \"Manager\" and market-level responsibility suggest L4; no clear managing-manager scope or P&L authority stated. Company stage/size unknown.",
+    "role_family_fit": 65,
+    "scope_seniority": 55,
+    "summary": "Commercial Market Specialist at Flix is a mid-level operational and strategic role in pricing and revenue management for a Central European market portfolio. Candidate brings eight years of commercial operations leadership and cross-functional transformation experience at Google, with strong analytical and stakeholder-management foundations. Core gaps are direct revenue management / yield-pricing depth, transportation/mobility sector knowledge, and confirmed SQL/BI tool proficiency. Role-family fit is moderate (operations and commercial strategy align; pricing/revenue management requires ramp). Seniority appears appropriate (L4), though regional P&L ownership scope should be clarified. Stretch rating reflects strong commercial operations and transformation background offset by pricing/yield and sector domain gaps, all manageable for an engaged learner.",
+    "uncertainties": [
+      "Company size and stage (Flix context): JD does not state whether Flix is early-stage, growth, or mature; affects interpretation of 'Manager' title and regional portfolio scope",
+      "Candidate's direct experience with transportation, mobility, or hospitality sectors",
+      "Depth of SQL and BI tool proficiency (Power BI, Tableau, Looker) beyond Excel",
+      "Whether candidate has held formal regional market P&L or revenue accountability"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

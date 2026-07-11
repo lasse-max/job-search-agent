@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; led global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "4+ years leading and scaling field-based teams"
+      },
+      {
+        "candidate_evidence": "Google commercial operations and B2B/B2C marketplace strategy; transformation program leadership with stakeholder engagement and execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in sales, business development, or marketplace management"
+      },
+      {
+        "candidate_evidence": "Scaling global operations and transformation programs at Google; experience with KPI ownership and cross-functional delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven track record of meeting supply acquisition and revenue targets through a team, in metrics-driven environment"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations positioning; transformation program leadership requiring business problem-solving and process design",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong analytical and strategic thinking; data-informed decision making"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure at scale with two promotions; transformation and strategic programs require cross-functional influence and stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Exceptional written and verbal communication; ability to influence senior decision-makers"
+      },
+      {
+        "candidate_evidence": "Strategic programs and transformation work relies on stakeholder alignment; process design and execution across teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborative, relationship-first approach; consultative mindset"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No direct luxury hospitality, travel, or real estate brand experience",
+        "mitigation": "Candidate has marketplace and commercial operations background; luxury market category knowledge is learnable with strong operations fundamentals",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited demonstrated field sales or direct host/partnership relationship building at scale",
+        "mitigation": "Candidate's transformation and program leadership involves stakeholder and host-type engagement; supply-side operations principles transfer; relationship-building can scale with domain training",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated CRM pipeline or real estate partnership management experience",
+        "mitigation": "CRM and analytics tools are operationally standard; candidate's analytical and strategic background suggests rapid proficiency",
+        "severity": "low"
+      },
+      {
+        "gap": "Product operations background does not include direct host supply acquisition or marketplace growth loops",
+        "mitigation": "Scaling supply and quality standards requires operational discipline and cross-functional coordination; core competencies are portable from transformation and marketplace strategy work",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD requires 10+ years (business development/hospitality/marketplace) and 4+ years leading field-based teams, with regional strategy ownership and cross-functional influence. Manager title with team leadership, supply/revenue KPI accountability, and partnership scope maps to L5 (senior IC or early manager-of-managers). Salary band (\u20ac85k\u2013\u20ac128k) consistent with senior IC to junior manager globally. L5 assumes experienced manager without explicit indication of manager-of-managers scope.",
+    "role_family_fit": 45,
+    "scope_seniority": 72,
+    "summary": "Candidate brings eight years of strategic operations, transformation, and commercial scaling at Google with proven team leadership and cross-functional influence. The role is a stretch: it sits outside target strategy/operations families (luxury hospitality supply leadership, not pure BizOps or RevOps) and requires direct field sales, host partnership, and luxury-market domain expertise that candidate has not demonstrated. Operational, analytical, and leadership fundamentals are strong; category expertise and host relationship scale are the primary gaps.",
+    "uncertainties": [
+      "Candidate's direct experience with supply acquisition, host relationship management, and luxury real estate partnerships is not documented",
+      "Degree of field sales leadership versus headquarters-based operations leadership is unclear from candidate profile",
+      "Luxury hospitality or travel industry familiarity is not mentioned",
+      "Specific experience managing cross-functional partnerships with external luxury operators or agencies is not detailed"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

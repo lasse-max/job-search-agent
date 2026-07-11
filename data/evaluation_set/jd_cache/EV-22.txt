@@ -12,4 +12,3 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 Company: Harvey
 Role title: Majors Customer Success Manager
 Location: London
-Role context: CS role. NOTE Harvey's Partner Operations Manager (EMEA) WOULD be a clean fit — same company, different function. Tests function-level discrimination.

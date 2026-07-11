@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in strategy and operations; experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "10+ years of product management or related industry experience"
+      },
+      {
+        "candidate_evidence": "Not stated in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Bachelor's degree in Computer Science, Engineering, Information Systems, Analytics, Mathematics, Physics, Applied Sciences, or related field"
+      },
+      {
+        "candidate_evidence": "Eight years driving transformation programs and scaling commercial operations; experience in requirements definition, UAT, and rollout across global teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience working in a technical environment with cross-functional teams to drive product vision, define requirements, and guide the team through key milestones"
+      },
+      {
+        "candidate_evidence": "No stated experience with abuse detection, safety tooling, or misuse-prevention systems; background is commercial operations and transformation rather than integrity/trust & safety domain",
+        "evidence_strength": "weak",
+        "job_requirement": "Build tooling for AI-forward investigation of malicious users and develop infrastructure for detection of novel misuse"
+      },
+      {
+        "candidate_evidence": "Strategy and operations role requiring stakeholder management and cross-functional coordination at Google; demonstrated through promotion and scope ownership",
+        "evidence_strength": "strong",
+        "job_requirement": "World-class communication and collaboration skills with a wide variety of cross-functional stakeholders"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google; eight-year tenure scaling global programs and driving transformation; evidence of execution and program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong leadership, organizational, and execution skills in complex multi-team environments"
+      }
+    ],
+    "confidence": 0.78,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Integrity, trust & safety, and abuse/misuse-prevention domain experience. JD emphasizes scaled abuse handling, malicious-user detection, and policy-violation prevention across product suite; candidate background is commercial operations and transformation.",
+        "mitigation": "Candidate has cross-functional stakeholder management and execution discipline. Domain knowledge (integrity patterns, OpenAI's usage policies, malicious-user investigation tooling) is learnable with domain expert pairing and onboarding; however, ramp time may be 3\u20136 months.",
+        "severity": "high"
+      },
+      {
+        "gap": "Native product management depth. Candidate's product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than traditional product management (roadmap ownership, feature prioritization, metrics-driven iteration, competitive analysis).",
+        "mitigation": "Candidate has led full-stack initiatives with product-like scope (requirements, cross-team alignment, execution). Transition to native PM is feasible but may require adjustment to prioritization frameworks and metrics rigor.",
+        "severity": "medium"
+      },
+      {
+        "gap": "AI/ML product and safety-specific knowledge. Role involves detecting novel misuse of AI services and building detection infrastructure; candidate has no stated background in AI, machine learning, or safety-critical systems.",
+        "mitigation": "Candidate can rapidly learn domain through collaboration with safety and ML teams. Cross-functional communication skills are strong. Pairing with domain experts and safety advisors is essential during ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "Explicit technical degree requirement. JD states 'bachelor's degree in Computer Science, Engineering, Information Systems, Analytics, Mathematics, Physics, Applied Sciences, or a related field.' Candidate profile does not state degree or field of study.",
+        "mitigation": "If candidate holds relevant degree (e.g., mathematics, physics, engineering), gap closes immediately. If not, strong experience and track record at Google may permit waiver given 10+ years equivalent depth.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "JD explicitly requires 10+ years of product management or related experience. bachelor's degree in technical field. and proven leadership in cross-functional technical environments. This anchors the role solidly at L5, with potential L6 signals from \"scale the product efforts and overall technical strategy\" and cross-team collaboration scope. Company size (OpenAI, major AI lab) adds seniority context but is not stated as startup exception.",
+    "role_family_fit": 42,
+    "scope_seniority": 75,
+    "summary": "This is a specialized, senior product management role focused on AI safety, integrity, and abuse detection at a leading AI lab. The candidate is a strong operations and transformation leader with eight years at Google and two promotions, but lacks direct experience in trust & safety, product management rigor, and AI/ML domains. The 10+ years requirement is not fully met (eight years stated), and the technical degree requirement is not confirmed. Role-family fit is moderate (operations + transformation background maps partially to product leadership, but not integrity/safety). Evidence for core product and domain responsibilities is weak. Gap manageability is modest due to the severity of domain and PM-skill gaps, though the candidate's execution discipline and stakeholder acumen are transferable. Recommend `consider` with realistic expectation of domain-knowledge ramp and potential for structured PM skill development.",
+    "uncertainties": [
+      "Candidate's educational background and degree type are not stated; JD explicitly requires a bachelor's degree in CS, engineering, or related technical field.",
+      "Candidate has 8 years of tenure stated; JD explicitly requires 10+ years. It is unclear whether 8 years at a large tech company (Google) meets or exceeds this threshold in OpenAI's evaluation.",
+      "No information on candidate's exposure to AI, machine learning, or safety domains; critical for a role focused on AI misuse detection and novel integrity threats.",
+      "Candidate's product management background is rooted in operations, transformation, and rollout rather than traditional product ownership (roadmap, feature lifecycle, metrics). Depth of PM acumen relative to OpenAI's expectations is unclear.",
+      "Role is based in London with hybrid 3-day-per-week in-office model; candidate location and visa status are not stated."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -275,6 +275,10 @@ _QUOTED_CONNECTION_FIELD_RE = re.compile(
     r"\b(host|user|dbname|database)\s+(?:'[^']*'|\"[^\"]*\")",
     re.IGNORECASE,
 )
+_RESOLVED_SERVER_ADDRESS_RE = re.compile(
+    r"\((?:(?:\d{1,3}\.){3}\d{1,3}|[0-9a-f:]{2,})\)(?=,\s*port\b)",
+    re.IGNORECASE,
+)
 
 
 def redact_database_error(error: BaseException, database_url: str) -> str:
@@ -302,7 +306,8 @@ def redact_database_error(error: BaseException, database_url: str) -> str:
         lambda match: f"{match.group(1)}=[redacted]",
         message,
     )
-    return _QUOTED_CONNECTION_FIELD_RE.sub(
+    message = _QUOTED_CONNECTION_FIELD_RE.sub(
         lambda match: f"{match.group(1)} [redacted]",
         message,
     )
+    return _RESOLVED_SERVER_ADDRESS_RE.sub("([redacted])", message)

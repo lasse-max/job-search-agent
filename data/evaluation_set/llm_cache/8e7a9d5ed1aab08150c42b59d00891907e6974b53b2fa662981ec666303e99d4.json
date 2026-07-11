@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with strategy and operations focus; no stated degree or field verification in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Bachelors and/or masters degree in (Industrial) Engineering, Computer Science, Data Science / Business Analytics, AI/ML, Mathematics or other related fields"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader; no explicit evidence of hands-on AI/ML passion or continuous technical learning demonstrated",
+        "evidence_strength": "medium",
+        "job_requirement": "Passion for technology, data and AI and the impact it can have on the world; curiosity and self-motivation for continuous learning"
+      },
+      {
+        "candidate_evidence": "Profile states 'Python basic and actively learning'",
+        "evidence_strength": "medium",
+        "job_requirement": "Basic knowledge or hands-on experience in SQL and/or Python"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in global commercial operations and transformation programs suggests senior-stakeholder exposure",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to build relationships with senior management, influence decision-makers, and present to C-level executives"
+      },
+      {
+        "candidate_evidence": "Profile lists English as professional/fluent and German as native; no mention of Japanese language capability",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in English and Japanese; willing to stay in Madrid 12 months before potential Tokyo relocation"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No stated Japanese language fluency or capability; role explicitly requires fluency in Japanese and relocation to Japan",
+        "mitigation": "Verify candidate's Japanese proficiency; if absent, role becomes functionally disqualified. No mitigation path without language.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated hands-on AI/ML engineering or technical solution development; role calls for prototype AI solutions and ML experience",
+        "mitigation": "Profile shows Python basic-level and learning; insufficient for role requiring 'builders' who can rapidly develop AI solutions. Would require accelerated technical depth beyond a 12-month graduate program.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited process mining or Celonis platform exposure; role expects 'Rising Star' module completion or process mining principles knowledge",
+        "mitigation": "Celonis onboarding and 12-month enablement program covers this; manageable within Orbit Program structure, but requires full commitment.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Value Engineer background is customer-advisory and sales-adjacent rather than technical AI engineering; candidate's strength is operations and transformation program management",
+        "mitigation": "Candidate's senior-stakeholder relationship skills transfer well; however, role requires hands-on technical prototype development that is not core candidate strength.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Orbit Program is an explicit 12-month graduate/early-career program for \"launching careers in enterprise software\" as an Associate. JD requires bachelor's/master's degree and work or internship experience, signaling entry-to-junior IC scope typical of L3. No management scope, no strategic ownership of ongoing business lines.",
+    "role_family_fit": 25,
+    "scope_seniority": 35,
+    "summary": "This is a 12-month graduate-program Associate role requiring Japanese fluency, hands-on AI/ML prototyping, and process-mining technical depth\u2014a significant mismatch for a senior Strategy &amp; Operations leader with no stated Japanese language capability, basic Python, and no native AI engineering background. The candidate's eight-year tenure, promotion history, and C-level stakeholder skills are overqualified in scope but misaligned in function and language. Role is below target level and outside primary role families.",
+    "uncertainties": [
+      "Candidate's Japanese language proficiency is not stated; this is a disqualifying gate for a Japan-focused role.",
+      "Company size/stage of Celonis not detailed; typical fast-growing SaaS context assumed.",
+      "No evidence of candidate's hands-on AI solution prototyping or machine-learning model development.",
+      "Candidate's detailed degree/academic background not provided; verification needed against Computer Science or related requirement."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

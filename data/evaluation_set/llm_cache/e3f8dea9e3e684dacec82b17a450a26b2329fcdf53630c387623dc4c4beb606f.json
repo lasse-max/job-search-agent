@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with scaling global commercial operations and transformation programs; experience in cross-functional stakeholder management at enterprise scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Work at the intersection of policy, technology, and creativity, partnering with governments and regulators"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with program leadership and business transformation; no explicit policy advocacy, regulatory affairs, government relations, or public policy expertise demonstrated",
+        "evidence_strength": "weak",
+        "job_requirement": "Represent Spotify's voice on regulatory issues including competition, online safety, and AI policy"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling at Google; no evidence of government relations, regulatory partnerships, or public affairs network building",
+        "evidence_strength": "weak",
+        "job_requirement": "Partner with governments, regulators, and industry groups around the world"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 28,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No Government Affairs, Government Relations, or Public Policy background; candidate's experience is in strategy/operations within tech, not regulatory affairs or policy advocacy",
+        "mitigation": "Candidate could potentially learn regulatory landscape and government partner relationships on the job if domain knowledge transfer is provided, but this is a fundamentally different functional area from operations/transformation",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with competition policy, online safety regulation, or creative industry policy issues",
+        "mitigation": "Regulatory and policy domain knowledge would require substantial ramp-up; unlikely to be offset by operational excellence alone",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of public affairs, government relations, or regulatory network in Australia, New Zealand, or internationally",
+        "mitigation": "Building government and regulator relationships from scratch in a regional leadership role is high-risk; position requires existing credibility and networks",
+        "severity": "high"
+      },
+      {
+        "gap": "Department and function (Government Affairs) fall outside target and approved-stretch role families",
+        "mitigation": "This is specialist public affairs work, not strategy/operations or transformation leadership",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Title \"Head of Government Affairs\" with regional scope (Australia/New Zealand) and stakeholder management of governments and regulators suggests established senior IC or early-manager-of-teams ownership. JD lacks explicit years-of-experience requirement and company-stage context, but reporting line and scope suggest L5 (established senior IC/principal) in a mature company; no clear manager-of-managers or VP-level indicators to justify L6.",
+    "role_family_fit": 12,
+    "scope_seniority": 68,
+    "summary": "Head of Government Affairs role sits outside the candidate's target families (Strategy/Operations, BizOps, Product Ops, GTM) and is a specialist public affairs function. Candidate has strong operational and transformation leadership at scale, but no Government Affairs, Government Relations, public policy, regulatory affairs, or policy advocacy background. The role requires credibility with governments and regulators on competition, online safety, and creative-economy policy\u2014domains the candidate has not worked in. While scope and seniority align with L5, function fit is poor and gaps are not easily managed through operational excellence.",
+    "uncertainties": [
+      "JD does not specify years of government affairs or public policy experience required; unclear whether internal transfer or external hire is expected",
+      "No explicit mention of team leadership, reports, or management scope; 'Head of' may be L4\u2013L5 depending on org context",
+      "Spotify company stage context not provided; unclear whether this is a growth-stage or mature-company position",
+      "No indication of whether policy expertise is required or can be built with strong operational management"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

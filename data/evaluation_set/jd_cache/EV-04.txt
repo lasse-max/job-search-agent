@@ -12,4 +12,3 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 Company: Uber
 Role title: Senior Strategy & Operations Manager
 Location: Sydney
-Role context: Gold-standard S&O brand; Senior level matches seniority; marketplace domain is learnable, not a blocker. Analytics-heavy loop.

@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions; positioned as Strategy and Operations / Product Operations leader with global commercial operations and transformation program experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations Business Partner role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs suggests growth-oriented mindset; limited direct evidence of technology-specific operations, infrastructure, or technical systems work in the profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Growth and Tech focus area"
+      },
+      {
+        "candidate_evidence": "Transformation program experience and commercial operations background indicate stakeholder management and process design capabilities; positioned for strategic and cross-functional scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Business Partner function typically requires cross-functional stakeholder management and operational partnership"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "JD is primarily a website search results page with minimal substantive job description; no explicit responsibilities, requirements, or growth/tech scope are articulated",
+        "mitigation": "Request full JD from Canva. Cannot assess specific operational focus, reporting line, team size, or technical systems scope without detailed role description",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of technology-focused operations or infrastructure experience; candidate background is commercial/product transformation, not tech ops",
+        "mitigation": "Clarify whether role requires SRE, platform operations, or infrastructure knowledge. If so, candidate's commercial operations focus is a misalignment",
+        "severity": "medium"
+      },
+      {
+        "gap": "Candidate profile does not show prior Business Partner experience or dotted-line partnership model work; background is more program leadership and transformation",
+        "mitigation": "Assess whether candidate's program and transformation leadership transfers to embedded business partner advising and coaching function",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Business Partner role at Canva (company size unknown) typically implies L4 individual contributor or team lead, but JD provides no detail on years required, team scope, reporting line, or strategic ownership. Title and minimal description alone insufficient for confident level estimate.",
+    "role_family_fit": 65,
+    "scope_seniority": 50,
+    "summary": "The candidate's Strategy & Operations and transformation background aligns with the Operations Business Partner title and Canva's Strategy & Operations department. However, the JD is a non-functional website search results page with no substantive job description, explicit responsibilities, requirements, tech/growth focus, or reporting structure. Without a complete JD, assessment of fit, seniority alignment, and growth-tech specificity is severely constrained. Recommend obtaining the full job description before further evaluation. Current evidence strength and confidence are too low to support a strong recommendation.",
+    "uncertainties": [
+      "Full JD missing; only website navigation and search results provided",
+      "No clarity on 'Growth / Tech' scope\u2014whether role focuses on product growth, platform infrastructure, technical operations, or commercial growth",
+      "Company size and stage unknown; cannot contextualize Business Partner seniority (L4 vs. L5+)",
+      "Reporting line and team scope not stated; cannot confirm whether role is individual contributor, team lead, or embedded partnership function",
+      "Candidate's commercial and product transformation experience may or may not transfer to technology-focused operations or infrastructure business partnership"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

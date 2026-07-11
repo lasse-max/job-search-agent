@@ -1,4 +1,4 @@
-version: "location_policy_v1"
+version: "location_policy_v2"
 active: true
 profile_display:
   allowed_metros:
@@ -19,6 +19,7 @@ profile_display:
     - "Singapore"
     - "Sydney"
     - "Melbourne"
+    - "Perth"
   tier1_only: ["Dublin / Ireland"]
   high_friction: ["United States"]
 pre_evaluation_filter:
@@ -38,7 +39,7 @@ pre_evaluation_filter:
     - "\\bbrussels\\b"
     - "\\bvienna\\b"
     - "\\bsingapore\\b"
-    - "\\b(?:sydney|melbourne)\\b"
+    - "\\b(?:sydney|melbourne|perth)\\b"
   tier1_only_location_patterns:
     - "\\bdublin\\b"
     - "\\bireland\\b"

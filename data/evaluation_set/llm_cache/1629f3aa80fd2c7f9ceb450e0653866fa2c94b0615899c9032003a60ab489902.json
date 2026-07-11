@@ -1,0 +1,55 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs, with demonstrated experience coordinating across distributed teams and multiple regions",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage complex and dynamic calendars across multiple time zones, scheduling meetings, travel, and internal/external engagements"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and commercial operations scaling at Google, requiring synthesis and presentation of complex business information to stakeholders",
+        "evidence_strength": "medium",
+        "job_requirement": "Prepare briefing materials, presentations, agendas, and follow-up notes for leadership meetings"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with product transformation and scaling experience in a dynamic, distributed tech environment",
+        "evidence_strength": "medium",
+        "job_requirement": "Comfortable managing shifting priorities and multiple time zones in a fast-paced, high-ambiguity environment"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L3",
+    "evidence_strength": 45,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Core function is executive administrative support (calendar management, travel coordination, scheduling) rather than strategy, operations, or business transformation",
+        "mitigation": "Candidate has managed complex cross-functional coordination; however, the substantive scope remains support/coordination rather than strategic ownership or transformation leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated executive assistant experience; background is strategy and operations leadership, not C-level support or administrative coordination roles",
+        "mitigation": "Coordination and organizational skills are transferable; specialized EA competencies (confidential briefing workflows, executive calendar optimization, office management) would require significant ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is Paris-based; candidate location and relocation intent not stated",
+        "mitigation": "Clarify candidate location and willingness to relocate to or work from Paris",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Executive Assistant supporting a CRO in a scaling AI company; no management scope, no team leadership, and administrative/coordination primary duties. Typically L3 IC support role with global coordination elements; JD emphasizes proactive problem-solving and startup agility but does not require prior director/manager experience or strategic business ownership.\"",
+    "role_family_fit": 15,
+    "scope_seniority": 20,
+    "summary": "This is an L3 Executive Assistant role focused on calendar management, travel coordination, and administrative support to a CRO at an AI startup\u2014a clear mismatch with the target Strategy and Operations / Product Operations leadership profile. While the candidate's global coordination and fast-paced scaling experience touch on cross-functional prioritization, the substantive scope is support and execution rather than strategic ownership, transformation, or business problem-solving. The role falls outside approved target and stretch families and represents a significant level and functional step backward.",
+    "uncertainties": [
+      "Candidate's current location and relocation eligibility for Paris-based role not specified",
+      "Depth of candidate interest in a non-strategic administrative support role is unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

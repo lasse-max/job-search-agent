@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; strategic program leadership and business transformation experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead executive-level workshops to identify business challenges and opportunities where Mistral's AI can drive step-change improvements; co-create AI adoption roadmaps with customers"
+      },
+      {
+        "candidate_evidence": "Owned requirements, logic design, UAT, rollout, and transformation on product changes; no native software engineering or production coding background",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with the Applied AI team to design, prototype, and deploy AI solutions in production, ensuring scalability and impact"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling and transformation program leadership demonstrate structured problem-solving and business insight",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong business acumen and problem-solving skills, with the ability to structure ambiguous challenges into actionable solutions"
+      },
+      {
+        "candidate_evidence": "Two promotions and eight-year tenure at Google in strategic roles implies demonstrated executive credibility and stakeholder influence",
+        "evidence_strength": "strong",
+        "job_requirement": "Executive presence and communication skills to influence senior stakeholders (VP, C-level)"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no hands-on production deployment experience; product experience rooted in ownership, requirements, and UAT rather than implementation coding",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on experience building and deploying AI applications (Python, JavaScript, or similar) to demonstrate value"
+      },
+      {
+        "candidate_evidence": "Eight years in Google internal roles; no client-facing consulting, vendor technical account, or value engineering background stated",
+        "evidence_strength": "medium",
+        "job_requirement": "2+ years in a client-facing strategic and technical role (e.g., data science consulting, value engineering, or technical sales)"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 52,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Hands-on production AI/ML deployment and Python proficiency. JD requires 'hands-on experience building and deploying AI applications (Python)' and credibility to advise technical audiences on implementation.",
+        "mitigation": "Candidate is actively learning Python and has strong product ownership logic-design and UAT experience; could ramp quickly with embedded Applied AI team pairing and targeted AI/ML fundamentals training, but this role demands immediate credibility in prototype-to-production workflows.",
+        "severity": "high"
+      },
+      {
+        "gap": "Client-facing strategic and technical consulting experience. JD emphasizes 'client-facing strategic and technical role (e.g., data science consulting, value engineering, or technical sales)'; candidate background is internal Google operations and transformation.",
+        "mitigation": "Eight years of senior-level stakeholder management and transformation leadership is transferable to client partnership, but lack of vendor-side presales, account technical responsibility, or external consulting experience is a material learning curve.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Vendor AI platform and ecosystem knowledge. Candidate has no stated familiarity with Mistral's platform, LLM architecture, or competitive positioning in generative AI solutions space.",
+        "mitigation": "Standard onboarding and ramp; technical deep-dive interview should reveal aptitude and learning velocity. Not a blocker for strategic and transformation skills.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 2+ years client-facing strategic/technical role, foundational AI/ML knowledge, and hands-on Python deployment. Role bridges presales strategy, applied AI prototyping, and customer success at enterprise scope, suggesting L4\u2013L5 IC or low L5 owner level. Reporting line and company stage (Mistral AI, presumed growth-stage, not stated) remain unclear; confidence is moderate.",
+    "role_family_fit": 75,
+    "scope_seniority": 70,
+    "summary": "Strong fit on strategy, transformation, and executive partnership; weak fit on hands-on AI/ML deployment and production coding. Candidate has no client-facing consulting or technical vendor background; Python is basic and actively learning. Role requires demonstrated ability to architect and deploy production AI solutions\u2014a core gap for an internal Google ops leader.",
+    "uncertainties": [
+      "No detail on candidate's experience with data science, AI, or ML project delivery in any role; 'actively learning Python' does not clarify depth or timeline.",
+      "Candidate profile does not mention client-facing work, vendor technical account management, or external presales/consulting engagement.",
+      "JD does not state company size, series, or funding stage (Mistral AI stage unknown from JD alone), affecting confidence in role scope and seniority anchor.",
+      "Unclear whether role is pure technical account/solutions engineering (closer to L4) or strategic Chief of Staff-like scope (L5\u2013L6); title 'AI Deployment Strategist' and responsibilities suggest hybrid, but organizational context missing."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

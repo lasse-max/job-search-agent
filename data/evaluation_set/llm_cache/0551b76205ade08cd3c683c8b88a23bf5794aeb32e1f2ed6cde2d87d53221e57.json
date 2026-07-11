@@ -1,0 +1,48 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, Business Operations, and Business Transformation roles",
+        "evidence_strength": "medium",
+        "job_requirement": "Work together with our Management Team to shape the future of Trade Republic"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "unknown",
+    "evidence_strength": 15,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Job description provides almost no detail on scope, responsibilities, reporting line, team size, or required experience",
+        "mitigation": "Request full job description with clear role responsibilities, decision-making authority, stakeholder scope, and experience expectations before proceeding",
+        "severity": "high"
+      },
+      {
+        "gap": "Title 'Customer Council' is ambiguous and does not clearly map to Strategy and Operations, Product Operations, or approved stretch families",
+        "mitigation": "Clarify whether this is a customer advisory board membership, a program leadership role, or an operational position within the organization",
+        "severity": "high"
+      },
+      {
+        "gap": "Company stage and size context unknown; Trade Republic stage/headcount not specified in the Role JSON, limiting seniority and scope assessment",
+        "mitigation": "Obtain company stage, team size, and reporting structure to contextualize role level and seniority expectations",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 10,
+    "level_rationale": "Job description is too sparse to estimate level. No years required, no management scope, no reporting line, no team size, and no explicit responsibilities stated. Cannot infer Google-equivalent level from \"Work together with our Management Team to shape the future of Trade Republic\" alone.",
+    "role_family_fit": 20,
+    "scope_seniority": 15,
+    "summary": "This posting is too sparse to evaluate against the candidate's target families. The title \"Customer Council,\" combined with a description containing only one sentence offering no clarity on scope, responsibilities, team size, reporting line, or experience requirements, makes it impossible to determine whether this is a customer advisory role, a strategic program leadership position, or something else entirely. Recommend requesting a complete job description before further consideration.",
+    "uncertainties": [
+      "Is 'Customer Council' an external advisory board role or an internal organizational position?",
+      "What are the actual job responsibilities, decision-making authority, and stakeholder relationships?",
+      "What is the team size, reporting line, and management scope?",
+      "What is Trade Republic's company stage, size, and market context?",
+      "What experience level or seniority is required or expected?"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

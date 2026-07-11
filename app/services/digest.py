@@ -15,6 +15,7 @@ from app.config import load_scoring_policy
 from app.db import ScanReach, get_digest_rows, latest_scan_reach, latest_source_failures
 from app.models import utc_now
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION
+from app.services.text_rules import strip_location_variant_suffix
 
 
 RECOMMENDATION_SECTIONS = [
@@ -29,6 +30,7 @@ CALIBRATION_FLOOR_MAX_ROLES = 5
 CALIBRATION_SECTION_KEY = "calibration_floor"
 CALIBRATION_SECTION_LABEL = "Top open roles by fit — may repeat"
 DEFAULT_DIGEST_MAX_ROLES = 25
+DEFAULT_DIGEST_MAX_PER_COMPANY = 3
 ABSOLUTE_DIGEST_MAX_ROLES = 50
 TEMPLATE_DIR = Path(__file__).resolve().parents[1] / "templates"
 TEMPLATE_ENV = Environment(
@@ -169,14 +171,18 @@ def select_digest_rows(
     fallback_rows = [row for row in rows if is_fallback_evaluator_row(row)]
     degraded = not valid_rows and bool(fallback_rows)
     candidate_rows = fallback_rows if degraded else valid_rows
-    ranked = _ranked_delivery_rows(candidate_rows)
+    ranked = _merge_location_variant_rows(_ranked_delivery_rows(candidate_rows))
     surfaced_rows = [
         row for row in ranked if _recommendation(row) in STRONG_RECOMMENDATIONS
     ]
     low_priority_rows = [
         row for row in ranked if _recommendation(row) in LOW_PRIORITY_RECOMMENDATIONS
     ]
-    selected_surfaced_rows = surfaced_rows[:cap]
+    selected_surfaced_rows = _company_diverse_rows(
+        surfaced_rows,
+        limit=cap,
+        max_per_company=digest_max_per_company(),
+    )
     selected = selected_surfaced_rows + low_priority_rows
     calibration_rows = _calibration_floor_rows(
         selected,
@@ -202,17 +208,32 @@ def _render_inputs(
         return selection.rows, selection
 
     cap = max(1, min(int(selection.cap), ABSOLUTE_DIGEST_MAX_ROLES))
+    merged_rows = _merge_location_variant_rows(_ranked_delivery_rows(rows))
     surfaced_rows = [
-        row for row in rows if _recommendation(row) in STRONG_RECOMMENDATIONS
+        row for row in merged_rows if _recommendation(row) in STRONG_RECOMMENDATIONS
     ]
     low_priority_rows = [
-        row for row in rows if _recommendation(row) in LOW_PRIORITY_RECOMMENDATIONS
+        row for row in merged_rows if _recommendation(row) in LOW_PRIORITY_RECOMMENDATIONS
     ]
-    render_rows = surfaced_rows[:cap] + low_priority_rows
-    overflow_count = max(selection.overflow_count, max(0, len(surfaced_rows) - cap))
+    rendered_surfaced_rows = _company_diverse_rows(
+        surfaced_rows,
+        limit=cap,
+        max_per_company=digest_max_per_company(),
+    )
+    render_rows = rendered_surfaced_rows + low_priority_rows
+    overflow_count = max(
+        selection.overflow_count,
+        max(0, len(surfaced_rows) - len(rendered_surfaced_rows)),
+    )
+    surfaced_keys = {_opportunity_key(row) for row in rendered_surfaced_rows}
+    calibration_rows = [
+        row
+        for row in _merge_location_variant_rows(selection.calibration_rows)
+        if _opportunity_key(row) not in surfaced_keys
+    ][:CALIBRATION_FLOOR_MAX_ROLES]
     return render_rows, DigestSelection(
         rows=render_rows,
-        calibration_rows=selection.calibration_rows,
+        calibration_rows=calibration_rows,
         cap=cap,
         overflow_count=overflow_count,
         fallback_filtered_count=selection.fallback_filtered_count,
@@ -457,6 +478,123 @@ def digest_max_roles() -> int:
     return max(1, min(int(configured), ABSOLUTE_DIGEST_MAX_ROLES))
 
 
+def digest_max_per_company() -> int:
+    configured = load_scoring_policy().digest_limits.get(
+        "max_per_company",
+        DEFAULT_DIGEST_MAX_PER_COMPANY,
+    )
+    return max(1, min(int(configured), ABSOLUTE_DIGEST_MAX_ROLES))
+
+
+def _company_diverse_rows(
+    rows: list[sqlite3.Row],
+    *,
+    limit: int,
+    max_per_company: int,
+) -> list[sqlite3.Row]:
+    selected: list[sqlite3.Row] = []
+    company_counts: dict[str, int] = {}
+    for row in rows:
+        company_key = str(row["company"]).casefold().strip()
+        if company_counts.get(company_key, 0) >= max_per_company:
+            continue
+        selected.append(row)
+        company_counts[company_key] = company_counts.get(company_key, 0) + 1
+        if len(selected) >= limit:
+            break
+    return selected
+
+
+def _merge_location_variant_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
+    """Collapse proven, materially-compatible location title variants."""
+
+    grouped: dict[tuple[str, str, str], list[sqlite3.Row]] = {}
+    order: list[tuple[str, str, str]] = []
+    for row in rows:
+        locations = _loads_list(str(row["locations_json"] or "[]"))
+        title = str(row["title"])
+        base_title = strip_location_variant_suffix(title, locations)
+        material_key = _delivery_material_signature(row)
+        key = (
+            str(row["company"]).casefold().strip(),
+            base_title.casefold().strip(),
+            "|".join(
+                [
+                    str(row["department"] or "").casefold().strip(),
+                    str(row["employment_type"] or "").casefold().strip(),
+                    material_key,
+                ]
+            ),
+        )
+        if key not in grouped:
+            order.append(key)
+            grouped[key] = []
+        grouped[key].append(row)
+
+    merged: list[sqlite3.Row] = []
+    for key in order:
+        group = grouped[key]
+        if len(group) == 1:
+            merged.append(group[0])
+            continue
+        explicit_variant = any(
+            strip_location_variant_suffix(
+                str(row["title"]),
+                _loads_list(str(row["locations_json"] or "[]")),
+            ).casefold()
+            != str(row["title"]).casefold().strip()
+            for row in group
+        )
+        distinct_locations = {
+            location.casefold().strip()
+            for row in group
+            for location in _loads_list(str(row["locations_json"] or "[]"))
+        }
+        if not explicit_variant and len(distinct_locations) <= 1:
+            merged.extend(group)
+            continue
+        representative = dict(group[0])
+        representative["title"] = strip_location_variant_suffix(
+            str(group[0]["title"]),
+            _loads_list(str(group[0]["locations_json"] or "[]")),
+        )
+        locations: list[str] = []
+        for row in group:
+            for location in _loads_list(str(row["locations_json"] or "[]")):
+                if location not in locations:
+                    locations.append(location)
+        representative["locations_json"] = json.dumps(locations)
+        merged.append(representative)  # type: ignore[arg-type]
+    return merged
+
+
+def _delivery_material_signature(row: sqlite3.Row) -> str:
+    evaluation = json.loads(row["evaluation_json"])
+    blocker_types = sorted(
+        str(blocker.get("type") or "")
+        for blocker in evaluation.get("hard_blockers") or []
+        if isinstance(blocker, dict)
+    )
+    feasibility = evaluation.get("feasibility") or {}
+    alignments = evaluation.get("alignments") or []
+    gaps = evaluation.get("gaps") or []
+    return json.dumps(
+        {
+            "recommendation": evaluation.get("recommendation"),
+            "estimated_level": evaluation.get("estimated_level"),
+            "blockers": blocker_types,
+            "feasibility": feasibility.get("state"),
+            "alignment_requirements": [
+                alignment.get("job_requirement")
+                for alignment in alignments
+                if isinstance(alignment, dict)
+            ],
+            "gaps": [gap.get("gap") for gap in gaps if isinstance(gap, dict)],
+        },
+        sort_keys=True,
+    )
+
+
 def _ranked_delivery_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
     recommendation_rank = {
         "apply_now": 0,
@@ -492,17 +630,31 @@ def _calibration_floor_rows(
     if strong_count >= CALIBRATION_FLOOR_MIN_STRONG_ROLES:
         return []
 
-    selected_strong_job_ids = {
-        int(row["job_id"])
+    selected_strong_keys = {
+        _opportunity_key(row)
         for row in selected_rows
         if _recommendation(row) in STRONG_RECOMMENDATIONS
     }
-    valid_pool = [
+    valid_pool = _merge_location_variant_rows([
         row
         for row in pool_rows
-        if not is_fallback_evaluator_row(row) and int(row["job_id"]) not in selected_strong_job_ids
-    ]
-    return _ranked_by_fit_rows(valid_pool)[:CALIBRATION_FLOOR_MAX_ROLES]
+        if not is_fallback_evaluator_row(row)
+        and _opportunity_key(row) not in selected_strong_keys
+    ])
+    ranked_pool = _ranked_by_fit_rows(valid_pool)
+    diverse = _company_diverse_rows(
+        ranked_pool,
+        limit=CALIBRATION_FLOOR_MAX_ROLES,
+        max_per_company=digest_max_per_company(),
+    )
+    if len(diverse) >= min(CALIBRATION_FLOOR_MAX_ROLES, len(ranked_pool)):
+        return diverse
+    # The calibration floor remains a hard minimum on very small/single-company pools.
+    selected_ids = {int(row["job_id"]) for row in diverse}
+    return (
+        diverse
+        + [row for row in ranked_pool if int(row["job_id"]) not in selected_ids]
+    )[:CALIBRATION_FLOOR_MAX_ROLES]
 
 
 def _ranked_by_fit_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:
@@ -526,6 +678,15 @@ def _group_rows(rows: list[sqlite3.Row]) -> dict[str, list[sqlite3.Row]]:
 
 def _recommendation(row: sqlite3.Row) -> str:
     return str(json.loads(row["evaluation_json"])["recommendation"])
+
+
+def _opportunity_key(row: sqlite3.Row) -> tuple[str, str, str]:
+    locations = _loads_list(str(row["locations_json"] or "[]"))
+    return (
+        str(row["company"]).casefold().strip(),
+        strip_location_variant_suffix(str(row["title"]), locations).casefold().strip(),
+        str(row["department"] or "").casefold().strip(),
+    )
 
 
 def _ranked_rows(rows: list[sqlite3.Row]) -> list[sqlite3.Row]:

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices & Services; experience in requirements logic design, UAT, rollout, and transformation rather than engineering PM",
+        "evidence_strength": "strong",
+        "job_requirement": "Guide AI strategy and identify highest-value use cases with senior business stakeholders"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation leader experienced in translating business and technical topics across teams; guided customer-facing rollouts and implementation patterns",
+        "evidence_strength": "strong",
+        "job_requirement": "Work with business and technical teams to demonstrate value and recommend architectural patterns"
+      },
+      {
+        "candidate_evidence": "Strategic operations experience includes cross-functional stakeholder management and feeding customer insights into planning cycles",
+        "evidence_strength": "medium",
+        "job_requirement": "Foster customer advocacy, gather and relay customer feedback, identify themes for product planning"
+      },
+      {
+        "candidate_evidence": "No explicit security or compliance background cited in profile; honest gaps note limited deep domain expertise outside core operations and transformation",
+        "evidence_strength": "weak",
+        "job_requirement": "Serve as first line of defense for security and compliance questions"
+      },
+      {
+        "candidate_evidence": "No security architecture, compliance, or IT governance experience mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Demonstrate thorough understanding of IT security principles and B2B SaaS technical requirements"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no mention of JavaScript, REST APIs, or AI/ML prototyping experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Have industry experience in Python, JavaScript, REST APIs, and preferably have delivered prototypes of generative AI/ML solutions"
+      }
+    ],
+    "confidence": 0.68,
+    "estimated_level": "L4",
+    "evidence_strength": 52,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "Security and compliance domain expertise; no cited IT security architecture, compliance auditing, or governance background",
+        "mitigation": "Role explicitly asks candidate to be 'first line of defense' for security questions\u2014this is learnable through onboarding, customer interactions, and security team collaboration, but starting from zero is a material risk for early-stage customer relationships",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited API and modern cloud architecture depth; Python is basic and actively learning, no JavaScript or REST API hands-on experience",
+        "mitigation": "Technical advisory requires credibility in architectural recommendations; candidate's transformation and operations background can ground business value discussion, but technical credibility on modern stacks may require rapid ramp or co-selling with technical colleagues early",
+        "severity": "high"
+      },
+      {
+        "gap": "No generative AI or ML prototype delivery experience; no AI/ML product engineering or implementation background",
+        "mitigation": "Role asks for 'delivered prototypes of Generative AI/traditional ML solutions'\u2014this is preferred rather than mandatory, but candidate lacks hands-on AI/ML solution architecture; deep domain learning needed",
+        "severity": "medium"
+      },
+      {
+        "gap": "Fluency in Spanish not confirmed; profile lists German as native and English as professional, but no Spanish language level stated",
+        "mitigation": "Role is based in Madrid and requires 'full professional fluency in English and Spanish'\u2014must confirm Spanish capability before proceeding",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "5+ years in technical pre-sales with C-level stakeholder relationships, architectural advisory, and customer feedback integration to product strategy signal L4 senior-IC scope. No management or VP reporting mentioned. Role clarity on pre-sales mandate and cross-functional collaboration is explicit; enterprise customer scope and Madrid location confirm seniority above junior. Company size/stage not stated, moderating confidence.",
+    "role_family_fit": 58,
+    "scope_seniority": 72,
+    "summary": "This is a technical solutions engineer role (pre-sales, not post-sales) at OpenAI\u2014a clear stretch from the candidate's Strategy and Operations / Product Operations family at Google. The candidate brings 8 years of transformation, commercial operations scaling, and stakeholder management, which map well to business value discovery and customer advocacy pillars. However, the role requires genuine security/compliance domain credibility (first line of defense), hands-on API and cloud architecture depth, and demonstrable AI/ML prototype experience. Candidate's Python is basic and actively learning; no JavaScript, REST APIs, or AI/ML solution delivery cited. Spanish fluency is not confirmed but required. Core family fit is below target; technical credibility gaps are high. Consider only if candidate can rapidly credibly ramp security/AI/ML domains and confirm Spanish fluency.",
+    "uncertainties": [
+      "Spanish language proficiency not stated in candidate profile; Madrid role requires 'full professional fluency'",
+      "Depth of cloud/network architecture knowledge not detailed; candidate background is operations/transformation, not infrastructure or SaaS technical architecture",
+      "No indication of AI/ML solution prototyping, deployment, or product engineering experience; learning status for this domain unknown",
+      "Company stage and team size not stated in JD, affecting L4 vs L5 boundary clarity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

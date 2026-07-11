@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "blocked",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; demonstrated scaling of global commercial operations and transformation programs with cross-functional coordination and execution ownership",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead FDEs through high-stakes, ambiguous customer deployments and own technical and business value outcomes end to end"
+      },
+      {
+        "candidate_evidence": "Strategic and operational leadership background with stakeholder management across business and technical functions; experienced in translating operational insights into strategic inputs",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner closely with Product, Research, Sales, and GTM to ensure fieldwork informs roadmap priorities and drives exploration"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google indicate demonstrated capability to scale and lead; background in building scalable operational models and team leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Set a high bar for team performance and support growth through direct, actionable feedback"
+      },
+      {
+        "candidate_evidence": "No evidence of direct management of field engineers or customer-facing technical teams; background is operations, strategy, and program leadership",
+        "evidence_strength": "weak",
+        "job_requirement": "2+ years managing high-performing FDE or customer-facing engineers"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no evidence of writing or reviewing production-grade code in either language",
+        "evidence_strength": "weak",
+        "job_requirement": "Write and review production-grade code across frontend and backend using Javascript or Python"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No direct management experience with Forward Deployed Engineers or field-based technical delivery teams; candidate's management background is in operations and strategic programs, not customer-facing technical engineering teams",
+        "mitigation": "If candidate has managed cross-functional technical projects involving customer delivery, that context could transfer, but FDE-specific management (handling field pressure, technical escalations, on-site decision-making) is distinct from ops management and would require ramp-up.",
+        "severity": "high"
+      },
+      {
+        "gap": "Cannot write or review production-grade Python or JavaScript code; role explicitly requires hands-on code review and technical depth in these languages across frontend and backend systems",
+        "mitigation": "Role states FDE managers must 'write and review production-grade code'; this is a hard boundary for managing engineering teams. No operational background substitutes for this technical credibility with engineers.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of leading prototype-to-production technical delivery with ambiguous problem statements or frontier research integration; background is primarily commercial and operational scaling",
+        "mitigation": "Strategic program leadership may transfer in ambiguity handling, but the fusion of research uncertainty, production deployment pressure, and field-based problem solving is specialized. Candidate would need significant ramp on this dimension.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented consulting or field-deployment experience; role requires deep comfort with on-site customer work, travel (25%), and managing teams under field pressure",
+        "mitigation": "International operations experience and global scaling suggest some cross-region comfort, but embedded customer deployment is a different model. London location and hybrid work model are feasible.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Write and review production-grade code across frontend and backend using Javascript or Python.\" Candidate profile states \"Python basic and actively learning\" with \"no production software-engineering background.\" Role requires hands-on technical code review as a core duty of team leadership.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Manager role with 8+ years experience required, 2+ years managing technical teams, leading high-pressure projects end-to-end, and direct influence on product roadmap signals. Reporting to OpenAI research/product leadership and owning customer-facing technical delivery outcomes. Estimated L5 (Senior IC or Manager with established ownership scope).\"",
+    "role_family_fit": 35,
+    "scope_seniority": 75,
+    "summary": "Manager, Forward Deployed Engineering requires hands-on production code review in Python/JavaScript, 2+ years managing FDE teams through high-stakes field deployments, and deep technical credibility with engineering teams. Candidate brings strong strategic leadership, global operations scaling, and cross-functional partnership experience, but has no FDE management background, cannot code-review production systems, and lacks field-deployment experience. The hard blocker on production code review as a core duty disqualifies this application; operations and strategy leadership, while valuable, do not substitute for the technical engineering manager credibility this role demands.",
+    "uncertainties": [
+      "Candidate's exact scope and team size managed at Google not specified; level of technical depth in previous roles unclear",
+      "Whether candidate has any hands-on involvement in technical delivery projects beyond program management",
+      "Extent of customer/field interaction in previous commercial operations roles",
+      "OpenAI company stage and FDE team maturity context not stated in JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

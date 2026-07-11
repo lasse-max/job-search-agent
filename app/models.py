@@ -24,6 +24,7 @@ ReviewState = Literal[
     "duplicate",
     "closed",
 ]
+EstimatedLevel = Literal["L3", "L4", "L5", "L6", "L7+", "unknown"]
 
 
 def utc_now() -> str:
@@ -115,6 +116,9 @@ class RoleEvaluation:
     gaps: list[Gap] = field(default_factory=list)
     uncertainties: list[str] = field(default_factory=list)
     provenance: dict[str, str] = field(default_factory=dict)
+    estimated_level: EstimatedLevel = "unknown"
+    level_confidence: int = 0
+    level_rationale: str = "Insufficient evidence to estimate level."
     summary: str = ""
 
     def to_jsonable(self) -> dict[str, Any]:

@@ -1,0 +1,55 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations and global transformation programs, with documented experience scaling operations and leading cross-functional strategic initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead technical projects and program ownership across platform reliability, security, and infrastructure"
+      },
+      {
+        "candidate_evidence": "Experience collaborating across teams on transformation and operational programs, including stakeholder management and cross-functional coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Security team and other product & engineering leadership to build foundational systems and architecture"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Deep software engineering and platform/reliability engineering expertise. Role requires hands-on technical leadership of production platform systems, security, and infrastructure.",
+        "mitigation": "Candidate background is operations and business strategy; platform reliability engineering is a distinct technical discipline requiring deep systems knowledge that cannot be acquired in transition.",
+        "severity": "high"
+      },
+      {
+        "gap": "Production coding, infrastructure, and security engineering depth. JD expects lead-level technical decision-making on platform architecture and reliability.",
+        "mitigation": "Candidate's honest gap statement confirms no production software-engineering background. Role is core engineering, not implementation-heavy transformation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with production platform reliability, incident response, system design, or security engineering practices.",
+        "mitigation": "Role ownership is technical infrastructure; business operations experience does not transfer to this domain.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role is titled 'Lead Platform Security Engineer' under Engineering department, with core responsibilities to 'lead the build of key technical projects that keeps Deputy's production platform reliable, safe and recoverable' and 'build foundational and reusable systems, services and architecture.' This is a hands-on technical leadership role requiring deep expertise in production software systems, platform reliability engineering, and security. Candidate has no production software-engineering background and explicitly notes 'no production software-engineering background' in honest gaps. Role requires production engineering depth as a core qualification, not a stretch or transformation-heavy implementation role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Lead-level IC role (L5 equivalent) at a unicorn SaaS company in the Engineering department. JD emphasizes technical project ownership, architecture design, and partnership with security and engineering leadership. Reporting context not explicit, but peer-level collaboration with product and engineering leadership, plus platform/reliability scope, indicates L5 IC or lead-engineer band. Company stage (unicorn, 1.5M users, 100+ countries) supports L5 baseline for lead platform roles.",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "This is a hands-on Lead Software Engineer role in platform reliability and security at Deputy, a unicorn SaaS company. While the candidate has strong strategic operations and cross-functional leadership experience at Google, the role is core engineering, not strategy or operations. The candidate explicitly lacks production software-engineering background, and the JD requires deep technical expertise in platform reliability, security, and infrastructure\u2014disciplines that do not align with business operations or transformation program leadership. This is a disqualifying mismatch on function, not seniority.",
+    "uncertainties": [
+      "No explicit reporting line or team-size context in JD; estimated L5 based on 'Lead' title and unicorn company scale.",
+      "Degree or specific engineering qualification not stated; assumed standard for SWE role at this company."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

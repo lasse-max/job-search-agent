@@ -16,7 +16,7 @@ from app.adapters.utils import clean_html, compact_text
 from app.config import DATA_DIR
 from app.models import CompanyConfig
 from app.services.evaluate import evaluate_role, relevance_decision
-from app.services.llm_evaluator import CachedLLMProvider, LLMProvider
+from app.services.llm_evaluator import CachedLLMProvider, LLMProvider, LLMProviderError
 
 
 DEFAULT_EVALUATION_SET = DATA_DIR / "evaluation_set" / "evaluation_set.yaml"
@@ -45,6 +45,9 @@ class BenchmarkResult:
     expected_blocked: bool
     actual_blocked: bool
     fit_score: int
+    estimated_level: str
+    level_confidence: int
+    level_rationale: str
     recommendation_match: bool
     surface_match: bool
     blocker_match: bool
@@ -84,6 +87,13 @@ class BenchmarkRun:
 
 
 @dataclass(frozen=True)
+class CachePopulationFailure:
+    label_set: str
+    role_id: str
+    error: str
+
+
+@dataclass(frozen=True)
 class LiveNoiseBenchmarkResult:
     role_id: str
     company: str
@@ -91,6 +101,12 @@ class LiveNoiseBenchmarkResult:
     expected_recommendation: str
     actual_recommendation: str
     fit_score: int
+    estimated_level: str
+    level_confidence: int
+    level_rationale: str
+    expected_blocked: bool
+    actual_blocked: bool
+    blocker_match: bool | None
     surface_match: bool
     all_surfaced_match: bool
     evaluator_version: str
@@ -108,6 +124,9 @@ class LiveNoiseBenchmarkMetrics:
     all_surfaced_count: int
     all_surfaced_correct: int
     all_surfaced_precision: float
+    blocker_expected_positives: int
+    blocker_positives_recalled: int
+    blocker_recall: float
 
     @property
     def precision_passes(self) -> bool:
@@ -214,6 +233,51 @@ def run_benchmark(
     )
 
 
+def populate_benchmark_llm_cache(
+    *,
+    llm_provider: LLMProvider,
+    evaluation_set_path: Path = DEFAULT_EVALUATION_SET,
+    cache_dir: Path = DEFAULT_JD_CACHE_DIR,
+    live_noise_set_path: Path = DEFAULT_LIVE_NOISE_PRECISION_SET,
+) -> tuple[CachePopulationFailure, ...]:
+    """Populate all benchmark rows while surfacing retryable row-level failures."""
+
+    failures: list[CachePopulationFailure] = []
+    for example in load_evaluation_set(evaluation_set_path):
+        try:
+            _evaluate_example(
+                example,
+                cache_dir / f"{example['id']}.txt",
+                llm_provider,
+            )
+        except LLMProviderError as exc:
+            if not exc.retryable_output:
+                raise
+            failures.append(
+                CachePopulationFailure(
+                    label_set=str(evaluation_set_path),
+                    role_id=str(example["id"]),
+                    error=str(exc),
+                )
+            )
+
+    if live_noise_set_path.exists():
+        for example in _labelled_examples(load_live_noise_set(live_noise_set_path)):
+            try:
+                _evaluate_live_noise_example(example, llm_provider)
+            except LLMProviderError as exc:
+                if not exc.retryable_output:
+                    raise
+                failures.append(
+                    CachePopulationFailure(
+                        label_set=str(live_noise_set_path),
+                        role_id=str(example["id"]),
+                        error=str(exc),
+                    )
+                )
+    return tuple(failures)
+
+
 def run_live_noise_benchmark(
     *,
     live_noise_set_path: Path = DEFAULT_LIVE_NOISE_PRECISION_SET,
@@ -274,11 +338,8 @@ def run_gate_recall_benchmark(
 
 
 def load_evaluation_set(path: Path = DEFAULT_EVALUATION_SET) -> list[dict[str, Any]]:
-    text = path.read_text(encoding="utf-8")
-    try:
-        data = yaml.safe_load(text)
-    except yaml.YAMLError:
-        return _load_loose_evaluation_set(text)
+    with path.open(encoding="utf-8") as stream:
+        data = yaml.safe_load(stream)
     if not isinstance(data, dict) or not isinstance(data.get("evaluation_set"), list):
         raise ValueError(f"Expected evaluation_set list in {path}")
     return [dict(item) for item in data["evaluation_set"]]
@@ -303,55 +364,6 @@ def _labelled_examples(examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
         for example in examples
         if str(example.get("expected_recommendation") or "") in LABELLED_RECOMMENDATIONS
     ]
-
-
-def _load_loose_evaluation_set(text: str) -> list[dict[str, Any]]:
-    examples: list[dict[str, Any]] = []
-    current: dict[str, Any] | None = None
-    in_hard_blockers = False
-    for raw_line in text.splitlines():
-        line = raw_line.rstrip()
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
-            continue
-        if line.startswith("  - id: "):
-            if current is not None:
-                examples.append(current)
-            current = {"id": _clean_scalar(line.split(": ", 1)[1])}
-            in_hard_blockers = False
-            continue
-        if current is None or not line.startswith("    "):
-            continue
-        if stripped.startswith("- type:") and in_hard_blockers:
-            current.setdefault("hard_blockers", []).append(
-                {"type": _clean_scalar(stripped.split(": ", 1)[1])}
-            )
-            continue
-        if ": " not in stripped:
-            continue
-        key, value = stripped.split(": ", 1)
-        if key == "hard_blockers":
-            current[key] = [] if value.strip() == "[]" else []
-            in_hard_blockers = True
-            continue
-        current[key] = _clean_scalar(value)
-        in_hard_blockers = False
-    if current is not None:
-        examples.append(current)
-    return examples
-
-
-def _clean_scalar(value: str) -> str:
-    value = value.split(" #", 1)[0].strip()
-    if value in {"[]", "null"}:
-        return ""
-    if (value.startswith('"') and value.endswith('"')) or (
-        value.startswith("'") and value.endswith("'")
-    ):
-        value = value[1:-1]
-    if value.lower() in {"true", "false"}:
-        return value.lower() == "true"
-    return value
 
 
 def refresh_jd_cache(
@@ -392,12 +404,8 @@ def _evaluate_example(
         "description_text": description_text,
     }
     company = _company_config(example)
-    evaluation = evaluate_role(row, company, llm_provider=llm_provider)
-    evaluator_version = str(
-        evaluation.provenance.get("model_version")
-        or evaluation.provenance.get("evaluator_version")
-        or "unknown"
-    )
+    evaluation = _evaluate_role_with_retry(row, company, llm_provider)
+    evaluator_version = _evaluation_version_label(evaluation.provenance)
     actual_tier = str(evaluation.strategic_priority["company_tier"])
     expected_tier = str(example["expected_strategic_tier"])
     expected_recommendation = str(example["expected_recommendation"])
@@ -420,6 +428,9 @@ def _evaluate_example(
         expected_blocked=expected_blocked,
         actual_blocked=actual_blocked,
         fit_score=evaluation.role_fit_score,
+        estimated_level=evaluation.estimated_level,
+        level_confidence=evaluation.level_confidence,
+        level_rationale=evaluation.level_rationale,
         recommendation_match=actual_recommendation == expected_recommendation,
         surface_match=(
             actual_recommendation in APPLY_CONSIDER
@@ -459,14 +470,12 @@ def _evaluate_live_noise_example(
         target_role_family_notes="Live-noise precision label.",
         warm_path=bool(example.get("warm_path", False)),
     )
-    evaluation = evaluate_role(row, company, llm_provider=llm_provider)
+    evaluation = _evaluate_role_with_retry(row, company, llm_provider)
     expected = str(example["expected_recommendation"])
     actual = evaluation.recommendation
-    evaluator_version = str(
-        evaluation.provenance.get("model_version")
-        or evaluation.provenance.get("evaluator_version")
-        or "unknown"
-    )
+    expected_blocked = bool(example.get("hard_blockers")) or expected == "blocked"
+    actual_blocked = bool(evaluation.hard_blockers)
+    evaluator_version = _evaluation_version_label(evaluation.provenance)
     return LiveNoiseBenchmarkResult(
         role_id=str(example["id"]),
         company=str(example["company"]),
@@ -474,6 +483,12 @@ def _evaluate_live_noise_example(
         expected_recommendation=expected,
         actual_recommendation=actual,
         fit_score=evaluation.role_fit_score,
+        estimated_level=evaluation.estimated_level,
+        level_confidence=evaluation.level_confidence,
+        level_rationale=evaluation.level_rationale,
+        expected_blocked=expected_blocked,
+        actual_blocked=actual_blocked,
+        blocker_match=actual_blocked if expected_blocked else None,
         surface_match=(
             actual in APPLY_CONSIDER
             if expected in APPLY_CONSIDER
@@ -602,6 +617,16 @@ def _live_noise_metrics(results: list[LiveNoiseBenchmarkResult]) -> LiveNoiseBen
         all_surfaced_count=len(all_surfaced),
         all_surfaced_correct=len(all_surfaced_correct),
         all_surfaced_precision=_ratio(len(all_surfaced_correct), len(all_surfaced)),
+        blocker_expected_positives=sum(
+            1 for result in results if result.expected_blocked
+        ),
+        blocker_positives_recalled=sum(
+            1 for result in results if result.expected_blocked and result.actual_blocked
+        ),
+        blocker_recall=_ratio(
+            sum(1 for result in results if result.expected_blocked and result.actual_blocked),
+            sum(1 for result in results if result.expected_blocked),
+        ),
     )
 
 
@@ -673,9 +698,9 @@ def _write_markdown(
             f"({metrics.exact_recommendation_match_rate:.1%})"
         ),
         (
-            "  - Note: `apply_now` vs `consider` is approximate in the deterministic "
-            "evaluator because many fit scores cluster near the threshold; fine "
-            "ranking is deferred to the LLM evaluator."
+            "  - Note: `apply_now` vs `consider` remains approximate in the hybrid "
+            "evaluator because many fit scores cluster near the threshold; owner "
+            "triage remains the final ranking signal."
         ),
         (
             "- Apply/Consider recall: "
@@ -694,17 +719,18 @@ def _write_markdown(
         "## Per-Role Results",
         "",
         (
-            "| ID | Company | Role | Expected | Actual | Fit | Feasibility | "
+            "| ID | Company | Role | Expected | Actual | Fit | Est. level | Feasibility | "
             "Recommendation | Blocker | Fit Band |"
         ),
-        "|---|---|---|---|---|---:|---|---|---|---|",
+        "|---|---|---|---|---|---:|---|---|---|---|---|",
     ]
     for result in results:
         lines.append(
             "| "
             f"{result.role_id} | {result.company} | {result.role_title} | "
             f"{result.expected_recommendation} | {result.actual_recommendation} | "
-            f"{result.fit_score} | {_pass_fail(result.feasibility_match)} | "
+            f"{result.fit_score} | {result.estimated_level} ({result.level_confidence}%) | "
+            f"{_pass_fail(result.feasibility_match)} | "
             f"{_pass_fail(result.recommendation_match)} | "
             f"{_pass_fail(result.blocker_match)} | "
             f"{_pass_fail(result.fit_band_match)} |"
@@ -749,20 +775,31 @@ def _write_live_noise_markdown(
             f"{metrics.all_surfaced_correct}/{metrics.all_surfaced_count} "
             f"({metrics.all_surfaced_precision:.1%})"
         ),
+        (
+            "- Positive hard-blocker recall (independently labelled positives only): "
+            f"{metrics.blocker_positives_recalled}/{metrics.blocker_expected_positives} "
+            f"({metrics.blocker_recall:.1%})"
+        ),
+        (
+            "  - Note: empty blocker fields in the live template are not treated as "
+            "reviewed negative labels; curated blocker accuracy is reported separately."
+        ),
         f"- Recall gate: {_pass_fail(metrics.recall_passes)}",
         f"- Apply/Consider precision gate: {_pass_fail(metrics.precision_passes)}",
         "",
         "## Per-Role Results",
         "",
-        "| ID | Company | Role | Expected | Actual | Fit | Apply/Consider Surface | All-Surfaced |",
-        "|---|---|---|---|---|---:|---|---|",
+        "| ID | Company | Role | Expected | Actual | Fit | Est. level | Blocker | Apply/Consider Surface | All-Surfaced |",
+        "|---|---|---|---|---|---:|---|---|---|---|",
     ]
     for result in results:
         lines.append(
             "| "
             f"{result.role_id} | {result.company} | {result.role_title} | "
             f"{result.expected_recommendation} | {result.actual_recommendation} | "
-            f"{result.fit_score} | {_pass_fail(result.surface_match)} | "
+            f"{result.fit_score} | {result.estimated_level} ({result.level_confidence}%) | "
+            f"{_pass_fail(result.blocker_match) if result.blocker_match is not None else 'not labelled'} | "
+            f"{_pass_fail(result.surface_match)} | "
             f"{_pass_fail(result.all_surfaced_match)} |"
         )
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -816,6 +853,26 @@ def _benchmark_evaluator_versions(results: list[BenchmarkResult]) -> tuple[str, 
     return tuple(sorted({result.evaluator_version for result in results}))
 
 
+def _evaluation_version_label(provenance: dict[str, str]) -> str:
+    evaluator = provenance.get("evaluator_version") or "unknown"
+    prompt = provenance.get("prompt_version") or "unknown"
+    model = provenance.get("model_version") or "unknown"
+    return f"{evaluator}; prompt={prompt}; model={model}"
+
+
+def _evaluate_role_with_retry(
+    row: dict[str, Any],
+    company: CompanyConfig,
+    llm_provider: LLMProvider,
+):
+    try:
+        return evaluate_role(row, company, llm_provider=llm_provider)
+    except LLMProviderError as exc:
+        if not exc.retryable_output:
+            raise
+        return evaluate_role(row, company, llm_provider=llm_provider)
+
+
 def _display_path(path: Path) -> str:
     try:
         return path.resolve().relative_to(Path.cwd().resolve()).as_posix()
@@ -865,7 +922,6 @@ def _fallback_snapshot(example: dict[str, Any], status: str) -> str:
             f"Company: {example['company']}",
             f"Role title: {example['role_title']}",
             f"Location: {example['location']}",
-            f"Role context: {example['key_reason']}",
         ]
     )
 

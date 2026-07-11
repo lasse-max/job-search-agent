@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs; background emphasizes strategy, operations, and program leadership, not core audit methodology or financial crime compliance frameworks",
+        "evidence_strength": "weak",
+        "job_requirement": "Risk-based audit planning and testing procedures for financial crime and regulatory compliance"
+      },
+      {
+        "candidate_evidence": "Python listed as basic and actively learning; no evidence of Databricks or Looker; audit analytics is not part of stated strategy/operations background",
+        "evidence_strength": "weak",
+        "job_requirement": "Data analysis tools (Python, Databricks, Looker) to improve audit efficiency and identify emerging risks"
+      },
+      {
+        "candidate_evidence": "No evidence of financial crime, fraud investigation, card scheme compliance, or banking regulatory risk background; experience is in commercial operations and transformation, not financial services compliance",
+        "evidence_strength": "weak",
+        "job_requirement": "Core expertise in Financial Crime Compliance, Fraud, Card Scheme Compliance, and Enterprise Risk Management"
+      },
+      {
+        "candidate_evidence": "No evidence of direct banking regulator exposure, financial services regulation, or compliance-driven work; Google background is outside regulated financial services",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with banking regulators (MAS, APRA, DNB, FCA) and regulatory requirements"
+      },
+      {
+        "candidate_evidence": "Google experience includes stakeholder management and transformation program leadership; however, financial crime and compliance messaging is a distinct discipline not evident in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior management communication and influence on complex risk and compliance matters"
+      },
+      {
+        "candidate_evidence": "No degree, major, or educational background stated in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Bachelor's degree or above in Accounting, Finance, or Business Administration"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L4",
+    "evidence_strength": 20,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No core internal audit or financial crime compliance background; career has been in strategy, operations, and transformation, not audit methodology, compliance frameworks, or regulatory risk management",
+        "mitigation": "Significant on-the-job training required in audit planning, financial crime controls assessment, compliance testing, and regulatory frameworks. Role requires immediate execution against Audit Committee; ramp time is not feasible.",
+        "severity": "high"
+      },
+      {
+        "gap": "No banking or regulated financial services experience; unfamiliar with MAS, APRA, DNB, FCA, card-scheme compliance, or electronic money institution regulation",
+        "mitigation": "Would require 6\u201312 months to build foundational knowledge of fintech regulatory landscape and specific banking regulator requirements. Not suitable for a manager-level audit role at a $8B fintech platform.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited technical tooling in audit analytics; Python basic and actively learning, no Databricks or Looker; audit analytics design is a core responsibility",
+        "mitigation": "Python skills could improve with training, but Databricks/Looker proficiency and audit analytics mindset (anomaly detection, data-driven controls testing) would need significant development.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of professional audit or compliance certifications (CIA, CPA, CAMS, FRM); role strongly prefers and background expects audit credentials",
+        "mitigation": "Not a hard requirement, but absence of professional credentials is a gap in credibility and rigor expected at manager level in internal audit.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Educational background not stated; role requires Bachelor's degree in Accounting, Finance, or Business Administration",
+        "mitigation": "Verify degree and field; if not aligned, raises further questions about foundational accounting and finance knowledge needed for audit manager role.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "5\u20138 years required as professional auditor in financial services; manager-level reporting scope to Audit Committee; no indication of managing managers or director scope. Fintech/regulated environment (Airwallex, $8B, 2,200+ people) provides seniority context consistent with L4 IC or emerging senior IC.",
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is an Internal Audit Manager (Compliance) role at Airwallex, a $8B fintech platform requiring 5\u20138 years of professional audit or banking compliance experience, core expertise in financial crime, card-scheme and regulatory compliance, and familiarity with banking regulators (MAS, APRA, DNB, FCA). The candidate's background is in Strategy and Operations / Transformation Program Leadership at Google; no audit, financial crime compliance, banking regulation, or internal audit methodology is evident. Role family fit is fundamentally misaligned\u2014this is a compliance/audit specialist role, not a strategy, operations, or transformation position. Evidence strength is weak across all core competencies: no financial crime framework, no regulator exposure, no audit analytics background, no audit credentials. High-severity gaps in audit methodology and banking regulatory knowledge would require 6\u201312 months of foundational training unsuitable for an immediate manager-level hire at a regulated fintech. Recommend skip.",
+    "uncertainties": [
+      "Candidate's educational background (degree, major, institution) not stated in profile; unable to confirm Bachelor's requirement in Accounting, Finance, or Business Administration",
+      "No indication whether candidate has any exposure to financial crime investigation, fraud analytics, or banking compliance frameworks\u2014even tangential experience not evident",
+      "Candidate profile does not specify any banking sector exposure, even through partnerships or vendor relationships at Google",
+      "Extent of Python proficiency and prior data analytics / audit tool exposure not detailed; 'basic and actively learning' suggests early-stage capability"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

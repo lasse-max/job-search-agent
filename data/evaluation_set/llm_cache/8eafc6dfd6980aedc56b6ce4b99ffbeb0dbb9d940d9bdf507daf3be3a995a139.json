@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in global commercial operations and transformation programs with two promotions; positioned as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "GTM Operations Associate role in Strategy & Operations department at Cognition"
+      },
+      {
+        "candidate_evidence": "Candidate background emphasizes transformation programs and commercial operations scaling, which aligns with GTM operations principles",
+        "evidence_strength": "medium",
+        "job_requirement": "GTM Operations function (title and department indicate go-to-market and operational execution scope)"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L3",
+    "evidence_strength": 40,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "Role level (L3 Associate) sits well below candidate's target band (L4\u2013L5 Manager/Senior Manager/Principal IC scope). Title, location (Singapore), and available JD excerpt provide insufficient detail to confirm strategic or transformation scope.",
+        "mitigation": "Request full, untruncated JD text. If role is indeed entry-level GTM operations execution without strategic ownership or cross-functional transformation leadership, candidate should deprioritize. If JD reveals hidden scope (e.g., regional operations leadership, strategic programs), reassess.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct GTM strategy and sales-operations domain evidence in candidate profile. Background emphasizes product operations, devices, and services transformation rather than quoted GTM or revenue-operations execution.",
+        "mitigation": "Clarify candidate's exposure to GTM strategy, sales enablement, deal operations, or sales-driven transformation. Confirm whether product-operations and commercial-operations scaling experience transfers cleanly to GTM operations rhythm.",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD snapshot is truncated and incomplete; no readable job description text, responsibilities, reporting line, or explicit qualifications provided. Seniority, scope, and function fit cannot be fully validated.",
+        "mitigation": "Obtain full, clean JD text. Current snapshot is unusable for detailed role evaluation.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Title \"Associate\" typically signals 0\u20132 years and entry/early-career scope (L3). No explicit years required, management scope, or seniority markers in the cached JD snippet. Company size/stage unknown. Low confidence due to incomplete JD text and ambiguous role scope.",
+    "role_family_fit": 42,
+    "scope_seniority": 35,
+    "summary": "GTM Operations Associate at Cognition is an entry-level (L3) role in Singapore, significantly below the candidate's L4\u2013L5 target band. The cached JD is incomplete and unreadable, preventing proper assessment of actual scope, strategic/transformation content, and fit. Candidate's eight-year Google ops and transformation background is strong, but GTM operations domain evidence is limited and role seniority is a structural mismatch. Recommend skip unless full JD reveals hidden regional or strategic scope.",
+    "uncertainties": [
+      "JD snapshot is corrupted/truncated; no readable job description, responsibilities, or qualifications available",
+      "Company size/stage at Cognition not stated; cannot contextualize role scope against company maturity",
+      "Unclear whether 'GTM Operations Associate' is tactical execution or carries strategic/transformation ownership in APAC context",
+      "Candidate's specific exposure to GTM strategy, sales operations, or revenue-operations work not detailed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

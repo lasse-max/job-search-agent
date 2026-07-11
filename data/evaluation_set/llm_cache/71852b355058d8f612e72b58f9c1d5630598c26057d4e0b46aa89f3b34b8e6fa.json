@@ -1,0 +1,83 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience with requirements definition, logic design, UAT, rollout, and large-scale transformation delivery across cross-functional teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Oversee end-to-end delivery of integrated products, bridging design teams, supply chains, engineering functions and manufacturers to ensure products are designed and built to standard, within budget and on schedule"
+      },
+      {
+        "candidate_evidence": "Product Operations background with demonstrated experience translating complex technical interdependencies into structured, traceable delivery; experienced at operating with senior leadership at global scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and maintain programme steering dashboard that tracks KPIs spanning supply chain performance, engineering milestones and contractual commitments, surfacing risks to senior leadership"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global operations and programs at Devices and Services; transformation program leadership implies multi-stakeholder coordination and governance; international scope (German fluency noted)",
+        "evidence_strength": "medium",
+        "job_requirement": "Govern stakeholder interactions across internal engineering teams, supply chain partners, overseas manufacturers and military customers, ensuring decision-making is structured, traceable and aligned with strategic commitments"
+      },
+      {
+        "candidate_evidence": "Transformation program experience inherently involves process design, execution, and scaling practices; background in scaling operations suggests systematic improvement mindset",
+        "evidence_strength": "medium",
+        "job_requirement": "Identify and implement continuous improvement initiatives across product delivery processes, translating lessons learned into scalable practices"
+      },
+      {
+        "candidate_evidence": "English: professional/fluent; German: native",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate with full fluency in both English and German"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation program leadership at scale implies cross-functional stakeholder management and lifecycle visibility; no explicit defence/military customer experience documented",
+        "evidence_strength": "medium",
+        "job_requirement": "Work directly with delivery teams, defence customers, partners and senior internal stakeholders across the full product development lifecycle"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 62,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "No documented experience delivering defence or military products through development, manufacturing, and fielding",
+        "mitigation": "Candidate's eight years scaling global operations and transformation programs provide foundation in complex, multi-stakeholder delivery; defence domain knowledge and customer engagement patterns are learnable with onboarding and mentorship from company's defence team",
+        "severity": "high"
+      },
+      {
+        "gap": "No PMP certification or stated formal project management methodology application (risk registers, KPI frameworks, governance structure)",
+        "mitigation": "PMP is a credential, not a proxy for capability; candidate's programme leadership and transformation work likely involved structured governance; certification obtainable within 3\u20136 months if role requires it before full-scope authority",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit supply-chain, manufacturing, or overseas supplier coordination background",
+        "mitigation": "Cross-functional product operations at scale (Devices and Services) typically involves supply-chain and logistics visibility; hands-on manufacturing coordination is domain-specific and requires ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or classic defence procurement/government contract interface experience",
+        "mitigation": "JD notes this as 'nice to have,' not mandatory; defence procurement structures and government contract mechanics are systematic and teachable; Helsing's internal programme management and customer-facing PM team can provide on-the-job grounding",
+        "severity": "medium"
+      },
+      {
+        "gap": "No documented engineering, political science, or defence-domain academic background",
+        "mitigation": "JD lists this as 'nice to have.' Candidate's product operations and programme leadership provide sufficient technical fluency to engage with engineering teams and military stakeholders; domain knowledge grows with assignment",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Senior Project Manager title with end-to-end programme ownership across supply chain, manufacturing, and customer delivery suggests L5 senior IC scope. JD emphasizes PMP/structured PM methodologies and governance of complex multi-stakeholder defence programmes; no explicit years-required posted. Company stage/size unknown, limiting confidence. Scope implies 5\u20138 year+ experience baseline for similar roles.",
+    "role_family_fit": 72,
+    "scope_seniority": 75,
+    "summary": "Senior Project Manager role in defence hardware delivery, requiring end-to-end programme governance, supply chain and manufacturing coordination, and stakeholder management across military customers and partners. Candidate brings eight years of global operations and transformation program leadership at scale, with demonstrated cross-functional stakeholder coordination, process design, and delivery execution. Critical gaps: no documented military/defence product delivery experience, no PMP certification, no supply-chain or manufacturing-specific background. Defence domain fluency and programme steering dashboard construction are material unknowns. Stretch positioning reflects strong operations and programme leadership foundation against substantial domain and methodology unknowns in defence hardware.",
+    "uncertainties": [
+      "Helsing company size and stage not stated in JD; 'relatively young company' and 'multiple significant government contracts' suggest growth-stage, but engineering headcount and product-line maturity unknown",
+      "PMP or equivalent stated as required; candidate's credentials not provided; unclear whether candidate holds or can rapidly obtain certification",
+      "Candidate's product operations role at Google Devices and Services not detailed; scope and hands-on programme delivery accountability vs. staff/advisory scope unknown",
+      "No defence, military, or government customer interaction documented; onboarding and learning curve for procurement and fielding processes unknown",
+      "Supply-chain and overseas manufacturing coordination depth at Google Devices unclear; manufacturing-specific experience vs. logistics oversight only unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; product ownership including requirements, logic design, UAT, rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Own technical delivery across multiple deployments from first prototype to stable production"
+      },
+      {
+        "candidate_evidence": "Google Services role involved cross-functional stakeholder management and deployment experience; transformation program work requires customer/partner alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Embed closely with customer teams, understand their needs, and guide adoption of what you build"
+      },
+      {
+        "candidate_evidence": "Candidate has no production software-engineering background; Python is basic and actively learning; product experience comes from ownership and requirements, not native engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Write and review production-grade code across frontend and backend using Python, JavaScript, or comparable stacks"
+      },
+      {
+        "candidate_evidence": "No stated experience building or deploying LLM/generative AI systems; candidate positioned in Strategy and Operations, not AI-systems deployment",
+        "evidence_strength": "weak",
+        "job_requirement": "Have built or deployed systems powered by LLMs or generative models and understand how model behaviour affects product experience"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations and transformation, with deployment and rollout experience, but not in engineering or technical system deployment",
+        "evidence_strength": "medium",
+        "job_requirement": "Bring 5+ years of engineering or technical deployment experience that includes customer-facing work"
+      },
+      {
+        "candidate_evidence": "Transformation programs and global operations scaling suggest experience with complexity and ambiguity, but in ops/strategy context rather than technical systems",
+        "evidence_strength": "medium",
+        "job_requirement": "Have scoped and delivered complex systems in fast-moving or ambiguous environments"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 32,
+    "gap_manageability": 28,
+    "gaps": [
+      {
+        "gap": "No production software-engineering background; candidate lacks hands-on coding experience in Python, JavaScript, or comparable stacks",
+        "mitigation": "Candidate would require significant ramp-up on full-stack development; could potentially pair with engineers, but FDE role explicitly requires direct code contribution",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience building or deploying LLM/generative AI systems; no model behavior or production AI inference understanding",
+        "mitigation": "This is a frontier-model deployment role; lack of LLM systems experience is a material gap not easily closed in onboarding",
+        "severity": "high"
+      },
+      {
+        "gap": "Technical deployment experience is in ops/commercial context, not in architecting or deploying complex software or AI systems",
+        "mitigation": "Candidate's strength is in transformation and operations leadership, not technical systems architecture or production engineering",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited consulting or classic case-team experience; no indication of scoping and delivering bespoke technical solutions to external customers",
+        "mitigation": "FDE role requires direct customer partnership and rapid technical scoping; this is candidate's weaker modality",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 5+ years of engineering or technical deployment experience, customer-facing work, scoping and building complex technical systems, and production coding. Reporting to Model Deployment for Business suggests L5-L6 scope. Company size unknown but OpenAI's stage and customer-strategic nature signal senior IC or lead role.",
+    "role_family_fit": 28,
+    "scope_seniority": 68,
+    "summary": "This Forward Deployed Engineer role is positioned in technical systems deployment and production engineering\u2014a core-engineering family, not Strategy and Operations. Candidate brings eight years of proven ops/transformation leadership and customer-facing program delivery, but lacks production software-engineering skills, LLM/AI systems experience, and technical scoping expertise that are central to the FDE mandate. While seniority and complexity exposure align, the technical and AI-systems gaps are too large and domain-mismatched for the role.",
+    "uncertainties": [
+      "OpenAI company stage and team size not stated in JD; inferred L5 based on customer-strategic scope",
+      "Candidate's Python 'basic and actively learning' level is ambiguous\u2014unclear if this represents weeks of exposure or substantial partial mastery",
+      "No detail on candidate's exposure to AI/ML product context or research-to-production workflows at Google",
+      "FDE role emphasizes 'contribute directly in the code when progress or clarity depends on it'\u2014unclear if this is aspirational or a hard operational requirement"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

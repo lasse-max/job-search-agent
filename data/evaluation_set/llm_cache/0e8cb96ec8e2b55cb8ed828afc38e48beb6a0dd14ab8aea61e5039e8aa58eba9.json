@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; experience scaling global commercial operations and transformation programs.",
+        "evidence_strength": "medium",
+        "job_requirement": "8+ years of progressive experience in a customer service or an operations role, with 5 years in a role directly managing staff & the employee lifecycle"
+      },
+      {
+        "candidate_evidence": "Background in transformation programs and scaling commercial operations suggests strategic execution capability, though primary evidence is program leadership rather than team-based goal-setting and performance management.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience translating big picture goals and strategy into implementable and concrete actions for your teams, including setting operational or functional targets or performance goals"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; native German. No Italian language proficiency indicated in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong communication skills in both written and spoken English and Italian to collaborate with different stakeholders and manage sensitive cases"
+      },
+      {
+        "candidate_evidence": "Profile indicates Strategy and Operations leadership but lacks explicit evidence of direct team management, performance coaching, or people development scope.",
+        "evidence_strength": "weak",
+        "job_requirement": "Demonstrable experience in driving improved performance of teams as a line manager"
+      },
+      {
+        "candidate_evidence": "Operations background at scale suggests analytical capability, but no specific evidence of performance management standards design or HR/talent system implementation.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in data analysis and reporting to identify performance trends, as well as developing and implementing performance management standards"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L4",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Italian language fluency required; candidate speaks English and German but no Italian proficiency stated",
+        "mitigation": "Candidate would need to achieve fluency in Italian before or shortly after hire; Airbnb lists Italian as a core requirement for this Ireland-based support role, not a nice-to-have.",
+        "severity": "high"
+      },
+      {
+        "gap": "Customer Service management experience not evidenced; candidate background is Strategy and Operations, not CS team leadership",
+        "mitigation": "No clear evidence of managing a CS or support team, handling sensitive customer/community cases, or owning ambassador-level team performance metrics. Operations leadership differs substantially from CS management.",
+        "severity": "high"
+      },
+      {
+        "gap": "Team people management, coaching, and performance development emphasis unclear; profile emphasizes programs and transformation rather than direct report upleveling",
+        "mitigation": "Role requires substantial coaching, performance planning, and talent development responsibility. Candidate profile does not emphasize these as core strengths.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Real-time escalation and crisis case handling experience not stated; this is core to the Manager role",
+        "mitigation": "JD highlights managing 'complex, sensitive, and/or urgent issues that might pose a significant risk to our brand or community' and acting as 'highest escalation point.' No evidence of this responsibility in candidate profile.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 8+ years progressive experience with 5+ years direct staff management; title is Manager with ~10\u201315 direct reports and people-lifecycle ownership. This indicates a solid L4 (Senior Manager/Lead) role. Reporting to Delivery Director and team-scale responsibility (not multiple managers) keep it at L4 rather than L5. No company size context limits confidence slightly.",
+    "role_family_fit": 22,
+    "scope_seniority": 58,
+    "summary": "This is a Community Support Manager role for a global CS team at Airbnb, requiring 8+ years of progressive CS/operations experience, 5+ years of direct team management, Italian/English fluency, and deep people-leadership and escalation-handling skills. The candidate's background is Strategy and Operations transformation at Google\u2014a different discipline. Critical gaps: no Italian, no CS team management evidence, limited demonstrated people-development scope, and no escalation/crisis case handling background. Role family fit is low (CS management vs. strategy/operations). While experience length overlaps, the functional and language requirements are substantial blockers. Not recommended to apply.",
+    "uncertainties": [
+      "Candidate's actual team management scope and people development experience at Google not fully detailed in positioning summary",
+      "Whether candidate's 'transformation programs' included direct CS or support team responsibility is unclear",
+      "Ability to acquire Italian fluency before or shortly after hire is candidate-specific, not role-specific, but represents a practical barrier",
+      "Exact overlap between 'global commercial operations' and CS operations leadership is not clear from profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

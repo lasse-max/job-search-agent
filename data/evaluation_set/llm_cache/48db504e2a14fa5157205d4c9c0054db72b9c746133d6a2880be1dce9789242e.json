@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions; led scaling of global commercial operations and transformation programs; deep experience with end-to-end program ownership and roadmap definition",
+        "evidence_strength": "strong",
+        "job_requirement": "Define and own the end-to-end transformation roadmap for Finance, covering both systems and processes"
+      },
+      {
+        "candidate_evidence": "Led transformation programs at scale; experience with process requirements logic, design, UAT, and rollout across global teams; proven ability to balance efficiency with control",
+        "evidence_strength": "strong",
+        "job_requirement": "Redesign core finance processes (procure-to-pay, order-to-cash, record-to-report, FP&A) by increasing efficiency, control, and scalability"
+      },
+      {
+        "candidate_evidence": "Transformed global commercial operations at Google; demonstrated ability to drive organizational change and enable teams; experience scaling operations across multiple regions",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead change management and upskilling initiatives to enable adoption of new tools and processes across global finance teams"
+      },
+      {
+        "candidate_evidence": "Limited direct hands-on experience with ERP systems (SAP, Oracle, Netsuite) or ML-based automation tools; experience is primarily in requirements definition, process design, and implementation management rather than deep technical systems architecture",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Finance, Technology, and Business teams to evaluate, select, and implement systems and automation solutions (ERP, AI, workflow tools)"
+      },
+      {
+        "candidate_evidence": "Strategic and Operations leader with founder-like ownership mentality; track record of shaping operations at scale; can operate at senior stakeholder level",
+        "evidence_strength": "strong",
+        "job_requirement": "Serve as strategic advisor to the broader leadership team on how to elevate Finance into a competitive advantage"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google; experience operating in complex, high-stakes transformation environments; comfortable with ambiguity and senior stakeholder engagement",
+        "evidence_strength": "strong",
+        "job_requirement": "Reporting directly to the Head of Strategic Finance; high-visibility, ambiguous, high-growth context"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No hands-on experience with enterprise finance systems (SAP, Oracle, Netsuite) or ML-based reconciliation tools",
+        "mitigation": "Candidate's strength in systems architecture, process design, and buy-vs-build evaluation can transfer; systems training ramps quickly for someone with transformation domain expertise; vendor partnerships and tech team support are standard in L5+ roles",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited top-tier management consulting or systems integration background",
+        "mitigation": "Candidate brings product transformation mindset, iterative delivery discipline, and vendor evaluation skills from Google; consulting exposure is preferred, not minimum; operating model design is transferable",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated direct IPO readiness or SOX compliance program experience",
+        "mitigation": "IPO controls and compliance are learnable; candidate's track record of building scalable, auditable processes provides foundation; mentorship from Head of Strategic Finance and Finance leadership team available",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 76,
+    "level_rationale": "Role requires 6+ years with proven architecture and transformation leadership; reports to Head of Strategic Finance (senior stakeholder); scope spans global finance systems and organizational change (established ownership). Aligns with L5 senior IC or lead level.",
+    "role_family_fit": 82,
+    "scope_seniority": 80,
+    "summary": "Strong strategic and transformation fit with eight years of Google operations leadership and proven end-to-end program ownership. Core gaps: no direct enterprise finance systems (ERP/ML tools) hands-on experience and limited consulting background. Candidate's process architecture, change leadership, and stakeholder influence are substantial strengths; systems expertise and IPO/SOX depth are manageable ramp areas. Role sits at L5, within target band; recommend consideration with focus on systems mentoring and vendor partnership model.",
+    "uncertainties": [
+      "Airwallex company stage/size context not stated; valued at $8B but team size (2,200+) and maturity are not typical of early-stage startup, affecting interpretation of 'IPO-ready' timeline urgency",
+      "Depth of candidate's ERP evaluation experience not detailed; prefer clarification on SAP/Oracle/Netsuite familiarity during screen",
+      "No detail on candidate's direct ML/AI automation tool experience; clarify exposure to workflow automation and reconciliation tooling"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

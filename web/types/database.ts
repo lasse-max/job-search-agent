@@ -178,6 +178,30 @@ export type Database = {
           }
         ];
       };
+      job_sources: {
+        Row: {
+          id: number;
+          company_id: number;
+          source_type: string;
+          source_key: string;
+          source_url: string;
+          parser_version: string;
+          health_status: string;
+          last_success_at: string | null;
+          expected_volume_min: number | null;
+        };
+        Insert: Record<string, unknown>;
+        Update: Record<string, unknown>;
+        Relationships: [
+          {
+            foreignKeyName: "job_sources_company_id_fkey";
+            columns: ["company_id"];
+            isOneToOne: false;
+            referencedRelation: "companies";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
       source_runs: {
         Row: {
           id: number;

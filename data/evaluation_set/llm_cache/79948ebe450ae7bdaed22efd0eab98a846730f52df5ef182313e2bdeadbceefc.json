@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in commercial operations and transformation programs; no evidence of managing designers, UX teams, or any design or product organization.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead and grow a high-performing design team managing senior and staff-level product designers across London and Singapore studios"
+      },
+      {
+        "candidate_evidence": "Background in commercial operations, process design for rollout and transformation; no stated expertise in interaction design, information architecture, or UX discipline.",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep strengths in interaction design, information architecture, and UX for complex workflows and data-heavy products"
+      },
+      {
+        "candidate_evidence": "Led global transformation programs and scaling of operations at Google, which demonstrates cross-functional leadership and multi-quarter initiative ownership.",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven ability to set vision, align stakeholders, and lead multi-quarter initiatives across multiple domains and teams"
+      },
+      {
+        "candidate_evidence": "No stated background in developer platforms, fintech, payments, or financial infrastructure. Google Devices and Services focus is on commercial operations and transformation, not developer experience or fintech.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with developer platforms, APIs, SDKs, and technical tooling in fintech, payments, or financial infrastructure"
+      }
+    ],
+    "confidence": 0.92,
+    "estimated_level": "L6",
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No product design or UX design background. Role requires 12+ years of product/UX design expertise; candidate is a strategy and operations leader.",
+        "mitigation": "Would require fundamental career pivot into design discipline, design education, portfolio-building, and several years of hands-on UX/interaction design work before senior leadership role is viable.",
+        "severity": "high"
+      },
+      {
+        "gap": "No design team leadership or management experience. Role requires 4+ years managing senior designers and design managers; candidate's leadership is in operations and transformation, not design organization.",
+        "mitigation": "Would need to build design team management experience from IC designer level upward, which is incompatible with Director level.",
+        "severity": "high"
+      },
+      {
+        "gap": "No developer platform, API, SDK, or fintech/payments domain experience. Role requires deep domain knowledge in technical tooling and financial infrastructure.",
+        "mitigation": "Would require 2\u20133+ years of focused domain immersion in fintech/payments and developer experience work before readiness for Director level.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with design craft disciplines: interaction design, information architecture, UX research rigor, or design systems thinking at scale.",
+        "mitigation": "Core design competencies cannot be acquired without formal design practice; operations/transformation process design is not a substitute for UX/interaction design.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 88,
+    "level_rationale": "Director title with 12+ years required in design/product and 4+ years managing designers (including managers) at $8B fintech unicorn. Manages teams across two regions, sets design strategy, influences product and engineering leadership, and owns multi-quarter initiatives. These scope signals map to L6 senior leadership level.",
+    "role_family_fit": 15,
+    "scope_seniority": 82,
+    "summary": "This is a Director of Product Design role for Airwallex's developer platform, requiring 12+ years of product/UX design and 4+ years of design team leadership. The candidate is a Strategy &amp; Operations / Business Transformation leader with eight years at Google Devices in commercial operations and transformation, not product design, UX, or design leadership. No evidence of design craft, design team management, interaction design for complex systems, developer platform experience, or fintech domain depth. Function and seniority are both misaligned.",
+    "uncertainties": [
+      "Candidate's \"Product Operations\" positioning could be conflated with native Product Manager or UX roles; profile clarifies it is operations-focused, not design or product management.",
+      "Whether candidate has any informal UX, interaction design, or design feedback involvement in transformation work is unstated.",
+      "Exact scope of 'process design' in transformation programs and whether it overlapped with product or user experience design is unclear.",
+      "Candidate's familiarity with design systems, UX research, or design tooling is not mentioned."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

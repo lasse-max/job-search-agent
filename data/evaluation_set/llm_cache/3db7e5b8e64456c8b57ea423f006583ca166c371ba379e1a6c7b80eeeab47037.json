@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; positioned as Strategy and Operations / Product Operations leader with experience scaling global commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Senior Manager, Sales Strategy & Operations role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Experience in global commercial operations and transformation programs; GTM / Sales Strategy and Operations is listed as a primary target role family",
+        "evidence_strength": "strong",
+        "job_requirement": "Sales Strategy & Operations focus with responsibility for commercial operations strategy"
+      },
+      {
+        "candidate_evidence": "Eight years managing transformation programs and scaling operations globally; demonstrated ability to work across multiple stakeholder groups and drive cross-functional change",
+        "evidence_strength": "strong",
+        "job_requirement": "Program and transformation leadership at multi-stakeholder level"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background demonstrates experience in large-scale enterprise operations; two promotions indicate progression through increasingly complex strategic responsibility",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic planning and operations execution in a large enterprise environment"
+      },
+      {
+        "candidate_evidence": "Target seniority band is Manager, Senior Manager, Lead, and Principal IC; eight-year tenure with promotions suggests Senior Manager level or equivalent strategic responsibility in strategy and operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Manager scope reporting to leadership and owning functional P&L or revenue strategy accountability"
+      },
+      {
+        "candidate_evidence": "No explicit Salesforce product experience mentioned; background is in Google Devices and Services commercial operations, not Salesforce sales tools or ecosystem",
+        "evidence_strength": "weak",
+        "job_requirement": "Salesforce ecosystem, product, or platform familiarity (implied by Sales Strategy role at Salesforce)"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No demonstrated experience with Salesforce products, platform, or go-to-market ecosystem",
+        "mitigation": "Sales Strategy & Operations strategy and execution fundamentals are transferable; Salesforce domain knowledge is learnable through onboarding, customer research, and collaboration with product and sales teams",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD explicitly requests Sales Strategy & Operations; candidate background is in Devices and Services commercial operations, which may differ in sales motion, quota structure, and revenue model",
+        "mitigation": "Core competencies in strategy, program leadership, and transformation are directly applicable; sales operations domain expertise can be acquired through immersion and mentorship",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited clarity on P&L ownership, revenue accountability, or direct quota/revenue impact responsibilities in candidate background",
+        "mitigation": "Candidate's transformation program and commercial operations background implies operational and business-impact accountability; deeper discovery needed on breadth of financial responsibility",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Senior Manager title with multi-function ownership, reporting to strategy/operations leadership, and P&L or revenue strategy accountability typical of L5 IC or manager-of-managers on enterprise GTM teams. Salesforce is a large enterprise; role likely manages strategic programs across sales regions or functions. No specific years required stated; strong manager-of-managers or senior IC scope implies L5-L6 range; title suggests L5 is more probable.\"",
+    "role_family_fit": 88,
+    "scope_seniority": 82,
+    "summary": "Strong fit to Sales Strategy & Operations family and target seniority band (L5). Candidate brings eight years of Google-scale Strategy and Operations experience with demonstrated transformation and commercial-operations leadership. Primary gap is domain expertise in Salesforce sales products and sales operations motions; this is learnable and mitigated by strong foundational strategy, program, and stakeholder-management capabilities. Role clarity and confidence are solid; Salesforce context and JD depth are sufficient for confident assessment.",
+    "uncertainties": [
+      "JD text is truncated and does not include full scope, responsibilities, reporting line, or specific functional areas owned (e.g., forecast, territory, hiring, ops systems)",
+      "No explicit years of experience required stated in JD; Senior Manager title suggests 6-10 years in role family, but Salesforce enterprise stage is not detailed",
+      "Candidate background does not specify quota ownership, revenue P&L accountability, or direct sales ops system expertise (forecasting, CRM config, territory management)",
+      "Sales operations scope at a cloud enterprise (Salesforce) may involve deeper systems, process, or analytics work than Devices and Services commercial operations; level of technical tools depth unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,83 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Strategy and Operations / Product Operations roles, including global commercial operations and transformation program leadership.",
+        "evidence_strength": "weak",
+        "job_requirement": "8+ years of Product Design experience with high craft and systems thinking"
+      },
+      {
+        "candidate_evidence": "Demonstrated cross-functional stakeholder management and influence at Google across business operations, transformation programs, and strategic initiatives.",
+        "evidence_strength": "medium",
+        "job_requirement": "Influence and partnership skills as a trusted peer to leadership; Partner with Product, Engineering, and ML/AI leadership"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and scaling initiatives at Google requiring multi-phase execution, process design, and rollout management.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience shipping impactful, strategic work autonomously from multi-year visions to iterative releases"
+      },
+      {
+        "candidate_evidence": "No documented product design mentorship, design critique, or design systems expertise in candidate profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Mentor designers through feedback, critique, and knowledge sharing; Set the bar for design excellence"
+      },
+      {
+        "candidate_evidence": "No graphic design, brand design, or creative/visual design experience documented.",
+        "evidence_strength": "weak",
+        "job_requirement": "Graphic design skills, working with building and extending brand for 360 activations and social"
+      },
+      {
+        "candidate_evidence": "Working on AI transformation programs and modern technology adoption at Google; however, no evidence of pioneering AI-driven design or creative tool approaches.",
+        "evidence_strength": "medium",
+        "job_requirement": "Fluency with AI and new technologies\u2014pioneering new approaches and identifying where AI unlocks creative or business potential"
+      }
+    ],
+    "confidence": 0.92,
+    "estimated_level": "L5",
+    "evidence_strength": 8,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No native product design, UX/UI design, or interaction design background; candidate is a strategy/operations specialist",
+        "mitigation": "This is a fundamental discipline mismatch. The role requires a designer-craft foundation and mentoring designers. No amount of strategy or ops experience can substitute for missing design portfolio, design systems expertise, and design leadership. Candidate would require a complete career pivot into design craft.",
+        "severity": "high"
+      },
+      {
+        "gap": "No graphic design, brand design, or visual design experience; role explicitly requires graphic design skills and 360-degree brand activations",
+        "mitigation": "Brand design and graphic design are craft disciplines requiring hands-on portfolio evidence. Candidate has no documented experience in visual design, brand systems, or social/activation campaigns.",
+        "severity": "high"
+      },
+      {
+        "gap": "No product design portfolio or shipped design work; no evidence of defining design systems or design excellence standards",
+        "mitigation": "Principal Designer role is anchored in craft mastery and the ability to mentor designers on critique and standards. Candidate's experience is in process design, operations, and transformation, not product/visual design.",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented experience in music, creative platforms, or artist-facing product design",
+        "mitigation": "Role emphasizes passion for music, artists, and creative economy. While not a disqualifier, lack of domain context and no portfolio in creative/artist tools is a secondary gap.",
+        "severity": "medium"
+      },
+      {
+        "gap": "AI-driven design and creative tool innovation; candidate has no demonstrated experience pioneering AI-powered design approaches",
+        "mitigation": "Role requires identifying where AI unlocks creative potential and leading AI-driven design initiatives. Candidate's AI exposure is in business transformation and operations, not design innovation or creative tools.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 85,
+    "level_rationale": "Principal Designer role requires 8+ years of craft-specific (product design) experience, mentorship and vision-setting across multiple product areas, autonomous end-to-end ownership of complex strategic design initiatives, and influence on business strategy. At a established mid-market music platform (Block subsidiary), this is a senior IC position equivalent to L5, anchored by the 8+ year requirement, broad strategic and mentorship scope, and cross-functional leadership without direct P&L or manager-of-managers responsibility.",
+    "role_family_fit": 12,
+    "scope_seniority": 78,
+    "summary": "This is a Principal Product Designer role at TIDAL (Block), a music streaming platform. The role requires 8+ years of product design experience with expertise in design systems, brand leadership, and AI-driven design. The candidate's background is Strategy and Operations / Product Operations at Google, with no native product design, UX/UI, or graphic design experience. While the candidate demonstrates strong strategic thinking, transformation leadership, and cross-functional influence, the core discipline mismatch (strategy/operations vs. product design) is a fundamental fit gap that cannot be bridged by role seniority or adjacency.",
+    "uncertainties": [
+      "Candidate profile does not include a product design portfolio or visual design examples; cannot directly assess craft quality or design systems maturity.",
+      "No explicit statement of graphic design or brand design skills in candidate profile.",
+      "Degree/educational background in design (BFA, MFA, equivalent) not documented; cannot confirm foundational design education.",
+      "Company size/stage context for Block/TIDAL not fully detailed in JD; level estimate assumes established mid-market music streaming platform.",
+      "Candidate's exact scope and mentorship experience at Google not detailed; unclear if they have managed or mentored product teams."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

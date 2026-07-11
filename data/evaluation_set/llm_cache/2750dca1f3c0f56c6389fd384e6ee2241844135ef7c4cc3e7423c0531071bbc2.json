@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; led scaling of global commercial operations and transformation programs; experienced in requirements definition, process design, UAT, and rollout at scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Own the end-to-end product strategy for real-time and post-transaction monitoring, including rule design, alert optimisation, workflow automation, and client-specific risk controls."
+      },
+      {
+        "candidate_evidence": "Google background demonstrates cross-functional collaboration at scale; transformation program leadership requires coordination across multiple operational, data, and technical functions.",
+        "evidence_strength": "strong",
+        "job_requirement": "Work closely with Risk, Compliance, Operations, Data, and Engineering teams to build scalable and intelligent monitoring systems; proven ability to work cross-functionally with Risk, Compliance, Operations, Data, and Engineering teams."
+      },
+      {
+        "candidate_evidence": "Led transformation programs at Google; experience translating complex requirements into executable solutions; comfortable with regulatory and operational complexity from financial services context (Devices payments, international commerce).",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong stakeholder management skills and the ability to translate regulatory and risk requirements into scalable product solutions; building scalable, automated systems in regulated environments while balancing risk, operational efficiency, and customer experience."
+      },
+      {
+        "candidate_evidence": "Google operations background includes metrics-driven scaling; however, no specific evidence of transaction data analysis, fraud/AML rule design, or risk detection logic work.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong data-driven mindset with the ability to analyse transaction data, alerts, and rule performance; experience defining risk detection logic, monitoring rules, and thresholds."
+      },
+      {
+        "candidate_evidence": "Eight years at Google; strategy and operations leader, not a native product manager. Payments exposure via Devices ecosystem but not explicit payments PM background.",
+        "evidence_strength": "medium",
+        "job_requirement": "6+ years of Product Management experience, ideally in payments, fintech, or financial crime prevention."
+      },
+      {
+        "candidate_evidence": "No explicit evidence of SQL proficiency or hands-on data tool expertise in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Comfortable working with SQL and data tools to investigate signals, optimise rules, and evaluate monitoring performance."
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 68,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No native Product Manager title or PM-specific methodologies (roadmap, prioritization, requirements gathering, native SDLC).",
+        "mitigation": "Candidate's strategy and operations background translates to requirements definition, stakeholder alignment, and solution design; owner mentality and transformation execution are core PM competencies. Ramp on PM tooling, OKR/roadmap cadence, and technical specification writing with engineering partner onboarding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited transaction monitoring, fraud detection, AML, or financial crime prevention domain knowledge.",
+        "mitigation": "Domain is learnable through rapid immersion: partner with Risk and Compliance leads, study transaction monitoring platforms, review rule libraries and case law. Candidate's regulatory/operational complexity experience and analytical mindset support fast domain acquisition.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit SQL or hands-on data-tool proficiency (e.g., analytics platforms, query engines).",
+        "mitigation": "Candidate can partner closely with Data team for exploratory work and learn SQL incrementally. Operations background suggests comfort with data-driven decision-making; hands-on query writing is a lower-level blocker than domain knowledge.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Payments ecosystem exposure through Google Devices but no explicit fintech or dedicated payments PM background.",
+        "mitigation": "Airwallex's global payments focus is different from Devices; candidate can leverage Google's scale, compliance, and international complexity experience and build fintech domain knowledge in first 90 days with mentorship.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 6+ years PM experience in payments/fintech/financial crime; role emphasizes end-to-end product ownership with cross-functional leadership, risk/compliance integration, and scaling systems. This maps to mid-to-senior IC or senior manager scope at a scaling fintech (US$8B, 2200+ team). Reporting and scope suggest L5 senior IC or early L6, anchored toward L5.",
+    "role_family_fit": 72,
+    "scope_seniority": 78,
+    "summary": "Candidate brings eight years of strategy and operations leadership at Google with proven cross-functional collaboration, transformation delivery, and global scaling experience. However, lacks direct product management title, transaction monitoring/fraud/AML domain depth, and hands-on SQL/data-tool capability. Strong operator and strategist, but entry into payments PM and financial crime risk requires domain knowledge acceleration and native PM muscle-building.",
+    "uncertainties": [
+      "Airwallex company stage and organizational maturity not explicitly stated; US$8B valuation and 2200+ team suggest scale-up but internal structure for 'Senior PM' scope is unclear.",
+      "No clarity on whether 'Product Management experience' at Airwallex requires native PM background or welcomes strong operators from adjacent functions.",
+      "Candidate's SQL and data-tool baseline not detailed; practical comfort level with analytics platforms unknown.",
+      "Transaction risk/AML expertise not mentioned in Google Devices context; extent of regulatory or financial crime work experience unclear."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

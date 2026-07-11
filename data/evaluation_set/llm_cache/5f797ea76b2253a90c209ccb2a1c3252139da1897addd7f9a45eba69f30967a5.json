@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; candidate is positioned as a 'Strategy and Operations / Product Operations leader' with experience in 'scaling global commercial operations and transformation programs'",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations, Global Partnerships role at Stripe in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and managing transformation programs across organizational boundaries, consistent with managing partnership ecosystems and multiple stakeholder groups",
+        "evidence_strength": "medium",
+        "job_requirement": "Global partnerships and cross-functional stakeholder management"
+      },
+      {
+        "candidate_evidence": "Track record of transformation programs and operational scaling at Google; product experience rooted in 'ownership, requirements, logic design, UAT, rollout, and transformation'",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations and program execution capability"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "Partnerships domain expertise and relationship depth unclear",
+        "mitigation": "Candidate's global operations scaling and stakeholder management background translates to partnership ecosystem work; partnership-specific domain knowledge is learnable with strong operational foundation",
+        "severity": "medium"
+      },
+      {
+        "gap": "Stripe-specific fintech/payments ecosystem unfamiliar",
+        "mitigation": "Candidate's operations and transformation background is transferable across vertical markets; prior experience demonstrates ability to learn complex domain contexts",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD itself is truncated and lacks explicit responsibilities, scope, and success metrics",
+        "mitigation": "Unable to assess granular alignment without full JD; recommend obtaining complete role description before final decision",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 62,
+    "level_rationale": "Role title suggests established Operations IC or early leadership scope in Strategy & Operations at Stripe. Global partnerships role with cross-functional coordination implies middle-to-senior IC ownership; Stripe is a scale-stage company. No explicit years requirement, management scope, or reporting line stated. Estimated L5 (senior IC) as working hypothesis; incomplete JD limits precision.",
+    "role_family_fit": 78,
+    "scope_seniority": 72,
+    "summary": "Candidate's eight-year background in Strategy and Operations at Google with global commercial scaling and transformation program ownership aligns well with target role family and core operational competencies. JD is heavily truncated (appears to be cached HTML snapshot), preventing detailed assessment of partnership scope, team structure, or strategic deliverables. Fintech/partnerships domain and Stripe-specific context are notable gaps but likely manageable given strong operations foundation.",
+    "uncertainties": [
+      "JD appears to be cached website HTML snapshot with no substantive job description text; full role details, scope, and requirements are missing",
+      "No explicit years of experience, management scope, or reporting line stated for the posted role",
+      "Partnership and fintech domain experience not evident in candidate background; transferability unclear without detail",
+      "Company size and Stripe's organizational maturity context not stated in Role JSON, limiting level precision"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -12,4 +12,3 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 Company: OpenAI
 Role title: Sales Strategy and Operations, ANZ
 Location: Sydney
-Role context: Frontier-AI brand; clean GTM S&O lane; Sydney = partner-visa, no sponsorship. Top priority despite competitive bar.

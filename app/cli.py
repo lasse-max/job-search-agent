@@ -17,6 +17,7 @@ from app.services.benchmark import (
     DEFAULT_LIVE_NOISE_SET,
     DEFAULT_REPORT_DIR,
     labelled_live_noise_count,
+    populate_benchmark_llm_cache,
     refresh_jd_cache,
     run_benchmark,
     run_gate_recall_benchmark,
@@ -345,6 +346,22 @@ def main(argv: list[str] | None = None) -> int:
             if llm_provider is None:
                 print("ANTHROPIC_API_KEY is required for --populate-llm-cache")
                 return 1
+        precision_set = args.live_noise_set or args.precision_set
+        if args.populate_llm_cache and llm_provider is not None:
+            population_failures = populate_benchmark_llm_cache(
+                llm_provider=llm_provider,
+                evaluation_set_path=args.evaluation_set,
+                cache_dir=args.cache_dir,
+                live_noise_set_path=precision_set,
+            )
+            if population_failures:
+                for failure in population_failures:
+                    print(
+                        "llm_cache_population_failure="
+                        f"{failure.role_id}: {failure.error}"
+                    )
+                print(f"llm_cache_population_failures={len(population_failures)}")
+                return 1
         run = run_benchmark(
             evaluation_set_path=args.evaluation_set,
             cache_dir=args.cache_dir,
@@ -376,7 +393,6 @@ def main(argv: list[str] | None = None) -> int:
             print("gate_recall_labelled=0")
             print("gate_recall=not_available")
 
-        precision_set = args.live_noise_set or args.precision_set
         if precision_set.exists() and labelled_live_noise_count(precision_set):
             live_run = run_live_noise_benchmark(
                 live_noise_set_path=precision_set,

@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google in Devices and Services with global commercial operations scaling and transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Customer Success Manager - Enterprise stakeholder management and account health"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership spanning process design, UAT, rollout coordination, and stakeholder alignment across business units",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional collaboration with product, engineering, and sales teams"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations with focus on optimization and transformation rather than customer success retention metrics",
+        "evidence_strength": "weak",
+        "job_requirement": "Enterprise customer lifecycle and success metrics ownership"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Core CS domain expertise: JD role requires Customer Success as primary function; candidate's background is Strategy and Operations / Product Operations with transformation focus, not quota-carrying or retention-driven customer success",
+        "mitigation": "Candidate's stakeholder management and operational scaling could transfer, but would require significant ramp into CS methodologies, retention metrics, account expansion playbooks, and vendor CS best practices; learning curve is substantial",
+        "severity": "high"
+      },
+      {
+        "gap": "Customer success metrics and account health ownership: No direct evidence of owning customer churn, expansion revenue, NPS, or renewal success metrics\u2014core to Enterprise CS roles",
+        "mitigation": "Candidate could learn account success frameworks through onboarding, but lacks the domain foundation; transfer from ops to CS is harder than reverse",
+        "severity": "high"
+      },
+      {
+        "gap": "JD content severely degraded: Cached snapshot contains website boilerplate, header/footer code, and navigation text instead of actual job responsibilities, requirements, and success criteria",
+        "mitigation": "Unable to assess specific enterprise account scope, customer segment, deal size, team size, or technical depth needed; recommend re-fetch of actual JD before final evaluation",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 60,
+    "level_rationale": "Senior Customer Success Manager, Enterprise title suggests L5 (senior IC ownership of one or more strategic accounts) or L4-L5 boundary depending on team size and account base. Without clear company-size context in working JD, confidence is moderate. Enterprise scope and seniority in title typical for L5 IC or senior L4.",
+    "role_family_fit": 20,
+    "scope_seniority": 65,
+    "summary": "Senior Customer Success Manager at ServiceNow/Moveworks is a target-family deprioritize role: pure Customer Success without strategic transformation scope. Candidate is a Strategy and Operations / Product Operations leader; this is a quota-influencing retention and expansion account role. Core CS domain (churn metrics, renewal playbooks, expansion revenue ownership, vendor CS best practices) does not match candidate's transformation and operational scaling background. JD snapshot is severely degraded (website boilerplate and code instead of actual responsibilities), preventing assessment of account scope and success criteria. Recommend skip unless role has undisclosed strategic/transformation component or JD is re-fetched with actual requirements.",
+    "uncertainties": [
+      "JD contains no actual job description content, only cached website navigation and JavaScript. Real requirements, account scope, team structure, and success metrics are unknown.",
+      "Customer Success function can sometimes include transformation or strategic account design; cannot rule out without readable JD.",
+      "Candidate's product operations background could theoretically include CS metrics, but no direct evidence of customer success ownership, renewal, or expansion revenue accountability.",
+      "Company stage (large enterprise vs. growth) and account segment are not stated; affects CS IC scope assessment."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

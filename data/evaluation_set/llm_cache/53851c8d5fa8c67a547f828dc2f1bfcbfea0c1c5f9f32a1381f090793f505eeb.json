@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations with demonstrated analytics and strategy work across product launch, procurement optimization, and vendor management",
+        "evidence_strength": "medium",
+        "job_requirement": "Conduct detailed spend analysis, benchmarking, and create data-based category strategies"
+      },
+      {
+        "candidate_evidence": "Experience leading transformation programs and cross-functional stakeholder alignment in global commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Align and execute sourcing roadmap with stakeholders to deliver P&L savings"
+      },
+      {
+        "candidate_evidence": "Eight years in global commercial operations role demonstrating cross-team collaboration and relationship management",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding interpersonal skills and ability to build trust with business partners"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and leading transformation programs at Google Devices and Services",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrated change management and project management knowledge"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No direct category management or strategic sourcing experience in procurement",
+        "mitigation": "Candidate would need substantial domain training in procurement methodologies, category strategies, and supplier portfolio management; transferable stakeholder and analytical skills provide some foundation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on vendor/supplier relationship management or procurement operations background",
+        "mitigation": "Business operations background includes vendor relationships but lacks the procurement-specific vendor lifecycle, contracting, and supplier optimization depth the role requires.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited European market procurement experience; no stated indirect procurement experience in EU regulatory or supply-chain context",
+        "mitigation": "Role explicitly requires European market knowledge; candidate's background is primarily within Google's global operations, not regional European procurement landscape.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct CapEx, Material Handling Equipment, Utilities, or MRO procurement experience",
+        "mitigation": "Role requires hands-on exposure across multiple specific categories; candidate would start from zero in these domains despite general operations acumen.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Minimum 7 years indirect procurement required; reports to Director (cluster lead); broad multi-category procurement ownership across European sites; senior stakeholder management and P&L accountability suggest established IC or lead scope, typical of L5.",
+    "role_family_fit": 25,
+    "scope_seniority": 68,
+    "summary": "Sr. Category Manager role is a specialist indirect procurement/sourcing position with strong scope (P&L ownership, multi-market, Director-reporting, 7+ years required). Candidate brings strategy, operations, and transformation leadership from Google, but lacks direct category management, strategic sourcing, supplier portfolio, and European procurement expertise. Function-family misalignment is substantial: core role requires hands-on procurement category expertise, vendor management depth, and sourcing methodology that differ materially from the candidate's business operations and program leadership background. Not a target or approved-stretch family fit.",
+    "uncertainties": [
+      "Candidate's specific procurement or vendor-management exposure at Google Devices and Services not detailed in profile; extent of hands-on category work unclear.",
+      "HelloFresh company size and organizational maturity not stated; supplier-portfolio and procurement-systems sophistication level unknown.",
+      "Degree preference listed as 'preferably Engineering (but not mandatory)'; no hard degree block, but candidate education background not stated."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

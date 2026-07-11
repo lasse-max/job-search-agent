@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, including scaling global commercial operations and leading transformation programs with executive visibility",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive the OKR-setting process for Streaming Product & Technology leadership, partnering with team leads to set objectives and manage recurring leadership reviews"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in Strategy and Operations / Product Operations roles at a tier-1 technology company",
+        "evidence_strength": "strong",
+        "job_requirement": "10+ years of experience in ProdOps, Strategy, or Analytics roles within top-tier Technology Companies"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation program background demonstrates requirements analysis, logic design, UAT, rollout execution, and cross-functional stakeholder management with technical teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Be the analytical backbone for key metrics, understand data sets, identify trends, surface insights, and work with Product, Engineering, and Data Science to optimize performance"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs at Google demonstrates operational excellence and ability to drive execution discipline across complex organizations",
+        "evidence_strength": "strong",
+        "job_requirement": "Support leadership review forums and proactively identify opportunities to improve velocity and impact through operational rigor"
+      },
+      {
+        "candidate_evidence": "Eight years navigating large-scale global operations and leading transformation initiatives at Google demonstrates maturity in matrix environments with senior stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Embrace of dynamic, fast-paced, and matrixed organizations with significant executive visibility; comfortable influencing in the absence of direct control"
+      },
+      {
+        "candidate_evidence": "Transformation and operations leadership role at Google with executive visibility and cross-functional collaboration demonstrates executive communication ability",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong written, presentation and oral communication skills; capable of developing high-level presentations for senior executive audiences"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 80,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Candidate has 8 years, JD requires 10+ years in ProdOps/Strategy/Analytics at top-tier firms",
+        "mitigation": "Google tenure at L5-equivalent scope and two promotions demonstrate accelerated progression. The 2-year gap is modest and offset by seniority and tier credibility.",
+        "severity": "low"
+      },
+      {
+        "gap": "Limited explicit BI tool (Tableau, Looker) hands-on experience documented in profile",
+        "mitigation": "Product Operations and transformation background at Google likely involved analytics tooling; tools are learnable within weeks for an experienced analyst-leader. Profile does not preclude prior exposure.",
+        "severity": "medium"
+      },
+      {
+        "gap": "SQL and advanced spreadsheet skills not explicitly demonstrated in candidate profile",
+        "mitigation": "Operations and strategy roles at Google commonly require these technical skills. Candidate background strongly implies data fluency; assessment and ramp would be low-risk.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No direct consulting or case-team background; strategy experience comes from internal operations and transformation",
+        "mitigation": "Disney role emphasizes operational excellence, OKR management, and cross-functional execution over consulting methodology. Internal transformation experience translates well.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "JD requires 10+ years ProdOps/Strategy/Analytics at top-tier companies, reporting to CPTO, with Principal title and $187-252K salary range. Principal typically maps to L5 senior-IC; 10+ years requirement anchors L5-L6 range. Scope is analytical leadership and operational rigor for streaming org overseen by multiple product/engineering leaders. Disney Entertainment is a large established media-tech enterprise. Without manager-of-managers language, L5 is appropriate; L6 would require clearer team leadership scope.",
+    "role_family_fit": 92,
+    "scope_seniority": 88,
+    "summary": "Strong fit for a Principal Strategy &amp; Operations role. Candidate brings eight years of operations and transformation program leadership at Google\u2014a tier-1 tech company\u2014with demonstrated cross-functional stakeholder management, executive visibility, and operational rigor. Core gaps are modest: 2-year tenure shortfall offset by rapid promotion and L5-equivalent scope; BI tools and SQL are learnable ramp items for an experienced analyst-leader. Role sits at the analytical and connective backbone of Streaming Product &amp; Technology leadership, reporting to CPTO, which aligns directly with candidate's positioning and family fit.",
+    "uncertainties": [
+      "Candidate profile does not explicitly detail SQL or Tableau/Looker proficiency; assessment required to confirm hands-on data analytics tool capability.",
+      "Breadth of OKR-setting leadership at Disney scale (Disney+ and Hulu combined org) not yet demonstrated in profile; ramp risk is moderate.",
+      "Disney Entertainment company stage/organizational structure not detailed in JD; assumed large, established enterprise based on brand, but internal reporting lines and matrix complexity cannot be fully inferred."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

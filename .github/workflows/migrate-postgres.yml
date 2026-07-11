@@ -66,7 +66,7 @@ jobs:
             --batch-size 500 \
             --replace-target
 
-      - name: Apply Supabase auth and RLS migration
+      - name: Apply Supabase auth, RLS, and evaluator migrations
         if: always()
         env:
           JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
@@ -77,9 +77,6 @@ jobs:
 
           import psycopg
 
-          migration = Path("migrations/002_stage15_supabase_auth.sql").read_text(
-              encoding="utf-8"
-          )
           with psycopg.connect(
               os.environ["JOB_AGENT_DATABASE_URL"],
               connect_timeout=20,
@@ -90,7 +87,12 @@ jobs:
               prepare_threshold=None,
           ) as conn:
               with conn.cursor() as cursor:
-                  cursor.execute(migration)
+                  for migration_path in (
+                      "migrations/002_stage15_supabase_auth.sql",
+                      "migrations/005_stage15_evaluator_v3.sql",
+                      "migrations/006_stage15_versioned_evaluation_skips.sql",
+                  ):
+                      cursor.execute(Path(migration_path).read_text(encoding="utf-8"))
               conn.commit()
           PY
 
@@ -248,17 +250,18 @@ jobs:
                       FROM current_calibrated_role_evaluations
                       WHERE model_version NOT LIKE %s ESCAPE '\\'
                       """,
-                      ("%|hybrid\\_claude\\_v2",),
+                      ("%|hybrid\\_claude\\_v3",),
                   )
               )
-              stale_v1_count = int(
+              stale_prior_count = int(
                   pg_scalar(
                       """
                       SELECT COUNT(*)
                       FROM current_calibrated_role_evaluations
                       WHERE model_version LIKE %s ESCAPE '\\'
+                         OR model_version LIKE %s ESCAPE '\\'
                       """,
-                      ("%|hybrid\\_claude\\_v1",),
+                      ("%|hybrid\\_claude\\_v1", "%|hybrid\\_claude\\_v2"),
                   )
               )
               fallback_count = int(
@@ -285,14 +288,14 @@ jobs:
                       "",
                       f"- Current calibrated rows: `{current_eval_count}`",
                       f"- Wrong evaluator-version rows: `{bad_version_count}`",
-                      f"- Stale `hybrid_claude_v1` rows: `{stale_v1_count}`",
+                      f"- Stale pre-v3 rows: `{stale_prior_count}`",
                       f"- Fallback rows: `{fallback_count}`",
                   ]
               )
               if bad_version_count:
-                  errors.append("current_calibrated_role_evaluations returned non-v2 rows")
-              if stale_v1_count:
-                  errors.append("current_calibrated_role_evaluations returned stale v1 rows")
+                  errors.append("current_calibrated_role_evaluations returned non-v3 rows")
+              if stale_prior_count:
+                  errors.append("current_calibrated_role_evaluations returned stale pre-v3 rows")
               if fallback_count:
                   errors.append("current_calibrated_role_evaluations returned fallback rows")
           except Exception as exc:

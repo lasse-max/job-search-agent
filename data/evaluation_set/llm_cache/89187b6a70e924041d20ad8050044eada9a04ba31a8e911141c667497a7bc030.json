@@ -1,0 +1,46 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in global operations and commercial scaling roles, with transformation program leadership",
+        "evidence_strength": "weak",
+        "job_requirement": "Play a critical role in protecting our people and enabling our leaders to operate confidently around the globe"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Executive Protection is a security/safety-focused specialist function, not strategy, operations, or transformation",
+        "mitigation": "Candidate's core competencies lie in business operations, product strategy, and program leadership; executive protection requires dedicated security, threat assessment, and protective operations training",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience in security operations, threat assessment, protective services, or personal security detail",
+        "mitigation": "This is a specialized domain requiring certification or professional background in executive protection, law enforcement, or security services",
+        "severity": "high"
+      },
+      {
+        "gap": "Role lacks strategic, transformation, or business problem-solving scope typical of candidate's target families",
+        "mitigation": "The position is operationally tactical and specialist; not a stretch into strategy or transformation leadership",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Executive Protection Specialist at a large, mature company (Spotify) typically requires 3\u20135 years of protective services, law enforcement, or security background; no management scope or direct reports mentioned. Normalized to L4 specialist, but depth is security/safety, not strategy or operations.",
+    "role_family_fit": 8,
+    "scope_seniority": 35,
+    "summary": "Executive Protection Specialist is a security and protective services role, fundamentally outside the candidate's target role families (Strategy & Operations, Product Operations, Business Transformation). Candidate brings global operations and program leadership experience, but lacks the security, threat assessment, and protective services background essential to this specialist position. No alignment with core competencies or career positioning.",
+    "uncertainties": [
+      "JD does not specify required security certifications, clearances, or protective services experience",
+      "Company size context (Spotify) is known, but detailed reporting line and management scope are absent from JD",
+      "No detail on whether role requires international travel or primarily Stockholm-based planning"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

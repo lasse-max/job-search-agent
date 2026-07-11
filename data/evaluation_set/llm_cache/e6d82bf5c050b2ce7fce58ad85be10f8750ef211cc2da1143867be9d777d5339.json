@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with scaling global commercial operations and transformation programs; demonstrates large-scale cross-functional strategy and partnership experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop customer engagement strategies in partnership with Account Executive(s) in designated territory"
+      },
+      {
+        "candidate_evidence": "Two promotions over eight-year tenure indicate progression into leadership; experience scaling operations and transformation programs suggests mentorship and team-development capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Coach junior Solutions Architects and teams on use case prioritization and building technical champions"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leadership background with demonstrated ability to navigate complex stakeholder landscapes; transformation program experience implies executive engagement and advisory scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Influence stakeholders at all levels through complex engagements and act as trusted advisor for significant data analytics architecture and adoption"
+      },
+      {
+        "candidate_evidence": "No direct evidence of thought leadership, public speaking, or community engagement activities cited in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Contribute to technical community engagement by developing customer-facing collateral and leading workshops and seminars"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no production software-engineering background or professional coding experience in core languages",
+        "evidence_strength": "weak",
+        "job_requirement": "Prior experience with coding in core programming language (Python, Java, Scala) and willingness to learn Spark"
+      },
+      {
+        "candidate_evidence": "No direct evidence of PoC leadership or hands-on cloud platform work in profile; experience is in operations and transformation rather than technical architecture delivery",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on expertise with complex proofs-of-concept and public cloud platform(s)"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 38,
+    "gap_manageability": 52,
+    "gaps": [
+      {
+        "gap": "Solutions Architecture and technical PoC expertise. Role requires hands-on complex PoC delivery and cloud platform expertise; candidate background is operations and transformation strategy, not solutions architecture.",
+        "mitigation": "Candidate's strategic and program-management foundation can accelerate learning of architecture patterns and PoC methodologies. Databricks pre-sales enablement and pairing with technical peers can bridge gap. Willingness to learn base Spark is noted.",
+        "severity": "high"
+      },
+      {
+        "gap": "Production coding and professional-level Python/Java/Scala capability. JD expects prior experience with core languages; candidate has basic Python and no production software-engineering background.",
+        "mitigation": "Basic Python foundation and active learning demonstrates commitment to upskilling. Solutions Architect role does not require production-level coding, only enough to credibly review and discuss customer code. Onboarding bootcamp and ongoing technical training can close this.",
+        "severity": "high"
+      },
+      {
+        "gap": "Public cloud platform hands-on expertise (AWS, Azure, GCP). JD requires hands-on expertise; limited direct evidence in candidate profile of cloud infrastructure, data platform, or DevOps work.",
+        "mitigation": "Operations and transformation background likely involved cloud decisions and architecture alignment; formal cloud certification (AWS Solutions Architect, Azure fundamentals) and Databricks platform immersion can close gap within 3-6 months.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Data analytics, data engineering, or modern data stack domain knowledge. Candidate's background is general operations and transformation; no cited experience with data platforms, analytics workflows, or Spark/Delta Lake ecosystem.",
+        "mitigation": "Domain is learnable with focused Databricks technical bootcamp, hands-on labs, and customer-exposure plan. Strategic and stakeholder-management strengths are portable across domains.",
+        "severity": "high"
+      },
+      {
+        "gap": "Public thought leadership and community engagement track record. JD calls for developing customer-facing collateral and leading workshops; no evidence of public speaking, writing, or content creation in profile.",
+        "mitigation": "Operations leadership and transformation experience likely involved internal communication and training; external community engagement can be developed over first 12 months with mentorship.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Senior Solutions Architect at a leading data platform company with Fortune 500 customer base. JD requires complex customer engagement, C-level influence, technical pre-sales, and coaching junior staff, indicating 6-9 year senior IC or peer-leadership scope. Title and customer-facing mandate suggest L5; confidence is moderate because company stage/size context and explicit experience years are not stated in JD.",
+    "role_family_fit": 42,
+    "scope_seniority": 74,
+    "summary": "This Sr. Solutions Architect role at Databricks is a stretch for a Strategy and Operations leader. The posted role sits at L5 (senior IC, customer-advisory scope, coaching peers) and requires hands-on solutions architecture, coding proficiency in Python/Java/Scala, cloud platform expertise, and data analytics domain knowledge. The candidate brings eight years of proven strategy and operations leadership at Google, stakeholder influence, and team-development capability\u2014strengths that align with the customer engagement and leadership aspects of the JD\u2014but lacks production software engineering, professional coding, hands-on PoC delivery, and data platform domain experience. The gaps are significant but not insurmountable with structured technical bootcamp, mentorship, and 6-12 month ramp; advisory recommendation is stretch, not skip, because core strategic and stakeholder-management capabilities are strong and the candidate is willing to learn Spark and upskill technically.",
+    "uncertainties": [
+      "Extent of candidate's hands-on cloud platform (AWS/Azure/GCP) exposure during Google tenure not specified in profile",
+      "Whether candidate's transformation program experience included data platform decisions or analytics architecture involvement",
+      "Company stage, growth rate, and customer maturity level of Databricks not stated in JD, affecting ramp-time expectations",
+      "Degree to which 'hybrid based in Sydney' implies relocation requirement and visa sponsorship complexity for candidate"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

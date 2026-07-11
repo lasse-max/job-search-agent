@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs\u2014demonstrates deep customer engagement and cross-functional sales partnership experience.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Account Executives to drive technical sales cycles and customer outcomes"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and requirements design with global stakeholder engagement across commercial operations; experience translating business logic to operational execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead customer workshops, discovery sessions, and technical deep-dives across multiple stakeholders"
+      },
+      {
+        "candidate_evidence": "Commercial operations and transformation leadership requires translating between executive, engineering, and product teams; proficiency in English and German.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to communicate complex topics to both technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Python is basic and actively learning; no hands-on experience with distributed data systems, data pipelines, or data engineering workflows.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with Python (or similar) and familiarity with distributed data processing and compute"
+      },
+      {
+        "candidate_evidence": "Product operations background involves requirements design, UAT, and rollout; no stated experience building data PoCs or exploring/troubleshooting large-scale datasets.",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on ability to work practically with data (e.g., building PoCs, exploring datasets, troubleshooting)"
+      },
+      {
+        "candidate_evidence": "No direct ML/data science workflow experience stated; background is commercial operations and product transformation, not analytics or ML engineering.",
+        "evidence_strength": "weak",
+        "job_requirement": "Familiarity with analytics, data science, or machine learning workflows"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No hands-on Python or production code experience; Python self-assessed as basic and actively learning, insufficient for presales PoC delivery and technical troubleshooting.",
+        "mitigation": "Accelerated technical bootcamp (6\u201312 weeks) in Python, PySpark, and hands-on data exploration; pair with experienced field engineer for first 2\u20133 customer engagements.",
+        "severity": "high"
+      },
+      {
+        "gap": "No practical data-engineering or data-pipeline experience; background is product operations, not analytics/ML workflows or distributed data systems.",
+        "mitigation": "Self-directed learning in Apache Spark, Lakehouse architecture, and real-world data PoC design; build 2\u20133 internal demo projects before customer-facing work.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited familiarity with ML/AI workflows and how data platforms support feature engineering, model training, and inference pipelines.",
+        "mitigation": "Structured curriculum in ML/AI use cases, feature stores, and model-operationalization patterns; peer mentoring from data science or ML platform specialists.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated cloud platform architecture or distributed-systems design experience; background is commercial operations, not infrastructure or platform scaling.",
+        "mitigation": "Cloud fundamentals certification (AWS/Azure/GCP); design-review participation with solution architecture team.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Post-PMC role requiring hands-on Python, distributed data systems, and data/ML platform expertise. Presales positioning suggests 3\u20135 years relevant field-engineering context (L4 anchor). No seniority modifiers (director, VP, manager-of-managers). company size unknown. Role emphasis on hands-on technical execution and data-platform depth supports L4 estimate.",
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "This Solutions Architect role is a presales, hands-on technical position requiring Python proficiency, distributed data engineering, and analytics/ML platform expertise. The candidate's eight years of Strategy and Operations leadership at Google demonstrates strong business engagement, stakeholder management, and transformation execution, but lacks the required foundational data engineering, platform architecture, and hands-on data-workflow experience. Python knowledge is basic and actively developing; no PoC-building, data exploration, or ML/analytics workflow background is evident. While the customer-facing and cross-functional aspects align well, the technical depth gap is substantial and not readily closable within onboarding. Role family fit is low (outside target strategy/ops/product-ops families); recommendation is skip in favor of roles more aligned with business operations leadership.",
+    "uncertainties": [
+      "Databricks company size and stage not stated; presales role title mapping and seniority anchoring assumed standard mid-market presales scope.",
+      "Candidate's Python 'basic and actively learning' proficiency level and timeline for reaching role-required hands-on fluency are unclear.",
+      "No detail on candidate's exposure to data pipelines, cloud platforms, or data-architecture decision-making beyond product operations context."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

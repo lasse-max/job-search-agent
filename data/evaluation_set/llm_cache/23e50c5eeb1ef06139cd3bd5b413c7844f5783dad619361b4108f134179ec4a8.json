@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; scaled global commercial operations and led transformation programs requiring cross-functional stakeholder management and system modernization",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead the modernization of marketing data platform and drive AI integration across data products, operating independently and bridging engineering systems with business needs"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with proven ability translating business requirements across engineering, product, and commercial teams; eight years navigating competing stakeholder needs in global context",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate sophisticated data concepts clearly to senior leadership and non-technical stakeholders; manage conflicting priorities from demanding business units"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and commercial operations scaling requiring requirements definition, UAT, rollout execution, and cross-functional engineering collaboration; deep experience with product ownership logic design and technical stakeholder alignment",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with cross-functional engineering and data science teams to assess technical feasibility while balancing long-term architectural transformation with incremental deliveries"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and global operational scaling; experience dismantling silos and modernizing processes in large distributed systems, though data-platform-specific depth not evidenced",
+        "evidence_strength": "medium",
+        "job_requirement": "Navigate and upgrade legacy 15-year-old architectural framework; unify fragmented data sources to establish single source of truth"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services commercial operations scaling; experience with go-to-market and commercial stakeholder needs, though specific marketing or sales data portfolio management not detailed in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong commercial mindset with background handling marketing or sales data portfolios"
+      }
+    ],
+    "confidence": 0.68,
+    "estimated_level": "L5",
+    "evidence_strength": 68,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "Deep technical familiarity with complex, large-scale big data systems and real-time data products not evidenced; candidate background is operations and transformation, not data engineering or analytics",
+        "mitigation": "Candidate has proven ability to operate in complex technical environments and learn rapidly; history of partnering with engineering and data science teams and mastering domain-specific concepts suggests capability to upskill on data architecture specifics",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented hands-on experience with marketing or sales data portfolios, reporting systems, or data product ownership",
+        "mitigation": "Commercial operations background and stakeholder management with marketing and sales teams provide foundational understanding; domain-specific knowledge can be acquired on-the-job with structured mentoring from data engineering and science leads",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of autonomous decision-making in ambiguous, highly technical product environments; experience appears anchored in transformation execution rather than independent product strategy in data/analytics domain",
+        "mitigation": "Eight-year tenure and two promotions suggest demonstrated judgment and autonomous scope; willingness to operate in ambiguous environments noted in profile; mentoring from data science and engineering leads will clarify technical decision-making frameworks",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Posted role requires leading a 50-person multidisciplinary team, independent operation bridging engineering and business strategy, global impact (Australia, NZ, UK, US), and autonomous decision-making in complex architectural transformation. JD emphasizes senior-stakeholder collaboration, commercial mindset, and technical leadership without hands-on coding. Title \"Lead Technical Product Manager,\" team size, and scope suggest L5 IC owner or emerging lead level. Company stage/size not stated, moderating confidence slightly.",
+    "role_family_fit": 72,
+    "scope_seniority": 76,
+    "summary": "Candidate is a Google Strategy and Operations leader with eight years and two promotions in global commercial scaling and transformation\u2014strong fit for stakeholder management, cross-functional collaboration, and program execution. However, the posted role's core mandate is modernizing a data platform with AI integration, requiring deep familiarity with big data systems, real-time data products, and marketing/sales data portfolios. Candidate lacks documented technical depth in data engineering, analytics, or data-product domains. Advisory recommendation is stretch: candidate's transformation leadership, autonomous judgment, and ability to partner with technical teams are substantial strengths, but success will depend on rapid upskilling in data-platform architecture and domain-specific knowledge with structured support.",
+    "uncertainties": [
+      "Xero company size and stage not stated; impact on seniority calibration and team-structure expectations unclear",
+      "Depth of candidate's interaction with data engineering, analytics, or data-product teams at Google not specified; if significant, closes the domain gap",
+      "Extent of candidate's prior experience with AI/ML integration or modern data stack (cloud, real-time, etc.) not detailed",
+      "Whether candidate has led or deeply contributed to technical architecture decisions (vs. operational/program execution) remains unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

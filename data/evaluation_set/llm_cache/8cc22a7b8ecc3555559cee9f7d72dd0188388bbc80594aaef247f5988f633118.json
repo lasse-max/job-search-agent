@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations scaling and transformation programs; no stated legal drafting, contract negotiation, or enterprise agreement experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Draft, review, and negotiate commercial agreements, with a primary focus on GTM/Sales transactions including enterprise customer contracts"
+      },
+      {
+        "candidate_evidence": "Transformation programs and scaling operations; no legal infrastructure, contract templates, or playbook development background evidenced",
+        "evidence_strength": "weak",
+        "job_requirement": "Help build and maintain commercial legal infrastructure, including contract templates, playbooks, and process improvements"
+      },
+      {
+        "candidate_evidence": "No law degree or bar membership mentioned in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "A JD and active membership in at least one U.S. state bar (California preferred)"
+      },
+      {
+        "candidate_evidence": "Eight years in Google Devices and Services commercial operations; no legal practice, SaaS contracting, or technology transaction experience evidenced",
+        "evidence_strength": "weak",
+        "job_requirement": "At least 3-5 years of legal experience, with exposure to commercial contracts, SaaS agreements, or technology transactions"
+      },
+      {
+        "candidate_evidence": "Background in commercial operations and transformation; no stated AI, policy, or safety expertise mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Curiosity about AI technology, AI Policy, and commitment to responsible AI development"
+      },
+      {
+        "candidate_evidence": "Transformation and operations work suggest multi-stakeholder coordination; no evidence of agreement negotiation or policy-technical collaboration",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience navigating multi-stakeholder agreements involving technical and policy considerations"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No law degree or bar membership; role requires JD and active U.S. state bar membership (California preferred)",
+        "mitigation": "Candidate must be a licensed attorney; no substitute for legal credentials in this regulated practice role",
+        "severity": "high"
+      },
+      {
+        "gap": "No legal practice or commercial-transaction experience; role requires 3-5 years legal background with contracts, SaaS, or technology transactions",
+        "mitigation": "Role requires core legal skills; operations background does not transfer to contract drafting, negotiation, or legal risk assessment",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated AI, policy, or safety expertise; role emphasizes AI governance, responsible AI development, and policy-technical collaboration",
+        "mitigation": "Candidate could learn AI context through ramp-up, but legal and policy expertise are domain-critical for this GTM counsel role",
+        "severity": "medium"
+      },
+      {
+        "gap": "Department is Legal; candidate's core background is commercial operations and transformation, not legal practice",
+        "mitigation": "Role-family mismatch; candidate is Strategy/Operations; role is Legal/GTM Counsel requiring attorney credentials and practice",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"A JD and active membership in at least one U.S. state bar (California preferred)\" \u2014 This is a minimum legal credential requirement; the role is a Commercial Counsel position in the Legal department requiring licensed practice. The candidate profile contains no evidence of a law degree or bar membership.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Commercial Counsel roles requiring 3-5 years of legal experience and bar membership typically sit at L4 (mid-level IC) to early L5 depending on deal complexity and autonomy. Salary range ($265K\u2013$320K) aligns with mid-to-senior legal IC at growth-stage tech. No reported management scope. This is a licensed-practice role, not a strategy/operations role; the legal credential requirement and transaction focus anchor it at L4-level responsibility.",
+    "role_family_fit": 5,
+    "scope_seniority": 60,
+    "summary": "Commercial Counsel, GTM at Anthropic is a Legal department role requiring a JD, bar membership, and 3\u20135 years of commercial-contract and SaaS transaction experience. The candidate is a Strategy and Operations leader with eight years in commercial scaling at Google but no law degree, bar membership, legal practice, or contract-negotiation background. This is a hard mismatch: the role is legal-practice-oriented; the candidate is operations-oriented. Strong disqualifying hard blocker on legal credentials.",
+    "uncertainties": [
+      "Whether candidate holds unreported law degree or bar membership",
+      "Depth of candidate's involvement in legal review or contract negotiations within transformation/operations work",
+      "Whether candidate has pursued or obtained legal credentials post-Google"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

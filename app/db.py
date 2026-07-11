@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -14,10 +15,12 @@ from app.adapters import parser_version, source_endpoint
 from app.adapters.utils import normal_key
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
+from app.services.evaluate import has_disqualifying_hard_requirement
 from app.services.material import material_hash_for_posting, material_hash_for_row
 from app.services.text_rules import (
     LANGUAGE_ALIASES,
     strip_language_variant_markers,
+    strip_location_variant_suffix,
     unsupported_language_requirement,
 )
 from app.postgres import connect_postgres, is_postgres_connection, postgres_core_schema
@@ -103,6 +106,7 @@ CREATE TABLE IF NOT EXISTS evaluation_skips (
   job_posting_id INTEGER NOT NULL REFERENCES job_postings(id),
   input_hash TEXT NOT NULL,
   reason TEXT NOT NULL,
+  evaluator_version TEXT,
   created_at TEXT NOT NULL,
   UNIQUE(job_posting_id, input_hash, reason)
 );
@@ -173,7 +177,24 @@ def connect_runtime_database(
 
 def init_db(conn: Connection) -> None:
     conn.executescript(postgres_core_schema() if is_postgres_connection(conn) else SCHEMA)
+    if not is_postgres_connection(conn):
+        _ensure_sqlite_evaluation_skip_version(conn)
     conn.commit()
+
+
+def _ensure_sqlite_evaluation_skip_version(conn: sqlite3.Connection) -> None:
+    columns = {
+        str(row["name"])
+        for row in conn.execute("PRAGMA table_info(evaluation_skips)").fetchall()
+    }
+    if "evaluator_version" not in columns:
+        conn.execute("ALTER TABLE evaluation_skips ADD COLUMN evaluator_version TEXT")
+    conn.execute(
+        """
+        CREATE INDEX IF NOT EXISTS idx_evaluation_skips_evaluator
+        ON evaluation_skips(job_posting_id, evaluator_version)
+        """
+    )
 
 
 def upsert_company(conn: sqlite3.Connection, company: CompanyConfig) -> int:
@@ -378,6 +399,14 @@ def upsert_postings(
         if material_changed:
             conn.execute(
                 """
+                DELETE FROM evaluation_skips
+                WHERE job_posting_id = ?
+                  AND evaluator_version IS NOT NULL
+                """,
+                (job_id,),
+            )
+            conn.execute(
+                """
                 UPDATE job_postings
                 SET company_id = ?, source_id = ?, source_job_id = ?, canonical_key = ?,
                     title = ?, locations_json = ?, department = ?, employment_type = ?,
@@ -422,32 +451,108 @@ def upsert_postings(
 
 
 def _merge_multi_location_postings(postings: list[JobPosting]) -> list[JobPosting]:
-    groups: dict[str, list[JobPosting]] = {}
+    coarse_groups: dict[str, list[JobPosting]] = {}
     for posting in postings:
-        groups.setdefault(_multi_location_dedupe_key(posting), []).append(posting)
+        coarse_groups.setdefault(_multi_location_dedupe_key(posting), []).append(posting)
 
     merged: list[JobPosting] = []
-    for key, group in groups.items():
-        if len(group) == 1:
-            merged.append(group[0])
-            continue
-        first = _preferred_language_variant(group)
-        locations: list[str] = []
-        for posting in group:
-            for location in posting.locations:
-                if location not in locations:
-                    locations.append(location)
-        merged.append(
-            replace(
-                first,
-                locations=locations,
-                source_job_id=f"multi-{normal_key(key)[:80]}",
-                canonical_key=normal_key(
-                    f"{first.company}|{_dedupe_title(first.title)}|{key}"
-                ),
+    for key, candidates in coarse_groups.items():
+        for group in _materially_compatible_variant_groups(candidates):
+            if len(group) == 1:
+                merged.append(group[0])
+                continue
+            first = _preferred_language_variant(group)
+            location_group = group
+            if any(_is_language_variant_title(posting) for posting in group):
+                supported_group = [
+                    posting
+                    for posting in group
+                    if unsupported_language_requirement(
+                        f"{posting.title} {posting.description_text}",
+                        load_candidate_profile().languages,
+                    )
+                    is None
+                ]
+                if supported_group:
+                    location_group = supported_group
+            locations: list[str] = []
+            for posting in location_group:
+                for location in posting.locations:
+                    if location not in locations:
+                        locations.append(location)
+            cluster_hash = hashlib.sha256(
+                f"{key}|{_normalized_variant_description(first)}".encode("utf-8")
+            ).hexdigest()[:32]
+            merged.append(
+                replace(
+                    first,
+                    title=strip_location_variant_suffix(first.title, first.locations),
+                    locations=locations,
+                    source_job_id=f"multi-{cluster_hash}",
+                    canonical_key=normal_key(
+                        f"{first.company}|{_dedupe_title(first.title, first.locations)}|"
+                        f"{cluster_hash}"
+                    ),
+                )
             )
-        )
     return merged
+
+
+def _materially_compatible_variant_groups(
+    postings: list[JobPosting],
+) -> list[list[JobPosting]]:
+    groups: list[list[JobPosting]] = []
+    for posting in postings:
+        for group in groups:
+            if _variant_descriptions_compatible(posting, group[0]):
+                group.append(posting)
+                break
+        else:
+            groups.append([posting])
+    return groups
+
+
+def _variant_descriptions_compatible(left: JobPosting, right: JobPosting) -> bool:
+    if not (_has_variant_title(left) or _has_variant_title(right)):
+        return True
+    left_tokens = _variant_description_tokens(left)
+    right_tokens = _variant_description_tokens(right)
+    if not left_tokens or not right_tokens:
+        return _normalized_variant_description(left) == _normalized_variant_description(right)
+    overlap = len(left_tokens & right_tokens) / len(left_tokens | right_tokens)
+    return overlap >= 0.60
+
+
+def _variant_description_tokens(posting: JobPosting) -> set[str]:
+    ignored = {
+        "about",
+        "across",
+        "company",
+        "job",
+        "location",
+        "role",
+        "team",
+        "the",
+        "this",
+        "with",
+    }
+    location_tokens = {
+        token
+        for location in posting.locations
+        for token in re.findall(r"[a-z]{3,}", location.casefold())
+    }
+    return {
+        token
+        for token in re.findall(
+            r"[a-z]{3,}",
+            strip_language_variant_markers(posting.description_text).casefold(),
+        )
+        if token not in ignored and token not in location_tokens
+    }
+
+
+def _normalized_variant_description(posting: JobPosting) -> str:
+    return " ".join(sorted(_variant_description_tokens(posting)))
 
 
 def _preferred_language_variant(postings: list[JobPosting]) -> JobPosting:
@@ -472,18 +577,97 @@ def _multi_location_dedupe_key(posting: JobPosting) -> str:
             [
                 posting.company,
                 posting.source_type,
-                _dedupe_title(posting.title),
+                _dedupe_title(posting.title, posting.locations),
                 posting.department or "",
                 posting.employment_type or "",
-                _dedupe_description(posting.description_text),
+                _variant_material_signature(posting)
+                if _has_variant_title(posting)
+                else _dedupe_description(posting.description_text),
             ]
         )
     )
 
 
-def _dedupe_title(title: str) -> str:
+def _dedupe_title(title: str, locations: list[str] | None = None) -> str:
     title = strip_language_variant_markers(title)
+    title = strip_location_variant_suffix(title, locations or [])
     return re.sub(r"\s+", " ", title).strip()
+
+
+def _has_variant_title(posting: JobPosting) -> bool:
+    without_language = strip_language_variant_markers(posting.title)
+    without_location = strip_location_variant_suffix(without_language, posting.locations)
+    return without_location != posting.title
+
+
+def _is_language_variant_title(posting: JobPosting) -> bool:
+    return strip_language_variant_markers(posting.title) != posting.title
+
+
+def _variant_material_signature(posting: JobPosting) -> str:
+    """Keep materially different regional variants separate before evaluation."""
+
+    text = f"{posting.title} {posting.description_text}"
+    profile_languages = load_candidate_profile().languages
+    unsupported_language = (
+        None
+        if _is_language_variant_title(posting)
+        else unsupported_language_requirement(text, profile_languages)
+    )
+    signatures = {
+        "unsupported_language": unsupported_language[0] if unsupported_language else "",
+        "technical_requirement": has_disqualifying_hard_requirement(text),
+        "clearance": bool(
+            re.search(
+                r"\b(?:security|sc|dv)\s+clearance\b|\bsecurity vetting\b",
+                text,
+                flags=re.IGNORECASE,
+            )
+        ),
+        "government_defense": bool(
+            re.search(
+                r"\b(?:government|public sector|defen[cs]e)\b",
+                text,
+                flags=re.IGNORECASE,
+            )
+        ),
+        "required_experience_years": _required_experience_years(text),
+        "manager_of_managers": bool(
+            re.search(
+                (
+                    r"\bmanag(?:e|es|ing)\s+(?:a\s+)?(?:team\s+of\s+)?managers\b"
+                    r"|\bmanager[- ]of[- ]managers\b"
+                    r"|\bdirect reports?\b.{0,50}\bmanagers\b"
+                ),
+                text,
+                flags=re.IGNORECASE,
+            )
+        ),
+        "reports_to_executive": bool(
+            re.search(
+                r"\breports?\s+(?:directly\s+)?to\s+(?:the\s+)?(?:ceo|cfo|coo|cto|cio|vp|vice president)\b",
+                text,
+                flags=re.IGNORECASE,
+            )
+        ),
+    }
+    return normal_key(json.dumps(signatures, sort_keys=True))
+
+
+def _required_experience_years(text: str) -> int:
+    years = [
+        int(match.group("years"))
+        for match in re.finditer(
+            (
+                r"\b(?P<years>\d{1,2})\s*"
+                r"(?:\+|to\s+\d{1,2}\+?|[-–]\s*\d{1,2}\+?)?\s+years?\b"
+                r"(?:\s+of)?[^.;\n]{0,60}\bexperience\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+    ]
+    return max(years, default=0)
 
 
 def _dedupe_description(description: str) -> str:
@@ -633,34 +817,65 @@ def stale_open_posting_ids_for_evaluator(
     *,
     evaluator_version: str,
     limit: int,
+    skip_policy_version: str | None = None,
 ) -> list[int]:
     if limit <= 0:
         return []
+    profile_version = load_candidate_profile().version
+    location_version = load_location_policy().version
+    scoring_version = load_scoring_policy().version
+    skip_policy_version = skip_policy_version or current_evaluation_policy_version(
+        evaluator_version
+    )
     rows = conn.execute(
         """
         SELECT jp.id
         FROM job_postings jp
-        JOIN role_evaluations re ON re.job_posting_id = jp.id
+        LEFT JOIN role_evaluations re ON re.id = (
+          SELECT MAX(latest.id)
+          FROM role_evaluations latest
+          WHERE latest.job_posting_id = jp.id
+        )
         WHERE jp.source_id = ?
           AND jp.availability_state = 'open'
-          AND re.id = (
-            SELECT MAX(latest.id)
-            FROM role_evaluations latest
-            WHERE latest.job_posting_id = jp.id
+          AND (
+            re.id IS NULL
+            OR re.model_version NOT LIKE ? ESCAPE '\\'
+            OR re.profile_version_id != ?
+            OR re.location_policy_version_id != ?
+            OR re.evaluation_json NOT LIKE ?
           )
-          AND re.model_version != ?
-          AND re.model_version NOT LIKE ? ESCAPE '\\'
-        ORDER BY re.created_at ASC, jp.first_seen_at ASC, jp.id ASC
+          AND NOT EXISTS (
+            SELECT 1
+            FROM evaluation_skips es
+            WHERE es.job_posting_id = jp.id
+              AND es.evaluator_version = ?
+          )
+        ORDER BY COALESCE(re.created_at, jp.first_seen_at) ASC, jp.id ASC
         LIMIT ?
         """,
         (
             source_id,
-            DEFAULT_EVALUATOR_VERSION,
             _evaluator_version_like(evaluator_version),
+            profile_version,
+            location_version,
+            f'%"scoring_policy_version": "{scoring_version}"%',
+            skip_policy_version,
             limit,
         ),
     ).fetchall()
     return [int(row["id"]) for row in rows]
+
+
+def current_evaluation_policy_version(evaluator_version: str) -> str:
+    return "|".join(
+        [
+            evaluator_version,
+            load_candidate_profile().version,
+            load_location_policy().version,
+            load_scoring_policy().version,
+        ]
+    )
 
 
 def persist_evaluation(
@@ -723,13 +938,26 @@ def record_evaluation_skip(
     job_posting_id: int,
     skipped_input_hash: str,
     reason: str,
+    *,
+    evaluator_version: str | None = None,
 ) -> bool:
     cursor = conn.execute(
         """
-        INSERT OR IGNORE INTO evaluation_skips (job_posting_id, input_hash, reason, created_at)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO evaluation_skips (
+          job_posting_id, input_hash, reason, evaluator_version, created_at
+        )
+        VALUES (?, ?, ?, ?, ?)
+        ON CONFLICT(job_posting_id, input_hash, reason) DO UPDATE SET
+          evaluator_version=excluded.evaluator_version,
+          created_at=excluded.created_at
         """,
-        (job_posting_id, skipped_input_hash, reason, utc_now()),
+        (
+            job_posting_id,
+            skipped_input_hash,
+            reason,
+            evaluator_version,
+            utc_now(),
+        ),
     )
     return cursor.rowcount > 0
 
@@ -773,6 +1001,7 @@ def get_digest_rows(
           jp.title,
           jp.locations_json,
           jp.department,
+          jp.employment_type,
           jp.source_url,
           jp.first_seen_at,
           jp.posted_at,

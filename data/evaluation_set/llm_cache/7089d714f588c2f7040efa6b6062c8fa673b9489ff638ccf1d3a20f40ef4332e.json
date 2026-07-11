@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations / Product Operations, including scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Set and execute the APAC consumer and product communications strategy, aligned with regional priorities and global narratives"
+      },
+      {
+        "candidate_evidence": "Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native communications; no demonstrated media strategy, earned media relationships, or product communications narrative development",
+        "evidence_strength": "weak",
+        "job_requirement": "Work with local comms leads to turn global launches, product updates, and research into locally relevant stories, campaigns, and media moments"
+      },
+      {
+        "candidate_evidence": "No demonstrated background in consumer-facing narrative development, product communications, or technology storytelling; experience is in operations and transformation execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop clear, accessible narratives that explain everyday benefits and usefulness of products for audiences across APAC"
+      },
+      {
+        "candidate_evidence": "No stated background in earned media, media relations, or consumer communications; profile centers on operations, programs, and internal stakeholder management",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong earned media experience, with relationships across consumer, technology, lifestyle, and culture media"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions; experience scaling global programs and transformation initiatives demonstrates senior stakeholder management and ambiguity navigation",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience operating at exec level and advising leaders in high-profile, ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations across Services division; multilingual (English professional, German native)",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience working in international or regional roles within global companies and complex operating environments"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No demonstrated background in consumer communications, product narratives, or technology storytelling; all experience is in operations, transformation, and internal delivery",
+        "mitigation": "Candidate would require 12\u201318 months of structured onboarding in earned media strategy, consumer audience development, and product communications narrative\u2014unlikely to achieve regional leadership velocity in first 6 months",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated earned media relationships, consumer media experience, or media relations track record; role requires strong consumer, tech, lifestyle, and culture media partnerships",
+        "mitigation": "Building credible media relationships in APAC consumer and tech beats requires sustained network development; candidate would depend entirely on global comms team and local leads until relationships form",
+        "severity": "high"
+      },
+      {
+        "gap": "Product experience is transformation and operational delivery, not native product communications strategy or consumer adoption narrative",
+        "mitigation": "Candidate's product knowledge is implementation-focused; translating complex AI capabilities into relatable consumer benefits requires different cognitive frame than UAT and rollout planning",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited stated consulting or communications brand experience; classic case-team and strategic communications narrative development not evident",
+        "mitigation": "Narrative strategy and audience-first creative thinking are teachable, but hiring into this gap at senior regional level introduces risk",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 85,
+    "level_rationale": "The JD requires at least 12 years of professional experience, a hard seniority anchor that maps the posted role to L6.",
+    "role_family_fit": 20,
+    "scope_seniority": 72,
+    "summary": "Consumer &amp; Product Communications Lead, APAC is a regional strategy and earned-media role in OpenAI's Communications department. While the candidate has strong Google pedigree, global program-scaling, and international operations experience, the role requires 12+ years of product communications, consumer-facing narrative development, and earned media strategy\u2014functions entirely outside the candidate's demonstrated background in Strategy &amp; Operations and product transformation. The mismatch is fundamental: operations / transformation execution and product-communications narrative development are distinct disciplines. Not a good fit for target families.",
+    "uncertainties": [
+      "No clarity on whether local APAC team reports to this role or whether this is an individual contributor advising lead",
+      "Company size/stage not stated; OpenAI's communication team seniority context unclear from JD alone",
+      "No stated salary to anchor level confidence",
+      "Candidate background in product operations, not product communications or narrative strategy; risk of underestimating gap severity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

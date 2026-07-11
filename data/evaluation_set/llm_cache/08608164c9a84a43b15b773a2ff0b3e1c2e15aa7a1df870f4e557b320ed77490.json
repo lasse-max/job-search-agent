@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and driving transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "5\u20137+ years product development experience"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with program leadership, transformation ownership, and multi-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Product Manager level or above in similar product development roles"
+      },
+      {
+        "candidate_evidence": "Extensive customer partnership and transformation program delivery; experience identifying and solving business process challenges with technical counterparts",
+        "evidence_strength": "strong",
+        "job_requirement": "Engage with customers at all levels, discover requirements, present demonstrations, address technical challenges"
+      },
+      {
+        "candidate_evidence": "Google background and product operations/transformation leadership implies multi-level communication; limited direct evidence of translating AI/agent concepts",
+        "evidence_strength": "medium",
+        "job_requirement": "Communicate highly technical concepts to both technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Transformation and program leadership experience suggests collaboration with engineering; not native product requirement-scoping or shipping velocity",
+        "evidence_strength": "medium",
+        "job_requirement": "Work with engineering and product teams to scope and implement new features"
+      },
+      {
+        "candidate_evidence": "Google tenure and strategy/operations leadership suggest technical environment familiarity; specific degree or technical depth not stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Technical or related degree, or equivalent professional experience"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "Native product management and shipping velocity experience. JD emphasizes product development lifecycle, shipping AI agents at scale, and direct PM accountability; candidate background is transformation, operations, and program leadership.",
+        "mitigation": "Candidate's customer partnership, stakeholder management, and requirements-definition experience are transferable; rapid ramp on PM tools, agent workflows, and product team velocity expected.",
+        "severity": "high"
+      },
+      {
+        "gap": "AI agents and generative AI product domain experience. JD strongly signals AI-agent expertise; candidate has no stated AI-product shipping or agent-development background.",
+        "mitigation": "Sierra's product foundation and customer use cases can teach domain; candidate's technical environment (Google) and learning agility reduce risk.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct technical credibility with engineering teams on AI/agent architecture. JD expects technical product leadership; candidate's coding and ML depth not demonstrated.",
+        "mitigation": "Candidate's Google engineering collaboration and program-scoping skills can bridge; AI-agent PM requires product intuition more than hands-on coding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited indication of product roadmap ownership and prioritization at PM level. JD emphasizes shaping roadmap; candidate background is strategy and transformation rather than product direction setting.",
+        "mitigation": "Transformation programs and business process redesign involve roadmap influence; PM-level prioritization can be learned with mentorship.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD requires 5\u20137+ years product development, Senior PM level or above, customer-facing enterprise engagement, and technical product leadership. This is a standard L4 PM role with customer-interaction and product-roadmap ownership; no manager-of-managers scope or director-level enterprise complexity evident.",
+    "role_family_fit": 42,
+    "scope_seniority": 65,
+    "summary": "Strong product operations and transformation background at scale, but this is a native PM role requiring deep product development velocity, customer technical credibility, and AI-agent domain fluency. Candidate's product experience stems from requirements, UAT, rollout ownership, and business transformation rather than native PM lifecycle management, shipping velocity, or direct technical product accountability. Gap is manageability: candidate's strategic transformation and customer-partnership skills are relevant, but lack direct agent/AI PM shipping experience and classic product team velocity.",
+    "uncertainties": [
+      "Sierra company size and stage not stated in JD; cannot assess scope fit within org structure.",
+      "Candidate's actual coding capability (Python basic, React/TypeScript/Go unknown) cannot be assessed from profile.",
+      "Degree and technical field background not stated in candidate profile; JD requires degree in technical field or equivalent.",
+      "Extent of candidate's experience with highly technical products (not transformation scope) is unclear."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

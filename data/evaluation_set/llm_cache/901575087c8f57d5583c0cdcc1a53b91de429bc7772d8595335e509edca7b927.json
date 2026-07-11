@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with experience scaling global commercial operations and transformation programs; direct accountability for multi-stakeholder program execution and delivery",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years of experience accountable for technical project/program delivery within Data and AI domain"
+      },
+      {
+        "candidate_evidence": "8-year tenure in Strategy and Operations role at Google with commercial and technical accountability; experience leading stakeholder alignment, transformation rollouts, and customer-facing program delivery",
+        "evidence_strength": "strong",
+        "job_requirement": "Customer-facing pre-sales, technical architecture, customer success, or consulting role"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations scaling and transformation programs; demonstrated stakeholder management across multiple teams and leadership levels; orchestration of cross-functional resources",
+        "evidence_strength": "strong",
+        "job_requirement": "Technical program/project management including account, stakeholder and resource management accountability"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation experience at Google involves data systems and platform adoption; honesty statement acknowledges limited production engineering background but strong requirements logic and design skills",
+        "evidence_strength": "medium",
+        "job_requirement": "Understanding of solution architecture related to distributed data systems"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with program leadership and business transformation experience; skilled in UAT, rollout planning, and stakeholder orchestration across complex organizations",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience conducting discovery workshops, creating strategic roadmaps, and managing delivery of complex programmes"
+      },
+      {
+        "candidate_evidence": "8 years at Google with demonstrated ability to influence across technical and commercial stakeholders; ownership of transformation programs requiring cross-level engagement",
+        "evidence_strength": "medium",
+        "job_requirement": "Technical credibility to engage and communicate at all levels within customer organization"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No stated Python, Spark, or Databricks platform experience; JD explicitly requires programming experience in these technologies",
+        "mitigation": "Candidate has data systems product experience and learning agility; Python listed as actively learning. Technical ramp-on platform tooling is achievable with onboarding, but immediate technical debate with customers on Spark architecture may require support from specialist SAs",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit consulting brand or classic case-team background; JD implies need for customer workshop facilitation and solution architecture argumentation",
+        "mitigation": "Program leadership and strategic roadmap experience transfers; customer discovery/engagement skills are demonstrable. Consulting-style rigor can be developed through mentoring by DSA Manager and PS team",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product experience is ownership-driven and transformation-focused, not native engineering PM; may lack hands-on technical design documentation or product requirements expertise",
+        "mitigation": "Role emphasizes post-sale technical account strategy and orchestration over product build; requires strong requirements translation and design collaboration, which align with candidate's transformation and UAT background",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit quota overachievement track record stated; JD lists 'track record of overachievement against quota, Goals or similar objective targets' as a look-for",
+        "mitigation": "Program and transformation delivery at Google likely involved implicit growth/adoption metrics; DSA role is hybrid commercial and technical, and scaling operations experience suggests goal-orientation, but explicit revenue or consumption targets not mentioned in profile",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 5+ years accountable technical program/project delivery in Data and AI, with technical account strategy ownership, customer escalation leadership, and cross-functional orchestration across PS, Support, Product, and Engineering. Reports to DSA Manager within Field Engineering. Role ownership scope and customer complexity (strategic accounts, production go-live accountability) are established senior-IC signals consistent with L5.",
+    "role_family_fit": 76,
+    "scope_seniority": 74,
+    "summary": "Databricks DSA is an L5 senior IC hybrid commercial-technical role requiring 5+ years of accountable program delivery in Data and AI, customer-facing architecture/success, and stakeholder orchestration. Candidate brings strong 8-year tenure in Strategy and Operations at Google with direct program leadership, transformation execution, and multi-stakeholder accountability. Primary gaps are lack of Python/Spark/Databricks hands-on experience (high severity but achievable through onboarding) and absence of explicit consulting case-team background (medium, transferable through roadmap and workshop experience). Role aligns well with candidate's transformation and program leadership family; seniority is appropriate.",
+    "uncertainties": [
+      "Databricks company stage/structure not detailed in JD; assumed enterprise-scale based on customer base description, but no reporting-line clarity on whether DSA Manager is individual contributor or manager-of-managers",
+      "Candidate's explicit quota/consumption/growth metric overachievement not stated; profile describes program and transformation success but not commercial KPI track record",
+      "Depth of customer stakeholder escalation experience and executive-level negotiation in prior role not explicitly described; inferred from 'commercial operations scaling' language"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

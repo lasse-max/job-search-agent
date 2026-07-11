@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global operations and transformation programs at Google; experience with process design, requirements logic, and end-to-end rollout; familiarity with automation and cross-functional delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as primary IT engineer for LRC teams, build workflows and orchestrations using low-code/no-code tools"
+      },
+      {
+        "candidate_evidence": "Positioned as operations leader; actively learning Python; exposure to AI problem-solving and transformation but no demonstrated AI implementation, legal tech, or Harvey.ai experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Leverage, design, and implement AI with focus on LRC function; build and enhance AI portfolio, legal-specific tools (Harvey.ai, etc.)"
+      },
+      {
+        "candidate_evidence": "No evidence in profile of identity standards expertise, orchestration tool expertise, or hands-on API integration work",
+        "evidence_strength": "weak",
+        "job_requirement": "Expert level understanding of identity standards (SAML, OAuth, SSO); expert knowledge of orchestration tools (Workato); strong API integration experience"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no evidence of Terraform or IaC experience in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with programming language (Python) and infrastructure as code (Terraform)"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No IT infrastructure, identity standards (SAML, OAuth, SSO), or orchestration tool expertise demonstrated; role requires expert-level competency",
+        "mitigation": "Intensive certification or hands-on bootcamp in identity/orchestration would be required; significant ramp time unlikely to be available in a specialist IT role",
+        "severity": "high"
+      },
+      {
+        "gap": "Python basic and actively learning; role requires production Python and infrastructure-as-code (Terraform); no IaC experience",
+        "mitigation": "Candidate could pursue targeted Python/Terraform courses, but would start significantly below role baseline",
+        "severity": "high"
+      },
+      {
+        "gap": "No legal tech, compliance automation, or Harvey.ai/legal AI implementation background; role has strong initial focus on legal-specific tools",
+        "mitigation": "Legal domain could be learned on the job, but candidate lacks the adjacent AI implementation or legal workflow expertise to contribute immediately",
+        "severity": "medium"
+      },
+      {
+        "gap": "Strategy and Operations background differs structurally from hands-on IT systems engineering and network/security/infrastructure operations",
+        "mitigation": "Role is hybrid (strategy + hands-on IT); alignment on strategy/advisory may exist, but core technical depth is a blocker",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Bachelor's degree in Information Technology, Computer Science, or a related field' is a minimum qualification, and the role requires 'Expert level understanding of common identity standards, including SAML, OAuth, SSO,' 'Expert knowledge of workflows and common orchestration tools (workato, etc.),' and 'Experience with a programming language, such as python, and infrastructure as code (i.e. Terraform).' Candidate profile lists only 'No production software-engineering background' and 'Python basic and actively learning,' with no evidence of IT degree, identity standards expertise, orchestration tool mastery, or Terraform/IaC experience. The technical depth gap for a specialized IT engineering role is disqualifying.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 5+ years relevant experience (L4 anchor) but emphasizes autonomous ownership, global impact, full project lifecycle end-to-end, and advisory scope (\"trusted advisor\") to privileged functions; 5+ years, clear stakeholder interaction, and strategic advisory typically map to L5 IC or low-mid manager band at mid-stage (~Series D/E) fintech.",
+    "role_family_fit": 18,
+    "scope_seniority": 65,
+    "summary": "This is a Senior IT Engineer specialist role (L5 equivalent) requiring expert-level identity standards, orchestration tool, Python, and infrastructure-as-code expertise, plus immediate legal tech delivery. Candidate brings eight years of strategy and operations leadership with strong transformation and cross-functional delivery skills, but lacks the foundational IT systems engineering, security/identity expertise, and production Python/Terraform competency the role demands. Gap is structural, not seniority-based.",
+    "uncertainties": [
+      "Candidate's depth in automation, APIs, or cloud infrastructure not detailed in profile; could have more relevant hands-on experience than stated",
+      "Whether candidate's 'actively learning Python' includes any applied project work or remains purely academic",
+      "Airwallex stage and internal IT maturity not stated in JD; could affect ramp expectations and technical bar"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

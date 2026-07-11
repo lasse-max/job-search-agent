@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate has eight years of global commercial operations and transformation programs at Google Devices; no evidence of deep EMI/EMC engineering ownership or aerospace platform systems work.",
+        "evidence_strength": "weak",
+        "job_requirement": "Own the end-to-end EMI/EMC engineering for an airborne platform, including the control plan, compliance roadmap, and integration strategy across all subsystems."
+      },
+      {
+        "candidate_evidence": "Candidate's background is strategy, operations, and business transformation; no aerospace EMI/EMC engineering domain experience cited.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have proven experience in EMI/EMC engineering for airborne platforms with end-to-end ownership from requirements to certification."
+      },
+      {
+        "candidate_evidence": "No background in electromagnetic theory, antenna design, or EM simulation tools.",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead advanced electromagnetic modeling to optimize antenna placement and mitigate interference; hands-on experience with EM simulation tools (CST, FEKO, HFSS)."
+      },
+      {
+        "candidate_evidence": "Candidate's expertise is in operations scaling and transformation; no technical electromagnetic or RF background indicated.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have a strong understanding of electromagnetic theory: transmission lines, antennas, wave propagation, shielding, grounding, and coupling mechanisms."
+      },
+      {
+        "candidate_evidence": "Candidate has experience with cross-functional stakeholder management and supplier/partner coordination in global operations contexts; transferable leadership discipline.",
+        "evidence_strength": "medium",
+        "job_requirement": "Are comfortable leading cross-functional and supplier governance: reviewing EMC control plans, qualification evidence, ICDs, and driving issue closure with objective evidence."
+      },
+      {
+        "candidate_evidence": "Candidate has demonstrated cross-functional coordination and trade-off management in complex global programs; however, no aerospace systems or defense technical context.",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate cross-functional design decisions and manage EM trade-offs across airframe, avionics, EW, comms, propulsion, power, and mission computing."
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No EMI/EMC engineering domain expertise or aerospace platform systems background; role requires deep end-to-end ownership of electromagnetic interference lifecycle.",
+        "mitigation": "Candidate would require 12\u201318 months of immersive technical ramp-up under an experienced EMI lead, plus hands-on electromagnetic theory and simulation tool proficiency. Feasibility depends on Helsing's technical mentorship capacity and timeline tolerance.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on experience with EM simulation tools (CST, FEKO, HFSS) or electromagnetic modeling; role expects active technical leadership of antenna placement, coupling, and shielding analysis.",
+        "mitigation": "Candidate would need structured training in advanced EM simulation and electromagnetic theory before leading modeling campaigns. This is a multi-month, high-effort ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "No background in MIL-STD-461, MIL-STD-464, DO-160, STANAG, or military airworthiness standards; role expects familiarity with applicable certification frameworks.",
+        "mitigation": "Standards and airworthiness frameworks are learnable over 3\u20136 months with domain mentorship and reference materials; less critical than electromagnetic fundamentals.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No grounding, bonding, shielding, filtering, or cable segregation design experience for complex aerospace structures; role owns these architectures end-to-end.",
+        "mitigation": "Candidate would need extended pairing with experienced EMI/EMC engineers to develop these design competencies. Very difficult to acquire without aerospace context.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "The role requires deep technical EMI/EMC engineering expertise with end-to-end airborne platform ownership, EM simulation leadership, and military certification standards compliance. The JD signals IC L5 (6\u20139 years established ownership in a specialized domain) rather than L6 managerial scope. Company stage is not stated; Helsing is described as relatively young but with significant government contracts, suggesting scale in the L5 technical-leader range. No salary posted.",
+    "role_family_fit": 10,
+    "scope_seniority": 70,
+    "summary": "This is a highly specialized aerospace EMI/EMC engineering role requiring deep electromagnetic theory, hands-on EM simulation, and airborne platform certification expertise. The candidate is a Strategy and Operations / Transformation leader with eight years of cross-functional program management at Google, but no aerospace systems, electromagnetic engineering, or defense domain experience. While cross-functional leadership and supplier governance align weakly, the role's core technical ownership (EM modeling, grounding/shielding architectures, standards compliance) is fundamentally misaligned with the candidate's background. The gap is not quickly managed through training.",
+    "uncertainties": [
+      "Helsing company size, stage, and engineering mentorship capacity not stated in JD; affects realistic ramp timeline and gap manageability.",
+      "Candidate's Python and data background mentioned as 'basic and actively learning'\u2014unclear if any STEM theoretical foundation that might accelerate EM theory acquisition.",
+      "Unknown whether Helsing would hire for transformational/leadership potential over domain expertise, or if this is a pure technical specialist hire.",
+      "No indication of whether candidate has interest in or curiosity about deep electrical/electromagnetic engineering as a career pivot."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

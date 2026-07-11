@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; led requirements definition, logic design, UAT, rollout, and execution of multi-product strategy initiatives across diverse geographies and stakeholder bases.",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and design pricing strategy and frameworks covering the whole Checkout.com product suite by utilising different pricing methodologies (cost-plus, value based etc.)"
+      },
+      {
+        "candidate_evidence": "Experience with data-driven strategic analysis and transformation program execution; demonstrated ability to assess market conditions, cost structures, and operational performance across global commercial environments.",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyse internal and external data and maintain up to date pricing benchmarks, using this data to enhance our pricing philosophy and strategy"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations across multiple regions; led strategic initiatives requiring cross-geography market and competitive assessment; strong track record of regional adaptation and strategy execution.",
+        "evidence_strength": "strong",
+        "job_requirement": "Be instrumental in defining pricing strategy across different regions, and perform market research and competitor analysis"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to influence and collaborate across Product, Finance, and operations teams; strong stakeholder management and communication skills honed through transformation program leadership at scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Work closely with the commercial and marketing department to create all the vital pricing collateral; present pricing proposals to key individuals across the organisation"
+      },
+      {
+        "candidate_evidence": "No direct fintech, payment processing, or banking experience; background is in Google commercial operations and services transformation, not payments domain.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience in pricing or pricing projects with a payment processor / Scheme or Card Issuing bank"
+      },
+      {
+        "candidate_evidence": "No explicit mention of SQL or BI tools in profile; analytical foundation exists but specific tooling gaps are not addressed.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience with SQL and BI tools is a plus"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 68,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No payment-processor, fintech, or banking domain experience; background is Google commercial operations and services transformation, not payments or pricing specialization.",
+        "mitigation": "Payment fintech domain and pricing methodology (cost-plus, value-based, dynamic pricing models) can be acquired through structured onboarding and mentorship from Finance and Product teams. Candidate's analytical and strategic foundation is strong; domain familiarity is learnable within 3\u20136 months.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit mention of SQL and BI tool proficiency; listed as a plus, not required, but limits immediate data-independent analysis capability.",
+        "mitigation": "SQL and BI tools (e.g., Tableau, Looker, SQL) are commonly learned on the job by operations and strategy leaders. JD frames as 'plus', not mandatory. Quick upskilling likely; consider pairing with analytics or data engineering support during ramp.",
+        "severity": "low"
+      },
+      {
+        "gap": "Pricing strategy is a specialized function; candidate's background is transformation program execution and operational scaling, not dedicated pricing work or P&L ownership.",
+        "mitigation": "Candidate's experience designing strategy frameworks, analyzing cost and profitability performance, and influencing cross-functional teams translates directly to pricing strategy design. Transition requires pricing domain depth, not strategic or analytical capability overhaul.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Senior Associate title with 3\u20135 year IC scope (framework design, data analysis, regional strategy definition, stakeholder influence) and cross-functional ownership without people management. Company size unknown, but scope and title align to L4 senior IC or early L5 early-career manager-track. No management scope stated; normalizes to L4.",
+    "role_family_fit": 64,
+    "scope_seniority": 75,
+    "summary": "Senior Associate role in Strategic Pricing at fintech-scale company (10B+ transactions). Role requires pricing strategy design, data analysis, regional market definition, and stakeholder influence across Product, Commercial, and Finance\u2014strong fit to candidate's transformation program and commercial operations leadership. Primary gaps: no payment-processor or fintech domain experience, no stated SQL/BI tooling, and pricing as a dedicated function versus operations transformation. Gaps are manageable through domain onboarding; strategic and analytical foundations are strong.",
+    "uncertainties": [
+      "Checkout.com company stage and internal structure not stated in JD; limits clarity on stakeholder seniority and cross-functional scope.",
+      "Role depth in pricing methodology (cost-plus, value-based, dynamic) not detailed; unclear whether this is framework-application work or pricing science/optimization expertise.",
+      "Candidate fintech domain awareness and payment ecosystem familiarity unknown; may require ramp.",
+      "SQL and BI tool proficiency level required not specified; framed as 'plus', reducing hard-blocker risk but leaving onboarding scope unclear."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations / Product Operations, scaling global commercial operations and transformation programs.",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years in product management or product-adjacent role with proven track record building highly impactful products"
+      },
+      {
+        "candidate_evidence": "Product Operations background with extensive cross-functional collaboration including product, engineering, legal, and compliance teams through requirements definition, UAT, rollout, and transformation delivery.",
+        "evidence_strength": "strong",
+        "job_requirement": "Demonstrated experience partnering closely with engineers, designers, and external partners to build products and complex systems at scale"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and commercial operations scaling at Google demonstrates multi-stakeholder alignment and roadmap orchestration across competing organizational goals.",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience working on products that require aligning multiple stakeholders, developing joint roadmaps, and navigating competing priorities between internal and external partner objectives"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and leading strategic transformation programs indicates platform-thinking and ecosystem-level problem-solving capability.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong business acumen and comfort with complex ecosystem and platform-level problems"
+      },
+      {
+        "candidate_evidence": "No specific evidence of external partner management or partner-facing communication style provided in profile. Communication strength inferred from operations leadership scope but not explicitly demonstrated.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to effectively communicate with and influence both user-facing and partner-facing stakeholders with strong written and verbal communication skills"
+      },
+      {
+        "candidate_evidence": "No explicit evidence of running holdback tests, conversion analysis, or revenue-impact measurement. Analytics rigor in transformation and operations context is implied but not detailed.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical capabilities with experience defining and tracking success metrics, running experiments, and using data to measure product impact on revenue, conversion, and margins"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No demonstrated direct experience with online payments, conversion optimization, or payments-specific risk/cost trade-offs",
+        "mitigation": "Strong product operations and commercial operations background provides platform thinking; payments domain expertise is learnable with structured mentoring from Risk and Financial Partnerships teams and cross-regional exposure at Stripe.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit evidence of running A/B tests, holdback experiments, or shipping revenue-impact metrics in live product settings",
+        "mitigation": "Transformation and global scaling work implies data-driven decision-making; analytical rigor can be quickly calibrated to Stripe's revenue-measurement and experimentation standards through collaboration with data science and go-to-market teams.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited demonstrated experience as primary voice for external partner strategy and relationship ownership",
+        "mitigation": "Extensive internal stakeholder management and cross-functional collaboration provide foundation for partner relationship leadership; partner-facing communication style develops naturally through direct partnership manager collaboration and financial partner exposure.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 5+ years product management in complex multi-stakeholder and platform contexts; ownership of strategic pillar roadmap and deep partner relationships indicates established senior IC scope. No management responsibility is signaled, and company stage (large platform business) and scope (single pillar within payments team) suggest L5 rather than L6. Reporting line to broader product leadership is inferred, consistent with L5 PM scope at scale.",
+    "role_family_fit": 84,
+    "scope_seniority": 79,
+    "summary": "Strong alignment with target Product Operations and Strategy families. Candidate's eight years in Google commercial operations, transformation leadership, and multi-stakeholder alignment map directly to Stripe's requirement for complex ecosystem product management and roadmap orchestration. Primary gaps are payments domain expertise and explicit experimentation rigor, both manageable given candidate's platform and cross-functional foundation. Strategic fit is high; onboarding will require structured exposure to payments mechanics, risk/conversion trade-offs, and partner relationship ownership styles specific to fintech partnerships.",
+    "uncertainties": [
+      "Candidate profile does not specify explicit experimentation design (holdback tests, A/B frameworks) or revenue-metrics instrumentation; inferred from ops/transformation context but not proven.",
+      "Degree of direct external stakeholder relationship ownership at Google is not detailed; assumed via partnership manager collaboration but depth of partner strategy ownership is unclear.",
+      "Stripe company stage, reporting structure, and broader team size not specified in Role JSON; inferred L5 from strategic pillar ownership and 5+ year requirement, but organization context would refine confidence."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

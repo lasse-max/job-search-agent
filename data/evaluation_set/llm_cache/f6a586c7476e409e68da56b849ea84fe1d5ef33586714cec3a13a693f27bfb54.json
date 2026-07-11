@@ -1,0 +1,51 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years of Google Devices experience in global commercial operations and transformation programs with two promotions; experience scaling operations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Managing entire Compensation & Benefits strategy and execution"
+      },
+      {
+        "candidate_evidence": "Experience at Google working across global teams and transformations; however, no explicit HR or People function background noted in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Reporting to Head of People within a 600+ person SaaS company"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No HR, compensation, or benefits domain expertise or background",
+        "mitigation": "Role requires strategic and execution capability in specialized HR function; candidate is positioned as operations and strategy leader, not HR practitioner. Significant domain ramp needed.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience in compensation strategy, benefits design, or total rewards management",
+        "mitigation": "This is a specialized People ops function requiring compliance, market benchmarking, and benefits architecture knowledge. No evidence candidate possesses this.",
+        "severity": "high"
+      },
+      {
+        "gap": "Department fit: role sits in HR; candidate targets Strategy and Operations, Product Operations, and transformation families",
+        "mitigation": "Candidate profile explicitly lists HR as a deprioritized function unless strategic scope is clear; this is a core HR manager role, not transformation or strategic HR.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role title is \"Global Total Rewards Manager\" reporting to Head of People at a 600+ person growth-stage SaaS (Pigment, Series C/D, $400M raised). Scope is strategic and global but narrow (Comp & Benefits only). Reporting line is Head of People (not executive). Estimated L4 (Senior Manager / Lead IC) based on global scope and direct HR strategy ownership; not elevated to L5 absent clear director-level span or multi-team management.",
+    "role_family_fit": 18,
+    "scope_seniority": 62,
+    "summary": "This is a specialized Global Total Rewards Manager role in HR at a 600+ person SaaS company, requiring deep compensation and benefits expertise. The candidate is a Strategy and Operations / Product Operations leader with eight years of Google commercial transformation experience, not an HR or compensation professional. The department, domain, and day-to-day responsibilities fall squarely outside the candidate's target families (no strategic or transformation scope in a narrow HR function), and there is no evidence of compensation strategy, benefits design, or total rewards management background. Recommend skip.",
+    "uncertainties": [
+      "Candidate profile does not disclose any HR, compensation, or benefits experience; cannot assess domain depth.",
+      "Unclear whether candidate has studied or practiced compensation benchmarking, equity grants, or benefits architecture.",
+      "Role JD does not detail transformation or strategic change scope; appears to be core HR operations within People team."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

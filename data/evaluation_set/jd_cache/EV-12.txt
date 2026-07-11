@@ -10,4 +10,3 @@ Fetch status: fetch_failed: TooManyRedirects: Exceeded maximum allowed redirects
 Company: Rokt
 Role title: Revenue Operations & Strategy Lead
 Location: Sydney
-Role context: RevOps fit but forecasting / compensation-modeling heavy — partial fit; free-visa Sydney is the upside.

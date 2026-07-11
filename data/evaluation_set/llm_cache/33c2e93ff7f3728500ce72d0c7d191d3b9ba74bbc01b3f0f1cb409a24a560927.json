@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and experience scaling global commercial operations; no explicit people management or Technical Support team leadership experience detailed in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "3+ years people management with direct management of Technical Support Engineers in APAC/China"
+      },
+      {
+        "candidate_evidence": "Profile emphasizes Strategy and Operations leadership, global commercial operations, and transformation programs; no direct technical support or customer support background mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "5+ years customer-facing technical support experience"
+      },
+      {
+        "candidate_evidence": "Profile does not specify educational background or degree",
+        "evidence_strength": "weak",
+        "job_requirement": "Bachelor degree or above in Computer Science or relevant majors"
+      },
+      {
+        "candidate_evidence": "Profile notes Python basic and actively learning; no mention of REST, JSON, HTTP, SQL, or HTTP error resolution expertise",
+        "evidence_strength": "weak",
+        "job_requirement": "Technical knowledge: REST, JSON, HTTP, HTTPS, SQL, common HTTP errors"
+      },
+      {
+        "candidate_evidence": "Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering or technical troubleshooting; limited evidence of deep technical troubleshooting",
+        "evidence_strength": "weak",
+        "job_requirement": "Troubleshooting and problem-solving technical issues with software development team communication"
+      },
+      {
+        "candidate_evidence": "Profile lists English as professional/fluent and German as native; no Mandarin proficiency mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent English and Mandarin communication"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No explicit people management or Technical Support team leadership background",
+        "mitigation": "Role requires 3+ years managing Technical Support Engineers; candidate background is strategy and operations, not team leadership of support functions",
+        "severity": "high"
+      },
+      {
+        "gap": "Missing 5+ years customer-facing technical support experience",
+        "mitigation": "Core responsibility is direct technical support to APAC/China customers; candidate's experience is in ops transformation and program leadership, not support operations",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated expertise in REST, JSON, HTTP, SQL, or HTTP error troubleshooting",
+        "mitigation": "Role requires hands-on technical knowledge for customer troubleshooting; candidate's technical foundation is basic Python and actively learning",
+        "severity": "high"
+      },
+      {
+        "gap": "Mandarin language requirement not met",
+        "mitigation": "Role requires fluent English and Mandarin for APAC and China customer communication; candidate is fluent in English and German only",
+        "severity": "high"
+      },
+      {
+        "gap": "Not a target role family match",
+        "mitigation": "Role is Technical Support Lead\u2014a customer support/CS operations function; candidate is positioned for strategy, operations transformation, and business programs",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 3+ years people management and 5+ years technical support experience, placing it at a senior IC or first-line manager level. No executive scope, reporting line, or manager-of-managers language. Estimated at L4 based on people management requirement and technical support leadership scope in a mid-stage fintech (2,200+ employees, $8B valuation).",
+    "role_family_fit": 5,
+    "scope_seniority": 45,
+    "summary": "This is a Technical Support Lead role requiring 3+ years managing support teams and 5+ years in customer-facing technical support. The candidate's background is Strategy and Operations leadership at Google with experience in transformation and program management, not technical support operations or support team management. Critical gaps include no Mandarin language capability (required for APAC/China coverage), no technical support or support operations background, no people management of technical teams, and insufficient depth in REST, JSON, HTTP, SQL fundamentals. The role is misaligned with target families and candidate positioning.",
+    "uncertainties": [
+      "Candidate's educational background and degree field not specified in profile",
+      "No detail on any customer support, support operations, or support team experience",
+      "Mandarin proficiency not mentioned; critical for role's APAC and China focus",
+      "Technical depth in REST, JSON, HTTP, SQL not described in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

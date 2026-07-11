@@ -1,0 +1,60 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; demonstrated ability to own large-scope initiatives from concept to rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Build the systems that move money fast, safely, and at scale; Design and ship features used by millions of users"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with cross-functional stakeholder management and program leadership experience; product operations background demonstrates coordination across engineering, business, and user experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with business, UX, frontend, and backend engineers; Collaborative, team-first mindset"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation experience includes requirements logic design, UAT, and rollout ownership. However, no production software development or coding background; Python is basic and actively learning",
+        "evidence_strength": "weak",
+        "job_requirement": "Own features from idea to release; Write clean, tested, production-ready code"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No production software engineering, coding, or full-stack development background; role explicitly requires 3-4 years backend/full-stack experience with 2+ years commercial Kotlin",
+        "mitigation": "Candidate's operational and transformation background could hypothetically apply to large payment systems work at strategic/business level, but lacks the engineering foundation this mid-level role demands. Hard-blocker pattern applies.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python basic and actively learning; Kotlin and commercial backend development required but absent from profile",
+        "mitigation": "No remediation path within typical onboarding timeline for a full-stack engineer role requiring immediate production contributions.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated CI/CD deployment, automated testing (unit/integration), relational database design, or cloud platform experience cited in profile",
+        "mitigation": "These are core engineering competencies required by the role; no evidence candidate has developed or shipped production code at scale.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role explicitly requires \"3-4 years of experience building backend or full-stack web applications, including at least 2 years working with Kotlin in a commercial setup.\" Candidate profile states \"No production software-engineering background\" and \"Python basic and actively learning.\" Candidate's eight years at Google involved scaling commercial operations and transformation programs, not backend or full-stack software development. This is a hands-on engineering role requiring immediate production capability; candidate lacks both the Kotlin/backend experience and the foundational coding/engineering background.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 3-4 years commercial backend/full-stack development with 2+ years Kotlin, plus hands-on CI/CD, testing, database work, and production shipping. This maps to a mid-level IC (L4) in a scaling payment systems context. Confidence is high because years, tech stack, and scope are explicit. company size/stage is not clearly stated, slightly reducing confidence.",
+    "role_family_fit": 5,
+    "scope_seniority": 60,
+    "summary": "This is a mid-level full-stack (Kotlin) engineer role requiring 3\u20134 years of hands-on backend development, 2+ years commercial Kotlin, CI/CD, automated testing, and production shipping\u2014a clear software engineering IC position. The candidate is a Strategy and Operations / Product Operations leader (L4-L5) with eight years at Google in commercial scaling and transformation, but explicitly lacks production software engineering, backend development, and coding experience. Role fit is poor and gaps are high-severity and unmanageable within typical onboarding. Advisory: skip.",
+    "uncertainties": [
+      "Company size and stage not stated in JD; Flix stage affects whether L4 is appropriate for the team structure",
+      "Exact Flix engineering ladder / Google equivalence unknown; level estimate assumes L4 \u2248 3\u20135 years mid-level IC"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

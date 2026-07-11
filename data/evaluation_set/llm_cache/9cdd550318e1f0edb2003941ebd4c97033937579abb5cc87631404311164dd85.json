@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices and Services with two promotions; proven ability to architect cross-functional systems and drive organizational change",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and lead global operational risk framework including standards, governance, and escalation protocols"
+      },
+      {
+        "candidate_evidence": "Experience in requirements, process design, rollout, and transformation; familiarity with end-to-end problem-solving and stakeholder accountability",
+        "evidence_strength": "medium",
+        "job_requirement": "Serve as second-line authority for operational risk boundary breaches, tracking systemic exposures and driving root cause analysis"
+      },
+      {
+        "candidate_evidence": "Led transformation programs requiring cross-functional coordination and process governance; no explicit controls framework or second-line compliance oversight experience stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead second-line controls model and controls center of excellence supervising control environment"
+      },
+      {
+        "candidate_evidence": "Uses AI to work smarter and solve problems faster; no evidence of designing or implementing production control systems, GRC tooling, or data-driven monitoring frameworks",
+        "evidence_strength": "weak",
+        "job_requirement": "Drive modern, scalable control environment through automation and data-driven controls"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No stated regulatory compliance, banking, payments, fintech, or financial services background; eight years at Google Devices and Services",
+        "mitigation": "Candidate's transformation and scaling experience could transfer to risk governance if willing to ramp quickly on fintech-specific regulatory context; GRC fundamentals are learnable",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated second-line compliance, audit, or risk management experience; framework-building evidence is in commercial operations and product transformation, not operational risk or controls",
+        "mitigation": "Operational risk frameworks share systemic thinking and governance discipline with transformation programs; but this is a substantive domain and methodology shift requiring direct financial services compliance mentorship",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of leading or building fraud risk governance, third-party risk management, business continuity, or operational resilience frameworks in regulated environments",
+        "mitigation": "These are specialized second-line disciplines; limited exposure to incident management, recovery planning, or crisis scenarios in fintech context",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of deep technical fluency in cloud infrastructure, software development lifecycle, or control design in modern engineering environments, despite Google tenure",
+        "mitigation": "Google background suggests foundational understanding; may require upskilling on fintech-specific cloud and API architecture",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 12\u201315+ years of financial services/risk experience with 5+ years leading global second-line teams. Senior Director title, manager-of-managers scope (leading framework teams across Technology, Operations, Finance, Product), and regulator-facing accountability align with L6. Role is at a $8B fintech with 2,200+ employees. No executive suite signals, but second-line leadership scope and seniority floor support L6 estimate.",
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "Senior Director of Operational Risk at Airwallex (L6)\u2014a critical second-line governance and framework-building role in a $8B fintech with global scale and complex regulatory exposure. Candidate brings eight years of Google-scale transformation and commercial operations leadership with strong executive partnering and program ownership skills. However, there is a fundamental domain mismatch: the role requires 12\u201315+ years of financial services, banking, payments, or fintech risk and compliance expertise; a proven track record building operational risk, fraud, third-party, and business continuity frameworks; and direct second-line leadership in regulated environments. Candidate's background is in product transformation and commercial operations scaling with no stated regulatory compliance, risk management, or financial services experience. While governance thinking and stakeholder management transfer, the operational risk discipline, fintech context, and second-line methodologies represent a significant ramp. The role is outside target families (Strategy & Operations, Product Operations, Business Transformation) and candidate positioning.",
+    "uncertainties": [
+      "Candidate's full Google role titles and scope not detailed; unclear whether any work touched risk, compliance, or control architecture",
+      "No stated certifications (CRISC, CISA, CAMS, CFE, BCI) or formal risk/audit background; candidate profile does not mention these",
+      "Depth of 'transformation program' experience unclear\u2014whether this included governance, process control, or only business change and rollout",
+      "No evidence of fraud, third-party, or business continuity frameworks; unclear if candidate has incident management or crisis escalation experience"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

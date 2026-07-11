@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Devices & Services with product operations, commercial operations scaling, and transformation program leadership; no stated production AI engineering, agent-building, or LLM orchestration background",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong applied AI engineer with hands-on experience building agents, LLM orchestration, context engineering, evals, and RAG systems"
+      },
+      {
+        "candidate_evidence": "Candidate is a strategy and operations leader with transformation and commercial-operations focus; no evidence of cybersecurity domain expertise, agentic workflow composition, or harness configuration",
+        "evidence_strength": "weak",
+        "job_requirement": "Compose red-team / blue-team agentic workflows for production use-cases and configure harnesses for cloud defense, vulnerability scanning, dynamic red-teaming, and penetration testing scenarios"
+      },
+      {
+        "candidate_evidence": "Demonstrated execution and delivery in commercial-operations scaling and transformation programs at Google; tracks real-world impact and program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Ship fast with a bias toward action and delivery; operate independently while leveraging internal building blocks"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with multi-stakeholder management and program delivery experience; positioned as collaborative and impact-driven",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong problem-solving abilities, attention to detail, excellent communication skills, and collaborative attitude"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No production AI engineering, agent building, LLM orchestration, or RAG systems background; candidate is strategy and operations leader, not applied AI engineer",
+        "mitigation": "Mistral states cyber context can be paired with pentesters, but the core requirement is hands-on applied AI engineering experience. This is a fundamental role-family mismatch, not a domain gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No cybersecurity domain expertise, pentest knowledge, or security tooling experience stated in candidate profile",
+        "mitigation": "JD notes cyber knowledge is 'a real plus, not mandatory,' but without applied AI engineering foundation, pairing alone cannot bridge the gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of agentic harness design, multi-agent orchestration, context engineering, or eval/benchmarking systems work",
+        "mitigation": "Core technical delivery scope of the role. Candidate's background is in program and commercial-operations transformation, not applied AI systems engineering.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python proficiency stated as basic and actively learning; applied AI engineering at Mistral requires hands-on development velocity",
+        "mitigation": "Candidate's honest gap profile confirms limited coding foundation for production AI work.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Applied AI Engineer at Mistral is described as hands-on engineering with agent-building, orchestration, and production-systems delivery. The JD emphasizes independent shipping, context engineering, and multi-agent design\u2014IC technical execution scope. Company stage is unknown but behavior and domain suggest established/growth-stage AI infrastructure company. This maps to L5 IC (established senior engineer) or L4-5 depending on company context. lack of explicit hierarchy clarifies as mid-senior IC scope.",
+    "role_family_fit": 5,
+    "scope_seniority": 65,
+    "summary": "This is an Applied AI Engineer (production agentic systems) role in cybersecurity at Mistral AI. The candidate is a Strategy and Operations leader with ~8 years at Google in commercial-operations transformation\u2014a fundamentally different function. The role requires hands-on AI engineering (agents, LLM orchestration, RAG, evals), cybersecurity domain integration, and independent technical delivery; the candidate's background is strategy, program leadership, and transformation execution. While the candidate demonstrates strong execution and cross-functional collaboration, there is no evidence of applied AI engineering, agent-building, or production coding experience. This is outside target and approved-stretch families and does not align with core role requirements.",
+    "uncertainties": [
+      "Mistral AI company size/stage not stated in JD; assumed growth-stage based on product positioning, but impacts L5 vs. L4 clarity",
+      "Candidate profile does not detail any AI/ML exposure, experimentation, or adjacent technical projects; cannot rule out hidden depth",
+      "Applied AI Engineer title can vary; without explicit ML/SWE background check in profile, low confidence in transferability of ops/strategy skills to agentic-systems delivery"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Devices and Services with two promotions in strategy and operations; experience with global commercial operations and transformation programs; no stated sales leadership or team management background",
+        "evidence_strength": "weak",
+        "job_requirement": "5+ years of sales leadership experience, ideally leading teams selling into DNB or technology-first organisations"
+      },
+      {
+        "candidate_evidence": "Background in strategy and operations transformation rather than sales team leadership; no evidence of leading quota-carrying sales teams or coaching Account Executives",
+        "evidence_strength": "weak",
+        "job_requirement": "Build and lead a high-performing team of Account Executives focused on digital-native businesses, providing coaching, mentorship, and guidance"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in operations and strategy; no evidence of direct enterprise sales experience, quota attainment, or closing technology deals",
+        "evidence_strength": "weak",
+        "job_requirement": "10+ years of enterprise sales experience selling into technology or digital-native companies, preferably driving adoption of SaaS, API-first, or emerging technologies"
+      },
+      {
+        "candidate_evidence": "Strategy and operations leadership background; no demonstrated track record of building or leading quota-carrying sales teams or coaching AEs",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven track record of building and leading high-performing sales teams selling into technical buyers, with demonstrated success in coaching and developing AEs"
+      },
+      {
+        "candidate_evidence": "Eight years in Google commercial operations and transformation suggests technology ecosystem exposure; specifics on understanding of DNB evaluation and adoption motions not stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Deep understanding of how digital-native companies evaluate and adopt new technologies, including developer-led and product-led buying motions"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background; product operations and transformation experience suggests technical stakeholder exposure; no stated AI domain expertise or CTO-level enablement experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical acumen and ability to understand complex AI solutions and their applications, with experience enabling teams to have credible conversations with CTOs and technical founders"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 32,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No demonstrated sales leadership experience or track record managing quota-carrying sales teams",
+        "mitigation": "Candidate's operations and transformation leadership could transfer to sales enablement and process design, but would require foundational sales team leadership training and likely a steep ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct enterprise sales experience or closing SaaS/API-first technology deals",
+        "mitigation": "Strategy and operations background provides business acumen, but direct sales cycle ownership and quota attainment history is absent; would require learning sales fundamentals and buyer psychology",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited stated AI domain expertise or experience enabling technical teams on emerging technology adoption",
+        "mitigation": "Google background provides baseline tech familiarity; product operations experience suggests some technical fluency, but no evidence of deep AI solution knowledge or CTO-level conversations",
+        "severity": "medium"
+      },
+      {
+        "gap": "Career positioning is strategy and operations, not sales; role family misalignment with pure quota-carrying sales leadership",
+        "mitigation": "Candidate profile explicitly lists role deprioritization for 'Pure quota-carrying sales' and does not position into Sales leadership; functional pivot required",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 10+ years enterprise sales and 5+ years sales leadership with proven team-building; reports to GTM/sales leadership; L5 senior IC or manager scope typical for enterprise sales team leads at scale. Estimated at L5 based on 15+ year experience anchor, team leadership scope, and strategic GTM partnership responsibilities.",
+    "role_family_fit": 18,
+    "scope_seniority": 72,
+    "summary": "This Enterprise Sales Manager role is primarily a sales leadership and quota-driving position requiring 10+ years of enterprise sales experience and 5+ years of proven team leadership managing Account Executives. The candidate's background is strategy and operations at Google with transformation and commercial-operations scope\u2014a fundamentally different career track. While the candidate has eight years of tenure and promotions at a technology company, there is no evidence of sales team leadership, quota attainment, AE coaching, or closing enterprise technology deals. The role is deprioritized in the candidate profile as 'pure quota-carrying sales' without strategic transformation scope. This represents a significant functional pivot requiring foundational sales leadership skills and domain knowledge that are not demonstrable in the provided profile.",
+    "uncertainties": [
+      "Whether candidate's 'global commercial operations' experience includes sales team leadership or was purely operations/enablement side",
+      "Degree of direct customer engagement and stakeholder management depth in strategy and operations role",
+      "Whether candidate has informal sales leadership or mentoring experience not captured in positioning",
+      "AI domain expertise level and depth of technical buyer conversations in prior roles"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

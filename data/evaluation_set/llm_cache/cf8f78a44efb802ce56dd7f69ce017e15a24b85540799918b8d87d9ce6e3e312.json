@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in product operations and transformation; Python described as basic and actively learning, not strong",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical background in computer science, mathematics, or physics with Python fluency"
+      },
+      {
+        "candidate_evidence": "No production software engineering or ML engineering background; operations and business transformation focus rather than technical research or systems engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience in research or engineering related to the ML Systems & Performance workstream (training, fine-tuning, evaluating large language models; high-performance computing; distributed systems)"
+      },
+      {
+        "candidate_evidence": "Execution and stakeholder management strengths from transformation programs; no evidence of shipping complex ML systems or building infrastructure",
+        "evidence_strength": "weak",
+        "job_requirement": "Can implement ideas quickly and communicate clearly; strong software engineering skills with experience building complex ML systems"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No production software engineering or ML engineering experience; Python basic, not fluent",
+        "mitigation": "Candidate's engineering capability would need to mature significantly during the 4-month fellowship; bootcamp-style learning unlikely to substitute for hands-on systems background",
+        "severity": "high"
+      },
+      {
+        "gap": "Background is business operations and transformation, not technical research or systems engineering",
+        "mitigation": "Different skill set and mental model; transition to ML systems work at research-pace would be steep despite strong execution discipline",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of prior research output, papers, or technical depth in CS, mathematics, or physics",
+        "mitigation": "Candidate brings operational rigor but not the academic or technical research foundation the cohort seeks",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "4-month research fellowship targeting emerging talent; requires strong CS/math/physics foundation and Python fluency; stipend and mentorship structure are developmental not independent-IC scope. Equivalent to L4 entry-level technical contributor or early postdoc, not a seniority signal.",
+    "role_family_fit": 8,
+    "scope_seniority": 20,
+    "summary": "This is a 4-month AI research fellowship targeting emerging technical talent (CS/math/physics background, Python fluency) to conduct empirical ML systems projects under mentorship. Candidate's background is operations and business transformation at Google\u2014no production software engineering, ML engineering, or research output. The gap between business operations and hands-on systems research is fundamental and not closable in a short fellowship. Recommend skip.",
+    "uncertainties": [
+      "Anthropic stage/size not stated; inferred from public information (Series C, ~500+ employees) but not in JD",
+      "Candidate's actual Python depth not detailed beyond 'basic and actively learning'\u2014ceiling unclear",
+      "Whether candidate has any unpublished technical or research work outside stated profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

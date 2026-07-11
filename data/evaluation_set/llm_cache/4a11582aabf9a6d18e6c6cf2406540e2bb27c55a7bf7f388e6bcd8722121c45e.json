@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Strategy and Operations / Product Operations with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead, Strategic Initiatives role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience with transformation programs and strategic execution at scale within Google Devices and Services",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic Initiatives leadership and execution"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "JD content unavailable: Cached snapshot shows 404 error; no actual job description, requirements, responsibilities, or scope are accessible",
+        "mitigation": "Retrieve the actual JD from Roblox careers portal or request a working copy to assess specific role requirements, seniority level, domain focus, and team structure",
+        "severity": "high"
+      },
+      {
+        "gap": "Roblox company stage, team size, and organizational context unknown",
+        "mitigation": "Confirm whether Roblox is public/late-stage, growth-stage, or otherwise; clarify reporting line and peer scope to calibrate seniority anchor",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role title 'Lead' is ambiguous without JD: could be L4 IC lead, L4-L5 team lead, or higher depending on headcount and scope",
+        "mitigation": "Review actual JD to determine whether role manages individuals, spans cross-functional ownership, or is a specialized IC leadership position",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 25,
+    "level_rationale": "Title \"Lead, Strategic Initiatives\" in Strategy & Operations typically maps to L4 IC leadership or early L5, but company stage (unknown unless stated in JD) and specific scope details are unavailable. The 404 error prevents assessment of years-required, reporting line, team size, or strategic scope. Without the actual JD, this estimate carries low confidence.",
+    "role_family_fit": 72,
+    "scope_seniority": 35,
+    "summary": "Role title and department (Lead, Strategic Initiatives in Strategy & Operations) align well with the candidate's target family and Google background. However, the JD is inaccessible (404 error); no actual responsibilities, requirements, team structure, or reporting line are available. Without the concrete job description, meaningful evaluation of fit, level, and gap manageability is not possible. Recommend retrieving the working JD before proceeding.",
+    "uncertainties": [
+      "Actual job description unavailable due to 404 error on source URL; cannot assess specific responsibilities or requirements",
+      "Roblox company stage and organizational context not stated; unable to calibrate scope seniority or role level",
+      "Role scope ambiguity: 'Lead' could span L4 IC leadership to L5 multi-team leadership depending on headcount and domain",
+      "No visibility into required domain expertise, cross-functional scope, or reporting structure",
+      "Cannot determine whether Strategic Initiatives focus is business transformation, product/GTM strategy, operations, or technical transformation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

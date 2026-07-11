@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years Google Devices and Services with transformation program leadership; no stated deep learning architecture design or model development experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Design, prototype and scale up new architectures to improve model intelligence"
+      },
+      {
+        "candidate_evidence": "Product operations and commercial-transformation background; no evidence of LLM training pipeline contributions or ML training infrastructure work",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience landing contributions to major LLM training runs"
+      },
+      {
+        "candidate_evidence": "Product ownership and requirements logic design experience; no hands-on deep learning architecture evaluation or empirical ML research background",
+        "evidence_strength": "weak",
+        "job_requirement": "Thoroughly evaluate and improve deep learning architectures in a self-directed fashion"
+      },
+      {
+        "candidate_evidence": "Operations and process optimization experience; no stated hands-on model debugging, profiling, or ML systems performance optimization",
+        "evidence_strength": "weak",
+        "job_requirement": "Study, debug, and optimize both model performance and computational performance"
+      },
+      {
+        "candidate_evidence": "No evidence of transformer research, attention mechanism work, or state-of-the-art LLM efficiency techniques",
+        "evidence_strength": "weak",
+        "job_requirement": "Well-versed in the state of the art transformer modifications for efficiency"
+      },
+      {
+        "candidate_evidence": "Product transformation and rollout experience suggests deployment mindset; however, no evidence of LLM safety, guardrails, or deployment-scale ML systems work",
+        "evidence_strength": "weak",
+        "job_requirement": "Motivated by safely deploying LLMs in the real world"
+      }
+    ],
+    "confidence": 0.92,
+    "estimated_level": "L5",
+    "evidence_strength": 5,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Deep ML/LLM research and architecture expertise. Role requires hands-on design and optimization of transformer models and training runs; candidate has product operations and transformation background without stated ML engineering or research depth.",
+        "mitigation": "Candidate would need substantial ramp on deep learning fundamentals, transformer architecture, and training pipeline internals. This is beyond typical onboarding for a senior IC in this domain.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on empirical deep learning research practice. JD emphasizes 'hands-on empirical approach,' autonomous architecture evaluation, and debugging at model/compute level; candidate strength is in strategy, operations, and stakeholder coordination.",
+        "mitigation": "Would require foundational coursework and extended mentorship in deep learning systems. Role expects immediate research contribution.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct LLM training and inference infrastructure experience. Role requires contributing to and optimizing training/inference infrastructure; no evidence in candidate background.",
+        "mitigation": "This is a core responsibility and requires hands-on systems knowledge. Not a gap that typical onboarding closes quickly.",
+        "severity": "high"
+      },
+      {
+        "gap": "State-of-the-art transformer efficiency knowledge. JD calls for being 'well-versed in the state of the art transformer modifications for efficiency'; candidate has no stated research or technical depth in this area.",
+        "mitigation": "Requires active participation in the LLM research community. Candidate's background is in operations and business transformation, not ML research.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Execute and analyze experiments autonomously and collaboratively,\" \"Can thoroughly evaluate and improve deep learning architectures in a self-directed fashion,\" \"Have experience landing contributions to major LLM training runs,\" and \"deep understanding of LLM architectures, a sophisticated understanding of model inference.\" Role explicitly requires hands-on deep learning research, architecture evaluation, and direct model-training contributions. Candidate profile explicitly notes \"No production software-engineering background\" and \"Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management.\" Candidate does not have the deep learning, ML engineering, or research background this role fundamentally requires.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Researcher role at major AI organization requiring deep expertise in transformer architectures, hands-on architecture design, and direct LLM training contributions. No explicit years-required stated; role scope and autonomous research execution suggest senior IC / L5 level. No company stage or reporting-line detail; confidence bounded by missing context.",
+    "role_family_fit": 8,
+    "scope_seniority": 70,
+    "summary": "OpenAI Training Research role focused on LLM architecture, optimization, and hands-on empirical work. The position is a deep technical ML/production-engineering role requiring expert-level transformer knowledge, hands-on deep learning research, and direct contributions to LLM training runs. This is substantially outside the candidate's Strategy and Operations / Product Operations family and requires advanced ML engineering expertise that is not evidenced in the candidate profile.",
+    "uncertainties": [
+      "Whether candidate has taken any formal ML/deep learning coursework or independent study in transformers, optimization, or LLM architectures not mentioned in the profile.",
+      "Whether candidate has published or contributed to any ML research, even outside of production roles.",
+      "Exact scope of 'transformation programs' at Google Devices and Services\u2014could broader business-tech integration include ML systems, but profile does not state this.",
+      "Whether candidate's stated interest in 'Implementation-heavy AI transformation roles' includes hands-on ML research or is limited to business transformation and deployment."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

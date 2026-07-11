@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations role in Commercial function"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience scaling global commercial operations and leading transformation programs at Google across multiple markets",
+        "evidence_strength": "strong",
+        "job_requirement": "Transformation program leadership and execution"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure scaling global operations indicates sustained work across multiple business functions and geographies; transformation program work requires cross-functional buy-in",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional stakeholder management and collaboration"
+      },
+      {
+        "candidate_evidence": "Background in global commercial operations at Google; primary role family includes GTM/Sales Strategy and Revenue Operations at appropriate seniority",
+        "evidence_strength": "medium",
+        "job_requirement": "Commercial acumen and GTM / revenue operations understanding"
+      },
+      {
+        "candidate_evidence": "Product operations and business operations experience; noted expertise in requirements, logic design, UAT, rollout, and transformation rather than native PM/SDLC",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations excellence and process design"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations at Google; role may span Sydney, Singapore, London geographies",
+        "evidence_strength": "medium",
+        "job_requirement": "Multi-geography or multi-market operations exposure"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 80,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "JD is severely incomplete (fetched content is corrupted HTML/JavaScript fragments with no readable job description text, responsibilities, or requirements)",
+        "mitigation": "Request clean, readable JD text to assess specific scope, reporting line, years required, management expectations, and performance metrics. Candidate fit cannot be precisely judged without clear requirements.",
+        "severity": "high"
+      },
+      {
+        "gap": "No visibility into whether role is IC, manager, or manager-of-managers scope; no clarity on team size or direct reports",
+        "mitigation": "Clarify role level, management scope, and org reporting structure. Candidate targets L4\u2013L5 (Manager/Senior Manager/Lead/Principal); role placement relative to that band is critical.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit statement of years of experience required, seniority band, or company context (startup vs. scale-up vs. enterprise)",
+        "mitigation": "Infer L5 from title and Google commercial function context, but confidence is limited. Candidate's eight years of tenure and two promotions at Google suggest strong fit at that level if role is truly L5-equivalent.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of deep consulting brand or structured case-team experience typical of some S&O roles",
+        "mitigation": "Candidate's strength is in hands-on transformation and scaling; if role prioritizes frameworks or consulting-style projects, clarify fit. Operations and execution focus are her demonstrated strengths.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 60,
+    "level_rationale": "Posted role title is \"Commercial Strategy & Operations\" in Google's Strategy & Operations department, multi-geography scope (Sydney/Singapore/London). Typical S&O roles at Google in this function for L5 reflect 6\u20139 years required experience, established ownership of commercial or transformation programs, and cross-regional coordination. JD is corrupted and unreadable; confidence is lowered due to missing explicit requirements, reporting line, and scope detail.",
+    "role_family_fit": 95,
+    "scope_seniority": 75,
+    "summary": "Candidate is a strong fit for Commercial Strategy & Operations at Google given eight years in Google Devices and Services with two promotions, direct experience scaling global commercial operations and transformation programs, and positioning in core target role families (Strategy & Operations, Business Operations, Product Operations, GTM/Sales Strategy, Business Transformation). However, the fetched JD is corrupted and unreadable, preventing clarity on specific scope, management expectations, reporting line, and required years. Role is estimated L5 based on title and multi-geography commercial function context, aligning well with candidate's target band, but confidence is moderate pending clean JD review.",
+    "uncertainties": [
+      "JD content is heavily corrupted (JavaScript, HTML fragments, cache headers); no readable responsibilities, scope, or explicit requirements are visible",
+      "No statement of management scope (IC, manager, or manager-of-managers); cannot confirm team size or direct report count",
+      "Reporting line and stakeholder level not specified; cannot assess whether role reports to VP/C-suite or peer level",
+      "No years-of-experience minimum or seniority band stated; L5 estimate is based on title and commercial function context alone",
+      "Candidate's experience is internal Google scaling and transformation; unclear whether role requires external consulting, client-facing, or consulting-style case work"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

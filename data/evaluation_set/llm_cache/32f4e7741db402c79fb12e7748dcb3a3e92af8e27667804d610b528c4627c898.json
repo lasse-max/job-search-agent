@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience with product ownership, requirements definition, logic design, UAT, rollout, and transformation execution",
+        "evidence_strength": "medium",
+        "job_requirement": "10+ years of experience in product management within high-performing product organizations with deep mastery of PM practices including product strategy, roadmap definition, market and user research, data analysis, prioritization, experimentation"
+      },
+      {
+        "candidate_evidence": "Google background in commercial operations and transformation scaling; positioning as Strategy and Operations / Product Operations leader; experience with GTM and Sales Strategy operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience owning product vision and strategy for enterprise-focused products and defining and executing go-to-market strategies, including positioning, pricing, packaging, and driving revenue growth through product-led initiatives"
+      },
+      {
+        "candidate_evidence": "Eight years of scaling operations and transformation programs; stated background in transformation and strategic program leadership; however, no explicit 0-to-1 product launch examples or PMF evidence provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrated experience launching new products, driving 0 to 1 initiatives, finding product-market fit, building and scaling go-to-market motions"
+      },
+      {
+        "candidate_evidence": "No developer-product background, developer tool experience, or software engineer empathy evidence provided in profile; operations and transformation focus rather than developer-centric product building",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep understanding of developer-facing products and developer tools; strong empathy for developers and proven ability to build products that integrate into developer workflows"
+      },
+      {
+        "candidate_evidence": "No explicit GenAI product experience, LLM knowledge, or AI/science team collaboration evidence in profile; actively learning Python suggests early-stage AI exposure",
+        "evidence_strength": "weak",
+        "job_requirement": "Solid understanding of GenAI and large language models; experience working closely with AI or applied science teams, translating research into scalable, production-ready products"
+      },
+      {
+        "candidate_evidence": "No production software-engineering background; Python basic and actively learning; product experience from ownership, requirements, design, and transformation rather than engineering or hands-on technical building",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience as a software engineer or strong hands-on engineering background with passion for building and coding on projects"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Explicit developer-product experience and deep developer empathy; candidate background is operations and transformation-focused, not developer-centric product building",
+        "mitigation": "Mistral's developer community trust and candidate's ability to engage cross-functionally with science and engineering teams may enable rapid domain ramp-up; structured developer research and customer co-design can accelerate learning curve",
+        "severity": "high"
+      },
+      {
+        "gap": "No GenAI or LLM product experience; limited evidence of working with applied science or research teams on production-ready product translation",
+        "mitigation": "Candidate's strategy and transformation background, plus stated interest in AI (Python learning), suggests adaptability; pairing with experienced science/engineering counterparts and structured onboarding on GenAI product dynamics can bridge gap",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit 0-to-1 product launch or product-market fit discovery evidence; transformation and scaling operations differ from founding a new product line",
+        "mitigation": "Mistral Vibe already has enterprise customer pipeline and market validation; candidate's transformation expertise may apply well to execution and scaling rather than pure discovery phase",
+        "severity": "medium"
+      },
+      {
+        "gap": "No hands-on engineering or technical building background; limited technical depth despite actively learning Python",
+        "mitigation": "JD flags engineering background as 'ideal' and 'nice to have', not mandatory; candidate's transformation and stakeholder-alignment skills may compensate in a mature engineering organization",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "The role requires 10+ years of PM leadership in high-performing product organizations with enterprise strategy and 0-to-1 product-building experience, owning a strategic new product line with hundreds-of-millions revenue ambition. This maps to L5 senior IC product leadership. Company stage is not stated in JD, and Mistral's exact size/maturity is unclear, which moderates confidence. The role shows no explicit manager-of-managers scope, keeping it at L5 rather than L6.",
+    "role_family_fit": 45,
+    "scope_seniority": 72,
+    "summary": "Candidate is a Strategy and Operations leader with eight years at Google and transformation program expertise, falling one year short of the stated 10+ PM requirement and lacking developer-product and GenAI domain depth\u2014both critical for a coding-assistant product at a leading AI company. The role is L5 strategic product leadership with high scope and clear enterprise GTM demands. Candidate's operations, scaling, and cross-functional alignment strengths are relevant, but gaps in developer empathy, LLM product knowledge, and hands-on technical building are significant. This is a stretch candidate with complementary domain gaps and seniority that is achievable but not ideal.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v5"
+}

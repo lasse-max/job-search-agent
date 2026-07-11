@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in strategy and operations roles with two promotions; scaling commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "5-7+ years experience in product development of highly technical products"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with experience engaging stakeholders across commercial and transformation initiatives at global scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience crafting and tailoring a message for potential customers, including executives"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background with requirements definition, UAT, and rollout; actively learning Python; limited depth in native technical product communication",
+        "evidence_strength": "weak",
+        "job_requirement": "Ability to communicate highly technical concepts to both non-technical and technically proficient audiences, including recent AI developments"
+      },
+      {
+        "candidate_evidence": "Transformation and operations focus suggests process and stakeholder capability; product experience derived from ownership and requirements design rather than native technical PM advising",
+        "evidence_strength": "weak",
+        "job_requirement": "Become trusted advisors and drive strategic technical strategies for customers"
+      },
+      {
+        "candidate_evidence": "Transformation and operations background; limited evidence of native product management scoping and engineering partnership on feature development",
+        "evidence_strength": "medium",
+        "job_requirement": "Work with engineering and product development teams to scope and implement new features"
+      },
+      {
+        "candidate_evidence": "No technical or engineering degree stated; operations and strategy background cited as equivalent experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Degree in a technical or related field, or equivalent professional experience"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 55,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Native product management experience with engineering scoping and feature development",
+        "mitigation": "Candidate's transformation and operations background differs fundamentally from hands-on PM role; would require steep learning curve in SDLC, feature scoping, and technical PM cadence",
+        "severity": "high"
+      },
+      {
+        "gap": "AI-specific product development and AI agent domain knowledge",
+        "mitigation": "Candidate is actively learning Python but lacks AI/ML product experience; Sierra role emphasizes AI agent construction and technical AI concepts",
+        "severity": "high"
+      },
+      {
+        "gap": "Technical depth to advise customers on AI agent architecture and implementation",
+        "mitigation": "Role requires translating AI agent technical challenges for customers; candidate's strength in process and stakeholder management does not substitute for technical PM advisory capability",
+        "severity": "high"
+      },
+      {
+        "gap": "React, TypeScript, Go coding experience (stated as even-better, not required)",
+        "mitigation": "Candidate lacks coding background; stated as bonus but signals engineering-adjacent depth expected in the role",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct forward-deployed customer technical strategy and consulting experience",
+        "mitigation": "Role centers on being a trusted technical advisor to customers; candidate's customer-facing work appears transformational and operational rather than technical implementation consulting",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD requires 5-7+ years in highly technical product development and Senior PM or above level. Role centers on partnering with engineers and customers on AI agent feature scoping, technical customer advising, and roadmap influence\u2014core native PM responsibilities. Growth-stage AI venture with established founders. Estimated L5.",
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "Agent PM role at Sierra requires 5-7+ years native product management on highly technical products, with deep AI agent domain knowledge, hands-on engineering partnership, and technical customer advising\u2014fundamentally different from candidate's Strategy and Operations / transformation background. While candidate demonstrates seniority and stakeholder management, the gaps in native PM experience, AI product domain, and technical advising capability are not readily manageable in a hands-on PM role centered on engineering collaboration and AI technical strategy.",
+    "uncertainties": [
+      "Exact scope of Sierra's scale and stage (growth-stage implied but not stated); unclear reporting line and team size",
+      "Whether 'Italian speaking' requirement is essential or aspirational",
+      "Depth of candidate's actual engineering partnership and feature-scoping work within transformation roles",
+      "Extent of customer-facing technical advising in candidate's operations background"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

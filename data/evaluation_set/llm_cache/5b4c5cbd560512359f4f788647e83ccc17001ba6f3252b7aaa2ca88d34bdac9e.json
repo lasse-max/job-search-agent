@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience navigating complex, multi-stakeholder process design and organizational change.",
+        "evidence_strength": "medium",
+        "job_requirement": "Maintain and continuously improve the QMS to meet EN 9100 (incl. ISO 9001) and AQAP standards, working with process owners across the organisation"
+      },
+      {
+        "candidate_evidence": "Led requirements definition, design, UAT, and transformation rollout on multiple global programs; managed cross-functional stakeholder alignment and gate-based program execution.",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as responsible Quality Assurance Engineer on programmes\u2014engaging during contract requirements development, coordinating and signing off quality plans, and overseeing quality-compliant execution"
+      },
+      {
+        "candidate_evidence": "Scaling operations and transformation roles included partnering with engineering teams on product and operational logic; basic Python knowledge and active learning in technical domains.",
+        "evidence_strength": "weak",
+        "job_requirement": "Work alongside engineering teams to ensure software quality requirements are correctly interpreted and embedded in development processes"
+      },
+      {
+        "candidate_evidence": "Native German, professional/fluent English; eight years leading global cross-functional programs and external stakeholder engagement.",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate with precision and confidence in both English and German; engage with multicultural teams and formal defence customer and regulatory interfaces"
+      },
+      {
+        "candidate_evidence": "Scaled global operations and transformation programs; demonstrated ability to balance multiple workstreams and drive execution under ambiguity.",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage competing priorities across QMS and programme workstreams; navigate ambiguity without losing focus"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No aerospace, defence, or highly regulated industry quality assurance background; all experience in commercial consumer tech",
+        "mitigation": "Domain knowledge (EN 9100, AQAP standards, defence contracting, quality audits) can be acquired through structured onboarding and mentorship, though ramp time will be significant. Candidate's transformation and process-scaling background provides operational foundation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on experience conducting formal quality audits, managing quality plans, or maintaining a Quality Management System in a regulated context",
+        "mitigation": "These are core technical competencies in the role. While the candidate has managed large-scale programs and process design, formal QMS and audit experience is distinct and typically requires direct training or prior exposure.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited software development assurance expertise; no track record embedding quality requirements into software development lifecycles in regulated environments",
+        "mitigation": "Candidate has partnered with engineering teams and understands requirements and UAT, but lacks the deep SDLC-quality integration knowledge that the role requires day-to-day. This is a learnable but substantive gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with defence or government customer quality interfaces, contractual quality requirements translation, or regulatory compliance in defence procurement",
+        "mitigation": "Stakeholder management and contract requirements navigation skills are transferable, but defence-specific protocols, customer expectations, and regulatory nuance require direct learning.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5+ years regulated industry QA (aligns L4 anchor), hands-on QMS/audit responsibility, and programme leadership across QMS and development assurance. Title and scope suggest mid-IC or senior-IC operator reporting to quality leadership; company stage unstated. L4 (Senior IC / Lead) is appropriate for the posted scope.",
+    "role_family_fit": 28,
+    "scope_seniority": 65,
+    "summary": "This Quality Assurance Engineer role is a specialized, regulated-industry position in defence aerospace\u2014outside the candidate's target strategy and operations family. While the candidate brings strong programme management, stakeholder alignment, and cross-functional execution skills, the role's core responsibilities (QMS maintenance, EN 9100/AQAP compliance, formal audit conduct, software development assurance integration) require domain expertise and hands-on regulated-quality experience that the candidate lacks. The candidate's eight years are in commercial consumer tech scaling and transformation, not aerospace or defence QA. Domain and role-family fit are weak despite strong operational instincts.",
+    "uncertainties": [
+      "Company size/stage not stated; Helsing context (funding, team scale, maturity) would clarify whether ramp time for domain onboarding is realistic.",
+      "Candidate's 'basic Python and actively learning' level and extent of software development lifecycle exposure unclear; software development assurance day-to-day depth unknown.",
+      "No information on whether candidate has prior interest in or exposure to defence, aerospace, or regulated-industry work; mission fit and retention risk unknown."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

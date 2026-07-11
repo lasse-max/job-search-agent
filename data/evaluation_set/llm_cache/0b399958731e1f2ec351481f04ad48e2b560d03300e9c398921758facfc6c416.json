@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations, including defining strategic direction for multi-region programs and translating business vision into executable product roadmaps",
+        "evidence_strength": "strong",
+        "job_requirement": "Own, develop, and institutionalize multi-year global product strategy, translating executive vision into actionable roadmap"
+      },
+      {
+        "candidate_evidence": "Demonstrated expertise in operational governance, process design, and transformation program leadership with focus on scaling execution frameworks across global teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Design and implement robust PDLC frameworks, OKR tracking, and product prioritization processes to embed operational excellence"
+      },
+      {
+        "candidate_evidence": "Cross-functional stakeholder management experience at Google spanning product, engineering, commercial, and business teams; proven ability to drive consensus across matrix organizations",
+        "evidence_strength": "strong",
+        "job_requirement": "Serve as strategic bridge between Product, Engineering, Commercial, Finance, and Legal ensuring alignment on goals and resource allocation"
+      },
+      {
+        "candidate_evidence": "Experience presenting to senior leadership and translating complex, ambiguous transformation initiatives into clear strategic narratives; executive-level written and verbal communication demonstrated through strategy and operations work",
+        "evidence_strength": "medium",
+        "job_requirement": "Prepare and deliver high-stakes strategic reviews and proposals to C-Suite synthesizing complex challenges into compelling recommendations"
+      },
+      {
+        "candidate_evidence": "First-principles analytical thinking and data-driven strategy formulation from Google environment; experience validating strategic hypotheses in large-scale technical environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Direct sophisticated market analysis, competitive deep dives, and complex data modeling to identify disruptive opportunities and validate product bets"
+      },
+      {
+        "candidate_evidence": "Strategic program leadership and transformation execution experience; requirements definition, UAT, and rollout ownership demonstrate ability to incubate and operationalize new initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Run high-priority zero-to-one strategic initiatives managing cross-functional teams to prove commercial viability"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L6",
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "Top-tier strategy consulting background (McKinsey, BCG, Bain, Deloitte-Monitor) not evident in profile; role prefers this experience anchor",
+        "mitigation": "Candidate's eight years of strategic problem-solving and first-principles thinking at Google Devices provides functional equivalent of consulting rigor; can quickly absorb fintech strategy playbooks through deep dive and executive mentorship",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct experience in B2B fintech or payments domain; Airwallex operates in complex financial services and global payments infrastructure",
+        "mitigation": "Strong analytical capability and ability to learn quickly in complex technical environments enables rapid domain onboarding; can partner with domain experts (CPO, Finance, Commercial) to accelerate payments/fintech product strategy fluency",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product experience rooted in transformation, requirements, and rollout rather than native product management methodology or platform product strategy depth",
+        "mitigation": "Governance, OKR tracking, and PDLC frameworks are teachable and candidate has implemented similar structures; platform strategy depth can grow through immersion in fintech competitive landscape and Airwallex product architecture",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 80,
+    "level_rationale": "Posted role explicitly requires 10+ years in analytical/strategic roles ideally from top-tier strategy consulting plus Product Strategy/Operations leadership at fintech or high-growth tech. Director-level title with C-Suite stakeholder management, multi-product global scope, and executive communication ownership. This is a Senior IC or Director-equivalent role mapping to L6 in Google terms.",
+    "role_family_fit": 78,
+    "scope_seniority": 82,
+    "summary": "Strong strategic and operational alignment with multi-year product strategy, governance frameworks, and cross-functional leadership at scale. Candidate has demonstrated global program leadership, transformation execution, and executive stakeholder management at Google, though lacks top-tier strategy consulting background and deep fintech domain expertise. Gaps in consulting brand and payments/financial services depth are manageable given strong core strategy and operations capabilities; growth opportunities exist in market analysis rigor and fintech-specific product dynamics.",
+    "uncertainties": [
+      "Company size/stage context not explicitly stated in JD; Airwallex valuation ($8B) and team size (2,200+) suggest scale, but organizational maturity of Product strategy function unclear",
+      "Depth of candidate's market analysis and competitive intelligence experience not detailed; role requires 'sophisticated' competitive deep dives and data modeling",
+      "Singapore location requirement and visa/relocation feasibility not addressed in profile",
+      "Candidate's active AI adoption and upskilling capability relevant to Airwallex's stated AI-first culture, but extent of practical application in strategy/ops context unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

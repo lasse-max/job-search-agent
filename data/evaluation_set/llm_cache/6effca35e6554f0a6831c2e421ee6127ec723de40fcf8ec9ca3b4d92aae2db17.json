@@ -1,0 +1,73 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; product operations and strategy leadership background",
+        "evidence_strength": "medium",
+        "job_requirement": "Define and own Airwallex's yield product strategy, solution design, roadmap, and delivery plans"
+      },
+      {
+        "candidate_evidence": "Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation; cross-functional stakeholder management with engineering teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with engineering and design teams to build high-quality, scalable features and user experiences across web and mobile, driving clarity on requirements, trade-offs and timelines"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations; cross-functional transformation program leadership; experience managing complex stakeholder ecosystems",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate closely with commercial, marketing, legal and finance teams to navigate regulatory and operational complexity while delivering simple, easy-to-use products"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with product operations and strategy scope; two promotions",
+        "evidence_strength": "medium",
+        "job_requirement": "6+ years of overall professional experience within Product Management"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services tenure demonstrates sustained execution; transformation program leadership and business scaling experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive, grit, and persistence to take ownership and move ideas to reality in short periods of time"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 65,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Native Product Manager background and experience with product development lifecycle (SDLC), roadmapping, and feature prioritization",
+        "mitigation": "Candidate's product operations and strategy background with requirements design and UAT experience provides adjacent knowledge; learning curve on native PM specifics and direct engineering partnership models is manageable but requires onboarding",
+        "severity": "high"
+      },
+      {
+        "gap": "Domain expertise in payments, fintech, yield products, or investment platforms",
+        "mitigation": "Candidate demonstrates strong learning velocity and first-principles problem-solving; fintech domain can be acquired, but starting cold on Yield product market dynamics and regulatory nuances adds ramp-up risk",
+        "severity": "high"
+      },
+      {
+        "gap": "Demonstrated track record launching and scaling consumer/B2B financial products from concept to market",
+        "mitigation": "Eight years of scaling and transformation experience is relevant; however, no specific evidence of owning product launches or go-to-market execution for financial products",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or classic case-team brand and experience",
+        "mitigation": "Role does not explicitly require consulting background; first-principles thinking and structured problem-solving can be demonstrated and learned through execution",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "6+ years required with strategic product ownership and cross-functional leadership; Staff title indicates senior IC; no explicit manager-of-managers or director-level scope stated. Fintech growth-stage context (2,200+ employees, $8B valuation) places this as L5 senior IC product leadership role.",
+    "role_family_fit": 45,
+    "scope_seniority": 75,
+    "summary": "Staff Product Manager role at fintech growth-stage company (Airwallex Yield). Role is L5 IC ownership of product strategy, roadmap, and multi-team execution; moderate fit for a Strategy/Ops and Product Operations-focused candidate. Candidate has strong execution and cross-functional leadership experience but lacks native PM background, fintech domain expertise, and demonstrated product launch/commercialization track record. Native PM expertise and fintech knowledge gaps are material and create above-average ramp-up risk for a Staff-level role expecting immediate strategic clarity and ownership velocity.",
+    "uncertainties": [
+      "Candidate's product experience is positioned as operations/strategy-led ownership rather than native Product Manager track; unclear how much hands-on SDLC, roadmapping, and feature trade-off experience candidate has",
+      "Candidate's familiarity with consumer/B2B fintech product-market dynamics and regulatory considerations unknown",
+      "Airwallex stage and product maturity of Yield unit not specified; unclear whether role expects greenfield innovation, scaling an existing product, or pivot-heavy experimentation",
+      "Reporting line and stakeholder seniority within Airwallex not stated; unclear if this is peer to engineering/design leads or reports to a Director/VP",
+      "Candidate's experience with data-driven product decision-making and continuous iteration cadence not detailed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

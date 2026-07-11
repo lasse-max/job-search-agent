@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 import json
+from pathlib import Path
 import unittest
 
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
@@ -179,15 +180,112 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             ),
             _company(tier=1),
         )
+        broad_degree = evaluate_role(
+            _row(
+                "Strategic Operations Lead",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description=(
+                    "Minimum qualifications: Bachelor's degree in Business, "
+                    "Economics, Engineering, or a related field. Lead strategic "
+                    "operations programs."
+                ),
+            ),
+            _company(tier=1),
+        )
+        technical_deployment = evaluate_role(
+            _row(
+                "AI Deployment Strategist - Paris",
+                ["Paris, France"],
+                department="Solutions",
+                description=(
+                    "About you. You hold a degree in Computer Science or Engineering. "
+                    "Hands-on experience building and deploying AI applications in "
+                    "Python is required. Lead executive discovery and business value work."
+                ),
+            ),
+            _company(tier=1, target_locations=["Paris / France"]),
+        )
 
         self.assertEqual(required.recommendation, "blocked")
         self.assertIn(
             "disqualifying_hard_requirement",
             [blocker.type for blocker in required.hard_blockers],
         )
+        self.assertEqual(technical_deployment.recommendation, "blocked")
+        self.assertIn(
+            "disqualifying_hard_requirement",
+            [blocker.type for blocker in technical_deployment.hard_blockers],
+        )
         self.assertNotIn(
             "disqualifying_hard_requirement",
             [blocker.type for blocker in preferred.hard_blockers],
+        )
+
+        for description in (
+            (
+                "At Acme, we build production software for enterprises. You will "
+                "lead customer strategy and operations."
+            ),
+            (
+                "You will collaborate with engineers who build production software. "
+                "You lead strategic discovery."
+            ),
+            (
+                "Our engineering team is proficient in Python and builds the platform. "
+                "This role leads customer strategy."
+            ),
+            (
+                "The platform uses advanced Python programming. You lead implementation "
+                "strategy."
+            ),
+            (
+                "This role leads customer strategy while the platform uses advanced "
+                "Python programming."
+            ),
+        ):
+            with self.subTest(business_first=description):
+                business_first = evaluate_role(
+                    _row(
+                        "AI Deployment Strategist",
+                        ["London, United Kingdom"],
+                        department="Professional Services",
+                        description=description,
+                    ),
+                    _company(tier=1),
+                )
+                self.assertNotIn(
+                    "disqualifying_hard_requirement",
+                    [blocker.type for blocker in business_first.hard_blockers],
+                )
+
+        for description in (
+            "Production coding, Python, and machine learning experience preferred.",
+            (
+                "Hands-on building AI applications, Python, and ML experience are "
+                "preferred."
+            ),
+        ):
+            with self.subTest(trailing_preference=description):
+                trailing_preference = evaluate_role(
+                    _row(
+                        "AI Deployment Strategist",
+                        ["London, United Kingdom"],
+                        department="Professional Services",
+                        description=(
+                            f"{description} Lead customer deployment strategy and "
+                            "operational planning."
+                        ),
+                    ),
+                    _company(tier=1),
+                )
+                self.assertNotIn(
+                    "disqualifying_hard_requirement",
+                    [blocker.type for blocker in trailing_preference.hard_blockers],
+                )
+        self.assertNotIn(
+            "disqualifying_hard_requirement",
+            [blocker.type for blocker in broad_degree.hard_blockers],
         )
 
     def test_required_credentials_downrank_without_hard_blocking(self) -> None:
@@ -232,6 +330,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             "Mandatory advanced Python programming for deployment architecture.",
             "You must own deep ML engineering work for customer deployments.",
             "You need to write production code for deployed customer systems.",
+            "You are proficient in Python and own deployment architecture.",
         )
 
         for description in cases:
@@ -274,6 +373,43 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             [blocker.type for blocker in preferred.hard_blockers],
         )
 
+    def test_preferred_neighbor_does_not_cancel_required_technical_clause(
+        self,
+    ) -> None:
+        cases = (
+            "A computer science degree is required, while Python is preferred.",
+            "Must have production coding, with ML familiarity preferred.",
+            "A computer science degree is required and Python is preferred.",
+            "Production coding is required but ML familiarity is preferred.",
+            "Python is preferred but production coding is required.",
+            "Python preferred and a computer science degree is required.",
+            (
+                "A bachelor's degree in Computer Science and Engineering is required, "
+                "Python preferred."
+            ),
+        )
+
+        for description in cases:
+            with self.subTest(description=description):
+                evaluation = evaluate_role(
+                    _row(
+                        "AI Deployment Strategist",
+                        ["London, United Kingdom"],
+                        department="Professional Services",
+                        description=(
+                            f"{description} Lead customer deployment strategy and "
+                            "operational planning."
+                        ),
+                    ),
+                    _company(tier=1),
+                )
+
+                self.assertEqual(evaluation.recommendation, "blocked")
+                self.assertIn(
+                    "disqualifying_hard_requirement",
+                    [blocker.type for blocker in evaluation.hard_blockers],
+                )
+
     def test_engineering_blocker_triggers_but_strategy_titles_are_allowed(self) -> None:
         blocked_titles = (
             "Software Engineer",
@@ -301,6 +437,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
     def test_feasibility_by_market(self) -> None:
         cases = (
             (["Sydney, Australia"], "viable"),
+            (["Perth"], "viable"),
             (["London, United Kingdom"], "viable"),
             (["Singapore"], "viable"),
             (["Munich, Germany"], "viable"),
@@ -314,6 +451,16 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         for locations, expected in cases:
             with self.subTest(locations=locations):
                 self.assertEqual(_feasibility(locations)[0], expected)
+
+        perth = relevance_decision(
+            _row(
+                "Strategic Operations Manager",
+                ["Perth"],
+                department="Strategy & Operations",
+            ),
+            _company(target_locations=["Perth / Australia"]),
+        )
+        self.assertTrue(perth.should_evaluate)
 
     def test_location_policy_reason_is_config_driven(self) -> None:
         policy = load_location_policy()
@@ -538,6 +685,49 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             _company(target_locations=["London / UK"]),
         )
 
+        mandarin = relevance_decision(
+            _row(
+                "Manager, Revenue Strategy",
+                ["Singapore"],
+                department="Revenue Strategy",
+                description="Fluency in Mandarin is required for customer work.",
+            ),
+            _company(target_locations=["Singapore"]),
+        )
+        cantonese = evaluate_role(
+            _row(
+                "Strategist, Agent Development (Cantonese Speaking)",
+                ["Singapore"],
+                department="Product",
+                description=(
+                    "Lead agent strategy for customers. English is preferred for "
+                    "cross-region work."
+                ),
+            ),
+            _company(target_locations=["Singapore"]),
+        )
+        generic_title_language = relevance_decision(
+            _row(
+                "Strategic Operations Manager (Thai Speaking)",
+                ["Singapore"],
+                department="Strategy & Operations",
+                description="Lead regional strategy and operations programs.",
+            ),
+            _company(target_locations=["Singapore"]),
+        )
+        preferred_french = relevance_decision(
+            _row(
+                "Strategic Operations Manager",
+                ["Paris, France"],
+                department="Strategy & Operations",
+                description=(
+                    "French-speaking capability is preferred, not required. Lead "
+                    "regional strategy and operations programs."
+                ),
+            ),
+            _company(target_locations=["Paris / France"]),
+        )
+
         self.assertEqual(
             relevance_decision(
                 _row(
@@ -552,8 +742,158 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
         )
         self.assertEqual(french.recommendation, "skip")
         self.assertLess(french.role_fit_score, 60)
+        self.assertEqual(mandarin.reason, "unsupported_language_requirement")
+        self.assertEqual(cantonese.recommendation, "skip")
+        self.assertLess(cantonese.role_fit_score, 60)
+        self.assertEqual(
+            generic_title_language.reason,
+            "unsupported_language_requirement",
+        )
         self.assertNotEqual(german.recommendation, "skip")
         self.assertNotEqual(english.recommendation, "skip")
+        self.assertNotEqual(
+            preferred_french.reason,
+            "unsupported_language_requirement",
+        )
+
+    def test_generic_speaking_marker_does_not_invent_a_language(self) -> None:
+        decision = relevance_decision(
+            _row(
+                "Customer Operations Manager",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description=(
+                    "Lead a customer-facing and English-speaking team across "
+                    "strategic operating programs."
+                ),
+            ),
+            _company(target_locations=["London / UK"]),
+        )
+
+        self.assertNotEqual(decision.reason, "unsupported_language_requirement")
+
+    def test_supported_or_language_alternative_passes_but_and_requirement_blocks(
+        self,
+    ) -> None:
+        company = _company(target_locations=["London / UK"])
+        for description in (
+            "Fluency in German or French required for partner work.",
+            "German or French fluency is required for partner work.",
+            "English, German, or French fluency is required for partner work.",
+            "Fluency in English, German, or French is required for partner work.",
+            "English, French, or Spanish fluency is required for partner work.",
+            "Fluency in English, French, or Spanish is required for partner work.",
+            "German, Mandarin, or Cantonese is required for partner work.",
+        ):
+            with self.subTest(description=description):
+                decision = relevance_decision(
+                    _row(
+                        "Strategic Operations Manager",
+                        ["London, United Kingdom"],
+                        department="Strategy & Operations",
+                        description=description,
+                    ),
+                    company,
+                )
+                self.assertNotEqual(
+                    decision.reason,
+                    "unsupported_language_requirement",
+                )
+
+        mandatory = relevance_decision(
+            _row(
+                "Strategic Operations Manager",
+                ["London, United Kingdom"],
+                department="Strategy & Operations",
+                description="English, German, and Mandarin are required for partner work.",
+            ),
+            company,
+        )
+        self.assertEqual(mandatory.reason, "unsupported_language_requirement")
+
+    def test_unlisted_required_languages_are_blocked_without_blocking_sql(self) -> None:
+        company = _company(target_locations=["London / UK"])
+        cases = (
+            (
+                "Strategic Operations Manager - Russian Speaking",
+                "Lead regional strategy and operations programs.",
+            ),
+            (
+                "Strategic Operations Manager (Filipino Speaking)",
+                "Lead regional strategy and operations programs.",
+            ),
+            (
+                "Strategic Operations Manager",
+                "Fluency in Hindi is required for partner work.",
+            ),
+            (
+                "Strategic Operations Manager",
+                "Fluency in Yoruba is required for partner work.",
+            ),
+            (
+                "Strategic Operations Manager (Zulu Speaking)",
+                "Lead regional strategy and operations programs.",
+            ),
+            (
+                "Strategic Operations Manager",
+                "Fluency in Somali is required for partner work.",
+            ),
+        )
+        for title, description in cases:
+            with self.subTest(title=title, description=description):
+                self.assertEqual(
+                    relevance_decision(
+                        _row(
+                            title,
+                            ["London, United Kingdom"],
+                            department="Strategy & Operations",
+                            description=description,
+                        ),
+                        company,
+                    ).reason,
+                    "unsupported_language_requirement",
+                )
+
+        allowed_cases = (
+            ("Strategic Operations Manager", "Fluency in SQL is required."),
+            ("Strategic Operations Manager", "Fluency in SaaS is required."),
+            ("Strategic Operations Manager", "Fluency in business is required."),
+            ("Program Manager (Public Speaking)", "Lead executive communications."),
+        )
+        for title, description in allowed_cases:
+            with self.subTest(allowed_title=title, allowed_description=description):
+                decision = relevance_decision(
+                    _row(
+                        title,
+                        ["London, United Kingdom"],
+                        department="Strategy & Operations",
+                        description=description,
+                    ),
+                    company,
+                )
+                self.assertNotEqual(
+                    decision.reason,
+                    "unsupported_language_requirement",
+                )
+
+    def test_configured_employer_opt_out_skips_without_scorer_brand_logic(self) -> None:
+        row = _row(
+            "Deployment Strategist - Echo",
+            ["London, United Kingdom"],
+            department="Professional Services",
+            description="Lead commercial customer deployment strategy and operations.",
+        )
+
+        opted_out = relevance_decision(row, _company(name="Palantir", tier=1))
+        control = relevance_decision(row, _company(name="OtherCo", tier=1))
+        evaluation = evaluate_role(row, _company(name="Palantir", tier=1))
+
+        self.assertEqual(opted_out.reason, "employer_opt_out")
+        self.assertTrue(control.should_evaluate)
+        self.assertEqual(evaluation.recommendation, "skip")
+        self.assertLess(evaluation.role_fit_score, 60)
+        evaluator_source = Path("app/services/evaluate.py").read_text(encoding="utf-8")
+        self.assertNotIn("palantir", evaluator_source.casefold())
 
     def test_aggregate_careers_page_language_markers_do_not_contaminate_role(
         self,
@@ -675,7 +1015,7 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             70,
         )
 
-    def test_overleveled_established_company_roles_skip_on_level(self) -> None:
+    def test_title_seniority_alone_never_skips_an_otherwise_fit_role(self) -> None:
         director = evaluate_role(
             _row(
                 "Director, Strategy and Operations",
@@ -716,9 +1056,9 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             _company(name="SmallStartup", tier=2),
         )
 
-        self.assertEqual(director.recommendation, "skip")
-        self.assertLess(director.dimensions["scope_seniority"], 50)
-        self.assertEqual(head_of.recommendation, "skip")
+        self.assertNotEqual(director.recommendation, "skip")
+        self.assertGreaterEqual(director.dimensions["scope_seniority"], 50)
+        self.assertNotEqual(head_of.recommendation, "skip")
         self.assertNotEqual(chief_of_staff.recommendation, "skip")
         self.assertNotEqual(startup_head.recommendation, "skip")
 

@@ -1,0 +1,80 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "No evidence of rail/train operations certification or specialized rail safety training in candidate profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Abgeschlossene Qualifizierung als Zugpersonal (z.B. Zugf\u00fchrer:in/Zugchef:in) mit Qualifikation f\u00fcr Bremsproben und Waggonpr\u00fcfungen"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices in commercial operations scaling; experience with transformation programs and process design; strong stakeholder management and operational excellence documented.",
+        "evidence_strength": "medium",
+        "job_requirement": "Oversee safe transport of passengers across the entire route; be primary contact for passengers and deliver excellent service; manage ticket control and support ticket sales"
+      },
+      {
+        "candidate_evidence": "No evidence of hands-on technical operations, vehicle maintenance, safety compliance inspection, or infrastructure/depot-level operational work.",
+        "evidence_strength": "weak",
+        "job_requirement": "Independently conduct technical inspections (vehicle safety checks, brake tests) and escort shunting/parking operations"
+      },
+      {
+        "candidate_evidence": "Demonstrated process design, transformation program leadership, and operational improvement at scale through Google Devices work.",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute to continuous improvement of service and operations processes"
+      },
+      {
+        "candidate_evidence": "No evidence of shift work, overnight travel, or willingness to work non-standard hours documented in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Shift work including nights, weekends, holidays; overnight stays during long-distance operations; willingness to travel nationwide"
+      },
+      {
+        "candidate_evidence": "Native German speaker; professional English; some tech fluency implied by Google background.",
+        "evidence_strength": "strong",
+        "job_requirement": "Very good German language skills; first English skills beneficial; comfort with PC tools"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Rail-certified train crew qualifications (Zugf\u00fchrer/Zugchef certification, brake test and wagon inspection qualifications)",
+        "mitigation": "JD explicitly states 'no career changers' and requires pre-qualified, trained train crew. Candidate would require months of formal rail training and licensing before role-readiness.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on technical operations and vehicle safety inspection experience",
+        "mitigation": "Candidate has process and transformation background, not depot/infrastructure technical operations. Brake testing and wagon inspection are specialized compliance skills with no clear crossover.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated shift-work or overnight travel history",
+        "mitigation": "Role requires routine overnight absences and non-standard hours. Candidate's profile does not confirm willingness or past experience with this operational cadence.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Operations background is commercial/product-driven, not operations-intensive field logistics",
+        "mitigation": "Google Devices experience is process and transformation focused. FlixTrain role is operationally intensive hands-on passenger and safety management.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD: 'Achtung: Wir bieten keinen Quereinstieg und keine Ausbildung f\u00fcr diese Position an, sondern suchen nach vorqualifizierten und ausgebildeten Zugchef:innen/ Zugf\u00fchrer:innen f\u00fcr den Fernverkehr.' (We offer no career transition and no training for this position; we seek pre-qualified and trained train crew.) Candidate has no rail certification, formal train crew training, or any documented relevant credentials.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Rail crew role requiring 0\u20132 years' entry-level operational experience post-certification; no management scope; hands-on passenger safety and technical inspection duties; operational-execution focus with no strategic, leadership, or seniority signal. Typical L3 operational role in transport/logistics sector.",
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "Flix is hiring a certified, pre-qualified train crew member (Zugchef/in) for long-distance passenger rail operations in Germany. The JD explicitly bars career changers and requires existing rail certifications (brake testing, wagon inspection, crew licenses) and hands-on technical operations. Candidate is a Strategy and Operations leader with eight years at Google; no rail certification, technical operations background, or demonstrated shift-work history. Hard blocker: JD mandates pre-qualified train crew and explicitly excludes career transitions and training. Role is operational-execution-focused (L3) and falls entirely outside candidate's target family and skill base. Recommend skip.\"",
+    "uncertainties": [
+      "Candidate's willingness to pursue rail crew certification and career transition not explored in profile.",
+      "Whether candidate has any adjacent transport, logistics, or operations-intensive field experience outside Google."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

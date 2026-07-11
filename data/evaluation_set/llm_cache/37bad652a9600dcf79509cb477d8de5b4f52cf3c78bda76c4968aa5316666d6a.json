@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services managing cross-functional stakeholder engagement and scaled global commercial operations; experience serving as primary operational liaison between technical teams and business stakeholders.",
+        "evidence_strength": "medium",
+        "job_requirement": "Relationship Management: Build and nurture long-term relationships with key clients, serving as their primary point of contact for technical matters."
+      },
+      {
+        "candidate_evidence": "Led transformation programs and scaling initiatives with cross-functional coordination; experience managing complex global rollouts and operational migrations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Project Management: Lead and coordinate the addition of new payment solutions as well as technical migrations for clients as they expand, working closely with cross-functional teams to ensure successful delivery within agreed timelines and specifications."
+      },
+      {
+        "candidate_evidence": "Eight years at Google managing internal stakeholder feedback loops, requirements definition, and transformation roadmap alignment; product operations experience in requirements and design phases.",
+        "evidence_strength": "medium",
+        "job_requirement": "Product Feedback: Act as a conduit between clients and internal teams, gathering customer feedback, documenting feature requests, and providing client-derived insights to enable continuous improvement of product roadmap."
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions; proven ability to manage complex stakeholder ecosystems across business and technical teams.",
+        "evidence_strength": "strong",
+        "job_requirement": "3 years of experience in an analytical or technical role with experience managing internal and external stakeholders."
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Technical Account Management is inherently customer success and account management without meaningful strategy or transformation scope; role is 80% client relationship and support delivery rather than strategic operations or product strategy work.",
+        "mitigation": "Candidate could negotiate expanded scope to include merchant success operations, payment solution strategy, or regulatory/compliance roadmap influence; however, core TAM responsibilities remain execution-heavy and outside target families.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct payments industry knowledge, compliance frameworks (3DS, SCA, AVS, MIT, PCI-DSS, PSD2), and API-based integration experience.",
+        "mitigation": "Candidate has strong capacity to learn technical frameworks and operations; payments domain could be acquired in 6\u20139 months. However, JD expects existing familiarity with compliance and technical methods.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated cryptocurrency or iGaming vertical experience; role is explicitly crypto & iGaming specialist.",
+        "mitigation": "Candidate has global operations and regulatory exposure from Google; crypto/iGaming regulatory complexity is learnable, though market-specific nuance would require ramp time.",
+        "severity": "medium"
+      },
+      {
+        "gap": "TAM role emphasizes hands-on client support, technical troubleshooting, and demos; candidate's background is operations design and program transformation rather than direct customer support and integration consulting.",
+        "mitigation": "Candidate has demonstrated ability to work across technical and business audiences; however, the day-to-day TAM delivery model differs significantly from strategic operations work.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 3 years experience in analytical/technical role with stakeholder management and expects senior-level client relationships, project leadership, and cross-functional coordination at a mid-market enterprise fintech. Reporting and scope are not explicitly stated. Title \"Senior Specialist\" at a global fintech suggests mid-level IC accountability. Estimated L4 (Senior Manager / Senior IC equivalent) based on 3+ years required, project ownership scope, and enterprise relationship management expectations.",
+    "role_family_fit": 25,
+    "scope_seniority": 60,
+    "summary": "Enterprise Technical Account Management (TAM) at Checkout.com is fundamentally a customer success and account management role\u2014relationship-driven, delivery-focused, and support-heavy\u2014outside the target strategy and operations families. While the candidate demonstrates strong stakeholder management, cross-functional program leadership, and ability to learn fintech domains, TAM is explicitly deprioritized in the target profile unless it carries strategic transformation scope (which this role does not). Gap in payments industry and crypto/iGaming vertical knowledge is substantial but learnable; however, the core misalignment is functional fit, not seniority or capacity.",
+    "uncertainties": [
+      "Company size and stage not stated in JD or Role JSON; assumed mid-market enterprise fintech based on client names (eBay, Spotify, Uber) and global footprint.",
+      "Reporting line not specified; cannot confirm executive-level stakeholder access or strategic influence.",
+      "Scope of 'technical' in TAM context: unclear whether role includes architecture/platform strategy influence or is purely integration and migration delivery.",
+      "Candidate's current level and Google tenure do not determine role level; role level estimate depends solely on JD evidence and is aligned at L4."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

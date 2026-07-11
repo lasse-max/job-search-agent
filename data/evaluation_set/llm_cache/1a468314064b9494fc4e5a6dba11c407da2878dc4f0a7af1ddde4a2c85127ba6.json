@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs in Strategy and Operations domain",
+        "evidence_strength": "strong",
+        "job_requirement": "Senior Strategy & Operations Manager role at Uber in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Demonstrated scaling of global commercial operations and two promotions at Google, indicating advancement within a tier-one enterprise",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior-level scope and responsibility in a large-scale enterprise organization"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "Complete JD text unavailable; specific responsibilities, reporting structure, key performance metrics, and required domain expertise cannot be assessed",
+        "mitigation": "Retrieve the full JD from Uber's careers site or hiring manager. Confirm role's scope ownership, stakeholder level, and whether it emphasizes transformation, GTM execution, or process design.",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct experience stated at Uber or in ride-sharing, logistics, or marketplace operations domains; candidate background is Devices and Services",
+        "mitigation": "Assess transferability of global commercial operations expertise to Uber's core ride-share and delivery motion. Identify domain gaps early in screening.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Candidate target seniority is L4\u2013L5 (Manager, Senior Manager, Lead, Principal IC); posted role is estimated L5, a boundary fit requiring strong alignment on scope to confirm",
+        "mitigation": "Clarify whether role involves manager-of-managers scope, cross-P&L ownership, or IC-only leadership to validate seniority match.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Title 'Senior Strategy & Operations Manager' at a large tech enterprise (Uber) typically maps to L5 (6\u20139 years or established senior-IC ownership). The JD text failed to fetch, leaving scope, reporting line, and specific responsibilities unstated. Without visibility into management breadth, cross-functional ownership, or stakeholder level, confidence is low. Estimate is based on title and department context alone.",
+    "role_family_fit": 75,
+    "scope_seniority": 65,
+    "summary": "Candidate's Strategy and Operations background at Google, spanning global commercial operations and transformation programs, aligns well with the target role family at Uber. However, the JD text failed to fetch, eliminating visibility into specific scope, reporting structure, cross-functional ownership, and domain-specific requirements. Without the full description, evidence strength and confidence are substantially diminished. Recommend retrieving the complete JD and conducting a screening call to assess transferability of skills to Uber's ride-sharing and delivery operations, confirm seniority alignment at the L5 boundary, and identify any hidden gaps in domain expertise or stakeholder management complexity.",
+    "uncertainties": [
+      "Full JD text could not be fetched; title and department alone do not provide explicit scope, KPIs, key responsibilities, or stakeholder structure.",
+      "Uber company size/stage context and hiring band are not stated in Role JSON.",
+      "Whether the role emphasizes transformation, GTM execution, process design, or pure operations analytics is unknown.",
+      "Candidate's current level and recent promotion timing are not provided; cannot assess whether upward or lateral move.",
+      "Sydney location may affect visa/relocation requirements, not stated in candidate profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

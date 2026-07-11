@@ -1,0 +1,55 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate has approximately eight years at Google Devices and Services with two promotions, indicating post-degree professional experience well beyond undergraduate level.",
+        "evidence_strength": "weak",
+        "job_requirement": "Currently pursuing or recently completed a Bachelor's degree (ideally in Law, Business Administration, Criminology, Finance, or a related field)."
+      },
+      {
+        "candidate_evidence": "Candidate has professional/fluent English and native German language proficiency; Spanish not mentioned.",
+        "evidence_strength": "medium",
+        "job_requirement": "Professional fluency in English (written and spoken), German and Spanish a plus."
+      },
+      {
+        "candidate_evidence": "No evidence of AML/KYC expertise, financial crime prevention domain knowledge, or familiarity with Spanish regulatory frameworks provided in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "A strong interest in financial crime prevention, with basic academic or practical knowledge of the Spanish regulatory framework (Law 10/2010 and Sepblac guidelines) being highly advantageous."
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L3",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Internship-level scope: KYC Operations Intern role is designed for student or recent graduate entry-level work; candidate has eight years of senior operational experience at Google and two promotions.",
+        "mitigation": "Candidate is significantly over-qualified; no mitigation bridges the fundamental misalignment of seniority and role ambition.",
+        "severity": "high"
+      },
+      {
+        "gap": "Domain expertise: No AML/KYC/financial crime prevention background; no evidence of regulatory compliance, customer due diligence, or transaction monitoring domain knowledge.",
+        "mitigation": "Strong operations and compliance fundamentals could accelerate learning, but candidate lacks vertical domain entry points and would require extensive ramp-up in specialized compliance regulatory frameworks.",
+        "severity": "high"
+      },
+      {
+        "gap": "Spanish regulatory framework: Job explicitly highlights Spanish regulatory knowledge (Law 10/2010, Sepblac) as highly advantageous; candidate profile does not mention this.",
+        "mitigation": "Self-study is theoretically possible but JD signals Madrid team and Spanish market focus; lack of pre-existing compliance domain knowledge compounds this gap.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 88,
+    "level_rationale": "KYC Operations Intern role explicitly targets student or recent-graduate entry level (0\u20132 years post-degree equivalent). JD describes day-to-day case reviews, document management, and administrative support under team-lead supervision. No management scope, no strategic ownership. Classic L3 internship profile.",
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "This is an L3 KYC Operations Intern role\u2014entry-level, compliance-operations domain, student/recent-graduate target. Candidate is an L4\u2013L5 Strategy and Operations leader with eight years at Google and no AML/KYC/financial-crime domain background. Seniority mismatch (internship vs. mid-career professional) and complete absence of compliance/regulatory vertical expertise make this a severe fit gap. Role family (compliance operations) sits far outside target families (Strategy, BizOps, Product Ops, GTM). Advisory: skip.",
+    "uncertainties": [
+      "Whether candidate has undisclosed interest in career pivot into compliance/fintech but no evidence in profile.",
+      "N26 company size/stage context not stated in Role JSON; no mitigation to seniority gap if this were an atypical early-stage exception."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven ability to navigate ambiguity in a high-growth environment and take ownership to drive results"
+      },
+      {
+        "candidate_evidence": "Experience in transformation programs and operational scaling, though primarily internal Google focus rather than external partner/SI enablement",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience in designing and delivering technical training and certifications to upskill partner teams"
+      },
+      {
+        "candidate_evidence": "Product experience includes ownership, requirements, logic design, UAT, rollout, and transformation; no stated consulting brand or case-team background with external partners",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely on strategic customer engagements, collaborating to define use cases and deliver POCs"
+      }
+    ],
+    "confidence": 0.8,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Deep production engineering in data pipelines, Spark, Kafka, and cloud data integration (Azure Data Factory, AWS Glue, Lambda, etc.)",
+        "mitigation": "Candidate has no stated hands-on data-engineering production background. Ramp-up on specialized data-stack tooling and architecture would require 3\u20136 months onboarding, though operational transformation and scaling experience can accelerate vendor/partner learning curves.",
+        "severity": "high"
+      },
+      {
+        "gap": "Quota-bearing sales support and sales-motion familiarity",
+        "mitigation": "Candidate is a Strategy & Operations leader, not a sales-quota owner. Supporting sales involves different incentive structures, territory dynamics, and commission accountability. Business acumen can help, but closing-sales experience is absent.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct Systems Integrator (SI), Cloud Service Provider (CSP), and Technology Partner (ISV) ecosystem experience and community thought leadership",
+        "mitigation": "Google Devices and Services is internal-focused. No stated consulting brand, partner-community visibility, or SI/CSP account relationships. Rebuilding partner credibility in ASEAN market from scratch would be lengthy.",
+        "severity": "high"
+      },
+      {
+        "gap": "DevOps, CI/CD hands-on depth (Azure DevOps, Jenkins, AWS CodePipeline, Google Cloud Build)",
+        "mitigation": "Transformation program leadership may include CI/CD process design and vendor selection, but hands-on tooling proficiency and troubleshooting depth likely absent. Engineering vendor relationships can substitute partially.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Domain thought leadership in data warehousing, big-data platforms, and Snowflake ecosystem positioning",
+        "mitigation": "Candidate's Devices and Services background is orthogonal to cloud data platforms. Product operations scalability mindset transfers partially, but competitive/feature positioning and data-domain narrative requires brand-building.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "10+ years required experience, stated senior title, technical leadership and partner enablement scope, and expectation of navigating ambiguity and driving results suggest L5 IC or early senior leadership. Reporting line unclear; company size not stated, moderating confidence.",
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "Snowflake Partner Solution Engineer: a technical/sales hybrid role requiring 10+ years in data/cloud ecosystems, hands-on production engineering, and quota support for Systems Integrators and CSPs in ASEAN. The role does not align with target Strategy & Operations or Product Operations families. It emphasizes quota-bearing sales support, deep technical DevOps/data-pipeline engineering, and partner account management rather than strategic transformation, process design, or cross-functional program leadership. While the candidate has strong operational scaling and transformation experience at Google, this role requires specialized data engineering production skills and sales quota accountability outside both primary and approved-stretch families.",
+    "uncertainties": [
+      "Reporting line and cross-functional stakeholder scope not specified; unclear whether role has product-team advocacy or transformation ownership that might elevate family alignment",
+      "Company stage/size not stated, so seniority anchor (10+ years for L5 vs. L6) is only moderately confident",
+      "Degree or production-engineering requirement not explicit, but 10+ years and hands-on data-pipeline/DevOps language imply deep technical production work as core duty",
+      "Frequency and depth of 'whiteboarding to executives' and thought leadership expected; if strategic advisory is primary, role may lean more toward presales or strategy, raising family fit slightly"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

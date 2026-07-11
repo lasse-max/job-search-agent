@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in global commercial operations and transformation, with extensive cross-functional collaboration across hardware, software, and services teams; led business transformation and stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to work cross-functionally with product, communications, public policy, and customer support teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background scaled global commercial operations and led transformation programs, demonstrating execution in complex, rapidly changing environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to work at both strategic and tactical levels in ambiguous environments, balance short-term needs with long-term strategic initiatives"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and global operations scaling required adaptability and rapid execution in dynamic contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to get things done with constantly changing priorities, projects, and deadlines"
+      }
+    ],
+    "confidence": 0.8,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Quota-carrying sales experience and proven sales growth delivery; role explicitly requires 8+ years in new sales and account management with demonstrated track record of sales growth",
+        "mitigation": "Candidate has business operations and scaling expertise, but lacks direct sales execution and quota accountability in professional services or B2B account management; would require significant ramp in sales methodology and pipeline management",
+        "severity": "high"
+      },
+      {
+        "gap": "Hospitality, travel, or sharing-economy industry experience; JD states 2+ years as a plus and assumes deep market knowledge",
+        "mitigation": "Candidate background is in hardware, consumer devices, and Google commercial operations; no evidence of hospitality, travel, or peer-economy expertise; learning curve would be substantial",
+        "severity": "high"
+      },
+      {
+        "gap": "CRM and Salesforce proficiency; role requires high proficiency in leads, opportunities, and core CRM objects",
+        "mitigation": "Candidate background in operations and strategy; no stated CRM or Salesforce experience; could be learned but represents functional gap in day-to-day execution",
+        "severity": "medium"
+      },
+      {
+        "gap": "Account management at scale with professional clients; role directly manages top-tier accounts and optimizes long tail of thousands of hosts with proven track record",
+        "mitigation": "Candidate's scaling experience is in internal global operations and product transformation, not external B2B account relationships or client management; fundamentally different accountability and relationship model",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "8+ years required, quota-carrying account management scope, no people-management or cross-functional strategic ownership stated. Region-specific tactical expertise suggests established IC-level work (L4), not principal or senior IC scope. Reporting line not specified; company is large-scale, reducing ambiguity around L4 positioning.",
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Market Lead, Experiences is a quota-carrying, territory-based account management role requiring 8+ years of sales and hospitality experience, CRM/Salesforce proficiency, and direct P&L ownership of professional host accounts. The candidate's background is strategic operations, product transformation, and global commercial scaling at Google\u2014not quota-driven sales, account management, or travel/hospitality verticals. Core function mismatch and absence of sales-execution, CRM, or industry background make this a poor fit despite strong cross-functional collaboration skills.",
+    "uncertainties": [
+      "Whether candidate's 'commercial operations' at Google included any B2B partnership or account relationship components not detailed in the profile",
+      "Degree to which candidate may have incidental hospitality or travel exposure through personal use or side projects",
+      "Scope of 'partner support' in the candidate's background\u2014whether this involved any vendor or external account management analogous to professional hosts"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

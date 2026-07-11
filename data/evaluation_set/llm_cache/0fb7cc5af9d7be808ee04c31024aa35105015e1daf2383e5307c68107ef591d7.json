@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in commercial operations and transformation programs; no stated enterprise quota-carrying sales experience or large-deal closing background",
+        "evidence_strength": "weak",
+        "job_requirement": "10-15+ years in Enterprise customer-facing sales role, identifying and closing large accounts"
+      },
+      {
+        "candidate_evidence": "Two promotions over eight years and positioning as Strategy and Operations leader; no evidence of managing a dedicated sales team or direct people leadership in revenue-generating context",
+        "evidence_strength": "weak",
+        "job_requirement": "5+ years managing, mentoring, and developing a high performing enterprise sales team"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and transformation programs at Google; no stated quota ownership or enterprise deal closure experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience managing a $1M+ quota and running end-to-end complex deals"
+      },
+      {
+        "candidate_evidence": "Eight years in strategy and operations at global tech company; bilingual (English professional/fluent, German native); no specific communication assessment provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Exceptional verbal and written communication abilities"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background implies analytical rigor; no domain market analysis or AI landscape familiarity stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to analyze market trends, identify opportunities, and make data-driven decisions"
+      },
+      {
+        "candidate_evidence": "No quota-carrying sales execution, pipeline management, or deal-closing experience evident in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Player/coach model: prospect, build pipeline, manage customers, close deals while leading team"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 28,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No enterprise quota-carrying sales background or large-deal closure experience (role requires 10-15+ years in enterprise sales and $1M+ quota management)",
+        "mitigation": "Candidate's commercial operations and transformation scaling could accelerate ramp on deal mechanics and customer engagement; would require intensive sales methodology training and close field coaching on quota attainment and pipeline discipline",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated people leadership experience managing a dedicated enterprise sales team (role requires 5+ years managing and developing AEs)",
+        "mitigation": "Google ops background and two promotions suggest management capability; would require first-time sales-team leadership development and mentoring structure to succeed in hiring/coaching role",
+        "severity": "high"
+      },
+      {
+        "gap": "No AI landscape or emerging-tech GTM domain knowledge stated (role emphasizes AI platform and GTM strategy building)",
+        "mitigation": "Strategy background and Silicon Valley tenure provide foundational tech literacy; domain ramp would be manageable with AI customer and competitive immersion",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct experience building sales motions or GTM strategies from early-stage growth (\"even better\" criterion)",
+        "mitigation": "Transformation and operations scaling experience is adjacent but distinct from sales-motion architecting; would require senior GTM partner or external sales operations counsel",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 10\u201315+ years enterprise sales leadership, 5+ years managing a sales team, and $1M+ quota ownership. Reporting to an unspecified leader. ANZ regional P&L responsibility and team-building scope suggest L5 equivalent (established senior IC or senior manager). Company stage and size unknown. no salary posted. Anchored on experience floor and team-building scope rather than.",
+    "role_family_fit": 15,
+    "scope_seniority": 72,
+    "summary": "Enterprise Sales Leader role at AI platform company (Sierra, co-founded by ex-Salesforce/Google executives) in ANZ region. Requires 10\u201315+ years quota-carrying enterprise sales, 5+ years managing sales teams, and $1M+ quota ownership\u2014core player/coach model with P&L and team-building accountability. Candidate has eight years at Google in commercial operations and transformation, two promotions, and strategy/ops positioning, but no stated enterprise sales execution, quota management, or sales team leadership experience. This is a pure quota-carrying sales leadership role, explicitly deprioritized for strategy/ops profiles. Hard gaps in sales methodology, deal closure, pipeline discipline, and sales team management are not readily bridgeable via ops background alone. Recommendation: skip.",
+    "uncertainties": [
+      "Candidate's exact scope of 'commercial operations' at Google Devices (whether it included revenue ownership or partner/channel leadership)",
+      "Company stage/size context for Sierra (funding, revenue scale) not stated in JD; affects L5 vs. L6 distinction",
+      "Whether candidate has any exposure to sales compensation, quota mechanics, or pipeline forecasting in prior ops roles",
+      "Depth of candidate's interest in transitioning from strategy/ops to quota-carrying sales execution"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

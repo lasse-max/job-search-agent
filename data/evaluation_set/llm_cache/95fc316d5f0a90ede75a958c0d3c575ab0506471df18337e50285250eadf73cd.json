@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in Strategy and Operations; led global commercial operations and transformation programs; experience managing cross-functional teams in product operations and business transformation context.",
+        "evidence_strength": "medium",
+        "job_requirement": "Provide technical leadership and direction to a team of engineers"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and scaling initiatives at Google Devices; experience with requirements, logic design, UAT, and rollout; however, background is product operations and transformation, not infrastructure architecture or software systems design.",
+        "evidence_strength": "weak",
+        "job_requirement": "Design and implement robust, scalable data infrastructure and software systems"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no production software engineering background; non-native engineering background.",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on experience with at least one programming language"
+      },
+      {
+        "candidate_evidence": "No evidence of infrastructure tooling, containerization, or infrastructure-as-code expertise in candidate profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Demonstrated expertise in Kubernetes, Terraform, and GitOps"
+      },
+      {
+        "candidate_evidence": "Built self-service tooling and process automation in operations context; however, no evidence of designing production software systems or software architecture.",
+        "evidence_strength": "weak",
+        "job_requirement": "Design scalable software applications with good self-service capabilities and robust architecture"
+      },
+      {
+        "candidate_evidence": "No degree information provided in candidate profile; cannot verify this requirement.",
+        "evidence_strength": "weak",
+        "job_requirement": "Bachelor degree or above in computer science or engineering related majors"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No production software engineering or infrastructure architecture background; core expertise is in product operations and business transformation, not infrastructure systems design or DevOps.",
+        "mitigation": "Would require 6\u201312 months of hands-on infrastructure and systems design training, including deep dives into Kubernetes, Terraform, and data platform architecture\u2014a significant ramp that exceeds typical senior hire onboarding expectations for a team-leadership role.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited or no demonstrated hands-on experience with Kubernetes, Terraform, GitOps, or infrastructure-as-code tooling.",
+        "mitigation": "Self-study and formal training could build foundational knowledge, but team members may need to carry technical depth in the short to medium term while the candidate develops expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "Data streaming engineering (Kafka, Flink, Spark) is listed as a bonus requirement; no evidence of this expertise in profile.",
+        "mitigation": "Listed as bonus, not core requirement; could be developed over time if other gaps are addressed, but candidate would enter without this advantage.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Basic Python skills and actively learning; role expects hands-on proficiency in 'at least one programming language' as a core qualification.",
+        "mitigation": "Intensive self-study and pair programming with the team could accelerate language proficiency, but candidate starts from a beginner's baseline in an engineering-leadership context.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Bachelor degree or above in computer science or engineering related majors' as a qualification. Candidate profile does not provide degree or field of study information; cannot confirm this requirement is met.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 78,
+    "level_rationale": "6+ years of engineering required; technical leadership of a team; reporting to engineering leadership at a ~$8B company with 2,200+ employees. Role is established Senior IC or early-stage manager scope at a scale-stage organization, consistent with L5.",
+    "role_family_fit": 15,
+    "scope_seniority": 72,
+    "summary": "This is a deep-infrastructure engineering leadership role requiring hands-on Kubernetes, Terraform, GitOps, data streaming, and software architecture expertise\u2014fields outside the candidate's strategy, operations, and transformation background. While the candidate has proven leadership and scaling experience at Google, the role demands native infrastructure engineering expertise, production software systems design, and specific DevOps tooling mastery that the candidate does not possess. The honest gaps (no production software engineering, basic Python, operations-focused rather than infrastructure-focused background) are substantial and not readily manageable through typical onboarding.",
+    "uncertainties": [
+      "Candidate's educational background (degree field and level) is not documented in profile; unable to verify the stated CS/engineering degree requirement.",
+      "No detail on whether candidate has any hands-on infrastructure or DevOps experience outside the profile; hiring manager may have additional context.",
+      "Ambiguity around whether the candidate's transformation-program leadership and self-service tooling could bridge into infrastructure-platform thinking; however, the JD emphasizes technical depth in specific tools (K8s, Terraform, GitOps) rather than process design.",
+      "Role location is Singapore; no information on candidate's geographic availability or willingness to relocate."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

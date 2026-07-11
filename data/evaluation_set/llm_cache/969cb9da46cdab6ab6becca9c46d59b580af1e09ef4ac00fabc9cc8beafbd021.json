@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs in consumer hardware and services context",
+        "evidence_strength": "medium",
+        "job_requirement": "Manager title with Strategy & Programs scope in Autonomous Vehicle domain"
+      },
+      {
+        "candidate_evidence": "Demonstrated ownership in requirements, logic design, UAT, rollout, and transformation program execution at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy & Programs responsibilities including planning, execution, and cross-functional collaboration"
+      },
+      {
+        "candidate_evidence": "Background scaling global commercial operations and transformation initiatives, with product-operations and business-transformation experience across Google's portfolio",
+        "evidence_strength": "medium",
+        "job_requirement": "Operational excellence and program delivery in a complex, fast-moving organization"
+      }
+    ],
+    "confidence": 0.5,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Autonomous Vehicle domain and industry expertise",
+        "mitigation": "Transferable strategy and program execution skills; rapid domain ramp-up possible with mentorship and prior exposure to emerging technology transformations",
+        "severity": "medium"
+      },
+      {
+        "gap": "JD is incomplete and mostly technical boilerplate; no explicit role scope, key responsibilities, or reporting structure provided",
+        "mitigation": "Request a clean, complete job description with substantive requirements, team scope, reporting line, and key deliverables before making final recommendation",
+        "severity": "high"
+      },
+      {
+        "gap": "Unclear whether role requires deep automotive/mobility industry background or regulatory/policy exposure (common in AV programs)",
+        "mitigation": "Clarify industry-specific vs. transferable-skills weighting in role scope once full JD is available",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Role title is Manager with Strategy & Programs scope, indicating individual-contributor or first-level management in a strategic function. No reporting line, team size, or years-of-experience requirement stated in JD; company stage is unknown. Mapped conservatively to L4 based on manager title and strategic program ownership, typical for mid-level operations and strategy roles.",
+    "role_family_fit": 65,
+    "scope_seniority": 60,
+    "summary": "Candidate has relevant Strategy & Operations and transformation program background from Google, with eight years of scaling commercial operations and cross-functional program delivery. However, the JD is severely truncated (appears to be a cached snapshot with mostly website boilerplate HTML and no substantive role description, requirements, or domain context), making it impossible to assess specific AV domain expertise, stakeholder scope, ownership boundaries, or whether this is a first-time management role or individual-contributor track. Strong gaps remain in AV industry experience, specific autonomous-vehicle business strategy exposure, and clarity on actual role scope. Recommend awaiting a complete, readable JD before further evaluation.",
+    "uncertainties": [
+      "Role JD appears to be a corrupted or incomplete fetch (mostly HTML/boilerplate); actual responsibilities and requirements are not legible",
+      "Company size, stage, and AV strategy maturity (research vs. commercialization) are unknown",
+      "Reporting line, team size, and seniority anchors not stated in available JD text",
+      "Candidate's specific exposure to automotive, regulatory, or AV-specific business strategy is not documented"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience leading global commercial operations, transformation programs, and product-focused business operations (requirements, logic design, UAT, rollout). Product operations background with ownership of business impact, but not native PM career track.",
+        "evidence_strength": "medium",
+        "job_requirement": "3\u20136 years of product management experience, with expertise in consumer product offerings"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to galvanize teams and drive large-scale transformations across multiple functions at Google; led commercial operations scaling. Experience translates to cross-functional alignment and prioritization, but no direct fintech or payments domain experience.",
+        "evidence_strength": "medium",
+        "job_requirement": "Consistent track record of aligning teams and prioritizing features/resources to deliver excellent product in monetization, payments, subscriptions or related fintech"
+      },
+      {
+        "candidate_evidence": "Led global transformation programs and scaling initiatives at Google; two promotions signal advancement through increasingly complex scope. Demonstrated delivery through product lifecycle (planning, UAT, rollout), though in operations/strategy context rather than pure product management.",
+        "evidence_strength": "medium",
+        "job_requirement": "High-reaching drive: worked in fast-paced environment, bold priorities, through product lifecycle from planning, development, through launch"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with exposure to platform and implementation details in a tech environment; experience in requirements definition and product logic design. However, no production software engineering background and Python at basic level; depth of technical product design is unclear.",
+        "evidence_strength": "weak",
+        "job_requirement": "Technical approach: delving into product, platform and implementation details; ability to engage with engineering on scalable, extensible solutions"
+      },
+      {
+        "candidate_evidence": "Background in commercial operations and transformation implies data-driven decision-making, but no explicit evidence of A/B testing, experimentation methodology, or instrumentation expertise. Metrics definition experience likely but not demonstrated.",
+        "evidence_strength": "medium",
+        "job_requirement": "Data-driven approach: proficiency identifying, defining, tracking, and acting on metrics; familiarity with experimentation and A/B testing; critical metrics identification"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with demonstrated communication across senior stakeholders; evidence of strategy articulation and cross-functional influence. No explicit sample of product specifications or technical writing provided.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong written and verbal communication skills: convey strategies at 30K foot level and produce clear detailed product and technical specifications"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "Native product management experience and PM craft depth; candidate background is operations/strategy, not core PM track (product lifecycle, feature prioritization, roadmap ownership in a PM role)",
+        "mitigation": "Candidate has led product-focused initiatives and transformation; PM fundamentals around stakeholder alignment, requirements logic, and launch execution are present. Strong strategic foundation can be applied to PM specifics with domain ramp-up. Roblox mentorship and cross-functional team support could accelerate PM-specific skill acquisition.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct payments, subscriptions, monetization, or fintech domain expertise; all experience is in general commercial operations and platform strategy at a non-fintech company",
+        "mitigation": "Roblox operates a large-scale consumer payment ecosystem. Domain knowledge is learnable for a strategic operator with strong platform familiarity and engineering partnership skills. Domain crash course, close collaboration with payments engineering and analytics, and early wins on execution rather than strategy can close this gap within 3\u20136 months.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on experimentation and A/B testing rigor; limited explicit evidence of owning instrumentation, metrics frameworks, or running controlled experiments at scale",
+        "mitigation": "Candidate has operated in data-informed environments at Google; A/B testing methodology is teachable and often collaborative with analytics and engineering. Roblox has mature experimentation infrastructure; pairing with analytics and engineering partners will enable quick ramp.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Deep technical product design and engineering partnership; no production software engineering background, limited hands-on platform depth outside operations context",
+        "mitigation": "Candidate has 8 years of exposure to engineering-heavy environments and can engage on implementation details via operations and transformation lens. For this role, strong engineering partnership and specification clarity (rather than coding) are primary asks. Roblox engineering team will drive scalability; PM role is strategy, prioritization, and cross-functional execution.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Consulting or case-team brand; limited classic strategy consulting background",
+        "mitigation": "Consulting pedigree is nice-to-have for structure and rigor, not essential. Candidate's 8-year direct execution and delivery track record at Google may outweigh consulting brand for Roblox's execution-focused culture.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD calls for 3\u20136 years PM experience with consumer product and monetization expertise, no management scope described, and reports to Sr. Director Product. This signals a solid mid-level IC PM role. Title and years-to-responsibility align with L4 (strong IC, lead-level scope without direct people management). Roblox company size not stated in JD, lowering confidence; public-stage tech company and stated base salary ($183.5K\u2013$229K) are consistent with L4 PM in San Francisco Bay Area.",
+    "role_family_fit": 45,
+    "scope_seniority": 65,
+    "summary": "This is a core Product Manager role at Roblox responsible for consumer payments, subscriptions, and monetization strategy. The JD calls for 3\u20136 years of PM experience with deep expertise in consumer products, monetization/payments/fintech, and data-driven execution. The candidate brings 8 years at Google in strategy, operations, and transformation\u2014strong in business impact and stakeholder alignment but notably lacking native PM experience, product lifecycle depth, and the hands-on platform/technical product design work this PM role requires. Gap manageability is moderate; strategic thinking and scaling experience are transferable, but PM-specific craft gaps are real.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v5"
+}

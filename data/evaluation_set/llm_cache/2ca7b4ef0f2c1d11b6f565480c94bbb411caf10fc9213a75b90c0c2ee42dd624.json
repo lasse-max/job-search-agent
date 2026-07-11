@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience with strategic program leadership and business transformation initiatives.",
+        "evidence_strength": "medium",
+        "job_requirement": "Help define our sales motion: We're an early team, and your work will directly impact how our GTM function operates and succeeds."
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with demonstrated experience in cross-functional collaboration and transformational program execution at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate cross-functionally: Work closely with our broader GTM team, as well as our product, technical and operations orgs to deliver our industry-leading product."
+      },
+      {
+        "candidate_evidence": "Experience with business transformation and strategic program leadership, though background is in operations and strategy rather than quota-carrying sales execution.",
+        "evidence_strength": "weak",
+        "job_requirement": "Sales strategy & planning: Develop and execute sales strategies to meet or exceed sales targets. Craft tailored sales presentations and proposals that meet our enterprise customers needs."
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales and enterprise deal closure: Role requires 10+ years of enterprise customer-facing sales with $1M+ quota management and complex deal cycles. Candidate background is Strategy and Operations, not sales.",
+        "mitigation": "Candidate's cross-functional collaboration and strategic transformation expertise could inform GTM strategy definition, but does not substitute for hands-on sales execution experience. Transition would require rebuilding sales credibility and managing immediate quota pressure.",
+        "severity": "high"
+      },
+      {
+        "gap": "Prospecting, lead generation, and relationship management: Role emphasizes direct prospecting, cold calling, and managing key decision-maker relationships. No evidence of these core sales competencies in candidate profile.",
+        "mitigation": "Business Operations background includes stakeholder management, but prospecting and enterprise sales development are distinct disciplines requiring sales-specific experience and networks.",
+        "severity": "high"
+      },
+      {
+        "gap": "Spanish language requirement: JD specifies professional fluency in both Spanish and English; candidate lists German as native and English as professional/fluent, with no Spanish mentioned.",
+        "mitigation": "Role is based in Madrid and Spanish fluency is presented as a requirement, not a preference. Language barrier would impede immediate effectiveness with local prospects and teams.",
+        "severity": "high"
+      },
+      {
+        "gap": "Industry and AI product familiarity: While candidate has Google background, no specific evidence of AI landscape, emerging trends, or enterprise AI customer expertise.",
+        "mitigation": "AI familiarity is listed as 'even better,' not a requirement. Google experience provides some technical credibility, though not sales-specific.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Professional fluency in both Spanish and English required; candidate lists English as professional/fluent and German as native, with no Spanish language capability indicated.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 10+ years of enterprise sales experience with $1M+ quota management and complex deal closure. At early-stage Sierra (founded by high-profile founders), a Sales Director leading GTM motion definition and team scaling signals senior IC or early management scope equivalent to L5. No explicit direct reports mentioned, but 'help define our sales motion' and enterprise relationship ownership imply significant autonomy and strategic input consistent with L5 individual contributor or early L6 manager scope in a growth-stage company.\"",
+    "role_family_fit": 15,
+    "scope_seniority": 60,
+    "summary": "Sales Director role at Sierra is a pure enterprise sales leadership position requiring 10+ years of quota-carrying sales experience, complex deal closure, prospecting, and professional Spanish fluency. Candidate is a Strategy and Operations leader with transformation and commercial-scaling expertise at Google, not a sales professional. Three disqualifying gaps exist: no enterprise sales execution background, no prospecting/cold-call experience, and no Spanish language capability. While candidate's GTM strategy interest and cross-functional leadership could theoretically inform early sales motion definition, the role's primary focus is immediate quota attainment and relationship management. Hard blocker: Spanish language requirement. Advisory: skip.",
+    "uncertainties": [
+      "Company stage and size (described as 'early team' with growing global offices) is partially stated; early-stage context supports L5 estimation but does not alter the functional mismatch.",
+      "Candidate's involvement in 'commercial operations' and customer relationships at Google could include some sales strategy exposure; profile does not clarify depth of sales vs. operations vs. customer success work.",
+      "Spanish language capability may have been omitted from the candidate profile; however, no affirmative evidence provided in the summary."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

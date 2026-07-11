@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs with cross-functional stakeholder engagement",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional work with Product, Commercial, Operations, Data, Legal on high-risk cases and strategic commercial opportunities"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader experienced in executive-level reporting and governance communications within complex, regulated environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Prepare high-quality MI and commentary for local leadership, risk/audit committees and Boards, including key risk indicators and metrics"
+      },
+      {
+        "candidate_evidence": "Transformation program experience and process design capability, but limited evidence of regulatory compliance program design or financial crime domain knowledge",
+        "evidence_strength": "weak",
+        "job_requirement": "Drive ongoing uplift of AML/CTF Program in line with Australian regulation and group-wide standards; partner across divisions on process remediation and control design"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No demonstrated financial crime compliance or AML/CTF program experience; candidate background is commercial operations and product transformation, not regulatory compliance",
+        "mitigation": "Structured onboarding and mentorship from experienced compliance practitioners; formal AML/CTF training and AUSTRAC familiarization; early shadowing of SMR/IFTI investigations and regulatory interactions",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated auditing, assurance, or direct regulator engagement experience; role explicitly requires AUSTRAC interaction and demonstrated audit/inspection background",
+        "mitigation": "Partner with internal audit and risk functions; attend AUSTRAC reviews and interactions with senior compliance leadership support; formal audit and compliance certification pathways",
+        "severity": "high"
+      },
+      {
+        "gap": "No deep familiarity with Australian AML/CTF laws, rules, digital payments compliance, or cross-border flow regulations",
+        "mitigation": "Dedicated compliance law and fintech regulatory training; detailed policy and procedure documentation review; structured knowledge transfer from global FCC peers",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited fintech/payments domain exposure; candidate experience centers on Google's commercial and device ecosystems, not financial services or payment systems",
+        "mitigation": "Immersion in Airwallex's payments and embedded finance products; liaison with product and commercial teams on compliance use-cases; external fintech/payments compliance community engagement",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5+ years financial crime compliance in financial institutions or fintech, hands-on investigation and regulatory reporting experience, senior oversight, policy design, and board-level reporting. These responsibilities and seniority anchors (senior manager title, second-line advisor role, MLRO deputy function) align with L5 senior IC ownership. No manager-of-managers scope stated, and company scale (2,200+ employees, $8B valuation) provides no additional stretch; L5 is appropriate.",
+    "role_family_fit": 15,
+    "scope_seniority": 70,
+    "summary": "Senior Compliance Manager & Deputy MLRO is a specialist financial crime compliance role in the Regulatory & Compliance department at a mid-stage fintech (Airwallex, $8B, 2,200+ employees). The role requires 5+ years of hands-on AML/CTF program execution, SMR/IFTI filing and investigation, AUSTRAC interaction, and deep Australian regulatory knowledge\u2014none of which align with the candidate's Strategy and Operations background at Google. While the candidate brings strong cross-functional stakeholder management and governance communication skills, the domain expertise gap is substantial and the function sits outside target strategy/operations families. Role family fit is poor; gaps are high-severity and not readily mitigated in early tenure.",
+    "uncertainties": [
+      "Candidate's exact scope of regulatory engagement at Google Devices and Services is not detailed; may have some compliance-adjacent exposure not explicitly stated in profile",
+      "Whether candidate has pursued or passed any compliance certifications (CAMS, ACAMS, ICA, etc.) is not disclosed",
+      "Depth of candidate's stakeholder engagement with financial regulators or auditors during commercial operations work is unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

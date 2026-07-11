@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; product experience rooted in ownership, requirements, logic design, UAT, rollout, and transformation",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner with Agent Product Managers and Agent Engineers to scope, build, and ship AI agents; play a central role in agent development combining product strategy, conversational design, and customer insight"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to scale operations globally and lead transformation programs across multiple workstreams at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects; manage multiple projects simultaneously"
+      },
+      {
+        "candidate_evidence": "Eight-year Google tenure with two promotions implies sustained stakeholder management and cross-functional leadership; transformation-program leadership requires clarity across technical and business teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Outstanding Communication Skills\u2014convey complex technical information to non-technical stakeholders, fostering collaboration and driving projects forward"
+      },
+      {
+        "candidate_evidence": "Global commercial operations and transformation program experience demonstrates ability to align diverse stakeholder groups and drive execution across organizational boundaries",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate across technical and non-technical stakeholders through the full agent development lifecycle process; be a trusted advisor to customers"
+      },
+      {
+        "candidate_evidence": "Transformation-program leadership and commercial-operations scaling require continuous risk identification, mitigation, and adaptive problem-solving",
+        "evidence_strength": "medium",
+        "job_requirement": "Problem-Solving and Analytical Skills\u2014grasp complex concepts, identify risks and issues, develop mitigation strategies, handle unexpected challenges"
+      },
+      {
+        "candidate_evidence": "Product-ownership experience including requirements, logic design, UAT, and rollout demonstrates technical acumen; native German speaker",
+        "evidence_strength": "medium",
+        "job_requirement": "Technical Expertise\u2014strong understanding of software development, product management and engineering principles to act as strategic partner; German language fluency (position title)"
+      }
+    ],
+    "confidence": 0.82,
+    "estimated_level": "L4",
+    "evidence_strength": 82,
+    "gap_manageability": 78,
+    "gaps": [
+      {
+        "gap": "No native product-management background in SDLC, product roadmapping, or engineering-focused feature ownership; experience is transformation, operations, and rollout-focused",
+        "mitigation": "Role emphasizes strategy, stakeholder coordination, and conversational design\u2014not software development. Candidate's transformation and operations expertise directly applies to agent-development coordination and customer strategy. On-the-job learning of domain-specific product practices (agent development lifecycle) is standard for strategist/operations-focused hires.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited exposure to conversational AI, agent design, or modern AI product development workflows",
+        "mitigation": "Role description frames this as a learning opportunity: 'gaining direct exposure to how these products are developed and improved.' Candidate's strong analytical, stakeholder-management, and execution skills transfer well to new domain; Sierra's co-founders and product leadership can provide rapid domain onboarding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No consulting or case-team experience; limited external advisory brand",
+        "mitigation": "Role requires internal and customer partnership, not case-team methodology. Google operations and transformation experience demonstrates equivalent problem-solving rigor and stakeholder influence without formal consulting background.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 3\u20135 years of relevant experience and cross-functional coordination across product, engineering, and customer success; no explicit management-of-managers or director scope stated. JD emphasizes strategic partnering, execution leadership, and project delivery\u2014classic L4 scope. Company stage (well-funded, multi-office, founded by ex-Google/Salesforce/Facebook leaders) and title 'Strategist' (not Senior, not Lead) suggest L4 baseline. Degree requirement is 'strong plus' and MBA is 'another strong plus,' indicating preferred not mandatory, consistent with L4 IC trajectory.",
+    "role_family_fit": 88,
+    "scope_seniority": 81,
+    "summary": "Strategist role at well-funded AI platform (Sierra) under founder-led product leadership. Candidate brings eight years of Google commercial-operations and transformation-program leadership\u2014directly translatable to cross-functional coordination, stakeholder management, and execution delivery across agent development. Strong alignment on strategy, execution, and communication; medium gaps in native product-management SDLC depth and conversational AI domain expertise are manageable through on-the-job learning and strong internal product leadership. German fluency is a direct match. Advisory: apply now.",
+    "uncertainties": [
+      "Company stage beyond 'well-funded': Series funding round, runway, and team size not stated in JD; affects typical L4 vs. early-stage L5-equivalent interpretation",
+      "Reporting line and manager seniority not specified; would clarify scope ownership and decision authority",
+      "Depth of 'technical expertise' requirement: whether it expects hands-on architecture review, ML fundamentals, or operational/requirements fluency is ambiguous from JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

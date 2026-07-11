@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google; owns strategic roadmaps and transformation at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Define and own product strategy, solution design, roadmap, and delivery plans"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions, indicating leadership progression; experience managing cross-functional teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead, mentor, and develop a team of high-performing product managers"
+      },
+      {
+        "candidate_evidence": "Extensive cross-functional collaboration experience at Google across commercial, operations, and transformation workstreams",
+        "evidence_strength": "strong",
+        "job_requirement": "Collaborate across engineering, design, commercial, and operations teams"
+      },
+      {
+        "candidate_evidence": "Eight years driving transformation programs and scaling operations; demonstrated ability to work across technical and business stakeholders",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication skills with ability to convey product strategy to technical and non-technical audiences"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L6",
+    "evidence_strength": 40,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "No demonstrated product experience in financial markets, e-trading, eFX, or trading technology\u2014the core domain of this role",
+        "mitigation": "Would require 6\u201312 months of accelerated domain learning; fintech domain expertise is typically built over years, not months",
+        "severity": "high"
+      },
+      {
+        "gap": "Product background is transformation and operations-driven, not native Product Manager / SDLC ownership of consumer or B2B product lines",
+        "mitigation": "No direct evidence of managing PM teams, defining product requirements for engineering, or owning product-market fit; candidate's honest gaps note 'product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management'",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited fintech, payments, or financial-platform experience; no evidence of regulatory, compliance, or money-movement product complexity",
+        "mitigation": "Regulatory and operational complexity navigation would require significant ramp-up; not mitigated by general operations experience",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of managing product launches, feature enhancements, or iterative product cycles at the velocity and sophistication required for a director-level fintech role",
+        "mitigation": "Candidate's background is transformation and strategic programs, not product velocity and execution; fintech product iteration cycles are distinct",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Product Director with team leadership (managing a team of PMs), 8+ years required, deep financial domain expertise, and cross-functional scope across engineering, commercial, and operations. At a $8B fintech, this is a senior IC or early director-track role. Comparable to L6 at peer-stage companies.",
+    "role_family_fit": 35,
+    "scope_seniority": 75,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader with eight years at Google Devices, strong transformation and scaling experience, but this role is a pure native Product Manager Director requiring deep e-trading, eFX, and trading-technology domain expertise\u2014outside the candidate's stated strength areas. No evidence of trading-platform, financial-markets, or payment-systems product experience; gaps in financial domain, PM/SDLC depth, and fintech product leadership are substantial and not readily mitigated in a high-stakes director role.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v5"
+}

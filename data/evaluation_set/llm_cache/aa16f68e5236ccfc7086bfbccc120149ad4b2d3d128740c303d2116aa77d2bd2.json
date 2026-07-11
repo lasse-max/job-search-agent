@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years of global commercial operations scaling and transformation program leadership at Google Devices",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic Account Mapping and discovery to identify high-value opportunities"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience coordinating cross-functional teams and stakeholder alignment in transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-Functional Leadership partnering with Solutions Engineering, Underwriting, and Product"
+      },
+      {
+        "candidate_evidence": "Product operations background includes requirements design, UAT, rollout, and process-driven execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Operational Rigor using qualification frameworks and CRM as source of truth"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying sales and lead-generation operations expertise",
+        "mitigation": "Candidate has strategic program and operations experience but not direct BDR/SDR or outbound sales DNA; ramp would require sales-specific coaching",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep payments industry and fintech product knowledge",
+        "mitigation": "Candidate is intelligent and learns complex domains quickly, but lacks specific payments/fintech background; onboarding curve is significant",
+        "severity": "medium"
+      },
+      {
+        "gap": "Direct C-suite and Fortune 500 enterprise engagement experience",
+        "mitigation": "Candidate has stakeholder management skills but positioning as peer to C-suite executives at global brands is unclear from profile",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Title is ambiguous; scope implies 3\u20135 year range (BDR/SDR progression or early Account Executive). JD emphasizes outbound lead generation, territory ownership, and sales operating rhythm rather than management scope or strategic program leadership. No years required or management depth stated; company size is unknown.",
+    "role_family_fit": 25,
+    "scope_seniority": 50,
+    "summary": "This is a quota-bearing, outbound-sales-driven lead generation and account mapping role at a fintech payments company. The candidate is a Strategy and Operations leader with eight years of Google Devices experience, not a sales professional or industry expert. While she has strong cross-functional and transformation chops, she lacks direct fintech/payments domain knowledge, outbound sales DNA, and the quota-carrying mindset the role requires. Role family fit is low; gaps are not easily managed without fundamental sales experience.",
+    "uncertainties": [
+      "Company size and stage not stated; unable to contextualize seniority expectations",
+      "Title '[Commercial] Standard' is non-standard; exact role level and scope ambiguous",
+      "No years-of-experience requirement stated in JD",
+      "Unclear whether role requires prior quota-carrying sales experience or is entry-level to sales"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

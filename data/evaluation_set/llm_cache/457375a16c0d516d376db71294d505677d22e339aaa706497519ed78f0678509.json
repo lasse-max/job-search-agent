@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioned as Strategy and Operations / Product Operations leader. Career history emphasizes scaling operations and transformation programs rather than business development or partnership sourcing.",
+        "evidence_strength": "medium",
+        "job_requirement": "6+ years in partnerships, business development, strategy or ecosystem roles in high-growth environments (SaaS, fintech, payments or B2B tech), including 3+ years directly in partnerships / ecosystem"
+      },
+      {
+        "candidate_evidence": "Background in strategic program leadership and transformation scope at Google, with experience in structuring and executing cross-functional initiatives. Strategic capability is demonstrated through positioning in Strategy and Operations roles.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and own the VC & startup ecosystem strategy in France; define objectives, target partner archetypes and prioritisation"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation background with experience in rollout, process design, and execution; operations expertise and cross-functional coordination across Sales, Marketing, and Product are evident. However, partner sourcing, negotiation, and commercial deal closure are not explicitly mentioned.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience running partner programmes end-to-end (strategy, sourcing, contracting, activation, co-marketing, optimisation) and delivering measurable commercial outcomes"
+      },
+      {
+        "candidate_evidence": "Eight years in operations and transformation roles at Google. No explicit evidence of quota ownership, commercial negotiation, or revenue closure experience. The honest gaps note that experience 'comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management.'",
+        "evidence_strength": "weak",
+        "job_requirement": "Commercial and outcome-driven, comfortable negotiating and closing, focused on pipeline, conversion and revenue"
+      },
+      {
+        "candidate_evidence": "No mention of VC or startup ecosystem network. No evidence of France-based relationships or early-stage company exposure. Located in Germany (native German speaker); candidate profile does not reference Paris or France market knowledge.",
+        "evidence_strength": "weak",
+        "job_requirement": "Existing network with VCs, accelerators and startup communities in France (ideally across SaaS, e-commerce and/or travel) and a track record of leveraging it"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background suggests technology operations expertise. No explicit mention of fintech domain knowledge, payments infrastructure, FX, or startup business model understanding.",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong interest in fintech, international payments, FX and multi-currency products, and ability to understand startup use cases"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No business development, partnership sourcing, or deal-closure background. Role requires end-to-end partnership strategy, negotiation, and signing high-value agreements; candidate's 8 years are in operations and transformation, not commercial BD.",
+        "mitigation": "Could acquire BD fundamentals through on-the-job learning if paired with strong internal Sales/BD mentorship, but the gap is substantial for a hiring manager expecting demonstrated deal-closing capability.",
+        "severity": "high"
+      },
+      {
+        "gap": "No existing VC or startup ecosystem network, particularly in France. Role explicitly requires an existing France-based network across VCs, accelerators and startup communities and a track record of leveraging it.",
+        "mitigation": "Networking can be built over 3\u20136 months, but loses immediate relationship leverage and credibility with decision-makers the role is expected to activate on day one or in the first 90 days.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited fintech, payments, and international FX domain knowledge. Role requires strong interest in and ability to understand fintech use cases, multi-currency products, and startup payment workflows.",
+        "mitigation": "Domain can be acquired through self-study and immersion in Airwallex's product and customer base, but lacks the foundational expertise typical of early-stage hires in scaled fintech partnerships roles.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit quota-carrying or commercial revenue-focused experience. Role is outcome-driven with partner-sourced revenue targets and conversion metrics. Candidate's background emphasizes transformation and process, not commercial sales pipeline closure.",
+        "mitigation": "Could adapt from operations-into-growth mindset, but commercial pressure and deal mentality are not evident in positioning or honest-gaps summary.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 74,
+    "level_rationale": "Role requires 6+ years in partnerships/BD/strategy in high-growth B2B tech or fintech, with 3+ years directly in partnerships and 1\u20133 years leading programs; reporting to Head of Sales suggests some leadership scope. This is approximately L4 (Senior Manager / Established IC) on Google ladder. Company stage is not stated in JD, but \u20ac71m Series D fintech context and \"build mode\" in France suggest L4\u2013L5 scope typical for scaling markets. No manager-of-managers language present.",
+    "role_family_fit": 28,
+    "scope_seniority": 58,
+    "summary": "This role is a Partnerships Manager focused on VC and startup ecosystem development in a greenfield French market for a scaled fintech platform. It requires 6+ years in business development and partnerships with strong commercial deal-closing, negotiation, and revenue targeting\u2014a classic GTM and commercial growth function. The candidate's eight-year background is in Strategy and Operations / Product Operations at Google, emphasizing transformation and cross-functional execution rather than business development, partnership sourcing, deal closure, or commercial revenue ownership. Critical gaps include no demonstrated BD/partnerships experience, no VC/startup ecosystem network (especially France-based), limited fintech domain knowledge, and no explicit commercial quota or revenue-focused background. While the candidate demonstrates strategic capability and program leadership, the role demands hands-on business development and commercial closing that fall outside the core Strategy/Operations family fit and candidate experience profile.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v5"
+}

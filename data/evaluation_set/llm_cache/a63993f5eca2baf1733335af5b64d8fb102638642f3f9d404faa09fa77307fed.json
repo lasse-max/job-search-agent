@@ -1,0 +1,73 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; product operations leadership with requirements definition, UAT, rollout, and transformation execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Work directly with strategic customers to understand objectives, identify high-impact AI opportunities, and turn them into measurable business value"
+      },
+      {
+        "candidate_evidence": "Transformation program experience including process design, stakeholder management, and business problem-solving; foundational Python skills (basic, actively learning) and AI/ML technology exposure through scaling operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate complex business problems into scalable AI solution architectures and rapidly build prototypes demonstrating tangible outcomes to business and technical stakeholders"
+      },
+      {
+        "candidate_evidence": "Product operations leader with proven ability to manage stakeholder interactions, design and communicate business transformations, and drive adoption across organizations",
+        "evidence_strength": "strong",
+        "job_requirement": "Communicate complex technical concepts to business and executive stakeholders; lead workshops and facilitate innovation sessions"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations at Google with cross-functional experience; product operations background includes process ownership and business case translation",
+        "evidence_strength": "medium",
+        "job_requirement": "Understand business processes across sectors such as Supply Chain and Finance; translate high-level business needs into specific AI use cases"
+      },
+      {
+        "candidate_evidence": "Eight years tenure with two promotions in commercial operations, transformation programs, and product operations; direct customer engagement in scaling commercial operations and change management",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years in solutions consulting, data/AI consulting, technical pre-sales, sales engineering, value engineering, or customer-facing solution-architecture roles"
+      },
+      {
+        "candidate_evidence": "German native speaker; English professional/fluent. French proficiency not mentioned in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Native-level or near-native French language skills required for customer engagement, workshops, and executive presentations"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 68,
+    "gap_manageability": 58,
+    "gaps": [
+      {
+        "gap": "Python and AI/ML prototyping expertise is foundational; role expects hands-on prototyping with modern AI frameworks, RAG, prompt engineering, and LLM orchestration tools like LangChain or LlamaIndex",
+        "mitigation": "Candidate has basic Python and is actively learning; rapid upskilling feasible for business-focused value engineering work where prototyping demonstrates business value rather than production-grade engineering. Celonis provides frameworks; customer-success focus may reduce deep coding requirements.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting or pre-sales brand experience; background is primarily internal Google operations and product transformation rather than external customer advisory or sales engineering",
+        "mitigation": "Candidate has strong stakeholder management, executive communication, and business problem-solving skills transferable to customer-facing roles. Value engineering at Celonis emphasizes business impact and process expertise, not sales quota or closing deals.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No native or near-native French language proficiency stated; role explicitly requires French for customer workshops, executive presentations, and stakeholder interactions in Paris",
+        "mitigation": "Candidate fluent in English and German but not French. This is a critical barrier for a France-based role unless candidate has undocumented French skills or role can accommodate translation/English-speaking customers. Mitigation uncertain without clarification.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 74,
+    "level_rationale": "Role requires 5+ years in customer-facing solution architecture, value engineering, or consulting with independent ownership of complex customer engagements and AI solution design. Senior title in value engineering, direct customer strategy work, and stakeholder leadership align with L5 IC (Senior IC / Lead). No manager-of-managers scope stated. Celonis company size is unknown; no explicit reporting line or team leadership scope provided. Level confidence reduced slightly due to missing company-stage context.",
+    "role_family_fit": 72,
+    "scope_seniority": 74,
+    "summary": "Celonis seeks a senior value engineer to architect AI solutions and drive customer impact\u2014blending business problem-solving, process expertise, and AI technical fluency. Candidate brings eight years of Google operations leadership, transformation program execution, and stakeholder management, positioning strong fit on strategy, execution, and customer engagement. Critical gaps: basic Python requiring rapid upskilling; no external consulting/pre-sales brand; and no stated French proficiency, despite explicit native-level requirement for Paris-based customer-facing work. Role is within target band (L5); language barrier and technical prototyping depth are material mitigators.\"",
+    "uncertainties": [
+      "French language proficiency not documented; role explicitly requires native-level or near-native French for customer workshops and executive presentations in Paris",
+      "Candidate's hands-on AI/ML prototyping experience scope unclear\u2014basic Python + active learning may require significant ramp-up on GenAI frameworks and LLM orchestration tools",
+      "Celonis company size, stage, and reporting structure not stated in JD; unable to confirm L5 equivalence of scope at target company",
+      "Public Sector & Defense vertical mentioned in title but not detailed in JD; domain experience in government/defense not evident in candidate profile",
+      "Whether role prioritizes external consulting brand and sales-engineering fluency or primarily business problem-solving and transformation delivery"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

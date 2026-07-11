@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Devices and Services, with experience scaling global commercial operations and transformation programs; promoted twice",
+        "evidence_strength": "medium",
+        "job_requirement": "Enterprise Customer Success role in Customer Success department"
+      },
+      {
+        "candidate_evidence": "Background in commercial operations and transformation programs suggests cross-functional stakeholder management and scaling execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Manage customer success, retention, and account health for enterprise accounts"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Core function mismatch: Role is Customer Success / account management; candidate is Strategy and Operations / Product Operations",
+        "mitigation": "Candidate's transformation and stakeholder-management experience could apply to customer success operations at scale, but core CS responsibility (account health, retention, relationship ownership) is not demonstrated",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of quota, retention metrics, or account-level business ownership in CS context",
+        "mitigation": "Candidate's transformation and operations background differs from direct customer success accountability; retraining required",
+        "severity": "high"
+      },
+      {
+        "gap": "JD severely truncated and uninformative (careers page HTML noise); actual role scope, requirements, seniority, and expectations unknown",
+        "mitigation": "Request full, clean JD to assess whether role has strategic/transformation scope or is pure CS/account management",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Enterprise Customer Success typically maps L4 for mid-market/enterprise scope with account ownership, but JD is corrupted careers-page HTML with zero substantive detail. Estimated L4 based on 'Enterprise' title only; actual level cannot be confidently assessed without clean role description.\"",
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader; posted role is Enterprise Customer Success in the Customer Success department. This is a deprioritized family (pure CS without stated strategic scope) and represents a significant functional shift from the candidate's core expertise in commercial operations, transformation, and business strategy. JD is corrupted and uninformative, preventing substantive evaluation. Recommend skip unless role description can be obtained and demonstrates meaningful strategy, transformation, or operations scope within customer success.\"",
+    "uncertainties": [
+      "JD is captured as HTML markup from careers page with no readable job description, requirements, or scope detail",
+      "Cannot determine if 'Enterprise Customer Success' includes strategic account operations, transformation, or is pure account management",
+      "No information on reporting line, team scope, key metrics, or seniority context",
+      "Company size/stage unknown; impacts L4 vs. L5 assessment for 'Enterprise' title"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

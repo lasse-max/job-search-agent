@@ -73,6 +73,10 @@ Apply the migrations in order in Supabase:
 
 1. `migrations/001_stage15_core.sql`
 2. `migrations/002_stage15_supabase_auth.sql`
+3. `migrations/003_stage15_applications.sql`
+4. `migrations/004_stage15_shortlist.sql`
+5. `migrations/005_stage15_evaluator_v3.sql`
+6. `migrations/006_stage15_versioned_evaluation_skips.sql`
 
 The first migration creates the agent tables and the read views:
 
@@ -80,12 +84,17 @@ The first migration creates the agent tables and the read views:
 - `current_opportunity_evaluations`
 
 Those views only expose latest evaluations whose `model_version` ends with the
-current calibrated evaluator suffix, `|hybrid_claude_v2`, and whose provenance
+current calibrated evaluator suffix, `|hybrid_claude_v3`, and whose provenance
 is not marked as fallback.
 
 The second migration enables RLS and grants read access only to authenticated
 users whose email exists in `app_allowed_users`. Anonymous access has no table
-grants.
+grants. Migrations 3 and 4 add the Applied tracker and To Apply shortlist behind
+owner-gated RPCs. Migration 5 advances current evaluation reads to the level-aware
+v3 evaluator and continues to exclude fallback provenance. Migration 6 records
+current-version relevance-gate skips so bounded stale-score backfills keep moving.
+The manual migration workflow applies migrations 2, 5, and 6 during a verify-only
+run for an existing cutover.
 
 ## One-Way Import
 
@@ -119,12 +128,6 @@ pnpm run build
 
 ## Scope Boundary
 
-The current web slice renders Potential Matches plus the Applied working
-tracker. The tracker reads immutable evaluation snapshots created by the
-database-backed `Mark applied` operation, records every stage change as an
-immutable event, and exposes only narrow owner-authorized writes. To Apply and
-Profile remain locked until their later reviewed slice.
-
-Apply `migrations/003_stage15_applications.sql` to Supabase before opening
-`/applied`. It adds the two tracker tables, owner-only RLS, calibrated
-mark-applied/stage/detail RPCs, and the immutable event/snapshot triggers.
+The current web app renders Potential Matches, To Apply, Applied, and the
+read-only Profile. Application and shortlist writes use narrow owner-authorized
+RPCs; historical evaluation snapshots and stage events remain immutable.

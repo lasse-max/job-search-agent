@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs, including ownership of requirements, logic design, UAT, rollout, and transformation execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Own end-to-end implementation of Pigment for key customers, from translating business problems into models to deploying agentic AI solutions in production"
+      },
+      {
+        "candidate_evidence": "Professional positioned as Strategy and Operations / Product Operations leader with experience in transformation programs and stakeholder management across commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with business and technical stakeholders to rethink processes and design AI-driven solutions; act as trusted advisor guiding customers on best practices"
+      },
+      {
+        "candidate_evidence": "Product experience from ownership and requirements design; background in transformation rather than native product management",
+        "evidence_strength": "weak",
+        "job_requirement": "Translate customer feedback into clear product requirements and specifications; contribute to evolution of Pigment's AI capabilities"
+      },
+      {
+        "candidate_evidence": "Experience with scaling transformation programs and process design; no stated background in training delivery, framework design, or enablement at scale",
+        "evidence_strength": "weak",
+        "job_requirement": "Help define repeatable patterns and frameworks for AI deployments across customers; enable and scale training"
+      },
+      {
+        "candidate_evidence": "Background in requirements, logic design, and UAT; no direct evidence of data modeling or analytics work",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical and problem-solving skills with experience in data modeling, analytics, or business logic design"
+      },
+      {
+        "candidate_evidence": "Profile notes Python basic and actively learning; no stated proficiency with formulas, structured modeling, or SQL",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficiency with formulas, logic, and structured modeling; programming (Python, SQL, or similar is a plus)"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Required: Engineering or computer science degree from top tier institution; candidate background is in operations and strategy, not engineering or CS",
+        "mitigation": "Candidate's transformation and product-ownership work demonstrates analytical and problem-solving capability; however, formal CS/engineering background is explicitly required",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficiency with formulas, logic, and structured modeling; Python, SQL, and programming are core to role but candidate has only basic Python knowledge",
+        "mitigation": "Candidate is actively learning Python, but deployment-ready proficiency is required for day-one effectiveness on AI agent configuration and data pipeline work",
+        "severity": "high"
+      },
+      {
+        "gap": "Forward-deployed engineer, Data Scientist / AI Engineer, Solutions Architect, or implementation-consultant background explicitly listed; candidate has strategy and operations background",
+        "mitigation": "Candidate's transformation and requirements work is adjacent to solutions implementation, but lacks hands-on technical implementation or consulting brand experience",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated background in FP&A, financial modeling, or planning workflows, which is a 'nice to have' and key context for Pigment's domain",
+        "mitigation": "Candidate's commercial operations background may include planning touch-points; domain ramp would require self-directed learning",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Required Engineering or computer science degree from top tier institution' as the opening requirement. Candidate profile indicates strategy and operations background at Google Devices and Services with no stated CS or engineering degree.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "2\u20135 years technical/implementation experience is explicitly required. Reporting line and company context (600+ person scale-stage SaaS) suggest L4 IC/specialist scope. Title 'AI Deployment Strategist' is not a standard level anchor, but the JD framing as a technical implementation role (not management) and the required experience band point to L4 rather than L5.\"",
+    "role_family_fit": 62,
+    "scope_seniority": 58,
+    "summary": "The candidate's eight years of operations and transformation leadership at Google demonstrate strong stakeholder management and process design capability. However, the role requires a CS or engineering degree and hands-on proficiency with Python, SQL, and structured data modeling for AI agent deployment\u2014skills the candidate does not possess. While the approved-stretch category (Implementation-heavy AI transformation roles) is relevant, the explicit hard requirement for an engineering degree and the technical implementation focus (not strategic transformation) create a poor fit. The role is L4-equivalent; candidate seniority aligns, but technical and credential gaps are significant and not easily mitigated in a technical deployment position.\"",
+    "uncertainties": [
+      "No detail on candidate's actual exposure to SaaS platform configuration, APIs, or data pipeline concepts beyond transformation context",
+      "Depth of Python learning and timeline to proficiency unclear; 'actively learning' may not meet deployment readiness expectations",
+      "Unclear whether candidate's 'logic design' and 'requirements' work included hands-on formula-building, SQL, or model authoring",
+      "No detail on customer-facing or consulting delivery experience; background is internal transformation and operations"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

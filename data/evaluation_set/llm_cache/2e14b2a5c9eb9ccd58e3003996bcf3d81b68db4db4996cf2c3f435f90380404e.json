@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google leading strategy and transformation programs with significant cross-functional stakeholder management and advisory experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as primary point of contact providing expert guidance to project managers and technical teams on export control compliance"
+      },
+      {
+        "candidate_evidence": "Demonstrated program leadership and transformation experience scaling global commercial operations; experience designing and rolling out operational programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Support implementation of Internal Control Program (ICP) and design training/awareness measures to elevate compliance posture"
+      },
+      {
+        "candidate_evidence": "Global commercial operations leadership at Google with multi-stakeholder engagement across geographies and partner ecosystems",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage professional relationships with authorities, customers, and suppliers to resolve complex licensing queries"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 28,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No export control, trade regulation, or compliance specialization; candidate background is strategy and operations, not legal or regulatory domain",
+        "mitigation": "Export control expertise is a specialized field requiring deep technical and regulatory knowledge. Helsinki would need to provide extensive onboarding and pair the hire with regulatory counsel. Candidate's program leadership could eventually transfer, but immediate productivity would be limited.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated BAFA, ITAR/EAR, or German foreign trade law expertise explicitly required for independent license application management",
+        "mitigation": "These are specialized credentials/certifications. If Helsing has an existing compliance team or counsel, mentorship and formal training could build capability over 12-18 months, but this is a specialty hire role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No technical background in goods classification, software licensing, or hardware/technology export controls",
+        "mitigation": "Candidate would need to develop technical literacy in dual-use goods classification and control regimes. Feasible with structured training but represents a significant ramp-up.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited or no demonstrated experience in defence, aerospace, or regulated dual-use technology sectors",
+        "mitigation": "Helsing's industry context is niche. Candidate's commercial operations background does not transfer directly to defence compliance culture and risk tolerance.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires independent management of complex German/U.S. export licensing, oversight of compliance programs, and end-to-end responsibility for permit administration across multiple regulatory regimes. Reporting to Director-level with high agency and specialist ownership aligns with senior IC (L5) scope. JD does not indicate manager-of-managers or significant team headcount.",
+    "role_family_fit": 15,
+    "scope_seniority": 72,
+    "summary": "This is a specialist export-control compliance role at L5 seniority with deep domain expertise requirements (BAFA, ITAR/EAR, goods classification, German/U.S. trade law). The candidate brings strong program leadership, stakeholder management, and operational transformation experience from eight years at Google, but has no export control, regulatory compliance, or defence industry background. The role's technical and legal specialization represents a disqualifying gap; this is not a strategy or operations role but a mission-critical regulatory expert position requiring years of prior export-control domain experience.",
+    "uncertainties": [
+      "Company stage/size not stated in JD; assumed to be established venture-backed (defence AI). This affects onboarding infrastructure and mentorship availability.",
+      "Whether Helsing has an in-house legal/compliance team to support domain ramp-up is unclear from JD; if no existing export-control expertise, gap becomes critical.",
+      "Candidate's German fluency (native speaker) is a strong asset, but is not material enough to offset lack of BAFA/regulatory expertise."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

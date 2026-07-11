@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and managing transformation programs with cross-functional stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "\u00dcberwachung der Einhaltung betrieblicher Standards und Regelwerke"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in global commercial operations requiring coordination across internal teams and external partners; strategic programs leadership involves stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Kommunikation und Abstimmung mit Beh\u00f6rden sowie internen Stakeholdern"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and business operations background suggest process improvement and issue resolution experience, but no direct evidence of operational troubleshooting in rail/transportation context",
+        "evidence_strength": "weak",
+        "job_requirement": "Analyse, Nachbereitung und Aufarbeitung betrieblicher Unregelm\u00e4\u00dfigkeiten inkl. Ursachenanalyse"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No railway operations, train safety, or transportation-specific background; role requires mastery of German railway regulations (Eisenbahnbetriebsordnung) and European rail standards",
+        "mitigation": "Candidate brings operational standards and compliance mindset from tech environments, but would require substantial domain-specific onboarding and formal railway certifications (Triebfahrzeugf\u00fchrer equivalent)",
+        "severity": "high"
+      },
+      {
+        "gap": "No Triebfahrzeugf\u00fchrer (train driver) certification or equivalent rail operations credential; JD lists completed apprenticeship as baseline qualification",
+        "mitigation": "Would need to obtain formal German railway driver certification or equivalent operational credential before stepping into safety inspector role",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on operational inspection, audit, and compliance enforcement experience; role emphasizes direct field supervision and on-train inspections",
+        "mitigation": "Strategy and operations background involves process definition but not field-based compliance auditing; candidate's strength is transformation design, not operational execution oversight",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated familiarity with German employment law, rail safety regulations, or authority coordination specific to German/EU rail sector",
+        "mitigation": "Candidate is German-native speaker, which aids communication and cultural fit, but requires legal and regulatory domain learning",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Abgeschlossene Ausbildung als Triebfahrzeugf\u00fchrer' (Completed apprenticeship/training as train driver) as a core requirement. This is a mandatory credential for safety inspection in German rail operations. Candidate has no background in rail operations, train driving, or equivalent transportation safety certifications.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 60,
+    "level_rationale": "Role requires 3\u20135 years of prior rail operations or equivalent safety/compliance experience as a baseline (train-driver apprenticeship completion); Safety Inspector title in regulated rail context suggests individual contributor or junior supervisory scope. Mid-career (L4) is a reasonable estimate given operational oversight scope, but company size and organizational reporting line are unstated in JD, moderating confidence.",
+    "role_family_fit": 5,
+    "scope_seniority": 40,
+    "summary": "Safety Inspector at FlixTrain (German railway operator) is a specialized operational compliance and field-audit role requiring German train-driver certification, mastery of rail safety regulations, and hands-on train inspection\u2014fundamentally different from strategy, operations, and transformation work. Candidate brings strong stakeholder management and process-design background but has no railway operations, safety inspection, or rail-specific technical credentials. Hard blocker: mandatory Triebfahrzeugf\u00fchrer apprenticeship certification is not met.",
+    "uncertainties": [
+      "Company size and stage (Flix parent company structure) not stated; FlixTrain scale and organizational hierarchy unclear",
+      "Reporting line and management scope not specified in JD",
+      "Whether role involves people management or is purely individual-contributor field inspection",
+      "Candidate's willingness or ability to obtain German rail driver certification unclear from profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

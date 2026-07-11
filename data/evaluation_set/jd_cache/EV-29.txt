@@ -12,4 +12,3 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 Company: Roblox
 Role title: Lead, Strategic Initiatives
 Location: San Mateo (US)
-Role context: US role but candidate has a warm internal referral — warm_path softens (do not hard-block); still high friction. Tests warm_path vs US-friction interaction.

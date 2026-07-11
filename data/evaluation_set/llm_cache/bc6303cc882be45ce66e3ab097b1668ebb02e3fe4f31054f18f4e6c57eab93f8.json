@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google in Strategy and Operations / Product Operations with two promotions; core positioning is Strategy and Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations department role reporting to CEO Office"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs at Google Devices and Services",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic cross-functional scope and transformation leadership"
+      },
+      {
+        "candidate_evidence": "Product operations ownership, requirements definition, transformation program execution, and cross-functional stakeholder management demonstrated at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Role requires clear ownership and ambition-setting capability"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "JD severely corrupted and incomplete\u2014no readable scope, responsibilities, team size, reporting relationship, or qualifications visible",
+        "mitigation": "Request clean JD copy from source URL or recruiting contact to enable proper role-level and requirement mapping",
+        "severity": "high"
+      },
+      {
+        "gap": "Payments/fintech domain background not evident in Google Devices and Services background",
+        "mitigation": "Candidate has proven ability to learn new domains through transformation and product operations work; fintech is learnable but adds ramp time",
+        "severity": "medium"
+      },
+      {
+        "gap": "CEO Office roles typically require proven high-stakes cross-functional influence and executive alignment; candidate evidence focuses on product/ops execution rather than C-suite advisory scope",
+        "mitigation": "Clarify role scope\u2014if true Chief of Staff / strategic advisor role, assess whether candidate has led enterprise-wide transformations or board-level initiatives",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "JD is corrupted and unreadable. Title \"Strategy, CEO Office\" at an unknown-stage fintech suggests L5\u2013L6 scope (5\u20138 years or senior-IC strategy ownership), but without JD text, team scope, reporting clarity, or company stage, confidence is low. CEO Office roles are often L5\u2013L6 at scale-stage companies; interpret cautiously pending clean JD.",
+    "role_family_fit": 70,
+    "scope_seniority": 50,
+    "summary": "Strong family fit (Strategy & Operations / Chief of Staff) and 8-year tenure align well, but the JD is severely corrupted\u2014no readable scope, responsibilities, reporting line, or requirements. Estimated level L5 based on title alone. Cannot assess scope seniority, CEO-office-specific influence scope, or fintech domain fit without legible JD. Recommend obtaining clean job description before proceeding.",
+    "uncertainties": [
+      "JD source is severely corrupted HTML / CSS / JavaScript with no readable job description text beyond title and location",
+      "Company stage and size unknown; cannot calibrate 'Strategy, CEO Office' level expectations",
+      "Reporting relationship, team scope, and strategic charter entirely unclear",
+      "CEO Office roles may imply executive-level stakeholder management and board exposure; candidate evidence emphasizes product/ops execution rather than C-suite advisory"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "blocked",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Deployment Strategist role in Professional Services Operations"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience leading transformation programs and scaling operations across global commercial teams at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic role requiring cross-functional stakeholder engagement and program leadership"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "unknown",
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "JD text is largely unparseable (HTML/CSS cruft dominates; actual job responsibilities, requirements, and scope are not clearly extractable)",
+        "mitigation": "Request clean plain-text JD with explicit role scope, key responsibilities, years-of-experience requirement, and reporting line",
+        "severity": "high"
+      },
+      {
+        "gap": "No clear visibility into whether this is a Pure Product Manager role requiring PM/SDLC depth (deprioritized family) or a true Deployment Strategist implementation-heavy transformation role (approved stretch family)",
+        "mitigation": "Clarify role intent: does it emphasize strategic business problem-solving, process design, stakeholder management, and execution (strategist) or product-development lifecycle and feature roadmap ownership (PM)?",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate profile explicitly notes honest gap: 'Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management'; cannot assess fit without understanding role's actual scope",
+        "mitigation": "Determine whether role prioritizes native PM/SDLC competencies or operator/strategist competencies",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 5,
+    "level_rationale": "Posted-role JD is unreadable due to HTML/CSS pollution. Cannot extract years required, seniority signals (reporting line, scope), or management breadth from the Role JSON. Estimate: unknown.",
+    "role_family_fit": 45,
+    "scope_seniority": 25,
+    "summary": "Cannot evaluate this submission. The fetched JD (Role JSON) is corrupted with HTML/CSS and contains no extractable job description, responsibilities, requirements, or scope. The role title \"Deployment Strategist\" is in the candidate's approved-stretch families, but without readable job text, role family fit, seniority level, and alignment strength cannot be credibly assessed. Request a clean plain-text JD to proceed.",
+    "uncertainties": [
+      "JD text is unreadable; actual role responsibilities, seniority level, and scope unknown",
+      "Cannot determine whether role requires native Product Manager or PM/SDLC depth vs. implementation-heavy strategist competencies",
+      "Company size/stage not stated in Role JSON; Databricks stage/team context absent",
+      "No explicit years of experience, reporting line, or management span stated",
+      "Candidate's honest gap in native PM experience cannot be weighed without knowing role's actual PM vs. strategist balance"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,83 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services leading commercial operations and transformation programs; two promotions demonstrating strategy-setting capability; positioning as Strategy and Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "Define and execute OpenAI's EMEA GTM partnerships strategy, operating model, and business objectives"
+      },
+      {
+        "candidate_evidence": "Google experience scaling global commercial operations; no explicit partner-ecosystem or co-delivery program evidence in profile; this is a core strength gap",
+        "evidence_strength": "medium",
+        "job_requirement": "Own partner-sourced, partner-influenced, and partner-delivered business outcomes across EMEA; Partner closely with regional sales leadership to create scalable co-sell and co-delivery motions"
+      },
+      {
+        "candidate_evidence": "Scaling operations and transformation programs at Google suggests operational rigor; no direct evidence of partner enablement, certification programs, or third-party ecosystem governance",
+        "evidence_strength": "medium",
+        "job_requirement": "Establish governance frameworks, operating rhythms, and performance management systems for the partner ecosystem; drive partner enablement and accountability mechanisms"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google and leadership positioning; no explicit team leadership scope, headcount managed, or organization-building evidence provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Recruit, develop, and lead a high-performing team of GTM Partner Directors across EMEA; build culture centered on customer outcomes and accountability"
+      },
+      {
+        "candidate_evidence": "Google Devices & Services global scope; no explicit evidence of alliance program management or executive stakeholder engagement at partner-organization level (CEOs, Managing Partners)",
+        "evidence_strength": "medium",
+        "job_requirement": "Have built and managed large-scale strategic alliance programs across multiple countries and markets; operate with senior executives including CEOs, Managing Partners, CIOs, CTOs"
+      },
+      {
+        "candidate_evidence": "Transformation program experience at Google; no consulting, services delivery, or professional services economics background indicated",
+        "evidence_strength": "weak",
+        "job_requirement": "Understand enterprise delivery models, consulting economics, and how services organizations drive technology adoption; familiarity with enterprise AI adoption and transformation programs"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 58,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "Limited direct experience building and managing large-scale strategic alliance or partnership programs with GSIs, consulting firms, and services organizations",
+        "mitigation": "Hire embedded partner operations specialist; partner with GTM VP and Sales leadership for alliance framework best practices; establish partnerships mentorship or advisory relationship with peer alliance leader at hyperscaler or enterprise software vendor",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated background in consulting economics, professional services delivery models, or how services organizations operationalize and monetize technology partnerships",
+        "mitigation": "Invest in structured onboarding on consulting economics and services delivery; work closely with Finance, Services, and existing partner organizations to learn margin, utilization, and delivery-risk models; hire or partner with a services operations expert",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of leading cross-functional executive engagement with external C-suite stakeholders (CEOs, Managing Partners, CIOs) or managing regional reporting complexity",
+        "mitigation": "Leverage OpenAI executive relationships and Sales leadership to co-drive initial partner calls; develop executive engagement playbook with Communications/Marketing; pair with GTM VP for executive relationship coaching",
+        "severity": "medium"
+      },
+      {
+        "gap": "Team leadership scope not explicitly detailed; no clear evidence of managing direct reports, org design, or hiring at scale",
+        "mitigation": "Clarify expected team size and structure in first 30 days; establish weekly 1:1s and feedback loops with new team; partner with People Operations for hiring and development infrastructure",
+        "severity": "medium"
+      },
+      {
+        "gap": "No prior experience with partner enablement, certification programs, performance management frameworks, or KPI accountability systems specific to ecosystem partners",
+        "mitigation": "Study existing partner certifications in industry (e.g., cloud provider models); hire Director of Partner Operations to lead enablement/governance; leverage cross-functional operations expertise from Google tenure",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD explicitly requires 15+ years enterprise technology/partnerships/ecosystem leadership; scope includes building and leading a distributed team across Europe, owning regional GTM strategy and partner-driven revenue, and operating at CEO/C-suite level with external executives. This is manager-of-managers scope with significant business ownership, indicating L6. Confidence reduced slightly because company stage/size context is not stated in JD, though OpenAI's scale supports the estimate.",
+    "role_family_fit": 72,
+    "scope_seniority": 68,
+    "summary": "Strong strategic and operations background with eight years of Google experience and two promotions positions the candidate well for GTM strategy and transformation scope. However, this role is an L6-stretch requiring 15+ years of alliance/partnership program management, services economics, and third-party ecosystem stewardship\u2014areas where candidate evidence is thin. No evidence of consulting, GSI relationships, or partner certification/enablement programs; regional distribution and partner-driven revenue ownership are unclear. Gaps are learnable but nontrivial; manageability depends on partner support and ramp timeline.",
+    "uncertainties": [
+      "Profile does not specify headcount managed, team leadership breadth, or organizational design experience at Google",
+      "No information on candidate's familiarity with Salesforce, partner management systems, or alliance tracking infrastructure",
+      "Extent of executive-level external stakeholder management (with partner CEOs, Managing Partners) is not stated; Google experience may be internal-facing",
+      "Company stage/size context for OpenAI is not stated in JD, which slightly limits L6 confidence even though role scope and seniority requirements are explicit",
+      "No evidence of success in regional expansion, market entry, or navigating EMEA regulatory/cultural complexity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

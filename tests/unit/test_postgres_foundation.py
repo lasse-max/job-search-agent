@@ -140,11 +140,42 @@ class PostgresFoundationTest(unittest.TestCase):
         schema = postgres_core_schema()
 
         self.assertIn("current_calibrated_role_evaluations", schema)
-        self.assertIn("latest.model_version LIKE '%|hybrid\\_claude\\_v2' ESCAPE '\\'", schema)
+        self.assertIn("latest.model_version LIKE '%|hybrid\\_claude\\_v3' ESCAPE '\\'", schema)
         self.assertIn("latest.model_version NOT ILIKE '%deterministic_fallback%'", schema)
         self.assertIn("{provenance,fallback_quality}", schema)
         self.assertIn("{provenance,is_fallback}", schema)
         self.assertNotIn("deterministic_fallback_v1", schema)
+
+    def test_versioned_evaluation_skip_schema_has_idempotent_upgrade(self) -> None:
+        schema = postgres_core_schema()
+        migration = Path(
+            "migrations/006_stage15_versioned_evaluation_skips.sql"
+        ).read_text(encoding="utf-8")
+
+        for sql in (schema, migration):
+            self.assertIn("ADD COLUMN IF NOT EXISTS evaluator_version TEXT", sql)
+            self.assertIn("idx_evaluation_skips_evaluator", sql)
+        workflow = Path(".github/workflows/migrate-postgres.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(
+            "migrations/006_stage15_versioned_evaluation_skips.sql",
+            workflow,
+        )
+
+    def test_evaluator_v3_upgrade_keeps_live_view_current_and_non_fallback(self) -> None:
+        migration = Path("migrations/005_stage15_evaluator_v3.sql").read_text(
+            encoding="utf-8"
+        )
+        workflow = Path(".github/workflows/migrate-postgres.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("WITH (security_invoker = true)", migration)
+        self.assertIn("%|hybrid\\_claude\\_v3", migration)
+        self.assertIn("NOT ILIKE '%deterministic_fallback%'", migration)
+        self.assertIn("{provenance,fallback_quality}", migration)
+        self.assertIn("migrations/005_stage15_evaluator_v3.sql", workflow)
 
     def test_migration_report_redacts_target_and_surfaces_ambiguous_rows(self) -> None:
         report = MigrationReport(
@@ -174,7 +205,8 @@ class PostgresFoundationTest(unittest.TestCase):
             "db.private-project.supabase.co:5432/postgres"
         )
         error = RuntimeError(
-            "connection failed for user \"postgres.project\" at "
+            "connection to server at \"db.private-project.supabase.co\" "
+            "(203.0.113.42), port 5432 failed for user \"postgres.project\"; "
             "host=db.private-project.supabase.co password=secret-password "
             f"dsn={database_url}"
         )
@@ -184,10 +216,12 @@ class PostgresFoundationTest(unittest.TestCase):
         self.assertNotIn("postgres.project", redacted)
         self.assertNotIn("db.private-project.supabase.co", redacted)
         self.assertNotIn("secret-password", redacted)
+        self.assertNotIn("203.0.113.42", redacted)
         self.assertNotIn(database_url, redacted)
         self.assertIn("user [redacted]", redacted)
         self.assertIn("host=[redacted]", redacted)
         self.assertIn("password=[redacted]", redacted)
+        self.assertIn("([redacted]), port 5432", redacted)
 
     def test_migration_workflow_uses_replace_batches_and_escaped_like_pattern(self) -> None:
         workflow = Path(".github/workflows/migrate-postgres.yml").read_text(encoding="utf-8")

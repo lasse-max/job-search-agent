@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices; experience with requirements logic design, UAT, rollout, and transformation",
+        "evidence_strength": "medium",
+        "job_requirement": "Design and implement comprehensive evaluation frameworks to measure LLM capabilities across diverse customer use cases"
+      },
+      {
+        "candidate_evidence": "Product Operations / Operations leadership background with cross-functional stakeholder management and transformation program ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with research teams and partner with product teams to improve evaluation tooling"
+      },
+      {
+        "candidate_evidence": "Python described as basic and actively learning",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical coding skills in Python"
+      },
+      {
+        "candidate_evidence": "No machine learning, LLM, or deep technical AI/ML background stated in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep understanding of concepts and algorithms underlying machine learning and LLMs"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No ML evaluation, LLM benchmarking, or agentic-systems evaluation experience. Role requires 3+ years; candidate has none.",
+        "mitigation": "Candidate could ramp on evaluation methodologies through on-the-job learning paired with ML frameworks (PyTorch, HuggingFace), but this requires strong foundational ML knowledge the candidate does not possess.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python proficiency required; candidate reports basic level and is actively learning.",
+        "mitigation": "Role demands hands-on infrastructure and pipeline building in Python. Actively learning does not meet 3+ years of production expectation.",
+        "severity": "high"
+      },
+      {
+        "gap": "Deep machine learning and LLM algorithm knowledge required; candidate background is in commercial operations, not AI/ML science or engineering.",
+        "mitigation": "Understanding model hallucination, domain-specific risk, and ML concepts is core to evaluation design. Operations background does not substitute for ML foundation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No open-source evaluation framework contributions or LLM research publications. Ideal qualification not present.",
+        "mitigation": "Lower priority than core requirements, but signals lack of hands-on evaluation systems work.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role requires \"strong technical coding skills in Python\" and states \"3+ years of experience in ML evaluation, benchmarking for LLM or agentic systems.\" Candidate reports Python as \"basic and actively learning\" and has no stated ML evaluation, benchmarking, or LLM experience. These are core duties, not preferred skills; the JD states candidates must \"prove experience in AI or machine learning product implementation\" and have \"deep understanding of concepts and algorithms underlying machine learning and LLMs.\"",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 3+ years specialized ML evaluation experience, hands-on Python and ML frameworks, and deep algorithm knowledge. Applied AI team operates like startup CTOs with end-to-end ownership. Reporting context not stated. These signals map to mid-level IC (L4 equivalent); company size/stage not disclosed, lowering confidence slightly.",
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "Applied AI Evaluation Engineer at Mistral is a deep ML/LLM technical IC role requiring 3+ years of ML evaluation, benchmarking, and LLM systems experience, production-grade Python, and algorithm-level knowledge. Candidate is a Strategy and Operations / Product Operations leader with eight years at Google in commercial transformation and program ownership, but has no ML evaluation background, basic Python, and no deep AI/ML engineering foundation. The hard blockers (Python proficiency, LLM evaluation expertise, ML algorithm knowledge) are disqualifying core duties. Role is outside target family; fit is non-strategic operations.",
+    "uncertainties": [
+      "Company size and stage not disclosed; estimate assumes mid-sized AI research/product company.",
+      "Degree requirements not mentioned; cannot assess educational hard blocker.",
+      "Candidate's detailed Google Devices experience in commercial operations unclear; no evidence of touching ML, evaluation, or technical infrastructure.",
+      "Whether \"actively learning Python\" includes production-grade proficiency or is nascent not specified."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

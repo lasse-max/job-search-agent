@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with commercial operations scaling and transformation program ownership; two promotions and documented experience scaling global commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Own and achieve a defined revenue target within an assigned territory or vertical"
+      },
+      {
+        "candidate_evidence": "Deep experience in transformation programs and commercial operations scaling requiring cross-functional stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead cross-functional collaboration across Product, Engineering, Marketing, Policy, and Operations to support complex deals"
+      },
+      {
+        "candidate_evidence": "Strategic and Operations leader with experience influencing senior stakeholders in commercial transformation contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and maintain relationships with senior-level advertising decision-makers, delivering strategic guidance"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No demonstrated full-cycle sales cycle ownership (prospecting, qualification, negotiation, closure) or territory/quota accountability",
+        "mitigation": "Candidate's transformation and commercial operations background involves deal strategy and stakeholder negotiation, but not primary revenue ownership. Could learn sales mechanics with strong onboarding, but gap is material for day-one effectiveness.",
+        "severity": "high"
+      },
+      {
+        "gap": "No performance marketing, digital marketing, or advertising domain experience; candidate background is product/device company operations",
+        "mitigation": "OpenAI Ads platform is new; candidate would require domain education on advertising ROI metrics, campaign structures, and advertiser buyer psychology. Not insurmountable but extends ramp-up significantly.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited evidence of client-facing advisory consulting background or proven track record influencing external executives at scale",
+        "mitigation": "Internal stakeholder management is documented; external advisory relationships and account-based partnership strategy are not explicitly claimed in profile.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience building structured business cases for clients or translating internal insights into external commercial narratives",
+        "mitigation": "Strategy background suggests analytical capability; execution with external audiences and commercial positioning is not explicitly evidenced.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Posted role requires 10+ years in performance/digital marketing or client-facing strategy roles, with 3+ years as proven executive advisor and quota ownership. This is a full-cycle sales role with defined territory targets and complex deal closure. These signals\u2014especially 10+ years, revenue target ownership, and senior stakeholder engagement\u2014map to L5 seniority in a growth-stage company context.",
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "This is a full-cycle enterprise advertising sales role at OpenAI with clear revenue ownership, complex deal structure, and cross-functional coordination scope\u2014strong role seniority (L5). However, the candidate's background is Strategy &amp; Operations / Product Operations within a core product company, not performance marketing, client-facing consulting, or quota-carrying advertising sales. Core gaps: no stated advertising/marketing domain experience, no full-cycle sales cycle ownership, no territory revenue targets, and no client advisory background. While cross-functional leadership and stakeholder management transfer, this is a material misalignment in domain and sales execution model.",
+    "uncertainties": [
+      "Whether candidate's 'commercial operations scaling' included direct revenue target ownership or was primarily operational/infrastructure transformation",
+      "Depth and scope of candidate's external stakeholder and client relationship management versus internal cross-functional influence",
+      "Candidate's willingness and ability to transition from operations/strategy execution to full-cycle quota-carrying sales model",
+      "OpenAI's onboarding and domain training investment appetite for high-potential operations leaders new to advertising"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

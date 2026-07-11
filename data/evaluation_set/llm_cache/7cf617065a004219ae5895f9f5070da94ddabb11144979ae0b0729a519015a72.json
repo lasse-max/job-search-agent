@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; demonstrated expertise in GTM, product operations, and cross-functional commercial leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive revenue growth by optimising the go-to-market strategy for Airwallex products and channels in EMEA with detailed local market knowledge"
+      },
+      {
+        "candidate_evidence": "Product Operations leader with experience in requirements definition, logic design, UAT, rollout, and transformation; stakeholder management across product, commercial, and senior leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive product strategy, working closely with commercial and product functions and senior stakeholders across EMEA and globally to expand and localise Airwallex' product offering"
+      },
+      {
+        "candidate_evidence": "Eight years of transformation program leadership and scaling operations globally; proven ability to partner cross-functionally and drive end-to-end business outcomes",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead a variety of expansion projects to expand Airwallex' presence in EMEA by partnering with a wide range of stakeholders throughout the business"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with analytics and modeling as core discipline; experience with data-driven decision-making and commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Build & maintain operational and financial models to support everyday business operations, including revenue forecasting, reporting and ad hoc analyses"
+      },
+      {
+        "candidate_evidence": "Eight years at multi-functional Google environment; demonstrated success scaling global operations and leading cross-functional transformation initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "You collaborate seamlessly across functions and cultures, excelling at influencing without authority and building trust with senior stakeholders"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions in Strategy and Operations / Product Operations roles; meets and exceeds minimum seniority requirement",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years of work experience, ideally with a mix of top-tier strategy consulting, high-growth startups, and/or commercial/product leadership roles"
+      }
+    ],
+    "confidence": 0.8,
+    "estimated_level": "L5",
+    "evidence_strength": 82,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "No explicit fintech or financial-services product experience; background is consumer hardware and services",
+        "mitigation": "JD states fintech experience is 'a strong advantage' not a requirement; candidate's eight-year track record of rapid product-market fit, cross-functional GTM, and global commercial scaling demonstrates transferable domain expertise; fintech domain knowledge is learnable within first 90\u2013180 days",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct top-tier strategy consulting background (classic case-team experience); background is primarily in-house operations and transformation",
+        "mitigation": "JD lists consulting as 'ideally' part of a mix, not a requirement; candidate brings equivalent or superior structured problem-solving, data-driven decision-making, and cross-functional leadership from in-house scaling role at major tech company",
+        "severity": "low"
+      },
+      {
+        "gap": "Experience with data tools (Looker, Tableau) not explicitly confirmed; analytics and modeling discipline present but specific tool expertise unclear",
+        "mitigation": "Standard BI tools are learnable; candidate's eight-year background in data-driven decision-making, revenue forecasting, and analytics provides strong foundation for rapid tool adoption",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 5+ years with strategy/consulting/startup/product-commercial leadership; title \"Senior Manager\" with broad EMEA P&L, product strategy, and cross-functional partnership responsibilities indicates L5. Google company-size context and role scope (revenue strategy, product expansion, cross-regional stakeholder influence) supports L5-L6 range; L5 assumed absent explicit team-leadership or manager-of-managers language in the JD.",
+    "role_family_fit": 90,
+    "scope_seniority": 84,
+    "summary": "Strong fit for EMEA Revenue Strategy & Operations role. Candidate brings eight years of proven Strategy and Operations leadership at Google with two promotions, directly aligned to revenue growth, product strategy, expansion initiatives, and cross-functional commercial operations. Gaps in fintech domain experience and specific BI-tool expertise are low-severity and manageable; core problem-solving, stakeholder influence, and operational-excellence capabilities directly match role requirements. Culture and working-style fit evident in candidate's transformation-program track record and global team leadership.",
+    "uncertainties": [
+      "Company stage and typical team size for EMEA region not stated; if team is significantly larger than candidate's prior span, ramping pace may differ",
+      "Specific depth of candidate's Looker/Tableau or equivalent BI-tool experience not confirmed in profile",
+      "Candidate's depth of commercial P&L ownership versus support/analysis role in prior Google positions not fully detailed"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

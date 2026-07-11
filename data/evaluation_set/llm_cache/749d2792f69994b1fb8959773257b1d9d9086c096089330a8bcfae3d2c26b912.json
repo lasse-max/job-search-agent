@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in global commercial operations and transformation programs; strong track record scaling operations and leading strategic programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Leveraging accounting expertise to guide accounting firms through digital transformation"
+      },
+      {
+        "candidate_evidence": "Product Operations leader with stakeholder management experience across transformation programs; relationship-building embedded in strategic advisory and transformation delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Building deep, lasting relationships with key decision-makers and becoming a trusted advisor"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and commercial operations scaling experience indicates structured problem-solving and process-design capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Problem-solving orientation and identifying needs to offer practical solutions for accounting practices"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "No accounting or CPA credential; role explicitly targets CPA-qualified or significant accounting-practice experience",
+        "mitigation": "Candidate's strategy and operations background could partially transfer to advisory consulting, but lacks the domain-specific accounting practice knowledge the role positions as foundational",
+        "severity": "high"
+      },
+      {
+        "gap": "Xero revenue department context suggests quota-weighted sales target; candidate background is strategy and transformation operations, not quota-carrying or direct customer-acquisition sales",
+        "mitigation": "Role repositions as 'not typical sales,' but revenue department structure and earning-potential framing suggest sales metrics will be material; operations background does not include direct sales execution",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in accounting software, fintech, or online accounting market",
+        "mitigation": "Candidate has interest in emerging technologies and transformation, but no domain or product-market evidence in accounting or financial services",
+        "severity": "medium"
+      },
+      {
+        "gap": "Geographic constraint: role based in Sydney, Australia; candidate location not stated",
+        "mitigation": "Candidate should confirm work eligibility and willingness to relocate or work from Sydney",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role requires 3\u20135 years typical accounting-practice experience and autonomous territory ownership with relationship-driven advisory scope; no management, formal IC seniority, or multi-year leadership scope stated. Positioned as career transition for practitioners, not senior leadership. Aligns with L4 (3\u20135 years territory/relationship ownership without explicit manager or large-scale program scope).",
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Xero is recruiting for an accounting-practice advisory role\u2014a SaaS customer-facing position targeting CPA or accounting-practice professionals to guide firms through digital transformation on the Xero platform. Although the role is repositioned as \"not typical sales,\" it sits in Revenue with emphasis on earning potential and customer outcomes, suggesting quota or pipeline contribution. The candidate brings eight years of strategy and operations leadership at Google with transformation program and commercial scaling experience, which maps to advisory and stakeholder-management components. However, the candidate has no accounting credential, practice background, or fintech/online accounting domain experience, and the role explicitly positions accounting expertise as foundational. Additionally, the revenue department context and earning-potential framing conflict with the candidate's strategy and operations profile rather than quota-carrying sales execution. Role-family fit is low; significant domain and credentials gap; high gap severity.",
+    "uncertainties": [
+      "Degree of quota or revenue metric pressure on the role; JD repositions it as advisory, but Revenue department signals sales-target orientation",
+      "Candidate location and work eligibility for Sydney, Australia (not stated in profile)",
+      "Whether candidate's transformation and operations background would be sufficient to acquire accounting-practice domain knowledge on the job",
+      "Xero company size and stage context (not stated in Role JSON); affects seniority calibration"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

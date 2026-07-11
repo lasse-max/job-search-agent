@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, experience scaling global commercial operations and transformation programs, but no stated procurement, sourcing, fresh produce, agriculture, or perishable food category background.",
+        "evidence_strength": "weak",
+        "job_requirement": "6\u20138+ years of strategic procurement or sourcing experience, with proven track record in fresh produce, agriculture, or highly perishable food categories"
+      },
+      {
+        "candidate_evidence": "Product experience from ownership, requirements, logic design, UAT, rollout, and transformation; experience scaling global commercial operations and transformation programs at Google, but no evidence of supply-chain transformation, sourcing model redesign, or agricultural supply-chain work.",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience designing and executing multi-year category strategies and transforming supply chains (e.g., transitioning from wholesale to direct-to-grower/cross-docking models)"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy background suggests stakeholder management and matrix leadership; no stated evidence of multi-million-euro portfolio management, supplier contract negotiation, or international commercial deal closure.",
+        "evidence_strength": "weak",
+        "job_requirement": "Expert-level negotiation skills, with experience managing multi-million-euro portfolios and closing complex, long-term international contracts"
+      },
+      {
+        "candidate_evidence": "Two promotions and experience at Google suggest leadership growth; positioning emphasizes strategy and operations leadership, but no explicit evidence of executive influence, matrix team leadership, or mentorship.",
+        "evidence_strength": "medium",
+        "job_requirement": "Demonstrated ability to influence at executive level and lead complex matrix teams; natural mentor who elevates performance"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 32,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No procurement, category management, or sourcing background. Role requires 6\u20138+ years in fresh produce, agriculture, or perishable food; candidate background is Google Devices/Services product operations.",
+        "mitigation": "Candidate could transition into procurement if supplied formal training in category strategy, agricultural supply chains, and sourcing fundamentals; HelloFresh mentorship would be essential. This is a domain pivot, not a skill-building gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in supply-chain transformation, agricultural risk management, or direct-to-grower model design. Role emphasizes sourcing model redesign and agronomic risk strategy.",
+        "mitigation": "Candidate's transformation program background may transfer conceptually; however, agricultural supply-chain work requires market expertise, regulations, and vendor ecosystem knowledge not evident in profile.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of multi-million-euro commercial portfolio management or supplier/vendor contract negotiation at scale. Role requires expert-level negotiation and closing complex international JBPs.",
+        "mitigation": "Negotiation skills may exist but are not substantiated in profile. Contract drafting and commercial deal closure in procurement are distinct from product operations stakeholder management.",
+        "severity": "high"
+      },
+      {
+        "gap": "No agricultural macro-trends, climate-risk, or global commodity-market expertise. Role requires deep subject-matter knowledge of agronomic risk, cold-chain logistics, and market economics.",
+        "mitigation": "Domain expertise would require substantial ramp-up; external hiring or consulting partnership would likely be faster than internal cross-training.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 80,
+    "level_rationale": "6\u20138+ years required experience with complex supply-chain transformation, multi-million-euro portfolio ownership, and executive-level vendor negotiation. Matrix leadership and senior mentorship scope align with established senior-IC or manager expectations. Role is clearly L5 or higher; estimated L5 given no explicit manager-of-managers title or head-level scope in JD.",
+    "role_family_fit": 15,
+    "scope_seniority": 78,
+    "summary": "Senior International Category Manager for Fresh Produce at HelloFresh: L5 procurement-leadership role requiring 6\u20138+ years in fresh produce, agriculture, or perishable-food sourcing; deep supply-chain transformation and direct-to-grower expertise; multi-million-euro portfolio and expert-level vendor negotiation. Candidate is an eight-year Google Devices/Services operations leader with transformation and matrix leadership experience but no procurement, sourcing, agricultural, or perishable-food background. Core domain and functional expertise gaps are substantial and not remediable through on-the-job ramp. Not a strategic/operations or transformation stretch fit; role is procurement-operations within a specific supply-chain domain.",
+    "uncertainties": [
+      "HelloFresh company size and stage not stated; cannot contextualize reporting lines or organizational maturity.",
+      "Candidate's stakeholder-management and negotiation depth not detailed; unclear whether product-operations negotiations translate to supplier/vendor commercial deal closure.",
+      "No detail on candidate's supply-chain, logistics, or agricultural market exposure even incidentally at Google.",
+      "Role emphasis on agricultural risk, climate adaptation, and commodity markets implies deep domain expertise; unclear if candidate has any adjacent experience."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

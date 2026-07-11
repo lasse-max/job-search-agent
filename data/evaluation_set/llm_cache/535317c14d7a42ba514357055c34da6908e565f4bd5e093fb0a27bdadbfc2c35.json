@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in Devices and Services with two promotions, positioning as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations department role"
+      },
+      {
+        "candidate_evidence": "Primary role families include Business Operations; experience scaling global commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Business Operations role title and scope"
+      },
+      {
+        "candidate_evidence": "Experience with scaling global commercial operations and transformation programs at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Growth and scaling responsibilities"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Incomplete JD snapshot provided",
+        "mitigation": "Cached JD contains only boilerplate page structure and metadata; actual role responsibilities, requirements, reporting line, team scope, and key objectives are not present. Cannot assess alignment on specific business operations scope, growth metrics, stakeholder level, or technical/analytical depth required.",
+        "severity": "high"
+      },
+      {
+        "gap": "Airbnb company context and seniority signal missing",
+        "mitigation": "No posted years required, team size, reporting line, or company-stage context provided in JD. Sydney location suggests regional scope, but ownership, budget, and stakeholder level are undefined. Cannot distinguish L4 IC, L5 manager, or Senior Manager equivalent.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit product, revenue, or transformation scope described",
+        "mitigation": "Role title suggests growth and operations blend, but without JD body, cannot confirm whether focus is revenue operations, product strategy, marketplace operations, GTM execution, or general business optimization. Candidate's strength in transformation and scaling may or may not map.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 30,
+    "level_rationale": "Title \"Business Operations and Growth Lead\" in a mature, US-headquartered tech company typically signals L4\u2013L5 IC or early manager scope. No years required, reporting line, or team-management language in provided JD text. Sydney location and 'Lead' suffix suggest possible individual contributor or small-team ownership. Without full JD body, confidence is low.",
+    "role_family_fit": 65,
+    "scope_seniority": 40,
+    "summary": "The provided JD snapshot contains only boilerplate page markup and metadata; the actual job description, responsibilities, reporting structure, and key requirements are not present. Role title and location suggest a Strategy & Operations or Business Operations position at Airbnb, which aligns with candidate's primary families, but lack of substantive JD content prevents meaningful assessment of scope seniority, growth focus, or specific skill gaps. Cannot recommend without complete role details.",
+    "uncertainties": [
+      "JD body and actual responsibilities not provided\u2014only cached page structure returned",
+      "Reporting line and team scope unknown",
+      "Years required, growth metrics focus (revenue, marketplace, product, geographic), and analytical depth undefined",
+      "Candidate's transformation and scaling experience cannot be mapped to specific role ownership without detailed scope",
+      "Airbnb's seniority band for 'Lead' title unclear without organization context or comparable roles"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

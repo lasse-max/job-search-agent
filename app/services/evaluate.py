@@ -24,6 +24,7 @@ from app.config import (
 from app.models import Alignment, CompanyConfig, Gap, HardBlocker, RoleEvaluation
 from app.services.llm_evaluator import (
     LLMProvider,
+    LLMProviderError,
     LLMRoleRequest,
     ModelSpendTracker,
     PROMPT_VERSION,
@@ -34,7 +35,7 @@ from app.services.text_rules import unsupported_language_requirement
 
 
 DETERMINISTIC_FALLBACK_VERSION = "deterministic_fallback_v1"
-HYBRID_EVALUATOR_VERSION = "hybrid_claude_v2"
+HYBRID_EVALUATOR_VERSION = "hybrid_claude_v3"
 
 
 @dataclass(frozen=True)
@@ -58,6 +59,8 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
 
     filter_config = load_relevance_filter()
     profile = load_candidate_profile()
+    if _employer_opt_out_reason(company, profile):
+        return RelevanceDecision(False, "employer_opt_out")
     location_policy = load_location_policy()
     if filter_config.target_location_required:
         location_decision = _location_gate_decision(row, company, location_policy)
@@ -112,7 +115,13 @@ def evaluate_role(
     if provider is not None:
         tracker = spend_tracker or ModelSpendTracker.from_env()
         tracker.assert_budget_allows()
-        llm_result = provider.evaluate(LLMRoleRequest(row=row, company=company, profile=profile))
+        try:
+            llm_result = provider.evaluate(
+                LLMRoleRequest(row=row, company=company, profile=profile)
+            )
+        except LLMProviderError as exc:
+            tracker.record(exc.cost_usd)
+            raise
         tracker.record(llm_result.cost_usd)
         llm_hard_blockers = [
             HardBlocker(type=item.type, evidence=item.evidence)
@@ -123,7 +132,7 @@ def evaluate_role(
             company,
             _merge_hard_blockers(
                 hard_blockers,
-                _filter_llm_hard_blockers(row, llm_hard_blockers, profile),
+                _filter_llm_hard_blockers(llm_hard_blockers, profile),
             ),
             llm_result.output.dimensions,
             llm_confidence=llm_result.output.confidence,
@@ -142,6 +151,9 @@ def evaluate_role(
             llm_uncertainties=list(llm_result.output.uncertainties),
             llm_summary=llm_result.output.summary,
             llm_advisory_recommendation=llm_result.output.advisory_recommendation,
+            estimated_level=llm_result.output.estimated_level,
+            level_confidence=llm_result.output.level_confidence,
+            level_rationale=llm_result.output.level_rationale,
             model_version=llm_result.model_version,
             prompt_version=llm_result.prompt_version,
             cache_hit=llm_result.cache_hit,
@@ -236,6 +248,9 @@ def _role_evaluation_from_llm(
     llm_uncertainties: list[str],
     llm_summary: str,
     llm_advisory_recommendation: str,
+    estimated_level: str,
+    level_confidence: int,
+    level_rationale: str,
     model_version: str,
     prompt_version: str,
     cache_hit: bool,
@@ -251,6 +266,8 @@ def _role_evaluation_from_llm(
         scoring_policy,
         location_policy,
         profile,
+        estimated_level=estimated_level,
+        level_confidence=level_confidence,
     )
     fit_score = _weighted_fit_score(calibrated_dimensions, scoring_policy)
     feasibility_state, feasibility_reason = _feasibility(locations, location_policy)
@@ -294,6 +311,9 @@ def _role_evaluation_from_llm(
             "llm_advisory_recommendation": llm_advisory_recommendation,
             "llm_cache_hit": str(cache_hit).lower(),
         },
+        estimated_level=estimated_level,
+        level_confidence=level_confidence,
+        level_rationale=level_rationale,
         summary=llm_summary,
     )
 
@@ -323,12 +343,6 @@ def _final_recommendation(
         feasibility_state,
         company,
         hard_blockers,
-        overleveled=_is_overleveled_role(
-            row["title"],
-            _role_text(row),
-            company,
-            profile,
-        ),
         stretch_family=_is_stretch_family(
             row["title"],
             row["department"] or "",
@@ -352,6 +366,9 @@ def _calibrated_llm_dimensions(
     scoring_policy: ScoringPolicyConfig,
     location_policy: LocationPolicyConfig,
     profile: CandidateProfileConfig,
+    *,
+    estimated_level: str,
+    level_confidence: int,
 ) -> dict[str, int]:
     """Apply conservative calibration floors to LLM scores.
 
@@ -387,7 +404,7 @@ def _calibrated_llm_dimensions(
         }
         for dimension, floor in floors.items():
             calibrated[dimension] = max(calibrated[dimension], floor)
-    return _apply_fit_inputs(
+    fit_adjusted = _apply_fit_inputs(
         row,
         company,
         calibrated,
@@ -395,6 +412,45 @@ def _calibrated_llm_dimensions(
         location_policy,
         profile,
     )
+    return _apply_estimated_level_fit(
+        fit_adjusted,
+        estimated_level=estimated_level,
+        level_confidence=level_confidence,
+        scoring_policy=scoring_policy,
+    )
+
+
+def _apply_estimated_level_fit(
+    dimensions: dict[str, int],
+    *,
+    estimated_level: str,
+    level_confidence: int,
+    scoring_policy: ScoringPolicyConfig,
+) -> dict[str, int]:
+    """Modestly sort out-of-band levels without suppressing an otherwise surfaced role."""
+
+    if level_confidence < 50 or estimated_level in {"L4", "L5", "unknown"}:
+        return dimensions
+    penalty_key = {
+        "L3": "level_below_target_scope",
+        "L6": "level_one_band_scope",
+        "L7+": "level_two_plus_bands_scope",
+    }.get(estimated_level)
+    if penalty_key is None:
+        return dimensions
+    penalty = scoring_policy.gap_penalties.get(penalty_key, 0)
+    adjusted = dict(dimensions)
+    adjusted["scope_seniority"] = _clamp_score(
+        adjusted.get("scope_seniority", 0) - penalty
+    )
+    baseline_fit = _weighted_fit_score(dimensions, scoring_policy)
+    adjusted_fit = _weighted_fit_score(adjusted, scoring_policy)
+    if (
+        baseline_fit >= scoring_policy.recommendation_thresholds.stretch_min_fit
+        and adjusted_fit < scoring_policy.recommendation_thresholds.stretch_min_fit
+    ):
+        return dimensions
+    return adjusted
 
 
 def _apply_fit_inputs(
@@ -453,6 +509,9 @@ def _fit_cap_for_gate(
     requirement_text = _role_requirement_text(row)
     filter_config = load_relevance_filter()
 
+    if _employer_opt_out_reason(company, profile):
+        return 55
+
     if filter_config.target_location_required:
         location_decision = _location_gate_decision(row, company, location_policy)
         warm_us_exception = (
@@ -472,24 +531,15 @@ def _fit_cap_for_gate(
         return 55
     if _matches_any(title_department, filter_config.excluded_title_department_patterns):
         return 55
-    if _below_target_scope_gap(row, profile):
-        return 58
     if _agent_development_product_manager(title_department):
         return 68
     if _off_function_title_department(title_department):
-        return 55
-    if _is_overleveled_role(title, text, company, profile):
         return 55
     if _technical_pm_depth(title_lower, text):
         return 55
     if _security_clearance_required(text):
         return 55
 
-    compensation_signal = _compensation_seniority_signal(title, text)
-    if compensation_signal == "over_target_senior_ic":
-        return 68
-    if compensation_signal == "over_target_executive":
-        return 55
     return None
 
 
@@ -554,8 +604,6 @@ def _scope_seniority(
 ) -> int:
     profile = profile or load_candidate_profile()
     title_lower = title.lower()
-    if _is_overleveled_role(title, text, company, profile):
-        return 38
     if any(term in title_lower for term in profile.below_level_title_terms):
         return 35
     if _is_plain_revenue_ops_manager(title_lower) and not _has_clear_senior_scope(text, profile):
@@ -646,7 +694,7 @@ def _market_for_location(
     location_policy: LocationPolicyConfig,
 ) -> MarketPolicyConfig | None:
     market_aliases = {
-        "Australia": ("sydney", "melbourne", "australia"),
+        "Australia": ("sydney", "melbourne", "perth", "australia"),
         "UK": ("london", "united kingdom", "uk"),
         "Singapore": ("singapore",),
         "EU": ("germany", "munich", "berlin", "paris", "amsterdam", "madrid", "europe"),
@@ -681,7 +729,6 @@ def _recommendation(
     company: CompanyConfig,
     hard_blockers: list[HardBlocker],
     *,
-    overleveled: bool = False,
     stretch_family: bool = False,
     exceptional_upside: bool = False,
     surface_capped: bool = False,
@@ -691,8 +738,6 @@ def _recommendation(
     thresholds = scoring_policy.recommendation_thresholds
     if hard_blockers or feasibility_state == "blocked":
         return "blocked"
-    if overleveled:
-        return "skip"
     if fit_score >= thresholds.apply_now_min_fit:
         return "apply_now"
     if fit_score >= thresholds.consider_min_fit:
@@ -914,12 +959,10 @@ def _hard_blockers(
     profile: CandidateProfileConfig,
 ) -> list[HardBlocker]:
     blockers = list(_technical_blockers(title_lower, scoring_policy))
-    suppress_degree_requirements = _is_stretch_family(title_lower, "", text, profile)
     blockers.extend(
         _disqualifying_hard_requirements(
             text,
             profile,
-            suppress_degree_requirements=suppress_degree_requirements,
         )
     )
     if _technical_pm_depth(title_lower, text):
@@ -963,24 +1006,15 @@ def _merge_hard_blockers(
 
 
 def _filter_llm_hard_blockers(
-    row: sqlite3.Row,
     blockers: list[HardBlocker],
     profile: CandidateProfileConfig,
 ) -> list[HardBlocker]:
-    text = _role_text(row)
-    suppress_degree_requirements = _is_stretch_family(
-        row["title"],
-        row["department"] or "",
-        text,
-        profile,
-    )
     return [
         blocker
         for blocker in blockers
         if _llm_hard_blocker_is_enforceable(
             blocker,
             profile,
-            suppress_degree_requirements=suppress_degree_requirements,
         )
     ]
 
@@ -988,27 +1022,10 @@ def _filter_llm_hard_blockers(
 def _llm_hard_blocker_is_enforceable(
     blocker: HardBlocker,
     profile: CandidateProfileConfig,
-    *,
-    suppress_degree_requirements: bool,
 ) -> bool:
     if blocker.type != "disqualifying_hard_requirement":
         return True
-    evidence = blocker.evidence.lower()
-    config = profile.disqualifying_hard_requirements
-    if _matches_any(evidence, config.nice_to_have_context_patterns):
-        return False
-    if not _matches_any(evidence, config.requirement_patterns):
-        return False
-    if _technical_depth_requirement(evidence):
-        return True
-    if not _matches_any(evidence, config.must_have_context_patterns):
-        return False
-    if (
-        suppress_degree_requirements
-        and _degree_requirement(evidence)
-    ):
-        return False
-    return True
+    return has_disqualifying_hard_requirement(blocker.evidence, profile)
 
 
 def _technical_blockers(
@@ -1060,50 +1077,81 @@ def _work_authorization_blocker(
 def _disqualifying_hard_requirements(
     text: str,
     profile: CandidateProfileConfig,
-    *,
-    suppress_degree_requirements: bool = False,
 ) -> list[HardBlocker]:
+    return [
+        HardBlocker(
+            type="disqualifying_hard_requirement",
+            evidence=(
+                "Required technical credential/depth appears outside the "
+                f"candidate profile: {fragment.strip()}"
+            ),
+        )
+        for fragment in _enforceable_disqualifying_fragments(text, profile)
+    ]
+
+
+def has_disqualifying_hard_requirement(
+    text: str,
+    profile: CandidateProfileConfig | None = None,
+) -> bool:
+    """Return whether text contains an enforceable profile-level hard requirement."""
+
+    return bool(
+        _enforceable_disqualifying_fragments(
+            text,
+            profile or load_candidate_profile(),
+        )
+    )
+
+
+def _enforceable_disqualifying_fragments(
+    text: str,
+    profile: CandidateProfileConfig,
+) -> list[str]:
     config = profile.disqualifying_hard_requirements
     if not config.requirement_patterns:
         return []
-    blockers: list[HardBlocker] = []
+    fragments: list[str] = []
     for fragment in _requirement_fragments(text):
         if _matches_any(fragment, config.nice_to_have_context_patterns):
             continue
         if not _matches_any(fragment, config.requirement_patterns):
             continue
-        has_technical_depth = _technical_depth_requirement(fragment)
-        if not has_technical_depth and not _matches_any(
-            fragment,
-            config.must_have_context_patterns,
-        ):
+        if _technical_degree_mention(fragment):
+            if not _degree_requirement(fragment) or not _matches_any(
+                fragment,
+                config.must_have_context_patterns,
+            ):
+                continue
+        elif not _technical_depth_requirement(fragment):
             continue
-        if (
-            suppress_degree_requirements
-            and _degree_requirement(fragment)
-            and not has_technical_depth
-        ):
-            continue
-        blockers.append(
-            HardBlocker(
-                type="disqualifying_hard_requirement",
-                evidence=(
-                    "Required technical credential/depth appears outside the "
-                    f"candidate profile: {fragment.strip()}"
-                ),
-            )
-        )
-    return blockers
+        fragments.append(fragment)
+    return fragments
 
 
 def _degree_requirement(text: str) -> bool:
+    if not _technical_degree_mention(text):
+        return False
+    has_nontechnical_field = bool(
+        re.search(
+            r"\b(?:business|economics|finance|management|commerce|strategy|operations|"
+            r"social sciences?|liberal arts)\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+    has_alternative_list = bool(re.search(r"\b(?:or|and/or)\b|[,/]", text, re.IGNORECASE))
+    return not (has_nontechnical_field and has_alternative_list)
+
+
+def _technical_degree_mention(text: str) -> bool:
     return bool(
         re.search(
             (
                 r"\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\b"
-                r".{0,80}\b(?:computer science|software engineering|engineering)\b"
+                r".{0,100}\b(?:computer science|software engineering|engineering)\b"
                 r"|\b(?:computer science|software engineering|engineering)\b"
-                r".{0,80}\bdegree\b"
+                r".{0,100}\b(?:degree|bachelor'?s?|master'?s?|msc|bs|ba)\b"
             ),
             text,
             flags=re.IGNORECASE,
@@ -1112,23 +1160,61 @@ def _degree_requirement(text: str) -> bool:
 
 
 def _technical_depth_requirement(text: str) -> bool:
-    return bool(
-        re.search(
-            (
-                r"\b(?:advanced|expert|professional|proficient)\b"
-                r".{0,50}\b(?:python|java|typescript|javascript|programming|coding|software development)\b"
-                r"|\bstrong\b.{0,50}\b(?:python|java|typescript|javascript|programming|coding)\b"
-                r"|\bproduction software (?:development|engineering)\b"
-                r"|\bproduction coding\b"
-                r"|\b(?:build|building|built|write|writing)\b.{0,50}\bproduction (?:software|code)\b"
-                r"|\b(?:deep|strong|expert|advanced)\b.{0,50}\b(?:machine learning|ml|data science)\b"
-                r".{0,50}\b(?:engineering|model(?:l)?ing)\b"
-                r"|\bml engineering\b"
-            ),
-            text,
-            flags=re.IGNORECASE,
-        )
+    technical_signal = (
+        r"(?:\b(?:advanced|expert|professional|proficient|strong)\b.{0,50}"
+        r"\b(?:python|java|typescript|javascript|programming|coding|software development)\b"
+        r"|\bproduction software (?:development|engineering)\b"
+        r"|\bproduction coding\b"
+        r"|\b(?:build|building|built|develop|developing|write|writing)\b.{0,50}"
+        r"\bproduction (?:software|code)\b"
+        r"|\b(?:deep|strong|expert|advanced)\b.{0,50}"
+        r"\b(?:machine learning|ml|data science)\b.{0,50}"
+        r"\b(?:engineering|model(?:l)?ing)\b"
+        r"|\bml engineering\b"
+        r"|\bproficient\b.{0,50}\b(?:developing|writing|building)\b.{0,25}\bcode\b"
+        r"|\bhands[- ]on(?: experience)?\b.{0,80}"
+        r"\b(?:building|developing|deploying)\b.{0,80}"
+        r"\b(?:ai applications?|software|code)\b)"
     )
+    for sentence in re.split(r"[\n.;•]+", text):
+        sentence = sentence.strip()
+        match = re.search(technical_signal, sentence, flags=re.IGNORECASE)
+        if not match:
+            continue
+        candidate_owned = (
+            r"\byou(?:'ll|\s+will|\s+must|\s+need\s+to|\s+are expected to|"
+            r"\s+are required to)?\s+(?:are\s+)?(?:proficient|expert|strong)\b"
+            r".{0,60}\b(?:python|java|typescript|javascript|programming|coding|"
+            r"software development)\b"
+            r"|\byou(?:'ll|\s+will|\s+must|\s+need\s+to|\s+are expected to|"
+            r"\s+are required to)?\s+(?:design|build|develop|write|ship|own)\b"
+            r".{0,100}\b(?:production (?:software|code)|ai applications?|"
+            r"(?:deep\s+)?(?:machine learning|ml) engineering)\b"
+        )
+        if re.search(candidate_owned, sentence, flags=re.IGNORECASE):
+            return True
+        direct_context = (
+            rf"\b(?:this|the) role\b.{{0,30}}"
+            rf"\b(?:requires?|owns?|involves?|includes?|will|must|needs?\s+to)\b"
+            rf".{{0,70}}{technical_signal}"
+            rf"|\b(?:responsible for|ability to|expected to|required to)\b.{{0,100}}"
+            rf"{technical_signal}"
+            rf"|\b(?:requirements?|qualifications?|mandatory|must[- ]have)\b.{{0,100}}"
+            rf"{technical_signal}"
+            rf"|\b(?:hands[- ]on experience|experience|proficiency)\b.{{0,100}}"
+            rf"{technical_signal}"
+            rf"|{technical_signal}.{{0,80}}\b(?:required|mandatory|must[- ]have|experience|"
+            r"proficiency|central duty|core duty|primary responsibility)\b"
+        )
+        if re.search(direct_context, sentence, flags=re.IGNORECASE):
+            return True
+        if match.start() <= 12 and not re.search(
+            r"^(?:at\s+\w+|our\s+|the\s+(?:platform|product|company|team)|we\s+)",
+            sentence,
+            flags=re.IGNORECASE,
+        ):
+            return True
+    return False
 
 
 def _required_credential_gap(text: str) -> bool:
@@ -1149,11 +1235,86 @@ def _required_credential_gap(text: str) -> bool:
 
 
 def _requirement_fragments(text: str) -> list[str]:
-    return [
-        fragment.strip()
-        for fragment in re.split(r"[\n.;•]+", text)
-        if fragment.strip()
-    ]
+    fragments: list[str] = []
+    for sentence in re.split(r"[\n.;•]+", text):
+        sentence = sentence.strip()
+        if not sentence:
+            continue
+        fragments.extend(_preference_scoped_fragments(sentence))
+    return fragments
+
+
+def _preference_scoped_fragments(sentence: str) -> list[str]:
+    preference_pattern = (
+        r"\b(?:preferred|nice to have|bonus|a plus|asset|optional|helpful|desirable|"
+        r"not required)\b"
+    )
+    if not re.search(preference_pattern, sentence, flags=re.IGNORECASE):
+        return [sentence]
+    required_context_pattern = (
+        r"\b(?:required?|mandatory|must|needs?\s+to|minimum qualifications?|"
+        r"requirements?|qualifications?)\b"
+    )
+    if not re.search(required_context_pattern, sentence, flags=re.IGNORECASE) and re.search(
+        rf"{preference_pattern}\s*$",
+        sentence,
+        flags=re.IGNORECASE,
+    ):
+        return [f"preferred: {sentence}"]
+
+    delimiter_pattern = re.compile(
+        r"(?P<delimiter>\s*,\s*(?:(?:and|but|while|whereas|with)\s+)?"
+        r"|\s+(?:and|but|while|whereas|with)\s+)",
+        flags=re.IGNORECASE,
+    )
+    tokens = delimiter_pattern.split(sentence)
+    parts: list[str] = []
+    buffer = tokens[0].strip()
+    inherited_preference = False
+    for index in range(1, len(tokens), 2):
+        delimiter = tokens[index]
+        right = tokens[index + 1].strip()
+        buffer_preferred = bool(
+            re.search(preference_pattern, buffer, flags=re.IGNORECASE)
+        ) or inherited_preference
+        right_preferred = bool(
+            re.search(preference_pattern, right, flags=re.IGNORECASE)
+        )
+        if not (buffer_preferred or right_preferred):
+            buffer = _join_requirement_clause(buffer, right, delimiter)
+            continue
+
+        if buffer:
+            parts.append(buffer)
+        delimiter_lower = delimiter.casefold()
+        right_required = bool(
+            re.search(
+                required_context_pattern,
+                right,
+                flags=re.IGNORECASE,
+            )
+        )
+        inherited_preference = (
+            buffer_preferred
+            and not right_preferred
+            and not right_required
+            and not any(
+                word in delimiter_lower for word in ("but", "while", "whereas")
+            )
+        )
+        buffer = f"preferred: {right}" if inherited_preference else right
+    if buffer:
+        parts.append(buffer)
+    return parts
+
+
+def _join_requirement_clause(buffer: str, clause: str, delimiter: str) -> str:
+    if not clause:
+        return buffer
+    if not buffer:
+        return clause
+    connector = delimiter.strip() or ","
+    return f"{buffer} {connector} {clause}".strip()
 
 
 def _security_clearance_required(text: str) -> bool:
@@ -1237,35 +1398,15 @@ def _has_clear_senior_scope(
     )
 
 
-def _is_overleveled_role(
-    title: str,
-    text: str,
-    company: CompanyConfig | None,
+def _employer_opt_out_reason(
+    company: CompanyConfig,
     profile: CandidateProfileConfig,
-) -> bool:
-    title_lower = title.lower()
-    if not _matches_any(title_lower, profile.seniority_ceiling.over_level_title_patterns):
-        return False
-    if "chief of staff" in title_lower:
-        return False
-    exception_text = f"{title} {company.name if company else ''} {text}".lower()
-    return not _matches_any(
-        exception_text,
-        profile.seniority_ceiling.startup_exception_patterns,
-    )
-
-
-def _below_target_scope_gap(
-    row: sqlite3.Row,
-    profile: CandidateProfileConfig,
-) -> bool:
-    title_lower = str(row["title"]).lower()
-    if not re.search(r"\b(?:analyst|associate)\b", title_lower):
-        return False
-    if "senior associate" in title_lower:
-        return False
-    scoped_text = _role_requirement_text(row)
-    return not _has_clear_senior_scope(scoped_text, profile)
+) -> str | None:
+    company_name = re.sub(r"\s+", " ", company.name).strip().casefold()
+    for configured_name, reason in profile.employer_opt_outs.items():
+        if company_name == re.sub(r"\s+", " ", configured_name).strip().casefold():
+            return reason
+    return None
 
 
 def _compensation_seniority_signal(title: str, text: str) -> str | None:
@@ -1419,7 +1560,7 @@ def _role_requirement_text(row: sqlite3.Row) -> str:
 def _requirement_scope_text(title_department: str, description_text: str) -> str:
     if _looks_like_aggregate_careers_page(description_text):
         return title_department
-    return f"{title_department} {description_text}".lower()
+    return f"{title_department}\n{description_text}".lower()
 
 
 def _looks_like_aggregate_careers_page(text: str) -> bool:

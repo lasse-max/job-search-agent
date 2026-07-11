@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs, with demonstrated experience managing metrics-driven initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Hands-on problem solver who tracks KPIs and metrics in real-time to move fast and spot trends"
+      },
+      {
+        "candidate_evidence": "Two promotions and history of navigating transformation programs indicate adaptability and learning capacity",
+        "evidence_strength": "medium",
+        "job_requirement": "Resilient and comfortable with occasional re-prioritization; learns on the job"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L3",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Field Talent Community is a talent pipeline entry point, not a defined operational or strategic role; no explicit job responsibilities, scope, or seniority anchor provided",
+        "mitigation": "If a specific role opens in distribution/fulfillment, candidate's operations scaling and transformation background could become relevant. Current posting lacks sufficient scope definition.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is positioned in People/HR talent acquisition function, outside candidate's target Strategy, Operations, BizOps, Product Operations, or GTM families",
+        "mitigation": "Candidate's eight-year strategy and operations track record does not map to talent community management, recruiting pipeline, or HR operations workflows.",
+        "severity": "high"
+      },
+      {
+        "gap": "Department (People) and location-based fulfillment center focus do not align with candidate's global commercial operations and transformation expertise",
+        "mitigation": "Candidate should wait for operational, supply chain, or transformation openings within HelloFresh's core distribution business if interested in the company.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 40,
+    "level_rationale": "JD describes a talent community application pipeline with no defined role responsibilities, reporting line, or scope. Language emphasizes hands-on problem-solving and KPI tracking typical of L3\u2013L4 operational contributor roles, but absence of explicit ownership, team size, or business impact makes level estimation speculative. No years-of-experience requirement stated.",
+    "role_family_fit": 8,
+    "scope_seniority": 15,
+    "summary": "This is a talent community entry point in HelloFresh's People department, not a defined strategy, operations, or transformation role. The JD lacks explicit responsibilities, scope, reporting structure, or business impact; it serves as a pipeline for future distribution-center opportunities. Candidate's eight-year Google ops and transformation background does not map to talent acquisition or field recruiting workflows, placing this far outside her target families and seniority band.",
+    "uncertainties": [
+      "No actual job responsibilities defined\u2014JD is a recruitment funnel entry rather than a role description",
+      "HelloFresh company size and stage not stated; cannot assess early-stage senior-IC equivalency",
+      "Unclear whether 'Field Talent Community' leads to a specific open role or is purely speculative pipeline",
+      "No indication of whether future distribution-center opportunities would carry strategy, transformation, or operations scope"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

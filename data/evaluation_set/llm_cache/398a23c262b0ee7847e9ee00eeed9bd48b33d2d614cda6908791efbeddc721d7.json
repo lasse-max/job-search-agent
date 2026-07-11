@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years scaling global commercial operations and transformation programs at Google Devices and Services; led strategic initiatives and process design across complex cross-functional teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Spearhead creation of AI solutions to enable growth and drive internal efficiency"
+      },
+      {
+        "candidate_evidence": "Extensive experience in Business Operations and Product Operations requiring coordination across engineering, product, sales, and finance; demonstrated ability to drive end-to-end transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with cross-functional teams to implement AI technologies to meet product goals"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy background with experience in requirements definition, UAT, and rollout planning; strategic program leadership at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Assist in AI application roadmapping and strategy"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "10+ years backend software development required; candidate has strategy/operations background with no production software engineering or coding",
+        "mitigation": "Candidate's 8 years at large-scale tech company demonstrates technical fluency and ability to work with engineering teams, but does not substitute for direct backend development experience or production coding in Python/TypeScript",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficiency in Python, TypeScript, or JavaScript required; candidate reports Python is basic and actively learning",
+        "mitigation": "Rapid upskilling possible given technical environment at Google, but does not meet minimum qualification threshold for a Staff-level engineering role",
+        "severity": "high"
+      },
+      {
+        "gap": "Design and implementation of large-scale distributed, high-concurrency systems; no evidence of hands-on system architecture or infrastructure design",
+        "mitigation": "Candidate has worked on transformation of complex systems but from operations/strategy perspective, not as architect or engineer",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience with vector databases; no mention in candidate profile or typical operations/strategy background",
+        "mitigation": "Specialized technical knowledge learnable, but candidate would enter role significantly behind peers",
+        "severity": "medium"
+      },
+      {
+        "gap": "Computer Science, Mathematics, or related degree required; candidate degree not specified in profile",
+        "mitigation": "Unknown from provided candidate data; cannot assess against minimum qualification",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "MINIMUM QUALIFICATIONS: 10+ years in backend software development, with a passion for AI and language technologies...Proficiency in Python, Typescript or Javascript...Experience in design and development of large-scale distributed, high concurrency, high load, high availability systems...A relevant degree in Computer Science, Mathematics or related fields. Candidate background is Strategy and Operations (no production software development, minimal Python proficiency, no distributed systems engineering, degree field unknown).",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 85,
+    "level_rationale": "Staff AI Engineer at a $8B fintech with 2,200+ engineers: reporting context not explicit, but \"new Generative AI department\" leadership role requiring architecture, system design, and 10+ years backend development indicates L6 (Senior Staff / Principal IC scope). Title and core responsibilities (spearhead AI solutions, define technical vision, design robust APIs and architecture) align with L6 IC leadership.",
+    "role_family_fit": 15,
+    "scope_seniority": 70,
+    "summary": "This Staff AI Engineer role is a deep software engineering and production-coding position requiring 10+ years of backend development, hands-on Python/TypeScript proficiency, and large-scale distributed systems design. The candidate's background is Strategy and Operations leadership (8 years at Google scaling commercial operations and transformation), with honest gaps including no production software development, basic Python, and no hands-on system architecture. The role sits outside target families and core strengths; the hard-requirement mismatch on required degree, coding proficiency, and backend engineering experience is disqualifying. Recommend skip.",
+    "uncertainties": [
+      "Candidate educational background (degree field) not specified; cannot confirm CS/Math degree requirement",
+      "Depth of candidate's technical fluency with AI/ML frameworks and large-scale system internals not detailed",
+      "Whether candidate has any embedded or adjacent AI/ML project experience beyond transformation programs"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

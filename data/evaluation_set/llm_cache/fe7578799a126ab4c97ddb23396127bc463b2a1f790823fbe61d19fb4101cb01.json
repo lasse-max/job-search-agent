@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in global commercial operations and transformation programs; experience with stakeholder management and commercial engagement.",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive new client acquisition through structured prospecting, targeted outreach, and high-quality discovery conversations with senior decision-makers"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience scaling global commercial operations and transformation programs, suggesting cross-functional collaboration and solution design capabilities.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Category Leads and internal stakeholders to develop tailored propositions and contribute to reusable sales assets"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with transformation program leadership indicates problem-solving and stakeholder management experience.",
+        "evidence_strength": "medium",
+        "job_requirement": "Consultative approach: conduct high-quality needs analysis with senior stakeholders, translating business challenges into clear solutions"
+      },
+      {
+        "candidate_evidence": "No stated FMCG experience or background in retail, CPG, or consumer insights consulting.",
+        "evidence_strength": "weak",
+        "job_requirement": "FMCG commercial acumen: solid understanding of how FMCG organisations use data and analytics to drive commercial decisions"
+      },
+      {
+        "candidate_evidence": "No quota-carrying sales or direct sales achievement history in profile; background is in operations, transformation, and commercial strategy rather than frontline revenue delivery.",
+        "evidence_strength": "weak",
+        "job_requirement": "Sales track record: 5+ years of direct sales experience with proven track record of achieving and exceeding revenue targets"
+      },
+      {
+        "candidate_evidence": "No stated CRM platform experience in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "CRM proficiency: Experience using CRM systems (e.g. HubSpot) for pipeline management, forecasting, and reporting"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No direct sales experience or quota-carrying background; JD requires 5+ years of proven revenue target achievement.",
+        "mitigation": "Candidate's stakeholder management and commercial operations experience at Google could partially offset if translatable to consultative discovery, but closing and territory ownership are distinct from strategy/operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "FMCG/CPG/retail sector knowledge absent; JD emphasizes solid understanding of FMCG data and analytics use cases.",
+        "mitigation": "Sector knowledge can be learned, but requires immersion and customer mapping in competitive UK FMCG market; slows early pipeline velocity.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated CRM or sales-tech platform experience (HubSpot, forecasting, pipeline reporting).",
+        "mitigation": "CRM proficiency is learnable; operational discipline from prior role may support adoption, but no hands-on evidence.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Profile is classified as deprioritized function: pure quota-carrying sales is explicitly not a target family.",
+        "mitigation": "Role is explicitly a Business Development/sales leadership position with 'full sales cycle' and 'revenue targets' as primary accountability; strategic or transformation scope is not evident in JD.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requests 5+ years of direct sales experience and independent pipeline ownership with revenue accountability. London-based BDM role at 1,200+ person global firm; reporting line not stated. Sales-cycle ownership and quota targets suggest L4 account/territory manager scope rather than L5 strategic leadership. No manager-of-managers or advanced strategic scope evident in JD.",
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "This is a quota-carrying Business Development/sales role in UK FMCG, a function the candidate profile explicitly deprioritizes outside of strategic transformation scope. The JD emphasizes direct sales execution (5+ years, revenue targets, pipeline ownership, CRM proficiency, sector knowledge) rather than strategy, operations, or transformation leadership. Candidate's Google commercial ops and transformation background does not provide the direct sales track record, FMCG sector knowledge, or sales-cycle closure experience the role requires. Gaps are substantial and not easily mitigated within the scope of a pure sales position.",
+    "uncertainties": [
+      "Quantium company stage and sales organization structure not detailed; unclear whether BDM role has embedded strategy/transformation scope beyond sales cycle execution.",
+      "Candidate's 'commercial operations' at Google may have involved customer-facing sales coordination, but no direct revenue accountability is stated.",
+      "FMCG/CPG market knowledge and consulting experience not mentioned in candidate profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

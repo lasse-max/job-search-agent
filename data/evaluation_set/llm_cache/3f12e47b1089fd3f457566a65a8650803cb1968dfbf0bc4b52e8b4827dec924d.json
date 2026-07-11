@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs with demonstrated team leadership and promotion history",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience managing a team of successful Big Data, Cloud, or SaaS professionals"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services operates on consumption/subscription models; scaling commercial operations implies revenue model and cost optimization experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in consumption based business environments"
+      },
+      {
+        "candidate_evidence": "Positioning states scaling global commercial operations and two promotions; profile indicates team leadership but evidence of mentoring technical pre-sales teams is indirect",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience mentoring and scaling technical teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background at Google implies cross-functional stakeholder management; no explicit evidence of close sales partnership or pre-sales alignment provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to partner and collaborate with Sales and other cross-functional leaders"
+      },
+      {
+        "candidate_evidence": "No explicit data engineering, database, or data science background stated; transformation and commercial operations are non-technical domains",
+        "evidence_strength": "weak",
+        "job_requirement": "Technical or consulting background in Data Engineering, Database technologies or Data Science"
+      },
+      {
+        "candidate_evidence": "Profile lists German as native language and English as professional/fluent; Italian language proficiency not stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Italian native-speaker and fluent in English"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 52,
+    "gaps": [
+      {
+        "gap": "No stated background in data engineering, databases, or data science; candidate's expertise is commercial operations and transformation, not technical domain knowledge",
+        "mitigation": "Candidate's technical communication and solution-design skills from transformation programs could transfer; onboarding via Databricks product curriculum and customer-success case studies may close gap if candidate has strong learning velocity",
+        "severity": "high"
+      },
+      {
+        "gap": "Italian language requirement not met; profile lists German native and English fluent but no Italian proficiency",
+        "mitigation": "Visa and language support (translation services, accelerated Italian courses) could mitigate if company prioritizes leadership talent over immediate language fluency; Milan location may accommodate English-speaking expats",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited explicit evidence of pre-sales or sales-engineering team leadership; Google commercial operations and transformation may not translate directly to field engineering or solutions architecture team dynamics",
+        "mitigation": "Manager-track promotions indicate leadership capability; collaboration with sales and field teams in a global transformation context suggests transferable partnership skills, but ramp-up will require mentoring from regional or HQ pre-sales leadership",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience in Big Data, Cloud, or SaaS technical environments; consumption-model experience at Google may be inference only",
+        "mitigation": "Google's scale and SaaS-adjacent infrastructure provide credibility; dedicated onboarding on Databricks Data Intelligence Platform and competitive landscape can accelerate domain fluency",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Field Engineering Manager role requires leading a technical pre-sales team, partnering with sales, and building regional presence. JD emphasizes team growth, mentoring, and revenue alignment\u2014senior individual contributor or first-line manager responsibility. No explicit years-of-management required stated; company size (10,000+ orgs, $50M+ ARR-range company) and reporting to regional/HQ leadership imply L5 (Senior Manager / Lead level). Language requirement and EMEA regional scope add complexity but do not shift base level estimate.",
+    "role_family_fit": 42,
+    "scope_seniority": 68,
+    "summary": "Candidate brings eight years of Google leadership in global commercial operations and transformation programs with proven promotion track record and cross-functional collaboration skills\u2014strong match to management and strategic alignment dimensions. However, no stated technical background in data engineering, databases, or data science creates a significant domain gap for a Field Engineering Manager role at a data-centric company. Italian language requirement is not met (German native, English fluent only). Pre-sales and solutions-architecture team leadership experience is not explicitly documented. Role is primarily Field Engineering (pre-sales/solutions management), not core Strategy and Operations family, and sits outside typical scope of candidate's positioning.",
+    "uncertainties": [
+      "Whether Google Devices and Services commercial operations role entails SaaS/consumption business model clarity or is inferred from company scale",
+      "Depth of candidate's technical communication and solution-design exposure in transformation programs; whether this translates to data engineering or database solution selling",
+      "Whether Milan-based role accepts non-Italian-speaking managers or if language is a hard blocker under Databricks internal policy",
+      "Extent of candidate's pre-sales or field-engineering ecosystem familiarity versus pure operations and transformation track record"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

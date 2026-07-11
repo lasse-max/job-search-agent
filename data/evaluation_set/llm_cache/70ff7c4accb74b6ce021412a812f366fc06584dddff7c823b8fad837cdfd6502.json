@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations; led global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as technical leader defining critical systems and influencing product strategy"
+      },
+      {
+        "candidate_evidence": "Documented experience scaling global operations and leading transformation programs across multiple stakeholder groups",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional partnership with Product, Engineering, Risk and strategic communication to non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Leadership scope in transformation programs suggests team development, but no explicit mentoring evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Mentoring and coaching junior data scientists and engineers"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 35,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Advanced quantitative degree (PhD/MS in Statistics, Engineering, CS, Economics) required; candidate profile does not state advanced degree",
+        "mitigation": "Clarify educational background; if missing, candidate would need 10+ years of exceptional self-taught data science to offset, which is not evident",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years industry data science or applied ML; candidate background is Strategy and Operations, not data science",
+        "mitigation": "No direct evidence of ML systems, experimentation design, or causal inference as primary technical work",
+        "severity": "high"
+      },
+      {
+        "gap": "Proficient SQL and Python/R required; candidate has basic Python and is actively learning",
+        "mitigation": "Fundamental skill gap; learning-in-progress insufficient for Staff-level production ML deployment",
+        "severity": "high"
+      },
+      {
+        "gap": "Proven production ML deployment, experimentation, and causal inference; candidate's product experience comes from requirements, UAT, rollout, and transformation, not engineering or data science",
+        "mitigation": "None; this is a role-critical gap for Staff Data Scientist position",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Staff Data Scientist with PhD/MS requirement, 5+ years DS/ML mandate, and explicit production ML deployment, experimentation, and algorithm design responsibilities point to L6 senior IC. Reporting to Product leadership and cross-functional strategy influence typical of L6; no manager-of-managers scope, so not L7. Company size (2,200+ employees, $8B valuation) confirms senior IC expectations.",
+    "role_family_fit": 15,
+    "scope_seniority": 72,
+    "summary": "This is a Staff Data Scientist role requiring 5+ years of applied ML, advanced quantitative degree, and production ML deployment\u2014a core technical engineering/ML role. The candidate's background is Strategy and Operations leadership with transformation program expertise, not data science or engineering. While the candidate has strategic influence and cross-functional leadership experience (which map to Staff-level scope and seniority), the fundamental technical requirements\u2014advanced degree, ML systems work, SQL/Python expertise, experimentation design\u2014are not evidenced. This is a functional misalignment, not a seniority or stretch-family fit: the role is deeply technical ML engineering, outside the approved Strategy/Operations and Implementation-heavy AI families.",
+    "uncertainties": [
+      "No explicit educational degree stated in candidate profile; advanced STEM degree presence/absence is critical to hard-blocker determination",
+      "Depth and scope of 'transformation programs' at Google unclear; may or may not include data/ML work",
+      "Company size and stage context (Airwallex) stated in role JSON, but specifics of typical Staff DS expectations at this stage unknown from JD alone"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

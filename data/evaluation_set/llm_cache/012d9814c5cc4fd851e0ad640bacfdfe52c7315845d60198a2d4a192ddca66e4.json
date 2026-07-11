@@ -1,0 +1,86 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with commercial operations and transformation programs, but no direct AML, financial crime, or regulatory compliance background",
+        "evidence_strength": "weak",
+        "job_requirement": "3+ years professional experience in anti-financial crime operations and investigations"
+      },
+      {
+        "candidate_evidence": "No demonstrated expertise in financial crime regulations, KYC, AML, or TRACFIN/ACPR requirements; background is commercial operations and product transformation",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep knowledge of European and French regulations on KYC, AML, terrorism financing, sanctions, and fraud"
+      },
+      {
+        "candidate_evidence": "No evidence of Suspicious Activity Report drafting or French financial crime reporting experience",
+        "evidence_strength": "weak",
+        "job_requirement": "SAR drafting and 'd\u00e9clarant TRACFIN' delegation experience"
+      },
+      {
+        "candidate_evidence": "Profile does not state educational credentials; no law or regulatory studies background mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Law degree (\u00c9cole de droit/Master II) or Grande \u00c9cole background"
+      },
+      {
+        "candidate_evidence": "Native German speaker with professional/fluent English; no French language proficiency stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in French and English (spoken and written)"
+      },
+      {
+        "candidate_evidence": "Commercial operations and transformation focus; no KYC, sanctions screening, or financial crime investigation experience evident",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven experience in transaction monitoring, sanctions screening, and adverse media investigation"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L4",
+    "evidence_strength": 5,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No anti-financial crime operations, AML, KYC, or financial crime compliance background; candidate experience is commercial operations and transformation, not regulatory/compliance",
+        "mitigation": "Candidate would require 3\u20136 months onboarding to financial crime investigation methodology, TRACFIN/ACPR regulatory framework, and SAR drafting standards; role is fixed-term CDD and does not allow extended ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated expertise in French financial crime regulations, TRACFIN reporting requirements, or d\u00e9clarant TRACFIN role responsibilities",
+        "mitigation": "Role explicitly requires deep knowledge of European and French KYC/AML regulations and TRACFIN/ACPR expectations; candidate lacks this foundation",
+        "severity": "high"
+      },
+      {
+        "gap": "No SAR drafting, transaction monitoring, sanctions screening, or adverse media investigation experience",
+        "mitigation": "Core duties include SARs review/submission, sanctions reviews, and complex investigations; candidate has no direct evidence of these specialized compliance skills",
+        "severity": "high"
+      },
+      {
+        "gap": "No French language proficiency; role requires fluent French and English (spoken and written)",
+        "mitigation": "Role is Paris-based French MLRO function with French regulatory stakeholders; French fluency is a mandatory operational requirement",
+        "severity": "high"
+      },
+      {
+        "gap": "Educational background not stated; role requires law degree (\u00c9cole de droit/Master II) or Grande \u00c9cole qualification",
+        "mitigation": "If candidate lacks law or top-tier business school credentials, does not meet baseline educational qualification",
+        "severity": "medium"
+      },
+      {
+        "gap": "Seniority and scope expectations misaligned; candidate targets manager/senior-IC strategy and operations roles; this is a specialized compliance associate-to-mid-level track with fixed-term contract",
+        "mitigation": "Role is 6-month CDD for AFC Operations Associate/SAR Delegate; not a permanent strategic or leadership position in candidate's target family",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 3+ years financial crime operations experience, law degree or Grande Ecole, and operational ownership of AML investigations and SAR submissions; reporting to MLRO function at a 1,500-person fintech suggests mid-to-senior IC or junior management scope. Specialized regulatory compliance function at established scale; estimated L4 operations/compliance specialist baseline, potentially L5 with SAR delegation authority.",
+    "role_family_fit": 15,
+    "scope_seniority": 40,
+    "summary": "This is a highly specialized 6-month fixed-term Anti-Financial Crime (AFC) operations role requiring 3+ years AML/KYC compliance experience, deep knowledge of French TRACFIN regulations, SAR drafting, and French language fluency. The candidate is a Strategy and Operations leader with 8 years in commercial transformation at Google, with no background in financial crime, regulatory compliance, or AML operations. Multiple mandatory requirements\u2014French fluency, law/Grande \u00c9cole education, SAR drafting, TRACFIN expertise, and financial crime investigation\u2014are entirely absent. This is a specialist compliance function, not a strategic or operations transformation role in the candidate's target family. Recommend skip.",
+    "uncertainties": [
+      "Candidate educational background (degree type and institution) not provided in profile; cannot confirm law or Grande \u00c9cole requirement",
+      "No information on any regulatory, compliance, or financial crime exposure in candidate profile; absence may be intentional or due to profile incompleteness",
+      "Role's reporting line and management scope not explicitly stated; MLRO function structure at N26 unclear from JD alone"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

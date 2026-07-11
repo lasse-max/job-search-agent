@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, positioning as 'Strategy and Operations / Product Operations leader scaling global commercial operations'",
+        "evidence_strength": "strong",
+        "job_requirement": "Manager, Strategy & Operations role at DoorDash in core Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Candidate profile highlights 'experience scaling global commercial operations and transformation programs'",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and transformation program leadership and execution"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services managing commercial operations at global scale; Google's experience with marketplace-like operational complexity and cross-functional coordination applicable to DoorDash's merchant and delivery ecosystem",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations and marketplace scaling at a multi-market platform company"
+      },
+      {
+        "candidate_evidence": "Candidate's background in scaling operations implies working across product, merchant, delivery, and finance teams typical of global commercial operations",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management and cross-functional coordination in a dynamic marketplace environment"
+      },
+      {
+        "candidate_evidence": "Product Operations is listed as a primary role family; candidate positions as 'Product Operations leader' with 'requirements, logic design, UAT, rollout, and transformation' experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Product Operations or operationalization of market dynamics and process improvement"
+      },
+      {
+        "candidate_evidence": "JD does not specify relocation restrictions; candidate location is not stated in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Sydney / Melbourne location requirement"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 70,
+    "gaps": [
+      {
+        "gap": "JD does not detail specific responsibilities, scope breadth, or strategic initiatives; job board snapshot is incomplete and lacks explicit focus areas such as marketplace health, merchant expansion, operational efficiency, or new vertical launch",
+        "mitigation": "Request full JD with explicit scope, key projects, and business priorities to assess strategic vs. operational emphasis",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated DoorDash or food/delivery/logistics marketplace experience; candidate's Google Devices background is in a different product domain and operational context",
+        "mitigation": "Candidate's global scaling experience is transferable; ramp and domain learning expected for 2\u20134 months",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting or case-team experience; transformation background is internal execution-driven, not third-party strategy advisory",
+        "mitigation": "Role appears operationally focused; internal execution leadership is highly relevant if marketplace operations and scaling are central",
+        "severity": "low"
+      },
+      {
+        "gap": "Candidate location not stated in profile; role specifies Sydney / Melbourne",
+        "mitigation": "Clarify visa status, relocation willingness, and candidate's current geography",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Title \"Manager, Strategy & Operations\" at a mid-to-large scale multi-market platform company typically indicates L4 individual contributor or first-line management. JD does not state years required, but manager-level scope in a core S&O function without explicit director-of-managers language suggests L4. Reporting line and company scale (DoorDash is large-scale public) are consistent with L4-L5 band; absent additional context, L4 is conservative estimate for a manager title in ops.\"",
+    "role_family_fit": 82,
+    "scope_seniority": 68,
+    "summary": "Strong functional fit: candidate is a core Strategy & Operations professional with eight years at Google and two promotions, and the role is a manager-track position in DoorDash's Strategy & Operations department. However, the JD snapshot is incomplete and lacks specific scope, key initiatives, and responsibilities, making it difficult to assess whether this is operationally focused marketplace management or higher-level strategic program leadership. Domain gap (food/delivery vs. consumer devices) is manageable given candidate's global operations scaling background, but ramp is expected. Recommend request for full JD and clarification of candidate's location eligibility.",
+    "uncertainties": [
+      "JD is a job board snapshot missing full role description, key responsibilities, and strategic priorities\u2014cannot assess depth of scope or initiative focus",
+      "Candidate location and visa eligibility not provided; Sydney/Melbourne requirement may be a constraint",
+      "Manager title alone does not clarify reporting structure, team size, or direct P&L ownership versus advisory/support function",
+      "Food delivery / logistics marketplace operations not directly paralleled in candidate's disclosed Google Devices experience"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, experience scaling global commercial operations and transformation programs, positioning as Strategy and Operations leader with proven strategic partnership capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Act as the primary Strategic Finance partner for Channel Sales, building strong relationships and partnering on day-to-day decision-making"
+      },
+      {
+        "candidate_evidence": "Experience in product operations and strategy roles requiring requirements logic design, financial modeling, and business case development as part of transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Model unit economics and scenario analyses that clarify trade-offs and inform strategies for pricing, customer acquisition incentives, and headcount investment"
+      },
+      {
+        "candidate_evidence": "Demonstrated track record scaling global operations and leading transformation programs with planning and execution at scale; experience with cross-functional stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead and execute financial, strategic, and planning processes supporting Channel Sales activities, including monthly and quarterly performance reviews, annual and long-range planning"
+      },
+      {
+        "candidate_evidence": "Strategic Operations and Product Operations background inherently requires autonomous problem-solving, stakeholder management, and translating complex technical/operational complexity into executive recommendations",
+        "evidence_strength": "strong",
+        "job_requirement": "Operate with high degree of autonomy while partnering cross-functionally to turn complex data into clear, actionable recommendations for senior executives"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy background at Google typically includes data analysis tooling; no explicit evidence of SQL or AI-assisted analytics tools in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Mastery of Excel / Google Sheets and comfort with SQL and modern AI-assisted analytics tools"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in Strategy and Operations with commercial scale and GTM transformation experience; not traditional corporate finance, IB, PE, or consulting but strategic finance-adjacent",
+        "evidence_strength": "medium",
+        "job_requirement": "8+ years in strategic or corporate finance, investment banking, private equity, or management consulting; GTM experience is a plus"
+      }
+    ],
+    "confidence": 0.8,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 75,
+    "gaps": [
+      {
+        "gap": "No formal background in corporate finance, investment banking, or management consulting as stated in JD; background is product operations and strategy rather than financial analysis tradecraft",
+        "mitigation": "Eight years at scale with proven capacity for autonomous financial/strategic thinking, quantitative modeling, and senior stakeholder advisory. On-the-job ramp for traditional finance tools and methodologies is achievable given demonstrated analytical rigor.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct evidence of Excel/SQL/modern analytics tooling mastery; profile does not explicitly claim these technical skills",
+        "mitigation": "Product Operations and Strategy roles typically require data fluency and tools competency. Candidate profile notes Python is basic and actively learning, suggesting adaptability to analytics tooling; SQL and spreadsheet mastery are learnable for someone with analytical foundation.",
+        "severity": "low"
+      },
+      {
+        "gap": "No direct GTM or Channel Sales operations experience explicitly mentioned in profile positioning",
+        "mitigation": "Commercial operations and transformation program leadership at Google Devices suggests exposure to GTM complexity. Channel Sales is a variant on commercial operations; strategic finance principles transfer readily.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Senior Manager title at Block typically maps to L5 (established IC or senior manager scope). JD requires 8+ years in finance/strategy/consulting with autonomous partnership to senior leaders, cross-functional program leadership, and GTM exposure. Reporting to Strategic Finance Lead (not C-suite) indicates solid senior-IC scope rather than director-level autonomy. No company size/stage context impairs precision slightly, but scope language (shape frameworks, scale operating models, lead projects, mentor) anchors L5 confidently.",
+    "role_family_fit": 78,
+    "scope_seniority": 79,
+    "summary": "Candidate is an 8-year Strategy and Operations leader with Google Devices &amp; Services tenure, two promotions, and commercial transformation program experience. The role is a Strategic Finance Senior Manager requiring corporate finance/consulting background, unit-economics modeling, and Channel Sales partnership\u2014a financial planning and business operations scope well-aligned with the candidate's target L4\u2013L5 band and Strategy &amp; Operations family. Gap between product-operations tradecraft and formal finance discipline is manageable given proven analytical rigor, but candidate will require modest ramp on excel/SQL mastery and traditional financial modeling conventions. No hard blockers.",
+    "uncertainties": [
+      "Block company size/stage not stated in JD; cannot fully calibrate scope relative to enterprise or startup context.",
+      "No explicit evidence of SQL, Excel mastery, or AI-assisted analytics tools in candidate profile; assumed competency based on Strategy &amp; Operations role expectations.",
+      "Degree of GTM exposure within product operations scope at Google is unclear; assumed transferability of commercial strategy fundamentals to Channel Sales.",
+      "No evidence of formal financial modeling, variance analysis, or unit-economics work in candidate positioning; inferred from strategy/operations responsibility scope."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

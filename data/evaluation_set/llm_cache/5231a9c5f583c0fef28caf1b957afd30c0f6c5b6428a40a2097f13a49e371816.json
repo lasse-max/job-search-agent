@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with transformation and operations focus; basic Python skills and actively learning; primary background is requirements logic design, UAT, rollout, and business process transformation rather than production software development",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven ability to build integrations using APIs, middleware tools, lowcode platform or scripting languages (e.g., Python, JavaScript)"
+      },
+      {
+        "candidate_evidence": "No direct ERP system architecture, configuration, or integration technology experience evident in positioning; background is strategy and operations at Google, not financial systems engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical knowledge of ERP systems and integration technologies"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to translate business requirements and manage transformation programs; however, lacks hands-on coding and technical specification authorship at production scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with Finance team to translate business requirements into technical specifications and executable code"
+      },
+      {
+        "candidate_evidence": "Operations and transformation leadership experience; no evidence of financial infrastructure architecture, ERP configuration, or hands-on systems engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Responsible for the architecture and hands-on configuration of our financial infrastructure"
+      },
+      {
+        "candidate_evidence": "Global commercial operations background at Google suggests familiarity with large-scale finance and procurement; depth in multi-jurisdictional tax and finance systems not evident",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of finance and procurement processes and requirements"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions demonstrates self-motivation and project delivery; however, technical project scope (ERP, APIs, systems integration) differs fundamentally from operations transformation work",
+        "evidence_strength": "medium",
+        "job_requirement": "Self-motivated and able to manage technical projects from conception to deployment in a fast-paced environment"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 28,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No production software development or coding experience; candidate background is strategy and operations, not engineering",
+        "mitigation": "Candidate would require significant technical ramp-up in API integration, ERP systems, and hands-on configuration\u2014roles typically assume existing deep technical foundation",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct ERP system architecture or configuration experience (SAP, Oracle, NetSuite, etc.)",
+        "mitigation": "ERP expertise is core to the role; on-the-job learning would be slow and risky given the criticality of financial systems",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on integration technology and middleware platform experience; Python is basic and self-directed learning",
+        "mitigation": "JD explicitly requires proven API/integration build capability; candidate's primary expertise is business process and transformation, not technical implementation",
+        "severity": "high"
+      },
+      {
+        "gap": "No clear multi-jurisdictional tax and compliance systems background",
+        "mitigation": "Preferred qualification; global operations experience at Google may provide context, but specific fintech tax/regulatory systems knowledge is absent",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: 'Proven ability to build integrations using APIs, middleware tools, lowcode platform or scripting languages (e.g., Python, JavaScript)' under minimum qualifications, and role is explicitly \"IT engineer\" with \"hands-on configuration of our financial infrastructure\" and \"hands-on\" systems engineering responsibilities. Candidate profile explicitly states 'No production software-engineering background' and 'Python basic and actively learning,' indicating the foundational technical capability required for this role is not met.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 5\u20137+ years of specialized ERP and systems engineering experience, hands-on technical depth, and architecture leadership. JD emphasizes \\\"Senior\\\" title with full technical ownership of financial infrastructure. At a $8B fintech company with 2,200+ employees and regulated financial systems, this maps to L5 senior IC or early L6 systems engineering. Confidence is moderate (72) because role's exact seniority within company structure is not fully stated, but the technical depth and financial systems criticality anchor it above entry L4.",
+    "role_family_fit": 12,
+    "scope_seniority": 68,
+    "summary": "This is a **Senior IT Engineer** role in Airwallex's IT FinEng team, requiring deep hands-on expertise in ERP architecture, API/integration development, and financial systems configuration\u2014a core engineering and infrastructure role. The candidate is a Strategy and Operations leader with eight years at Google and strong program management and transformation credentials, but lacks production software development experience, ERP systems knowledge, and the hands-on coding capability the JD explicitly requires. The role's technical depth and the candidate's business-operations background represent a fundamental family mismatch; this is not a strategic advisory or transformation leadership position where the candidate's strengths would apply. Hard blocker: JD requires \"proven ability to build integrations using APIs...scripting languages\"; candidate has only basic Python and no production engineering background.",
+    "uncertainties": [
+      "Company stage and engineering maturity not fully detailed; assumed to be high-rigor fintech given valuation and compliance context",
+      "Specific ERP platform (SAP, Oracle, Workday, etc.) not named; degree of configuration vs. custom development unclear",
+      "Candidate's exact finance and procurement domain depth at Google not elaborated; assumed to be operational/commercial rather than financial systems engineering"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

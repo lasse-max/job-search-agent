@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Markets Strategy & Operations Manager role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Positioning explicitly identifies Strategy and Operations / Product Operations leader with scaling global commercial operations experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and Operations function alignment"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Completely absent job description and role requirements",
+        "mitigation": "Cannot assess specific gaps without JD details on market scope, geographies, team size, product domains, or strategic mandate. Evaluation is speculative.",
+        "severity": "high"
+      },
+      {
+        "gap": "Unknown Spotify company context and Markets organization scope",
+        "mitigation": "Cannot determine if role is L4 IC, team lead, regional manager, or cross-functional hub. Spotify's markets structure and seniority context are not stated.",
+        "severity": "high"
+      },
+      {
+        "gap": "No detail on specific markets, geographies, or business domains covered",
+        "mitigation": "Cannot assess whether candidate's global commercial operations experience maps to the intended scope (e.g., EMEA, emerging markets, subscription markets, ad markets).",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 35,
+    "level_rationale": "Title \"Manager\" suggests L4 IC or junior team lead at a large org like Spotify. No salary, years required, reporting line, or team scope stated. Company size and stage unknown per Role JSON. Cannot reliably anchor without full JD text.",
+    "role_family_fit": 75,
+    "scope_seniority": 35,
+    "summary": "The cached JD snapshot is incomplete\u2014only metadata and job portal structure were returned, with no actual role description, responsibilities, requirements, or scope. Candidate profile shows strong Strategy & Operations fit (eight years at Google, two promotions, global commercial and transformation background), but evaluation cannot proceed meaningfully without role details. Recommend fetching the full JD before consideration.",
+    "uncertainties": [
+      "No actual job description text provided; only HTML metadata and job portal structure were cached.",
+      "Markets Strategy & Operations Manager scope unknown: unclear if regional, product-line, or cross-functional hub role.",
+      "Spotify company context and Markets org maturity/stage not stated; cannot calibrate seniority or team scale.",
+      "No requirements, success metrics, or stakeholder relationships specified in available data.",
+      "Candidate's global commercial operations and device/services background may or may not map to Spotify markets domains."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

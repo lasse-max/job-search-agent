@@ -1,7 +1,7 @@
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
-export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v2";
+export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v3";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
 const CALIBRATION_FLOOR_LIMIT = 5;
 
@@ -39,6 +39,7 @@ export type PotentialMatch = {
   stableId: string;
   company: string;
   title: string;
+  department: string;
   sourceUrl: string | null;
   locations: string[];
   locationsLabel: string;
@@ -47,6 +48,9 @@ export type PotentialMatch = {
   band: MatchBand;
   fitScore: number;
   confidencePct: number;
+  estimatedLevel: "L3" | "L4" | "L5" | "L6" | "L7+" | "unknown";
+  levelConfidence: number;
+  levelRationale: string;
   feasibilityPct: number;
   feasibilityState: string;
   feasibilityReason: string;
@@ -125,9 +129,11 @@ export async function loadPotentialMatches(
     throw new Error(`Unable to load calibrated evaluations: ${error.message}`);
   }
 
-  const allCurrentMatches = (evaluationRows ?? [])
-    .map(normalizeCurrentEvaluation)
-    .filter((role): role is PotentialMatch => role !== null);
+  const allCurrentMatches = collapseLocationVariants(
+    (evaluationRows ?? [])
+      .map(normalizeCurrentEvaluation)
+      .filter((role): role is PotentialMatch => role !== null)
+  );
   const reviewableMatches = allCurrentMatches.filter((role) => role.reviewState === "new");
   const surfacedMatches = reviewableMatches.filter((role) =>
     ["apply_now", "consider", "stretch"].includes(role.recommendation)
@@ -215,6 +221,10 @@ export function normalizeCurrentEvaluation(row: CurrentEvaluationRow): Potential
   const recommendation = normalizeRecommendation(readString(evaluation.recommendation));
   const fitScore = clampPercent(readNumber(evaluation.role_fit_score), 0);
   const confidencePct = normalizePercent(readNumber(evaluation.confidence), 0);
+  const estimatedLevel = normalizeEstimatedLevel(readString(evaluation.estimated_level));
+  const levelConfidence = clampPercent(readNumber(evaluation.level_confidence), 0);
+  const levelRationale =
+    readString(evaluation.level_rationale) || "Insufficient evidence to estimate level.";
   const feasibility = asRecord(evaluation.feasibility);
   const feasibilityState = readString(feasibility?.state) || "unknown";
   const feasibilityReason = readString(feasibility?.reason) || "No feasibility note recorded.";
@@ -232,6 +242,7 @@ export function normalizeCurrentEvaluation(row: CurrentEvaluationRow): Potential
     stableId: `${row.source_type}:${row.source_key}:${row.source_job_id}`,
     company: row.company,
     title: row.title,
+    department: row.department ?? "",
     sourceUrl,
     locations,
     locationsLabel: locations.length ? locations.join(", ") : "Unknown location",
@@ -240,6 +251,9 @@ export function normalizeCurrentEvaluation(row: CurrentEvaluationRow): Potential
     band: recommendationToBand(recommendation),
     fitScore,
     confidencePct,
+    estimatedLevel,
+    levelConfidence,
+    levelRationale,
     feasibilityPct: feasibilityStateToPct(feasibilityState),
     feasibilityState,
     feasibilityReason,
@@ -256,6 +270,116 @@ export function normalizeCurrentEvaluation(row: CurrentEvaluationRow): Potential
     skipReason: skipReasonForEvaluation(recommendation, hardBlockers, gaps, row.review_state),
     isCalibration: false
   };
+}
+
+export function collapseLocationVariants(roles: PotentialMatch[]): PotentialMatch[] {
+  const recommendationRank: Record<Recommendation, number> = {
+    apply_now: 0,
+    consider: 1,
+    stretch: 2,
+    skip: 3,
+    blocked: 4
+  };
+  const ranked = [...roles].sort(
+    (left, right) =>
+      recommendationRank[left.recommendation] - recommendationRank[right.recommendation] ||
+      right.fitScore - left.fitScore
+  );
+  const merged = new Map<string, PotentialMatch>();
+  for (const role of ranked) {
+    const baseTitle = stripLocationSuffix(role.title, role.locations);
+    const isLocationVariant = baseTitle.toLocaleLowerCase() !== role.title.trim().toLocaleLowerCase();
+    const materialSignature = locationVariantMaterialSignature(role);
+    const key = [role.company, baseTitle, role.department, materialSignature]
+      .map((value) => value.toLocaleLowerCase().trim())
+      .join("|");
+    const existing = merged.get(key);
+    if (!existing) {
+      merged.set(key, { ...role, title: baseTitle });
+      continue;
+    }
+    const existingIsLocationVariant =
+      stripLocationSuffix(existing.title, existing.locations).toLocaleLowerCase() !==
+      existing.title.trim().toLocaleLowerCase();
+    const existingLocations = new Set(existing.locations.map(normalWords));
+    const addsDistinctLocation = role.locations.some(
+      (location) => !existingLocations.has(normalWords(location))
+    );
+    if (!isLocationVariant && !existingIsLocationVariant && !addsDistinctLocation) {
+      merged.set(`${key}|job:${role.id}`, role);
+      continue;
+    }
+    const locations = [...existing.locations];
+    for (const location of role.locations) {
+      if (!locations.includes(location)) locations.push(location);
+    }
+    merged.set(key, {
+      ...existing,
+      locations,
+      locationsLabel: locations.length ? locations.join(", ") : "Unknown location"
+    });
+  }
+  return [...merged.values()];
+}
+
+function locationVariantMaterialSignature(role: PotentialMatch) {
+  return JSON.stringify({
+    recommendation: role.recommendation,
+    estimatedLevel: role.estimatedLevel,
+    blockers: [...role.hardBlockers].sort(),
+    feasibility: role.feasibilityState,
+    alignmentRequirements: role.alignments.map((alignment) => alignment.jobRequirement),
+    gaps: role.gaps.map((gap) => gap.gap)
+  });
+}
+
+function stripLocationSuffix(title: string, locations: string[]) {
+  const match = title.trim().match(/^(.+?)(?:\s+[-–—]\s+|\s*\()([^()]+?)\)?$/);
+  if (!match) return title.trim();
+  const [, base, suffix] = match;
+  const normalizedSuffix = normalWords(suffix);
+  const knownRegions = new Set([
+    "anz",
+    "apac",
+    "australia",
+    "canada",
+    "dach",
+    "emea",
+    "europe",
+    "germany",
+    "mena",
+    "netherlands",
+    "singapore",
+    "spain",
+    "sweden",
+    "uk",
+    "united kingdom",
+    "us",
+    "usa",
+    "united states"
+  ]);
+  const isPostingLocation = locations.some((location) => {
+    const normalizedLocation = normalWords(location);
+    const parts = location.split(/[,/|]/).map(normalWords);
+    return (
+      normalizedSuffix === normalizedLocation ||
+      parts.includes(normalizedSuffix) ||
+      normalizedLocation.startsWith(`${normalizedSuffix} `)
+    );
+  });
+  return knownRegions.has(normalizedSuffix) || isPostingLocation ? base.trim() : title.trim();
+}
+
+function normalWords(value: string) {
+  return value.toLocaleLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function normalizeEstimatedLevel(
+  value: string
+): "L3" | "L4" | "L5" | "L6" | "L7+" | "unknown" {
+  return ["L3", "L4", "L5", "L6", "L7+"].includes(value)
+    ? (value as "L3" | "L4" | "L5" | "L6" | "L7+")
+    : "unknown";
 }
 
 async function loadSkipAuditRows(supabase: AppSupabaseClient): Promise<AuditRow[]> {

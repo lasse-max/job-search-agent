@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; direct experience coordinating cross-functional delivery and stakeholder alignment",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate internal and external delivery across a complex, high-stakes defence programme, ensuring milestones are met and stakeholders remain aligned"
+      },
+      {
+        "candidate_evidence": "Experience building project tracking tools and maintaining programme dashboards at scale in complex operational environments; proficiency translating operational metrics into executive-facing reports",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and manage a project steering dashboard that tracks KPIs across engineering milestones and contractual commitments, providing programme performance data to senior leadership"
+      },
+      {
+        "candidate_evidence": "Native German speaker and professional/fluent English; however, no stated familiarity with defence procurement terminology or defence-industry contract language",
+        "evidence_strength": "medium",
+        "job_requirement": "Communicate with full fluency in both German and English, written and spoken, and navigate standard defence and procurement terminology across both languages"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience managing multi-stakeholder programmes, commercial operations scaling, and cross-functional coordination at Google; direct exposure to partner and customer-facing programme leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate stakeholder interactions across internal teams, partners and defence customers, ensuring decisions and actions are clearly documented, owned and followed through"
+      },
+      {
+        "candidate_evidence": "Transformation programme background implies risk management and issue resolution; no explicit evidence of formal risk register maintenance or structured risk-surfacing methodology cited in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Monitor project risks and issues, surfacing challenges early and preparing structured course-correction recommendations for programme leadership"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "No stated experience in defence, aerospace, automotive, or regulated engineering environments; background is exclusively commercial tech at Google",
+        "mitigation": "Defence industry ramp-up is achievable for a structured operations and programme management leader within 6\u201312 months of focused onboarding; the role itself has PMP progression pathway, and core coordination and stakeholder-management skills transfer",
+        "severity": "high"
+      },
+      {
+        "gap": "PMP certification not mentioned; candidate has programme and operations leadership background but no explicit project management credential",
+        "mitigation": "PMP or equivalent is stated as 'actively working towards one'; candidate can pursue certification in parallel with onboarding if hired",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated familiarity with defence procurement structures, government contract language, or military programme context (though role lists as 'nice to have')",
+        "mitigation": "This is a 'nice to have' in the JD, not a must-have; defence procurement literacy can be acquired through structured mentoring and embedded legal/contracts support",
+        "severity": "medium"
+      },
+      {
+        "gap": "Operations and programme background is commercial and transformation-focused, not engineering-led or technical-first; may require learning the unique technical and safety constraints of defence systems",
+        "mitigation": "JD focuses on coordination and stakeholder alignment, not technical depth; candidate's transformation and programme leadership experience demonstrates ability to engage with technical teams and complexity",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 3\u20135+ years of programme/project coordination in defence or complex engineering, direct stakeholder exposure, structured project management methodology (PMP or equivalent), and cross-functional delivery ownership. Title is \"Project Manager\" in a defence context; JD scope centres on high-stakes programme coordination, risk management, and senior-stakeholder alignment rather than execution or team leadership. This maps to a mid-level IC or lead-coordinator role, consistent with L4 (Senior IC or early-lead scope).",
+    "role_family_fit": 45,
+    "scope_seniority": 68,
+    "summary": "This is a structured Project Manager role in a high-stakes defence environment, requiring domain expertise, PMP/equivalent, and fluent German-English. The candidate has eight years of strong programme and operational leadership at Google with clear stakeholder and cross-functional coordination skills\u2014a solid match on core project leadership and communication. However, the role is expressly defence-focused, and the candidate has zero stated experience in defence, aerospace, or regulated engineering; the gap is material and de-risks poorly without significant onboarding. This role falls outside the candidate's target strategic and operations families and maps to pure programme/project management rather than strategy, business operations, or transformation. Recommend skip unless the candidate explicitly pursues a career shift into defence sector programme management.",
+    "uncertainties": [
+      "Company stage and size not stated in JD; unclear whether Helsing is early-stage, Series A/B, or later. This affects seniority floor assumptions.",
+      "No explicit mention of candidate's PMP status or current progress toward certification; only that candidate should have or be working toward it.",
+      "Depth of candidate's project tracking and risk-management tooling experience not detailed; inferred from 'programme' and 'transformation' background.",
+      "Unclear whether candidate has previous exposure to classified or security-clearance environments, which may expedite or complicate clearance eligibility."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

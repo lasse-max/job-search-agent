@@ -3,13 +3,14 @@ from __future__ import annotations
 import json
 import sqlite3
 import tempfile
+from dataclasses import replace
 from pathlib import Path
 import unittest
 from unittest.mock import patch
 
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
-from app.db import wake_due_snoozes
-from app.services.evaluate import DETERMINISTIC_FALLBACK_VERSION
+from app.db import current_evaluation_policy_version, wake_due_snoozes
+from app.services.evaluate import DETERMINISTIC_FALLBACK_VERSION, HYBRID_EVALUATOR_VERSION
 from app.services.digest import write_digest
 from app.services.llm_evaluator import (
     LLMEvaluationOutput,
@@ -238,13 +239,31 @@ class DatabricksSliceTest(unittest.TestCase):
             )
 
             self.assertEqual(notification.status, "sent")
-            self.assertEqual(notification.role_count, 3)
+            self.assertEqual(notification.role_count, 2)
             self.assertEqual(notification.failure_count, 1)
             self.assertIn("DEGRADED", notification.subject)
             self.assertEqual(len(email_provider.messages), 1)
             self.assertIn("DEGRADED", email_provider.messages[0].text_body)
             self.assertIn("Deployment Strategist", email_provider.messages[0].text_body)
             self.assertIn("Source failures", email_provider.messages[0].text_body)
+
+            with patch(
+                "app.services.evaluate.provider_from_env",
+                return_value=SuccessfulProvider(),
+            ):
+                recovered = run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            self.assertEqual(recovered.evaluated_count, 3)
+            self.assertEqual(_count(conn, "role_evaluations"), 6)
+            current_count = conn.execute(
+                """
+                SELECT COUNT(*)
+                FROM role_evaluations
+                WHERE model_version = ?
+                """,
+                (f"fake-claude|{HYBRID_EVALUATOR_VERSION}",),
+            ).fetchone()[0]
+            self.assertEqual(current_count, 3)
 
     def test_under_volume_feed_is_degraded_and_does_not_count_absences(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -387,7 +406,7 @@ class DatabricksSliceTest(unittest.TestCase):
                 """
                 SELECT COUNT(*)
                 FROM role_evaluations
-                WHERE model_version = 'fake-claude|hybrid_claude_v2'
+                WHERE model_version = 'fake-claude|hybrid_claude_v3'
                 """
             ).fetchone()[0]
 
@@ -395,6 +414,136 @@ class DatabricksSliceTest(unittest.TestCase):
             self.assertEqual(refreshed.evaluated_count, 3)
             self.assertEqual(_count(conn, "role_evaluations"), before_count + 3)
             self.assertEqual(current_count, 3)
+
+    def test_stale_gate_skips_advance_backfill_beyond_batch_limit(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            fixture_path = Path(directory) / "thirty-jobs.json"
+            jobs = [
+                _fixture_job(
+                    job_id=9200000000 + index,
+                    title=f"Strategic Operations Lead {index:02d}",
+                    location="London, United Kingdom",
+                    department="Business Operations",
+                    content=(
+                        "<p>Lead strategy and operations programs and executive cadence "
+                        f"for business unit {index:02d}.</p>"
+                    ),
+                )
+                for index in range(30)
+            ]
+            fixture_path.write_text(
+                json.dumps({"jobs": jobs, "meta": {"total": len(jobs)}}),
+                encoding="utf-8",
+            )
+            provider = SuccessfulProvider()
+
+            with patch("app.services.evaluate.provider_from_env", return_value=provider):
+                initial = run_scan(db_path=db_path, fixture_path=fixture_path)
+            self.assertEqual(initial.evaluated_count, 30)
+
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            conn.execute(
+                "UPDATE role_evaluations SET model_version = 'fake-claude|hybrid_claude_v1'"
+            )
+            conn.commit()
+
+            for index, job in enumerate(jobs[:25]):
+                job["title"] = f"Account Executive {index:02d}"
+                job["departments"] = [{"name": "Sales"}]
+                job["content"] = "<p>Own a quota and close enterprise sales deals.</p>"
+            fixture_path.write_text(
+                json.dumps({"jobs": jobs, "meta": {"total": len(jobs)}}),
+                encoding="utf-8",
+            )
+
+            with patch("app.services.evaluate.provider_from_env", return_value=provider):
+                gate_batch = run_scan(db_path=db_path, fixture_path=fixture_path)
+
+            versioned_skips = conn.execute(
+                """
+                SELECT COUNT(*)
+                FROM evaluation_skips
+                WHERE evaluator_version = ?
+                """,
+                (current_evaluation_policy_version(HYBRID_EVALUATOR_VERSION),),
+            ).fetchone()[0]
+            self.assertEqual(gate_batch.evaluated_count, 0)
+            self.assertEqual(versioned_skips, 25)
+
+            with patch("app.services.evaluate.provider_from_env", return_value=provider):
+                progressed = run_scan(db_path=db_path, fixture_path=fixture_path)
+
+            current_count = conn.execute(
+                """
+                SELECT COUNT(*)
+                FROM role_evaluations
+                WHERE model_version = 'fake-claude|hybrid_claude_v3'
+                """
+            ).fetchone()[0]
+            self.assertEqual(progressed.changed_count, 0)
+            self.assertEqual(progressed.evaluated_count, 5)
+            self.assertEqual(current_count, 5)
+
+    def test_config_opt_out_skip_is_reconsidered_after_policy_change(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            base_profile = load_candidate_profile()
+            opted_out_profile = replace(
+                base_profile,
+                version="candidate_profile_optout_test_v1",
+                employer_opt_outs={
+                    **base_profile.employer_opt_outs,
+                    "Databricks": "Test owner opt-out.",
+                },
+            )
+            active_profile = replace(
+                base_profile,
+                version="candidate_profile_optout_test_v2",
+                employer_opt_outs={
+                    company: reason
+                    for company, reason in base_profile.employer_opt_outs.items()
+                    if company != "Databricks"
+                },
+            )
+
+            with (
+                patch(
+                    "app.services.evaluate.load_candidate_profile",
+                    return_value=opted_out_profile,
+                ),
+                patch(
+                    "app.db.load_candidate_profile",
+                    return_value=opted_out_profile,
+                ),
+            ):
+                opted_out = run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            self.assertEqual(opted_out.evaluated_count, 0)
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            self.assertEqual(_count(conn, "role_evaluations"), 0)
+            self.assertEqual(_count(conn, "evaluation_skips"), 3)
+
+            provider = SuccessfulProvider()
+            with (
+                patch(
+                    "app.services.evaluate.load_candidate_profile",
+                    return_value=active_profile,
+                ),
+                patch(
+                    "app.db.load_candidate_profile",
+                    return_value=active_profile,
+                ),
+                patch("app.services.evaluate.provider_from_env", return_value=provider),
+            ):
+                reconsidered = run_scan(db_path=db_path, fixture_path=FIXTURE)
+
+            self.assertEqual(reconsidered.changed_count, 0)
+            self.assertEqual(reconsidered.evaluated_count, 3)
+            self.assertEqual(provider.calls, 3)
+            self.assertEqual(_count(conn, "role_evaluations"), 3)
 
     def test_stale_backfill_discards_fallback_when_no_current_evaluator_is_available(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -470,7 +619,8 @@ class DropOneRoleProvider:
         self.calls_by_source[source_job_id] = self.calls_by_source.get(source_job_id, 0) + 1
         if source_job_id == self.source_job_id:
             raise LLMProviderError(
-                "claude_tool_input_validation_failed: alignments input should be a valid list"
+                "claude_tool_input_validation_failed: alignments input should be a valid list",
+                retryable_output=True,
             )
         return LLMEvaluationResult(
             output=_valid_llm_output(),
@@ -489,14 +639,19 @@ class FailAllRolesProvider:
     def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
         self.call_count += 1
         raise LLMProviderError(
-            "claude_tool_input_validation_failed: alignments input should be a valid list"
+            "claude_tool_input_validation_failed: alignments input should be a valid list",
+            retryable_output=True,
         )
 
 
 class SuccessfulProvider:
     model_version = "fake-claude"
 
+    def __init__(self) -> None:
+        self.calls = 0
+
     def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        self.calls += 1
         return LLMEvaluationResult(
             output=_valid_llm_output(),
             model_version=self.model_version,
@@ -570,6 +725,9 @@ def _valid_llm_output() -> LLMEvaluationOutput:
             "gap_manageability": 70,
             "confidence": 0.8,
             "advisory_recommendation": "consider",
+            "estimated_level": "L5",
+            "level_confidence": 75,
+            "level_rationale": "Senior IC scope maps to the target L5 band.",
             "alignments": [
                 {
                     "job_requirement": "Lead strategic customer deployment work",

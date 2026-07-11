@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions, including global commercial operations and transformation program scaling",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue Operations Manager role at Airwallex"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with program leadership experience and transformation focus",
+        "evidence_strength": "medium",
+        "job_requirement": "Manager title and team leadership scope"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation background; experience with requirements, UAT, rollout, and process design rather than native revenue or sales operations focus",
+        "evidence_strength": "weak",
+        "job_requirement": "Revenue operations domain execution"
+      }
+    ],
+    "confidence": 0.3,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "JD is severely truncated (appears to be a cached snapshot with malformed HTML/JS). Core responsibilities, revenue domain context, team size, and reporting line are missing.",
+        "mitigation": "Request full JD or clarify role scope, revenue operations function (pipeline, quota, forecasting, systems), and team ownership directly with hiring manager.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background is Product Operations / Business Transformation at Google. Revenue Operations at B2B fintech (Airwallex) requires deep understanding of sales pipeline, forecasting, quota management, and CRM/revenue stack\u2014domains not evidenced in product-operations profile.",
+        "mitigation": "Candidate should demonstrate transferable stakeholder management and process design; however, lack of native RevOps or sales operations context is a material domain gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of sales operations, revenue stack (Salesforce, Marketo, etc.), forecasting, pipeline hygiene, or quota-attainment ownership.",
+        "mitigation": "If Airwallex RevOps role emphasizes business process design and cross-functional coordination over CRM/forecasting mechanics, product operations rigor may partially transfer.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 50,
+    "level_rationale": "Title \"Manager\" typically anchors to L4 (single team, IC or small-team lead, 3-5 years expected). No years-required statement, team size, or reporting line evident in truncated JD. Stage/size context unknown. Level confidence reduced due to JD incompleteness.",
+    "role_family_fit": 35,
+    "scope_seniority": 45,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader with eight years at Google and strong transformation credentials. However, the posted role is Revenue Operations at Airwallex, a B2B fintech; the JD is severely truncated and does not describe revenue domain scope, team, or reporting. Candidate's background emphasizes product operations, process design, and global scaling rather than sales operations, pipeline management, forecasting, or revenue-stack expertise. Without a complete JD and evidence of RevOps domain knowledge, this is a domain and evidence mismatch despite solid program leadership credentials. Recommendation: skip pending full JD clarity or explicit RevOps background.",
+    "uncertainties": [
+      "JD is malformed/truncated; core job responsibilities missing",
+      "Airwallex company stage and size not stated in JD; unable to contextualize role seniority",
+      "Unknown whether RevOps role emphasizes process/transformation or deep revenue-stack/CRM mechanics",
+      "Candidate's GTM or Revenue Operations experience not detailed in profile; unclear if any exposure exists"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

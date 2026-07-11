@@ -1,0 +1,76 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate has approximately eight years at Google Devices and Services with two promotions in Strategy and Operations / Product Operations roles, not product design",
+        "evidence_strength": "weak",
+        "job_requirement": "8+ years of experience in product design with a proven track record in consumer-facing products"
+      },
+      {
+        "candidate_evidence": "Candidate demonstrates leadership and cross-functional program ownership across transformation and operations, but no evidence of design team leadership or product design mentorship",
+        "evidence_strength": "weak",
+        "job_requirement": "Two years in a lead capacity; end-to-end ownership of design in your product team, shaping direction and delivering high-quality, hands-on work"
+      },
+      {
+        "candidate_evidence": "No evidence of design execution, interaction design, visual design, or a design portfolio; candidate background is operations and strategy, not design craft",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong expertise in designing multimodal experiences, ideally across voice, chat, and mobile; strong interaction and visual design skills with portfolio"
+      },
+      {
+        "candidate_evidence": "Candidate likely has data-driven discipline from Google operations and transformation work, but no specific evidence of owning user research, usability testing, or design validation",
+        "evidence_strength": "medium",
+        "job_requirement": "Research-driven mindset, grounded in user research, usability testing, and data-informed decision making"
+      },
+      {
+        "candidate_evidence": "Candidate demonstrates strong cross-functional stakeholder management and program leadership; this aligns with collaboration and influence, though in an operations/transformation context rather than design collaboration",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience collaborating with product managers and engineers to drive outcomes and influence priorities"
+      },
+      {
+        "candidate_evidence": "Eight years of leadership and transformation at Google implies strong communication and alignment capability, though specific storytelling evidence is not provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication and storytelling skills, with the ability to align and inspire cross-functional teams"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Core role family mismatch: role is Staff Product Designer with deep design craft requirements (interaction design, visual design, multimodal UX, design systems, portfolio-proven execution); candidate background is Strategy and Operations with no product design experience or designer skillset",
+        "mitigation": "No realistic mitigation. Design craft, design thinking, and hands-on design execution cannot be substituted by operations or strategy background. A career pivot from ops/strategy to a Staff-level design leadership role is structurally misaligned.",
+        "severity": "high"
+      },
+      {
+        "gap": "No design team leadership or mentorship track record; the role requires two years in a lead capacity and design vision ownership, which candidate does not demonstrate",
+        "mitigation": "Candidate has cross-functional leadership and program management experience, but leading a design team, setting design strategy, and mentoring designers are fundamentally different from operations/transformation leadership.",
+        "severity": "high"
+      },
+      {
+        "gap": "No portfolio, design execution examples, or design methodology evidence; Staff Designer role requires demonstrable design craft across multimodal experiences (voice, chat, mobile, graphical)",
+        "mitigation": "Candidate would need to provide a design portfolio and hands-on design work samples. Without this, evaluation of design capability is impossible.",
+        "severity": "high"
+      },
+      {
+        "gap": "Multimodal and conversational design experience not evident; role specifically requires expertise in voice, chat, and visual design integration",
+        "mitigation": "No clear path given candidate's operations-focused background.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Staff Product Designer at a scale-stage conversational AI company (backed by General Catalyst, EQT Ventures, Altimeter Capital; one billion interactions deployed) with 8+ years required, two-year lead capacity expectation, and cross-functional design team ownership maps to L5. Role emphasizes design vision, strategy, and execution accountability typical of senior individual contributor or group-lead scope in product design.",
+    "role_family_fit": 5,
+    "scope_seniority": 75,
+    "summary": "This is a Staff Product Designer role requiring 8+ years of consumer-facing design craft, multimodal UX expertise (voice, chat, mobile), design team leadership, and a portfolio-proven track record. The candidate is a Strategy and Operations leader with eight years at Google and no product design background, design execution experience, or design portfolio. This is a core function mismatch: operations and strategy leadership do not substitute for design craft, design methodology, or design team mentorship. While the candidate demonstrates strong cross-functional leadership and seniority appropriate for an L5-equivalent role, the candidate does not have the design skills, portfolio, or design thinking required for this Staff Designer position. Recommendation: Skip.",
+    "uncertainties": [
+      "Parloa company size and stage not explicitly stated in JD beyond 'scaling' and investor backing; assumed growth-stage scale-up",
+      "Candidate's specific product operations and transformation scope at Google not detailed; unable to assess if any adjacent design or UX strategy involvement occurred",
+      "No information on whether candidate has studied, apprenticed, or transitioned into design outside of primary operations career"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

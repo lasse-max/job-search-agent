@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years in Google Devices and Services BizOps and transformation programs; no ML engineering, research, or production software development background stated.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have significant software, ML, or research engineering experience"
+      },
+      {
+        "candidate_evidence": "Product operations experience includes UAT, rollout, and requirements design; no empirical research, experiment design, or ML research project contribution mentioned.",
+        "evidence_strength": "weak",
+        "job_requirement": "Have some experience contributing to empirical AI research projects"
+      },
+      {
+        "candidate_evidence": "No stated background in AI safety, alignment, or AI research literature engagement.",
+        "evidence_strength": "weak",
+        "job_requirement": "Some familiarity with technical AI safety research"
+      },
+      {
+        "candidate_evidence": "Candidate background is in product operations and business transformation; no RL, safety evaluation, or LLM research experience indicated.",
+        "evidence_strength": "weak",
+        "job_requirement": "Run multi-agent reinforcement learning experiments and build tooling to evaluate LLM-generated jailbreaks"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 18,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No production software engineering, ML engineering, or research engineering background",
+        "mitigation": "Role explicitly requires significant ML/research engineering experience. Candidate would need to return to hands-on technical engineering after eight years in operations\u2014a multi-year gap unlikely to close during onboarding. Unlikely to be viable for this research scientist level.",
+        "severity": "high"
+      },
+      {
+        "gap": "No empirical AI research or ML research publication experience",
+        "mitigation": "Role involves designing and running ML experiments, contributing to research papers and blog posts, and advancing AI safety research. Candidate has no stated research authorship, experimental methodology, or peer-review publication background.",
+        "severity": "high"
+      },
+      {
+        "gap": "No AI safety, alignment, or LLM research domain knowledge",
+        "mitigation": "Role is focused on AI control, alignment stress-testing, and robustness of safety techniques. Candidate has no background in AI safety literature, safety evaluation methodology, or alignment research.",
+        "severity": "high"
+      },
+      {
+        "gap": "Function-family mismatch: Strategy and Operations role applying to hands-on Research Engineering",
+        "mitigation": "Candidate is positioned in BizOps and transformation leadership. This role requires research scientist and software engineer mindset, not program leadership or operations strategy. No mitigation; different career path.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: 'You want to build and run elegant and thorough machine learning experiments' and 'Have significant software, ML, or research engineering experience' and role explicitly requires 'Run multi-agent reinforcement learning experiments,' hands-on coding in Python, and contributing to research papers in ML/AI safety. Candidate has no production software development, ML engineering, or research background.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role requires \"significant software, ML, or research engineering experience\" and empirical AI research contribution, typically 5\u20138 years of specialized technical depth. Reporting to research leadership at a well-funded AI lab, ownership of experimental design and execution. JD emphasizes hands-on ML engineering and research authorship; no company stage stated, lowering confidence slightly.",
+    "role_family_fit": 8,
+    "scope_seniority": 62,
+    "summary": "Anthropic Research Engineer in AI Alignment Science is a hands-on ML/research engineering role requiring significant production coding, empirical AI research, and technical safety depth\u2014far outside the candidate's Strategy and Operations / transformation domain. Candidate has no production ML engineering background, no AI research authorship, and no empirical ML project experience; positioning is strategic leadership, not research science.",
+    "uncertainties": [
+      "No company size or stage stated in JD; Anthropic is well-funded but level confidence cannot account for internal level inflation or deflation.",
+      "Candidate's eight years at Google in BizOps may include exposure to ML/AI product details; however, no evidence of hands-on ML engineering, experimentation, or research contribution is mentioned in profile.",
+      "Visa sponsorship is available; London location match is plausible, but technical fit is non-existent."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

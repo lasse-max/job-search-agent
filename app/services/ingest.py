@@ -9,6 +9,7 @@ from app.adapters import get_adapter
 from app.config import DEFAULT_DB_PATH, OUTPUT_DIR, load_company_config
 from app.db import (
     connect_runtime_database,
+    current_evaluation_policy_version,
     get_expected_volume_min,
     get_postings_by_ids,
     init_db,
@@ -137,6 +138,9 @@ def run_scan(
             evaluator_version=HYBRID_EVALUATOR_VERSION,
             limit=STALE_EVALUATION_BACKFILL_LIMIT,
         )
+        evaluation_policy_version = current_evaluation_policy_version(
+            HYBRID_EVALUATOR_VERSION
+        )
         candidate_ids = _ordered_unique_ids(fresh_candidate_ids + stale_candidate_ids)
         stale_only_candidate_ids = set(stale_candidate_ids).difference(fresh_candidate_ids)
         evaluated_count = 0
@@ -154,7 +158,13 @@ def run_scan(
             row_hash = input_hash(row)
             relevance = relevance_decision(row, company)
             if not relevance.should_evaluate:
-                record_evaluation_skip(conn, int(row["id"]), row_hash, relevance.reason)
+                record_evaluation_skip(
+                    conn,
+                    int(row["id"]),
+                    row_hash,
+                    relevance.reason,
+                    evaluator_version=evaluation_policy_version,
+                )
                 continue
             if not stale_backfill:
                 fresh_attempted_evaluation_count += 1
@@ -286,7 +296,9 @@ def run_scan(
 def _evaluate_role_with_retry(row, company):
     try:
         return evaluate_role(row, company)
-    except LLMProviderError:
+    except LLMProviderError as exc:
+        if not exc.retryable_output:
+            raise
         return evaluate_role(row, company)
 
 

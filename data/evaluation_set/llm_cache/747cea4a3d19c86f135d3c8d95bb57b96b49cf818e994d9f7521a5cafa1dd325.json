@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations and transformation, with experience in process design, requirements logic, UAT, and rollout execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Administration of Checkout's Identity platform, including Okta and joiner, mover leaver process; Develop and maintain user account provisioning and deprovisioning processes"
+      },
+      {
+        "candidate_evidence": "Demonstrated cross-functional stakeholder management and transformation program leadership at Google, with requirements gathering and design translation skills",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with cross-functional teams to gather IAM requirements and translate them into technical designs; Collaborate with internal stakeholders to understand IAM needs"
+      },
+      {
+        "candidate_evidence": "Experience operating within regulated environments and compliance frameworks through Google commercial operations scaling",
+        "evidence_strength": "weak",
+        "job_requirement": "Work closely with InfoSec team to ensure seamless execution of IAM-related tasks and controls for audits such as PCI DSS, ISO 27001, SOC 2 Type II"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L4",
+    "evidence_strength": 28,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No hands-on Okta experience (Identity Engine, Org-to-Org, Workflows, Device Access)",
+        "mitigation": "Core tool expertise can be acquired in months with on-the-job training and self-study, but requires immediate ramp time",
+        "severity": "high"
+      },
+      {
+        "gap": "No IAM protocol expertise (SAML, OIDC/OAuth, SCIM integration)",
+        "mitigation": "Technical depth in identity protocols requires specialized study; candidate's background is in business operations, not identity engineering",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on cloud IAM administration (AWS IAM, GCP IAM)",
+        "mitigation": "Candidate has commercial operations and transformation experience, not platform identity and access management",
+        "severity": "high"
+      },
+      {
+        "gap": "Python basic and actively learning; no demonstrated Node.js or PowerShell scripting for automation at scale",
+        "mitigation": "Role requires 'proficiency in scripting and automation' as a core responsibility; candidate's coding is foundational",
+        "severity": "high"
+      },
+      {
+        "gap": "No infrastructure-as-code or policy-as-code (Terraform, CI/CD) experience",
+        "mitigation": "These are specialized technical skills; candidate's engineering depth does not match the stated requirement",
+        "severity": "medium"
+      },
+      {
+        "gap": "IT/IAM or infrastructure engineering background absent; candidate is strategy and operations-focused",
+        "mitigation": "Role requires deep hands-on IAM engineering; candidate's background is in business transformation and commercial operations, a fundamentally different domain",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Hands-on experience with Okta, including Okta Identity Engine, Okta Org-to-Org, Okta Workflows, and Okta Device Access; Strong background in integrating identity applications using protocols such as SAML, OIDC/OAuth, and SCIM; Proven expertise in managing platform identity and access controls across cloud environments (AWS IAM, GCP IAM); Proficiency in scripting and automation using languages like Node.js, Python, or PowerShell, leveraging config-as-code and policy-as-code principles (Terraform, CI/CD pipelines).",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role is mid-level IC engineering (L4) based on hands-on technical accountability for Okta administration, integration, automation, and incident response without stated people management. Title \"Senior Engineer\" and multi-protocol, multi-platform IAM scope suggest L4\u2013L5 IC depth in a fintech regulated environment; no manager-of-managers scope signals. Specific technology stack (Okta, SAML/OIDC, AWS/GCP IAM, Terraform, CI/CD) and \"proficiency in scripting\" anchor the role as production engineering, not strategy or operations.",
+    "role_family_fit": 8,
+    "scope_seniority": 48,
+    "summary": "This is a hands-on IAM/Okta engineering role, not a strategy, operations, or business transformation position. The candidate's eight-year background in Google commercial operations, process design, and transformation program leadership does not align with production identity engineering, cloud platform administration, IAM protocol integration, or infrastructure-as-code automation. Core hard blockers include no Okta experience, no SAML/OIDC/SCIM protocol expertise, no AWS/GCP IAM administration, and only foundational Python skills\u2014all stated as required. Role family fit is deeply misaligned; recommend skip.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs; positioning as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic development and execution of AI products across a region; lead enterprise sales team and establish foundational sales infrastructure"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations suggests operational leadership; no explicit evidence of building or managing a direct sales team or quota-carrying sales organization",
+        "evidence_strength": "weak",
+        "job_requirement": "Build and lead a high-performing enterprise sales team; managing large-scale sales operations"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with transformation program experience; no stated exposure to Australia/New Zealand markets or enterprise tech verticals (financial services, healthcare, government, etc.)",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop ANZ go-to-market strategy for enterprise customers; conduct market analysis across key verticals"
+      },
+      {
+        "candidate_evidence": "Eight years total tenure at Google; no stated enterprise sales background, quota history, or B2B sales leadership; product operations and transformation focus, not sales-led motion or customer acquisition",
+        "evidence_strength": "weak",
+        "job_requirement": "Enterprise sales expertise with 15+ years total, 5+ years in leadership; proven track record selling technical API products, cloud services, SaaS"
+      },
+      {
+        "candidate_evidence": "Google tenure may imply exposure to cloud ecosystem; no explicit partner or cloud sales motion evidence in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience selling through partner sales motions and cloud partners (AWS, Azure, Google Cloud)"
+      },
+      {
+        "candidate_evidence": "Google background in Devices and Services; strategy and operations posture suggests business acumen; no stated deep cloud or AI product expertise or enterprise account stewardship history",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep knowledge of enterprise tech industry, particularly cloud services, data management, or AI; excellence in building internal champions"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L6",
+    "evidence_strength": 22,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No demonstrated enterprise sales leadership or quota-carrying sales background; role requires 15+ years enterprise sales experience with 5+ in leadership",
+        "mitigation": "Candidate's strategy, operations, and commercial leadership at scale could transfer to sales strategy and GTM planning; however, hands-on enterprise sales team-building and deal execution are core to Head of Sales and difficult to learn on the job at this seniority",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated exposure to Australia/New Zealand markets, regulatory landscape, or enterprise customer relationships in target verticals (financial services, healthcare, government, resources, retail)",
+        "mitigation": "Market knowledge is learnable; however, the role requires immediate credibility with ANZ enterprises and government agencies, and establishing greenfield regional presence is a first-year deliverable",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit experience with partner sales channels, cloud provider ecosystems (AWS, Azure, GCP), or API/SaaS product sales motion",
+        "mitigation": "Cloud and partner ecosystem knowledge can be built with onboarding; cloud sales strategy differs from candidate's product operations and transformation background",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct sales team building or scaling; profile emphasizes strategy, operations, and transformation rather than recruitment, quota management, and sales motion execution",
+        "mitigation": "Operations experience may include hiring and process design, but managing and scaling a direct enterprise sales org is a distinct operational discipline",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role explicitly requires 15+ years enterprise sales experience (L6 anchor), with 5+ years in leadership managing large-scale operations in a sophisticated market. \"Head of\" with regional P&L, team-building, and strategic execution responsibility is L6. No managing-managers or C-suite scope, so not L7+. Moderate confidence (75) due to incomplete company-stage context in JD.",
+    "role_family_fit": 20,
+    "scope_seniority": 72,
+    "summary": "This is a Head of Enterprise Sales regional leadership role (L6) at Anthropic, requiring 15+ years enterprise sales experience, 5+ years leading large-scale sales teams, and deep ANZ market knowledge. The candidate has eight years of Strategy and Operations / Product Operations leadership at Google with commercial scaling and transformation expertise, but no stated background in enterprise sales leadership, quota-carrying sales, team-building, or ANZ markets. The role is above the candidate's target band (L4\u2013L5) and misaligned in function (sales-led vs. operations-led); gaps in direct sales management, partner/cloud sales motion, and regional market knowledge are substantial and difficult to mitigate in a greenfield role.",
+    "uncertainties": [
+      "Candidate profile does not explicitly state experience managing or building a sales team; unclear whether scaling operations included direct P&L sales leadership",
+      "No information on whether Google Devices and Services experience included enterprise sales GTM, cloud partnerships, or quota-bearing sales cycles",
+      "ANZ regulatory, competitive, and cultural context is not addressed in candidate profile; no visa/relocation readiness stated",
+      "Candidate's 'transformation programs' scope is not detailed; unclear if this included revenue-driving or revenue-organization change"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

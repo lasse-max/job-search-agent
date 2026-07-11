@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs in business operations and strategy context, not AI/ML engineering or Solutions Architect background",
+        "evidence_strength": "weak",
+        "job_requirement": "7/8+ years of experience in AI/ML, with at least 2+ years in a technical leadership role (e.g., Tech Lead, Engineering Manager, or Solutions Architect) focused on AI products or enterprise solutions"
+      },
+      {
+        "candidate_evidence": "Led transformation and operations programs with cross-functional team coordination; no direct experience leading engineering or applied AI technical teams",
+        "evidence_strength": "weak",
+        "job_requirement": "Lead technical teams of Applied AI Engineers, providing mentorship, technical guidance, and best practices for deploying state-of-the-art GenAI applications"
+      },
+      {
+        "candidate_evidence": "No production software engineering background; Python basic and actively learning; product experience from requirements, design, UAT, and rollout rather than hands-on engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong software engineering skills, including API design, backend/full-stack development, and system architecture; proficient in Python, PyTorch, and modern AI frameworks"
+      },
+      {
+        "candidate_evidence": "No evidence of deep expertise in fine-tuning, RAG, agentic systems, or NLP deployment; background is business operations and transformation",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep expertise in fine-tuning LLMs, advanced RAG, agentic systems, and deploying NLP applications at scale"
+      },
+      {
+        "candidate_evidence": "No degree information provided in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Master's degree in AI, Machine Learning, Computer Science, or a related field (or PhD)"
+      },
+      {
+        "candidate_evidence": "No production coding experience or hands-on AI solution development; operations and transformation focus with UAT and rollout involvement only",
+        "evidence_strength": "weak",
+        "job_requirement": "Deliver as an IC the critical lines of codes of our complex projects, you'll be hands-on and de-risk the critical parts of our complex projects. You'll stay deeply involved in coding, reviewing, and optimizing AI solutions."
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No AI/ML engineering or hands-on technical depth in LLM fine-tuning, RAG, agentic systems, NLP deployment, or production software development",
+        "mitigation": "Candidate would require substantial ramp-up in deep technical AI domains; background is strategy and operations, not applied AI engineering",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience leading technical engineering teams; eight years in business operations and transformation context, not technical team leadership",
+        "mitigation": "Would need on-the-job mentorship and deep technical onboarding; cross-functional program leadership is not equivalent to technical team leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "Python and AI frameworks (PyTorch, LangChain, Hugging Face) are stated as basic/learning level, not proficient or hands-on production experience",
+        "mitigation": "Self-study and intensive technical training would be required; current level insufficient for hands-on IC coding responsibilities",
+        "severity": "high"
+      },
+      {
+        "gap": "No Customer-Facing Solutions Architect or Customer Engineer experience; background is internal operations and transformation, not enterprise customer engagement",
+        "mitigation": "Some transferable stakeholder management skills from programs; would require customer-facing AI domain training",
+        "severity": "medium"
+      },
+      {
+        "gap": "Advanced degree requirement (Master's or PhD in AI/ML, CS, or related field) not stated in candidate profile",
+        "mitigation": "Cannot assess; if candidate does not hold required degree, this is disqualifying per JD",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 7\u20138+ years in AI/ML with 2+ in technical leadership, hands-on coding responsibility, and team leadership of applied AI engineers. Reporting to Solutions department; scope bridges pre-sales, technical strategy, and team delivery. This aligns with L5 (6\u20139 years, strong IC or emerging lead scope). Company stage is unstated, lowering confidence slightly. No executive/director-level indicators present; pure technical or technical-lead scope without C-suite reporting.",
+    "role_family_fit": 18,
+    "scope_seniority": 55,
+    "summary": "This is a Technical Lead / Forward-Deployed AI Engineering role requiring 7\u20138+ years of AI/ML engineering and hands-on deep expertise in LLMs, RAG, NLP systems, Python/PyTorch, and team leadership of applied AI engineers. The candidate has eight years in Google business operations and transformation\u2014a strategic/operational background, not applied AI engineering. Critical gaps include: no production software engineering or hands-on AI framework proficiency; no technical team leadership of engineers; no expertise in fine-tuning, RAG, or agentic systems; and unclear advanced-degree status. While the candidate brings cross-functional leadership and transformation execution skills, the role's core deliverables (hands-on coding, technical mentorship, deep AI system design) are outside the candidate's demonstrated expertise. This is a misalignment in technical domain, not a close stretch.",
+    "uncertainties": [
+      "Advanced degree status (Master's or PhD in AI/ML/CS) not stated in candidate profile; JD states this as a requirement",
+      "Candidate's actual Python and PyTorch proficiency level and depth of current learning not detailed",
+      "No information on whether candidate has any applied AI or NLP project exposure even in non-engineering capacity",
+      "Company size/stage for Mistral AI not stated in Role JSON; affects seniority anchoring"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

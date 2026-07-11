@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and leading transformation programs; demonstrated cross-functional leadership and stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead a team of Partner Solution Engineers as well as work directly with Snowflake's Partner Management, Sales, Pre-Sales, Marketing, and Services teams"
+      },
+      {
+        "candidate_evidence": "Extensive experience with transformation programs, process design, and execution; product operations background with requirements logic design and rollout leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive strategic customer and partner engagements in partnership with Sales, Solution Engineering and GTM teams; build repeatable reference architectures and frameworks"
+      },
+      {
+        "candidate_evidence": "Strategic operations and transformation leadership at Google; stakeholder management and cross-functional coordination demonstrated",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as escalation point for customers, sales teams, and product leadership; drive product gaps and roadmap processes as the Voice of the Field"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L6",
+    "evidence_strength": 58,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Limited pre-sales or customer-facing technical sales background; product operations background differs from vendor-facing solution engineering",
+        "mitigation": "Strategic operations and transformation experience demonstrates complex problem-solving and stakeholder management; hands-on role-coach style described in JD is compatible with product operations leadership; cross-functional collaboration skills are transferable",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated hands-on expertise with SQL, data warehouse, or BI technologies; background is commercial operations, not technical product",
+        "mitigation": "JD says 'equivalent experience preferred' for CS/engineering degree; strategic understanding of data platforms and ability to learn technical domains demonstrated through product operations work; can rely on team for deep technical details",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct consulting background or classic case-team experience; limited exposure to vendor technology integration architecture (Tableau, Informatica, Thoughtspot, Qlik, Fivetran, etc.)",
+        "mitigation": "Strategic programs and transformation experience include working with vendors and technology partners; learning curve manageable for someone with strong operator and GTM leadership skills",
+        "severity": "medium"
+      },
+      {
+        "gap": "APJ regional leadership and partner ecosystem management are not core to stated Google Devices and Services background",
+        "mitigation": "Partner strategy and multi-tier ecosystem development are operational and process-design problems; cross-functional orchestration skills from transformation work are applicable",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "RVP title with 4+ years direct line management required, P&L ownership, regional ecosystem leadership across four partner tiers, and reporting to VP of APJ SE indicates L6. JD explicitly requires 15+ years industry experience, establishing senior management expectations.",
+    "role_family_fit": 52,
+    "scope_seniority": 78,
+    "summary": "RVP, APJ Partner SE is a clear L6 leadership role (15+ years required, direct line management, P&L, regional partner ecosystem ownership). Candidate has strong strategic operations and transformation leadership, demonstrated cross-functional collaboration, and GTM stakeholder management from Google tenure, which align with the team-building and partner-engagement aspects. However, the core gap is lack of pre-sales, customer-facing technical sales, or hands-on data/SQL expertise required by the JD. While the operations and transformation background demonstrates relevant leadership and problem-solving, the shift from product operations to vendor-facing partner solution engineering is substantial and not a natural family fit. Gaps in technical SQL/data-warehouse knowledge and consulting/architecture vendor experience are high-severity but mitigatable given the \"equivalent experience preferred\" language and the role's emphasis on team leadership and strategic execution.",
+    "uncertainties": [
+      "Snowflake company size/stage not stated in JD; 'fast-growing' and global presence suggest scale but confirmation would improve confidence",
+      "Depth of candidate's experience with cloud architecture (AWS, Azure, GCP) and SaaS platforms not specified in profile",
+      "Candidate's exposure to or ability to rapidly develop expertise in SQL, data warehousing, and BI vendor technologies unclear",
+      "No indication whether candidate has prior exposure to partner ecosystem models (GSIs, CSPs, DCPs) or has worked in vendor sales/pre-sales capacity"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,57 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; two promotions in Strategy and Operations function.",
+        "evidence_strength": "medium",
+        "job_requirement": "Program management and operations leadership within integrations or platform infrastructure domain"
+      },
+      {
+        "candidate_evidence": "Product operations leadership with requirements definition, design, UAT, rollout, and transformation program execution; global commercial operations scaling.",
+        "evidence_strength": "strong",
+        "job_requirement": "Cross-functional stakeholder management and process design"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with transformation program experience and scaling initiatives at Google.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic Operations and business transformation execution"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "JD is heavily stripped/unusable; cached content appears to be website HTML/CSS boilerplate rather than actual job description text.",
+        "mitigation": "Retrieve full, clean JD directly from Plaid careers page to assess integration operations domain expertise, technical depth requirements, and role scope.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of deep integrations, API platforms, or fintech/payments domain experience cited in candidate profile.",
+        "mitigation": "Candidate's transformation and process expertise could transfer; fintech domain knowledge is learnable for a Strategy/Ops leader but represents a new vertical.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Program manager title may imply more hands-on project execution and technical coordination than typical strategy/ops scope; candidate background emphasizes strategy, requirements, and transformation rather than day-to-day program delivery.",
+        "mitigation": "Clarify whether role requires deep technical program execution (scheduling, resource management, risk tracking) or strategic program leadership aligned with candidate's background.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 50,
+    "level_rationale": "Role title is \"Integration Operations Program Manager\" at Plaid with no years required, management scope, or reporting line stated. Company stage is marked unknown. Title alone suggests L4\u2013L5 scope (manager-level ownership), but JD content is unreadable. Without clarity on whether this is a strategic platform role or a tactical program-execution seat, confidence in level is low.",
+    "role_family_fit": 52,
+    "scope_seniority": 55,
+    "summary": "Integration Operations Program Manager at Plaid, Strategy &amp; Operations department. Candidate brings eight years of global commercial operations and transformation program leadership at Google with strong cross-functional stakeholder management and process design skills. However, the JD appears corrupted/unreadable (cached HTML boilerplate), making role scope assessment impossible. Candidate has no evident integrations/API platform or fintech domain background; transfer value depends on whether role is strategic or heavily tactical. Family fit is moderate given Operations title but uncertain domain and execution emphasis. Recommend retrieving clean JD before proceeding.",
+    "uncertainties": [
+      "JD content is invalid/unusable; actual role scope, integrations domain depth, and technical requirements unknown.",
+      "Plaid company stage and size not stated; cannot calibrate L4 vs. L5 or manager-of-managers scope.",
+      "Degree or visa requirements not visible in JD; cannot assess hard blockers.",
+      "Candidate's specific transformation program domains (consumer hardware, services, payments, infrastructure, etc.) not stated in profile; unclear transfer to fintech integrations."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

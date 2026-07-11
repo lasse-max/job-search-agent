@@ -105,6 +105,7 @@ class CandidateProfileConfig:
     scope_signals: tuple[str, ...]
     seniority_ceiling: SeniorityCeilingConfig
     languages: dict[str, str]
+    employer_opt_outs: dict[str, str]
     brand_floor: dict[str, object]
     disqualifying_hard_requirements: HardRequirementConfig
     usually_deprioritize: tuple[str, ...]
@@ -305,6 +306,9 @@ def load_candidate_profile(
     languages = data.get("languages")
     if not isinstance(languages, dict):
         languages = {}
+    employer_opt_outs = data.get("employer_opt_outs")
+    if not isinstance(employer_opt_outs, dict):
+        employer_opt_outs = {}
     hard_requirements = data.get("disqualifying_hard_requirements")
     if not isinstance(hard_requirements, dict):
         hard_requirements = {}
@@ -328,6 +332,7 @@ def load_candidate_profile(
             ),
         ),
         languages={str(key): str(value) for key, value in languages.items()},
+        employer_opt_outs={str(key): str(value) for key, value in employer_opt_outs.items()},
         brand_floor=dict(brand_floor),
         disqualifying_hard_requirements=HardRequirementConfig(
             must_have_context_patterns=_tuple_of_str(

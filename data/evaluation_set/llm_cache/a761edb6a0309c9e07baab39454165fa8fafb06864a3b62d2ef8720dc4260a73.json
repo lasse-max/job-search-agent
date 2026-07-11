@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, including experience in scaling global commercial operations and building/managing teams for transformation programs. Demonstrated people leadership in strategic program contexts.",
+        "evidence_strength": "strong",
+        "job_requirement": "Build, lead, and scale the pre-sales (Solutions Architect) team for Strategic Manufacturing and Energy customers in Germany, including hiring, coaching, performance management, and career development"
+      },
+      {
+        "candidate_evidence": "Product Operations experience combines ownership of requirements, UAT, rollout, and transformation with stakeholder management and process design at scale. Delivery of repeatable program frameworks and cross-functional coordination.",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as a player-coach in strategic opportunities by balancing hands-on involvement in the most critical customer engagements with building repeatable motions, artefacts, and coaching mechanisms"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with global commercial operations scaling. Experience aligning cross-functional leaders and driving measurable business outcomes; however, limited direct SaaS consumption-model or sales-operations expertise.",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner closely with Sales leadership to support forecast accuracy, pipeline quality, and consumption growth in a usage-driven business model"
+      },
+      {
+        "candidate_evidence": "Eight years spanning commercial operations and transformation at Google scale with proven stakeholder management across senior organizational levels. Executive presence and relationship-building embedded in strategic program delivery.",
+        "evidence_strength": "strong",
+        "job_requirement": "Engage with C-level and senior executives at strategic customers to build trusted relationships and long-term partnerships"
+      },
+      {
+        "candidate_evidence": "Native German speaker and professional/fluent English.",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluent German (highly preferred) and fluent English (required)"
+      },
+      {
+        "candidate_evidence": "Product Operations experience in data/analytics domain at Google scale; domain familiarity through ownership work rather than engineering or consulting credentials. No native engineering, data-science engineering, or consulting-team background.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong background in data engineering, analytics platforms, databases, or data science, gained through engineering, consulting, or technical leadership roles"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No direct SaaS consumption-model, go-to-market operations, or revenue/sales-operations background. Role explicitly requires proven success in consumption-based business models, forecasting, expansion, and customer adoption.",
+        "mitigation": "Commercial operations and transformation program experience translate to outcome-ownership and cross-functional partnership; rapid onboarding to SaaS metrics (ARR, NRR, expansion efficiency) is standard for strategic operations talent. Pair with Revenue/Sales leadership for initial model acceleration.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct field engineering, technical solutions architecture, or pre-sales team management experience. Candidate background is product operations and transformation, not FEQ or SA org building.",
+        "mitigation": "People-leadership and coaching framework are transferable; rely on existing Databricks FE leadership and technical mentoring for SA skill/coverage models. Hire strong SA technical leads to anchor domain depth.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated consulting brand, case-team, or native data-engineering/analytics engineering credentials. JD seeks background gained through engineering, consulting, or technical leadership roles.",
+        "mitigation": "Product Operations at Google in data/analytics domain provides platform familiarity and stakeholder insight; deep technical POV can be anchored through partner architects and customer technical leadership. Emphasize business-value narrative over technical deep-dives.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated direct large-deal or strategic account management experience. Role requires hands-on deal involvement and C-level relationship building in Manufacturing/Energy vertical.",
+        "mitigation": "Eight years at Google Devices and Services with global commercial operations and transformation experience implies cross-functional senior stakeholder management; vertical expertise (Manufacturing/Energy) is learnable with onboarding support and regional partner alignment.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Manager of a pre-sales team with hiring, coaching, and performance-management accountability; player-coach and C-level engagement responsibilities. Reporting to Director of Field Engineering (multi-level leadership). No company size stated in JD, but Strategic Accounts with C-level engagement and regional leadership representation at a high-growth SaaS company (10,000+ customer organizations, Fortune 500 penetration) implies established scale. Team-building + strategic account scope + senior stakeholder ownership aligns with established L5 IC or early manager-of-managers anchor.",
+    "role_family_fit": 62,
+    "scope_seniority": 78,
+    "summary": "This is a team-leadership and player-coach role balancing pre-sales scaling, C-level engagement, and direct deal involvement in a high-growth SaaS platform (Databricks). Strong fit on people leadership, strategic account management, and executive presence; moderate gaps in consumption-model/SaaS operations detail and native data-engineering or consulting domain credentials. Native German fluency is a major asset. Role family is Field Engineering (pre-sales/SA team management), a stretch from core Strategy &amp; Ops, but business-outcome and stakeholder-leadership scope align with approved transformation and player-coach profiles. Manageability depends on accelerated learning of SaaS metrics and rapid team ramp.",
+    "uncertainties": [
+      "Company maturity/stage not stated; inferred from customer scale and Fortune 500 footprint but not explicitly confirmed in JD.",
+      "Depth of data/AI technical POV expected at C-level engagement\u2014unclear whether this requires hands-on technical architecture knowledge or strong business-case command.",
+      "SaaS consumption-model forecasting and expansion mechanics\u2014candidate has commercial operations and transformation experience but no stated go-to-market or revenue-operations background.",
+      "Pre-sales SA team management and technical field hiring/coaching\u2014candidate experience is product/transformation ownership-driven rather than native field-engineering or technical-team scaling."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

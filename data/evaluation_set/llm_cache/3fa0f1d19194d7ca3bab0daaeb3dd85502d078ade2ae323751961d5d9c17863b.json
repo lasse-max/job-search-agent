@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations roles, with focus on scaling global commercial operations and transformation programs; no stated data engineering, BI, or analytics engineering background.",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven delivery experience as a data, business intelligence or analytics engineer"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Operations experience at scale; no evidence of data warehouse modeling, ETL design, or data architecture work.",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on proven data modeling and data warehousing skills demonstrated in large-scale data environments"
+      },
+      {
+        "candidate_evidence": "No mentioned SQL, dbt, or data transformation tooling experience in Strategy and Operations background.",
+        "evidence_strength": "weak",
+        "job_requirement": "Excellent SQL and data transformation skills, ideally proficient in dbt or similar"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation programs; not positioned as hands-on analytics engineering or SDLC engineering practice.",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven experience in software development lifecycle in analytics (e.g. version control, testing, and CI/CD)"
+      },
+      {
+        "candidate_evidence": "Likely exposure to Google Cloud at Google Devices; no explicit Snowflake, AWS, Azure, or cloud data platform experience stated.",
+        "evidence_strength": "medium",
+        "job_requirement": "Familiarity with at least one Cloud technology: Snowflake, AWS, Google Cloud, Microsoft Azure"
+      },
+      {
+        "candidate_evidence": "Commercial operations and product transformation background suggests interest in business metrics; no direct analytics engineering or data passion demonstrated.",
+        "evidence_strength": "medium",
+        "job_requirement": "Passionate about sales, finance, customer, marketing and/or product analytics data"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No hands-on data engineering, data warehouse modeling, or analytics engineering background; core role requires proven dbt, Snowflake, and SQL expertise at scale.",
+        "mitigation": "Candidate would require substantial technical ramp-up; SQL and dbt are learnable but demand significant time and hands-on mentoring to reach production-ready competency in a data-critical fintech environment.",
+        "severity": "high"
+      },
+      {
+        "gap": "No software development lifecycle, version control, CI/CD, or testing discipline in analytics context; role emphasizes automation and governance.",
+        "mitigation": "Candidate's transformation and operations background may include process design and testing rigor, but not analytics-specific SDLC; would require dedicated training.",
+        "severity": "high"
+      },
+      {
+        "gap": "Career positioning is Strategy and Operations, not data engineering or analytics; honest_gaps note explicitly 'no production software-engineering background'.",
+        "mitigation": "This role is a functional pivot, not a natural extension of Strategy and Operations scope; candidate would be learning a new technical discipline, not applying existing expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited explicit data platform experience (Snowflake, dbt, Looker); JD emphasizes hands-on design and implementation of data products.",
+        "mitigation": "Cloud exposure at Google may enable faster ramp, but data modeling and BI tool expertise are not substitutable by general operations experience.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Analytics Engineer roles typically require 3\u20135 years of hands-on data engineering, BI, or analytics work plus deep platform fluency (dbt, Snowflake, SQL); this posting emphasizes 'proven delivery' and hands-on modeling at scale, signaling mid-level IC scope. No management, reporting-line, or company-stage context is provided; role is estimated L4 based on technical seniority anchors and hands-on implementation ownership.",
+    "role_family_fit": 15,
+    "scope_seniority": 50,
+    "summary": "Analytics Engineer is a deeply technical data engineering role requiring hands-on proficiency in dbt, Snowflake, SQL, and data warehouse modeling at scale. Candidate's background is Strategy and Operations / Product Operations\u2014a fundamentally different discipline focused on commercial execution and transformation, not data engineering or analytics infrastructure. No data platform, SQL, dbt, or BI tool experience is evident. Role fit is poor, gaps are high-severity and not easily mitigated, and this represents a significant career pivot rather than a natural extension of target families. Advisory: skip.",
+    "uncertainties": [
+      "Company size and stage at Checkout.com not stated; cannot gauge typical onboarding cadence or mentoring investment for technical ramp.",
+      "Candidate's Python and learning velocity unknown; data engineering ramp could be faster if strong fundamentals exist.",
+      "Degree, formal CS training, or technical background not mentioned in profile; cannot assess foundation for SQL and data modeling.",
+      "No detail on extent of Google Cloud exposure or any work with data warehouses, data pipelines, or BI tools."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services; two promotions; scaled global commercial operations and transformation programs; owns product operations and program leadership at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Own, negotiate, and scale strategic agreements with partners to accelerate subscriber and engagement growth"
+      },
+      {
+        "candidate_evidence": "Demonstrated self-direction and scaling ambition through two promotions; experience with transformation programs and operational scaling",
+        "evidence_strength": "medium",
+        "job_requirement": "Multi-talented self-starter with ambition and drive to grow Premium distribution partnerships"
+      },
+      {
+        "candidate_evidence": "Google Devices experience spans scaling global commercial operations; no explicit evidence of direct partnership/BD negotiation or multi-country BD execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Report to APAC Director of Business Development; operate in multi-market expansion context"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 50,
+    "gaps": [
+      {
+        "gap": "No demonstrated business development or partnership negotiation background; role centers on owning and scaling B2B strategic agreements with external partners",
+        "mitigation": "Candidate's transformation and program leadership experience transfers somewhat to managing complex stakeholder agreements; rapid ramp possible with strong negotiation fundamentals, but BD domain knowledge gap is real",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited explicit evidence of multi-market, international partnership or distribution strategy execution in APAC context",
+        "mitigation": "Google's global scale provides foundation; APAC-specific BD playbook and partner ecosystem knowledge would require learning curve",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role centers on quota-bearing partnership growth and direct revenue contribution; candidate profile emphasizes operations and transformation leadership rather than sales/BD ownership",
+        "mitigation": "If candidate has hidden BD or revenue-driving partnership experience not reflected in positioning, assess separately; as stated, this is a departing strategic function",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires negotiating and scaling strategic partner agreements, reporting to APAC Director, operating in multi-market expansion. Title \"Senior Manager\" combined with strategic ownership scope, reporting line to Director, and global/APAC scale anchor to L5 (6\u20139 years/strong senior IC or established leadership). Company stage not stated; confidence lowered accordingly.",
+    "role_family_fit": 25,
+    "scope_seniority": 72,
+    "summary": "This is an L5 Business Development Senior Manager role at Spotify, centered on owning and scaling strategic partnership agreements in APAC. While the candidate has strong Google-scale operations and transformation experience at appropriate seniority, the role is fundamentally BD/partnership-driven, not strategy-and-operations or product-operations leadership. The candidate's profile does not indicate BD, sales, or partnership-negotiation background; this represents a significant functional departure. Without explicit partnership or revenue-driving experience, role-family fit is low, and gap manageability reflects high risk of onboarding friction in a domain-critical function.",
+    "uncertainties": [
+      "Candidate profile does not specify any business development, sales partnership, or revenue-driving background; unclear whether hidden BD experience exists",
+      "Role JD does not detail company size/stage context beyond 'rapidly scaling'; Spotify's known scale inferred but not stated in the Role JSON",
+      "No information on whether 'strategic agreements' imply pure BD/sales-driven revenue or include operational/product components where ops leadership might transfer"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

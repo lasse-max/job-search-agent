@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs across ambiguous, cross-functional environments",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to work at both strategic and tactical levels, with a proven track record to execute in ambiguous environments"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in transformation programs and commercial operations requiring cross-functional collaboration and stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and manage partner relationships within your assigned territory; Work cross-functionally with product, communications, public policy and customer support teams"
+      },
+      {
+        "candidate_evidence": "Operations and strategy background typically involves data-driven decision-making, though specific evidence of quantitative analysis in supply or growth contexts is not detailed in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyze data and utilize data-driven recommendations to identify and act on strategic opportunities"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying field sales execution; candidate is positioned as strategy and operations leader, not individual-contributor sales hunter",
+        "mitigation": "Candidate's cross-functional and strategic background could translate to partner strategy and account expansion, but core supply-acquisition and prospecting mandate is fundamentally misaligned",
+        "severity": "high"
+      },
+      {
+        "gap": "Hospitality and travel industry domain knowledge; JD expects 2+ years in hospitality/travel (nice-to-have) and Airbnb-specific market knowledge",
+        "mitigation": "Generic relationship-building and partner management skills transfer partially, but lack of domain context creates execution risk in Italy market",
+        "severity": "medium"
+      },
+      {
+        "gap": "No demonstrated B2B new business development or direct sales pipeline-building experience",
+        "mitigation": "Candidate's background is internal operations and transformation, not external client acquisition or sales-funnel ownership",
+        "severity": "high"
+      },
+      {
+        "gap": "Salesforce CRM and hands-on sales tools proficiency not mentioned; JD lists as a plus",
+        "mitigation": "Technical skill gap is learnable; deprioritized in JD",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "JD requires 6+ years sales experience and 2+ years hospitality/travel (nice-to-have). Title is individual-contributor Acquisition Manager with territory ownership and quota-like supply-acquisition mandate. No explicit management scope or team leadership; scope is tactical and field-based. This profile aligns with an L4 individual contributor sales or operations role, not strategic leadership.",
+    "role_family_fit": 25,
+    "scope_seniority": 50,
+    "summary": "Airbnb Acquisition Manager is a field-based, quota-driven sales role focused on direct prospecting, onboarding, and supply acquisition in Italy. Candidate is a Strategy and Operations leader (L4\u2013L5 equivalent) with global transformation and cross-functional program experience, but lacks B2B new-business-development, pipeline-hunting, and hospitality-domain background. The mismatch is fundamental: role requires individual-contributor sales execution; candidate is positioned for internal strategy and operations leadership. While execution ability in ambiguous environments transfers, the core responsibility (prospect and onboard professional hosts) falls outside target families and preferred career trajectory.",
+    "uncertainties": [
+      "Candidate profile does not detail depth of customer-facing negotiation or B2B sales experience; unclear whether transformation and operations work involved direct client acquisition",
+      "JD does not specify whether this Market Manager/Acquisition Manager role may scale to strategic or people leadership after ramp; early clarity would shift scope seniority assessment",
+      "Italy market and Airbnb host ecosystem domain gaps cannot be assessed from profile; mitigation speed is unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations, transformation programs, and cross-functional program leadership; demonstrated ability to manage enterprise customer scenarios and complex stakeholder requirements",
+        "evidence_strength": "medium",
+        "job_requirement": "3+ years enterprise customer-facing roles with conversation design and AI agent development expertise"
+      },
+      {
+        "candidate_evidence": "Requirements definition, logic design, and transformation experience; actively learning Python and LLM fundamentals; strategic problem-solving mindset with analytical rigor",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to analyze customer requirements and craft LLM prompts for desired outcomes"
+      },
+      {
+        "candidate_evidence": "Led global scaling initiatives and transformation programs at Google; two promotions within organization; cross-functional leadership experience spanning product, sales, and operations teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Project and stakeholder management skills with passion for meeting milestones and effective communication"
+      },
+      {
+        "candidate_evidence": "Strategic operations background with focus on process design and system integration; familiar with API concepts through enterprise transformation work; learning technical depth in systems architecture",
+        "evidence_strength": "medium",
+        "job_requirement": "Analytical and critical thinking with expertise in risk assessment, problem-solving, strategy, and knowledge of data structures and enterprise APIs"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership with end-to-end rollout and operational readiness experience; ability to guide organizations through implementation and maximize value realization",
+        "evidence_strength": "medium",
+        "job_requirement": "Scope and implement AI Agent deployments providing strategic advice and execution support"
+      },
+      {
+        "candidate_evidence": "English at professional/fluent level; German native speaker; French proficiency not stated in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Excellent written and spoken French and English skills required"
+      }
+    ],
+    "confidence": 0.62,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Production LLM and prompt-engineering depth absent; candidate is actively learning Python and LLM fundamentals rather than demonstrating applied expertise",
+        "mitigation": "Candidate's analytical rigor and transformation experience provide foundation for rapid skill acquisition in LLM prompting and conversational design; onboarding and mentorship from Forward Deployed Engineers can accelerate technical fluency",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on API integration and REST API expertise; no evidence of working directly with Postman, OAuth, JWT, or enterprise SaaS API documentation",
+        "mitigation": "Strong systems-thinking and enterprise integration background; technical fundamentals can be developed through focused training and pairing with engineering colleagues on integration scenarios",
+        "severity": "high"
+      },
+      {
+        "gap": "French language proficiency not stated; role requires excellent written and spoken French",
+        "mitigation": "If candidate possesses working French (especially technical French), gap closes; otherwise, this is a hard blocker for France-based role; verify language capability before proceeding",
+        "severity": "high"
+      },
+      {
+        "gap": "No prior experience in conversational AI, NLP/NLU design, or voice-output optimization (SSML, Lexicons, Regex)",
+        "mitigation": "Transformation and UAT background provide exposure to user experience validation; conversational design patterns can be learned; may require extended ramp time for specialized tooling",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Excellent written and spoken French and English skills are required.' Candidate profile does not confirm French proficiency; English is professional/fluent, German is native. Without confirmed French fluency, candidate does not meet this explicit requirement for a France-based role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 3+ years enterprise customer-facing work with strategic advice and implementation ownership; Senior Agent Architect title at a product SaaS company with billion-scale deployments implies L5 IC scope (architect, design ownership, mentoring junior practitioners). Reporting line and company scale not stated, lowering confidence moderately. Title in context of technical depth and end-to-end execution responsibility maps to L5; not L6 due to absence of manager-of-managers scope or VP-level cross-function leadership.\"",
+    "role_family_fit": 62,
+    "scope_seniority": 68,
+    "summary": "Senior Agent Architect is a L5 IC role blending customer-facing strategy, AI solution design, and enterprise integration execution. Candidate brings eight years of global operations, transformation leadership, and stakeholder management\u2014strong fit for program ownership, requirement analysis, and cross-functional collaboration. However, critical gaps exist: no production LLM or prompt-engineering depth (actively learning), minimal hands-on REST API and integration platform experience, and unconfirmed French fluency (required for France-based role). Role represents a stretch into applied AI technical depth; candidate's problem-solving rigor and systems thinking provide foundation, but ramp time for LLM internals, conversational design, and integration tooling is substantial. French language confirmation is essential; if absent, candidate does not meet posted requirement.",
+    "uncertainties": [
+      "French language proficiency not stated in candidate profile; JD lists it as required for France-based role",
+      "Parloa company size and stage not stated in JD; affects seniority anchor and team-scale context",
+      "Depth of candidate's API familiarity and systems-integration hands-on experience unclear from profile; transformation work may not have included direct REST/OAuth configuration",
+      "LLM learning trajectory and pace unknown; time to productive prompt-engineering expertise cannot be inferred from profile alone"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

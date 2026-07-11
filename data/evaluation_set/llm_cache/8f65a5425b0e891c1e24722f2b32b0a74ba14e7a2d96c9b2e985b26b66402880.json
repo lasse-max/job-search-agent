@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; built strategic relationships across cross-functional stakeholders",
+        "evidence_strength": "medium",
+        "job_requirement": "Form successful relationships with clients throughout Vietnam, providing technical and business value"
+      },
+      {
+        "candidate_evidence": "Documented experience in transformation programs and commercial operations, implying stakeholder and cross-team collaboration",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop customer relationships and build internal partnerships with account executives and teams"
+      },
+      {
+        "candidate_evidence": "No demonstrated background in big data analytics, data science, Spark, or data platforms",
+        "evidence_strength": "weak",
+        "job_requirement": "Expert in big data analytics to excite customers about Databricks platform"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no production software-engineering background or coding experience cited",
+        "evidence_strength": "weak",
+        "job_requirement": "Prior experience with coding in a core programming language (Python, Java, Scala) and willingness to learn Spark"
+      },
+      {
+        "candidate_evidence": "No background in data analytics, proofs-of-concept, or cloud platform engineering work",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficient with Big Data Analytics technologies with hands-on expertise in complex proofs-of-concept and public cloud platforms"
+      },
+      {
+        "candidate_evidence": "Native German and professional English; no Vietnamese language capability mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficiency in Vietnamese language required for direct customer communications in Vietnam"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No big data analytics, data platform, or Spark expertise; role requires deep product and architecture knowledge",
+        "mitigation": "Would require 6-12 months of intensive technical ramp-up on Databricks platform, data architecture, and big data concepts; limited evidence of technical learning velocity in this domain",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on coding experience (Python basic, no production background); role explicitly requires core programming language proficiency",
+        "mitigation": "Candidate would need to develop functional coding ability for PoCs and demonstrations; actively learning Python but no timeline or depth specified",
+        "severity": "high"
+      },
+      {
+        "gap": "No documented public cloud platform (AWS, GCP, Azure) hands-on expertise; role requires proficiency with complex cloud architectures",
+        "mitigation": "Cloud fundamentals could be learned, but combined with coding and Spark gaps, ramp time extends significantly",
+        "severity": "medium"
+      },
+      {
+        "gap": "No Vietnamese language capability; role states Vietnamese proficiency is required for direct customer communications",
+        "mitigation": "Language barrier eliminates ability to serve Vietnam-based clients directly; would require translation support or reassignment of customer interaction responsibilities",
+        "severity": "high"
+      },
+      {
+        "gap": "Field Engineering and Solutions Architecture are not in target or approved-stretch families; candidate background is Strategy & Operations, not FDE/technical implementation",
+        "mitigation": "Role is fundamentally outside candidate's positioning and core competency areas; function fit is poor regardless of technical ramp",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Solutions Architect roles at mature, well-funded companies (Databricks is 10,000+ customer base, 50%+ Fortune 500) typically span L4\u2013L5: 4\u20137 years of relevant domain expertise (data/cloud), technical depth in a specialist domain, and account-level relationship ownership. JD emphasizes hands-on technical PoCs, architecture design, and regional advisory scope (Vietnam), suggesting L4 base with possible L5 upside depending on hiring bar. No management scope. reporting line not stated.",
+    "role_family_fit": 12,
+    "scope_seniority": 55,
+    "summary": "Solutions Architect at Databricks is a deeply technical, domain-specialist field engineering role requiring big data analytics, Spark, public cloud, and hands-on coding expertise\u2014none of which align with the candidate's Strategy & Operations and transformation background. The candidate lacks mandatory Vietnamese language fluency, production coding experience, data platform knowledge, and field engineering positioning. While the candidate has strong relationship-building and cross-team collaboration experience, the technical and functional fit is fundamentally misaligned. This role falls outside target and approved-stretch families and is not a viable opportunity.",
+    "uncertainties": [
+      "Company size/stage context for role level is stated in JD but seniority floor (L4 vs. L5) depends on hiring bar for technical depth",
+      "Candidate's Python learning trajectory and depth unknown; 'basic and actively learning' does not quantify pace or intended proficiency level",
+      "Whether candidate has any exposure to cloud platforms (GCP, AWS, Azure) through Google or transformation work is not explicit in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

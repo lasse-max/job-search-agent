@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with two promotions in Strategy and Operations, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "5-8 years experience in revenue operations or related field"
+      },
+      {
+        "candidate_evidence": "History of scaling global commercial operations and transformation programs with people leadership; promoted twice within the same organization",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven track record managing and developing teams"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs, requirements logic design, UAT, rollout, and process design in commercial operations context",
+        "evidence_strength": "medium",
+        "job_requirement": "Expertise in revenue analytics, process optimization, and commercial systems"
+      },
+      {
+        "candidate_evidence": "8 years building commercial operations and transformation programs; strategic context suggests multi-stakeholder engagement and program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to partner cross-functionally with sales, product, finance, and operations leaders"
+      },
+      {
+        "candidate_evidence": "Transformation program delivery and scaling global commercial operations; metrics and business outcomes not explicitly stated in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Track record driving operational efficiency and business impact through data-driven decision-making"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 74,
+    "gaps": [
+      {
+        "gap": "Limited explicit visibility into revenue metrics (ARR, MRR, churn, LTV, CAC) management and optimization at scale",
+        "mitigation": "Candidate's 8 years at Google and transformation program history suggest strong analytical foundation; revenue ops metrics are learnable given fintech/Wise Platform context and business fundamentals demonstrated",
+        "severity": "medium"
+      },
+      {
+        "gap": "No clear evidence of hands-on fintech, payments, or B2B SaaS operations background",
+        "mitigation": "Wise Platform is a global fintech leader; domain onboarding is expected for any external hire; candidate's transformation and scaling experience transfers well to revenue ops in a high-growth fintech context",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit mention of Salesforce, analytics platforms (Tableau, Looker, Qlik), or business intelligence tools mastery",
+        "mitigation": "RevOps tools are typically learned on the job; candidate's background in process design, UAT, and system integration suggests capability to own analytics stacks and vendor relationships",
+        "severity": "low"
+      },
+      {
+        "gap": "No direct consulting or case-team exposure; RevOps leadership often benefits from structured problem-solving methodology",
+        "mitigation": "Transformation program leadership at Google likely involved rigorous problem-scoping and stakeholder alignment; consulting mindset is complementary, not required",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "JD requires 5\u20138 years with team leadership; reporting line not stated. \"Senior\" title and manager scope at a global fintech platform suggest established IC or first-line management. Role emphasizes analytics, process design, stakeholder engagement, and team leadership rather than deep technical depth, consistent with L5 senior IC or early manager-of-managers in ops. Company stage (unknown) creates moderate uncertainty.",
+    "role_family_fit": 87,
+    "scope_seniority": 78,
+    "summary": "Senior Revenue Operations Manager at Wise (company stage unknown) is a revenue operations leadership role requiring 5\u20138 years' experience, managing a team, driving operational efficiency, analytics, and systems integration across commercial functions. The candidate brings 8 years at Google in Strategy and Operations with two promotions and proven experience scaling global commercial transformation, making this a strong role-family fit in the core Revenue Operations domain at appropriate seniority.",
+    "uncertainties": [
+      "JD does not state Wise company size, stage, or funding profile; role seniority is inferred from 'Senior' title and team scope alone",
+      "Candidate profile does not break out specific revenue operations title history; 'Strategy and Operations' and 'commercial operations' roles may differ from pure RevOps focus",
+      "No explicit mention of quota attainment, sales enablement, or go-to-market planning; unclear whether candidate has owned GTM metrics directly",
+      "JD snapshot appears to be a web-page dump with minimal structured JD text; core responsibilities are not fully articulated"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

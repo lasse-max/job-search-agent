@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 import json
 import re
 import sqlite3
@@ -15,7 +16,8 @@ from app.db import (
     latest_source_failures,
     record_source_run,
 )
-from app.services.digest import render_html, render_text
+from app.config import load_scoring_policy
+from app.services.digest import render_html, render_text, select_digest_rows
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION
 from app.services.manual_intake import add_text_intake
 from app.services.notifications import EmailMessage, EmailSendResult, deliver_digest
@@ -611,6 +613,200 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertIn("➕ 5 more", text_body)
             self.assertIn("➕ 5 more", html_body)
 
+    def test_company_cap_preserves_diversity_and_counts_overflow(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index in range(8):
+                add_text_intake(
+                    _job_text_for_company("CrowdCo", index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/crowd-{index:02d}",
+                )
+            for index in range(4):
+                add_text_intake(
+                    _job_text_for_company(f"DiverseCo {index}", index + 20),
+                    db_path=db_path,
+                    source_url=f"https://example.com/diverse-{index:02d}",
+                )
+            conn = _connect(db_path)
+            conn.execute("UPDATE job_postings SET availability_state = 'open'")
+            conn.commit()
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+
+            selection = select_digest_rows(get_digest_rows(conn))
+            companies = [str(row["company"]) for row in selection.rows]
+
+            self.assertEqual(companies.count("CrowdCo"), 3)
+            self.assertEqual(len(companies), 7)
+            self.assertEqual(selection.overflow_count, 5)
+
+    def test_company_cap_is_config_driven(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index in range(5):
+                add_text_intake(
+                    _job_text_for_company("CrowdCo", index),
+                    db_path=db_path,
+                    source_url=f"https://example.com/config-cap-{index:02d}",
+                )
+            conn = _connect(db_path)
+            conn.execute("UPDATE job_postings SET availability_state = 'open'")
+            conn.commit()
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+            policy = load_scoring_policy()
+            configured = replace(
+                policy,
+                digest_limits={**policy.digest_limits, "max_per_company": 2},
+            )
+
+            with patch("app.services.digest.load_scoring_policy", return_value=configured):
+                selection = select_digest_rows(get_digest_rows(conn))
+
+            self.assertEqual(len(selection.rows), 2)
+            self.assertEqual(selection.overflow_count, 3)
+
+    def test_renderers_collapse_location_variants_and_reapply_company_cap(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index, location in enumerate(("London, United Kingdom", "Munich, Germany")):
+                add_text_intake(
+                    _job_text_for_company(
+                        "MistralLike",
+                        index,
+                        title=f"AI Deployment Strategist - {location.split(',')[0]}",
+                        location=location,
+                    ),
+                    db_path=db_path,
+                    source_url=f"https://example.com/location-{index:02d}",
+                )
+            for index in range(5):
+                add_text_intake(
+                    _job_text_for_company("CrowdCo", index + 10),
+                    db_path=db_path,
+                    source_url=f"https://example.com/render-crowd-{index:02d}",
+                )
+            for index in range(4):
+                add_text_intake(
+                    _job_text_for_company(f"RenderDiverse {index}", index + 30),
+                    db_path=db_path,
+                    source_url=f"https://example.com/render-diverse-{index:02d}",
+                )
+            conn = _connect(db_path)
+            conn.execute("UPDATE job_postings SET availability_state = 'open'")
+            conn.commit()
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="apply_now",
+                role_fit_score=90,
+            )
+
+            text_body = render_text(get_digest_rows(conn), [])
+
+            self.assertEqual(text_body.count("MistralLike - AI Deployment Strategist ("), 1)
+            self.assertIn("London, United Kingdom, Munich, Germany", text_body)
+            self.assertEqual(text_body.count("CrowdCo -"), 3)
+            self.assertIn("➕ 2 more", text_body)
+
+    def test_location_variants_with_different_outcomes_are_not_merged(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index, location in enumerate(("London, United Kingdom", "Singapore")):
+                add_text_intake(
+                    _job_text_for_company(
+                        "VariantCo",
+                        index,
+                        title=f"AI Deployment Strategist - {location.split(',')[0]}",
+                        location=location,
+                    ),
+                    db_path=db_path,
+                    source_url=f"https://example.com/material-variant-{index}",
+                )
+            conn = _connect(db_path)
+            conn.execute("UPDATE job_postings SET availability_state = 'open'")
+            conn.commit()
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="consider",
+                role_fit_score=75,
+            )
+            singapore = conn.execute(
+                """
+                SELECT re.id, re.evaluation_json
+                FROM role_evaluations re
+                JOIN job_postings jp ON jp.id = re.job_posting_id
+                WHERE jp.title LIKE '%Singapore'
+                """
+            ).fetchone()
+            payload = json.loads(singapore["evaluation_json"])
+            payload["recommendation"] = "blocked"
+            payload["hard_blockers"] = [
+                {"type": "disqualifying_hard_requirement", "evidence": "Coding required."}
+            ]
+            payload["feasibility"] = {"state": "blocked", "reason": "Hard blocker."}
+            conn.execute(
+                "UPDATE role_evaluations SET evaluation_json = ? WHERE id = ?",
+                (json.dumps(payload), singapore["id"]),
+            )
+            conn.commit()
+
+            text_body = render_text(get_digest_rows(conn), [])
+
+            self.assertIn("AI Deployment Strategist - London", text_body)
+            self.assertIn("AI Deployment Strategist - Singapore", text_body)
+            self.assertNotIn("London, United Kingdom, Singapore", text_body)
+
+    def test_location_variants_with_different_estimated_levels_are_not_merged(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            for index, location in enumerate(("London, United Kingdom", "Singapore")):
+                add_text_intake(
+                    _job_text_for_company(
+                        "LevelVariantCo",
+                        index,
+                        title=f"AI Deployment Strategist - {location.split(',')[0]}",
+                        location=location,
+                    ),
+                    db_path=db_path,
+                    source_url=f"https://example.com/level-variant-{index}",
+                )
+            conn = _connect(db_path)
+            conn.execute("UPDATE job_postings SET availability_state = 'open'")
+            conn.commit()
+            _mark_non_fallback_evaluations(
+                conn,
+                recommendation="consider",
+                role_fit_score=75,
+            )
+            rows = conn.execute(
+                """
+                SELECT re.id, re.evaluation_json, jp.title
+                FROM role_evaluations re
+                JOIN job_postings jp ON jp.id = re.job_posting_id
+                """
+            ).fetchall()
+            for row in rows:
+                payload = json.loads(row["evaluation_json"])
+                payload["estimated_level"] = "L6" if "Singapore" in row["title"] else "L4"
+                conn.execute(
+                    "UPDATE role_evaluations SET evaluation_json = ? WHERE id = ?",
+                    (json.dumps(payload), row["id"]),
+                )
+            conn.commit()
+
+            text_body = render_text(get_digest_rows(conn), [])
+
+            self.assertIn("AI Deployment Strategist - London", text_body)
+            self.assertIn("AI Deployment Strategist - Singapore", text_body)
+            self.assertNotIn("London, United Kingdom, Singapore", text_body)
+
     def test_digest_headers_include_latest_scan_reach(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
@@ -847,6 +1043,23 @@ def _job_text(index: int) -> str:
     return f"""Company: CapCo {index:02d}
 Title: Strategic Operations Manager {index:02d}
 Location: Munich, Germany
+Department: Strategy & Operations
+
+Lead strategy and operations programs for cross-functional stakeholders.
+Own executive rhythm, customer operations, transformation work, and program delivery.
+"""
+
+
+def _job_text_for_company(
+    company: str,
+    index: int,
+    *,
+    title: str | None = None,
+    location: str = "Munich, Germany",
+) -> str:
+    return f"""Company: {company}
+Title: {title or f'Strategic Operations Manager {index:02d}'}
+Location: {location}
 Department: Strategy & Operations
 
 Lead strategy and operations programs for cross-functional stakeholders.

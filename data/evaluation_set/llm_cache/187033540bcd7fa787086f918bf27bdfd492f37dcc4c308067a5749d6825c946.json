@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs with proven program leadership and stakeholder management",
+        "evidence_strength": "medium",
+        "job_requirement": "Build scalable measurement frameworks and strategic north star metrics to enable data-driven decision-making"
+      },
+      {
+        "candidate_evidence": "Cross-functional transformation leadership and strategic operations background demonstrates stakeholder influence and communication across technical and business teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Communicate data insights and recommendations to technical and non-technical audiences, ensuring findings influence stakeholders"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation experience includes UAT, rollout, and requirements logic design but not native A/B testing or experimental design",
+        "evidence_strength": "weak",
+        "job_requirement": "Design and implement rigorous frontend experiments to improve payment product experience"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Core quantitative skills: 7+ years experimentation and causal inference in data science; candidate background is strategy/operations, not data science or analytics engineering",
+        "mitigation": "Candidate's program leadership and transformation execution could translate to analytics-heavy product strategy if given dedicated mentorship in experimentation design and statistical rigor; however, this is a data scientist role, not a strategy role",
+        "severity": "high"
+      },
+      {
+        "gap": "Production data science expertise: SQL, Python/R, data modeling. Candidate has basic Python (actively learning) but no demonstrated hands-on analytics engineering or production data pipeline work",
+        "mitigation": "Reskilling in SQL and statistical modeling is possible but represents substantial technical gap for a Staff-level role requiring immediate expert delivery",
+        "severity": "high"
+      },
+      {
+        "gap": "Payments domain and fintech product experience not evident in profile",
+        "mitigation": "Transferable stakeholder and product acumen from Google could support domain onboarding, but no concrete fintech or payments analytics background",
+        "severity": "medium"
+      },
+      {
+        "gap": "Experimentation and causal inference track record: JD emphasizes 'proven experience in experimentation and causal inference to drive data-informed product decisions.' Candidate's experience is transformation and operational scaling, not A/B testing or quasi-experimental design",
+        "mitigation": "None practical at Staff level; this is a foundational skill gap",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 7+ years in quantitative field plus experimentation/causal inference depth, Staff-level scope managing junior data scientists, and technical leadership on cross-functional analytics initiatives. Reporting to product leadership at a $8B fintech unicorn. Staff/Senior DS roles typically map to L5\u2013L6 depending on scope and mentorship breadth; this role's explicit mentoring and technical strategy ownership suggests L5 lower-to-mid range.",
+    "role_family_fit": 15,
+    "scope_seniority": 72,
+    "summary": "Staff Data Scientist role at Airwallex requiring 7+ years quantitative expertise, experimentation/causal inference mastery, and production SQL/Python/R skills to lead analytics strategy and junior mentorship in payments product. Candidate is a strategy and operations leader with program execution excellence but lacks the core data science, statistical inference, and analytics engineering background this role demands. While strong in cross-functional leadership and product acumen, the technical and domain gaps are severe at Staff level and not readily closable through on-the-job learning.",
+    "uncertainties": [
+      "Candidate's Python skill level and depth\u2014stated as 'basic and actively learning' but extent of hands-on data work unclear",
+      "Whether candidate has exposure to experimentation platforms or A/B testing infrastructure at Google (not explicit in profile)",
+      "Company-stage context: Airwallex is $8B unicorn, but internal analytics maturity and mentorship support for incoming Staff DS unknown"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

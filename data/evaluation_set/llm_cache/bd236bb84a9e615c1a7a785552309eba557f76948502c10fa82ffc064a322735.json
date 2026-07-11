@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years of Google Devices and Services operations and transformation leadership with two promotions; demonstrated ability to lead complex cross-functional programs and drive resolution under pressure",
+        "evidence_strength": "medium",
+        "job_requirement": "Leading the end-to-end technical response to high-severity security incidents and acting as the senior technical authority during live incidents"
+      },
+      {
+        "candidate_evidence": "No direct security incident response, forensics, DFIR, or endpoint/identity investigation experience evident in positioning or profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Owning investigation, containment, eradication, and recovery activities across endpoint, identity, cloud, and SaaS platforms"
+      },
+      {
+        "candidate_evidence": "Experience designing transformation programs and operational processes at scale, but not security-specific incident playbooks or detection engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Designing and maintaining incident response playbooks, runbooks, and detection improvements"
+      },
+      {
+        "candidate_evidence": "No background in vulnerability management, SIEM, patch management, or security tooling mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven ability to prioritise vulnerability or patching risk in large, complex estates using SIEM and security tooling"
+      },
+      {
+        "candidate_evidence": "Leadership and influence demonstrated through global commercial operations scaling and program execution; ability to operate under pressure and guide stakeholders",
+        "evidence_strength": "strong",
+        "job_requirement": "Clear communicator who can influence outcomes without direct ownership and remain decisive during incidents"
+      },
+      {
+        "candidate_evidence": "No digital forensics, incident response, or malware analysis background stated",
+        "evidence_strength": "weak",
+        "job_requirement": "DFIR, forensics, or malware analysis experience"
+      }
+    ],
+    "confidence": 0.8,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No hands-on security incident response, DFIR, or forensics experience. Core role requires leading real-world incident investigation and containment across endpoint, identity, and cloud.",
+        "mitigation": "Bootcamp in incident response fundamentals and supervised mentoring from a security incident leadership peer; immediate pairing with Security Operations team during first incidents.",
+        "severity": "high"
+      },
+      {
+        "gap": "No SIEM, vulnerability management platform, or endpoint detection and response (EDR) tool proficiency. Role requires using these tools to prioritize patching risk in complex estates.",
+        "mitigation": "Focused technical onboarding on Checkout.com's SIEM and tooling stack; hands-on lab exercises and training from internal security tools team.",
+        "severity": "high"
+      },
+      {
+        "gap": "No production security background or compliance-driven security exposure. Role requires influencing security posture across fintech infrastructure.",
+        "mitigation": "Deep immersion in Checkout.com's security architecture, compliance landscape (PCI-DSS, etc.), and risk management processes during ramp; domain-specific mentoring.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Operations and transformation expertise do not translate directly to security domain knowledge or incident triage. Recovery-focused operations differ materially from forensic investigation and root-cause analysis.",
+        "mitigation": "Structured security curriculum covering threat modeling, attack chains, artifact analysis, and forensic methodology; pair with incident responder on multiple real and simulated incidents.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'Proven, hands-on experience leading response to real security incidents' and 'Strong investigation capability across endpoint, identity, and cloud environments.' Candidate profile contains no background in security incident response, digital forensics, endpoint investigation, identity compromise handling, or cloud security incident management. This is a specialist security role requiring domain expertise, not a strategy/operations leadership role.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Role requires hands-on technical authority and incident leadership at a payments-scale fintech (10B daily transactions). JD emphasizes senior individual-contributor ownership, not management scope. Strong technical and investigation depth, clear decision-making under pressure, and influence across engineering and security teams signal L5 (Senior IC/Lead Engineer equivalent). Company stage/size is not explicitly stated, which lowers confidence modestly.",
+    "role_family_fit": 8,
+    "scope_seniority": 72,
+    "summary": "This is a specialist security incident response role (L5 equivalent) requiring hands-on DFIR, forensics, and endpoint/identity investigation expertise at a mission-critical fintech. Candidate is a Strategy and Operations leader with eight years at Google, strong stakeholder influence, and program execution capability, but has no security incident response, forensics, SIEM, vulnerability management, or cloud security incident background. The gaps are not onboarding-friendly; they require deep domain specialization in a field far outside the candidate's expertise. This role does not fit the target or approved stretch families and is a poor match for operations-to-security career transition.",
+    "uncertainties": [
+      "Candidate's actual depth of involvement in security or compliance-adjacent operations at Google (e.g., whether Devices operations included any security incident response or risk management responsibilities)",
+      "Whether candidate has any informal security investigation or threat-response exposure through Google's infrastructure or platform teams",
+      "Checkout.com's tolerance for technical ramp-up and mentoring for an operations leader transitioning into security specialist role",
+      "Whether role would accept an operationalist with security domain bootcamp versus requiring pre-existing DFIR or incident response certification"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

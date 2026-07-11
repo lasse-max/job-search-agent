@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations, transformation programs, and working with compliance/audit processes; experience with infrastructure provisioning and UAT/rollout",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage and scale infrastructure, maintain systems, and support audits with technical evidence"
+      },
+      {
+        "candidate_evidence": "Process design, requirements logic, automation-minded transformation experience; no production software engineering or IAM/security engineering background",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop automated workflows and implement solutions to reduce attack surface and ensure compliance"
+      },
+      {
+        "candidate_evidence": "Demonstrated autonomy and bias for action in commercial operations and transformation programs; no depth in security domain",
+        "evidence_strength": "medium",
+        "job_requirement": "Work autonomously in a fast-paced environment with proactive security-first mindset"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No production software-engineering or hands-on AWS/IAM engineering background; role requires deep hands-on AWS expertise, Terraform, Go/Python, and Linux systems knowledge",
+        "mitigation": "Candidate could pursue deep AWS/IAM certifications and hands-on lab work, but this is a specialized technical foundation that typically requires years of infrastructure engineering or platform engineering experience, not operations/strategy ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated Access Management, PAM, JIT provisioning, or Teleport infrastructure experience",
+        "mitigation": "Domain-specific expertise in access control and privileged access management is industry-specific and not easily transferable from commercial operations; would require significant hands-on mentoring and capability building",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited background in production Linux systems, networking fundamentals (OIDC, SAML, SSH, TLS, TCP/IP), and container orchestration (Kubernetes RBAC)",
+        "mitigation": "These are foundational infrastructure skills typically gained through years of SRE, platform engineering, or DevOps work; unlikely to be acquired quickly through self-study alone",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit compliance/audit translation experience in a highly regulated financial or security context",
+        "mitigation": "Candidate has worked with compliance processes in commercial operations; banking compliance and security audit evidence is specialized and differs from general operations compliance",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires production AWS infrastructure engineering, hands-on IAM/PAM/access-control expertise, Teleport/Linux/Kubernetes systems knowledge, and Go/Python production coding. This is senior individual-contributor SRE/platform-engineering scope (L5), not strategic operations. The JD emphasizes technical depth and autonomous hands-on ownership of critical security systems, not strategy or program leadership.",
+    "role_family_fit": 15,
+    "scope_seniority": 72,
+    "summary": "This is a hands-on Site Reliability Engineer / platform-security role requiring deep production AWS, IAM, Teleport, Terraform, Go/Python, and Linux systems expertise\u2014fundamentally a specialized technical/engineering position (L5 SRE scope), not a strategy, operations, or transformation role. Candidate's eight-year tenure in commercial operations and transformation is strong at scope seniority, but has no production software engineering, infrastructure, security engineering, or AWS/IAM background, and the high-severity technical gaps in access management, Linux systems, networking protocols, and production coding are not manageable through operations-to-engineering transition. Recommend skip unless candidate can evidence hidden infrastructure/security engineering depth not shown in profile.",
+    "uncertainties": [
+      "Company stage/size not stated in JD; N26 is a fintech but team scale is unclear",
+      "Whether candidate has any informal AWS/infrastructure/security lab experience or certifications not detailed in profile",
+      "Scope of 'Access Team' relative to broader Platform Engineering org\u2014unclear if role could be more operations-heavy or if it is fundamentally hands-on SRE"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

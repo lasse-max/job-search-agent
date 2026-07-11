@@ -28,7 +28,24 @@ Staged delivery. Each stage stands alone and delivers value before the next begi
 - **User testing:** owner runs the daily digest, flags misses; tune to acceptable live precision.
 - **Web app — the full "Sextant" 4-page app (simple version), owner decision 2026-07-08.** Next.js + Supabase Postgres + Vercel, single-user. All four pages ship in 1.5 as the *simple* version: **Potential Matches** (daily digest online + role-detail evidence view + skipped/audit view), **To Apply** (shortlist), **Applied** (internal pipeline tracker — table, stages, next-action), **Profile** (read-only display of the current search criteria). Reads the agent's real data/logic; approval gate on every move; keeps all current rules. Design ref: `docs/design/sextant/`; build brief: `docs/briefs/webapp-build-brief.md`. Gated on the calibration stale-score fix landing first.
 
-## Stage 2.0 — Optimize the app · _after 1.5_
+## Stage 1.9 — Pre-intensive-use calibration · _NEW, owner decision 2026-07-11_
+**Goal: point the system at the right things, in the right places, before leaning on it daily.** 1.5 proved the loop works. But the Profile page made the search *definition* visible for the first time — and immediately exposed that **2 of every 3 watchlist companies are dark** (B-27). Tuning scores on a third of the universe is sharpening a lens pointed at the wrong third of the room. Fix the inputs before the intensive-use phase, or every calibration note the owner writes will be about a distorted picture.
+
+**A. Profile clean-up — audit the search definition itself** (now that it's visible, not buried in YAML). Every criterion on the Profile page gets an owner pass: **locations** (Perth added 2026-07-10 — decide Brisbane/Adelaide/Canberra; re-check the EU list for gaps), the **92-company watchlist** (still wanted? tiers right? add/remove?), target role families + approved-stretch, seniority band, hard blockers, languages, band thresholds. Cheaper and higher-leverage than any score tuning: a wrong criterion corrupts *everything* downstream.
+
+**B. Calibration Sweep 3** (`docs/briefs/codex-calibration-sweep-3.md`) — language filter leak, technical-degree disqualifier, dedup + company crowding, Palantir opt-out, and **estimated level** (`docs/specs/estimated-level.md`). *Implemented with a complete prompt-v5 cache and passing cached/live benchmark gates; awaiting independent Cato review.*
+
+**C. Coverage push (B-27) — 34% → ≥80%.** First repair three high-value sources already reachable with existing adapters, then validate and enable the 14 audited Ashby feeds in bounded batches. Build the next adapter by measured tier-weighted return; the current audit makes SmartRecruiters the strongest documented candidate. Use manual URL/text intake for stubborn Tier-1s and consider B-14 email-sourced discovery where no stable ATS feed exists.
+
+**Exit (all must hold before Stage 2.0):**
+- **≥80% watchlist coverage** (owner gate, 2026-07-11) — no optimization layer on a two-thirds-blind agent.
+- Profile reflects the owner's **actual, current** criteria — audited, not inherited from the Stage-0 assumptions.
+- Sweep 3 shipped + Cato-cleared, benchmarks green.
+- Owner trusts the daily digest enough to run the search through it intensively.
+
+→ **Then: intensive daily use.** That's where the real calibration signal comes from — but only once the system is looking in the right places.
+
+## Stage 2.0 — Optimize the app · _after 1.9 (gated on ≥80% coverage)_
 Analytics/metrics, kanban, editable criteria in the UI, salary-anchoring, conversion analysis by CV version, advanced tracker features, light theme — the *optimization* layer on top of the simple 1.5 app. (Roadmap note: the tracker itself moved into 1.5 as a simple form; 2.0 is now "make the app better," not "build the tracker.")
 
 ## Stage 2.5 — Feedback-signal analytics · _after 2.0_ (backlog B-23)

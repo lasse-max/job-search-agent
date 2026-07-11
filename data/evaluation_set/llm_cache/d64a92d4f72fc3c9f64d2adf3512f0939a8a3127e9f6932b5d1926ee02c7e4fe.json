@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; two promotions; experience with multi-stakeholder rollout, UAT, and transformation execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Deploy and scale AI applications across enterprise customers with varying infrastructure and business requirements"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy background with ownership of requirements logic design and transformation; experience scaling commercial operations globally suggests ability to frame technical solutions for business impact",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive strategic adoption of Mistral AI solutions; translate technical capabilities into business value for customers"
+      },
+      {
+        "candidate_evidence": "Eight years managing global commercial operations and transformation programs with documented two promotions; direct experience with rollout, UAT, and stakeholder management across scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Design and execute customer engagement strategies; manage complex multi-stakeholder adoption programs"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership experience; process design and execution skills; product operations background involving requirements and implementation logic design",
+        "evidence_strength": "medium",
+        "job_requirement": "Advise customers on implementation best practices and organizational change management for AI integration"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No consulting brand or classic case-team background; customer engagement experience is internal-facing transformation rather than external consulting delivery",
+        "mitigation": "Candidate has proven stakeholder management and program delivery at scale. Mistral and team can provide customer-facing training and mentorship; problem-solving and process-design skills transfer directly.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited domain-specific knowledge of Mistral AI products, LLM deployment challenges, or enterprise AI infrastructure",
+        "mitigation": "Domain knowledge is trainable; candidate has strong foundation in translating technology to business value and managing adoption. Ramp period and product immersion can close this gap.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product experience is transformation/operations-led rather than native product management; may lack depth in AI/ML feature design reasoning",
+        "mitigation": "Role emphasizes deployment strategy and customer adoption, not product development. Candidate's product logic-design and requirements skills are aligned.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Title \"AI Deployment Strategist\" suggests 4\u20135 year independent contributor or emerging team-lead scope. JD emphasizes customer engagement, strategic deployment, and adoption management rather than deep technical engineering. Professional Services Operations context signals mid-senior IC or first-line leadership. Company size/stage unknown, limiting precision. Estimated L4 based on 3\u20135 year range anchor and independent strategic scope without clear manager-of-managers evidence.",
+    "role_family_fit": 82,
+    "scope_seniority": 76,
+    "summary": "Candidate is a strong cultural and functional fit for this Deployment Strategist role. Eight years in strategy and operations at scale, with two promotions and proven multi-stakeholder transformation program leadership, directly map to customer adoption, stakeholder management, and AI deployment strategy. Primary gaps are domain-specific Mistral AI product knowledge (learnable) and consulting background; these are manageable given the candidate's operations and transformation depth. Confidence is moderate due to incomplete JD and unknown company stage.",
+    "uncertainties": [
+      "JD appears truncated or malformed (contains CSS/font declarations); full responsibilities, reporting line, and team scope are unclear",
+      "Company size and stage unknown; 'Deployment Strategist' may map differently at early-stage vs. enterprise",
+      "No explicit reference to required domain background (ML/AI familiarity, Mistral product knowledge, or cloud infrastructure experience)",
+      "Limited consulting or customer-facing field experience in candidate background; customer success/engagement model fit unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

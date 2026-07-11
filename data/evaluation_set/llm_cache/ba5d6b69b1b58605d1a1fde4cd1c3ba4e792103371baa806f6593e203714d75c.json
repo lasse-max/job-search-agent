@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, leading global commercial operations and transformation programs; proven track record synthesizing complex requirements into product logic design, UAT, and rollout",
+        "evidence_strength": "strong",
+        "job_requirement": "Turn customer hunches into data-driven reality by synthesizing disconnected streams of thought into cohesive understanding of problems, data meaning, and product needs"
+      },
+      {
+        "candidate_evidence": "Led transformation programs requiring deep stakeholder management, process design, and execution across commercial operations; background in implementation-heavy business problem-solving with strong stakeholder engagement",
+        "evidence_strength": "strong",
+        "job_requirement": "Immerse in customers' intricate workflows, explore data, and enable at scale; partner with customer teams and cross-functional stakeholders"
+      },
+      {
+        "candidate_evidence": "Product operations experience with focus on requirements, logic design, UAT, and transformation delivery; demonstrated product intuition through ownership-driven product experience rather than native engineering PM",
+        "evidence_strength": "medium",
+        "job_requirement": "Dive into product landscape and assess product needs; combine curious analytical mindset with sharp product intuition"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions indicates consistent execution and growth; transformation and operations leadership demonstrates user empathy and ability to drive operational impact",
+        "evidence_strength": "strong",
+        "job_requirement": "Act as a do-er who executes against complex, real-world operational challenges; tackle problems requiring analytical mindset and strong user empathy"
+      }
+    ],
+    "confidence": 0.78,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Limited direct consulting or classic case-team experience; Deployment Strategist role typically benefits from exposure to rapid problem-decomposition and multi-client pattern recognition",
+        "mitigation": "Strong transformation and operations program leadership demonstrates comparable problem-solving and stakeholder navigation; ramp period expected but foundational analytical mindset and curiosity align well",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product experience is ownership and transformation-driven rather than native product management with deep SDLC/feature velocity background",
+        "mitigation": "Deployment Strategist role emphasizes customer problem decomposition and data-driven decisions over feature engineering; candidate's strength in product intuition through requirements and logic design transfers directly",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Deployment Strategist is typically L4\u2013L5 equivalent based on ownership scope, customer-facing responsibility, and cross-functional collaboration. No explicit years-required or management scope stated in JD. Company size/stage unlisted. Role emphasizes IC execution and problem-solving authority rather than team leadership. title suggests mid-to-senior IC rather than manager-of-managers. Estimates L4 with moderate confidence.",
+    "role_family_fit": 88,
+    "scope_seniority": 78,
+    "summary": "Strong candidate fit for Deployment Strategist role. Eight years of Google operations and transformation leadership demonstrates the analytical mindset, stakeholder management, and problem-decomposition capability central to the role. Product intuition and UAT/rollout ownership align well with product landscape assessment and customer empowerment mission. Medium gaps in direct consulting/case-team experience and native PM depth are manageable within the transformation-focused scope of the role.",
+    "uncertainties": [
+      "Palantir company size and internal team structure not stated; affects assessment of scope complexity and stakeholder seniority",
+      "Depth of 'data exploration and analysis' expectation unclear; candidate background is more operations/transformation than data-science or analytics engineering",
+      "Geographic relocation to Sydney and visa sponsorship status not addressed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

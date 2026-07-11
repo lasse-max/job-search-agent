@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; positioning in Strategy and Operations / Product Operations",
+        "evidence_strength": "strong",
+        "job_requirement": "AI Process Transformation Lead role in Strategy & Operations at AutoScout24"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in transformation programs and scaling commercial operations; approved stretch family includes implementation-heavy AI transformation roles with business problem solving, stakeholder management, and process design",
+        "evidence_strength": "medium",
+        "job_requirement": "Process transformation and AI initiative leadership implied by title and Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Global commercial operations experience at Google; bilingual (English professional/fluent, German native) with native German language capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategic operations scope in European context (Munich-based role)"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 55,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "JD snapshot is corrupted and unreadable; critical role responsibilities, required experience level, reporting structure, and AI/process-transformation scope are not discernible",
+        "mitigation": "Request clean, full JD from AutoScout24 careers page or internal system to assess actual role requirements, experience expectations, and AI transformation depth",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of prior AI transformation or process automation leadership in candidate profile",
+        "mitigation": "Request candidate to clarify any AI/ML process optimization initiatives led at Google and to detail stakeholder scope and business impact",
+        "severity": "medium"
+      },
+      {
+        "gap": "Candidate background is product-operations and commercial-operations focused; strategic AI process transformation may require deeper technical or AI methodology knowledge",
+        "mitigation": "Clarify whether role expects hands-on AI/ML systems knowledge or primarily business-process design, change management, and execution",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 40,
+    "level_rationale": "Title \"AI Process Transformation Lead\" in Strategy & Operations suggests L4\u2013L5 ownership scope and likely 5\u20138 years of relevant transformation or operations experience. Company size/stage unknown; no salary or reporting-line detail provided. JD is unreadable, preventing confident level anchoring from actual requirements or seniority signals.",
+    "role_family_fit": 65,
+    "scope_seniority": 50,
+    "summary": "AI Process Transformation Lead role at AutoScout24 in Munich aligns with candidate's Strategy and Operations background, German language capability, and transformation program experience. However, the JD snapshot is corrupted and unreadable, making it impossible to assess actual role responsibilities, AI scope, seniority signals, or transformation depth. Candidate profile shows strong operations and scaling experience but lacks clear evidence of AI process transformation leadership. Recommend requesting a clean, complete JD and candidate clarification on prior AI/process-automation initiatives before proceeding.",
+    "uncertainties": [
+      "JD content is corrupted (contains cookie consent and consent-management tool code); actual role responsibilities, required experience, and AI/process-transformation scope are unreadable",
+      "Company size and stage not stated; unable to contextualize role seniority or scope",
+      "No explicit AI transformation, process automation, or AI methodology experience evident in candidate profile",
+      "Candidate's transformation experience is described as commercial operations and program scaling; clarity needed on whether role requires technical AI/ML depth or primarily business design and change management",
+      "Reporting structure and organizational context not provided in role JSON"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and leading transformation programs; positioned as Strategy and Operations/Product Operations leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Scope and lead technical initiatives end-to-end: identify problems worth solving, propose the right solution approach, and deliver on that solution"
+      },
+      {
+        "candidate_evidence": "Cross-functional stakeholder management in scaling commercial operations; transformation program leadership; however, primarily internal product/process focus rather than external partner management",
+        "evidence_strength": "weak",
+        "job_requirement": "Engage with Stripe's financial partners to drive alignment on product usage, troubleshoot and solve technical problems or breakages"
+      },
+      {
+        "candidate_evidence": "Led transformation programs at Google; experience operating in complex, scaled environments with high organizational velocity",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage multiple projects simultaneously and prioritize tasks effectively in a fast-paced setting"
+      }
+    ],
+    "confidence": 0.62,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No production software-engineering or hands-on coding background; role requires writing and debugging code, SQL proficiency, and comfort with developer tools (git)",
+        "mitigation": "Candidate reports Python basic and actively learning. Steep ramp would be needed to meet SQL/code-quality and data-visualization thresholds for a technical operations role.",
+        "severity": "high"
+      },
+      {
+        "gap": "No financial services, accounting, compliance, or payment/fintech domain experience",
+        "mitigation": "Role explicitly requires expertise in SQL/data pipelines and financial data quality. Candidate's Google experience is consumer/hardware/services domain, not payments or financial systems.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited external partner management and technical integration experience; role demands engagement with Stripe's financial partners on product usage and technical troubleshooting",
+        "mitigation": "Candidate's transformation experience is primarily internal product ownership and operations scaling. External vendor/partner technical alignment is different from internal stakeholder management.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role is in APAC Payins Engineering department with strong technical operations flavor; family is not Strategy and Operations but Technical Operations / Reliability Engineering",
+        "mitigation": "While the role title includes 'Technical Operations,' the core duties (code writing, SQL, debugging, data pipelines, anomaly detection systems design) are engineering-heavy, not pure ops or strategy transformation.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 3+ years in a technical role (Software Engineer, Solutions Architecture, Integration Engineer) and lists code writing, SQL expertise, debugging, and data-pipeline work as core duties. This is L4 technical operations: mid-career depth in a specialist technical discipline. Company stage/size not stated, but Stripe's scale and the focus on financial data quality and partner integrations suggest enterprise-grade scope without management-of-managers scope.",
+    "role_family_fit": 15,
+    "scope_seniority": 58,
+    "summary": "This is a Technical Operations / Reliability Engineering role at Stripe (APAC Payins) requiring 3+ years of hands-on technical experience, production code-writing capability, SQL/data expertise, and financial-domain familiarity. The candidate is a Strategy and Operations / Product Operations leader with eight years of Google commercial transformation and process scaling, but no software-engineering background, production coding history, SQL proficiency, or fintech domain exposure. The role family does not match target or approved-stretch families; core duties are engineering-heavy (code, SQL, debugging, anomaly-detection systems design) rather than strategic business problem-solving. High skill and domain gaps, combined with family misalignment, make this a misfit despite the candidate's seniority.",
+    "uncertainties": [
+      "Company size/stage context not stated in Role JSON; confidence in L4 estimate is modest.",
+      "Degree of hands-on code/SQL work vs. high-level system oversight is ambiguous in the JD; if role permits senior IC oversight without daily coding, candidate's technical acumen and domain knowledge gaps remain material but less disqualifying.",
+      "Candidate's 'actively learning Python' and transformation experience may enable rapid domain ramp in a supportive team, but assessment must reflect current gaps, not potential."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; extensive experience with cross-functional product ownership, requirements definition, architecture alignment, and data-driven rollout execution",
+        "evidence_strength": "strong",
+        "job_requirement": "6+ years of experience owning complex, scalable platform/B2B products (SaaS, payments, infra) from discovery to rollout, with proven technical fluency to debate architecture, APIs, and data pipelines with engineering"
+      },
+      {
+        "candidate_evidence": "Not explicitly stated in positioning. Candidate has transformation program and global operations scaling experience but no named fintech, banking, security, or compliance regulatory background",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong track record in regulated, policy-heavy environments (fintech, banking, security), successfully leading cross-functional alignment across Engineering, Risk, Compliance, and Legal"
+      },
+      {
+        "candidate_evidence": "Data-driven operations and transformation background at Google suggests strong metrics and analytics capability; cross-functional communication demonstrated through scale of global programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Expert at defining product metrics, running self-serve analyses (SQL/dashboards), and distilling complex technical or risk-related concepts into clear communication for both engineers and executives"
+      },
+      {
+        "candidate_evidence": "Candidate positioning emphasizes product operations, business operations, and transformation rather than native platform architecture or identity/access control design; no explicit IAM, authN/authZ, or identity engineering background mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven experience building scalable platform capabilities (APIs, SDKs, services) consumed by multiple teams, with specific expertise in IAM, authN/authZ, policy engines, or global notification systems"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure scaling global commercial operations suggests multi-region and multi-market experience; transformation programs imply cross-border and regulatory complexity",
+        "evidence_strength": "medium",
+        "job_requirement": "Track record of shipping features across multiple countries, navigating diverse regulatory regimes, and managing platform versioning, SLAs, and technical documentation at scale"
+      },
+      {
+        "candidate_evidence": "No direct background in identity verification, authentication, account recovery, or security notifications; experience is in operations, product operations, and transformation programs, not security/identity domain",
+        "evidence_strength": "weak",
+        "job_requirement": "Own and evolve core identity and user security journeys across onboarding, identity verification, user authentication, account recovery, authorization, and customer/security notifications"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 52,
+    "gaps": [
+      {
+        "gap": "No fintech, banking, security, or compliance domain background; candidate is positioned in operations and transformation, not regulated environments",
+        "mitigation": "Accelerated onboarding pairing with compliance and risk partners; deep immersion in fintech product patterns and regulatory requirements; mentor from existing security product leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No direct identity, authentication, fraud prevention, or account security product experience; platform identity/IAM/authN/authZ expertise is a core preferred qualification",
+        "mitigation": "Extended ramp-in phase (4\u20136 months) with embedded engineering and security partnerships; structured learning on identity standards and threat models; interim governance with senior security leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "Unclear depth of native product management vs. operations-heavy transformation leadership; may lack PM-specific discovery, user research, and product design practices",
+        "mitigation": "Confirm PM background and UX/discovery experience in interview; pair with design and research partners for customer journey mapping; reference checks on product strategy and metrics ownership",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct evidence of self-serve SQL/analytics capability or metrics definition in security/risk contexts",
+        "mitigation": "Assess analytics fluency and risk-metric design during interview; provide access to Airwallex analytics stack and risk data upfront",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 6+ years owning complex, scalable platform products with technical fluency in architecture and data pipelines, cross-functional compliance/risk alignment, and platform/identity expertise. This anchors to L5 (established IC/senior manager ownership of platform scope). Company size (2,200+ people, $8B valuation) and fintech/payments domain complexity support senior IC placement. Role title is Senior PM, not staff or principal, and no management scope is described, keeping it at L5 rather than L6.",
+    "role_family_fit": 45,
+    "scope_seniority": 72,
+    "summary": "Candidate has eight years of Google-scale operations and transformation leadership with proven cross-functional execution and global program scaling, meeting the seniority and breadth bar. However, this is a **native product management role** in fintech, requiring deep expertise in identity/authentication, compliance navigation, fraud prevention, and security-centric product strategy. Candidate's background is operations and transformation, not product or security domains; positioning lists no fintech, banking, regulatory, or identity experience. The gap between ops-driven transformation leadership and identity/security product depth is substantial and not easily bridged by operations experience alone. Consider only if willing to invest in domain onboarding.",
+    "uncertainties": [
+      "Candidate's specific product management depth and breadth in prior roles unclear from positioning alone\u2014may have owned product strategy beyond transformation framing",
+      "No explicit mention of fintech, banking, or payments exposure, though global scale may include such domains",
+      "Depth of technical architecture and API/data-pipeline fluency not directly evidenced",
+      "Identity, authentication, and security product familiarity entirely absent from positioning"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

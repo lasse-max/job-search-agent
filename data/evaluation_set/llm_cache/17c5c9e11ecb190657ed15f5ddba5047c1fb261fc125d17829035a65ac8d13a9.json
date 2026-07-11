@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and leading transformation programs; demonstrated ability to design and execute cross-functional strategy aligned with global corporate priorities",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop and execute ANZ Telco growth strategy, aligning with global priorities and local government regulations"
+      },
+      {
+        "candidate_evidence": "Two promotions within Google suggest progression through leadership roles; experience in scaling commercial operations teams, though candidate profile does not explicitly detail direct AE team management or quota-carry sales team coaching",
+        "evidence_strength": "medium",
+        "job_requirement": "Build, mentor, and scale a team of experienced Account Executives and Solution Strategists dedicated to the Telco vertical"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with demonstrated GTM and transformation program leadership; strong cross-functional stakeholder management capability inferred from operations scaling scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Define go-to-market strategy, influence cross-functional teams, and coach high-performing teams"
+      },
+      {
+        "candidate_evidence": "Eight years at Google; no stated direct sales leadership history or telco vertical experience; experience is in operations and strategy rather than quota-carrying or territory sales management",
+        "evidence_strength": "weak",
+        "job_requirement": "10+ years of sales leadership experience in telco space with record of driving double-digit growth"
+      },
+      {
+        "candidate_evidence": "No evidence of Australian telco relationships, vertical market expertise in telecommunications, or familiarity with regional procurement and wholesaler dynamics; German native language and Google/tech background suggest no legacy telco network",
+        "evidence_strength": "weak",
+        "job_requirement": "Established relationships with major Australian telcos and deep understanding of Australia's telco ecosystem, procurement frameworks, and wholesaler structure"
+      },
+      {
+        "candidate_evidence": "Google Devices/Services background may include government/public sector exposure; no explicit evidence of government sales cycles or public-sector team leadership provided in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven experience leading teams serving government or public sector clients within Cloud, SaaS, or Data Analytics industries"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 42,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Missing 10+ years of direct sales leadership; candidate brings eight years of operations and strategy at Google, not enterprise sales team management",
+        "mitigation": "If candidate has managed complex cross-functional sales enablement or GTM programs, framing as pre-sales or sales operations leadership could partially bridge; explicit sales coaching and quota-carry team management remain undemonstrated",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated Australian telco vertical expertise or established relationships with major regional providers; role requires deep ecosystem knowledge and legacy telco network",
+        "mitigation": "Vertical expertise is rarely taught quickly; candidate would need 12\u201318 months of on-the-ground telco sales immersion and relationship building, creating execution risk in a growth role",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience in complex government or public-sector sales cycles; role emphasizes government-adjacent regulatory environments and wholesaler dynamics",
+        "mitigation": "Operations and strategy background may translate to understanding compliance and procurement logic; direct government-sector sales experience would strengthen confidence",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited evidence of value-based selling frameworks (MEDDPICC, Challenger, Command of the Message) or consultative sales methodology; profile emphasizes process design and transformation over sales methodology",
+        "mitigation": "Sales frameworks are teachable; if candidate has coached teams on customer value articulation in a GTM role, some capability may be present but unstated",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Sales Director role with 10+ years required, team-building and cross-functional leadership scope, enterprise-account strategy execution, and regional market ownership aligns with L6 on Google scale. No C-suite or manager-of-managers indicator; reporting line not stated. Confidence is moderate-high: company size and enterprise org structure confirm senior-IC/manager level, but role does not clearly specify reporting line or team size cap.",
+    "role_family_fit": 22,
+    "scope_seniority": 68,
+    "summary": "This is a Sales Director role in the Enterprise Telco vertical at Databricks, estimated at L6 (Google equivalent), requiring 10+ years of direct sales leadership, established Australian telco relationships, and vertical deep expertise. The candidate brings eight years of Strategy and Operations leadership at Google with demonstrated GTM and transformation scope, but critically lacks sales team management experience, Australian telco vertical expertise, and the established relationship network the role requires. This is an approved-stretch-families candidate being evaluated against a quota-carrying sales leadership role, which falls outside target families and lacks the strategic/transformation framing that would justify a stretch evaluation. The high-severity gaps in sales leadership tenure, vertical expertise, and regional ecosystem knowledge create material execution risk that cannot be mitigated through training or ramp; recommend deprioritization.",
+    "uncertainties": [
+      "Profile does not explicitly state whether candidate has managed quota-carrying sales teams or led sales-ops/enablement functions that would constitute sales leadership experience",
+      "Degree of cross-functional sales influence or customer-success/account-management scope at Google is not detailed; unclear if operations background includes revenue-impacting sales metrics",
+      "No detail on company size/stage context for Databricks role; 'Enterprise' Sales Director title may map differently depending on org structure and team headcount",
+      "Candidate's experience with government or public-sector regulatory/procurement cycles at Google is not documented; policy/compliance scope unknown",
+      "No statement of geographic mobility or availability for Australia or willingness to build regional telco relationships from scratch"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations and product operations, including transformation program leadership and stakeholder management across global teams",
+        "evidence_strength": "weak",
+        "job_requirement": "Provide advice and external advocacy on policy matters that have an impact on Spotify in Europe"
+      },
+      {
+        "candidate_evidence": "No evidence of legislative, regulatory, or government affairs experience in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Represent the company before legislators and regulators"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations and cross-functional collaboration implied, but no direct evidence of civil society or industry advocacy",
+        "evidence_strength": "weak",
+        "job_requirement": "Interact with civil society and industry"
+      },
+      {
+        "candidate_evidence": "Eight years at Google with two promotions suggest managerial experience, but no evidence of policy or government affairs domain background",
+        "evidence_strength": "weak",
+        "job_requirement": "Report to Senior Director of European Policy within Government Affairs"
+      }
+    ],
+    "confidence": 0.45,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No government affairs, public policy, or regulatory advocacy background",
+        "mitigation": "Candidate would require significant domain ramp-up and mentoring in EU policy landscape, legislative processes, and regulatory frameworks specific to media/streaming industry",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience representing companies before legislators and regulators",
+        "mitigation": "Government affairs expertise typically requires 5+ years in policy or regulatory roles; candidate background is commercial and product operations",
+        "severity": "high"
+      },
+      {
+        "gap": "No Brussels or EU policy ecosystem experience mentioned",
+        "mitigation": "Candidate could develop local relationships and learn regulatory environment, but would start as complete outsider to EU institutions and stakeholder networks",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited civil society and industry stakeholder engagement outside tech operations context",
+        "mitigation": "Stakeholder management skills transfer partially, but public affairs and coalition-building require different playbook and credibility",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Senior Manager title with reporting to Senior Director and EU policy responsibility in a large enterprise (Spotify) suggests L5 IC or early manager-of-managers scope. No years posted, but policy domain authority and external representation scope point to established senior IC or junior management. Company size (large streaming company) and role specificity support L5 estimate; higher would require explicit head-of-function or multi-team management scope.",
+    "role_family_fit": 8,
+    "scope_seniority": 65,
+    "summary": "Senior Manager, EU Government Affairs at Spotify is a domain-specific policy and regulatory role requiring deep government affairs expertise, EU stakeholder networks, and legislative representation\u2014none of which are evident in the candidate's eight-year Google commercial and product operations background. While the candidate has demonstrated program leadership and stakeholder management at scale, the gap between commercial operations and public policy is structural and not bridgeable through internal ramp-up. This is a misaligned function family (Government Affairs vs. Strategy &amp; Operations) and represents a career pivot rather than a lateral move.",
+    "uncertainties": [
+      "Whether candidate has any informal policy exposure or board/advisory network involvement not mentioned in profile",
+      "Candidate's language skills (German native, English professional) may facilitate EU engagement but not government affairs domain gaps",
+      "Spotify company size and EU revenue scale suggest importance of policy role, but JD does not clarify years of experience required",
+      "Candidate's transformation program experience might involve regulatory or compliance aspects not explicitly stated in profile summary"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

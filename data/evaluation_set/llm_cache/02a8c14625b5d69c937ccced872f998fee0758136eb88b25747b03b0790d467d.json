@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations; built business cases, process improvement frameworks, and transformation initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience in analytical role demonstrating value through business data analysis and process improvement with Software deployment"
+      },
+      {
+        "candidate_evidence": "Extensive customer-facing stakeholder management and business transformation leadership; drove adoption and executive alignment across global teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Customer-facing role in Solution Consulting or Management Consulting with Business Software/SaaS"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations and transformation programs; experience with complex back-office process optimization and change management",
+        "evidence_strength": "medium",
+        "job_requirement": "Finance and/or Supply Chain domain expertise; strategic transformation initiatives (Shared Services, System Transformation)"
+      },
+      {
+        "candidate_evidence": "Managed multi-workstream transformation programs and commercial operations scaling at global scale with cross-functional stakeholder coordination",
+        "evidence_strength": "strong",
+        "job_requirement": "Project management: planning, managing scopes, expectations, timelines across multiple aligned accounts"
+      },
+      {
+        "candidate_evidence": "Led global transformation programs with executive alignment; strong track record of strategy communication and stakeholder influence",
+        "evidence_strength": "strong",
+        "job_requirement": "Executive Stakeholder Management: preparing and communicating roadmaps and results to management and C-level"
+      },
+      {
+        "candidate_evidence": "Business process and data analysis background; Python actively learning, SQL basic; no stated RPA or BI tools implementation experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Business Software/SaaS applications knowledge (SAP, RPA, BI Tools, Dashboards); Python, SQL, AI knowledge"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 70,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "Limited direct SaaS/enterprise software implementation experience (RPA, BI Tools, Dashboards, Apps, Action Flows)",
+        "mitigation": "Background in business process and data-driven transformation translates; technical tools are learnable; Celonis ecosystem partners support deployment",
+        "severity": "medium"
+      },
+      {
+        "gap": "Python and SQL are foundational, not production-grade; actively learning Python",
+        "mitigation": "Role emphasizes business logic and value realization over coding; SQL/Python used for analysis, not engineering; training and mentorship typical in SaaS onboarding",
+        "severity": "medium"
+      },
+      {
+        "gap": "Finance and Supply Chain domain expertise inferred from operations background, not explicitly stated",
+        "mitigation": "Process improvement and transformation experience is transferable; industry domain deepening is part of Lead Value Engineer ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated Solution Consulting or Management Consulting brand experience",
+        "mitigation": "Value engineering and transformation leadership translate; customer-facing strategy and stakeholder management are core competencies from Google tenure",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD requires 5-9+ years analytical/customer-facing value delivery and complex process improvement with software deployment. Lead title, end-to-end customer ownership, C-level stakeholder engagement, and multi-account expansion responsibility suggest established L5 (Senior IC/Lead) scope. No manager-of-managers signal; reports to sales leadership, not P&L. Confidence slightly lower due to company size not stated.",
+    "role_family_fit": 75,
+    "scope_seniority": 76,
+    "summary": "Lead Value Engineer at Celonis is a strategic customer-facing role requiring 5-9+ years driving business transformation and process improvement through SaaS platforms. Candidate has strong alignment on executive stakeholder management, multi-program delivery, and value-driven transformation; primary gaps are SaaS/RPA/BI tool implementation depth and Finance/Supply Chain domain specificity, both manageable through onboarding and team support.",
+    "uncertainties": [
+      "Celonis company size/stage not stated; affects confidence in level calibration",
+      "Finance and Supply Chain domain depth not explicitly detailed in candidate profile",
+      "Specific RPA, BI tool, or dashboard implementation experience not mentioned; uptake timeline unclear",
+      "Solution Consulting or SaaS background not stated; value engineering model may differ from Google commercial transformation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations and transformation program scaling; strong data-driven environment experience and process design capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and maintain data-driven risk identification processes using SQL and large datasets"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; no production software engineering background",
+        "evidence_strength": "weak",
+        "job_requirement": "Programming language knowledge or experience (e.g. Python, R, Javascript)"
+      },
+      {
+        "candidate_evidence": "No direct credit risk modeling, financial services, or ML engineering experience documented; background is operational transformation and strategy",
+        "evidence_strength": "weak",
+        "job_requirement": "Develop and implement Rating Scorecards, PD, LGD, EAD models for ECL measurement"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No credit risk, financial services, or lending/payments domain expertise. JD requires strong understanding of credit risk principles and prior work in payments or lending.",
+        "mitigation": "Candidate could rapidly build domain knowledge through structured mentoring and risk team immersion, though deep credit modeling expertise would require months of specialized learning.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited production coding and ML engineering depth. Role requires developing and maintaining PD, LGD, EAD models, which requires hands-on model development and validation expertise beyond basic Python.",
+        "mitigation": "Operational and transformation background could help with process rigor, but technical model development requires either significant upskilling or pairing with a modeling specialist.",
+        "severity": "high"
+      },
+      {
+        "gap": "No data science or statistical modeling background documented. JD emphasizes advanced analytical methods and model implementation.",
+        "mitigation": "Strategy and operations experience does not directly transfer to technical model development and statistical validation.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Senior Risk Data Scientist title with responsibility for building, developing, and maintaining advanced credit risk models (PD, LGD, EAD) and anomaly detection processes suggests senior IC scope. Lack of company size/stage context and no reporting line clarity limit confidence. Core duties require deep technical domain expertise (credit risk, statistical modeling, production ML), placing the role at L5 IC; no management scope is evident.\"",
+    "role_family_fit": 15,
+    "scope_seniority": 60,
+    "summary": "This is a Senior Risk Data Scientist role focused on credit risk modeling, anomaly detection, and financial risk systems\u2014primarily a technical data science and engineering function with domain expertise in lending and payments. The candidate's background is Strategy and Operations transformation at Google; while she has strong process design and stakeholder management skills, she lacks the credit risk domain knowledge, financial services context, and production ML/modeling expertise the role requires. The role family (deep data science and financial engineering) does not align with approved target or stretch families (Strategy, Ops, Product Ops, Program Leadership, Deployment Strategy). This is deprioritized specialist technical depth outside the candidate's positioning.",
+    "uncertainties": [
+      "Company size and stage not stated; Checkout.com's maturity and team structure unclear from JD alone",
+      "No reporting line or team context provided; unclear whether role includes strategic responsibility or is pure technical IC",
+      "Exact depth of PD/LGD/EAD modeling required (academic, implementation, maintenance) not fully specified"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

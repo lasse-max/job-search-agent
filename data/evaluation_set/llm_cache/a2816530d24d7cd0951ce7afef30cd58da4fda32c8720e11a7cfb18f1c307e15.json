@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations at Google Devices and Services; demonstrated ability to lead complex multi-stakeholder partnerships and business relationships at enterprise scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Responsibility for contractual and commercial business relationships with portfolio of bus partners"
+      },
+      {
+        "candidate_evidence": "Commercial operations experience at Google; two promotions indicate progression in responsibility and scope; stakeholder management across business units implied by transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Contract negotiations and financial advisory to business partners"
+      },
+      {
+        "candidate_evidence": "Scaling global operations requires analytical rigor; identified as having strong analytical capabilities and Excel proficiency in candidate profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Cost and performance analysis, decision-making recommendations for leadership"
+      },
+      {
+        "candidate_evidence": "Strategic Programs / Program Leadership background; transformation program experience demonstrates cross-functional coordination and stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Interface between external partners and internal departments; steering projects and alignment"
+      },
+      {
+        "candidate_evidence": "Commercial operations scaling typically requires direct project ownership; positioning includes transformation program leadership experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Hands-on project leadership from conception through closure; ownership of timelines, budgets, and deliverables"
+      },
+      {
+        "candidate_evidence": "Eight years in commercial operations and transformation roles; product operations and GTM strategy experience imply business development and optimization scope",
+        "evidence_strength": "medium",
+        "job_requirement": "Portfolio optimization and identification of new business opportunities"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 62,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No direct B2B commercial partnership or vendor management experience mentioned; candidate's background is Google internal operations scaling rather than external account/partner management",
+        "mitigation": "Bus partner portfolio is mid-market B2B; core skills of commercial operations, negotiation, and performance analysis are transferable; on-the-job partnership learning curve typical for career transitions into business development",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited or unclear experience with transportation, logistics, or mobility sector; candidate background is at Google Devices",
+        "mitigation": "Role is platform-agnostic partner management; industry learning curve is typical for strong operations leaders; JD does not require prior transit/logistics expertise",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of leading or managing strategic P&L or profit-center responsibility; described experience is operations scaling and transformation rather than P&L ownership",
+        "mitigation": "Role is partner portfolio manager, not P&L owner; partnership cost/performance analysis is learnable and supported by candidate's analytical background",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 2+ years experience (typical L4 entry point), solo project leadership, and cross-functional coordination with internal leadership and external partners. Scope is individual-contributor with peer-level stakeholder management, not manager-of-managers. Flix stage/size not stated, limiting confidence; at a growth-stage mobility company this is likely mid-senior IC (L4 base estimate). No executive reporting line or management scope indicators present.",
+    "role_family_fit": 72,
+    "scope_seniority": 71,
+    "summary": "Candidate is a Strategy and Operations leader with 8 years of commercial operations and transformation scaling at Google, closely aligned with Flix's portfolio partner management, cross-functional coordination, and optimization scope. Key gaps are absence of B2B vendor/partnership management experience and no transportation-sector background, both mitigable through transfer learning. Role level (L4 individual contributor) sits squarely in candidate's target band; core skills in negotiation, analysis, and stakeholder management are strong, though external account ownership is a domain shift.",
+    "uncertainties": [
+      "Candidate profile does not explicitly describe B2B partnership management or vendor relationship ownership; inferred from 'commercial operations' scope",
+      "Flix company stage/size not stated in JD; maturity and P&L complexity unknown",
+      "Depth of candidate's project leadership and budget accountability not quantified",
+      "Degree requirement (Bachelor's or Master's in economics, transport, or comparable) not verified against candidate profile; educational background not provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

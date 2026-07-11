@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in global commercial operations and transformation programs with product ownership experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Support Agent Architects in design and testing of AI agent workflows"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership and cross-functional stakeholder coordination at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Help document best practices and internal knowledge articles for Professional Services team"
+      },
+      {
+        "candidate_evidence": "Product operations and requirements design with UAT and rollout ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Structured, analytical thinker who breaks down complex problems into actionable steps"
+      },
+      {
+        "candidate_evidence": "Product ownership background in commercial operations; no explicit conversational AI or UX writing experience documented",
+        "evidence_strength": "weak",
+        "job_requirement": "Interest in conversation design and how users experience dialogue"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L3",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Currently enrolled in Bachelor's or Master's program in Computer Science, Computational Linguistics, Cognitive Science, or related field (explicitly required)",
+        "mitigation": "Role is explicitly a working-student position; candidate profile does not state current enrollment or academic status. Immediate clarification required before proceeding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on experimentation with LLMs and conversational AI interfaces",
+        "mitigation": "No evidence of direct LLM prototyping, prompt engineering, or conversational-interface projects. Google operations background does not translate to applied AI agent work.",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience with voice agent behavior, SSML markup, and pronunciation adjustments",
+        "mitigation": "Specialized conversational AI domain expertise. Teachable but requires structured onboarding.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Conversation design and UX writing experience",
+        "mitigation": "Product operations and requirements work is adjacent but does not substitute for dialogue-centric design thinking.",
+        "severity": "medium"
+      },
+      {
+        "gap": "API-based integrations and backend connectivity knowledge",
+        "mitigation": "Candidate has basic Python knowledge and API exposure; role expects hands-on support for integration work.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Working Student role with 16\u201320 hours/week availability, support-level scope (assisting Agent Architects, testing, documentation), and explicit requirement for current enrollment in a related Bachelor's or Master's program. No independent ownership, reporting structure, or team management; typical L3 developmental/intern-equivalent position in enterprise context.",
+    "role_family_fit": 25,
+    "scope_seniority": 15,
+    "summary": "This is a part-time working-student role (L3 equivalent) in conversational AI support, explicitly requiring current Bachelor's/Master's enrollment in a related field. The role focuses on hands-on LLM testing, prompt engineering, conversational design, and agent-architecture support\u2014none of which align with the candidate's Strategy and Operations background at Google. The critical blocker is the academic enrollment requirement; secondary gaps include no demonstrated conversational AI, voice-agent, or dialogue-design experience. This falls well outside target and approved-stretch families and is not suitable for a senior operations leader.",
+    "uncertainties": [
+      "Candidate's current academic status and enrollment status unknown; this is a hard requirement for the role.",
+      "Role company size/stage not stated; typical working-student role but cannot confirm organizational context.",
+      "Whether candidate has informal LLM or AI agent experimentation not documented in profile.",
+      "Salary not posted; cannot use compensation to refine seniority estimate."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

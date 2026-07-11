@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs; demonstrates product ownership through requirements, logic design, UAT, rollout, and transformation\u2014core to translating customer needs into delivery",
+        "evidence_strength": "strong",
+        "job_requirement": "Own external product delivery space end to end with deep understanding of accounting partners and small business customer needs"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background includes scaling commercial operations; Strategy and Operations positioning demonstrates cross-functional execution and stakeholder management at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Shape clear product strategy and drive execution across development partners and cross-functional stakeholders"
+      },
+      {
+        "candidate_evidence": "No explicit evidence of API or AI hands-on technical depth in provided profile; positioning focuses on operational and transformation leadership, not technical product engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Working knowledge of APIs and practical understanding of AI and its applications"
+      },
+      {
+        "candidate_evidence": "Google experience and Strategy & Operations background imply cross-level stakeholder communication; transformation program leadership requires translating complexity, though specific technical-narrative examples not provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate complex technical concepts into clear narratives for engineers to executives"
+      },
+      {
+        "candidate_evidence": "No direct accounting or finance domain background evident; candidate would need to onboard domain rapidly\u2014profile is Devices and Services, not fintech or accounting software",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep familiarity with accounting practice workflows and operations, or ability to learn quickly"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations + transformation program leadership align with business-case development and stakeholder influence; no explicit prototype or competitive-analysis evidence in profile",
+        "evidence_strength": "medium",
+        "job_requirement": "Build business cases, develop prototypes and proof-of-concepts, influence senior stakeholders, and manage competitive landscape"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No accounting software, fintech, or practice-management domain background; must rapidly acquire familiarity with accounting workflows, compliance, and regional regulatory landscape",
+        "mitigation": "Candidate demonstrates transformation-program learning agility and cross-functional stakeholder work; structured onboarding with partner ecosystem, customer discovery, and finance-ops SMEs can accelerate domain fluency within first 90 days. Region-based partner ecosystem can serve as continuous learning resource.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit hands-on experience with APIs or proof-of-concept prototyping; AI application understanding not demonstrated",
+        "mitigation": "Role frames API and AI as 'working knowledge' and 'practical understanding,' not engineering depth. Product strategy and business-case development (candidate's strength) can proceed with technical collaboration; rapid immersion in Xero's API ecosystem and AI roadmap reduces gap. Candidate's technical foundation is not specified as a barrier.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product management background derived from operational ownership and transformation rather than native product lifecycle and SDLC experience",
+        "mitigation": "JD emphasizes strategy, market insight, and business case development\u2014areas where candidate's operations and transformation background translate directly. Xero's partner and customer co-creation model (not traditional SDLC-driven PM) aligns with candidate's execution-focused product approach.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited explicit competitive-landscape analysis or market-mapping experience; APAC regulatory and tax-compliance knowledge not stated",
+        "mitigation": "Role positions competitive monitoring as an ongoing responsibility, not a prerequisite. Candidate's regional and global commercial scaling experience provides foundation; APAC regulatory landscape is learnable with partner and compliance-team support.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 74,
+    "level_rationale": "Title \"Head of Technical Innovation\" at unknown-stage public company (Xero) sits at regional leadership table of 10, reporting to Regional Director, with individual-contributor scope but clear strategic ownership and cross-functional influence. JD emphasizes product strategy, market leadership, and stakeholder influence\u2014not people management. Aligns with L5 senior IC or L6-lite strategic leadership; absence of explicit management scope, startup exception, or multi-year deep technical requirement anchors it to L5 with modest confidence due to company-size ambiguity.",
+    "role_family_fit": 78,
+    "scope_seniority": 82,
+    "summary": "Strong role-family fit in Product Strategy and GTM/market innovation within Strategy & Operations. Candidate's transformation program leadership, cross-functional execution, and Google commercial scale align well with owning regional product delivery strategy and stakeholder influence. Core gaps: no accounting/fintech domain depth, no explicit hands-on technical (API, AI prototyping) evidence, and limited product-engineering PM background. Domain and technical foundation are learnable given candidate's rapid-onboarding capability and strategic operations strength, but represent material onboarding risk in an autonomous regional role.",
+    "uncertainties": [
+      "Xero company size and stage not stated in JD; assumed mid-to-large public/growth-stage based on 'APAC Leadership Team of 10' and global function references, but impacts L5 vs. L6 confidence",
+      "Candidate's specific exposure to product strategy, competitive analysis, and market-mapping beyond transformation program scope not detailed",
+      "Degree of technical hands-on expectation for API and AI work unclear from JD; 'working knowledge' and 'practical understanding' are permissive, but candidate's baseline technical literacy not explicitly demonstrated",
+      "Degree of geographic/remote autonomy and in-person visibility expectations in Singapore role may differ from candidate's prior global-team model"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

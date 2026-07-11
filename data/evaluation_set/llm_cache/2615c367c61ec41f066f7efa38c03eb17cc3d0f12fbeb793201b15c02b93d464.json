@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions; primary role family is GTM / Sales Strategy and Operations",
+        "evidence_strength": "strong",
+        "job_requirement": "GTM Strategy & Operations role in Strategy & Operations department"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Operations and strategy execution at organizational level"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L3",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "JD severely under-specified: no description of responsibilities, scope, team size, reporting line, years required, or seniority signals beyond title 'Analyst'",
+        "mitigation": "Request full JD; 'Analyst' title paired with 'GTM Strategy & Operations' could range L3\u2013L5 depending on hidden scope",
+        "severity": "high"
+      },
+      {
+        "gap": "Title 'Analyst' typically signals junior IC or early-career scope, incongruent with candidate's eight-year senior tenure and promotion history",
+        "mitigation": "Clarify whether role is truly entry-level or if title understates scope; if genuine analyst role, overleveled candidate risk",
+        "severity": "medium"
+      },
+      {
+        "gap": "No evidence of London-based experience or location preference stated in candidate profile",
+        "mitigation": "Confirm location flexibility with candidate",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 25,
+    "level_rationale": "Title is 'Analyst' with no JD body, responsibilities, or context. At face value, 'Analyst' typically signals L3 or entry-level scope. No years required, reporting line, team size, or seniority signals in the provided text. Company stage is unknown.",
+    "role_family_fit": 75,
+    "scope_seniority": 30,
+    "summary": "JD is essentially a title and location with no substantive role description, responsibilities, scope, or seniority signals. 'GTM Strategy & Operations Analyst' at Datadog aligns with the candidate's target family (GTM / Sales Strategy), but the title-only format and 'Analyst' designation suggest junior scope, creating high mismatch risk with an eight-year senior leader. Request the full job description before evaluating fit.",
+    "uncertainties": [
+      "No JD body provided; only title, location, and boilerplate company careers-page content",
+      "Unknown whether 'Analyst' reflects actual scope or is a placeholder; GTM Strategy roles at major tech firms range L3\u2013L5+",
+      "No reporting line, team structure, or years-required language to anchor level estimate",
+      "Candidate target band is L4\u2013L5 (Manager, Senior IC); role level cannot be validated from title alone"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import yaml
 
@@ -10,7 +13,9 @@ from app.services.benchmark import (
     APPLY_CONSIDER,
     DEFAULT_EVALUATION_SET,
     DEFAULT_JD_CACHE_DIR,
+    _fallback_snapshot,
     load_evaluation_set,
+    populate_benchmark_llm_cache,
     run_gate_recall_benchmark,
     run_benchmark,
     run_live_noise_benchmark,
@@ -20,30 +25,209 @@ from app.services.llm_evaluator import (
     CachedLLMProvider,
     LLMEvaluationOutput,
     LLMEvaluationResult,
+    LLMProviderError,
     LLMRoleRequest,
+    ModelSpendCapExceeded,
     write_cached_evaluation,
 )
 
 
 class BenchmarkCalibrationTest(unittest.TestCase):
+    def test_authoritative_evaluation_set_rejects_malformed_yaml(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "malformed-evaluation-set.yaml"
+            path.write_text(
+                "evaluation_set:\n"
+                "  - id: EV-BAD\n"
+                "    key_reason: strategy: malformed authoritative YAML\n",
+                encoding="utf-8",
+            )
+
+            with self.assertRaises(yaml.YAMLError) as raised:
+                load_evaluation_set(path)
+
+        self.assertIn(str(path), str(raised.exception))
+        self.assertIn("line 3", str(raised.exception))
+
+    def test_fallback_snapshots_and_committed_fixtures_do_not_leak_labels(self) -> None:
+        sentinel = "LABEL-DERIVED KEY REASON MUST NOT REACH JD TEXT"
+        snapshot = _fallback_snapshot(
+            {
+                "company": "Example Co",
+                "role_title": "Strategy Lead",
+                "location": "London",
+                "key_reason": sentinel,
+            },
+            "fetch_failed: fixture",
+        )
+
+        self.assertNotIn(sentinel, snapshot)
+        self.assertNotIn("Role context:", snapshot)
+        examples_by_id = {
+            str(example["id"]): example for example in load_evaluation_set(DEFAULT_EVALUATION_SET)
+        }
+        for role_id in ("EV-01", "EV-04", "EV-10", "EV-12", "EV-22", "EV-29"):
+            with self.subTest(role_id=role_id):
+                cache_text = (DEFAULT_JD_CACHE_DIR / f"{role_id}.txt").read_text(
+                    encoding="utf-8"
+                )
+                self.assertNotIn("Role context:", cache_text)
+                self.assertNotIn(str(examples_by_id[role_id]["key_reason"]), cache_text)
+
+    def test_population_retries_one_malformed_role_response(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = {"evaluation_set": [load_evaluation_set(DEFAULT_EVALUATION_SET)[0]]}
+            evaluation_set = root / "evaluation_set.yaml"
+            evaluation_set.write_text(
+                yaml.safe_dump(source, sort_keys=False),
+                encoding="utf-8",
+            )
+            cache_dir = root / "jd_cache"
+            cache_dir.mkdir()
+            (cache_dir / "EV-01.txt").write_text(
+                (DEFAULT_JD_CACHE_DIR / "EV-01.txt").read_text(encoding="utf-8"),
+                encoding="utf-8",
+            )
+            provider = FailOnceProvider()
+
+            run = run_benchmark(
+                evaluation_set_path=evaluation_set,
+                cache_dir=cache_dir,
+                report_dir=root / "reports",
+                llm_provider=provider,
+            )
+
+            self.assertEqual(provider.calls, 2)
+            self.assertEqual(len(run.results), 1)
+
+    def test_population_does_not_retry_non_output_provider_errors(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = {"evaluation_set": [load_evaluation_set(DEFAULT_EVALUATION_SET)[0]]}
+            evaluation_set = root / "evaluation_set.yaml"
+            evaluation_set.write_text(
+                yaml.safe_dump(source, sort_keys=False),
+                encoding="utf-8",
+            )
+            cache_dir = root / "jd_cache"
+            cache_dir.mkdir()
+            (cache_dir / "EV-01.txt").write_text(
+                (DEFAULT_JD_CACHE_DIR / "EV-01.txt").read_text(encoding="utf-8"),
+                encoding="utf-8",
+            )
+            provider = NonRetryableProvider()
+
+            with self.assertRaises(LLMProviderError):
+                run_benchmark(
+                    evaluation_set_path=evaluation_set,
+                    cache_dir=cache_dir,
+                    report_dir=root / "reports",
+                    llm_provider=provider,
+                )
+
+            self.assertEqual(provider.calls, 1)
+
+    def test_population_continues_after_twice_malformed_role(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            examples = load_evaluation_set(DEFAULT_EVALUATION_SET)[:2]
+            evaluation_set = root / "evaluation_set.yaml"
+            evaluation_set.write_text(
+                yaml.safe_dump({"evaluation_set": examples}, sort_keys=False),
+                encoding="utf-8",
+            )
+            cache_dir = root / "jd_cache"
+            cache_dir.mkdir()
+            for example in examples:
+                role_id = str(example["id"])
+                (cache_dir / f"{role_id}.txt").write_text(
+                    (DEFAULT_JD_CACHE_DIR / f"{role_id}.txt").read_text(encoding="utf-8"),
+                    encoding="utf-8",
+                )
+            provider = FailNamedRoleProvider(str(examples[0]["role_title"]))
+
+            failures = populate_benchmark_llm_cache(
+                llm_provider=provider,
+                evaluation_set_path=evaluation_set,
+                cache_dir=cache_dir,
+                live_noise_set_path=root / "missing-live-set.yaml",
+            )
+
+            self.assertEqual([failure.role_id for failure in failures], [examples[0]["id"]])
+            self.assertEqual(provider.calls.count(str(examples[0]["role_title"])), 2)
+            self.assertEqual(provider.calls.count(str(examples[1]["role_title"])), 1)
+
+    def test_retry_charges_both_paid_attempts_and_rechecks_cap(self) -> None:
+        for cap, expected_calls, expected_error, expected_spend in (
+            ("0.008", 2, None, 0.008),
+            ("0.007", 1, ModelSpendCapExceeded, 0.004),
+        ):
+            with self.subTest(cap=cap), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                source = {"evaluation_set": [load_evaluation_set(DEFAULT_EVALUATION_SET)[0]]}
+                evaluation_set = root / "evaluation_set.yaml"
+                evaluation_set.write_text(
+                    yaml.safe_dump(source, sort_keys=False),
+                    encoding="utf-8",
+                )
+                cache_dir = root / "jd_cache"
+                cache_dir.mkdir()
+                (cache_dir / "EV-01.txt").write_text(
+                    (DEFAULT_JD_CACHE_DIR / "EV-01.txt").read_text(encoding="utf-8"),
+                    encoding="utf-8",
+                )
+                ledger = root / "spend.json"
+                provider = PaidFailThenSuccessProvider()
+                environment = {
+                    "MODEL_SPEND_LEDGER_PATH": str(ledger),
+                    "MONTHLY_MODEL_SPEND_CAP_USD": cap,
+                    "MODEL_EVAL_ESTIMATED_COST_USD": "0.004",
+                }
+
+                with patch.dict(os.environ, environment, clear=False):
+                    if expected_error is None:
+                        run_benchmark(
+                            evaluation_set_path=evaluation_set,
+                            cache_dir=cache_dir,
+                            report_dir=root / "reports",
+                            llm_provider=provider,
+                        )
+                    else:
+                        with self.assertRaises(expected_error):
+                            run_benchmark(
+                                evaluation_set_path=evaluation_set,
+                                cache_dir=cache_dir,
+                                report_dir=root / "reports",
+                                llm_provider=provider,
+                            )
+
+                spend = sum(json.loads(ledger.read_text(encoding="utf-8")).values())
+                self.assertEqual(provider.calls, expected_calls)
+                self.assertAlmostEqual(spend, expected_spend, places=6)
+
     def test_apply_consider_recall_meets_threshold_offline(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             run = run_benchmark(
                 report_dir=Path(directory) / "reports",
-                llm_provider=_label_aware_provider(),
             )
 
         self.assertGreaterEqual(run.metrics.apply_consider_recall, 0.95)
         self.assertTrue(run.metrics.recall_passes)
         self.assertEqual(run.metrics.blocker_accuracy, 1.0)
         self.assertEqual(run.metrics.feasibility_correctness, 1.0)
-        self.assertEqual(run.evaluator_versions, ("fake-llm-benchmark",))
+        self.assertEqual(
+            run.evaluator_versions,
+            (
+                "hybrid_claude_v3; prompt=role_evaluation_v5; "
+                "model=claude-haiku-4-5",
+            ),
+        )
 
     def test_cached_evaluation_set_covers_blocker_cases(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             run = run_benchmark(
                 report_dir=Path(directory) / "reports",
-                llm_provider=_label_aware_provider(),
             )
         results_by_id = {result.role_id: result for result in run.results}
 
@@ -60,6 +244,43 @@ class BenchmarkCalibrationTest(unittest.TestCase):
         ev31_cache = (DEFAULT_JD_CACHE_DIR / "EV-31.txt").read_text(encoding="utf-8")
         self.assertIn("Security clearance", ev31_cache)
         self.assertIn("continuous residency in the UK for at least 5 years", ev31_cache)
+
+    def test_committed_live_noise_cache_meets_recall_and_precision_gates(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            run = run_live_noise_benchmark(report_dir=Path(directory) / "reports")
+
+        self.assertEqual(run.metrics.labelled_roles, 150)
+        self.assertGreaterEqual(run.metrics.apply_consider_recall, 0.90)
+        self.assertGreaterEqual(run.metrics.apply_consider_precision, 0.80)
+        self.assertTrue(run.metrics.passes)
+        results_by_id = {result.role_id: result for result in run.results}
+        for role_id in ("LNP-020", "LNP-030", "LNP-150"):
+            with self.subTest(role_id=role_id):
+                self.assertTrue(results_by_id[role_id].expected_blocked)
+                self.assertTrue(results_by_id[role_id].actual_blocked)
+                self.assertTrue(results_by_id[role_id].blocker_match)
+        self.assertEqual(run.metrics.blocker_expected_positives, 3)
+        self.assertEqual(run.metrics.blocker_positives_recalled, 3)
+        self.assertEqual(run.metrics.blocker_recall, 1.0)
+        for role_id in ("LNP-052", "LNP-060"):
+            with self.subTest(role_id=role_id):
+                self.assertIn(results_by_id[role_id].estimated_level, {"L6", "L7+"})
+        for role_id in ("LNP-056", "LNP-094", "LNP-141"):
+            with self.subTest(role_id=role_id):
+                self.assertIn(results_by_id[role_id].estimated_level, {"L3", "unknown"})
+        self.assertTrue(
+            all(
+                "candidate" not in result.level_rationale.casefold()
+                for result in run.results
+            )
+        )
+        self.assertEqual(
+            run.evaluator_versions,
+            (
+                "hybrid_claude_v3; prompt=role_evaluation_v5; "
+                "model=claude-haiku-4-5",
+            ),
+        )
 
     def test_live_noise_benchmark_reports_precision_from_labelled_sample(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -332,35 +553,83 @@ class BenchmarkCalibrationTest(unittest.TestCase):
             report = run.markdown_path.read_text(encoding="utf-8")
             self.assertIn("Evaluator: `title_department_relevance_gate`", report)
 
-class LabelAwareProvider:
-    model_version = "fake-llm-benchmark"
 
-    def __init__(self, labels: dict[str, str]) -> None:
-        self.labels = labels
+class FailOnceProvider:
+    model_version = "fake-retry-provider"
+
+    def __init__(self) -> None:
+        self.calls = 0
 
     def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
-        role_id = request.company.source_key.upper()
-        expected = self.labels.get(role_id, "skip")
-        if expected in APPLY_CONSIDER:
-            output = _output(88)
-        elif expected == "stretch":
-            output = _output(55)
-        else:
-            output = _output(35)
+        self.calls += 1
+        if self.calls == 1:
+            raise LLMProviderError(
+                "claude_tool_input_validation_failed: gaps missing",
+                retryable_output=True,
+            )
         return LLMEvaluationResult(
-            output=output,
+            output=_output(88),
             model_version=self.model_version,
             prompt_version="test_prompt_v1",
-            cache_hit=True,
+            cache_hit=False,
         )
 
 
-def _label_aware_provider() -> LabelAwareProvider:
-    labels = {
-        str(example["id"]).upper(): str(example["expected_recommendation"])
-        for example in load_evaluation_set(DEFAULT_EVALUATION_SET)
-    }
-    return LabelAwareProvider(labels)
+class NonRetryableProvider:
+    model_version = "fake-auth-failure"
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        self.calls += 1
+        raise LLMProviderError("claude_evaluation_failed: HTTP 401")
+
+
+class FailNamedRoleProvider:
+    model_version = "fake-continue-provider"
+
+    def __init__(self, failing_title: str) -> None:
+        self.failing_title = failing_title
+        self.calls: list[str] = []
+
+    def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        title = str(request.row["title"])
+        self.calls.append(title)
+        if title == self.failing_title:
+            raise LLMProviderError(
+                "claude_tool_input_validation_failed: gaps missing",
+                retryable_output=True,
+            )
+        return LLMEvaluationResult(
+            output=_output(88),
+            model_version=self.model_version,
+            prompt_version="test_prompt_v1",
+            cache_hit=False,
+        )
+
+
+class PaidFailThenSuccessProvider:
+    model_version = "fake-paid-retry"
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
+        self.calls += 1
+        if self.calls == 1:
+            raise LLMProviderError(
+                "claude_tool_input_validation_failed: gaps missing",
+                retryable_output=True,
+                cost_usd=0.004,
+            )
+        return LLMEvaluationResult(
+            output=_output(88),
+            model_version=self.model_version,
+            prompt_version="test_prompt_v1",
+            cost_usd=0.004,
+            cache_hit=False,
+        )
 
 
 def _cached_provider_for_live_noise_example(
@@ -395,6 +664,9 @@ def _output(score: int) -> LLMEvaluationOutput:
             "gap_manageability": score,
             "confidence": 0.82,
             "advisory_recommendation": "consider" if score >= 65 else "skip",
+            "estimated_level": "L5",
+            "level_confidence": 75,
+            "level_rationale": "Benchmark fixture models an in-band senior IC role.",
             "alignments": [
                 {
                     "job_requirement": "Lead strategy operations programs",

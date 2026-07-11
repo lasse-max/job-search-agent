@@ -1,0 +1,73 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations at Google Devices and Services; extensive experience in transformation programs and requirements-driven product ownership (UAT, rollout, operational design)",
+        "evidence_strength": "strong",
+        "job_requirement": "Engaging with users to map workflows, pain points, and operational constraints"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Transformation experience with proven stakeholder management across engineering, product, and commercial teams; two promotions indicate sustained credibility",
+        "evidence_strength": "strong",
+        "job_requirement": "Acting as the bridge between users, product, and engineering to ensure solutions remain aligned with operational realities"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership with sequencing logic design and rollout management; operational constraint expertise from scaling global systems",
+        "evidence_strength": "strong",
+        "job_requirement": "Designing and guiding iterative delivery plans that alleviate user pain and demonstrate value quickly"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with structured program delivery and milestone-based execution; strategic transformation planning experience",
+        "evidence_strength": "strong",
+        "job_requirement": "Translating business goals into a structured roadmap with milestones, dependencies, and acceptance criteria"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure with two promotions at a large, demanding organization (Google Devices and Services) demonstrates sustained capability to operate autonomously at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Independent decision-making under pressure"
+      },
+      {
+        "candidate_evidence": "Product Operations and transformation work requires technical understanding of systems and dependencies; no evidence of native software engineering or deep ML depth, but operational systems understanding demonstrated",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical fluency and sharp sequencing instincts"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No direct defence, defence technology, or national-security sector experience",
+        "mitigation": "Arondite explicitly states they don't expect all candidates to have defence background; strong ops and transformation experience is transferable. Deployment context and customer-facing problem-solving are domain-agnostic core skills.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited basic programming ability (Python, bash) or command-line/terminal familiarity",
+        "mitigation": "JD lists this as 'ideally' preferred, not required. Candidate's technical fluency through product operations and systems understanding may mitigate need for hands-on scripting; learning basic shell commands is low lift if needed for deployment operations.",
+        "severity": "low"
+      },
+      {
+        "gap": "Right to Work in UK and UK security clearance (SC or above) eligibility unconfirmed",
+        "mitigation": "JD makes both explicit hard requirements. Candidate profile indicates German native and Google tenure, but residency history and UK Right to Work status not provided. Must be confirmed before proceeding; potentially disqualifying if not met.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Deployment Strategist at a well-funded, scaling startup with end-to-end customer ownership, multi-workstream technical leadership, and direct user engagement scope suggests L5 senior-IC or early-lead band. JD emphasizes autonomy and hands-on program leadership rather than pure management; no reporting hierarchy or manager-of-managers scope stated. At a startup stage and mission-driven context, this maps to ~L5 (Senior Manager / Principal IC equivalent).",
+    "role_family_fit": 92,
+    "scope_seniority": 81,
+    "summary": "Candidate's eight years of Strategy and Operations leadership, product transformation experience, and proven stakeholder management across technical and operational teams align strongly with the core Deployment Strategist responsibilities: user research, cross-functional bridging, roadmap sequencing, and iterative delivery design. Primary gaps are lack of defence/defence-tech domain knowledge and limited technical fluency in scripting or command-line work (preferred, not required). Right-to-work and security clearance eligibility are unknowns that require verification.",
+    "uncertainties": [
+      "Candidate's current Right to Work eligibility in the UK not stated in profile",
+      "UK security vetting eligibility (5+ years continuous UK residency) not documented; German native status suggests possible compliance gap",
+      "Depth of technical fluency in austere-environment systems or low-level tooling not evident from ops-focused background",
+      "Arondite's maturity stage, customer count, and deployment frequency not specified; affects onboarding and field readiness expectations",
+      "Willingness and ability to travel 1\u20134 days/week or 2\u20133 weeks abroad not addressed in candidate profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and leading transformation programs, though primary background is strategy/operations rather than direct sales team leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience directly managing high-performing enterprise sales or specialist teams"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background demonstrates cloud/enterprise platform exposure, but positioning emphasizes strategy and operations leadership rather than direct sales experience or quota-carrying seller motion",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in enterprise software, SaaS, cloud platform, database, or developer platform sales"
+      },
+      {
+        "candidate_evidence": "Positioned as a Strategy and Operations / Product Operations leader with transformation program experience at scale; directly relevant to GTM execution and new product scaling in matrixed orgs",
+        "evidence_strength": "strong",
+        "job_requirement": "Demonstrated success in executing specialised GTM motions or scaling new product lines within a larger matrixed organisation"
+      },
+      {
+        "candidate_evidence": "No evidence of direct quota ownership, revenue target management, or competitive revenue tracking in provided profile; background is operations and transformation focused",
+        "evidence_strength": "weak",
+        "job_requirement": "Proven track record of meeting or exceeding revenue targets in highly competitive markets"
+      },
+      {
+        "candidate_evidence": "Eight years in global operations and transformation suggests stakeholder navigation capability, but no explicit evidence of hands-on enterprise co-selling or deal-cycle leadership alongside field sales teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to co-sell and navigate complex, multi-stakeholder enterprise sales cycles alongside core account teams"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 52,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No demonstrated direct sales team management or quota-carrying sales leadership experience",
+        "mitigation": "Sales team leadership can be developed through mentoring by Global Sales Leadership and Regional AVPs; candidate's operations and program leadership at scale transfers some stakeholder management capability, but revenue ownership and sales KPI management are distinct",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited or no track record of owning and exceeding revenue targets in competitive markets",
+        "mitigation": "Strong GTM execution background could accelerate learning, but this requires hands-on quota/consumption target accountability\u2014a core differentiator of the sales specialist role that operations/strategy roles typically lack",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of hands-on enterprise co-selling or deal-cycle collaboration with account teams",
+        "mitigation": "Transformation and operations roles do involve cross-functional stakeholder management; early collaboration with Regional Sales Leadership and dedicated onboarding could close this, but co-selling is a distinct motion",
+        "severity": "medium"
+      },
+      {
+        "gap": "Background is strategy, operations, and transformation; not enterprise software or SaaS sales",
+        "mitigation": "Cloud platform domain knowledge from Google is transferable; Databricks product and domain briefing plus sales mentoring would be required to build customer-facing sales credibility",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Director title managing a regional team of specialists, with direct P&L ownership (consumption and booking targets), team hiring/development, and accountability to Global Sales Leadership. Matrixed sales environment, cross-functional leadership, and strategic customer engagement anchor L6 seniority. No company size stated in JD; typical enterprise SaaS Director scope supports L6.",
+    "role_family_fit": 28,
+    "scope_seniority": 78,
+    "summary": "Director, Lakebase Sales Specialists is a pure sales leadership role requiring direct enterprise sales team management, revenue ownership, and hands-on deal execution\u2014a fundamental mismatch with a Strategy and Operations / Product Operations profile. While the candidate demonstrates strong GTM scaling and transformation execution at Google, the JD explicitly requires sales team leadership, quota accountability, and co-selling motion expertise. The role sits outside approved stretch families and the candidate's honest gap of \"no production software-engineering background\" is less relevant than the absence of enterprise sales leadership and revenue target management experience. Not recommended to pursue.",
+    "uncertainties": [
+      "Unclear whether candidate has any hands-on sales team coaching, forecasting, or quota management experience in non-strategy roles",
+      "Databricks company size/stage context not stated in JD; affects L6 confirmation but likely stable at L6 for a Director sales role",
+      "Degree of actual GTM motion execution vs. strategic planning role in Google background is unclear from profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

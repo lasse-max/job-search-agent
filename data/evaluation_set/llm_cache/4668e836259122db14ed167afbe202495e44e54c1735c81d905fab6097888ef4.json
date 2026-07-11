@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Candidate notes 'Python basic and actively learning'; does not meet fluency requirement",
+        "evidence_strength": "weak",
+        "job_requirement": "Fluent in Python programming"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in Devices & Services with scaling global commercial operations and transformation programs; strategy and operations background, not CS/math/physics",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong technical background in computer science, mathematics, or physics"
+      },
+      {
+        "candidate_evidence": "Candidate positioning is Strategy and Operations leader; no stated research interest or AI research background",
+        "evidence_strength": "weak",
+        "job_requirement": "Excited to transition into empirical AI research and would be interested in a full-time role at Anthropic"
+      },
+      {
+        "candidate_evidence": "No evidence of AI safety or societal impact focus in profile; background is commercial operations and transformation",
+        "evidence_strength": "weak",
+        "job_requirement": "Are motivated by making sure AI is safe and beneficial for society as a whole"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L3",
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Python fluency required; candidate has basic proficiency and is actively learning",
+        "mitigation": "Candidate could accelerate Python learning before start, but four-month empirical research timeline assumes fluency on day one",
+        "severity": "high"
+      },
+      {
+        "gap": "No formal CS, mathematics, or physics background; candidate's training is operations and strategy",
+        "mitigation": "Mentorship and collaborative team environment may partially offset, but core technical foundation gap is substantial for research role",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated AI safety or AI policy research interest; background is commercial operations scaling",
+        "mitigation": "Candidate could develop interest, but motivation and prior exposure are absent; role explicitly seeks economists and policy researchers with interest in AI's societal impacts",
+        "severity": "high"
+      },
+      {
+        "gap": "No empirical research, publication, or academic project experience cited; role expects public paper or research output in four months",
+        "mitigation": "Transformation program execution and UAT could transfer partially to research methodology and communication, but research rigor and writing discipline are unproven",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Anthropic Fellows Program is a four-month empirical research position for early-career talent (no prior experience required by design), but scope is research-initiate rather than manager/strategic leader. Weekly stipend ($3,850 USD) and research output expectations (paper submission) signal early-career/post-undergrad equivalent. No management scope, no years-of-experience stated; positioned as talent development/pipeline role. Normalized to L3 (research initiate, mentored, no prior research requirement).",
+    "role_family_fit": 15,
+    "scope_seniority": 20,
+    "summary": "This is a four-month empirical research fellowship in AI safety and economics policy at Anthropic, not a Strategy and Operations or product-ops role. The position requires Python fluency, strong technical foundation (CS/math/physics), and transition readiness into AI research\u2014candidate has strategy and operations background with basic Python and no demonstrated AI safety or research interest. Core technical, domain, and motivation gaps are substantial and unmitigated by the mentorship structure, which assumes motivated research talent entering the program.",
+    "uncertainties": [
+      "Candidate's AI safety or policy research motivation is not stated in profile; cannot confirm genuine interest in empirical AI research transition",
+      "Whether candidate's transformation program execution and UAT experience would transfer to research methodology and paper-writing rigor is unclear",
+      "No explicit statement on visa/work authorization status in US, UK, or Canada; logistics requirement is mandatory",
+      "Anthropic company size/stage not stated in JD\u2014assumes established research lab, but stage context could affect team culture fit"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

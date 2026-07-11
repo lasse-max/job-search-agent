@@ -1,0 +1,51 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations and transformation programs with two promotions",
+        "evidence_strength": "weak",
+        "job_requirement": "Talent Acquisition Manager role with GTM focus"
+      },
+      {
+        "candidate_evidence": "Candidate background is in Strategy and Operations, Product Operations, and Business Transformation\u2014no HR, recruiting, or talent acquisition experience stated",
+        "evidence_strength": "weak",
+        "job_requirement": "HR department and talent acquisition function"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No HR, recruiting, talent acquisition, or people operations background",
+        "mitigation": "Candidate could transition into people-operations strategy if the role emphasizes GTM talent strategy (sales hiring, channel programs, enablement) rather than core HR functions; however, JD lacks clarity on strategic scope vs. transaction-heavy recruiting.",
+        "severity": "high"
+      },
+      {
+        "gap": "Talent Acquisition Manager is a recruiting/HR specialist role; candidate expertise is in commercial operations, transformation, and business strategy",
+        "mitigation": "Role would require significant ramp on recruiting fundamentals, sourcing, interview process design, and talent market dynamics; candidate's strategy background does not directly transfer.",
+        "severity": "high"
+      },
+      {
+        "gap": "JD does not clarify whether GTM Talent focus is a niche strategic hiring need or requires broader HR recruiting experience",
+        "mitigation": "Request clarification on whether role emphasizes GTM talent strategy and sales hiring excellence (potential stretch fit) or core recruiting operations.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Mid-stage SaaS company (600+ team, $400M raised, Gartner Visionary). Manager-level title with GTM hiring accountability suggests L4 IC or team lead scope; no reporting line or headcount stated. Likely L4, with modest upside to L5 if strategic GTM staffing is core; stage and sizing do not suggest senior L5-L6.",
+    "role_family_fit": 15,
+    "scope_seniority": 45,
+    "summary": "Talent Acquisition Manager is a recruiting/HR specialist function, not a Strategy and Operations, Product Operations, or Business Transformation role. Candidate has no stated HR, recruiting, or people-operations background and is positioned in commercial operations and transformation. The JD lacks sufficient detail on whether GTM talent strategy is a strategic, transformation-heavy mandate or primarily transaction-heavy recruiting; without that clarity, the functional mismatch is fundamental and gaps are not readily mitigated through prior scope or experience.",
+    "uncertainties": [
+      "JD does not specify whether 'GTM - Paris' refers to a strategic talent/staffing program (stretch fit) or core recruiting operations (poor fit)",
+      "No information on reporting line, team size, or whether role leads other recruiters or is an individual contributor",
+      "Candidate's eight years at Google and promotions are strong signals of capability, but in a different function; transferability to recruiting is unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

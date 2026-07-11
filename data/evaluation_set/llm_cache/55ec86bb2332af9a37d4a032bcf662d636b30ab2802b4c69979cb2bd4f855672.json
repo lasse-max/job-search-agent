@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in commercial operations with two promotions and global scaling experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue Operations function"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with transformation program experience",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy and operations leadership"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "unknown",
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No access to posted job description",
+        "mitigation": "Role JSON contains only title, department, location, and company; full JD fetch failed. Cannot map candidate experience to specific role requirements, scope, reporting line, or seniority expectations.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role scope and seniority unknown",
+        "mitigation": "Cannot estimate whether this is an IC Lead (L4\u2013L5), manager role, or strategic-director-level position without JD text describing responsibilities, team size, or stakeholder level.",
+        "severity": "high"
+      },
+      {
+        "gap": "Company stage and size not stated",
+        "mitigation": "Rokt context is missing; cannot calibrate 'Head of' or 'Lead' title or assess reporting structure without understanding company scale.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 5,
+    "level_rationale": "Role title is \"Revenue Operations & Strategy Lead\" at Rokt (company stage unknown). Title suggests L4\u2013L5 IC lead or early manager, but without JD text stating years required, team scope, reporting line, or strategic ownership depth, no confident level estimate is possible. Must-have signals are completely absent from the cached metadata.",
+    "role_family_fit": 65,
+    "scope_seniority": 20,
+    "summary": "Role title \"Revenue Operations & Strategy Lead\" aligns with target family (Revenue Operations at appropriate seniority), but the JD fetch failed entirely, leaving no access to explicit requirements, scope, team ownership, stakeholder level, or reporting structure. Candidate's eight years in Google commercial operations and transformation leadership provide plausible background, but without the full posting, confidence in fit and seniority alignment cannot be assessed. Recommend skip pending full JD recovery or repost.",
+    "uncertainties": [
+      "Full job description unavailable\u2014JD fetch returned TooManyRedirects. Cannot map candidate evidence to role responsibilities.",
+      "Company stage and size unknown; cannot calibrate seniority of 'Lead' title or assess whether role is L4 IC, L5 Senior IC, or management-track.",
+      "Reporting line and stakeholder scope not stated.",
+      "Candidate's Google commercial ops background is plausibly relevant to RevOps, but without explicit JD requirements, alignment remains speculative."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

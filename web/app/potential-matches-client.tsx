@@ -427,9 +427,23 @@ function ChipRow({ role }: { role: PotentialMatch }) {
       <Chip tone={role.tier === 1 ? "teal" : "muted"}>Tier {role.tier}</Chip>
       <Chip tone={pctTone(role.feasibilityPct)}>feasibility {role.feasibilityPct}%</Chip>
       <Chip tone={pctTone(role.confidencePct)}>confidence {role.confidencePct}%</Chip>
+      <LevelChip role={role} />
       {role.isCalibration ? <Chip tone="green">calibration sample</Chip> : null}
     </div>
   );
+}
+
+function LevelChip({ role }: { role: PotentialMatch }) {
+  if (role.levelConfidence < 50 || role.estimatedLevel === "unknown") {
+    return <Chip>est. L? · low confidence</Chip>;
+  }
+  if (role.estimatedLevel === "L6" || role.estimatedLevel === "L7+") {
+    return <Chip tone="gold">est. {role.estimatedLevel} ▲ above band</Chip>;
+  }
+  if (role.estimatedLevel === "L3") {
+    return <Chip>est. L3 ▼ below band</Chip>;
+  }
+  return <Chip tone="teal">est. {role.estimatedLevel} · in band</Chip>;
 }
 
 function Chip({
@@ -540,6 +554,10 @@ function RoleSlideOver({ onClose, role }: { onClose: () => void; role: Potential
             <p className="mt-4 text-[13px] leading-6 text-chart-muted">{role.summary}</p>
             <p className="mt-3 text-[12px] leading-5 text-chart-faint">
               Feasibility: {role.feasibilityState} · {role.feasibilityReason}
+            </p>
+            <p className="mt-2 text-[12px] leading-5 text-chart-faint">
+              Estimated level: {role.estimatedLevel} · confidence {role.levelConfidence}% ·{" "}
+              {role.levelRationale}
             </p>
           </div>
           <FitBadge role={role} />
@@ -692,7 +710,7 @@ function EmptyMatches() {
     <div className="mt-14 text-center">
       <div className="font-serif text-[22px] italic text-chart-muted">No calibrated matches yet.</div>
       <p className="mt-2 text-sm text-chart-faint">
-        After the Postgres migration and the next scan, current hybrid Claude v2 evaluations will
+        After the evaluator-v3 migration and the next scan, current hybrid Claude v3 evaluations will
         appear here.
       </p>
     </div>

@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with two promotions in global commercial operations and transformation programs, including customer-facing stakeholder engagement and account strategy",
+        "evidence_strength": "medium",
+        "job_requirement": "5+ years in customer-facing, pre-sales or consulting role influencing technical executives"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation leadership with experience in requirements definition, logic design, and cross-functional roadmap influence; however, specific cybersecurity domain expertise not evident",
+        "evidence_strength": "weak",
+        "job_requirement": "Credibility influencing security analytics products with market insight to shape roadmap capabilities"
+      },
+      {
+        "candidate_evidence": "Google commercial operations and transformation program execution demonstrates GTM collaboration and adoption scaling; transferable but without security vertical context",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate with GTM leadership and account teams to design engagement strategies driving product adoption"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Deep cybersecurity domain expertise (5+ years SecOps/security architecture) and hands-on SIEM platform experience (Splunk, Sentinel, QRadar)",
+        "mitigation": "Candidate's ops and transformation background provides process design and stakeholder management skills but lacks the specialized security ops knowledge required for credible CISO/SOC advisor role. Would require 6\u201312 month ramp in security fundamentals.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on proficiency in SQL and Python with AI tools for security-specific anomaly detection and behavioral analytics workflows",
+        "mitigation": "Candidate notes Python is basic and actively learning; no demonstrated experience building security data or AI applications. Large gap for a tier-3 escalation architect advising on detection-as-code and agentic SIEM.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct experience with cloud-native security logging (AWS CloudTrail, Azure Activity Log, GCP Audit) and security telemetry architecture",
+        "mitigation": "Candidate has cloud collaboration experience but no evidence of security telemetry design or security-specific cloud logging; would require onboarding in security architecture.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Formal technical degree in Computer Science, Cybersecurity, or Engineering as stated in JD",
+        "mitigation": "Not confirmed in candidate profile; if present, closes this gap. If absent, does not disqualify but adds friction in security credential-building.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5+ years customer-facing pre-sales/consulting in security (L5 equivalent) and tier-3 technical leadership on complex SIEM projects. Reporting scope and strategic product influence align L5\u2013L6 IC boundary. Estimated L5 based on pre-sales seniority anchor and strategic product scope.",
+    "role_family_fit": 25,
+    "scope_seniority": 70,
+    "summary": "Sr. Solutions Architect for Databricks Lakewatch (SIEM/security data platform). Requires 5+ years cybersecurity SecOps, SIEM platform expertise, SQL/Python proficiency, and tier-3 technical leadership. Candidate brings 8 years Google Ops/transformation and GTM collaboration but lacks deep cybersecurity domain knowledge, hands-on security data/AI experience, and security telemetry architecture. Not a role-family fit; high ramp risk and domain gap make this a skip.",
+    "uncertainties": [
+      "Candidate's formal degree field not stated; JD requires technical degree",
+      "Candidate's hands-on cloud security logging experience not detailed",
+      "Depth of Python/SQL readiness and timeline for security AI workflows unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

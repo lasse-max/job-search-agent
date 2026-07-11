@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions and commercial operations at scale; limited direct standalone pricing experience but extensive GTM and product operations background",
+        "evidence_strength": "medium",
+        "job_requirement": "8\u201310 years' experience in GTM, product or strategy roles in deep-tech or SaaS companies, with at least 5 years pricing experience"
+      },
+      {
+        "candidate_evidence": "Global commercial operations and transformation programs at Google; no explicit case studies of independent pricing strategy design for APIs or cloud products",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven record designing pricing strategies for technical products (APIs, cloud or developer tools)"
+      },
+      {
+        "candidate_evidence": "Transformation programs and commercial operations scaling imply data-driven execution and cross-functional analytics; no explicit financial modelling or A/B testing samples provided",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong analytical and financial modelling skills; comfortable with data-driven experiments"
+      },
+      {
+        "candidate_evidence": "Cross-functional operations and global scaling experience at Google typically involves influencing partners and stakeholders; language fluency in English and German supports communication",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent stakeholder management and communication skills; able to influence without authority"
+      },
+      {
+        "candidate_evidence": "Eight years of commercial operations and transformation; analytics capability inferred from scale but no direct A/B testing or pricing optimization examples cited",
+        "evidence_strength": "medium",
+        "job_requirement": "Build financial models, run A/B tests and analyse usage data to optimise pricing and packaging"
+      },
+      {
+        "candidate_evidence": "Background at Google does not indicate AI/LLM pricing exposure; no startup experience cited",
+        "evidence_strength": "weak",
+        "job_requirement": "Exposure to AI/LLM pricing levers (fine-tuning, custom models) and fast-growth tech startups"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L5",
+    "evidence_strength": 55,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "No demonstrated standalone pricing strategy ownership for technical products (APIs, cloud, developer tools)",
+        "mitigation": "Eight years of GTM and commercial operations at scale provide transferable analytics and stakeholder skills; onboarding and mentoring by Finance and Revenue Ops teams can accelerate domain knowledge",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited or unstated AI/LLM pricing levers experience (fine-tuning, custom models, token-based economics)",
+        "mitigation": "Bonus skill; learnable in first 90 days with product and finance partnership; not a baseline blocker for strong GTM operators",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated startup or fast-growth hypergrowth experience; background is large-company enterprise (Google)",
+        "mitigation": "Mistral AI context, pace, and decision-making style differ from Google; operations fundamentals transfer, though velocity and resource constraints may require adjustment period",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD specifies 8\u201310 years in GTM/product/strategy with 5+ years pricing focus; reports to Head of Product Operations in a tech-focused company; role owns P&L, financial modelling, and cross-functional execution. This maps to established L5 IC scope with pricing specialization.",
+    "role_family_fit": 78,
+    "scope_seniority": 72,
+    "summary": "Candidate brings eight years of Google commercial operations and GTM experience, well-aligned with GTM and product strategy families. However, explicit pricing strategy design experience\u2014especially for APIs, cloud, and developer tools\u2014is not detailed. AI/LLM pricing exposure and startup velocity are gaps. Strong stakeholder and operations foundation supports growth into this role.",
+    "uncertainties": [
+      "Degree of direct financial modelling and A/B testing experience not detailed in profile",
+      "Exact scope of GTM strategy vs. operations ownership at Google not specified",
+      "Company size/stage context for Mistral AI not stated in JD; affects reporting-line interpretation"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

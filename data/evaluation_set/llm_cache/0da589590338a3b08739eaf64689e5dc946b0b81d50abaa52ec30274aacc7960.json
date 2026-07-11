@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations at Google Devices and Services with demonstrated cross-functional stakeholder management and transformation program leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Navigate complex stakeholder environments, building consensus between globally-distributed teams"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with focus on customer-centric transformation and ownership of requirements, logic design, UAT, rollout across diverse commercial programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Motivated by solving customer problems and delivering business value; versatility to ramp up quickly in new areas"
+      },
+      {
+        "candidate_evidence": "Two promotions at Google and experience scaling teams; however, mentoring and leadership evidence is primarily in operations and transformation contexts, not software engineering peer mentoring",
+        "evidence_strength": "weak",
+        "job_requirement": "Coaching and mentoring those around you, leading by example in code quality and design discussions"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No production software engineering or coding background; Python is basic and actively being learned",
+        "mitigation": "Candidate's transformation and operations expertise could apply to engineering leadership or program/strategy role, but not to core Senior Engineer duties of independent problem-solving, code quality leadership, and technical excellence across Xero's codebase",
+        "severity": "high"
+      },
+      {
+        "gap": "Product experience derives from requirements, UAT, rollout, and transformation ownership rather than native product engineering or SDLC depth",
+        "mitigation": "Role explicitly requires independent problem-solving across Xero's products, shipping code, design discussions, and mentoring on code quality\u2014all core engineering responsibilities outside candidate's primary background",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is titled and scoped as Senior Engineer in Engineering department, not Strategy/Operations/Transformation",
+        "mitigation": "Candidate's target families do not include native product or production engineering; this role falls outside approved stretch families despite soft-skills overlap",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role is a Senior Engineer position requiring independent delivery of features, solving complex technical problems, shipping production code, and leading by example in code quality and design discussions. Candidate's honest_gaps explicitly state: 'No production software-engineering background' and 'Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management.' This is a production software engineering core duty, not a nice-to-have or stretch-friendly skill.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Senior Engineer at a global fintech platform (Xero) scoped to independently deliver features, solve complex problems, mentor peers on code quality and design, and navigate regional-global complexity. Reports to GM Engineering. Requires mastery of codebases and shipping production software\u2014hallmarks of L5 senior individual contributor in engineering.",
+    "role_family_fit": 15,
+    "scope_seniority": 75,
+    "summary": "This is a Senior Engineer role in Xero's Engineering department requiring independent delivery of production features, technical problem-solving, code quality leadership, and mentoring. Candidate's background is Strategy and Operations at Google, not software engineering. Although the candidate excels at stakeholder navigation, cross-functional collaboration, and transformation delivery, the role is scoped explicitly around shipping code, design discussions, and engineering mentoring\u2014core production software duties outside the candidate's profile and approved stretch families. Hard blocker: production engineering core duty without corresponding background.",
+    "uncertainties": [
+      "No explicit programming language or engineering tech stack stated in JD; specifics might slightly lower or raise technical barrier",
+      "Xero company size and engineering structure clarity would refine scope estimate; stated as 'unknown_unless_stated_in_jd'",
+      "No indication whether role has strategic sub-component (e.g., regional strategy input) that might broaden fit; description focuses on execution and mentoring"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

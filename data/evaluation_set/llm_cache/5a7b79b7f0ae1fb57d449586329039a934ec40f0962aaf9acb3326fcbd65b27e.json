@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices and Services with two promotions; experience in program leadership and process design",
+        "evidence_strength": "medium",
+        "job_requirement": "Proactively contribute to process improvement, tooling, and support automation initiatives"
+      },
+      {
+        "candidate_evidence": "Product operations background with requirements design, stakeholder management, and cross-functional collaboration; experience translating business needs into operational change",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as a technical liaison between customers and internal teams, translating customer feedback into actionable product insights"
+      },
+      {
+        "candidate_evidence": "Google tenure with promotions suggests leadership capability; positioning indicates strategic program and operations leadership scope",
+        "evidence_strength": "weak",
+        "job_requirement": "Mentor junior support engineers and help level up the broader team through knowledge sharing"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Deep technical expertise in observability platforms, Kubernetes, cloud platforms (AWS/Azure/GCP), and Linux/Unix systems administration",
+        "mitigation": "Candidate's operations and transformation background could enable rapid learning of observability domain, but no evidence of hands-on infrastructure or SaaS technical troubleshooting experience; ramp time would be substantial",
+        "severity": "high"
+      },
+      {
+        "gap": "Production scripting proficiency (Python, Bash) and hands-on debugging of distributed systems",
+        "mitigation": "Candidate lists Python as basic and actively learning; no evidence of hands-on scripting or system-level troubleshooting in a production customer support context",
+        "severity": "high"
+      },
+      {
+        "gap": "5+ years in technical support or customer-facing engineering in SaaS/DevOps/observability environments",
+        "mitigation": "Candidate's eight years are in strategy/operations/product operations at Google, not technical customer support; domain and role family are fundamentally different",
+        "severity": "high"
+      },
+      {
+        "gap": "Bachelor's degree in Computer Science, Information Technology, or related technical field",
+        "mitigation": "No degree information provided in candidate profile; cannot confirm educational requirement is met",
+        "severity": "medium"
+      },
+      {
+        "gap": "Hands-on experience with Kubernetes, cloud platforms, Terraform, and modern DevOps tooling",
+        "mitigation": "No evidence of hands-on infrastructure or DevOps tooling experience in candidate profile",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD requires \"Bachelor's degree in Computer Science, Information Technology, or a related technical field\" and \"5+ years in a technical support or customer-facing engineering role, ideally in a SaaS, DevOps, or observability-focused environment\" with \"Proficient in scripting languages such as Python or Bash\" and \"Strong diagnostic and debugging skills across complex distributed systems.\" Candidate profile shows strategy/operations background with basic Python skills actively being learned, no technical support engineering experience, and no evidence of hands-on infrastructure/DevOps work. This is a hands-on technical support engineering role requiring production-level scripting and system troubleshooting; candidate's background is in business strategy and product operations, a fundamentally different discipline.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 70,
+    "level_rationale": "Posted role requires 5+ years in technical support/customer-facing engineering with production scripting and distributed-systems troubleshooting. This is mid-level technical IC work (L4) based on years required, hands-on scope, and mentorship expectations, not seniority stretch. No executive scope or manager-of-managers language present.",
+    "role_family_fit": 5,
+    "scope_seniority": 40,
+    "summary": "This is a Senior Technical Support Engineer role in the Engineering department at Snowflake, requiring 5+ years of hands-on technical customer support in SaaS/DevOps environments, proficiency in Python/Bash scripting, deep troubleshooting of distributed systems, and hands-on Kubernetes/cloud platform experience. The candidate's background is strategy/operations and product operations at Google\u2014a fundamentally different discipline. While the candidate demonstrates process improvement and cross-functional liaison capability, the role is a technical IC/support engineering position, not a strategy, operations, or transformation role. The candidate lacks the required technical support experience, production scripting depth, infrastructure expertise, and hands-on systems troubleshooting foundation. Role family fit is very low; candidate's approved families do not include technical support engineering or production-level DevOps work.",
+    "uncertainties": [
+      "Candidate's educational background and degree type not stated in profile",
+      "Depth of candidate's infrastructure exposure at Google Devices (if any) not specified",
+      "Whether candidate has informal hands-on troubleshooting or systems administration experience not indicated",
+      "Candidate's current Python level and timeline to production proficiency unclear"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations, global scaling, and transformation programs; strategy and operations background, not customer success or account management",
+        "evidence_strength": "weak",
+        "job_requirement": "Customer Success Manager role in a B2B SaaS/professional services context"
+      },
+      {
+        "candidate_evidence": "Product operations, transformation, and program leadership experience; no stated account management, customer success, or quota responsibility",
+        "evidence_strength": "weak",
+        "job_requirement": "Account ownership and client relationship management (implied by 'Majors' accounts focus)"
+      },
+      {
+        "candidate_evidence": "Transformation and strategic program leadership background; positioned for strategy and operations, not customer success execution",
+        "evidence_strength": "weak",
+        "job_requirement": "Customer Success operational execution and retention focus"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No customer success, account management, or customer-facing revenue operations background; candidate is positioned as strategy/operations leader",
+        "mitigation": "If role has embedded strategy/transformation scope (e.g., scaling CS operations, designing GTM models), reframe; otherwise, this is a function-family mismatch",
+        "severity": "high"
+      },
+      {
+        "gap": "JD text not available; job requirements, scope, team context, and strategic vs. execution balance unknown",
+        "mitigation": "Retrieve complete JD before final evaluation; assess whether role is pure customer success execution or has meaningful strategy/transformation component",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct consulting or external customer success brand and case-team experience",
+        "mitigation": "If Harvey requires customer success domain expertise from day one, internal ramp-up or mentorship may not bridge this gap",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 40,
+    "level_rationale": "Title \"Majors Customer Success Manager\" suggests L4 account ownership scope, but without full JD text, seniority is uncertain. No company size, team structure, or strategic scope stated; defaulting to typical large-account CSM level (L4) pending full JD retrieval.",
+    "role_family_fit": 10,
+    "scope_seniority": 35,
+    "summary": "Harvey's Majors Customer Success Manager is a customer-facing account management role, which sits outside the candidate's core strategy and operations positioning. The candidate's eight-year Google background is in commercial ops, transformation, and product strategy\u2014not customer success execution, retention, or quota ownership. Without a complete JD, scope, and strategic scope clarity cannot be assessed; recommend retrieving the full job description to determine whether the role includes meaningful strategy or transformation components before deprioritizing further.",
+    "uncertainties": [
+      "JD text unavailable (404 error); cannot assess actual job responsibilities, scope, and strategic vs. execution balance",
+      "Company size and stage unknown; Harvey context not provided in Role JSON",
+      "Whether 'Majors' implies managing large strategic accounts with transformation/consulting elements or standard customer success execution",
+      "Reporting line, team structure, and cross-functional scope not stated",
+      "Whether role includes process design, GTM strategy, or revenue operations transformation beyond standard CSM duties"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

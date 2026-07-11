@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs; experience bridging customer and internal teams on process design and execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Cross-functional coordination with Finance, Sales, and Customer Experience teams; communicating customer feedback to drive product and process improvements"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with analytical skills demonstrated through requirements logic, UAT, and rollout leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Problem-solving, evaluating facts and data to inform recommendations; managing billing disputes and discrepancies"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling at Google; experience managing stakeholder alignment in transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management, fostering positive relationships and collaboration across distributed teams"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L3",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No billing, finance operations, or customer-support background; candidate's experience is strategy, transformation, and product operations",
+        "mitigation": "Candidate would require 4\u20138 weeks of ramp-up on billing cycles, Zuora, and payment reconciliation workflows; customer support domain expertise is not transferable from strategic product operations at scale.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on experience with Zuora, Salesforce, or Intercom; JD lists Zuora and Intercom familiarity as 'strong advantage'",
+        "mitigation": "Systems training is achievable, but lack of financial-operations context limits speed to productivity.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Seniority mismatch: candidate targets L4\u2013L5 manager/senior-IC scope; role is L3 individual-contributor billing operations",
+        "mitigation": "Candidate would likely experience underutilization and retention risk; this is below target career trajectory.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role family misalignment: Customer Experience Billing Specialist is a customer-support and transactional operations function, not strategic or transformation-driven",
+        "mitigation": "None practical; candidate should pursue roles with process design, automation, or strategic billing/revenue transformation scope.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 0\u20132 years of billing, finance operations, or customer-facing support experience; no management scope, no degree or skill gate, individual-contributor execution focus on invoicing, reconciliation, and disputes. No company size or stage detail reduces confidence slightly, but core duties map to L3 (individual contributor, operational support).",
+    "role_family_fit": 15,
+    "scope_seniority": 35,
+    "summary": "This is a Customer Experience Billing Specialist\u2014a transactional, customer-support-aligned operations role focused on invoicing, payment reconciliation, and dispute resolution. The candidate is a Strategy and Operations / Product Operations leader with eight years of Google tenure, transformation scope, and cross-functional strategic work. The role is L3 individual-contributor, non-strategic, and falls outside the target family (Business Operations / Strategy and Operations / Product Ops / GTM / Transformation) unless billing automation or process redesign becomes a strategic mandate. The candidate's honest gaps include no billing or finance-operations background, no Zuora/Intercom experience, and a background in strategic transformation rather than customer support operations. This is a substantial seniority mismatch and functional misalignment; the candidate should focus on roles requiring strategic and transformation scope.",
+    "uncertainties": [
+      "Planday's company stage and headcount not stated in JD; cannot confirm whether 'small, distributed team' suggests startup exception or true enterprise scale",
+      "Degree requirement not explicitly stated; candidate's educational background not provided in profile JSON",
+      "Scope of 'supporting process improvement initiatives' is vague\u2014could range from L3 data entry to L4\u2013L5 transformation design; JD does not clarify"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

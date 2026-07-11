@@ -1,0 +1,67 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; experience with customer engagement, requirements gathering, and UAT rollout",
+        "evidence_strength": "strong",
+        "job_requirement": "Work with customers to uncover business challenges and determine how Celonis Process Intelligence can help them achieve objectives"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader with documented experience in stakeholder management and process transformation",
+        "evidence_strength": "medium",
+        "job_requirement": "Build strong relationships with customers and act as trusted advisor through technical, product expertise, and business acumen"
+      },
+      {
+        "candidate_evidence": "Experience designing, executing, and rolling out transformation programs; comfort presenting to leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Execute proof projects showcasing value and deliver presentations to senior executives"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L3",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Associate/graduate-level role requiring bachelor's or master's degree in Engineering, CS, Data Science, AI/ML, or Mathematics; candidate education background not stated in profile",
+        "mitigation": "Candidate has eight years of professional experience which may offset early-career expectations, but JD explicitly targets recent graduates or early-career professionals with degree-level credentials",
+        "severity": "high"
+      },
+      {
+        "gap": "Requires hands-on experience with SQL and/or Python; candidate profile states 'Python basic and actively learning'",
+        "mitigation": "12-month Orbit program includes hands-on training, but candidate enters with declared basic proficiency rather than applied technical background",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is explicitly an Associate/graduate entry-level position; candidate is a Senior Manager/Lead with eight years tenure and two promotions at Google",
+        "mitigation": "None feasible; seniority mismatch is structural, not learnable",
+        "severity": "high"
+      },
+      {
+        "gap": "Requires fluency in Dutch and English; candidate profile lists English (professional/fluent) and German (native), with no mention of Dutch",
+        "mitigation": "Location is Benelux (Madrid first, Amsterdam later); Dutch fluency is explicit requirement for customer engagement in the region",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated background in process mining, Celonis platform, or enterprise software SaaS domain experience",
+        "mitigation": "Training and onboarding are included, but candidate brings no accelerant or domain familiarity",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Orbit Program is explicitly a graduate/early-career launch program requiring bachelor's or master's degree and valuable work/internship experience. JD emphasizes 12-month structured learning, hands-on mentorship, and onboarding for career starters in SaaS. This is L3 equivalent (0-2 years career expectation post-graduation). No company-stage ambiguity; large enterprise SaaS (Celonis is well-established).",
+    "role_family_fit": 25,
+    "scope_seniority": 30,
+    "summary": "This is an Associate-level graduate-entry program role (Orbit Program, L3) for early-career hires with degrees in engineering, CS, data science, or analytics and basic SQL/Python. The candidate is a Senior Manager/Lead from Google with eight years tenure\u2014structurally above-band and overqualified. While strategy and transformation work align with core families, the explicit degree requirement, hands-on Python/SQL expectation, Dutch-language requirement, and entry-level scope create material gaps. The seniority mismatch is not a learning curve but a career step backward, and the technical/language gaps are high-severity. Recommended skip.",
+    "uncertainties": [
+      "Candidate education (degree type, field, institution) not stated; cannot confirm whether it meets JD's degree requirement",
+      "Celonis company stage/size context implicit but not stated; assumed large enterprise SaaS based on brand and global footprint, lowering level-confidence slightly",
+      "Candidate's Dutch language proficiency completely absent from profile; cannot assess remediation timeline for Benelux customer engagement requirement",
+      "Degree requirement text uses 'and/or' phrasing ('bachelors and/or masters degree'); unclear if both are required or one suffices, though intent is clearly entry-level"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

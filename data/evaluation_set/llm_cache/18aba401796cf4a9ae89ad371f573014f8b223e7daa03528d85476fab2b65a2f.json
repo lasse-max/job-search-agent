@@ -1,0 +1,52 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; experience scaling global commercial operations and transformation programs; positioned as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Revenue Operations & Strategy Manager role (inferred from title and department)"
+      },
+      {
+        "candidate_evidence": "Primary role families include 'Revenue Operations at appropriate seniority'; eight years in commercial operations scaling at Google",
+        "evidence_strength": "medium",
+        "job_requirement": "Revenue Operations function (inferred from title and department)"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No access to actual Revenue Operations & Strategy Manager JD\u2014role description failed to fetch and only title, company, and location are available",
+        "mitigation": "Obtain the full cached or current JD from Personio careers or internal records to map candidate experience against explicit scope, stakeholder level, and technical RevOps depth (CRM platforms, GTM analytics, sales forecasting, pipeline management)",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background is Product Operations and commercial transformation rather than pure Revenue Operations",
+        "mitigation": "Clarify whether the role prioritizes cross-functional business transformation or narrow sales/RevOps mechanics; confirm whether Product Operations experience is valued as equivalent",
+        "severity": "medium"
+      },
+      {
+        "gap": "Unclear if role requires deep CRM, Salesforce, or GTM-analytics platform expertise; candidate profile does not detail such tooling",
+        "mitigation": "Request JD and confirm platform and analytics requirements; assess candidate's hands-on RevOps system and process design skills",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Title suggests L5 (Senior Manager, 5\u20138 years, established ownership). Reporting line and company stage unknown. Munich location and company size not stated in Role JSON, limiting confidence. Estimate based on title alone is coarse.",
+    "role_family_fit": 65,
+    "scope_seniority": 50,
+    "summary": "Senior Revenue Operations & Strategy Manager at Personio: title and department align with candidate's RevOps seniority band and primary role families. However, the JD failed to fetch and only title/location are available. Without explicit scope, stakeholder level, platform/analytics depth, or transformation mandate, alignment cannot be properly assessed. Candidate's background is strong in Product Operations and commercial transformation at scale (Google), but direct RevOps system/process evidence is not detailed. Recommend obtaining the full JD before proceeding.",
+    "uncertainties": [
+      "JD text is unavailable (fetch failed 429); evaluation is based on title, company, and department only",
+      "Unclear whether role emphasizes pure sales RevOps mechanics or strategic business transformation (candidate strength)",
+      "No visibility into reporting line, team scope, or company stage (Personio growth context unknown)",
+      "Candidate's RevOps platform and analytics tooling experience not detailed in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

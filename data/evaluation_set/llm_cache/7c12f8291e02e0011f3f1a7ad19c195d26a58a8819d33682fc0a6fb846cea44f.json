@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Product Operations leadership at Google requiring cross-functional stakeholder communication; transformation program delivery to senior leadership and external partners",
+        "evidence_strength": "medium",
+        "job_requirement": "Excellent communication skills, explaining complex technical concepts to both technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Eight years in Google Devices and Services with two promotions in collaborative operating model; demonstrated ability to scale global teams and programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Low-ego, collaborative, eager to learn"
+      },
+      {
+        "candidate_evidence": "Professional fluency in English; native German speaker, international experience at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Fluent in English with professional communication"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 18,
+    "gaps": [
+      {
+        "gap": "No production ML engineering or PyTorch/JAX expertise; candidate background is strategy/operations, not deep technical research or model development",
+        "mitigation": "Role requires hands-on SOTA model training, data curation, and GPU-scale deployment as core duties. Candidate's learning trajectory and willingness to develop technical depth would need to be exceptionally strong and explicit; retraining cost is substantial.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated track record in academic publications, open-source contributions at scale, or personal research projects in ML/AI",
+        "mitigation": "JD emphasizes PhD/Master preference and publication/large-codebase contribution evidence. Candidate's eight years are in commercial operations and transformation, not research validation.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct software engineering or AI systems development experience; Python is noted as basic and actively learning",
+        "mitigation": "JD requires expert Python code quality, independent large-codebase navigation, and building production-grade tools and frameworks. Candidate's technical foundation does not match this bar.",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of research project leadership or client research team collaboration in technical/scientific context",
+        "mitigation": "Role includes managing research projects and communicating with external client research teams; candidate's project leadership is operations and transformation-focused, not research-domain expertise.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "You're an expert with PyTorch or JAX ... You write clean, readable, high-performance, fault-tolerant Python code ... Run pre-training, post-training and deploy state of the art models on clusters with thousands of GPUs. You don't panic when you see OOM errors or when NCCL feels like not wanting to talk. Develop the necessary tools and frameworks to facilitate data generation, model training, evaluation and deployment.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 72,
+    "level_rationale": "Applied Scientist/Research Engineer role requiring expert PyTorch/JAX, large-codebase fluency, and independent ownership of SOTA model development. PhD/Master preferred; academic or high-impact technical track record required. Aligns with L5 senior IC scope in deep technical research, though company stage unknown and JD emphasizes individual execution over management.",
+    "role_family_fit": 8,
+    "scope_seniority": 42,
+    "summary": "This is a deep ML research and engineering role requiring expert PyTorch/JAX, SOTA model training at scale, and independent technical ownership. The candidate is a Strategy and Operations leader with strong cross-functional and transformation experience at Google but no production ML engineering, no PyTorch/JAX expertise, and no research publication or large open-source track record. The core job duties\u2014pre-training, post-training, GPU-scale deployment, and building production ML frameworks\u2014directly depend on technical depth that the candidate does not possess. This is a fundamental capability mismatch, not a seniority or strategic-fit gap.",
+    "uncertainties": [
+      "Company stage and size not stated; Mistral AI's funding and team scope would affect L5 calibration but does not change core role-family or capability assessment",
+      "Candidate's 'actively learning' Python trajectory and rate of technical acquisition are unknown; specific timeline and depth commitment to PyTorch/JAX not stated",
+      "Whether the candidate has any side or academic research projects in ML/AI outside the stated eight-year Google tenure is not documented"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

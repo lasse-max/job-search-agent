@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; positioned as Strategy and Operations / Product Operations leader scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead cross-functional teams and serve as force multiplier in data center delivery"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs and requirements definition; no stated experience in real estate deals, lease negotiations, or transaction validation",
+        "evidence_strength": "weak",
+        "job_requirement": "Validate deal readiness from LOI through lease execution and confirm transaction viability"
+      },
+      {
+        "candidate_evidence": "Global commercial operations experience suggests stakeholder coordination capability; no evidence of vendor/developer/construction partner management",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with external stakeholders (landlords, developers, contractors) as primary point of contact"
+      },
+      {
+        "candidate_evidence": "No stated background in construction, permitting, data center infrastructure, or facility development processes",
+        "evidence_strength": "weak",
+        "job_requirement": "Understand end-to-end data center development (entitlements, permitting, planning, execution, commissioning, handover)"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure and strategic/transformation experience suggest operational autonomy; context is Google Devices/Services, not site-based construction leadership",
+        "evidence_strength": "medium",
+        "job_requirement": "Operate independently at job sites with ownership of outcomes and ability to guide execution without excessive external consultation"
+      }
+    ],
+    "confidence": 0.5,
+    "estimated_level": "L5",
+    "evidence_strength": 32,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No data center or facility development background; role requires deep understanding of 'dirt to delivery' processes including entitlements, permitting, supply chain, execution, commissioning",
+        "mitigation": "Extensive on-the-job mentoring and structured ramp-up with experienced GC/EPC partners; willingness to learn construction and real estate fundamentals in a fast-paced, high-stakes environment",
+        "severity": "high"
+      },
+      {
+        "gap": "No construction, General Superintendent, or Project Manager experience in GC/EPC or hyperscale data center projects",
+        "mitigation": "Hire a co-lead or embedded technical advisor; heavy reliance on contractor and development partner expertise during ramp-up phase",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience with lease negotiations, real estate development, or commercial real estate transaction management",
+        "mitigation": "Partner closely with legal and real estate teams; leverage external counsel and deal templates; focus on gatekeeper coordination rather than independent negotiation",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited vendor/contractor relationship management in a construction context; Google Devices experience is corporate operations, not job site leadership",
+        "mitigation": "Partner with construction mentors; establish clear alignment frameworks with contractors early; prioritize relationship-building during site presence",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated understanding of Australian construction norms, regulatory environment, labor laws, or key market players",
+        "mitigation": "Hire local technical advisor or embed with local GC/developer; allocate ramp-up time for market orientation",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires 8+ years of data center/construction leadership at scale. Reporting line and scope suggest senior IC or manager-level (L5-L6 equivalent). JD emphasizes site presence, stakeholder coordination, deal readiness, and executive reporting without explicit mention of large team size or multi-site portfolio management. No company stage disclosed, limiting confidence. Anchors to 8+ years, independent ownership, and cross-functional coordination; interpreted as L5 (senior IC) rather than L6 (manager-of-managers) due to ambiguity around scale and headcount.",
+    "role_family_fit": 18,
+    "scope_seniority": 65,
+    "summary": "This is a specialized data center construction and facility delivery role requiring deep expertise in the full lifecycle of hyperscale infrastructure projects, Australian market knowledge, and site-based leadership of external partners. The candidate's background is Strategy and Operations at Google\u2014a strong fit for target families\u2014but lacks any stated experience in construction management, real estate development, facility delivery, or data center infrastructure. The domain expertise gap is severe and not readily bridgeable through transformation or operational leadership skills alone. Unless the candidate has unstated construction or real estate background, this role lies well outside core competencies and should be deprioritized in favor of pure strategy/operations positions aligned with her demonstrated track record.",
+    "uncertainties": [
+      "Candidate's resume may contain construction or real estate experience not reflected in the positioning summary provided",
+      "Depth of 'global commercial operations' experience\u2014unclear whether this included vendor management, project delivery, or procurement",
+      "Company size and stage of Anthropic's compute infrastructure expansion\u2014affects seniority interpretation",
+      "Whether role is truly L5 IC or L6 manager-of-managers; JD language suggests site autonomy rather than team size"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

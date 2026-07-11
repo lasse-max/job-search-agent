@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with experience scaling global commercial operations and transformation programs; demonstrated ownership of complex, cross-functional initiatives.",
+        "evidence_strength": "medium",
+        "job_requirement": "Own the incident response lifecycle for high-severity security events, including triage, investigation, containment, remediation, recovery, and post-incident review."
+      },
+      {
+        "candidate_evidence": "Scaling global operations and leading transformation programs required cross-functional coordination and stakeholder management across technical and business teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as incident commander, coordinating technical teams and key stakeholders during complex security incidents."
+      },
+      {
+        "candidate_evidence": "Eight years at Google, two promotions, with demonstrated ability to operate at scale across diverse stakeholder groups in global operations and transformation contexts.",
+        "evidence_strength": "strong",
+        "job_requirement": "Excellent written and verbal communication skills, with the ability to communicate clearly with engineers, legal teams, executives, and other stakeholders."
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No hands-on incident response investigation, digital forensics, or security operations background; role requires significant experience leading complex IR/forensics investigations.",
+        "mitigation": "Candidate would require substantial on-the-job training in forensic methodologies, cloud/container/endpoint forensics tools, and incident investigation workflows. Lead security engineer or SOC practitioner mentoring could accelerate learning, but foundational security investigation expertise is absent.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated knowledge of cloud forensics (AWS, GCP, Kubernetes), endpoint forensics (macOS), MITRE ATT&CK, or attacker behavior analysis.",
+        "mitigation": "Specialized certifications (e.g., GCIA, GCIH, GFAC) and mentored incident response projects would be required. Self-study alone is insufficient for a lead/senior role at Mistral.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited Python, Go, or similar automation scripting background; role requires hands-on ability to automate investigative and response workflows.",
+        "mitigation": "Candidate has basic Python and is actively learning. For a senior IR lead role, deeper proficiency in Python or Go automation would be needed to independently design and maintain response automation.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No security operations, SOC, or IR program-building experience; candidate background is commercial operations and transformation, not security or incident response.",
+        "mitigation": "Domain pivot from commercial ops to security ops is significant. Candidate would need to build or demonstrate foundational security domain expertise before leading IR for a technology company's security posture.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires \"significant experience leading complex incident response and digital forensics investigations\" and \"hands-on\" technical expertise in forensics, with potential to build and lead a team. Reporting to SOC Lead with global scope and end-to-end ownership of major security events signals L5 senior IC scope. The hands-on technical requirement and specialized security domain knowledge suggest L5 rather than L6.",
+    "role_family_fit": 15,
+    "scope_seniority": 75,
+    "summary": "This is a hands-on Incident Response and Digital Forensics lead role requiring deep security investigation, cloud/endpoint forensics, and IR program-building expertise. The candidate is a Strategy and Operations leader with eight years of global commercial operations and transformation experience at Google, but has no background in security operations, incident response, digital forensics, or SOC environments. While stakeholder coordination and ownership mindset are transferable, the specialized security domain knowledge and technical forensics skills are absent and would require substantial retraining.",
+    "uncertainties": [
+      "Mistral AI company size and maturity not stated in JD; unknown if this is a startup scaling or established enterprise, which affects onboarding feasibility for security domain transition.",
+      "Candidate's Python learning trajectory and current depth unknown; automation requirement severity depends on how quickly candidate could become proficient.",
+      "No security certifications, threat intelligence, or malware analysis experience mentioned in candidate profile; unclear if candidate has any adjacent security exposure.",
+      "Role description mentions 'hands-on, player-coach' and potential team-building; ambiguous whether immediate hire must have IR lead track record or if training is acceptable for an emerging IR capability."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with experience in scaling global commercial operations and transformation programs; demonstrated ability to design processes and drive strategic initiatives.",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute to documentation strategy and content roadmap, identifying gaps and proposing solutions"
+      },
+      {
+        "candidate_evidence": "Extensive cross-functional collaboration experience in transformation programs and operations scaling; familiar with stakeholder management and working across technical and business teams.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with Engineering, Product, and Support teams; participate in technical reviews and release planning"
+      },
+      {
+        "candidate_evidence": "Product Operations background with requirements design, logic design, UAT, and rollout experience; understands user needs and pain points from transformation and product ownership work.",
+        "evidence_strength": "medium",
+        "job_requirement": "Gather feedback from Support, DevRel, and users to identify documentation pain points; advocate for clarity and user experience"
+      }
+    ],
+    "confidence": 0.6,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No hands-on technical writing, developer documentation, or developer education background; role requires 5+ years in this specialty.",
+        "mitigation": "Candidate would need to start from fundamentals in technical writing, documentation tools (Docusaurus, Sphinx), and developer-facing content craftsmanship. Google experience shows learning ability but does not substitute for domain expertise.",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated experience writing API reference docs, deployment guides, SDKs, or code examples at scale.",
+        "mitigation": "Would require significant ramp-up in understanding API documentation patterns, multi-language code examples, and infrastructure deployment scenarios.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on technical validation (API testing, Postman, REST clients, Docker, Kubernetes); role requires active testing and experimentation.",
+        "mitigation": "Candidate has basic Python and learning actively, but lacks the infrastructure and containerization testing experience the role demands for on-premises deployment validation.",
+        "severity": "high"
+      },
+      {
+        "gap": "No native Product Manager or technical documentation background; role is not a strategy or operations role but a specialized technical writing and developer education IC.",
+        "mitigation": "This is a functional specialist role requiring deep craft mastery in technical writing, not a platform for strategy or transformation leadership where candidate's strengths lie.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5+ years in technical writing or developer documentation, hands-on API/infrastructure testing, and mastery of specialized tools and workflows. Reporting relationship and management scope are not stated; estimated as L4 individual contributor (senior specialist) requiring deep domain expertise in technical documentation and developer education, not general operations or strategy leadership.\"",
+    "role_family_fit": 15,
+    "scope_seniority": 50,
+    "summary": "This is a Senior Technical Writer and Developer Educator role at Mistral AI, not a strategy, operations, or transformation position. The role is a specialized IC requiring 5+ years of hands-on technical documentation, API/deployment validation, and developer education expertise. Candidate's background is in strategy and operations, product transformation, and commercial scaling at Google\u2014outside the core family. While candidate brings cross-functional collaboration and user-centric thinking, the role demands deep craft mastery in technical writing, documentation tools, API testing, and infrastructure understanding where candidate has no demonstrated background. This is a deprioritized functional specialist role misaligned with candidate's core competencies.",
+    "uncertainties": [
+      "Company size/stage unknown; Mistral AI's internal team structure and seniority ladder unclear from JD alone",
+      "Whether candidate's Python learning trajectory could extend to Docker/Kubernetes infrastructure validation is uncertain",
+      "Candidate's past documentation experience (if any) beyond transformation design is not described in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

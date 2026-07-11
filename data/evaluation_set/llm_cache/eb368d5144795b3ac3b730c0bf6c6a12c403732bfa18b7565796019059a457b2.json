@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience scaling global commercial operations and transformation programs, demonstrating sustained cross-functional collaboration at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Work closely with cross-functional partners (PMs, engineers, researchers, operations, strategists) to define problems, shape direction, and ship high-quality experiences"
+      },
+      {
+        "candidate_evidence": "Product experience from ownership, requirements, logic design, UAT, rollout, and transformation indicates ability to bridge complex operational constraints with user-facing solutions",
+        "evidence_strength": "medium",
+        "job_requirement": "Translate complex systems, policies, and operational constraints into clear, thoughtful product experiences"
+      },
+      {
+        "candidate_evidence": "Strategic transformation and global operations scaling suggests systems-level thinking, though no explicit portfolio or design artifact evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Identify high-leverage opportunities that improve coherence across journeys, touchpoints, and surfaces"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 40,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Native product design experience and portfolio; JD requires 8+ years of product design at a product-driven tech company with strong visual craft, interaction design, and systems thinking demonstrated through portfolio",
+        "mitigation": "Candidate's operations and transformation background shows complex systems thinking, but lacks the visual design, interaction design, and design craft fundamentals. This is a core hard skill for the role, not a soft skill gap.",
+        "severity": "high"
+      },
+      {
+        "gap": "Design prototyping and multi-surface design execution; JD emphasizes 'Develop both long-term strategy and pragmatic short-term solutions, Design, prototype, and communicate ideas with creative storytelling and demos'",
+        "mitigation": "Candidate experience is primarily in business operations and transformation, not in hands-on design execution. No evidence of prototyping tools, design systems work, or design communication artifacts.",
+        "severity": "high"
+      },
+      {
+        "gap": "Product design craft and visual communication; JD requires 'A portfolio demonstrating strong visual craft, interaction design, and systems thinking'",
+        "mitigation": "Fundamental design discipline mismatch. Candidate strength is in strategic operations, not visual design execution.",
+        "severity": "high"
+      },
+      {
+        "gap": "Design-specific domain and industry pattern knowledge in fintech risk/compliance UX; Risk domain involves trust, compliance, and regulatory flows unique to financial services",
+        "mitigation": "Fintech operations knowledge is helpful but does not substitute for design-domain expertise in this specialized space.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "JD requires 8+ years of product design experience at a product-driven tech company with demonstrated craft, systems thinking, and multi-stakeholder complexity. This seniority anchors to L5 IC (6\u20139 years established senior-IC ownership, complex cross-functional scope). No C-suite or manager-of-managers language; this is an individual-contributor design role.",
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a native product design role (L5 IC, 8+ years required) at Stripe Risk, requiring portfolio-backed visual craft, interaction design, prototyping, and systems thinking. Candidate is a Strategy and Operations leader with eight years at Google and transformation expertise, showing cross-functional leadership and complex systems capability. However, this role is a poor family fit: it is a Product Designer discipline requiring hands-on design execution, craft, and visual communication artifacts\u2014not operations strategy, transformation leadership, or business case-building. The candidate's honest gap list explicitly notes \"Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management,\" and there is no evidence of design portfolio, prototyping, visual craft, or interaction design. This is a fundamental discipline mismatch, not a seniority or operations gap.",
+    "uncertainties": [
+      "No portfolio, design artifacts, or visual-design execution samples provided; unclear whether candidate has any design background or tooling experience",
+      "Candidate profile does not mention Figma, design systems, interaction design, or prototyping; gap may be absolute, not addressable",
+      "No fintech or compliance/risk domain design experience mentioned; regulatory and trust-driven design patterns are specialized"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

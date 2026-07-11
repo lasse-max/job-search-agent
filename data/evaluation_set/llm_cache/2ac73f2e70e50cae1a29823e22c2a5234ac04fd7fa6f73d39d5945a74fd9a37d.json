@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices scaling global commercial operations, transformation programs, and requirements ownership including UAT and rollout",
+        "evidence_strength": "weak",
+        "job_requirement": "Author and maintain high-quality technical publications including Interface Control Documents, System Architecture Descriptions, Operator Manuals and Maintenance Guides"
+      },
+      {
+        "candidate_evidence": "Product operations and business transformation background with requirements logic design and ownership; no stated CAD, schematic, or electrical engineering interpretation background",
+        "evidence_strength": "weak",
+        "job_requirement": "Can read and interpret 3D CAD assemblies, electrical wire harness schematics, PCB layouts and software API documentation to produce accurate, first-principles technical content"
+      },
+      {
+        "candidate_evidence": "No evidence of structured authoring tools (Flare, FrameMaker, LaTeX), PLM systems (Windchill, Arena), or hands-on technical documentation tooling",
+        "evidence_strength": "weak",
+        "job_requirement": "Proficient in structured authoring tools such as MadCap Flare, Adobe FrameMaker, LaTeX or Confluence, and have worked within PLM and version control environments"
+      },
+      {
+        "candidate_evidence": "Scaling operations and transformation work; no stated background in technical procedure authoring, operator manuals, or aerospace/defence documentation",
+        "evidence_strength": "weak",
+        "job_requirement": "Translated highly complex engineering architectures into user-facing procedures and operator manuals that are clear, compliant and structured for a non-specialist audience"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 15,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No technical documentation or technical writing background; candidate background is business operations and product transformation, not aerospace/defence technical publications",
+        "mitigation": "Role explicitly states 'We encourage you to apply even if you don't meet all the listed qualifications'; cross-training on structured authoring tools and domain immersion are possible, but core gap is domain and documentation expertise",
+        "severity": "high"
+      },
+      {
+        "gap": "No CAD (SolidWorks, NX), electrical schematic, PCB, or aerodynamic data interpretation skills; candidate has no stated hardware or engineering architecture exposure",
+        "mitigation": "Structured authoring tools can be learned; first-principles technical literacy and schematic/CAD familiarity require sustained engineering collaboration and on-the-job ramp",
+        "severity": "high"
+      },
+      {
+        "gap": "No proficiency in Flare, FrameMaker, LaTeX, PLM systems (Windchill, Arena), or formal version control; Confluence familiarity is not stated",
+        "mitigation": "Software tools are learnable; no substitute for prior technical documentation experience in regulated domains",
+        "severity": "high"
+      },
+      {
+        "gap": "No aerospace, defence, robotics, or UAV programme background; candidate's industry context is consumer technology (Google Devices), not safety-critical or regulated systems",
+        "mitigation": "Industry context and regulatory mindset develop through extended collaboration and mentorship; risk to early accuracy and independence is significant",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role requires 3\u20137 years of multidisciplinary technical documentation, aerospace/defence, CAD and schematic literacy, and structured authoring tools\u2014typical L4 senior IC scope. JD emphasizes hands-on integration, design-review participation, and end-to-end documentation ownership. No management scope evident; reporting line and company stage not stated, lowering confidence slightly.",
+    "role_family_fit": 8,
+    "scope_seniority": 65,
+    "summary": "Candidate brings eight years of Google operations and transformation leadership but has no technical documentation, aerospace/defence, CAD interpretation, structured authoring, or regulated-systems background. This role is a specialist technical-writer position requiring first-principles engineering literacy and domain expertise; the candidate's core competencies are business operations, not technical content creation. While the JD encourages applications from those not meeting all qualifications, the severity and breadth of gaps (domain, tooling, documentation, regulatory context) place this outside the target scope for Strategy and Operations roles and is better suited to technical-writing specialists or aerospace/defence engineers transitioning to documentation.",
+    "uncertainties": [
+      "Helsing company size, stage, and reporting structure not stated; limits confidence in L4 role assessment",
+      "Candidate's hands-on technical aptitude and learning velocity for CAD, schematics, and structured authoring tools are not evident from profile",
+      "No detail on candidate's experience with or exposure to aerospace, defence, or safety-critical systems thinking"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

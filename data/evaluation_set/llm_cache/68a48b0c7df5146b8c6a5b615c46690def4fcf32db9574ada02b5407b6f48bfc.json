@@ -1,0 +1,50 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Mission-driven people to solve complex and impactful problems"
+      },
+      {
+        "candidate_evidence": "Established career leader with approximately eight years tenure and multiple promotions; target seniority is Manager/Senior Manager/Lead/Principal",
+        "evidence_strength": "weak",
+        "job_requirement": "Candidates interested in working student opportunities or full-time roles approaching graduation or transition to employment"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L3",
+    "evidence_strength": 15,
+    "gap_manageability": 5,
+    "gaps": [
+      {
+        "gap": "Role explicitly targets Formula Student Germany programme participants considering working-student or early-career full-time pathways; candidate is an established senior operations and strategy leader",
+        "mitigation": "No realistic mitigation; the role's recruitment intent excludes candidate profile entirely",
+        "severity": "high"
+      },
+      {
+        "gap": "Technical and engineering focus (autonomous systems, aerodynamics, mechatronics, AI/ML within engineering environments) with no evidence of deep engineering background from candidate profile",
+        "mitigation": "Candidate's strategy and operations experience does not map to hands-on engineering or technical IC roles",
+        "severity": "high"
+      },
+      {
+        "gap": "No Strategy and Operations, Product Operations, or Business Transformation scope visible in JD; role is technical/engineering-focused with no stated operational leadership or transformation mandate",
+        "mitigation": "Cannot reframe as approved-stretch family without explicit business problem-solving, stakeholder management, or transformation scope",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 85,
+    "level_rationale": "Role explicitly targets Formula Student Germany programme participants considering working-student or early full-time transition roles, indicating entry-level or student-to-junior-IC pipeline. No seniority anchors (years required, management scope, executive reporting line) are stated; the JD makes clear recruitment intent is undergraduate/early-career talent acquisition, not senior hire.",
+    "role_family_fit": 5,
+    "scope_seniority": 10,
+    "summary": "This is a Formula Student Germany closed recruitment for entry-level and student participants in autonomous systems, aerodynamics, mechatronics, or AI/ML engineering\u2014explicitly not a general hire. The candidate is an established Strategy and Operations leader with eight years at Google and two promotions, targeting Manager through Senior IC seniority. Zero family fit (no strategic operations, product operations, or business transformation scope). Hard misalignment on career stage, technical engineering focus, and recruitment intent. Recommend skip.",
+    "uncertainties": [
+      "Helsing company stage and size not stated in JD; assumed to be growth-stage or later based on government contracts and relocation packages, but this does not change the entry-level intent of the Formula Student programme posting",
+      "Whether 'Working Student Opportunities' and 'Full-Time Roles' offer any internal pathway to senior strategic roles is not clarified in the JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

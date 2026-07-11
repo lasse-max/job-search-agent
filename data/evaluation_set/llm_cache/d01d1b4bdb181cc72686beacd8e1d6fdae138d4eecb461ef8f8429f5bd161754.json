@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with demonstrated operations and transformation leadership, including scaling global commercial operations and program execution",
+        "evidence_strength": "strong",
+        "job_requirement": "7+ years in operations with safety criticality"
+      },
+      {
+        "candidate_evidence": "Documented experience scaling global commercial operations and leading transformation programs, indicating capability to design and implement operational frameworks",
+        "evidence_strength": "medium",
+        "job_requirement": "Build systems, frameworks, and standardized processes from scratch"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English speaker with strategy and operations background requiring cross-functional stakeholder management; eight years at structured organization implies documented communication capability",
+        "evidence_strength": "medium",
+        "job_requirement": "Exceptional communication and ability to distill complex data into clear, actionable documentation"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs and commercial operations scaling; no explicit manual-writing or playbook authorship evidence provided",
+        "evidence_strength": "weak",
+        "job_requirement": "Author and publish local market playbooks covering operations and safety-specific protocols"
+      },
+      {
+        "candidate_evidence": "Program leadership and transformation execution experience; safety-criticality focus in autonomous vehicles is a new domain not evidenced in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Coordinate safety assurance programs: line-checks, readiness verifications, retrospectives, business continuity planning"
+      },
+      {
+        "candidate_evidence": "Scaling and program leadership experience implies people engagement; no explicit evidence of formal training program design or drill execution",
+        "evidence_strength": "medium",
+        "job_requirement": "People readiness: ensure staff training, proficiency, drills, and continuous feedback"
+      }
+    ],
+    "confidence": 0.68,
+    "estimated_level": "L4",
+    "evidence_strength": 62,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No demonstrated experience in safety-critical or highly regulated industries (aviation, nuclear, oil & gas, transportation)",
+        "mitigation": "Autonomous-vehicle safety requires domain onboarding; candidate's framework-building and program leadership can be adapted, but hire should include mentorship and structured regulatory knowledge transfer from Waymo's safety leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of operations manual development or technical documentation authorship",
+        "mitigation": "Manual-writing and playbook-publication are learnable; hire should pair with subject-matter experts and provide templates or style guides; first 60\u201390 days should focus on observing and authoring sample playbooks",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct road-safety, transportation design, or autonomous-vehicle operational experience",
+        "mitigation": "Domain knowledge can be built through structured onboarding, cross-team collaboration, and immersion in Waymo's safety assurance programs; experience scaling complex operations is a transferable foundation",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit evidence of formal safety-assurance program orchestration (line-checks, readiness verifications, retrospectives, business continuity planning)",
+        "mitigation": "Candidate's transformation and program-leadership experience suggests capability to learn these frameworks; early collaboration with existing BCP and readiness teams and mentorship from operations safety leadership will be critical",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "7+ years required operations experience maps to L4 (senior IC / lead level). Reporting to Manager of Operations Safety & Readiness indicates individual-contributor or first-line leadership scope, not manager-of-managers. No company-stage context provided. Salary range (\u00a392\u201396.5k) aligns with mid-level operational or senior-IC track in tech.",
+    "role_family_fit": 78,
+    "scope_seniority": 72,
+    "summary": "Strong tenure and operations-scaling background align well with the 7+ year requirement and program-leadership aspects of this safety-focused operations role. Key gaps: no demonstrated experience in safety-critical domains (aviation, nuclear, transportation), no explicit manual-writing or playbook-authorship track record, and autonomous-vehicle safety is a specialized new domain. Candidate's business-transformation and commercial-ops expertise is transferable; frameworks and process-design capability are evident but not proven in safety-critical or highly regulated contexts. Manageability is moderate\u2014domain and documentation skills could be developed with structured onboarding.",
+    "uncertainties": [
+      "Company size and organizational maturity not stated; unclear whether role sits in established safety infrastructure or greenfield ops market expansion",
+      "Candidate profile does not detail specific manual-writing, documentation, or playbook publication experience; inference is from program leadership only",
+      "Safety-criticality context of candidate's eight years at Google Devices & Services is not specified; unclear if prior roles involved regulated or safety-focused operations",
+      "European market expansion scope and travel requirements not assessed against candidate mobility/visa status or location preferences",
+      "Degree requirement stated as 'Bachelor's or equivalent'; candidate credential status not provided in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

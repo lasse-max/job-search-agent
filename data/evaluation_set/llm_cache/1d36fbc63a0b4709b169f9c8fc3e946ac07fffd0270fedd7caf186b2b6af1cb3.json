@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Led transformation programs and scaling of global commercial operations at Google; experience with requirements logic design and process design",
+        "evidence_strength": "weak",
+        "job_requirement": "Technical leader in computational road user behavior modeling"
+      },
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions; led cross-functional transformation and scaling programs",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong collaboration and communication skills"
+      },
+      {
+        "candidate_evidence": "Product operations and transformation background with UAT and rollout experience; not native AI/simulation engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Work with Simulation and AI Foundations teams to productionize models"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 10,
+    "gaps": [
+      {
+        "gap": "No doctoral degree or advanced computational/mathematical modeling in cognitive or behavioral science",
+        "mitigation": "Role explicitly requires PhD in computational/mathematical modeling combined with cognitive/behavioral science; candidate's background is operations and strategy, not foundational science or research",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated research publication record or academic research background",
+        "mitigation": "Role requires strong publication record in computational behavior modeling; candidate's experience is operational and transformational, not peer-reviewed research",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited computational modeling and mathematical foundations expertise",
+        "mitigation": "Role is a Senior Staff research scientist requiring deep technical depth in behavior modeling, active inference, and modern AI modeling paradigms; candidate background is strategy and operations",
+        "severity": "high"
+      },
+      {
+        "gap": "No traffic safety or autonomous vehicle domain experience",
+        "mitigation": "While Google background provides some automotive context, role requires deep technical safety research in AV-specific behavioral modeling; can be developed through on-the-job learning but starts from zero",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states 'A doctoral degree in a field that involves a combination of computational/mathematical modeling and cognitive science/behavioral science' and 'At least 5 years of experience, and a strong publication record, in computational modeling of human and/or animal cognition and behavior.' Candidate has strategy and operations background with no advanced degree in computational modeling or behavioral science, and no academic publication record in these fields.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Senior Staff Safety Researcher role reporting to a Senior Staff level manager, requiring 5+ years of specialized research expertise and publication record in computational behavior modeling, plus technical leadership scope. Aligns with established senior-IC ownership (L5). GBP salary band (\u00a3113k\u2013\u00a3119k) is not directly comparable to US tech scales but consistent with senior researcher/IC level. No manager-of-managers scope indicated; technical depth and research leadership drive level.",
+    "role_family_fit": 5,
+    "scope_seniority": 55,
+    "summary": "This is a Senior Staff research scientist role in autonomous vehicle safety, requiring a PhD in computational/mathematical modeling combined with cognitive or behavioral science, plus 5+ years of peer-reviewed research experience and strong coding/mathematical skills. The candidate has strategy and operations background from Google, with no academic research credentials, no publication record, no advanced degree in computational modeling or behavioral science, and no demonstrated expertise in behavior modeling or traffic safety research. The role is deeply technical and research-focused; candidate strength lies in transformation programs and operational execution, which are orthogonal to the required research and modeling foundations.",
+    "uncertainties": [
+      "Waymo company stage/size context not stated in JD; assumed large enterprise given autonomous vehicle R&D scope, but does not materially affect level estimate",
+      "Exact nature of 'strong coding and mathematical skills' requirement not quantified; candidate has product-operations coding exposure but not research-grade mathematical foundations",
+      "Whether candidate has any informal or internal research or modeling work not mentioned in profile; candidate positioning and honest-gaps statement suggests none"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

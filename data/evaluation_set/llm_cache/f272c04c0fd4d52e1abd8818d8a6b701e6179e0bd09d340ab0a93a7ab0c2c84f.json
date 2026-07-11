@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and product transformation programs at Google Devices & Services, including requirements definition, UAT, rollout, and transformation execution",
+        "evidence_strength": "medium",
+        "job_requirement": "Analyze customer feedback to surface actionable insights, translating what our customers are saying into concrete improvements"
+      },
+      {
+        "candidate_evidence": "Product Operations leader with demonstrated data analysis and operational reporting skills in large-scale transformation environments",
+        "evidence_strength": "medium",
+        "job_requirement": "Proficiency in Microsoft Office (Excel) and/or Google Sheets; confident working with spreadsheets"
+      },
+      {
+        "candidate_evidence": "Led scaling of global commercial operations and process design for transformation programs; experience with supply/demand planning and requirements logic",
+        "evidence_strength": "weak",
+        "job_requirement": "Managing ingredient and recipe swaps in response to availability changes, market conditions, and customer feedback"
+      }
+    ],
+    "confidence": 0.92,
+    "estimated_level": "L3",
+    "evidence_strength": 25,
+    "gap_manageability": 45,
+    "gaps": [
+      {
+        "gap": "Internship explicitly targets currently enrolled students in HBO/WO programs; candidate is an 8-year strategy & operations professional at a major tech company",
+        "mitigation": "None; this is a student-entry program with structured eligibility requirements checked during application. Candidate does not meet the enrollment prerequisite.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is 5\u20136 month fixed internship with no independent project ownership, no people management, no strategic initiative scope; candidate has 8 years of senior IC/manager experience",
+        "mitigation": "Career regression, not a learning opportunity. No clear growth trajectory or exit path into HelloFresh strategy, ops, or leadership roles.",
+        "severity": "high"
+      },
+      {
+        "gap": "Product Operations domain is recipe/menu optimization, ingredient sourcing, and HelloFresh Market operations; candidate's domain is devices, services, commercial scaling, and transformation",
+        "mitigation": "Candidate would require ramp on HelloFresh domain, food business fundamentals, and menu/supply logistics. Not mentioned as transfer-friendly.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Sensory evaluation and taste-testing competency mentioned as core task; no evidence of culinary, food quality assurance, or sensory analysis background",
+        "mitigation": "Trainable on-site, but not a natural strength area for candidate.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 90,
+    "level_rationale": "5\u20136 month internship requiring current HBO/WO enrollment, explicitly targeting students. Typical internship scope, day-to-day operational tasks, no standalone ownership, no stakeholder or budget scope. This is entry-level by design and timeline.",
+    "role_family_fit": 15,
+    "scope_seniority": 8,
+    "summary": "HelloFresh is seeking a 5\u20136 month paid internship for Menu Planning & Ingredients in Amsterdam. This is a student/recent-graduate role requiring enrollment in an HBO/WO program, combining operational menu management, recipe review, ingredient analysis, and HelloFresh Market support. The candidate is an 8-year Strategy & Operations leader at Google with two promotions; this internship is structurally misaligned with seniority, role family, and career trajectory.",
+    "uncertainties": [
+      "Candidate's current employment status and visa/relocation eligibility for Amsterdam not stated",
+      "Whether candidate would voluntarily step down 8 levels for an internship, or if this is speculative exploration",
+      "HelloFresh company size/stage not provided; assumed mid-scale established food tech based on brand, but cannot confirm org structure or internship-to-hire pipeline"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

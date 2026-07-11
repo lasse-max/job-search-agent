@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations and transformation program scaling; positioning as Strategy and Operations / Product Operations leader",
+        "evidence_strength": "medium",
+        "job_requirement": "Deployment Strategist role title and Professional Services Operations context"
+      },
+      {
+        "candidate_evidence": "Experience with transformation programs, requirements logic design, UAT, rollout, and stakeholder management; approved for Forward-Deployed Strategy and implementation-heavy AI transformation roles",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategy and execution orientation in Professional Services Operations"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Incomplete JD: Cached snapshot appears truncated; core responsibilities, team scope, reporting line, and explicit skill requirements not available",
+        "mitigation": "Request full, untruncated JD from Palantir careers page or hiring manager; cannot assess alignment on unknown requirements",
+        "severity": "high"
+      },
+      {
+        "gap": "Deployment Strategist role scoping unclear: title matches approved stretch family but responsibilities, client-facing vs. internal, and strategic depth unknown",
+        "mitigation": "Clarify whether role is advisory/strategic consulting, implementation planning, or client success; assess if it emphasizes business problem-solving and transformation (strong fit) vs. technical deployment or vendor integration management",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's product operations background may not directly transfer if Palantir Deployment Strategist requires deep professional services, customer success, or delivery management expertise",
+        "mitigation": "Highlight transformation program leadership and stakeholder management; clarify any delivery or customer-facing components in your Google experience",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Deployment Strategist title in Professional Services Operations suggests L4\u2013L5 IC or junior manager scope, but company size and role maturity are unknown. Without full JD, years required, team scope, or reporting line, confidence is low. JD snapshot is truncated, preventing level anchoring.",
+    "role_family_fit": 65,
+    "scope_seniority": 35,
+    "summary": "Deployment Strategist is an approved stretch family and title matches candidate positioning, but the Palantir JD snapshot is severely truncated\u2014core responsibilities, team ownership, reporting line, and skill requirements are missing. Without the full description, assessment of strategic depth vs. execution, customer-facing vs. internal mandate, and skill alignment is impossible. Recommend obtaining the complete JD before proceeding.",
+    "uncertainties": [
+      "JD is a cached, truncated snapshot; full role scope, responsibilities, and reporting line unknown",
+      "Company size/stage not stated; cannot calibrate seniority or startup exception",
+      "Deployment Strategist scope unclear: strategic advisory, implementation planning, or delivery management emphasis unknown",
+      "Client-facing or internal delivery balance unknown",
+      "Candidate's product-operations background fit to professional services/delivery context not assessable without role detail"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

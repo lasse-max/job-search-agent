@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with two promotions, including global commercial operations and transformation program scaling",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy & Operations department role with Operations Strategy title"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations / Product Operations leader with experience scaling global programs and driving transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Senior Manager level with cross-functional scope"
+      },
+      {
+        "candidate_evidence": "Background includes transformation programs, global commercial operations scaling, and strategic program execution at Google",
+        "evidence_strength": "strong",
+        "job_requirement": "Operations and strategic program leadership"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "JD entirely missing: no explicit responsibilities, requirements, scope statement, team size, success metrics, or reporting structure provided",
+        "mitigation": "Cannot reliably assess fit without core JD details; recommend requesting full job description before proceeding",
+        "severity": "high"
+      },
+      {
+        "gap": "No evidence of fintech, payments, or cross-border transaction domain expertise specific to Airwallex's product",
+        "mitigation": "Domain knowledge is learnable; assess willingness to ramp on fintech operations workflows and regulatory/compliance aspects during interviews",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited visibility into Airwallex company stage, size, maturity, and strategic priorities; cannot confirm role scope matches candidate's scale experience",
+        "mitigation": "Clarify Airwallex stage, team structure, and whether Operations Strategy reports to COO/CFO or product/revenue leadership",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 55,
+    "level_rationale": "Senior Manager title with operations strategy scope typically indicates L5 IC or junior manager track. \"Operations Strategy\" suggests cross-functional strategic influence rather than pure execution. Absent explicit years required, team-size scope, reporting line, or company stage in the JD, confidence is moderate; title alone is ambiguous in early/growth-stage context.",
+    "role_family_fit": 72,
+    "scope_seniority": 58,
+    "summary": "The role is titled Senior Manager, Operations Strategy at Airwallex\u2014a strong family fit for the candidate's Strategy & Operations background. However, the JD snapshot contains only metadata and no substantive job description, responsibilities, requirements, or scope statement. Without details on team size, strategic initiatives, reporting line, company stage, or success metrics, confidence in role-level estimation and fit assessment is severely limited. Recommend obtaining the full JD before final evaluation.",
+    "uncertainties": [
+      "JD contains no actual job description text, only title, location, and metadata; all role scope and responsibility details are missing",
+      "Company stage and size context not stated; Airwallex scale relative to candidate's Google experience unknown",
+      "No reporting line, team structure, or management scope specified; cannot assess if Senior Manager is IC or manager track",
+      "Fintech and payments domain expertise not evident in candidate profile; learning curve unknown",
+      "Strategic focus areas and success metrics for this Operations Strategy role completely absent from provided JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,4 +1,4 @@
-version: "scoring_policy_v1"
+version: "scoring_policy_v2"
 active: true
 fit_dimensions:
   role_family_fit:
@@ -9,7 +9,7 @@ fit_dimensions:
     meaning: "Specificity and quality of candidate evidence mapped to stated requirements."
   scope_seniority:
     weight: 25
-    meaning: "Ownership, ambiguity, stakeholder level, team/vendor leadership, required experience, and level match."
+    meaning: "Strength and clarity of ownership, ambiguity, stakeholder level, and team/vendor leadership. Estimated-level distance is applied once by code as a modest, non-suppressing adjustment."
   gap_manageability:
     weight: 15
     meaning: "Severity of functional, technical, or domain gaps; higher score means more manageable."
@@ -24,6 +24,7 @@ recommendation_thresholds:
   stretch_apply_now_tier: 1
 digest_limits:
   max_roles: 25
+  max_per_company: 3
   apply_now: 20
   consider: 30
 true_blockers:
@@ -60,6 +61,9 @@ gap_penalties:
   partnership_domain_gap: 16
   quota: 18
   required_credential: 24
+  level_one_band_scope: 8
+  level_two_plus_bands_scope: 12
+  level_below_target_scope: 6
 recommendation_rules:
   blocked: "Any true blocker."
   apply_now:

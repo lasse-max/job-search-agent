@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions in Strategy and Operations / Product Operations roles, scaling global commercial operations and transformation programs",
+        "evidence_strength": "medium",
+        "job_requirement": "6+ years of Product Management experience, ideally in payments, fintech, or financial crime prevention"
+      },
+      {
+        "candidate_evidence": "Product experience from ownership, requirements, logic design, UAT, rollout, and transformation; no stated background in fraud detection, AML, or transaction monitoring specifically",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience building or owning transaction monitoring, fraud detection, or AML systems"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background implies data-driven decision-making; no explicit evidence of transaction data, alert analysis, or rule-performance optimization",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong data-driven mindset with ability to analyse transaction data, alerts, and rule performance"
+      },
+      {
+        "candidate_evidence": "No stated SQL proficiency or hands-on data-tool experience in profile; background is strategy and operations rather than data analytics or engineering",
+        "evidence_strength": "weak",
+        "job_requirement": "Comfortable working with SQL and data tools to investigate signals, optimise rules, and evaluate monitoring performance"
+      },
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs implies cross-functional collaboration; no explicit risk, compliance, or fraud/AML team experience mentioned",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven ability to work cross-functionally with Risk, Compliance, Operations, Data, and Engineering teams"
+      },
+      {
+        "candidate_evidence": "Transformation program leadership at Google suggests stakeholder management; no explicit regulatory or compliance requirement translation experience stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong stakeholder management skills and ability to translate regulatory and risk requirements into scalable product solutions"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 48,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "No demonstrated fraud detection, AML, or transaction monitoring product experience; domain expertise in financial crime prevention systems is a core requirement",
+        "mitigation": "Candidate has proven ability to learn complex domains (global scaling, transformation) and strong cross-functional skills; fintech domain and fraud-monitoring specifics learnable with mentorship, but ramp-time expected. Risk/Compliance pairing and internal domain expert support would be essential.",
+        "severity": "high"
+      },
+      {
+        "gap": "SQL and hands-on data-tool proficiency not stated; role requires direct use of data tools to investigate signals, optimize rules, and evaluate monitoring performance",
+        "mitigation": "Candidate's data-driven mindset and operations background suggest capability to develop this skill; could upskill through on-the-job training and support from Data and Engineering teams, though this introduces execution risk in early months.",
+        "severity": "high"
+      },
+      {
+        "gap": "Product operations and transformation experience differs from native fintech/payments product management; limited stated background in payments, fintech, or regulated financial product development",
+        "mitigation": "Candidate's proven ability to own end-to-end transformation and scale operations demonstrates core product thinking; fintech context and payments-specific workflows learnable, but not a direct transfer.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience with case management, investigation tooling, or AML platform familiarity, though JD lists these as preferred rather than minimum qualifications",
+        "mitigation": "Preferred rather than required; learnable through project work and team exposure.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 6+ years PM experience in fintech/fraud/AML, end-to-end product strategy ownership, cross-functional risk/compliance collaboration, and data-driven rule optimization. Role reports into Product team at an $8B, 2,200-person, fully-funded fintech platform with global scope. These signals (6+ years, established product ownership, cross-functional leadership, regulated environment complexity) anchor to L5 (senior IC / established ownership scope).",
+    "role_family_fit": 48,
+    "scope_seniority": 72,
+    "summary": "Candidate brings eight years of Strategy and Operations / Product Operations leadership at Google with proven cross-functional and transformation expertise, aligning with the seniority and ownership scope of this L5 role. However, no explicit background in fraud detection, AML, transaction monitoring, or fintech-specific product development; lacks stated SQL and data-tool proficiency for hands-on rule optimization and signal analysis. Domain ramp and technical data skills are the primary gaps. Role family fit is moderate: product operations and transformation scope are relevant, but this is a native fintech product role with compliance and fraud prevention depth that diverges from candidate's commercial operations and enterprise transformation background.",
+    "uncertainties": [
+      "No evidence of prior fraud, AML, or transaction monitoring product ownership or domain expertise",
+      "SQL and hands-on data-tool capability not stated; role requires direct investigation and rule optimization",
+      "Candidate background is commercial operations and transformation, not fintech or payments product; domain ramp timeline unclear",
+      "Regulatory and compliance requirement translation experience not explicitly mentioned in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

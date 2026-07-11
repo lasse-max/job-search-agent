@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with stated experience scaling commercial operations and transformation programs, including delivery and stakeholder management across enterprise sales contexts",
+        "evidence_strength": "medium",
+        "job_requirement": "5+ years in technical customer-facing roles such as Solutions Architect, Sales Engineer, or Technical Account Manager"
+      },
+      {
+        "candidate_evidence": "Demonstrated program leadership and cross-functional stakeholder coordination (Sales, Product, Engineering teams) in scaling commercial operations and transformation delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Partner with sales teams to understand customer requirements and translate them into technical solutions; serve as primary technical advisor"
+      },
+      {
+        "candidate_evidence": "Transformation program experience and stated ability to coordinate across multiple teams and functions; professional English fluency",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical communication skills translating customer requirements between technical and business stakeholders, including C-suite"
+      },
+      {
+        "candidate_evidence": "Commercial operations scaling at Google implies exposure to enterprise customer contexts and cross-stakeholder coordination",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience navigating complex buying cycles involving multiple stakeholders and building relationships with enterprise customers"
+      },
+      {
+        "candidate_evidence": "Transformation and program delivery experience suggests capability to communicate across technical and executive audiences, though direct technical content creation not explicitly stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Create and deliver technical content tailored to different audiences, from deep dives for engineers to business value for executives"
+      },
+      {
+        "candidate_evidence": "No stated experience with LLM frameworks, tools, machine learning, or data science demonstrated in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Maintain strong knowledge of latest LLM capabilities and implementation patterns; familiarity with LLM frameworks"
+      }
+    ],
+    "confidence": 0.82,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 60,
+    "gaps": [
+      {
+        "gap": "Direct pre-sales, Solutions Architect, or Sales Engineer experience. Candidate background is operations, transformation, and program leadership, not customer-facing solution design or enterprise pre-sales.",
+        "mitigation": "Candidate's cross-functional stakeholder coordination and commercial operations scaling provides adjacent foundation. Pre-sales onboarding and technical ramping on Claude capabilities and LLM frameworks could be accelerated with strong ops acumen and architectural thinking.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on technical depth: Python described as 'basic and actively learning'; no demonstrated cloud architecture design, enterprise systems integration, or production architecture experience.",
+        "mitigation": "Role requires 'comfortable with python' and familiarity with frameworks, not expert-level engineering. Candidate's ops and program leadership background suggests ability to understand and communicate architecture without deep implementation; technical collaboration with engineering teams can mitigate gaps in early customer engagements.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated familiarity with LLM frameworks, tools, machine learning, or data science domain knowledge.",
+        "mitigation": "LLM landscape is new to most pre-sales architects; Anthropic provides Claude expertise training. Candidate's ability to learn quickly and coordinate with product/engineering teams can offset lack of prior AI/ML background.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit cloud architecture design or enterprise systems integration experience documented.",
+        "mitigation": "Transformation program leadership implies working with complex tech stacks; cloud architecture specifics can be learned. Role emphasizes collaboration with engineering and product teams who can support architectural guidance.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting brand or case-team experience; pre-sales roles often favor ex-consultants familiar with structured problem-solving methodologies.",
+        "mitigation": "Candidate's eight-year tenure and promotion history at a tier-1 company demonstrates delivery credibility and stakeholder trust; ops-to-pre-sales transition is increasingly common.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Pre-sales Solutions Architect requiring 5+ years of enterprise customer-facing technical roles with stakeholder navigation and cloud architecture design. Salary range (\u00a3190\u2013230k GBP) and autonomous customer advisory scope align with L4 IC or early L5 responsibility. no management scope indicated. Comparable to mid-career solutions or pre-sales architect at growth-stage technology company.",
+    "role_family_fit": 35,
+    "scope_seniority": 72,
+    "summary": "This is a pre-sales Solutions Architect role at Anthropic, focused on enterprise adoption of Claude. The candidate has 8 years of ops and transformation experience at Google but lacks direct pre-sales, enterprise solution architecture, and hands-on technical depth. The role requires 5+ years in solutions/sales engineering with cloud architecture and Python skills; the candidate's background is operations-leadership and program management. This is a meaningful but not primary family fit, with several manageable but non-trivial skill gaps.",
+    "uncertainties": [
+      "Degree of direct customer-interaction experience in commercial ops role; role family is operations/programs rather than pre-sales/solutions",
+      "Depth of technical architecture decision-making vs. operational coordination in scaling global commercial operations",
+      "Extent of hands-on cloud or enterprise systems integration knowledge beyond operations management",
+      "Whether transformation program delivery included technical architecture or primary focus was process/org design and rollout"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

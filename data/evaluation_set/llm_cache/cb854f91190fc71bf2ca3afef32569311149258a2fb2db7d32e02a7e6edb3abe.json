@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services, including global commercial operations scaling, transformation program leadership, cross-functional stakeholder management with C-level and engineering leaders; however, experience is in operations and transformation rather than direct pre-sales or technical architecture roles.",
+        "evidence_strength": "medium",
+        "job_requirement": "4+ years work experience in pre-sales, technical architecture, technical consulting, application delivery, or engineering with at least 1 year customer-facing pre-sales"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to engage technical teams, drive requirements logic, and lead technical UAT and rollouts; however, depth is in business transformation and operational requirements design rather than native software architecture, APIs, or hands-on technical system design.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong technical knowledge in software architecture, breadth across technology stacks with deep hands-on skills, comfortable explaining technical concepts from product and API architecture perspective"
+      },
+      {
+        "candidate_evidence": "Python basic and actively learning; profile indicates ability to code but not advanced proficiency.",
+        "evidence_strength": "medium",
+        "job_requirement": "Ability to write code"
+      },
+      {
+        "candidate_evidence": "Google is an enterprise technology company; scaling global operations and transformation programs suggests exposure to large customer needs and complex stakeholder environments; specific enterprise customer-engagement experience not explicitly documented.",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience with large enterprise customers"
+      },
+      {
+        "candidate_evidence": "8 years of cross-functional leadership, program ownership, and stakeholder management at Google indicates established communication and presentation skills at scale.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strong verbal and written communication abilities, including presenting to large audiences"
+      },
+      {
+        "candidate_evidence": "Documented cross-functional engagement with engineering leadership and internal advocacy for program needs; however, customer-facing CTO engagement is not explicitly evidenced; experience is internal to Google and transformation-focused rather than external customer solution design.",
+        "evidence_strength": "medium",
+        "job_requirement": "Engage with CTOs and technical leads, demonstrate innovations, and advocate for customer needs internally"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 62,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "Direct pre-sales technical architecture or solutions consulting background; role requires 1+ year customer-facing pre-sales experience, candidate's background is internal operations and transformation.",
+        "mitigation": "Strong cross-functional and stakeholder management skills can transfer to customer-facing consultancy; onboarding programs and pairing with senior Solutions Architects can accelerate pre-sales and customer engagement acumen.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Hands-on software architecture and API design depth; role requires breadth across technology stacks and API architecture perspective, candidate strength is in business process and operational requirements design.",
+        "mitigation": "Candidate has demonstrated ability to learn technical domains and translate requirements to engineering; structured technical mentorship on Stripe's API and architecture can build domain depth over first 6 months.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Payment systems, e-commerce, and financial services domain knowledge; role description notes payments/e-commerce background as a plus.",
+        "mitigation": "Preferred, not required; candidate can gain domain fluency through Stripe onboarding, customer exposure, and self-directed learning.",
+        "severity": "low"
+      },
+      {
+        "gap": "Demonstrated track record in pre-sales delivery and customer success outcomes; role requires 'track record of delivering exceptional customer results as part of a pre-sales team.'",
+        "mitigation": "8 years of transformation program delivery at Google demonstrates execution capability and cross-functional results delivery; repositioning internal delivery success into customer-centric outcomes requires coaching.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 76,
+    "level_rationale": "4+ years minimum, 1+ year pre-sales required, customer-facing technical leadership, IC technical depth without management scope; stable enterprise/large-customer context suggests mid-career L4 equivalent. Company size/stage not stated in JD, limiting confidence slightly.",
+    "role_family_fit": 58,
+    "scope_seniority": 72,
+    "summary": "Solutions Architect role at Stripe requires 4+ years in pre-sales/technical architecture with at least 1 year customer-facing pre-sales, strong technical depth across software architecture and APIs, coding ability, and enterprise customer experience. The candidate brings 8 years at Google in Devices and Services with global operations scaling and transformation programs, strong business consulting and stakeholder leadership, but lacks direct pre-sales architecture experience, hands-on enterprise financial/payment systems depth, and demonstrated API/technical architecture focus typical of the role. Gap in direct payment systems or e-commerce technical consulting is notable but can be closed through domain learning.",
+    "uncertainties": [
+      "Stripe company size and internal Solutions Architect team structure not stated; affects clarity of exact role level and peer expectations.",
+      "Candidate's technical depth in APIs, system architecture, and hands-on architecture work cannot be fully assessed from profile; Python 'basic and actively learning' may understate or overstate readiness for API-level technical discussions.",
+      "No explicit evidence of direct customer-facing technical consulting or pre-sales engagement; internal Google stakeholder management may not fully transfer to external customer solution design.",
+      "Dublin location and required Italian and English fluency are stated; German native fluency noted but Italian proficiency not mentioned in candidate profile."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

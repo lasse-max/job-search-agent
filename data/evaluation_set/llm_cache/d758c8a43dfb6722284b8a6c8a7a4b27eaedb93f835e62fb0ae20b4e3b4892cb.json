@@ -1,0 +1,62 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in Strategy and Operations with experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and Operations department role working with AI agents and customer experience transformation"
+      },
+      {
+        "candidate_evidence": "Experience in transformation programs requiring ownership, requirements design, UAT, rollout, and cross-functional execution at enterprise scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Cross-functional stakeholder collaboration and working directly with customers to shape AI agent deployment"
+      },
+      {
+        "candidate_evidence": "Product experience grounded in business logic design, transformation requirements, and implementation-heavy execution rather than native product management",
+        "evidence_strength": "medium",
+        "job_requirement": "Process design and business problem-solving around agent-based solutions for enterprise customers"
+      },
+      {
+        "candidate_evidence": "Scaled global commercial operations at Google; German native speaker positions well for Munich office location",
+        "evidence_strength": "strong",
+        "job_requirement": "Global operations and multi-region/multi-office execution (Munich/Sydney locations, worldwide customer base)"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L4",
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No direct AI/ML product or strategy experience; candidate background is in devices and services commercial operations rather than emerging AI platforms",
+        "mitigation": "Sierra's Strategist role appears implementation and customer-engagement focused rather than requiring deep AI expertise. Candidate's transformation and business problem-solving skills transfer, though domain ramp required.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or forward-deployed strategy background; experience is internal operations and transformation rather than external advisory or field deployment",
+        "mitigation": "Role emphasizes direct customer engagement and agent development strategy; candidate's UAT and rollout expertise is relevant. Forward-deployed skills can develop with mentorship at Sierra.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role title 'Strategist' combined with 'Agent Development' lacks explicit scope definition in JD; unclear whether role is L4-level strategy IC, program leadership, or customer-facing implementation lead",
+        "mitigation": "Candidate's positioning and experience span multiple levels (Senior Manager/Principal IC). Clarification during interview will sharpen seniority and fit assessment.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 60,
+    "level_rationale": "Posted role is \"Strategist, Agent Development\" at Sierra (founded 2023, early-stage). No explicit years required, management scope, or reporting line stated in available JD. Title pattern and multi-office/customer-facing execution suggest L4 independent contributor or early lead role. Salary not provided. Early-stage context precludes senior anchors; confidence limited by minimal JD detail.",
+    "role_family_fit": 75,
+    "scope_seniority": 70,
+    "summary": "Candidate's eight-year Strategy and Operations tenure at Google, with deep transformation program leadership and global operations scaling, maps well to Sierra's Strategy & Operations department and customer-centric agent development strategy. Strong cultural and functional alignment with cross-functional ownership and business problem-solving. Primary gaps are absence of AI/ML product strategy background and limited forward-deployed or consulting experience. Role seniority (L4) sits comfortably within candidate's target band (L4\u2013L5); domain ramp and customer-engagement orientation are manageable. Missing JD detail constrains confidence.",
+    "uncertainties": [
+      "Full job description for 'Strategist, Agent Development' is not provided; evaluation based on minimal cached JD snapshot lacking explicit scope, reporting line, and seniority anchors",
+      "Unclear whether role is individual contributor, program lead, or customer-facing implementation strategist; title alone does not distinguish",
+      "Sierra's stage, size, and organizational structure not stated in Role JSON; cannot fully calibrate 'Strategist' seniority without organizational context",
+      "Candidate's prior product experience is transformation and implementation-heavy; unclear how well this translates to Sierra's specific agent-development product and technical requirements"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

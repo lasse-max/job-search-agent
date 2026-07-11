@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices scaling global commercial operations and transformation programs with two promotions into strategy and operations leadership",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead the vision, strategy and execution of our Manufacturing Industry Practice"
+      },
+      {
+        "candidate_evidence": "Experience scaling global commercial operations, leading transformation programs, and defining cross-functional strategic initiatives at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Build and lead a cross-functional industry team across Value Engineering, Sales, AI Builders and define processes/structure required to accelerate impact"
+      },
+      {
+        "candidate_evidence": "Requirements analysis, UAT, rollout, and transformation experience with direct customer interaction and strategic alignment throughout Google tenure",
+        "evidence_strength": "strong",
+        "job_requirement": "Work side-by-side with customers to align manufacturing solutions against their business strategy"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services scaling: commercial operations leadership, transformation program execution, and cross-functional stakeholder management",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven record of building and leading a cross-functional team building software solutions against strategic problems"
+      },
+      {
+        "candidate_evidence": "Owns product requirements logic design, UAT, rollout, and transformation for enterprise solutions; not from native engineering PM background but from business problem-solving and implementation perspective",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven experience developing software solutions for enterprises with strong portfolio showcasing successful use cases solving real-world problems"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader scaling transformation programs; no explicit early-stage startup or greenfield venture founding evidence provided",
+        "evidence_strength": "medium",
+        "job_requirement": "High degree of entrepreneurship with experience building in a 0->1 environment"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L6",
+    "evidence_strength": 78,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No explicit 0->1 or early-stage startup founding/building experience stated; candidate background is scaling and transformation within established organization",
+        "mitigation": "Strategy and Operations transformation experience demonstrates ability to define vision and scale initiatives from concept; entrepreneurial mindset can be validated in interviews around autonomous decision-making and build-first approaches",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting brand or classic case-team strategy experience; background is internal Google operations rather than external advisory or discrete project delivery",
+        "mitigation": "Customer engagement and requirements gathering experience from transformation work can translate; external credibility as 'face of manufacturing industry' may require ramp-up in public speaking and industry brand building",
+        "severity": "medium"
+      },
+      {
+        "gap": "Enterprise software product experience is from ownership, requirements, and implementation perspective rather than native Product Management or engineering product discipline",
+        "mitigation": "JD emphasizes strategy, vision, and cross-functional leadership over deep PM/SDLC expertise; close collaboration with Product and Engineering teams can compensate",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit manufacturing industry domain expertise mentioned; role requires strategic manufacturing solutions knowledge",
+        "mitigation": "Strategy and Operations leadership skills are transferable; customer collaboration and industry partnerships within Celonis will build manufacturing domain rapidly",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Head of Industry title at a SaaS scale-up with 300+ accounts and 100+ team members, requiring cross-functional leadership, strategy setting, and global P&L accountability. JD emphasizes autonomous leadership, 0->1 thinking, and strategic vision across Sales, Product, AI, and Engineering\u2014consistent with L6 senior leadership scope. No managing-managers explicitly stated, but scope and complexity suggest established senior IC or emerging director-level authority.",
+    "role_family_fit": 82,
+    "scope_seniority": 80,
+    "summary": "Head of Industry\u2013Manufacturing role is a strategic leadership position requiring cross-functional team ownership, vision setting, and scaling of manufacturing solutions at a fast-growing SaaS company. Candidate demonstrates strong Strategy and Operations credentials with Google-scale transformation experience, customer engagement, and cross-functional leadership. Gap areas: no explicit 0->1 startup experience, limited consulting or industry brand background, and manufacturing domain expertise will require ramp-up. Role fits primary family (Strategy and Operations / Business Transformation) but sits above typical target band (L4\u2013L5) at L6-equivalent scope.",
+    "uncertainties": [
+      "Celonis company size context (rounds, ARR, stage) not stated in JD; affects L6 calibration if early-stage startup vs. established growth company",
+      "Explicit manufacturing industry experience or domain background not mentioned in candidate profile; unclear how quickly domain can be acquired",
+      "0->1 entrepreneurship requirement not explicitly demonstrated; candidate background is scaling/transformation of existing operations",
+      "Public speaking and external brand credibility ('face of manufacturing industry') not detailed in candidate evidence"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

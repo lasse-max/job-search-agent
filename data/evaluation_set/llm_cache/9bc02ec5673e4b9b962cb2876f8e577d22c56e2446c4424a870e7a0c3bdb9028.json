@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; no stated benefits administration, benefits strategy, or UK payroll/HR background",
+        "evidence_strength": "weak",
+        "job_requirement": "Extensive experience managing end-to-end benefits programs with deep understanding of benefits strategy, design, and administration in the UK"
+      },
+      {
+        "candidate_evidence": "Product operations and commercial transformation background; no vendor management, contract negotiation, or benefits-platform experience stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Vendor and Systems Management: manage vendors, negotiate contracts, and oversee benefits systems and platforms including AON"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with data-driven decision-making; no domain expertise in benefits competitive intelligence or market benchmarking",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic & Analytical Skills: use data to analyze trends, benchmark against market, recommend improvements to benefits offerings"
+      },
+      {
+        "candidate_evidence": "No Excel proficiency, Workday, or benefits-platform experience mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Advanced Microsoft Excel skills including PivotTables and VLOOKUP; experience with Workday and benefits platforms"
+      }
+    ],
+    "confidence": 0.7,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No benefits administration, benefits strategy, or UK/Ireland payroll/HR experience; candidate background is product operations and commercial transformation",
+        "mitigation": "Extensive onboarding and vendor/system training would be required; domain-specific expertise in health, welfare, retirement benefits, and enrollment processes is a core function, not a nice-to-have",
+        "severity": "high"
+      },
+      {
+        "gap": "No vendor management, contract negotiation, or benefits-platform (AON, Workday) experience",
+        "mitigation": "Significant ramp-up needed; vendor relationships and system mastery are day-one operational requirements",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated advanced Excel proficiency (PivotTables, VLOOKUP), which is explicitly required for benefits data analysis and reporting",
+        "mitigation": "Training available, but this is a foundational tool requirement in the role",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited specialist HR or payroll domain knowledge; candidate is a generalist operations and strategy leader",
+        "mitigation": "Candidate would need to develop compliance, regulatory, and employee-relations context specific to benefits administration",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 5\u20138+ years benefits administration with deep UK/Ireland payroll expertise, vendor management, and Workday/AON proficiency. Title \"Senior Specialist\" with autonomous ownership, strategic planning, and cross-functional partnership scope; no management of people implied. Fintech context and rapid-growth environment suggest L4 IC authority and execution responsibility.",
+    "role_family_fit": 15,
+    "scope_seniority": 65,
+    "summary": "This is a specialist HR/benefits-administration role requiring deep domain expertise in UK payroll, benefits systems, vendor management, and regulatory compliance. The candidate is a Strategy and Operations leader with no benefits, payroll, or HR background, making this a fundamental misalignment. While the candidate brings strategic thinking and cross-functional collaboration skills, the operational and technical specificity of benefits administration places this outside her primary family and would demand extensive ramp-up in an area outside her domain.",
+    "uncertainties": [
+      "Candidate profile does not mention any HR, payroll, or benefits domain exposure; advisability depends entirely on internal retraining tolerance",
+      "Checkout.com stage and team size not explicitly stated; seniority signal less certain",
+      "Degree or formal qualifications not specified in role; unclear if any relevant certification (CIPD, benefits-specialist credentials) is preferred"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

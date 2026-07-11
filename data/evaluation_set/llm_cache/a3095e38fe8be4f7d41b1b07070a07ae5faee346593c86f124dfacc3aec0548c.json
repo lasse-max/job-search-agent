@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs",
+        "evidence_strength": "strong",
+        "job_requirement": "6+ years of experience"
+      },
+      {
+        "candidate_evidence": "Background in strategy and operations with global commercial operations ownership; cross-functional stakeholder engagement and program orchestration from vision to execution through transformation initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience in Product Management (inbound, outbound, cross-functional processes)"
+      },
+      {
+        "candidate_evidence": "No explicit cloud infrastructure experience mentioned in profile; core experience is business operations, commercial strategy, and transformation rather than infrastructure or platform architecture",
+        "evidence_strength": "weak",
+        "job_requirement": "Solid understanding of cloud infrastructure (AWS, Azure)"
+      },
+      {
+        "candidate_evidence": "Confirmed experience with requirements logic design, UAT, rollout orchestration, and transformation program execution; likely SQL and analytics skills but not explicitly detailed",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong data analysis and operationalization skills (SQL, rollups, building operational dashboards)"
+      },
+      {
+        "candidate_evidence": "No background in query engines, storage systems, or infrastructure platform engineering; strength is in business transformation and operations, not platform or data systems depth",
+        "evidence_strength": "weak",
+        "job_requirement": "Technical skills and understanding of query processing, storage, infrastructure, and data governance"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience gathering requirements, designing solutions through logic design and UAT processes, and orchestrating rollout; engineering collaboration through transformation delivery, though not native product design or feature ownership",
+        "evidence_strength": "medium",
+        "job_requirement": "Gather customer requirements, design features and collaborate with engineering to deliver a polished market-ready product"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 55,
+    "gaps": [
+      {
+        "gap": "Deep understanding of cloud infrastructure, query processing, storage, and data governance\u2014core to the Databricks Runtime product domain",
+        "mitigation": "Onboarding and rapid technical immersion through Databricks documentation, customer sessions, and engineering partnership; candidate's proven ability to learn domain detail (8-year tenure, promotions) supports acquisition of infrastructure and data systems fundamentals",
+        "severity": "high"
+      },
+      {
+        "gap": "Native product management experience with feature design, roadmapping, and market positioning; background is transformation execution and operations ownership rather than inbound/outbound PM processes",
+        "mitigation": "Strong cross-functional program orchestration and requirements gathering skills transfer; mentorship from Databricks product leadership and exposure to customer-driven feature design cycles can close PM methodology gap",
+        "severity": "high"
+      },
+      {
+        "gap": "Explicit SQL and analytics operationalization portfolio; no detailed evidence of dashboard building or data analysis tooling depth",
+        "mitigation": "Candidate's strategy and operations background likely includes SQL and BI exposure; can demonstrate and strengthen through immediate product analytics work and customer interaction",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or analyst brand; PM experience rooted in internal transformation and commercial operations rather than consulting case work or analyst-track progression",
+        "mitigation": "Not a functional blocker; customer engagement and design-thinking skills are developed and portable; no industry standard credential barrier",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 75,
+    "level_rationale": "Posted role requires 6+ years PM experience, titles Staff PM at a scale-stage company (10,000+ org adoption, Fortune 500 customer base), and ownership of end-to-end product lifecycle across platform infrastructure. This aligns with L5 (senior IC owning a defined product area with measurable impact and cross-functional coordination).",
+    "role_family_fit": 42,
+    "scope_seniority": 74,
+    "summary": "Candidate brings eight years of strategy, operations, and transformation experience with strong cross-functional program orchestration and stakeholder management\u2014aligned with the end-to-end product coordination and launch execution aspects of the role. However, this is a specialized technical PM role at a data-infrastructure platform company requiring deep understanding of query processing, cloud infrastructure, and data systems architecture. Candidate's background is primarily business operations and commercial transformation, not native product management or platform/infrastructure domain expertise. Core gaps include limited cloud infrastructure knowledge, no query engine or storage systems background, and PM/SDLC experience rooted in transformation delivery rather than feature-driven product design.",
+    "uncertainties": [
+      "No explicit SQL or analytics tooling depth mentioned in profile",
+      "Cloud infrastructure (AWS, Azure) experience not documented",
+      "Degree field and technical certification details not provided",
+      "Depth of native product management (roadmapping, feature prioritization, market positioning) unclear relative to operations and program leadership focus"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

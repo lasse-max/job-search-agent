@@ -1,0 +1,86 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services in commercial operations, transformation programs, and product operations\u2014no background in data engineering, data platforms, analytics, or software engineering.",
+        "evidence_strength": "weak",
+        "job_requirement": "Extensive experience in data engineering, data platforms & analytics, or software engineering"
+      },
+      {
+        "candidate_evidence": "Profile notes 'Python basic and actively learning'; no evidence of code production in required languages or frameworks.",
+        "evidence_strength": "weak",
+        "job_requirement": "Comfortable writing code in either Python, Scala, JavaScript/TypeScript, and modern frameworks"
+      },
+      {
+        "candidate_evidence": "No evidence of Apache Spark or distributed computing experience in profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep experience with distributed computing with Apache Spark and knowledge of Spark runtime internals"
+      },
+      {
+        "candidate_evidence": "Experience in product operations, requirements, logic design, UAT, and rollout, but not in architecting or deploying production data pipelines, ML/AI models, or data infrastructure.",
+        "evidence_strength": "weak",
+        "job_requirement": "Design and deployment of performant production end-to-end data architectures and applications combining data pipelines, ML/AI models, and user-facing interfaces"
+      },
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and leading transformation programs; strong program delivery and stakeholder management.",
+        "evidence_strength": "strong",
+        "job_requirement": "Experience with technical project delivery\u2014managing scope, timelines, and measurable outcomes"
+      },
+      {
+        "candidate_evidence": "No evidence of cloud platform expertise in provided profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Working knowledge of two or more common Cloud ecosystems (AWS, Azure, GCP) with expertise in at least one"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No production data engineering, distributed computing, or data platform background; role explicitly requires 'extensive experience in data engineering, data platforms & analytics, or software engineering.'",
+        "mitigation": "Would require 6\u201312 months of structured ramp-up in Apache Spark, data pipeline architecture, MLOps patterns, and cloud data services\u2014substantially longer than typical FDE onboarding.",
+        "severity": "high"
+      },
+      {
+        "gap": "Python, Scala, and modern framework coding skills are at beginner level; role requires comfort writing production code in these languages.",
+        "mitigation": "Intensive self-study or formal training required; does not match FDE expectations for immediate code delivery.",
+        "severity": "high"
+      },
+      {
+        "gap": "No hands-on experience with AWS, Azure, or GCP cloud infrastructure; role requires working knowledge of two ecosystems and deep expertise in one.",
+        "mitigation": "Cloud certification and lab work possible, but production troubleshooting experience cannot be accelerated.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited consulting and case-team experience; FDE role is customer-embedded technical delivery in complex enterprise data projects.",
+        "mitigation": "Strong program and stakeholder management background may transfer, but technical credibility with enterprise engineering teams is not evident.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No MLOps or ML/AI production deployment experience; role explicitly guides customers on ML/AI model integration and MLOps practices.",
+        "mitigation": "Foundational learning possible, but customers expect deep hands-on expertise; this is a core FDE responsibility.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "Role explicitly requires 'Extensive experience in data engineering, data platforms & analytics, or software engineering' and 'Comfortable writing code in either Python, Scala, JavaScript/TypeScript, and modern frameworks' with 'Deep experience with distributed computing with Apache Spark and knowledge of Spark runtime internals.' Candidate has no background in data engineering, data platforms, software engineering, or production coding; Python is 'basic and actively learning.'",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "FDE role at Databricks implies hands-on technical ownership, customer immersion, and production system delivery. No explicit years required posted; \"extensive experience\" in data engineering or SWE, combined with billable project delivery, Spark runtime internals, and cloud expertise, typically maps to L5 (senior IC). Scope is high-touch customer engineering, not management. Confidence is modest (75%) because company size/stage is not stated in JD, and FDE roles can vary across companies.",
+    "role_family_fit": 5,
+    "scope_seniority": 60,
+    "summary": "This is a hands-on Forward Deployed Engineer role focused on production data engineering, distributed systems (Apache Spark), and cloud infrastructure delivery. The candidate is a Strategy and Operations leader with strong program management and stakeholder skills but lacks the core technical foundation: no data engineering, Spark, cloud platform, or production coding experience. The role explicitly requires \"extensive experience in data engineering, data platforms & analytics, or software engineering\" and comfort writing production code in Python/Scala/JavaScript\u2014gaps that disqualify despite strong delivery and leadership fit.",
+    "uncertainties": [
+      "Databricks company size and stage not stated; FDE scope may vary across org maturity.",
+      "Whether candidate has undisclosed cloud infrastructure, data pipeline, or analytics platform exposure from Google Devices commercial operations.",
+      "Depth of transformation program scope: unclear if it involved data systems, analytics platforms, or purely commercial/operational process design."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

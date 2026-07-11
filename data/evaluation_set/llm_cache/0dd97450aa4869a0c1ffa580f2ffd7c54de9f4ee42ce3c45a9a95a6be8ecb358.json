@@ -1,0 +1,58 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation programs; two promotions demonstrating progression in complex cross-functional environments.",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead strategic AI operations initiatives"
+      },
+      {
+        "candidate_evidence": "Product Operations and Strategy and Operations background with experience scaling operations and driving transformation programs at scale.",
+        "evidence_strength": "medium",
+        "job_requirement": "Strategic project leadership and program execution"
+      },
+      {
+        "candidate_evidence": "Eight years in commercial operations roles requiring cross-functional alignment and scaling; experience with transformation programs indicates multi-stakeholder coordination.",
+        "evidence_strength": "medium",
+        "job_requirement": "Stakeholder management across functions"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "JD heavily truncated and unclear\u2014cached snapshot contains only styling and metadata, not actual role requirements, responsibilities, or AI operations scope details.",
+        "mitigation": "Request complete, untruncated JD. Current snapshot does not permit substantive evaluation of AI operations domain fit, technical depth required, or strategic scope.",
+        "severity": "high"
+      },
+      {
+        "gap": "No explicit evidence of AI/ML operations background, strategy, deployment, or governance experience in candidate profile.",
+        "mitigation": "Clarify depth of AI operations exposure\u2014whether limited to product/feature context at Google or includes AI infrastructure, model deployment, or operations strategy.",
+        "severity": "medium"
+      },
+      {
+        "gap": "SafetyCulture company stage, team size, and organizational structure not stated; unable to calibrate seniority or scope expectations.",
+        "mitigation": "Confirm company stage and whether this is a functional leader, embedded operator, or program manager role; affects level and responsibility calibration.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 40,
+    "level_rationale": "Title \"Strategic Project Lead\" in Strategy & Operations at an unspecified-stage company suggests L4 IC or early-stage L5 operator scope. No years-required, management scope, or reporting line stated in the truncated JD. Level estimate is tentative pending full JD clarity.",
+    "role_family_fit": 35,
+    "scope_seniority": 50,
+    "summary": "JD is incomplete and unreadable\u2014the cached snapshot contains only CSS styling and metadata, not actual role requirements or AI operations responsibilities. The title \"Strategic Project Lead, AI Operations\" aligns nominally with Strategy and Operations, and candidate has relevant transformation and program-leadership experience at Google, but without a legible JD, substantive evaluation of AI domain fit, scope, and strategic depth is not possible. Recommend requesting the full, untruncated job description before proceeding.",
+    "uncertainties": [
+      "Complete JD content not available\u2014only CSS styling and metadata in cached snapshot",
+      "AI operations scope, required expertise, and strategic vs. tactical balance undefined",
+      "SafetyCulture stage, size, and organizational structure unknown; cannot calibrate seniority",
+      "Candidate's AI/ML operations experience not detailed in profile; unclear if exposure exists",
+      "Role level and management/IC scope ambiguous without full JD"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

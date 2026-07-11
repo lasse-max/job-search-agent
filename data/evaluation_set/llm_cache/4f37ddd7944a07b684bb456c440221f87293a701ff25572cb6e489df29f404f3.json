@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years as Google Devices and Services leader with two promotions and experience scaling global commercial operations; has led cross-functional teams and transformation programs.",
+        "evidence_strength": "medium",
+        "job_requirement": "Leitung und Motivation eines Teams von Montagearbeitern (Leadership and motivation of assembly team)"
+      },
+      {
+        "candidate_evidence": "Extensive experience with transformation program delivery, metrics tracking, and operational reporting at Google scale, though primarily strategic rather than shift-level or assembly-focused.",
+        "evidence_strength": "medium",
+        "job_requirement": "Erstellung regelm\u00e4\u00dfiger Berichte \u00fcber Leistungsindikatoren und Qualit\u00e4tsstandards (Regular reporting on KPIs and quality standards)"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Operations background; experience with process design, requirements logic, UAT, and transformation rollout demonstrate process understanding, though not assembly/manufacturing or hard-goods production context.",
+        "evidence_strength": "weak",
+        "job_requirement": "Verst\u00e4ndnis von Produktionsprozessen und Qualit\u00e4tsanforderungen (Understanding of production processes and quality requirements)"
+      }
+    ],
+    "confidence": 0.8,
+    "estimated_level": "L3",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "Hands-on assembly-line and manufacturing production experience. Candidate background is entirely in software, commercial, and digital transformation; no physical product assembly, factory floor, or shift-operations context.",
+        "mitigation": "Would require ramp on manufacturing fundamentals, assembly workflows, and front-line shift management. Not typically transferable from digital ops or strategy roles within typical onboarding period.",
+        "severity": "high"
+      },
+      {
+        "gap": "Vocational or technical production/assembly training. Candidate education and formation appears to be through business school, program management, and strategy roles at a tech company, not through vocational manufacturing apprenticeship.",
+        "mitigation": "External technical certification or vocational qualification in assembly/production would be needed; strategic ops experience does not substitute.",
+        "severity": "high"
+      },
+      {
+        "gap": "Direct shift-supervisory or front-line team-lead experience. Candidate has led cross-functional programs and larger-scope teams; no evidence of direct report management of 10\u201320 assembly operators or shift-level accountability.",
+        "mitigation": "Leadership fundamentals are strong, but shift dynamics, assembly-specific delegation, and hands-on floor presence differ significantly from program-leadership model.",
+        "severity": "medium"
+      },
+      {
+        "gap": "German language fluency. Role requires good written and spoken German (\"gute Deutschkenntnisse in Wort und Schrift\"); candidate is native German speaker and fluent in English, so this is not a blocker.",
+        "mitigation": "Candidate's native German and professional English address the language requirement.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "First supervisory or team-lead role in assembly/production with vocational training baseline and 0\u20132 years of prior supervisory scope. Shift-level reporting, hands-on assembly coordination, and quality compliance responsibilities indicate entry-level operations management (L3).",
+    "role_family_fit": 8,
+    "scope_seniority": 25,
+    "summary": "This is a Production Shift Supervisor role at Helsing, a defense AI company. The role requires hands-on assembly line leadership, team motivation, quality oversight, and shift-level reporting\u2014a front-line operations management position requiring technical vocational training and first supervisory experience. This is a misaligned role-family fit for a Strategy and Operations / Product Operations leader with eight years of global commercial transformation and program-leadership experience at Google. The role is substantially below the candidate's seniority target (L4\u2013L5) and outside target function families.",
+    "uncertainties": [
+      "Company stage and organizational structure not stated; Helsing is described as growing and fast-moving but no headcount, funding, or maturity level provided. This affects interpretation of shift-supervisor scope and career trajectory potential.",
+      "Scope of assembly team (number of direct reports, shift complexity, product criticality) not quantified; cannot assess whether role is light L3 or boundary L3\u2013L4.",
+      "Whether Helsing conducts manufacturing in-house or outsources assembly; role may differ if this is a contract-manufacturing or supplier-management position versus owned production line."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

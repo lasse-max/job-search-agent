@@ -1,4 +1,4 @@
-version: "candidate_profile_v1"
+version: "candidate_profile_v2"
 active: true
 positioning: "Strategy and Operations / Product Operations leader with approximately eight years at Google Devices and Services, two promotions, and experience scaling global commercial operations and transformation programs."
 target_seniority:
@@ -12,7 +12,7 @@ target_seniority:
   principle: "Judge level by scope and responsibilities, not by title word alone."
   in_scope_note: "Associate or Senior Associate on a strategy team at a strong company can be L4-appropriate when the role owns meaningful strategic programs."
   below_level_rule: "Reject only when responsibilities are materially below roughly eight-year / L4 scope."
-  ceiling_rule: "Target band is L4-L5. Head of / Director / VP / C-suite roles at established companies are over-leveled and should skip on level, not function. Small-startup Head-of roles can remain in-scope when scope is roughly L4-L5."
+  ceiling_rule: "Target band is L4-L5. Estimate seniority from scope and flag roles above or below the band; level alone must never skip or block a role. A modest fit down-rank may sort an above-band role below an otherwise similar in-band role. Small-startup Head-of roles can remain L4-L5-equivalent."
   seniority_ceiling:
     over_level_title_patterns:
       - "\\bhead of\\b"
@@ -31,6 +31,8 @@ target_seniority:
 languages:
   German: "native"
   English: "professional/fluent"
+employer_opt_outs:
+  Palantir: "Owner opted out of this employer on 2026-07-08; revisit explicitly before re-enabling."
 brand_floor:
   rule: "Deprioritize prestige or trajectory step-downs even when role fit and visa are fine."
   preferred_brands:
@@ -128,6 +130,7 @@ disqualifying_hard_requirements:
     - "\\bmust have\\b"
     - "\\bmust possess\\b"
     - "\\byou (?:have|bring|need)\\b"
+    - "\\byou (?:hold|possess)\\b"
     - "\\brequirements?\\b"
     - "\\bqualifications?\\b"
   nice_to_have_context_patterns:
@@ -149,6 +152,8 @@ disqualifying_hard_requirements:
     - "\\b(?:build|building|built|write|writing)\\b.{0,50}\\bproduction (?:software|code)\\b"
     - "\\b(?:deep|strong|expert|advanced)\\b.{0,50}\\b(?:machine learning|ml|data science)\\b.{0,50}\\b(?:engineering|model(?:l)?ing)\\b"
     - "\\bml engineering\\b"
+    - "\\bproficient\\b.{0,50}\\b(?:developing|writing|building)\\b.{0,25}\\bcode\\b"
+    - "\\bhands[- ]on(?: experience)?\\b.{0,80}\\b(?:building|developing|deploying)\\b.{0,80}\\b(?:ai applications?|software|code)\\b"
 honest_gaps:
   - "No production software-engineering background"
   - "Python basic and actively learning"

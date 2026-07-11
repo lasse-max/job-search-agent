@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "8 years at Google Devices and Services with global commercial operations and transformation program leadership, but primarily in strategy and operations, not technical customer-facing roles like partner engineering or solutions architecture",
+        "evidence_strength": "weak",
+        "job_requirement": "8+ years in technical customer-facing roles (partner engineering, solutions architecture, sales engineering)"
+      },
+      {
+        "candidate_evidence": "Candidate profile explicitly notes 'No production software-engineering background' and 'Python basic and actively learning.' Experience is in requirements, logic design, UAT, rollout, and transformation rather than hands-on integration and debugging",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep hands-on technical expertise \u2013 comfortable building with APIs, debugging integrations, guiding developers through complex implementations"
+      },
+      {
+        "candidate_evidence": "No full-stack development background documented. Candidate is actively learning Python at a basic level",
+        "evidence_strength": "weak",
+        "job_requirement": "Full-stack development experience and proficiency in at least one programming language"
+      },
+      {
+        "candidate_evidence": "8 years of global commercial operations and transformation leadership implies stakeholder management and cross-functional communication, consistent with strategy and operations background",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong communication and ability to bridge technical and non-technical audiences"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services experience leading global commercial operations and transformation programs suggests project leadership and multicultural team experience, but scope is operational rather than technical-project focused",
+        "evidence_strength": "medium",
+        "job_requirement": "Proven success leading technical projects or initiatives end-to-end in globally distributed, multicultural teams"
+      },
+      {
+        "candidate_evidence": "No documented experience with payments, fintech, or commerce platforms in candidate profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong understanding of payments, fintech, or commerce platforms"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 28,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "No hands-on technical customer-facing background (partner engineering, solutions architecture, sales engineering) \u2013 candidate background is strategy and operations, not solutions or partner engineering",
+        "mitigation": "Candidate would require significant ramp in technical customer-facing disciplines and sales engineering principles; unlikely to bridge core job intent within reasonable onboarding",
+        "severity": "high"
+      },
+      {
+        "gap": "No production software development or hands-on API/integration debugging experience \u2013 candidate is at basic Python level and actively learning",
+        "mitigation": "Role requires deep hands-on technical capability; candidate's strength is transformation and requirements logic, not coding and integration troubleshooting",
+        "severity": "high"
+      },
+      {
+        "gap": "No payments, fintech, or commerce platform domain knowledge documented",
+        "mitigation": "Domain knowledge is learnable, but combined with lack of technical implementation depth, puts candidate far from role readiness on both axes",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or forward-deployed technical advisory experience \u2013 candidate's transformation work was internal to Google, not customer-facing technical advisory at merchant/partner level",
+        "mitigation": "Would require reorienting from internal operations transformation to external technical advisory and customer problem-solving under time pressure",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD requires '8+ years of experience in technical customer-facing roles (partner engineering, solutions architecture, sales engineering), working with enterprise merchants or global partners' and 'Deep hands-on technical expertise \u2013 comfortable building with APIs, debugging integrations, and guiding developers through complex implementations.' Candidate profile explicitly states 'No production software-engineering background' and 'Python basic and actively learning,' with experience rooted in strategy/operations transformation rather than technical customer-facing partner engineering or solutions architecture.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 8+ years in technical customer-facing disciplines (partner engineering, solutions architecture, sales engineering) with hands-on API and integration capability, suggesting a senior technical IC track (L5). The \"Staff\" title and \"senior individual contributor\" description reinforce senior-IC level. Reporting and scope context not provided in JD, but 8+ years technical depth and hands-on requirement signal L5 equivalent. Not L6 because manager-of-managers scope is absent; not L4 because technical depth and enterprise customer scope exceed mid-level IC expectations.",
+    "role_family_fit": 18,
+    "scope_seniority": 72,
+    "summary": "This is a Staff Solutions Engineer role requiring 8+ years of hands-on technical customer-facing experience (partner engineering, solutions architecture, sales engineering) in payments or commerce, with deep API and integration debugging capability. The candidate's background is strategy and operations transformation at Google\u2014not technical customer-facing or partner-engineering work\u2014and explicitly lacks production software development and hands-on technical depth (basic Python, actively learning). The role demands hands-on technical advisory and integration leadership; the candidate's expertise is transformation logic, requirements design, and operational program execution. No payment/fintech/commerce domain knowledge is documented. This is a disqualifying mismatch on core technical customer-facing experience and hands-on capability.",
+    "uncertainties": [
+      "Candidate's specific technical skills beyond Python and code-debugging capability are not detailed; degree/educational background in CS or engineering not stated",
+      "Extent of candidate's interaction with developer or technical partner audiences in Google transformation work is unclear",
+      "Whether candidate has any exposure to API-first platforms or integration design in prior Google roles is not documented",
+      "Block's current stage/team size not stated in JD; only Afterpay context (founded 2014, 11M customers, 64K retailers) provided"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

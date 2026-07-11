@@ -1,0 +1,81 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in global commercial operations, transformation programs, and scaling operations; product operations background with ownership of requirements, logic design, and rollout",
+        "evidence_strength": "weak",
+        "job_requirement": "Own and maintain the nutrition database for every recipe and ingredient, keeping it accurate and proactively spotting opportunities to improve the nutritional quality of our products"
+      },
+      {
+        "candidate_evidence": "Product operations experience with cross-functional collaboration and stakeholder management; no food/nutrition/culinary domain expertise",
+        "evidence_strength": "weak",
+        "job_requirement": "Partner closely with Culinary to review and approve recipe formulations, troubleshooting constraints and optimising our recipes for customer value"
+      },
+      {
+        "candidate_evidence": "Program leadership and transformation program experience suggests ability to build and scale programs, but no health/nutrition/dietitian program context",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop, manage, and scale our nutrition consultation programme - including bringing on and coordinating part-time dietitians, reporting on program quality and effectiveness, and hosting customer-facing sessions as needed"
+      },
+      {
+        "candidate_evidence": "No direct evidence of nutrition content creation, PR, social media, or marketing work in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Create nutrition-focused content for PR, social media, and customer education, and support marketing and growth initiatives with credible, engaging messaging"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "Registered Dietitian credential and active EU certification/licence",
+        "mitigation": "Candidate does not hold a Registered Dietitian designation; this is a core professional qualification, not a nice-to-have",
+        "severity": "high"
+      },
+      {
+        "gap": "3+ years practising as a Registered Dietitian with deep knowledge of dietary lifestyles (GLP-1, ketogenic, vegan, etc.)",
+        "mitigation": "Candidate has no documented nutrition or dietetics background; the depth required is domain-specific and not transferable from operations",
+        "severity": "high"
+      },
+      {
+        "gap": "Experience in recipe development or new product development in a nutrition/food context",
+        "mitigation": "Candidate has product operations experience but no food, recipe, or nutrition product development background",
+        "severity": "high"
+      },
+      {
+        "gap": "Pan-European dietary trends, regulations, and nutrition science expertise",
+        "mitigation": "No evidence of regulatory or scientific nutrition domain knowledge in candidate profile",
+        "severity": "high"
+      },
+      {
+        "gap": "Client-facing nutrition coaching and trust-building experience",
+        "mitigation": "Candidate may have stakeholder management experience but not in a health/dietary advisory or patient/customer coaching context",
+        "severity": "medium"
+      },
+      {
+        "gap": "Nutrition content creation for PR, social media, and customer education",
+        "mitigation": "No evidence of marketing, PR, or nutrition education content work",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "JD states: \"3+ years practising as a Registered Dietitian, with an active certification/licence in the EU.\" This is a professional credential requirement that is core to the role and cannot be waived or acquired during tenure.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 75,
+    "level_rationale": "Role requires 3+ years practising as a Registered Dietitian with active certification; reporting to Head of Product; end-to-end ownership of nutrition in a small, fast-moving team. Domain-specific seniority is L4-equivalent (established practitioner level); absence of company size/stage context and manager-of-managers scope keeps confidence moderate.",
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a specialist Nutrition Manager role requiring a Registered Dietitian credential and 3+ years practising experience in nutrition/dietetics\u2014a disqualifying hard requirement the candidate does not meet. Although the candidate has strong Strategy and Operations experience and can demonstrate program leadership, cross-functional collaboration, and product operations ownership, the role's core accountabilities (owning nutrition database, recipe formulation review, dietitian consultation programme, nutrition content) are deeply domain-specific. No evidence in the candidate profile demonstrates nutrition, food, dietary, or health science expertise. This is a deprioritized fit due to function mismatch (specialist health/nutrition domain) and hard-blocker status.",
+    "uncertainties": [
+      "Company size and stage of HelloFresh's Factor brand not stated in JD; assumes established scale but may affect L4 vs. L5 assessment",
+      "Unclear whether candidate has any informal health, nutrition, or wellness background not documented in the profile",
+      "Degree and regulatory pathway to Registered Dietitian status varies by EU country; profile does not address any qualification pathway"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

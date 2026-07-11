@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, demonstrating team leadership and scaling global commercial operations",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead a high-performing team of TAMs, building a measurable operation that delivers strong operational results"
+      },
+      {
+        "candidate_evidence": "Eight-year tenure scaling global commercial operations with multi-functional stakeholder management across product, engineering, and GTM",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner closely with senior stakeholders across product, engineering, go-to-market, and support; influence globally"
+      },
+      {
+        "candidate_evidence": "Product Operations and Business Operations leadership experience with strategy formulation and operational execution at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Own the P&L, set segment strategy, run the business to deliver revenue, user experience, and scalability goals"
+      },
+      {
+        "candidate_evidence": "User-first transformation and program leadership mindset; experience with strategic account and commercial operations scaling",
+        "evidence_strength": "medium",
+        "job_requirement": "Obsess over delivering exceptional user experience for Stripe's most strategic users"
+      },
+      {
+        "candidate_evidence": "Strategic Programs / Program Leadership background with team scaling and organizational development focus",
+        "evidence_strength": "medium",
+        "job_requirement": "Build a coaching culture, unlock team potential, remove roadblocks, elevate opportunities"
+      },
+      {
+        "candidate_evidence": "Global commercial operations scaling and strategic transformation program execution at Google demonstrate operational rigor and cross-functional delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong sales revenue growth and operational background; track record of making data-driven decisions; execute complex operational projects"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L6",
+    "evidence_strength": 72,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No direct Technical Account Management or customer success/account management team leadership experience",
+        "mitigation": "TAM/CS domain is learnable; candidate's team leadership, stakeholder management, and scaling operations experience are strongly transferable to TAM operations and premium support team leadership",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct fintech and payments domain experience",
+        "mitigation": "Strong ability to learn domain quickly; eight years at Google demonstrates capability to operate in complex, regulated technology environments; fintech domain knowledge will develop rapidly post-hire",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated experience explaining API concepts or hands-on SQL/query comfort (stated as preferred, not minimum)",
+        "mitigation": "Preferred qualification only; technical fluency can be developed; candidate's product operations background and requirement-logic design experience indicate sufficient technical acumen",
+        "severity": "low"
+      },
+      {
+        "gap": "No consultative presales or advisory brand (e.g., management consulting)",
+        "mitigation": "TAM thought partnership role requires stakeholder leadership and strategic advising, not consulting credentials; candidate's strategic operations leadership provides direct parallel",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 85,
+    "level_rationale": "The JD requires at least 15 years of professional experience, a hard seniority anchor that maps the posted role to L6.",
+    "role_family_fit": 78,
+    "scope_seniority": 76,
+    "summary": "Manager, Technical Account Management at Stripe is a team-leadership and operations-ownership role requiring 15+ years experience, team building, revenue/P&L accountability, and cross-functional stakeholder influence. Candidate's eight-year tenure leading global commercial operations and strategic transformation at Google demonstrates strong leadership, scaling, and operational execution fit, but lacks direct TAM/CS domain and fintech-specific background. Role level is L5 with clear P&L and team scope; candidate's positioning aligns with Business Operations and Strategic Programs, though TAM-specific experience is absent and would require rapid domain learning.",
+    "uncertainties": [
+      "Candidate's specific depth of P&L management and revenue accountability at Google not detailed; JD places high emphasis on owned P&L and revenue delivery",
+      "Fintech/payments domain knowledge level and learning velocity unclear; mid-to-late-career pivot to fintech operations may be more successful than for technical roles",
+      "TAM consulting model and proactive/preventative mindset differ from traditional ops roles; candidate's exact exposure to this engagement style not specified",
+      "Sydney location requirement; relocation feasibility not indicated in candidate profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

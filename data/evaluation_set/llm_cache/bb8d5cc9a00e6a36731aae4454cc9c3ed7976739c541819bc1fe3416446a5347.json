@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs; hands-on ownership of complex technical rollouts and process design",
+        "evidence_strength": "strong",
+        "job_requirement": "5+ years of experience accountable for technical project / program delivery within Data and AI domain"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations / Product Operations leader with experience in technical requirements definition, UAT, rollout coordination, and multi-stakeholder transformation execution",
+        "evidence_strength": "strong",
+        "job_requirement": "Customer-facing pre-sales, technical architecture, customer success, or consulting role"
+      },
+      {
+        "candidate_evidence": "Scaling global commercial operations with demonstrated ownership of complex technical programs, cross-functional coordination, and stakeholder management across multiple teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Technical program or project management including account, stakeholder and resource management accountability"
+      },
+      {
+        "candidate_evidence": "Google commercial operations role; experience with global stakeholder management and transformation execution, though pre-sale escalation/account executive experience not explicitly detailed",
+        "evidence_strength": "medium",
+        "job_requirement": "Experience resolving complex and important escalation with senior customer executives"
+      },
+      {
+        "candidate_evidence": "Product operations and technical transformation background; limited explicit evidence of hands-on architecture depth in distributed systems, data platforms, or Spark/Databricks ecosystem",
+        "evidence_strength": "medium",
+        "job_requirement": "Understanding of solution architecture related to distributed data systems"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations leader focused on scaling operations and transformation; no quota or revenue target tracking mentioned",
+        "evidence_strength": "weak",
+        "job_requirement": "Track record of overachievement against quota, goals or similar objective targets"
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 68,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "No explicit production Spark, Python, or Databricks platform experience; Python is listed as basic and actively learning",
+        "mitigation": "DSA role emphasizes technical credibility and communication over hands-on coding; strong technical program and architecture discussion skills can substitute. Databricks ecosystem knowledge is learnable with onboarding and mentorship from Solutions Architects and expert teams.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct pre-sale or quota-carrying account growth experience; background is product operations and transformation, not classic sales or customer success account management",
+        "mitigation": "Role is post-sale technical account strategy and customer enablement, not new-logo sales. Commercial skills include stakeholder leadership, roadmap strategy, and value communication, which transfer from transformation and product operations work.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No explicit evidence of conducting open-ended discovery workshops or creating strategic business roadmaps with external customers; experience is internal transformation-focused",
+        "mitigation": "Demonstrated stakeholder management, process design, and technical requirements definition are adjacent to discovery and roadmap skills; these are trainable through practice in a customer-facing DSA environment.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 5+ years of technical program accountability, customer-facing technical leadership, and complex stakeholder/account management, pointing to L5 senior IC. Reports to DSA Manager (not director-level), and lacks explicit manager-of-managers scope. No company stage/size provided in JD, limiting confidence slightly.\".",
+    "role_family_fit": 78,
+    "scope_seniority": 76,
+    "summary": "Strong fit for a technical program leadership and customer-facing transformation role. Candidate brings 8 years of technical program accountability, cross-functional stakeholder management, and complex rollout execution from a global commercial operations context at Google\u2014aligning well with DSA's post-sale technical strategy and account management responsibilities. Primary gaps are lack of hands-on Spark/Databricks and explicit pre-sale customer account experience, both manageable through onboarding and mentorship in a data-platform-focused environment.",
+    "uncertainties": [
+      "Company stage/size not provided; unclear if Databricks scale and product complexity match or exceed Google experience",
+      "Extent of pre-sale discovery, executive relationship-building, and customer account negotiation experience not detailed; relies on inference from commercial operations role",
+      "Depth of distributed data systems and solution architecture knowledge not explicit; candidate profile emphasizes transformation and process design over technical platform design"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

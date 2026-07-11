@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years in Strategy and Operations at Google with transformation program leadership and stakeholder management; no direct sales, BDR, or quota-carrying experience.",
+        "evidence_strength": "weak",
+        "job_requirement": "Sales prospecting, cold calling, and account research"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations scaling and transformation programs at Google; demonstrated execution and cross-functional stakeholder management over eight years.",
+        "evidence_strength": "strong",
+        "job_requirement": "Work in a structured manner, fast learner, excellent communicator, organizational and planning skills"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; native German; no stated Nordic language proficiency.",
+        "evidence_strength": "weak",
+        "job_requirement": "Native or equivalent Nordic language proficiency (Swedish, Finnish, Danish) + English"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L3",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "Internship / entry-level sales development role; candidate has eight years of seniority and management experience at a senior IC or manager level",
+        "mitigation": "Role is explicitly an internship program for future graduates and is not appropriate for mid-career leaders.",
+        "severity": "high"
+      },
+      {
+        "gap": "No sales, BDR, or quota-carrying background; role requires cold calling, prospecting, and setting up sales meetings as core duties",
+        "mitigation": "Candidate background is in operations, transformation, and strategy, not revenue-generating sales activities.",
+        "severity": "high"
+      },
+      {
+        "gap": "Native Nordic language requirement (Swedish, Finnish, or Danish); candidate speaks German and English only",
+        "mitigation": "Hard requirement for this Madrid-based role serving Nordic market; no evidence of Nordic language proficiency.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [
+      {
+        "evidence": "\"Native (or equivalent) proficiency in a Nordic language (Swedish, Finish, Danish) + Native (or equivalent) proficiency in English.\" Candidate has professional English and native German; no Nordic language proficiency is documented.",
+        "type": "disqualifying_hard_requirement"
+      }
+    ],
+    "level_confidence": 95,
+    "level_rationale": "Internship program explicitly targeting high-potential future graduates and students with no full-time experience; 6-month minimum availability; standard entry pathway for BDRs. This is a 0\u20132 year career-stage role = L3.",
+    "role_family_fit": 5,
+    "scope_seniority": 15,
+    "summary": "This is an internship sales development role (L3) targeting students and future graduates with 6+ months availability and a 2-week onboarding pathway into full-time BDR positions. The candidate is a mid-career Strategy and Operations leader (approx. L5\u2013L6) with eight years at Google, two promotions, and transformation program leadership\u2014fundamentally mismatched in seniority, career stage, and function. Critical blockers include no sales or quota-carrying experience, missing mandatory Nordic language proficiency, and role-family misalignment (pure commission-based sales prospecting vs. strategy/operations/transformation).",
+    "uncertainties": [
+      "Celonis company size/stage not stated; however, JD clearly frames this as entry-level internship, not a mid-market or enterprise ops role.",
+      "Whether candidate might have unstated Nordic language skills or willingness to develop them is unknown.",
+      "Whether 'Business Administration or comparable program' is strictly enforced or whether professional background could substitute\u2014immaterial given seniority and function mismatch."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

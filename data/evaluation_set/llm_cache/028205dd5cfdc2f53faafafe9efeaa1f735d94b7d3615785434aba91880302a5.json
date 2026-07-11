@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services scaling global commercial operations and transformation programs; extensive experience with enterprise-level requirement gathering, UAT, rollout, and multi-stakeholder coordination.",
+        "evidence_strength": "strong",
+        "job_requirement": "Manage and execute end-to-end merchant assurance requests, security questionnaires, and due diligence inquiries from enterprise prospects and existing customers, ensuring absolute accuracy and timely delivery."
+      },
+      {
+        "candidate_evidence": "Positioning includes transformation program leadership; actively learning AI capabilities and tools; background in process design and execution suggests ability to architect scalable workflows.",
+        "evidence_strength": "medium",
+        "job_requirement": "Act as the primary architect of the assurance content repository. Adapt, train, and optimize AI-based tools to automate the ingestion of merchant requirements and streamline response generation."
+      },
+      {
+        "candidate_evidence": "Eight years driving cross-functional collaboration at global scale; demonstrated ability to translate technical requirements into operational solutions; experience partnering with legal, compliance, and security functions in commercial contexts.",
+        "evidence_strength": "strong",
+        "job_requirement": "Partner closely with Subject Matter Experts (SMEs) across Information Security, Data Protection, Legal, and Compliance to extract highly technical data and translate it into clear, commercial-ready responses."
+      },
+      {
+        "candidate_evidence": "Google commercial operations and transformation background; enterprise sales-cycle exposure; experience managing cross-functional stakeholder demands and high-priority deliverables.",
+        "evidence_strength": "medium",
+        "job_requirement": "Collaborate closely with global Bid Managers to support complex, high-value enterprise RFPs, taking ownership of the risk, security, and compliance sections."
+      },
+      {
+        "candidate_evidence": "Eight years scaling global operations and transformation programs; proven track record designing and executing process improvements at volume.",
+        "evidence_strength": "strong",
+        "job_requirement": "Continuously review and refine the assurance response engine. Identify bottlenecks and design scalable workflows to handle Checkout.com's growing commercial volume without compromising quality or merchant trust."
+      },
+      {
+        "candidate_evidence": "Eight-year tenure at a hyper-growth tech company (Google Devices & Services); two promotions demonstrate successful navigation of scaling, ambiguity, and rapid organizational change.",
+        "evidence_strength": "strong",
+        "job_requirement": "Proven ability to thrive in a high-growth startup/scale-up or a fast-paced, high-volume enterprise environment. You are comfortable with ambiguity and rapid change."
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L4",
+    "evidence_strength": 78,
+    "gap_manageability": 72,
+    "gaps": [
+      {
+        "gap": "Limited direct bid-management and proposal-writing experience. Candidate background is primarily operations, transformation, and commercial enablement rather than formal RFP/bid-team workflow.",
+        "mitigation": "Candidate has strong cross-functional coordination and enterprise sales-cycle exposure; bid-specific processes and RFP mechanics are learnable with onboarding. Domain mentorship from experienced bid managers on the team would accelerate ramp.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated background in merchant assurance, compliance questionnaires, or security-audit response workflows. This is a specialized function within enterprise fintech.",
+        "mitigation": "Strong analytical and process-design skills translate well to mastering assurance taxonomy and regulatory frameworks. SME partnerships (Information Security, Data Protection, Legal) are explicitly available and will be critical onboarding resources.",
+        "severity": "medium"
+      },
+      {
+        "gap": "AI-powered-tool experience stated as 'actively learning' rather than demonstrated production expertise. Role calls for confidence in adapting, training, and optimizing AI-based tools.",
+        "mitigation": "Candidate's transformation and process-automation background suggests conceptual readiness; rapid upskilling on specific tools (likely vendor-provided) is feasible. Role frames AI adoption as a learning mandate, not a gating requirement.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Fintech domain exposure not explicitly mentioned. Payments, compliance, and merchant-trust narratives are context-specific.",
+        "mitigation": "Candidate has enterprise and regulatory/compliance navigation experience; fintech domain knowledge is typically acquired on the job. Checkout.com is a B2B platform company, not an exotic vertical.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Role requires 3+ years in assurance, bid management, or sales operations; explicit mention of \"senior specialist role\" and \"leadership\" framing within bids team; no manager-of-managers scope or director-level authority. London-based, company size not stated in JD. Scope centers on functional ownership, AI tool adoption, and cross-functional execution rather than broad P&L or organizational leadership. Estimated as L4 (Senior Manager / Lead IC): 3\u20135 years of specialist experience, cross-functional influence, and domain crafting without P&L or team leadership.\"",
+    "role_family_fit": 79,
+    "scope_seniority": 74,
+    "summary": "Candidate brings eight years of Google commercial operations, transformation leadership, and enterprise-scale stakeholder management\u2014strong alignment with the role's need to architect scalable assurance workflows and partner cross-functionally. Medium gaps in bid-management mechanics, merchant-assurance compliance taxonomy, and production AI-tool experience are manageable given explicit SME support and the role's framing as a learning opportunity. Role fit is solid; seniority and domain gaps are trainable.",
+    "uncertainties": [
+      "Checkout.com company size/stage context not stated in JD (noted as 'unknown_unless_stated'); estimated L4 assumes established late-stage growth company rather than early-stage scaling startup, which could shift scope seniority and role urgency.",
+      "Depth of candidate's prior interaction with compliance, security, and data-protection functions unclear; Google background suggests exposure but not quantified.",
+      "Whether 'actively learning' AI tools includes hands-on tool adoption, prompt engineering, or purely conceptual familiarity is unspecified.",
+      "Role explicitly opens door to progression into 'senior bid management'; unclear if this is a mid-career development track or a longer 2\u20133 year horizon."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

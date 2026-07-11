@@ -212,7 +212,7 @@ evaluation_set:
     expected_feasibility: viable
     expected_strategic_tier: tier_2
     hard_blockers: []
-    key_reason: Chief-of-staff / strategy: CEO-office initiatives, cross-functional, process optimization — strong fit at a scaled fintech.
+    key_reason: "Chief-of-staff / strategy: CEO-office initiatives, cross-functional, process optimization — strong fit at a scaled fintech."
     actual_outcome: n/a
 
   - id: EV-15
@@ -274,12 +274,12 @@ evaluation_set:
     role_title: Deployment Strategist
     location: London
     jd_source: https://jobs.lever.co/palantir
-    label: stretch_fds
-    expected_recommendation: stretch
+    label: owner_opt_out
+    expected_recommendation: skip
     expected_feasibility: viable
     expected_strategic_tier: tier_2
     hard_blockers: []
-    key_reason: Canonical DS path + elite brand, but very high / technical bar; UK sponsorship is viable under the current policy, while gov roles may still need clearance.
+    key_reason: Owner opted out of Palantir on 2026-07-08; the config-level employer rule is intentionally easy to revisit.
     actual_outcome: n/a
 
   # ---------- REACH (elite brand, real fit gap) ----------

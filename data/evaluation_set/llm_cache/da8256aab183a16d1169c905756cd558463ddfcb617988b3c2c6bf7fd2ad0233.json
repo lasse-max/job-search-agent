@@ -1,0 +1,61 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Google Devices commercial operations leadership with global scaling experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Achieve sales quotas for allocated accounts on a quarterly and annual basis"
+      },
+      {
+        "candidate_evidence": "Led transformation programs and cross-functional stakeholder alignment at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop strategic, account-based marketing plans with marketing team"
+      },
+      {
+        "candidate_evidence": "Product operations and commercial strategy background with requirements logic design and customer collaboration",
+        "evidence_strength": "medium",
+        "job_requirement": "Be trusted advisor understanding customer IT roadmap to drive solutions"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 42,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Pure quota-carrying field sales experience: 10\u201315+ years field sales required, none evident in candidate profile",
+        "mitigation": "Candidate has strategic operations and cross-functional leadership; could transition to consultative account-leadership role, but would require quota ramp and new sales process discipline",
+        "severity": "high"
+      },
+      {
+        "gap": "Seven-figure deal closure and sophisticated sales negotiation track record not demonstrated",
+        "mitigation": "Google scale implies complex stakeholder navigation; would need to prove deal-closure capability in enterprise sales context",
+        "severity": "high"
+      },
+      {
+        "gap": "Executive-level relationship management and C-level stakeholder influence in customer negotiation contexts",
+        "mitigation": "Candidate has cross-functional influence at Google; customer-facing C-suite advisory experience not explicit",
+        "severity": "medium"
+      },
+      {
+        "gap": "Financial Services and Banking customer domain experience not mentioned",
+        "mitigation": "Industry expertise can be acquired; product and operations skills are transferable, but customer segment-specific credibility is absent",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "JD requires 10\u201315+ years field sales with complex/strategic customer focus, multi-year seven-figure deal closure, and executive relationship management. These anchors point to an established L5 senior individual contributor or early L6 account leadership role at an enterprise software vendor. No manager-of-managers scope is explicit; reporting line and company stage unknown. 10\u201315+ years is the limiting anchor for L5\u2013L6 range.",
+    "role_family_fit": 28,
+    "scope_seniority": 72,
+    "summary": "Global Account Manager\u2014Snowflake (HSBC). Role is pure quota-carrying enterprise field sales with 10\u201315+ years requirement, seven-figure deal closure, and C-suite advisory mandate\u2014a core deprioritize family for this candidate. No disqualifying hard blockers, but candidate has zero demonstrated field sales, quota management, or customer-facing deal-closure experience; background is internal product operations and transformation strategy. Estimated role level is L5, within target band, but role fit is fundamentally misaligned: quota sales is explicitly deprioritized. Skip recommended unless candidate has hidden sales track record.",
+    "uncertainties": [
+      "Candidate's customer-facing and CxO relationship depth not fully detailed in profile",
+      "Whether candidate has any prior enterprise sales, sales engineering, or quota-carrying experience in any form",
+      "Role seniority tier (individual contributor L5 vs. team lead or embedded manager scope unclear from JD)"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

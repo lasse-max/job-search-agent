@@ -1,0 +1,72 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "~8 years at Google Devices and Services with two promotions, scaling global commercial operations and leading transformation programs; experience in cross-functional strategy and execution",
+        "evidence_strength": "medium",
+        "job_requirement": "8\u201312+ years in enterprise GTM/strategy, pre-sales consulting, or product strategy"
+      },
+      {
+        "candidate_evidence": "Scaling global operations and transformation programs at Google implies cross-functional stakeholder management; positioning as Strategy & Operations leader suggests executive visibility, though direct C-suite briefing evidence not stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Executive engagement skills and presence; establish strong relationships with key decision makers; build credibility at all levels"
+      },
+      {
+        "candidate_evidence": "Strong operations and requirements/design background from Google Devices; can engage on solution architecture and feasibility. No direct payments, FX, or treasury domain depth stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Technical fluency (not a pure Solution Architect): Acquiring, issuing, wallets/treasury/FX; comfortable engaging at an architectural level to ensure solution fit"
+      },
+      {
+        "candidate_evidence": "Google transformation programs and scaling operations imply multi-stakeholder orchestration; direct deal-strategy (win plans, competitive positioning in sales pursuit) background not stated",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead deal strategy: Define win themes, stakeholder maps, and executive alignment for complex, multi-threaded pursuits"
+      },
+      {
+        "candidate_evidence": "No direct RFP/RFI management or commercial-pursuit ownership experience stated; product operations and transformation background does not directly map to pre-sales deal orchestration",
+        "evidence_strength": "weak",
+        "job_requirement": "Orchestrate RFPs/RFIs: Own the pursuit narrative, differentiation, and commercial terms; coordinate Solution Architects for technical sections"
+      },
+      {
+        "candidate_evidence": "Operations and transformation scaling at Google; no direct deal economics, ROI/TCO modeling, SaaS/usage pricing architecture design, or Deal Desk/commercial terms negotiation stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Structure deal economics: Build ROI/TCO, pricing architectures, and commercial constructs; partner with Deal Desk, Legal, Risk"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 58,
+    "gap_manageability": 65,
+    "gaps": [
+      {
+        "gap": "No direct enterprise GTM / pre-sales deal-cycle experience. Role requires leading RFP/RFI orchestration, win-plan definition, and multi-threaded pursuit management; candidate background is global operations and transformation scaling at Google, not sales-cycle strategy",
+        "mitigation": "Candidate's cross-functional orchestration, stakeholder alignment, and execution discipline from Google transformation programs transfer directly to coordinating complex pursuits. GTM playbook development, deal-strategy frameworks, and sales-enablement rigor can be learned in role with support from Enterprise Leads and AEs. Hire a strong deal-review mentor or embedded GTM advisor for first 6\u20139 months.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited hands-on commercial and deal-economics modeling. Role requires ROI/TCO development, pricing-architecture design (SaaS/usage/hybrid), and engagement with Deal Desk/Legal/Risk on commercial terms; candidate background is operations execution and product requirements, not commercial structuring",
+        "mitigation": "Sales operations, deal-economics, and pricing templates can be structured with Deal Desk and pre-sales partners upfront. Candidate's analytical rigor and requirements-design discipline apply to ROI/TCO logic. Partner with Revenue Operations and pricing teams to co-own commercial constructs in early deals.",
+        "severity": "high"
+      },
+      {
+        "gap": "No payments, financial services, or fintech domain expertise. JD states 'Knowledge of the payments domain / financial services will be advantageous' (preferred, not minimum). Candidate has no background in acquiring, issuing, wallets, treasury, FX, or banking workflows",
+        "mitigation": "Domain knowledge is preferred, not required. Candidate's technical fluency from operations background and ability to learn quickly (stated in positioning) mitigate this. Immersion program on Airwallex platform, customer use cases, and payments workflows; pair with domain-expert Solution Architects in early pursuits. 2\u20133 weeks of prep before customer engagement.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting or pre-sales brand. Role benefits from consulting pedigree (McKinsey, BCG, Bain, etc.) and case-team experience; candidate is internal operations/transformation leader",
+        "mitigation": "Consulting experience is not mandated. Candidate's analytical approach and cross-functional project leadership are comparable. Early deals should be supported by strong Solution Architects and Account Executives with consulting background. Consulting-style problem frameworks (frameworks, hypotheses, phased validation) can be adopted quickly.",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 80,
+    "level_rationale": "JD requires 8\u201312+ years in enterprise GTM, consulting, or product strategy; executive stakeholder engagement; and C-suite presence. Reporting to Global Revenue Strategy (not CEO/VP). Role scope covers deal orchestration, RFP management, commercial structuring, and cross-functional leadership. This aligns with strong-IC/senior-IC accountability at L5; the enterprise complexity and business economics (pricing, ROI/TCO, ACV/GP measurement) edge toward L5\u2013L6 boundary, but no manager-of-managers signal places it solidly at L5.",
+    "role_family_fit": 72,
+    "scope_seniority": 78,
+    "summary": "Enterprise Strategy & GTM leader role (L5) at $8B fintech, reporting to Global Revenue Strategy. Role requires 8\u201312+ years GTM/consulting/product strategy, C-suite engagement, deal orchestration, and payments-domain fluency. Candidate has 8 years of Google Devices operations/transformation ownership\u2014strong strategy & ops pedigree but limited direct enterprise GTM sales-cycle, deal economics, RFP management, and payments/financial-services domain experience. Role is above typical L5 scope (multiple stakeholders, executive alignment, business economics) but candidate's strategic operations and cross-functional execution foundation is solid.",
+    "uncertainties": []
+  },
+  "prompt_version": "role_evaluation_v5"
+}

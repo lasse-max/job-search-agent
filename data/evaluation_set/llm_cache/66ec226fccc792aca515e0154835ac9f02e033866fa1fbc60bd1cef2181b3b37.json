@@ -1,0 +1,63 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with experience in global commercial operations and transformation programs; two promotions indicating career progression in strategy and operations functions.",
+        "evidence_strength": "medium",
+        "job_requirement": "Sales Strategy and Operations role at OpenAI"
+      },
+      {
+        "candidate_evidence": "Candidate positioning as 'Strategy and Operations / Product Operations leader' with scaling global commercial operations aligns with core function family.",
+        "evidence_strength": "strong",
+        "job_requirement": "Strategy and Operations function fit (department-level signal)"
+      },
+      {
+        "candidate_evidence": "Candidate background explicitly includes 'transformation programs' and strategic program leadership experience from Google tenure.",
+        "evidence_strength": "medium",
+        "job_requirement": "Transformation and program leadership capability"
+      }
+    ],
+    "confidence": 0.25,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No accessible job description; JD fetch failed (403 Forbidden). Cannot validate specific sales operations, revenue operations, go-to-market, or ANZ-regional requirements.",
+        "mitigation": "Require stable, readable JD text before proceeding. Request OpenAI careers page snapshot or internal role brief.",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate background does not explicitly mention sales operations, revenue operations, quota systems, sales enablement, or GTM execution experience.",
+        "mitigation": "Clarify whether Google Devices commercial operations included sales-team strategy, pipeline management, or revenue forecasting; or whether experience is primarily product/program operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "ANZ (Australia-New Zealand) regional focus not addressed in candidate profile; no mention of APAC market experience or regional operations leadership.",
+        "mitigation": "Confirm whether candidate has multi-region or APAC scaling experience, or willingness to establish ANZ commercial operations from scratch.",
+        "severity": "medium"
+      },
+      {
+        "gap": "OpenAI company context unknown. Stage, sales maturity, regional team size, and revenue-ops infrastructure not stated; cannot calibrate role seniority or scope.",
+        "mitigation": "Include OpenAI company stage, ANZ team size, and reporting structure in JD or role brief.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 40,
+    "level_rationale": "Title \"Sales Strategy and Operations, ANZ\" at OpenAI suggests an individual contributor or junior team-lead scope, typical of L4 (Senior Manager / Lead). Without stable JD access, unable to confirm exact scope, reporting line, or ANZ team structure. Company stage/maturity unknown.",
+    "role_family_fit": 70,
+    "scope_seniority": 50,
+    "summary": "Role family fit is strong: Sales Strategy and Operations is a target family, and candidate's eight-year Google Devices tenure in commercial operations and transformation aligns directionally. However, the JD is inaccessible (403 Forbidden), making it impossible to validate specific sales-ops, revenue-ops, go-to-market, or regional requirements. Candidate background focuses on product/program operations rather than explicitly sales or revenue operations; ANZ regional experience not mentioned. Recommend skip until a stable, readable JD is available and sales-operations scope is clarified.",
+    "uncertainties": [
+      "JD text is unavailable due to fetch failure; cannot map candidate to specific role requirements, success criteria, or sales-operations domain depth.",
+      "Unclear whether candidate's 'global commercial operations' experience includes sales-team strategy, revenue forecasting, pipeline management, or primarily product operations.",
+      "OpenAI company stage, ANZ regional team size, reporting structure, and revenue-ops maturity not stated in role JSON.",
+      "No mention of candidate's experience with ANZ/APAC markets or regional expansion.",
+      "Sales Strategy and Operations scope undefined: cannot distinguish between pure sales-enablement, revenue-ops, GTM execution, or strategic advisory."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

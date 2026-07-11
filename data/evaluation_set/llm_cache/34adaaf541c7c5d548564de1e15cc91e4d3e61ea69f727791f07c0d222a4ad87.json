@@ -1,0 +1,82 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with global commercial operations and transformation program scaling; background is post-sales operations and transformation rather than pre-sales partner enablement",
+        "evidence_strength": "medium",
+        "job_requirement": "4 years of industry experience with a minimum of 2 within a pre-sales environment working directly with consulting & System Integration (GSI/RSI) partners"
+      },
+      {
+        "candidate_evidence": "Experience in product ownership, requirements definition, UAT, rollout, and transformation; demonstrates ability to translate business needs into technical solutions and drive stakeholder alignment",
+        "evidence_strength": "strong",
+        "job_requirement": "Ability to connect specific business problems and Snowflake's solutions and demonstrate technology value throughout the sales cycle"
+      },
+      {
+        "candidate_evidence": "Positioned as Strategy and Operations leader with eight years at scale across global teams; experience navigating executive and technical stakeholders in transformation contexts suggests strong presentation capability, though not explicitly detailed",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding presenting skills to both technical and executive audiences"
+      },
+      {
+        "candidate_evidence": "No evidence of SQL expertise in profile; product operations background does not typically include hands-on SQL work",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on expertise with SQL"
+      },
+      {
+        "candidate_evidence": "Google Devices and Services background is unclear on data warehouse / ETL domain specificity; no explicit evidence of database, data warehouse, or ETL architecture experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Broad range of experience within large-scale Database and/or Data Warehouse technology, ETL, analytics and cloud technologies"
+      },
+      {
+        "candidate_evidence": "Profile notes Python basic and actively learning; no evidence of data science background or hands-on data science work",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience in data science is highly desirable; hands-on Python experience"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 45,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Pre-sales partner and GSI/RSI enablement experience. Candidate background is post-sales operations, transformation, and commercial scaling rather than pre-sales partnership and customer-facing selling motion.",
+        "mitigation": "Candidate's transformation and stakeholder management experience is transferable to partner enablement, but would require ramp-up on pre-sales partner engagement patterns, competitive positioning, and sales-cycle rhythms.",
+        "severity": "high"
+      },
+      {
+        "gap": "Hands-on SQL expertise. Role requires active hands-on SQL work for demos, troubleshooting, and technical depth validation.",
+        "mitigation": "Candidate is actively learning Python and may have foundational SQL knowledge, but hands-on proficiency for pre-sales technical demonstrations is not evidenced and would require substantive ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "Data warehouse, ETL, and cloud data platform domain depth. Role requires deep familiarity with large-scale database, data warehouse, ETL, and analytics architectures.",
+        "mitigation": "Candidate's Google background and product operations experience may include some exposure, but explicit domain grounding in data platforms is not stated and would need validation and ramp-up.",
+        "severity": "high"
+      },
+      {
+        "gap": "Data science and Python hands-on experience. While listed as 'highly desirable,' hands-on Python and data-science context are light in a data platform pre-sales role.",
+        "mitigation": "Candidate is actively learning Python, suggesting openness to technical depth, but practical data-science or Python application in customer scenarios is not evidenced.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Role family fit. Partner Solution Engineer is a pre-sales technical specialist function, not a strategy, operations, transformation, or program leadership role.",
+        "mitigation": "Candidate's strategy and operations background does not align well with the pre-sales technical selling and partner enablement focus. This is a deprioritized family unless strategic transformation is embedded in the role.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role requires 4 years industry + 2 pre-sales (anchoring L4 territory), presenting to mixed audiences, and hands-on technical depth in SQL/data platforms. No management or manager-of-manager scope stated. Pre-sales specialist role with technical emphasis and partner/customer engagement depth typical of L4 individual contributor.",
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Partner Solution Engineer is a pre-sales technical specialist role focused on GSI/RSI partner enablement, SQL expertise, and data warehouse platform depth\u2014a natural fit for forward-deployed or pre-sales strategy contexts. Candidate brings eight years of post-sales transformation operations and business problem-solving at scale but lacks pre-sales partner experience, hands-on SQL, data warehouse/ETL domain grounding, and Python/data-science background. The role family is a deprioritized stretch (pre-sales technical specialist vs. post-sales strategy/ops leader), and critical technical gaps (SQL, data platforms, Python) are not easily managed in a hands-on technical pre-sales function.",
+    "uncertainties": [
+      "Candidate's Google Devices and Services domain and its relevance to data warehouse / analytics / cloud data platforms unclear from profile",
+      "No detail on candidate's depth of SQL, data warehouse, or ETL architectural knowledge",
+      "Extent of candidate's hands-on technical depth and comfort with live demos or whiteboarding data platform scenarios not stated",
+      "Job location is Stockholm (SE-Stockholm-MSO); visa or relocation readiness not stated in candidate profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

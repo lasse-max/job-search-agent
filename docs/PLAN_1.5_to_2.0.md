@@ -68,7 +68,17 @@ Then George stamps STATUS, we freeze. **The search comes first** — the app is 
 
 ---
 
-## Phase D — 2.0 = optimize the app
+## Phase C.5 — Stage 1.9: pre-intensive-use calibration (NEW, owner 2026-07-11)
+
+Inserted between "the app works" and "I live in it daily." Rationale: the Profile page made the search *definition* visible and immediately exposed B-27 — **2 of 3 watchlist companies are dark**. Calibrating scores on a third of the universe produces confident answers about the wrong room. Fix the inputs first.
+
+- [ ] **A. Profile clean-up** — owner audits every criterion now visible on the Profile page: locations (Perth ✓; decide Brisbane/Adelaide/Canberra; re-check the EU list), the 92-company watchlist (still wanted? tiers right?), role families + approved-stretch, seniority band, blockers, languages, thresholds. A wrong criterion corrupts everything downstream — cheaper to fix than any score tuning.
+- [ ] **B. Calibration Sweep 3** — parked on `sweep3-wip` (interrupted mid v4-cache population). Must not merge until the cache is fully populated, benchmarks run clean off it, and Cato reviews.
+- [ ] **C. Coverage push (B-27)** — 34% → **≥80%**. Repair the existing-adapter sources first, enable the 14 audited Ashby feeds in bounded batches, then build the highest measured tier-weighted adapter (currently SmartRecruiters from the documented audit). Keep manual intake for stubborn Tier-1s and consider B-14 email discovery.
+
+**Exit gate before 2.0 (owner):** ≥80% coverage · Profile audited and true · Sweep 3 shipped + cleared · owner trusts the digest enough to run the search through it intensively.
+
+## Phase D — 2.0 = optimize the app · _gated on ≥80% coverage_
 
 Only after 1.5 is stable and *used* — live usage tells us which of these actually matter. Rough priority (finalized after Phase B):
 - **Analytics/metrics** — funnel conversion, response rates, time-in-stage.

@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices & Services with two promotions, scaling global commercial operations and transformation programs; product ownership experience spanning requirements, logic design, UAT, and rollout",
+        "evidence_strength": "strong",
+        "job_requirement": "Be a trusted advisor to customers and drive their AI strategies; build, design and refine conversational AI agents"
+      },
+      {
+        "candidate_evidence": "Demonstrated ability to lead transformation programs and scale operations globally at Google; documented experience managing multiple complex initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects"
+      },
+      {
+        "candidate_evidence": "Global operations scaling experience with cross-functional stakeholder management; product transformation work requiring alignment across teams",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate across technical and non-technical stakeholders through the full development lifecycle; ensure clear communication"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations background with emphasis on transformation; eight-year tenure with two promotions indicates demonstrated insight contribution at scale",
+        "evidence_strength": "medium",
+        "job_requirement": "Contribute data-driven, strategic insights to customer and internal decisions"
+      },
+      {
+        "candidate_evidence": "Product operations experience from ownership, requirements, and design perspective; conversational AI and agent development are emerging new domains for the candidate",
+        "evidence_strength": "medium",
+        "job_requirement": "Strong understanding of software development, product management and engineering principles to act as strategic partner"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No direct conversational AI or agent development experience; domain is new",
+        "mitigation": "Rapid onboarding and product immersion typical for strategist roles; transferable product lifecycle and stakeholder management skills from Google enable fast ramp",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited native product management or software engineering production background to serve as technical peer to engineers",
+        "mitigation": "Strategist roles emphasize advisory and coordination rather than hands-on engineering; customer insight and project leadership can compensate",
+        "severity": "medium"
+      },
+      {
+        "gap": "No stated consulting or classic case-team background; advisory credibility in new domain requires trust-building",
+        "mitigation": "Google brand and demonstrated transformation leadership provide strong credibility foundation for customer advisory work",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Strategist role with stated agent development ownership, cross-functional coordination, and customer advisory scope. JD emphasizes leadership of complex projects and stakeholder management without explicit manager-of-managers language. No prior company stage or hiring band stated; cofounder/VC-backed AI platform context suggests growth-stage environment. Estimated L5 mid-level IC/lead.",
+    "role_family_fit": 82,
+    "scope_seniority": 78,
+    "summary": "Strong fit for Agent Strategist at Sierra: candidate brings eight years of Google-scale transformation and product operations leadership, with proven cross-functional coordination and customer insight generation. Primary gaps are domain novelty (conversational AI/agents) and lack of hands-on engineering depth, both manageable through rapid product immersion and reliance on core strategist strengths in execution, stakeholder alignment, and business problem-solving.",
+    "uncertainties": [
+      "Company stage/maturity not stated; cofounder backgrounds suggest growth-stage VC (affects team dynamics and pace expectations)",
+      "No mention of Italian-language requirement strength or candidate's Italian fluency in profile",
+      "Conversational design and agent development learning curve not quantified; depends on product complexity and onboarding rigor"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

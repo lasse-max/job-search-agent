@@ -1,0 +1,77 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "stretch",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations, including experience scaling global commercial operations and driving transformation programs, demonstrating advisory capability and strategic stakeholder management.",
+        "evidence_strength": "strong",
+        "job_requirement": "Be a trusted advisor to our customers and drive their AI strategies."
+      },
+      {
+        "candidate_evidence": "Demonstrated expertise in scaling global commercial operations and executing transformation programs, with cross-functional coordination across diverse teams and transformation-program delivery experience.",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate across technical and non-technical stakeholders through the full agent development lifecycle process."
+      },
+      {
+        "candidate_evidence": "Product operations background with ownership of requirements, logic design, UAT, rollout, and transformation rather than native engineering PM; limited direct conversational AI design or agent-building experience; some exposure through Google's scale but not specialized in this domain.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build, design and refine conversational AI agents, gaining direct exposure to how these products are developed and improved."
+      },
+      {
+        "candidate_evidence": "Proven track record scaling operations and executing strategic transformation programs at Google; experience managing multiple complex initiatives in a global, high-stakes environment.",
+        "evidence_strength": "strong",
+        "job_requirement": "Drive execution and delivery of multiple complex, high-visibility agent development projects."
+      },
+      {
+        "candidate_evidence": "Eight years in Strategy and Operations at a large tech company; product operations experience includes requirements, design logic, UAT, and rollout, demonstrating software development familiarity; German native and professional English fluency.",
+        "evidence_strength": "medium",
+        "job_requirement": "Outstanding Communication Skills and Technical Expertise: Strong understanding of software development, product management and engineering principles."
+      },
+      {
+        "candidate_evidence": "Strategic operations and transformation-program background demonstrates analytical rigor and ability to identify and mitigate complex technical and business risks across global initiatives.",
+        "evidence_strength": "strong",
+        "job_requirement": "Problem-Solving and Analytical Skills: Strong analytical and critical thinking skills to grasp complex concepts, identify risks, develop mitigation strategies."
+      }
+    ],
+    "confidence": 0.72,
+    "estimated_level": "L5",
+    "evidence_strength": 72,
+    "gap_manageability": 62,
+    "gaps": [
+      {
+        "gap": "Limited specialized conversational AI / agent design experience. Background is broad product operations and transformation rather than deep conversational AI design or LLM/agent development.",
+        "mitigation": "Strong foundation in product operations, cross-functional coordination, and customer strategy can transfer; conversational AI design skills are learnable and can be developed through close collaboration with Agent PMs and Engineers at Sierra.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No production software engineering or coding background (Python is basic, actively learning). JD suggests 'strong understanding of software development' as a requirement.",
+        "mitigation": "Eight years of product operations and transformation program execution at Google demonstrates deep technical literacy and stakeholder management without hands-on coding; sufficient for a strategic/coordinator role that does not require engineering implementation.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Product management experience comes from ownership-driven transformation and operational scope rather than native SDLC/product-manager processes. JD lists 'product management' as part of foundational expertise.",
+        "mitigation": "Strategist role is explicitly cross-functional (partnering with PMs and Engineers) rather than owning the core PM function; operational and transformation expertise directly applies to agent development coordination.",
+        "severity": "low"
+      },
+      {
+        "gap": "No explicit background in AI/ML strategy, large language models, or AI product strategy at scale, though Google tenure suggests some exposure.",
+        "mitigation": "Strategic and operations background at a leading AI/tech company (Google) provides foundational understanding; AI agent strategy is rapidly evolving and domain-specific training is standard for new hires in specialist roles.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Role requires 6+ years of experience, cross-functional leadership, and strategic product scope. JD emphasizes partnering with PMs and Engineers, customer strategy, and multi-project coordination\u2014equivalent to an established senior IC or early-manager level at mid-to-large scale. No manager-of-managers scope implied. Reporting context and company size not stated in JD (reduces confidence slightly). Google founders and leadership suggest mid-stage to growth company. Estimated L5 (Senior IC / Lead level).",
+    "role_family_fit": 76,
+    "scope_seniority": 74,
+    "summary": "The Strategist, Agent Development role aligns strongly with the candidate's Strategy and Operations background, transformation-program execution, and cross-functional leadership capability. The primary gaps are limited specialized conversational AI design experience and no production software engineering background; however, the role is explicitly a cross-functional strategist position (not an engineer), and the candidate's eight years of product operations and stakeholder coordination at Google substantially mitigate these gaps. The role is estimated at L5, well within target scope for a senior manager or principal IC, though the conversational AI domain is new territory and will require domain-specific ramp.",
+    "uncertainties": [
+      "Company size and growth stage ('unknown_unless_stated_in_jd'); Sierra appears to be a venture-backed growth-stage company founded by prominent ex-Google/Salesforce leaders, but headcount and company maturity are not stated in the JD.",
+      "Conversational AI and agent development expertise of candidate is inferred only from Google tenure; no explicit portfolio, case study, or project evidence of AI/LLM work is provided in candidate profile.",
+      "Degree/educational background ('CS, Engineering, Mathematics or equivalent practical experience is a strong plus') is not stated in candidate profile; assuming practical experience at Google satisfies equivalence.",
+      "Dutch-language requirement listed in title; candidate languages show German (native) and English (professional/fluent), with no Dutch mentioned; clarification needed."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

@@ -1,0 +1,78 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "consider",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; experience in requirements design, process design, UAT, rollout, and transformation execution.",
+        "evidence_strength": "strong",
+        "job_requirement": "Own knowledge management environment end-to-end: defining architecture, establishing governance, maintaining content quality"
+      },
+      {
+        "candidate_evidence": "Product operations and business transformation background with ownership of deployment, requirements logic design, and implementation-heavy transformation work; actively learning new technologies.",
+        "evidence_strength": "medium",
+        "job_requirement": "Build and implement AI agent integrations and drive adoption of technology solutions and workflow automation tools"
+      },
+      {
+        "candidate_evidence": "Strategy and Operations expertise with experience in reporting and data-driven operational decision-making within global commercial operations context.",
+        "evidence_strength": "medium",
+        "job_requirement": "Develop metrics and analytics to track knowledge usage, platform health, and effectiveness of AI integrations; translate metrics into strategic insights"
+      },
+      {
+        "candidate_evidence": "Eight years in scaling global operations demonstrates established stakeholder and partnership management across geographies and functions.",
+        "evidence_strength": "strong",
+        "job_requirement": "Outstanding communication and relationship-building skills with senior stakeholders and external partners globally"
+      },
+      {
+        "candidate_evidence": "No specific evidence of deep Confluence or wiki-platform operational ownership in provided profile.",
+        "evidence_strength": "weak",
+        "job_requirement": "Hands-on experience with Confluence (or similar) architecture, governance, and rebuilding spaces from ground up"
+      },
+      {
+        "candidate_evidence": "Operational expertise from Google commercial operations; no demonstrated background in legal, risk, or compliance functions.",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep operational expertise from corporate legal, risk, compliance department or legal operations environment"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 62,
+    "gap_manageability": 68,
+    "gaps": [
+      {
+        "gap": "No legal operations, risk, or compliance domain background; commercial operations is a different operational ecosystem with distinct stakeholder, process, and regulatory dynamics",
+        "mitigation": "Leverage fundamental operational excellence and quick learning track record; pair with embedded legal operations mentorship in first 90 days; invest in REAL function onboarding and legal tech familiarity (contract management, e-discovery, compliance reporting context).",
+        "severity": "high"
+      },
+      {
+        "gap": "No demonstrated hands-on Confluence architecture, governance design, or large-scale wiki rebuild experience; platform-specific knowledge management depth is stated as required",
+        "mitigation": "Front-load Confluence training and architecture review in first month; conduct knowledge audit and stakeholder interviews to understand current state; consider contract with knowledge management specialist or Xero's existing Confluence power-users for first rebuild cycle.",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited demonstrated track record selecting, implementing, and managing AI technology solutions; profile shows active learning but not led AI implementations",
+        "mitigation": "Partner with Xero's IT/AI governance team for vendor evaluation and RFP process; prioritize AI agent integration requirements gathering and pilot phase; leverage transformation execution discipline to manage scope and adoption.",
+        "severity": "medium"
+      },
+      {
+        "gap": "12-month fixed-term contract creates tight timeline for knowledge accumulation, relationship building, and sustained impact in a function unfamiliar to candidate",
+        "mitigation": "Define clear 90-120-day knowledge management architecture and governance roadmap; establish measurable adoption and platform-health KPIs; document processes and decisions to enable continuity beyond contract.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Role requires deep operational expertise in legal/compliance environment with hands-on platform and AI technology leadership. Title \"Senior Business Operations Manager\" with 12-month fixed contract suggests L4 equivalent scope; no reporting line or management headcount stated. Confidence moderated by lack of company stage clarity and absence of stated years-required signal in JD.",
+    "role_family_fit": 65,
+    "scope_seniority": 70,
+    "summary": "Strong operational and transformation execution background, excellent stakeholder management, and proven ability to scale global operations. However, lacks direct legal operations domain expertise, no demonstrated Confluence/wiki-platform deep ownership, and limited AI technology implementation track record. AI integration and knowledge management are core to the role; candidate must bridge knowledge domain and platform-specific gaps quickly in a 12-month fixed term.",
+    "uncertainties": [
+      "No stated legal operations, risk, or compliance background\u2014domain fit unclear",
+      "No evidence of Confluence or similar wiki-platform architectural ownership",
+      "AI technology implementation scope and depth unknown from profile",
+      "Company size and REAL function maturity level not provided",
+      "12-month contract timeline and post-contract clarity not specified"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

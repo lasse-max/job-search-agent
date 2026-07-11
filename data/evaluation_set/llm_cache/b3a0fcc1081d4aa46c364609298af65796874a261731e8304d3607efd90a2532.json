@@ -1,0 +1,51 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years of global commercial operations and transformation programs at Google, with experience in UAT, rollout, and process design",
+        "evidence_strength": "weak",
+        "job_requirement": "Contribute to and audit human data annotations with keen eye for detail"
+      },
+      {
+        "candidate_evidence": "Product operations and strategy background with scaling and transformation scope, but no demonstrated data annotation or ML training dataset expertise",
+        "evidence_strength": "weak",
+        "job_requirement": "Strong analytical skills and attention to quality standards"
+      }
+    ],
+    "confidence": 0.4,
+    "estimated_level": "L3",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No demonstrated data annotation, labeling, or ML training dataset experience",
+        "mitigation": "Candidate's process design and quality-audit experience from commercial operations could transfer, but domain-specific annotation methodology and LLM training data standards require ramp.",
+        "severity": "high"
+      },
+      {
+        "gap": "Role is hands-on specialist contributor; candidate profile targets L4-L5 management and strategic scope",
+        "mitigation": "Candidate could accept a lateral move into data quality, but significant seniority and function mismatch suggests poor retention and engagement risk.",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated research team or ML systems background",
+        "mitigation": "General analytical and quality-assurance mindset may help, but deep familiarity with LLM annotation workflows, common errors, and frontier model data pipelines is absent.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 50,
+    "level_rationale": "JD describes a specialist contributor role on a human annotation team within Research; title and scope suggest 0-3 years equivalent seniority with hands-on execution focus and no stated management or strategic ownership. Company stage is unstated, limiting confidence.",
+    "role_family_fit": 5,
+    "scope_seniority": 25,
+    "summary": "Candidate is a Google Strategy and Operations leader with eight years of commercial transformation and process scaling experience, targeting L4-L5 manager/senior-IC roles. This posting is a hands-on Data Annotation Quality Specialist (estimated L3) within Mistral's Research function, requiring deep data-labeling expertise and detailed annotation audit work. Function fit is very poor: the candidate's profile is strategy, operations, and program leadership; the role is specialist contributor work in ML data quality. Seniority is significantly above band, raising engagement and retention risk. No hard blockers, but high gaps in domain-specific annotation experience and fundamental role misalignment make this a low-confidence skip.",
+    "uncertainties": [
+      "Mistral company size and stage unstated in JD; no clarity on whether role is strictly hands-on or has growth/mentorship scope.",
+      "JD does not detail annotation domain (code, instruction-following, safety, etc.) or tools/frameworks expected.",
+      "Candidate's honest_gaps include 'Product experience comes from ownership, requirements, logic design, UAT, rollout' \u2014 unclear how much of this overlaps with data-curation rigor or annotation governance."
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}

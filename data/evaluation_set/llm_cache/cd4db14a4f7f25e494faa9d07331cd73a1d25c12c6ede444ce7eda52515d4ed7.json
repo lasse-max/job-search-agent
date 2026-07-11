@@ -1,0 +1,53 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google scaling global commercial operations and transformation, demonstrating capability to drive outcomes and lead initiatives",
+        "evidence_strength": "medium",
+        "job_requirement": "Lead Customer Success Manager title implies responsibility for customer outcomes and engagement leadership"
+      },
+      {
+        "candidate_evidence": "Global scaling experience at Google and multi-functional stakeholder management across distributed teams",
+        "evidence_strength": "medium",
+        "job_requirement": "Multi-location role (Singapore/London) suggests geographic or cross-region ownership scope"
+      }
+    ],
+    "confidence": 0.35,
+    "estimated_level": "L4",
+    "evidence_strength": 35,
+    "gap_manageability": 40,
+    "gaps": [
+      {
+        "gap": "Customer Success Management is not in the candidate's target role families; candidate backgrounds in Strategy and Operations, Business Transformation, and Strategic Programs, not native CS account management",
+        "mitigation": "Role would require deliberate pivot from strategic planning and operations transformation to tactical customer retention and CS metrics; feasible but represents a functional shift, not a lateral move",
+        "severity": "high"
+      },
+      {
+        "gap": "JD snapshot is corrupted and contains no substantive job description text\u2014only website HTML and metadata. Cannot assess required skills, responsibilities, reporting line, or success criteria",
+        "mitigation": "Request clean, complete JD. Current evidence base is insufficient for reliable role-fit or seniority assessment",
+        "severity": "high"
+      },
+      {
+        "gap": "Candidate's strategic/transformation background does not map to typical CSM duties (customer onboarding, health checks, retention, quota metrics). Product Operations and ProServ experience is missing from profile",
+        "mitigation": "If role includes transformation of CS operations, process design, or strategic CSM program scope, re-evaluate; generic CSM remains misaligned",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 45,
+    "level_rationale": "Role title \"Lead\" and multi-location CSM scope (Singapore/London) suggest IC ownership and some team mentorship, consistent with L4 IC or junior manager duties. However, the cached JD is severely incomplete (contains mostly website markup and no coherent job description text), preventing confident anchoring by years required, management scope, reporting line, or company context. Low confidence due to missing substantive JD content.",
+    "role_family_fit": 25,
+    "scope_seniority": 55,
+    "summary": "Lead Customer Success Manager at OutSystems (Singapore/London) is a Customer Success role without explicit strategic ownership, transformation, or cross-functional program scope. The candidate profiles as a Strategy and Operations leader with eight years of experience at Google in commercial operations and transformation, placing significant misalignment between the target role family and the candidate's expertise. The cached JD snapshot is incomplete and does not articulate clear seniority anchors, business impact ownership, or strategic scope beyond typical CSM responsibilities.",
+    "uncertainties": [
+      "JD is incomplete; cannot determine whether 'Lead CSM' involves strategic program leadership, CS operations transformation, or SaaS/GTM strategy vs. tactical customer account management",
+      "Company size and stage unknown ('unknown_unless_stated_in_jd'), preventing contextualization of 'Lead' title or seniority band",
+      "No explicit reporting line, team size, budget ownership, or cross-functional scope stated in fetched JD snapshot",
+      "Unclear whether multi-location assignment is geographic ownership (strategic) or travel/coverage requirement (tactical)",
+      "Candidate's visa/relocation status for Singapore/London not noted in profile"
+    ]
+  },
+  "prompt_version": "role_evaluation_v5"
+}
