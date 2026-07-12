@@ -43,6 +43,7 @@ tools_and_skills:
   AI and agentic tooling: "designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration"
 employer_opt_outs:
   Palantir: "Owner opted out of this employer on 2026-07-08; revisit explicitly before re-enabling."
+  HelloFresh: "Owner opted out of this employer on 2026-07-12 (does not rate the product/service); revisit explicitly before re-enabling."
 brand_floor:
   rule: "Deprioritize prestige or trajectory step-downs even when role fit and visa are fine."
   preferred_brands:
