@@ -41,6 +41,16 @@ CASES = (
         malformed_json_fixture=ROOT / "data" / "fixtures" / "lever" / "malformed_json.json",
         invalid_posting_fixture=ROOT / "data" / "fixtures" / "lever" / "invalid_posting.json",
     ),
+    FailLoudCase(
+        company_name="Grab",
+        source_type="smartrecruiters",
+        malformed_json_fixture=(
+            ROOT / "data" / "fixtures" / "smartrecruiters" / "malformed_json.json"
+        ),
+        invalid_posting_fixture=(
+            ROOT / "data" / "fixtures" / "smartrecruiters" / "invalid_posting.json"
+        ),
+    ),
 )
 
 

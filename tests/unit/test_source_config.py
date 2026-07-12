@@ -27,7 +27,13 @@ class SourceConfigTest(unittest.TestCase):
         )
         self.assertEqual(parser_version("lever"), "lever_v1")
 
-    def test_built_adapter_companies_are_enabled_only_when_supported(self) -> None:
+        self.assertEqual(
+            source_endpoint("smartrecruiters", "Grab"),
+            "https://api.smartrecruiters.com/v1/companies/Grab/postings?limit=100&offset=0",
+        )
+        self.assertEqual(parser_version("smartrecruiters"), "smartrecruiters_v1")
+
+    def test_supported_sources_remain_owner_gated_when_newly_audited(self) -> None:
         companies = load_watchlist()
         ashby_companies = {
             str(company["name"]): bool(company["enabled"])
@@ -44,17 +50,28 @@ class SourceConfigTest(unittest.TestCase):
             for company in companies
             if company.get("ats_type") == "lever" and not bool(company["enabled"])
         ]
+        disabled_smartrecruiters = [
+            str(company["name"])
+            for company in companies
+            if company.get("ats_type") == "smartrecruiters" and not bool(company["enabled"])
+        ]
         enabled_unsupported = [
             str(company["name"])
             for company in companies
-            if bool(company["enabled"]) and company.get("ats_type") not in {"greenhouse", "ashby", "lever"}
+            if bool(company["enabled"])
+            and company.get("ats_type")
+            not in {"greenhouse", "ashby", "lever", "smartrecruiters"}
         ]
 
         self.assertTrue(ashby_companies["OpenAI"])
         self.assertTrue(ashby_companies["Airwallex"])
         self.assertTrue(ashby_companies["Sierra"])
-        self.assertEqual(disabled_greenhouse, [])
-        self.assertEqual(disabled_lever, ["Atlassian"])
+        self.assertEqual(disabled_greenhouse, ["DoorDash", "Glean"])
+        self.assertEqual(disabled_lever, ["Atlassian", "SafetyCulture"])
+        self.assertEqual(
+            disabled_smartrecruiters,
+            ["Canva", "Wise", "Grab", "ServiceNow / Moveworks", "Nearmap", "Delivery Hero"],
+        )
         self.assertEqual(enabled_unsupported, [])
 
 

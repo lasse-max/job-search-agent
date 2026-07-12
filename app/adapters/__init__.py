@@ -7,6 +7,7 @@ from app.adapters.base import SourceAdapter
 from app.adapters.greenhouse import GreenhouseAdapter
 from app.adapters.lever import LeverAdapter
 from app.adapters.manual import ManualAdapter
+from app.adapters.smartrecruiters import SmartRecruitersAdapter
 
 
 def get_adapter(ats_type: str) -> SourceAdapter:
@@ -16,6 +17,8 @@ def get_adapter(ats_type: str) -> SourceAdapter:
         return AshbyAdapter()
     if ats_type == LeverAdapter.source_type:
         return LeverAdapter()
+    if ats_type == SmartRecruitersAdapter.source_type:
+        return SmartRecruitersAdapter()
     if ats_type == ManualAdapter.source_type:
         raise ValueError("Manual sources are intake-only and cannot be auto-scanned")
     raise ValueError(f"Unsupported ATS adapter: {ats_type}")
@@ -26,6 +29,7 @@ def is_adapter_supported(ats_type: str) -> bool:
         GreenhouseAdapter.source_type,
         AshbyAdapter.source_type,
         LeverAdapter.source_type,
+        SmartRecruitersAdapter.source_type,
         ManualAdapter.source_type,
     }
 
@@ -37,6 +41,8 @@ def source_endpoint(ats_type: str, source_key: str) -> str:
         return AshbyAdapter().endpoint(source_key)
     if ats_type == LeverAdapter.source_type:
         return LeverAdapter().endpoint(source_key)
+    if ats_type == SmartRecruitersAdapter.source_type:
+        return SmartRecruitersAdapter().endpoint(source_key)
     if ats_type == ManualAdapter.source_type:
         return ManualAdapter().endpoint(source_key)
     raise ValueError(f"Unsupported ATS source metadata: {ats_type}")
@@ -49,6 +55,8 @@ def parser_version(ats_type: str) -> str:
         return AshbyAdapter.parser_version
     if ats_type == LeverAdapter.source_type:
         return LeverAdapter.parser_version
+    if ats_type == SmartRecruitersAdapter.source_type:
+        return SmartRecruitersAdapter.parser_version
     if ats_type == ManualAdapter.source_type:
         return ManualAdapter.parser_version
     raise ValueError(f"Unsupported ATS parser metadata: {ats_type}")

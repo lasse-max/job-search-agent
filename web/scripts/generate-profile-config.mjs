@@ -15,12 +15,12 @@ const location = readYaml("location_policy.yaml");
 const scoring = readYaml("scoring_policy.yaml");
 const recency = readYaml("recency_policy.yaml");
 const watchlist = readYaml("watchlist.yaml");
-const supportedAdapters = new Set(["ashby", "greenhouse", "lever"]);
+const supportedAdapters = new Set(["ashby", "greenhouse", "lever", "smartrecruiters"]);
 
 function darkReasonCode(company) {
   if (company.enabled) return null;
   if (company.job_count_at_audit === 0) return "dead_feed";
-  if (!company.source_key || company.ats_type === "unknown") return "missing_source";
+  if (!company.ats_type || company.ats_type === "unknown") return "missing_source";
   if (
     company.supported_adapter &&
     supportedAdapters.has(company.supported_adapter) &&

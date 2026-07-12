@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import json
 import sqlite3
 import tempfile
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from app.adapters import parser_version, source_endpoint
 from app.config import load_company_config
@@ -58,6 +59,22 @@ CASES = (
         expected_count=3,
         expected_evaluated=3,
     ),
+    AdapterInvariantCase(
+        company_name="Grab",
+        source_type="smartrecruiters",
+        valid_fixture=(
+            ROOT / "data" / "fixtures" / "smartrecruiters" / "grab_jobs.json"
+        ),
+        malformed_fixture=(
+            ROOT / "data" / "fixtures" / "smartrecruiters" / "malformed_jobs.json"
+        ),
+        zero_fixture=(
+            ROOT / "data" / "fixtures" / "smartrecruiters" / "zero_jobs.json"
+        ),
+        missing_source_job_id="744000137307759",
+        expected_count=2,
+        expected_evaluated=1,
+    ),
 )
 
 
@@ -68,12 +85,14 @@ class AdapterInvariantTest(unittest.TestCase):
                 with tempfile.TemporaryDirectory() as directory:
                     db_path = Path(directory) / "slice.sqlite"
 
-                    first = run_scan(
+                    first = _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=case.valid_fixture,
                     )
-                    second = run_scan(
+                    second = _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=case.valid_fixture,
@@ -108,12 +127,14 @@ class AdapterInvariantTest(unittest.TestCase):
                     db_path = Path(directory) / "slice.sqlite"
                     partial_fixture = _write_partial_fixture(case, Path(directory))
 
-                    run_scan(
+                    _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=case.valid_fixture,
                     )
-                    run_scan(
+                    _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=partial_fixture,
@@ -125,7 +146,8 @@ class AdapterInvariantTest(unittest.TestCase):
                     self.assertEqual(row["availability_state"], "open")
                     self.assertEqual(row["missing_successful_scan_count"], 1)
 
-                    run_scan(
+                    _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=partial_fixture,
@@ -140,12 +162,14 @@ class AdapterInvariantTest(unittest.TestCase):
                 with tempfile.TemporaryDirectory() as directory:
                     db_path = Path(directory) / "slice.sqlite"
 
-                    run_scan(
+                    _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=case.valid_fixture,
                     )
-                    failed = run_scan(
+                    failed = _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=case.malformed_fixture,
@@ -172,12 +196,14 @@ class AdapterInvariantTest(unittest.TestCase):
                 with tempfile.TemporaryDirectory() as directory:
                     db_path = Path(directory) / "slice.sqlite"
 
-                    run_scan(
+                    _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=case.valid_fixture,
                     )
-                    zero = run_scan(
+                    zero = _run_case_scan(
+                        case,
                         company_name=case.company_name,
                         db_path=db_path,
                         fixture_path=case.zero_fixture,
@@ -201,15 +227,29 @@ def _write_partial_fixture(case: AdapterInvariantCase, directory: Path) -> Path:
         ]
     else:
         partial_payload = dict(payload)
-        partial_payload["jobs"] = [
+        collection_key = "jobs" if "jobs" in partial_payload else "postings"
+        partial_payload[collection_key] = [
             job
-            for job in partial_payload["jobs"]
+            for job in partial_payload[collection_key]
             if str(job.get("id")) != case.missing_source_job_id
         ]
+        if "totalFound" in partial_payload:
+            partial_payload["totalFound"] = len(partial_payload[collection_key])
 
     partial_fixture = directory / f"{case.source_type}_partial.json"
     partial_fixture.write_text(json.dumps(partial_payload), encoding="utf-8")
     return partial_fixture
+
+
+def _run_case_scan(case: AdapterInvariantCase, **kwargs):
+    company = load_company_config(case.company_name)
+    if company.enabled:
+        return run_scan(**kwargs)
+    with patch(
+        "app.services.ingest.load_company_config",
+        return_value=replace(company, enabled=True),
+    ):
+        return run_scan(**kwargs)
 
 
 def _posting_row(conn: sqlite3.Connection, source_job_id: str) -> sqlite3.Row:

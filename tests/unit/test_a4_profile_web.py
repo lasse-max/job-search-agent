@@ -114,7 +114,7 @@ class ProfileConfigContractTest(unittest.TestCase):
             )
         }
         self.assertEqual(generated["watchlist"]["coverage"], expected_coverage)
-        self.assertEqual(generated_companies["Google"]["darkReasonCode"], "missing_source")
+        self.assertEqual(generated_companies["Google"]["darkReasonCode"], "manual_only")
         self.assertEqual(generated_companies["Atlassian"]["darkReasonCode"], "dead_feed")
         self.assertEqual(
             generated_companies["Cohere"]["darkReasonCode"],
@@ -172,11 +172,13 @@ def _expected_dark_reason(company: dict[str, object]) -> str | None:
         return None
     if company.get("job_count_at_audit") == 0:
         return "dead_feed"
-    if not company.get("source_key") or company.get("ats_type") == "unknown":
+    if not company.get("ats_type") or company.get("ats_type") == "unknown":
         return "missing_source"
     if (
-        company.get("supported_adapter") in {"ashby", "greenhouse", "lever"}
-        and company.get("ats_type") in {"ashby", "greenhouse", "lever"}
+        company.get("supported_adapter")
+        in {"ashby", "greenhouse", "lever", "smartrecruiters"}
+        and company.get("ats_type")
+        in {"ashby", "greenhouse", "lever", "smartrecruiters"}
     ):
         return "adapter_ready_disabled"
     return "manual_only"

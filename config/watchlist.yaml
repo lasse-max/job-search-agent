@@ -4,26 +4,28 @@ metadata:
   generated_at: "2026-06-23"
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
-    needs_configuration: 30
-    supported: 44
-    manual_fallback: 17
+    needs_configuration: 15
+    supported: 31
+    manual_fallback: 23
+    validated_owner_enablement_pending: 23
 companies:
   - name: "Google"
     tier: 1
     enabled: false
     careers_url: "https://careers.google.com/"
     current_role_url: null
-    ats_type: "unknown"
+    ats_type: "custom"
     source_key: null
     supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: "https://www.google.com/about/careers/applications/jobs/results/"
     job_count_at_audit: null
     target_locations: ["Sydney", "Singapore", "London", "Munich", "US"]
     target_role_family_notes: "Commercial S&O; Product Strategy; Business Operations"
     warm_path: true
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Bespoke careers site; use Google job alerts plus manual URL/text intake."
     selected_for_initial_coverage: false
+    notes: "Audited 2026-07-12: official search is public but no supported ATS feed was identified. Treat the dedicated alerts mailbox as the efficient source rather than maintaining a Google-only scraper."
   - name: "Databricks"
     tier: 1
     enabled: true
@@ -93,49 +95,52 @@ companies:
     enabled: false
     careers_url: "https://careersatdoordash.com/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "greenhouse"
+    source_key: "doordashaustralia"
+    supported_adapter: "greenhouse"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/doordashaustralia/jobs?content=true"
+    job_count_at_audit: 29
     target_locations: ["Sydney", "Melbourne", "London"]
     target_role_family_notes: "Strategy & Operations; New Verticals; Ads"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Manual URL/text intake until owner enables the validated Australia feed."
     selected_for_initial_coverage: false
+    notes: "Validated 2026-07-12. Australia board has 29 jobs. Separate doordashusa board has 454 and may carry other markets; keep disabled until catalog scope, volume, spend, and runtime are owner-approved."
   - name: "Uber"
     tier: 1
     enabled: false
     careers_url: "https://www.uber.com/global/en/careers/"
     current_role_url: null
-    ats_type: "unknown"
+    ats_type: "custom"
     source_key: null
     supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: "https://www.uber.com/global/en/careers/list/"
     job_count_at_audit: null
     target_locations: ["Sydney", "London", "Singapore"]
     target_role_family_notes: "Strategy & Operations; Growth; New Business"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Bespoke careers site; use Uber job alerts plus manual URL/text intake."
     selected_for_initial_coverage: false
+    notes: "Audited 2026-07-12: role detail pages are public and indexable, but the list endpoint rejects the scanner client. No supported public ATS feed identified."
   - name: "Canva"
     tier: 1
     enabled: false
     careers_url: "https://www.lifeatcanva.com/en/jobs/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "smartrecruiters"
+    source_key: "Canva"
+    supported_adapter: "smartrecruiters"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Canva/postings?limit=100&offset=0"
+    job_count_at_audit: 223
     target_locations: ["Sydney"]
     target_role_family_notes: "Business Operations; Product Operations; Growth Operations"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
     selected_for_initial_coverage: false
+    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
   - name: "Atlassian"
     tier: 1
     enabled: false
@@ -152,7 +157,7 @@ companies:
     warm_path: false
     manual_fallback: "Lever source_key=atlassian returns 0 jobs; use manual URL/text intake for promising Atlassian roles until the real ATS feed is found."
     selected_for_initial_coverage: false
-    notes: "Disabled 2026-06-27: Lever key appears dead/silent-zero. Tier-1 company; keep manual intake active while finding the real Atlassian ATS feed."
+    notes: "Re-audited 2026-07-12: Lever key remains dead and the official custom careers page exposes no stable supported feed. Keep alerts/manual intake active."
   - name: "Black Forest Labs"
     tier: 2
     enabled: true
@@ -239,82 +244,86 @@ companies:
     enabled: false
     careers_url: "https://www.amazon.jobs/"
     current_role_url: null
-    ats_type: "unknown"
+    ats_type: "custom"
     source_key: null
     supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: "https://www.amazon.jobs/en/search"
     job_count_at_audit: null
     target_locations: ["Sydney", "Singapore", "London"]
     target_role_family_notes: "Business Operations; Sales S&O; GenAI Programs"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Bespoke careers site; use Amazon job alerts plus manual URL/text intake."
     selected_for_initial_coverage: false
+    notes: "Audited 2026-07-12: official bespoke search, no supported ATS feed identified. Prefer the dedicated alerts mailbox over a single-company scraper."
   - name: "Apple"
     tier: 1
     enabled: false
     careers_url: "https://jobs.apple.com/"
     current_role_url: null
-    ats_type: "unknown"
+    ats_type: "custom"
     source_key: null
     supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: "https://jobs.apple.com/en-us/search"
     job_count_at_audit: null
     target_locations: ["Sydney", "Singapore", "London", "Munich"]
     target_role_family_notes: "Business Process Re-engineering; Channel Strategy; Program Operations"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Custom Workday-backed careers experience; use alerts plus manual URL/text intake."
     selected_for_initial_coverage: false
+    notes: "Audited 2026-07-12: server-rendered public search references Workday applicant data but no reusable public Workday feed was identified."
   - name: "Netflix"
     tier: 1
     enabled: false
     careers_url: "https://jobs.netflix.com/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
+    ats_type: "eightfold"
+    source_key: "netflix"
     supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: "https://explore.jobs.netflix.net/careers"
     job_count_at_audit: null
     target_locations: ["Sydney", "Singapore", "London"]
     target_role_family_notes: "Business Operations; Strategy & Analysis; Product Operations"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Eightfold careers site; use Netflix alerts plus manual URL/text intake until an adapter is prioritized."
     selected_for_initial_coverage: false
+    notes: "Audited 2026-07-12: public site is Eightfold and embeds posting summaries. An Eightfold adapter is reusable, but lower ROI than alerts-mailbox coverage for the remaining bespoke Tier-1 set."
   - name: "SafetyCulture"
     tier: 1
     enabled: false
     careers_url: "https://safetyculture.com/careers/"
     current_role_url: null
-    ats_type: "ashby"
-    source_key: "safetyculture"
-    supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/safetyculture?includeCompensation=false"
-    job_count_at_audit: 0
+    ats_type: "lever"
+    source_key: "safetyculture-2"
+    supported_adapter: "lever"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://api.lever.co/v0/postings/safetyculture-2?mode=json"
+    job_count_at_audit: 33
     target_locations: ["Sydney"]
     target_role_family_notes: "AI Operations; Business Operations; Strategic Programs"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Manual URL/text intake until owner enables the repaired Lever feed."
     selected_for_initial_coverage: false
-    notes: "Feed endpoint responded with zero jobs; verify expected volume before enabling."
+    notes: "Repaired 2026-07-12: the old Ashby token was dead; the live careers page identifies Lever source safetyculture-2. Deliberately disabled pending owner rollout."
   - name: "NEURA Robotics"
     tier: 1
     enabled: false
     careers_url: "https://jobs.neura-robotics.com/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
+    ats_type: "jobshop"
+    source_key: "neura-robotics-a8d5d5"
     supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
+    coverage_state: "Manual fallback"
+    source_evidence_url: "https://jobs.neura-robotics.com/"
     job_count_at_audit: null
     target_locations: ["Metzingen", "Munich area"]
     target_role_family_notes: "AI Business Transformation; Robotics Programs"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "JobShop careers site; use category alerts/manual URL-text intake until an adapter is justified."
     selected_for_initial_coverage: false
+    notes: "Audited 2026-07-12: JobShop-hosted public catalog with strong target-role evidence, but a provider-specific adapter unlocks only this watchlist company."
   - name: "Helsing"
     tier: 1
     enabled: true
@@ -384,17 +393,18 @@ companies:
     enabled: false
     careers_url: "https://wise.jobs/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "smartrecruiters"
+    source_key: "Wise"
+    supported_adapter: "smartrecruiters"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Wise/postings?limit=100&offset=0"
+    job_count_at_audit: 406
     target_locations: ["London", "Singapore"]
     target_role_family_notes: "Product Operations; Revenue Operations; Platform Operations"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
     selected_for_initial_coverage: false
+    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
   - name: "Spotify"
     tier: 2
     enabled: true
@@ -432,17 +442,18 @@ companies:
     enabled: false
     careers_url: "https://www.grab.careers/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "smartrecruiters"
+    source_key: "Grab"
+    supported_adapter: "smartrecruiters"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Grab/postings?limit=100&offset=0"
+    job_count_at_audit: 338
     target_locations: ["Singapore"]
     target_role_family_notes: "Strategy & Programs; Business Operations; New Mobility"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
     selected_for_initial_coverage: false
+    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
   - name: "Salesforce"
     tier: 2
     enabled: false
@@ -480,17 +491,18 @@ companies:
     enabled: false
     careers_url: "https://careers.servicenow.com/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "smartrecruiters"
+    source_key: "ServiceNow"
+    supported_adapter: "smartrecruiters"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings?limit=100&offset=0"
+    job_count_at_audit: 417
     target_locations: ["London", "Sydney", "Singapore"]
     target_role_family_notes: "AI Adoption; Customer Transformation; Business Operations"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
     selected_for_initial_coverage: false
+    notes: "SmartRecruiters source validated 2026-07-12 for ServiceNow. Moveworks catalog parity is not yet established; deliberately disabled."
   - name: "Meta"
     tier: 2
     enabled: false
@@ -608,17 +620,18 @@ companies:
     enabled: false
     careers_url: "https://www.glean.com/careers"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Needs configuration"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "greenhouse"
+    source_key: "gleanwork"
+    supported_adapter: "greenhouse"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/gleanwork/jobs?content=true"
+    job_count_at_audit: 132
     target_locations: ["London", "Singapore", "Sydney"]
     target_role_family_notes: "Customer Strategy; Value Consulting; Business Operations"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Manual URL/text intake until owner enables the validated Greenhouse feed."
     selected_for_initial_coverage: false
+    notes: "Greenhouse source_key gleanwork validated 2026-07-12; deliberately disabled pending bounded rollout."
   - name: "Cohere"
     tier: 2
     enabled: false
@@ -627,9 +640,9 @@ companies:
     ats_type: "ashby"
     source_key: "cohere"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false"
-    job_count_at_audit: 132
+    job_count_at_audit: 130
     target_locations: ["London", "remote Europe"]
     target_role_family_notes: "Customer Deployment; Business Operations; Partnerships"
     warm_path: false
@@ -643,9 +656,9 @@ companies:
     ats_type: "ashby"
     source_key: "elevenlabs"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false"
-    job_count_at_audit: 153
+    job_count_at_audit: 176
     target_locations: ["London", "remote Europe"]
     target_role_family_notes: "GTM Strategy; Customer Operations; Partnerships"
     warm_path: false
@@ -739,9 +752,9 @@ companies:
     ats_type: "ashby"
     source_key: "deliveroo"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false"
-    job_count_at_audit: 206
+    job_count_at_audit: 196
     target_locations: ["London"]
     target_role_family_notes: "Strategy & Operations; Product Operations; Advertising"
     warm_path: false
@@ -771,9 +784,9 @@ companies:
     ats_type: "ashby"
     source_key: "deepl"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/deepl?includeCompensation=false"
-    job_count_at_audit: 22
+    job_count_at_audit: 24
     target_locations: ["Germany", "London"]
     target_role_family_notes: "Business Operations; GTM Strategy; AI Programs"
     warm_path: false
@@ -898,16 +911,16 @@ companies:
     current_role_url: null
     ats_type: "ashby"
     source_key: "vercel"
-    supported_adapter: null
-    coverage_state: "Needs configuration"
+    supported_adapter: "ashby"
+    coverage_state: "Manual fallback"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/vercel?includeCompensation=false"
     job_count_at_audit: 0
     target_locations: ["London", "remote Europe"]
     target_role_family_notes: "GTM Strategy; Customer Operations; Partnerships"
     warm_path: false
-    manual_fallback: "Confirm ATS/source key, then use manual URL/text intake until configured."
+    manual_fallback: "Ashby token still returns zero; use manual URL/text intake while identifying the live feed."
     selected_for_initial_coverage: false
-    notes: "Feed endpoint responded with zero jobs; verify expected volume before enabling."
+    notes: "Revalidated 2026-07-12: public Ashby token still returns a valid zero-job payload. Do not enable."
   - name: "Quantexa"
     tier: 2
     enabled: false
@@ -916,9 +929,9 @@ companies:
     ats_type: "ashby"
     source_key: "quantexa"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/quantexa?includeCompensation=false"
-    job_count_at_audit: 25
+    job_count_at_audit: 30
     target_locations: ["London", "Singapore", "Sydney"]
     target_role_family_notes: "Customer Transformation; Delivery Strategy; AI Programs"
     warm_path: false
@@ -932,9 +945,9 @@ companies:
     ats_type: "ashby"
     source_key: "synthesia"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false"
-    job_count_at_audit: 80
+    job_count_at_audit: 73
     target_locations: ["London"]
     target_role_family_notes: "Customer Strategy; Business Operations; GTM"
     warm_path: false
@@ -948,9 +961,9 @@ companies:
     ats_type: "ashby"
     source_key: "encord"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/encord?includeCompensation=false"
-    job_count_at_audit: 48
+    job_count_at_audit: 51
     target_locations: ["London"]
     target_role_family_notes: "Customer Operations; Business Operations; GTM Strategy"
     warm_path: false
@@ -964,9 +977,9 @@ companies:
     ats_type: "ashby"
     source_key: "lovable"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/lovable?includeCompensation=false"
-    job_count_at_audit: 79
+    job_count_at_audit: 70
     target_locations: ["Stockholm", "London / remote Europe"]
     target_role_family_notes: "Business Operations; GTM Strategy; Customer Programs"
     warm_path: false
@@ -980,9 +993,9 @@ companies:
     ats_type: "ashby"
     source_key: "magentic"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/magentic?includeCompensation=false"
-    job_count_at_audit: 9
+    job_count_at_audit: 6
     target_locations: ["London"]
     target_role_family_notes: "Deployment Strategy; Enterprise AI Delivery"
     warm_path: false
@@ -996,7 +1009,7 @@ companies:
     ats_type: "ashby"
     source_key: "alephalpha"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/alephalpha?includeCompensation=false"
     job_count_at_audit: 10
     target_locations: ["Heidelberg", "Berlin"]
@@ -1012,9 +1025,9 @@ companies:
     ats_type: "ashby"
     source_key: "decagon"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/decagon?includeCompensation=false"
-    job_count_at_audit: 108
+    job_count_at_audit: 115
     target_locations: ["London"]
     target_role_family_notes: "Agent Strategy; Customer Deployment"
     warm_path: false
@@ -1028,9 +1041,9 @@ companies:
     ats_type: "ashby"
     source_key: "cognition"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/cognition?includeCompensation=false"
-    job_count_at_audit: 68
+    job_count_at_audit: 74
     target_locations: ["Singapore", "London / remote"]
     target_role_family_notes: "GTM Operations; Business Operations"
     warm_path: false
@@ -1137,17 +1150,18 @@ companies:
     enabled: false
     careers_url: "https://www.nearmap.com/careers"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Manual fallback"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "smartrecruiters"
+    source_key: "Nearmap"
+    supported_adapter: "smartrecruiters"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Nearmap/postings?limit=100&offset=0"
+    job_count_at_audit: 29
     target_locations: ["Sydney"]
     target_role_family_notes: "Product Operations; AI/ML Program Delivery"
     warm_path: false
-    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    manual_fallback: "Manual URL/text intake until owner enables the validated SmartRecruiters feed."
     selected_for_initial_coverage: false
+    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
   - name: "Macquarie Group"
     tier: 3
     enabled: false
@@ -1281,17 +1295,18 @@ companies:
     enabled: false
     careers_url: "https://careers.deliveryhero.com/"
     current_role_url: null
-    ats_type: "unknown"
-    source_key: null
-    supported_adapter: null
-    coverage_state: "Manual fallback"
-    source_evidence_url: null
-    job_count_at_audit: null
+    ats_type: "smartrecruiters"
+    source_key: "DeliveryHero"
+    supported_adapter: "smartrecruiters"
+    coverage_state: "Validated, owner enablement pending"
+    source_evidence_url: "https://api.smartrecruiters.com/v1/companies/DeliveryHero/postings?limit=100&offset=0"
+    job_count_at_audit: 1086
     target_locations: ["Berlin", "Singapore"]
     target_role_family_notes: "Strategy & Operations; Product Operations; New Verticals"
     warm_path: false
-    manual_fallback: "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected."
+    manual_fallback: "Manual URL/text intake; do not enable the 1,086-job feed without an explicit volume/runtime decision."
     selected_for_initial_coverage: false
+    notes: "SmartRecruiters source validated 2026-07-12. Deliberately disabled: largest audited feed and a poor first rollout candidate."
   - name: "HelloFresh"
     tier: 3
     enabled: true
@@ -1332,9 +1347,9 @@ companies:
     ats_type: "ashby"
     source_key: "skyscanner"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/skyscanner?includeCompensation=false"
-    job_count_at_audit: 18
+    job_count_at_audit: 12
     target_locations: ["London", "Singapore"]
     target_role_family_notes: "Business Operations; Commercial Strategy; Product Operations"
     warm_path: false
@@ -1348,9 +1363,9 @@ companies:
     ats_type: "ashby"
     source_key: "plaid"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Validated, owner enablement pending"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=false"
-    job_count_at_audit: 105
+    job_count_at_audit: 113
     target_locations: ["London"]
     target_role_family_notes: "Business Operations; Partnerships Strategy; GTM Strategy"
     warm_path: false

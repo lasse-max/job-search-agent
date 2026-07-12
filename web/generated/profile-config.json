@@ -181,10 +181,10 @@
         }
       ],
       "darkByReason": {
-        "missing_source": 44,
-        "adapter_ready_disabled": 14,
-        "dead_feed": 3,
-        "manual_only": 0
+        "missing_source": 30,
+        "adapter_ready_disabled": 23,
+        "dead_feed": 2,
+        "manual_only": 6
       }
     },
     "companies": [
@@ -192,7 +192,7 @@
         "name": "Google",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney",
           "Singapore",
@@ -200,15 +200,15 @@
           "Munich",
           "US"
         ],
-        "atsType": "unknown",
+        "atsType": "custom",
         "sourceKey": null,
         "supportedAdapter": null,
         "jobCountAtAudit": null,
         "careersUrl": "https://careers.google.com/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://www.google.com/about/careers/applications/jobs/results/",
+        "manualFallback": "Bespoke careers site; use Google job alerts plus manual URL/text intake.",
+        "notes": "Audited 2026-07-12: official search is public but no supported ATS feed was identified. Treat the dedicated alerts mailbox as the efficient source rather than maintaining a Google-only scraper.",
+        "darkReasonCode": "manual_only"
       },
       {
         "name": "Databricks",
@@ -294,59 +294,59 @@
         "name": "DoorDash",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Sydney",
           "Melbourne",
           "London"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "greenhouse",
+        "sourceKey": "doordashaustralia",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 29,
         "careersUrl": "https://careersatdoordash.com/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/doordashaustralia/jobs?content=true",
+        "manualFallback": "Manual URL/text intake until owner enables the validated Australia feed.",
+        "notes": "Validated 2026-07-12. Australia board has 29 jobs. Separate doordashusa board has 454 and may carry other markets; keep disabled until catalog scope, volume, spend, and runtime are owner-approved.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Uber",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney",
           "London",
           "Singapore"
         ],
-        "atsType": "unknown",
+        "atsType": "custom",
         "sourceKey": null,
         "supportedAdapter": null,
         "jobCountAtAudit": null,
         "careersUrl": "https://www.uber.com/global/en/careers/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://www.uber.com/global/en/careers/list/",
+        "manualFallback": "Bespoke careers site; use Uber job alerts plus manual URL/text intake.",
+        "notes": "Audited 2026-07-12: role detail pages are public and indexable, but the list endpoint rejects the scanner client. No supported public ATS feed identified.",
+        "darkReasonCode": "manual_only"
       },
       {
         "name": "Canva",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Sydney"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "smartrecruiters",
+        "sourceKey": "Canva",
+        "supportedAdapter": "smartrecruiters",
+        "jobCountAtAudit": 223,
         "careersUrl": "https://www.lifeatcanva.com/en/jobs/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Canva/postings?limit=100&offset=0",
+        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
+        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Atlassian",
@@ -364,7 +364,7 @@
         "careersUrl": "https://www.atlassian.com/company/careers",
         "sourceEvidenceUrl": "https://api.lever.co/v0/postings/atlassian?mode=json",
         "manualFallback": "Lever source_key=atlassian returns 0 jobs; use manual URL/text intake for promising Atlassian roles until the real ATS feed is found.",
-        "notes": "Disabled 2026-06-27: Lever key appears dead/silent-zero. Tier-1 company; keep manual intake active while finding the real Atlassian ATS feed.",
+        "notes": "Re-audited 2026-07-12: Lever key remains dead and the official custom careers page exposes no stable supported feed. Keep alerts/manual intake active.",
         "darkReasonCode": "dead_feed"
       },
       {
@@ -472,99 +472,99 @@
         "name": "Amazon / AWS",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney",
           "Singapore",
           "London"
         ],
-        "atsType": "unknown",
+        "atsType": "custom",
         "sourceKey": null,
         "supportedAdapter": null,
         "jobCountAtAudit": null,
         "careersUrl": "https://www.amazon.jobs/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://www.amazon.jobs/en/search",
+        "manualFallback": "Bespoke careers site; use Amazon job alerts plus manual URL/text intake.",
+        "notes": "Audited 2026-07-12: official bespoke search, no supported ATS feed identified. Prefer the dedicated alerts mailbox over a single-company scraper.",
+        "darkReasonCode": "manual_only"
       },
       {
         "name": "Apple",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney",
           "Singapore",
           "London",
           "Munich"
         ],
-        "atsType": "unknown",
+        "atsType": "custom",
         "sourceKey": null,
         "supportedAdapter": null,
         "jobCountAtAudit": null,
         "careersUrl": "https://jobs.apple.com/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://jobs.apple.com/en-us/search",
+        "manualFallback": "Custom Workday-backed careers experience; use alerts plus manual URL/text intake.",
+        "notes": "Audited 2026-07-12: server-rendered public search references Workday applicant data but no reusable public Workday feed was identified.",
+        "darkReasonCode": "manual_only"
       },
       {
         "name": "Netflix",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney",
           "Singapore",
           "London"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
+        "atsType": "eightfold",
+        "sourceKey": "netflix",
         "supportedAdapter": null,
         "jobCountAtAudit": null,
         "careersUrl": "https://jobs.netflix.com/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://explore.jobs.netflix.net/careers",
+        "manualFallback": "Eightfold careers site; use Netflix alerts plus manual URL/text intake until an adapter is prioritized.",
+        "notes": "Audited 2026-07-12: public site is Eightfold and embeds posting summaries. An Eightfold adapter is reusable, but lower ROI than alerts-mailbox coverage for the remaining bespoke Tier-1 set.",
+        "darkReasonCode": "manual_only"
       },
       {
         "name": "SafetyCulture",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Sydney"
         ],
-        "atsType": "ashby",
-        "sourceKey": "safetyculture",
-        "supportedAdapter": null,
-        "jobCountAtAudit": 0,
+        "atsType": "lever",
+        "sourceKey": "safetyculture-2",
+        "supportedAdapter": "lever",
+        "jobCountAtAudit": 33,
         "careersUrl": "https://safetyculture.com/careers/",
-        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/safetyculture?includeCompensation=false",
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": "Feed endpoint responded with zero jobs; verify expected volume before enabling.",
-        "darkReasonCode": "dead_feed"
+        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/safetyculture-2?mode=json",
+        "manualFallback": "Manual URL/text intake until owner enables the repaired Lever feed.",
+        "notes": "Repaired 2026-07-12: the old Ashby token was dead; the live careers page identifies Lever source safetyculture-2. Deliberately disabled pending owner rollout.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "NEURA Robotics",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Metzingen",
           "Munich area"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
+        "atsType": "jobshop",
+        "sourceKey": "neura-robotics-a8d5d5",
         "supportedAdapter": null,
         "jobCountAtAudit": null,
         "careersUrl": "https://jobs.neura-robotics.com/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://jobs.neura-robotics.com/",
+        "manualFallback": "JobShop careers site; use category alerts/manual URL-text intake until an adapter is justified.",
+        "notes": "Audited 2026-07-12: JobShop-hosted public catalog with strong target-role evidence, but a provider-specific adapter unlocks only this watchlist company.",
+        "darkReasonCode": "manual_only"
       },
       {
         "name": "Helsing",
@@ -649,20 +649,20 @@
         "name": "Wise",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London",
           "Singapore"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "smartrecruiters",
+        "sourceKey": "Wise",
+        "supportedAdapter": "smartrecruiters",
+        "jobCountAtAudit": 406,
         "careersUrl": "https://wise.jobs/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Wise/postings?limit=100&offset=0",
+        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
+        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Spotify",
@@ -704,19 +704,19 @@
         "name": "Grab",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Singapore"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "smartrecruiters",
+        "sourceKey": "Grab",
+        "supportedAdapter": "smartrecruiters",
+        "jobCountAtAudit": 338,
         "careersUrl": "https://www.grab.careers/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Grab/postings?limit=100&offset=0",
+        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
+        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Salesforce",
@@ -762,21 +762,21 @@
         "name": "ServiceNow / Moveworks",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London",
           "Sydney",
           "Singapore"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "smartrecruiters",
+        "sourceKey": "ServiceNow",
+        "supportedAdapter": "smartrecruiters",
+        "jobCountAtAudit": 417,
         "careersUrl": "https://careers.servicenow.com/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings?limit=100&offset=0",
+        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
+        "notes": "SmartRecruiters source validated 2026-07-12 for ServiceNow. Moveworks catalog parity is not yet established; deliberately disabled.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Meta",
@@ -921,27 +921,27 @@
         "name": "Glean",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London",
           "Singapore",
           "Sydney"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "greenhouse",
+        "sourceKey": "gleanwork",
+        "supportedAdapter": "greenhouse",
+        "jobCountAtAudit": 132,
         "careersUrl": "https://www.glean.com/careers",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/gleanwork/jobs?content=true",
+        "manualFallback": "Manual URL/text intake until owner enables the validated Greenhouse feed.",
+        "notes": "Greenhouse source_key gleanwork validated 2026-07-12; deliberately disabled pending bounded rollout.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Cohere",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London",
           "remote Europe"
@@ -949,7 +949,7 @@
         "atsType": "ashby",
         "sourceKey": "cohere",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 132,
+        "jobCountAtAudit": 130,
         "careersUrl": "https://cohere.com/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -960,7 +960,7 @@
         "name": "ElevenLabs",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London",
           "remote Europe"
@@ -968,7 +968,7 @@
         "atsType": "ashby",
         "sourceKey": "elevenlabs",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 153,
+        "jobCountAtAudit": 176,
         "careersUrl": "https://elevenlabs.io/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1075,14 +1075,14 @@
         "name": "Deliveroo",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "deliveroo",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 206,
+        "jobCountAtAudit": 196,
         "careersUrl": "https://careers.deliveroo.co.uk/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1113,7 +1113,7 @@
         "name": "DeepL",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Germany",
           "London"
@@ -1121,7 +1121,7 @@
         "atsType": "ashby",
         "sourceKey": "deepl",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 22,
+        "jobCountAtAudit": 24,
         "careersUrl": "https://www.deepl.com/en/jobs",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/deepl?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1270,26 +1270,26 @@
         "name": "Vercel",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Needs configuration",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "London",
           "remote Europe"
         ],
         "atsType": "ashby",
         "sourceKey": "vercel",
-        "supportedAdapter": null,
+        "supportedAdapter": "ashby",
         "jobCountAtAudit": 0,
         "careersUrl": "https://vercel.com/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/vercel?includeCompensation=false",
-        "manualFallback": "Confirm ATS/source key, then use manual URL/text intake until configured.",
-        "notes": "Feed endpoint responded with zero jobs; verify expected volume before enabling.",
+        "manualFallback": "Ashby token still returns zero; use manual URL/text intake while identifying the live feed.",
+        "notes": "Revalidated 2026-07-12: public Ashby token still returns a valid zero-job payload. Do not enable.",
         "darkReasonCode": "dead_feed"
       },
       {
         "name": "Quantexa",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London",
           "Singapore",
@@ -1298,7 +1298,7 @@
         "atsType": "ashby",
         "sourceKey": "quantexa",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 25,
+        "jobCountAtAudit": 30,
         "careersUrl": "https://www.quantexa.com/careers/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/quantexa?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1309,14 +1309,14 @@
         "name": "Synthesia",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "synthesia",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 80,
+        "jobCountAtAudit": 73,
         "careersUrl": "https://www.synthesia.io/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1327,14 +1327,14 @@
         "name": "Encord",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "encord",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 48,
+        "jobCountAtAudit": 51,
         "careersUrl": "https://encord.com/careers/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/encord?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1345,7 +1345,7 @@
         "name": "Lovable",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Stockholm",
           "London / remote Europe"
@@ -1353,7 +1353,7 @@
         "atsType": "ashby",
         "sourceKey": "lovable",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 79,
+        "jobCountAtAudit": 70,
         "careersUrl": "https://lovable.dev/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/lovable?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1364,14 +1364,14 @@
         "name": "Magentic",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "magentic",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 9,
+        "jobCountAtAudit": 6,
         "careersUrl": "https://www.magentic.ai/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/magentic?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1382,7 +1382,7 @@
         "name": "Aleph Alpha",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Heidelberg",
           "Berlin"
@@ -1401,14 +1401,14 @@
         "name": "Decagon",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "decagon",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 108,
+        "jobCountAtAudit": 115,
         "careersUrl": "https://jobs.ashbyhq.com/decagon",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/decagon?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1419,7 +1419,7 @@
         "name": "Cognition",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Singapore",
           "London / remote"
@@ -1427,7 +1427,7 @@
         "atsType": "ashby",
         "sourceKey": "cognition",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 68,
+        "jobCountAtAudit": 74,
         "careersUrl": "https://cognition.ai/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/cognition?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1550,19 +1550,19 @@
         "name": "Nearmap",
         "tier": 3,
         "enabled": false,
-        "coverageState": "Manual fallback",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Sydney"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "smartrecruiters",
+        "sourceKey": "Nearmap",
+        "supportedAdapter": "smartrecruiters",
+        "jobCountAtAudit": 29,
         "careersUrl": "https://www.nearmap.com/careers",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Nearmap/postings?limit=100&offset=0",
+        "manualFallback": "Manual URL/text intake until owner enables the validated SmartRecruiters feed.",
+        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Macquarie Group",
@@ -1718,20 +1718,20 @@
         "name": "Delivery Hero",
         "tier": 3,
         "enabled": false,
-        "coverageState": "Manual fallback",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "Berlin",
           "Singapore"
         ],
-        "atsType": "unknown",
-        "sourceKey": null,
-        "supportedAdapter": null,
-        "jobCountAtAudit": null,
+        "atsType": "smartrecruiters",
+        "sourceKey": "DeliveryHero",
+        "supportedAdapter": "smartrecruiters",
+        "jobCountAtAudit": 1086,
         "careersUrl": "https://careers.deliveryhero.com/",
-        "sourceEvidenceUrl": null,
-        "manualFallback": "Manual careers-page check plus add-url/add-text intake; no Stage 1 adapter selected.",
-        "notes": null,
-        "darkReasonCode": "missing_source"
+        "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/DeliveryHero/postings?limit=100&offset=0",
+        "manualFallback": "Manual URL/text intake; do not enable the 1,086-job feed without an explicit volume/runtime decision.",
+        "notes": "SmartRecruiters source validated 2026-07-12. Deliberately disabled: largest audited feed and a poor first rollout candidate.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "HelloFresh",
@@ -1774,7 +1774,7 @@
         "name": "Skyscanner",
         "tier": 3,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London",
           "Singapore"
@@ -1782,7 +1782,7 @@
         "atsType": "ashby",
         "sourceKey": "skyscanner",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 18,
+        "jobCountAtAudit": 12,
         "careersUrl": "https://www.skyscanner.net/jobs",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/skyscanner?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
@@ -1793,14 +1793,14 @@
         "name": "Plaid",
         "tier": 3,
         "enabled": false,
-        "coverageState": "Supported",
+        "coverageState": "Validated, owner enablement pending",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "plaid",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 105,
+        "jobCountAtAudit": 113,
         "careersUrl": "https://plaid.com/careers/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",

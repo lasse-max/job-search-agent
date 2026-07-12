@@ -1,0 +1,49 @@
+{
+  "totalFound": 2,
+  "postings": [
+    {
+      "id": "744000121979117",
+      "name": "Manager, Strategy & Programs, Autonomous Vehicle",
+      "refNumber": "REF5161D",
+      "company": {"name": "Grab", "identifier": "Grab"},
+      "location": {
+        "city": "Singapore",
+        "country": "sg",
+        "fullLocation": "Singapore, Singapore"
+      },
+      "department": {"label": "Strategy & Planning"},
+      "function": {"label": "Strategy/Planning"},
+      "typeOfEmployment": {"label": "Full-time"},
+      "releasedDate": "2026-07-01T08:00:00.000Z",
+      "postingUrl": "https://jobs.smartrecruiters.com/Grab/744000121979117-manager-strategy-programs",
+      "applyUrl": "https://jobs.smartrecruiters.com/Grab/744000121979117-manager-strategy-programs?oga=true",
+      "jobAd": {
+        "sections": {
+          "companyDescription": {"title": "Company Description", "text": "<p>Grab is Southeast Asia's leading superapp.</p>"},
+          "jobDescription": {"title": "Job Description", "text": "<p>Lead cross-functional strategy and programs for autonomous mobility.</p>"},
+          "qualifications": {"title": "Qualifications", "text": "<ul><li>Strong analytical and stakeholder-management skills.</li></ul>"}
+        }
+      }
+    },
+    {
+      "id": "744000137307759",
+      "name": "Assistant Manager, Mobility Strategy (Marketplace)",
+      "refNumber": "REF5610N",
+      "company": {"name": "Grab", "identifier": "Grab"},
+      "location": {"city": "Phnom Penh", "country": "kh"},
+      "customField": [
+        {"fieldLabel": "Department Name", "valueLabel": "Group MD&A"}
+      ],
+      "function": {"label": "Strategy/Planning"},
+      "typeOfEmployment": {"label": "Full-time"},
+      "releasedDate": "2026-07-12T13:27:56.318Z",
+      "postingUrl": "https://jobs.smartrecruiters.com/Grab/744000137307759-assistant-manager-mobility-strategy-marketplace-",
+      "jobAd": {
+        "sections": {
+          "jobDescription": {"title": "Job Description", "text": "<p>Own marketplace strategy and operating programs.</p>"},
+          "additionalInformation": {"title": "Additional Information", "text": "<p>Work with regional leaders across mobility.</p>"}
+        }
+      }
+    }
+  ]
+}
