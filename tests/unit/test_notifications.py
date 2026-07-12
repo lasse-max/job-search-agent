@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+from datetime import datetime, timedelta, timezone
 import json
 import re
 import sqlite3
@@ -43,6 +44,157 @@ Lead business operations programs, executive reporting, and cross-functional pla
 
 
 class NotificationDeliveryTest(unittest.TestCase):
+    def test_evaluator_version_bump_is_not_a_new_role_event(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_dir = Path(directory) / "output"
+            job = add_text_intake(
+                JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/version-bump",
+            )
+            conn = _connect(db_path)
+            prior = conn.execute(
+                "SELECT * FROM role_evaluations WHERE job_posting_id = ?",
+                (job.job_id,),
+            ).fetchone()
+            conn.execute(
+                "UPDATE role_evaluations SET created_at = ? WHERE id = ?",
+                ("2026-07-11T10:00:00+00:00", prior["id"]),
+            )
+            conn.execute(
+                """
+                INSERT INTO notifications (type, payload_hash, sent_at, status, error_summary)
+                VALUES ('digest', 'seen-before-bump', ?, 'sent', NULL)
+                """,
+                ("2026-07-11T11:00:00+00:00",),
+            )
+            payload = json.loads(prior["evaluation_json"])
+            payload.setdefault("provenance", {})["fallback_quality"] = "false"
+            conn.execute(
+                """
+                INSERT INTO role_evaluations (
+                  job_posting_id, profile_version_id, location_policy_version_id,
+                  prompt_version, model_version, input_hash, evaluation_json, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    job.job_id,
+                    prior["profile_version_id"],
+                    prior["location_policy_version_id"],
+                    prior["prompt_version"],
+                    f"fake-claude|{HYBRID_EVALUATOR_VERSION}",
+                    prior["input_hash"],
+                    json.dumps(payload),
+                    "2026-07-11T12:00:00+00:00",
+                ),
+            )
+            conn.commit()
+            provider = FakeProvider()
+
+            result = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(result.status, "suppressed_no_change")
+            self.assertEqual(result.role_count, 0)
+            self.assertEqual(provider.messages, [])
+
+    def test_material_hash_change_is_a_new_role_event(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            output_dir = Path(directory) / "output"
+            job = add_text_intake(
+                JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/material-change",
+            )
+            conn = _connect(db_path)
+            prior = conn.execute(
+                "SELECT * FROM role_evaluations WHERE job_posting_id = ?",
+                (job.job_id,),
+            ).fetchone()
+            conn.execute(
+                "UPDATE role_evaluations SET created_at = ? WHERE id = ?",
+                ("2026-07-11T10:00:00+00:00", prior["id"]),
+            )
+            conn.execute(
+                """
+                INSERT INTO notifications (type, payload_hash, sent_at, status, error_summary)
+                VALUES ('digest', 'before-material-change', ?, 'sent', NULL)
+                """,
+                ("2026-07-11T11:00:00+00:00",),
+            )
+            payload = json.loads(prior["evaluation_json"])
+            payload.setdefault("provenance", {})["fallback_quality"] = "false"
+            conn.execute(
+                """
+                INSERT INTO role_evaluations (
+                  job_posting_id, profile_version_id, location_policy_version_id,
+                  prompt_version, model_version, input_hash, evaluation_json, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    job.job_id,
+                    prior["profile_version_id"],
+                    prior["location_policy_version_id"],
+                    prior["prompt_version"],
+                    f"fake-claude|{HYBRID_EVALUATOR_VERSION}",
+                    "materially-different-input-hash",
+                    json.dumps(payload),
+                    "2026-07-11T12:00:00+00:00",
+                ),
+            )
+            conn.commit()
+            provider = FakeProvider()
+
+            result = deliver_digest(
+                conn,
+                output_dir=output_dir,
+                provider=provider,
+                recipient="owner@example.com",
+            )
+
+            self.assertEqual(result.status, "sent")
+            self.assertEqual(result.role_count, 1)
+            self.assertEqual(len(provider.messages), 1)
+
+    def test_digest_uses_recency_policy_and_shows_posted_age(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            fresh = add_text_intake(
+                JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/fresh-role",
+            )
+            old = add_text_intake(
+                SECOND_JOB_TEXT,
+                db_path=db_path,
+                source_url="https://example.com/old-role",
+            )
+            conn = _connect(db_path)
+            today = datetime.now(timezone.utc).date()
+            conn.execute(
+                "UPDATE job_postings SET posted_at = ? WHERE id = ?",
+                ((today - timedelta(days=3)).isoformat(), fresh.job_id),
+            )
+            conn.execute(
+                "UPDATE job_postings SET posted_at = ? WHERE id = ?",
+                ((today - timedelta(days=22)).isoformat(), old.job_id),
+            )
+            conn.commit()
+            _mark_non_fallback_evaluations(conn)
+
+            rows = get_digest_rows(conn)
+            text_body = render_text(rows, [])
+
+            self.assertEqual([row["job_id"] for row in rows], [fresh.job_id])
+            self.assertIn("POSTED 3D AGO", text_body)
+            self.assertNotIn("Business Operations Lead", text_body)
+
     def test_no_api_key_writes_local_digest_and_records_fallback(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
@@ -106,13 +258,9 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             self.assertEqual(result.status, "sent")
             self.assertEqual(result.role_count, 1)
-            self.assertEqual(result.calibration_count, 1)
             self.assertEqual(len(provider.messages), 1)
-            self.assertIn(
-                "Top open roles by fit — may repeat",
-                provider.messages[0].html_body,
-            )
-            self.assertIn("Strategic Operations Manager", provider.messages[0].html_body)
+            self.assertNotIn("Top open roles by fit", provider.messages[0].html_body)
+            self.assertNotIn("Strategic Operations Manager", provider.messages[0].html_body)
             self.assertIn("Business Operations Lead", provider.messages[0].html_body)
 
     def test_provider_without_recipient_fails_loud(self) -> None:
@@ -273,7 +421,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             )
             self.assertIn("➕ 5 more", provider.messages[0].text_body)
 
-    def test_normal_digest_appends_calibration_floor_when_strong_roles_are_thin(
+    def test_normal_digest_does_not_resurface_calibration_floor_when_roles_are_thin(
         self,
     ) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -295,14 +443,8 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             text_body = render_text(get_digest_rows(conn), [])
 
-            self.assertIn(
-                "Top open roles by fit — may repeat",
-                text_body,
-            )
-            self.assertIn("Source: https://example.com/calibration-01", text_body)
-            self.assertIn("Source: https://example.com/calibration-03", text_body)
-            self.assertNotIn("Source: https://example.com/calibration-00", text_body)
-            self.assertEqual(text_body.count("Source: https://example.com/calibration-"), 5)
+            self.assertNotIn("Top open roles by fit", text_body)
+            self.assertNotIn("Source: https://example.com/calibration-", text_body)
 
     def test_current_evaluator_filter_excludes_stale_llm_rows(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -416,7 +558,6 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             self.assertEqual(result.status, "sent")
             self.assertEqual(result.role_count, 1)
-            self.assertEqual(result.calibration_count, 0)
             self.assertEqual(len(provider.messages), 1)
             text_body = provider.messages[0].text_body
             self.assertIn("DEGRADED", text_body)
@@ -424,7 +565,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertNotIn("Top open roles by fit", text_body)
             self.assertNotIn("Source: https://example.com/older-valid-", text_body)
 
-    def test_quiet_cycle_sends_calibration_floor_and_may_repeat(self) -> None:
+    def test_quiet_cycle_is_suppressed_without_calibration_resurfacing(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
             output_dir = Path(directory) / "output"
@@ -468,19 +609,11 @@ class NotificationDeliveryTest(unittest.TestCase):
                 recipient="owner@example.com",
             )
 
-            self.assertEqual(first.status, "sent")
-            self.assertEqual(second.status, "sent")
+            self.assertEqual(first.status, "suppressed_no_change")
+            self.assertEqual(second.status, "suppressed_no_change")
             self.assertEqual(first.role_count, 0)
             self.assertEqual(second.role_count, 0)
-            self.assertEqual(first.calibration_count, 5)
-            self.assertEqual(second.calibration_count, 5)
-            self.assertIn("5 calibration sample roles", first.subject)
-            self.assertEqual(len(provider.messages), 2)
-            self.assertIn("Top open roles by fit", provider.messages[0].text_body)
-            self.assertIn(
-                "Source: https://example.com/quiet-calibration-00",
-                provider.messages[0].text_body,
-            )
+            self.assertEqual(len(provider.messages), 0)
 
     def test_provider_withholds_fallback_rows_when_valid_rows_exist(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

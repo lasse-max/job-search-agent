@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from typing import Any
 
 from app.config import RecencyPolicyConfig, load_recency_policy
@@ -30,6 +30,26 @@ def posting_is_recent(
     if not effective_date:
         return False
     return str(effective_date)[:10] >= recency_cutoff_date(policy, now=now)
+
+
+def posting_freshness_label(
+    posting: Any,
+    *,
+    now: datetime | None = None,
+) -> str:
+    posted_at = _posting_value(posting, "posted_at")
+    first_seen_at = _posting_value(posting, "first_seen_at")
+    effective_date = posted_at or first_seen_at
+    prefix = "posted" if posted_at else "first seen"
+    if not effective_date:
+        return f"{prefix} date unknown"
+    try:
+        observed = date.fromisoformat(str(effective_date)[:10])
+    except ValueError:
+        return f"{prefix} date unknown"
+    current = (now or datetime.now(timezone.utc)).date()
+    age_days = max(0, (current - observed).days)
+    return f"{prefix} today" if age_days == 0 else f"{prefix} {age_days}d ago"
 
 
 def _posting_value(posting: Any, key: str) -> object | None:

@@ -246,7 +246,6 @@ def main(argv: list[str] | None = None) -> int:
         if result.notification is not None:
             print(f"notification_status={result.notification.status}")
             print(f"notification_roles={result.notification.role_count}")
-            print(f"notification_calibration_roles={result.notification.calibration_count}")
             print(f"notification_failures={result.notification.failure_count}")
             print(f"notification_html={result.notification.html_path}")
             if result.notification.error_summary:

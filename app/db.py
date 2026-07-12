@@ -982,8 +982,17 @@ def get_digest_rows(
     recency_clause = ""
     params: list[str] = []
     if since is not None:
-        since_clause = "AND re.created_at >= ?"
-        params.append(since)
+        since_clause = """
+          AND re.created_at >= ?
+          AND NOT EXISTS (
+            SELECT 1
+            FROM role_evaluations prior
+            WHERE prior.job_posting_id = jp.id
+              AND prior.input_hash = re.input_hash
+              AND prior.created_at < ?
+          )
+        """
+        params.extend([since, since])
     if not include_older:
         recency_clause = "AND COALESCE(jp.posted_at, jp.first_seen_at) >= ?"
         params.append(recency_cutoff or recency_cutoff_date())

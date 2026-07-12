@@ -167,18 +167,17 @@ function WatchlistCoverage({ data }: { data: ProfileData }) {
         </div>
       </div>
 
-      <Subhead>Dark companies · highest-cost gaps first</Subhead>
+      <Subhead>All companies by tier · scan status</Subhead>
       {[1, 2, 3].map((tier) => {
-        const darkCompanies = companies.filter(
-          (company) => company.tier === tier && !company.enabled
-        );
+        const tierCompanies = companies.filter((company) => company.tier === tier);
+        const scannedCount = tierCompanies.filter((company) => company.enabled).length;
         return (
           <details className="border-t border-white/5 py-3" key={tier} open={tier === 1}>
             <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.14em] text-chart-teal">
-              Tier {tier} · {darkCompanies.length} not scanned
+              Tier {tier} · {scannedCount}/{tierCompanies.length} scanned
             </summary>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              {darkCompanies.map((company) => (
+              {tierCompanies.map((company) => (
                 <div className="rounded border border-white/5 bg-chart-card px-3 py-3" key={company.name}>
                   <div className="flex items-start justify-between gap-3">
                     <a
@@ -189,13 +188,17 @@ function WatchlistCoverage({ data }: { data: ProfileData }) {
                     >
                       {company.name}
                     </a>
-                    <span className="font-mono text-[8.5px] uppercase text-chart-warn">
-                      {darkReasonLabel(company)}
+                    <span className={`font-mono text-[8.5px] uppercase ${companyStatusTone(data.live.companyStatuses[company.name]?.status, company.enabled)}`}>
+                      {company.enabled
+                        ? `${data.live.companyStatuses[company.name]?.status ?? "enabled · status unavailable"} · ${company.atsType}`
+                        : darkReasonLabel(company)}
                     </span>
                   </div>
-                  <p className="mt-2 text-[10.5px] leading-5 text-chart-faint">
-                    {company.manualFallback}
-                  </p>
+                  {!company.enabled && company.manualFallback ? (
+                    <p className="mt-2 text-[10.5px] leading-5 text-chart-faint">
+                      {company.manualFallback}
+                    </p>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -210,6 +213,14 @@ function coverageTone(tone: string) {
   if (tone === "red") return "border-chart-warn/45 text-chart-warn";
   if (tone === "amber") return "border-chart-gold/45 text-chart-gold";
   return "border-chart-green/45 text-chart-green";
+}
+
+function companyStatusTone(status: string | undefined, enabled: boolean) {
+  if (!enabled || status === "failure") return "text-chart-warn";
+  if (status === "degraded" || status?.includes("not run") || status?.includes("no source")) {
+    return "text-chart-gold";
+  }
+  return "text-chart-green";
 }
 
 function darkReasonLabel(

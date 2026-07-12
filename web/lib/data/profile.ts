@@ -19,6 +19,7 @@ export type ProfileData = {
     enabledCountMismatch: boolean;
     missingConfiguredCompanies: string[];
     extraDatabaseEnabledCompanies: string[];
+    companyStatuses: Record<string, { status: string; lastRunAt: string | null }>;
   };
   loadError: string | null;
 };
@@ -82,6 +83,29 @@ export async function loadProfileData(supabase: AppSupabaseClient): Promise<Prof
   const extraDatabaseEnabledCompanies = [...databaseEnabledNames]
     .filter((name) => !configuredEnabledNames.has(name))
     .sort();
+  const companyStatuses = Object.fromEntries(
+    profileConfig.watchlist.companies.map((configured) => {
+      if (!configured.enabled) {
+        return [configured.name, { status: "not scanned", lastRunAt: null }];
+      }
+      const company = companyRows.find((row) => row.name === configured.name);
+      const companySources = company
+        ? relevantSources.filter((source) => source.company_id === company.id)
+        : [];
+      const companyRuns = companySources
+        .map((source) => latestRunBySource.get(source.id))
+        .filter((run): run is SourceRunRow => run !== undefined)
+        .sort((left, right) => right.started_at.localeCompare(left.started_at));
+      const status = worstRunStatus(companyRuns.map((run) => run.status));
+      return [
+        configured.name,
+        {
+          status: status ?? (companySources.length ? "enabled · not run" : "enabled · no source"),
+          lastRunAt: companyRuns[0]?.started_at ?? null
+        }
+      ];
+    })
+  );
 
   return {
     config: profileConfig,
@@ -97,7 +121,8 @@ export async function loadProfileData(supabase: AppSupabaseClient): Promise<Prof
       enabledCountMismatch:
         missingConfiguredCompanies.length > 0 || extraDatabaseEnabledCompanies.length > 0,
       missingConfiguredCompanies,
-      extraDatabaseEnabledCompanies
+      extraDatabaseEnabledCompanies,
+      companyStatuses
     },
     loadError: null
   };
@@ -115,8 +140,16 @@ export function profileDataWithoutStats(message: string): ProfileData {
       scannedCompanies: null,
       enabledCountMismatch: false,
       missingConfiguredCompanies: [],
-      extraDatabaseEnabledCompanies: []
+      extraDatabaseEnabledCompanies: [],
+      companyStatuses: {}
     },
     loadError: message
   };
+}
+
+function worstRunStatus(statuses: string[]) {
+  for (const status of ["failure", "degraded", "success"]) {
+    if (statuses.includes(status)) return status;
+  }
+  return statuses[0] ?? null;
 }

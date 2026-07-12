@@ -6,7 +6,7 @@ from pathlib import Path
 import unittest
 
 from app.config import load_recency_policy
-from app.recency import posting_is_recent, recency_cutoff_date
+from app.recency import posting_freshness_label, posting_is_recent, recency_cutoff_date
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -32,6 +32,20 @@ class RecencyPolicyTest(unittest.TestCase):
                 now=now,
             )
         )
+        self.assertEqual(
+            posting_freshness_label(
+                {"posted_at": "2026-07-08", "first_seen_at": "2026-07-09"},
+                now=now,
+            ),
+            "posted 3d ago",
+        )
+        self.assertEqual(
+            posting_freshness_label(
+                {"posted_at": None, "first_seen_at": "2026-07-08"},
+                now=now,
+            ),
+            "first seen 3d ago",
+        )
 
     def test_generated_web_config_and_ui_share_recency_policy(self) -> None:
         generated = json.loads(
@@ -49,9 +63,17 @@ class RecencyPolicyTest(unittest.TestCase):
         shortlist_ui = (REPO_ROOT / "web" / "app" / "to-apply" / "to-apply-client.tsx").read_text(
             encoding="utf-8"
         )
+        web_recency = (REPO_ROOT / "web" / "lib" / "recency.ts").read_text(
+            encoding="utf-8"
+        )
+        digest = (REPO_ROOT / "app" / "services" / "digest.py").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("recencyCutoffDate", data_layer)
         self.assertIn("posted_at.gte.${cutoff}", data_layer)
         self.assertIn("posted_at.is.null,first_seen_at.gte.${cutoff}", data_layer)
         self.assertIn('href={data.includeOlder ? "/" : "/?older=1"}', matches_ui)
         self.assertIn("freshnessLabel(role)", matches_ui)
         self.assertIn("freshnessLabel(role)", shortlist_ui)
+        self.assertIn("profileConfig.recency.maxAgeDays", web_recency)
+        self.assertIn("posting_freshness_label(row)", digest)

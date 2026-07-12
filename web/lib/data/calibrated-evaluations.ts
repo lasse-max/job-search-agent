@@ -4,7 +4,6 @@ import { ROLE_MAX_AGE_DAYS, recencyCutoffDate } from "@/lib/recency";
 
 export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v4";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
-const CALIBRATION_FLOOR_LIMIT = 5;
 
 type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 type CurrentEvaluationRow =
@@ -21,7 +20,8 @@ type ScanRunRow = Pick<
 >;
 
 export type Recommendation = "apply_now" | "consider" | "stretch" | "skip" | "blocked";
-export type MatchBand = "apply_now" | "consider" | "stretch" | "calibration";
+export type MatchBand = "apply_now" | "consider" | "stretch" | "low_priority";
+export type SurfacedBand = Exclude<MatchBand, "low_priority">;
 
 export type AlignmentEvidence = {
   jobRequirement: string;
@@ -66,7 +66,6 @@ export type PotentialMatch = {
   evaluatedAt: string;
   reviewState: string;
   skipReason: string | null;
-  isCalibration: boolean;
 };
 
 export type AuditRow = {
@@ -86,18 +85,16 @@ export type PotentialMatchesData = {
     companyCount: number | null;
     latestScanAt: string | null;
   };
-  bands: Record<MatchBand, PotentialMatch[]>;
+  bands: Record<SurfacedBand, PotentialMatch[]>;
   auditRows: AuditRow[];
   counts: {
     applyNow: number;
     consider: number;
     stretch: number;
-    calibration: number;
     audit: number;
   };
   includeOlder: boolean;
   maxAgeDays: number;
-  quietDay: boolean;
   initialExpandedId: number | null;
   loadError: {
     title: string;
@@ -149,21 +146,10 @@ export async function loadPotentialMatches(
   const surfacedMatches = reviewableMatches.filter((role) =>
     ["apply_now", "consider", "stretch"].includes(role.recommendation)
   );
-  const selectedStrongIds = new Set(surfacedMatches.map((role) => role.id));
-  const quietDay = surfacedMatches.length < CALIBRATION_FLOOR_LIMIT;
-  const calibrationMatches = quietDay
-    ? [...reviewableMatches]
-        .filter((role) => !selectedStrongIds.has(role.id))
-        .sort(byFitDescending)
-        .slice(0, CALIBRATION_FLOOR_LIMIT)
-        .map((role) => ({ ...role, band: "calibration" as const, isCalibration: true }))
-    : [];
-
-  const bands: Record<MatchBand, PotentialMatch[]> = {
+  const bands: Record<SurfacedBand, PotentialMatch[]> = {
     apply_now: surfacedMatches.filter((role) => role.recommendation === "apply_now"),
     consider: surfacedMatches.filter((role) => role.recommendation === "consider"),
-    stretch: surfacedMatches.filter((role) => role.recommendation === "stretch"),
-    calibration: calibrationMatches
+    stretch: surfacedMatches.filter((role) => role.recommendation === "stretch")
   };
 
   const [skipAuditRows, scanReach] = await Promise.all([
@@ -175,7 +161,7 @@ export async function loadPotentialMatches(
     .sort((left, right) => right.createdAt.localeCompare(left.createdAt));
   const auditRows = [...evaluatedAuditRows, ...skipAuditRows].slice(0, 160);
   const firstExpandable =
-    bands.apply_now[0]?.id ?? bands.consider[0]?.id ?? bands.stretch[0]?.id ?? bands.calibration[0]?.id ?? null;
+    bands.apply_now[0]?.id ?? bands.consider[0]?.id ?? bands.stretch[0]?.id ?? null;
 
   return {
     generatedAtLabel: formatDateTime(new Date().toISOString()),
@@ -186,12 +172,10 @@ export async function loadPotentialMatches(
       applyNow: bands.apply_now.length,
       consider: bands.consider.length,
       stretch: bands.stretch.length,
-      calibration: bands.calibration.length,
       audit: auditRows.length
     },
     includeOlder: Boolean(options.includeOlder),
     maxAgeDays: ROLE_MAX_AGE_DAYS,
-    quietDay,
     initialExpandedId: firstExpandable,
     loadError: null
   };
@@ -208,20 +192,17 @@ export function emptyPotentialMatchesData(loadError: PotentialMatchesData["loadE
     bands: {
       apply_now: [],
       consider: [],
-      stretch: [],
-      calibration: []
+      stretch: []
     },
     auditRows: [],
     counts: {
       applyNow: 0,
       consider: 0,
       stretch: 0,
-      calibration: 0,
       audit: 0
     },
     includeOlder: false,
     maxAgeDays: ROLE_MAX_AGE_DAYS,
-    quietDay: false,
     initialExpandedId: null,
     loadError
   } satisfies PotentialMatchesData;
@@ -282,8 +263,7 @@ export function normalizeCurrentEvaluation(row: CurrentEvaluationRow): Potential
     postedAt: row.posted_at,
     evaluatedAt: row.evaluated_at,
     reviewState: row.review_state,
-    skipReason: skipReasonForEvaluation(recommendation, hardBlockers, gaps, row.review_state),
-    isCalibration: false
+    skipReason: skipReasonForEvaluation(recommendation, hardBlockers, gaps, row.review_state)
   };
 }
 
@@ -596,7 +576,7 @@ function recommendationToBand(recommendation: Recommendation): MatchBand {
   if (recommendation === "apply_now" || recommendation === "consider" || recommendation === "stretch") {
     return recommendation;
   }
-  return "calibration";
+  return "low_priority";
 }
 
 function normalizePercent(value: number | null, fallback: number) {
@@ -673,10 +653,6 @@ export function humanizeRecommendation(value: Recommendation | string) {
     return "Blocked";
   }
   return "Skip";
-}
-
-function byFitDescending(left: PotentialMatch, right: PotentialMatch) {
-  return right.fitScore - left.fitScore || left.company.localeCompare(right.company) || left.title.localeCompare(right.title);
 }
 
 function safeHttpUrl(value: string) {

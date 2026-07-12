@@ -49,13 +49,13 @@ const bandMeta: Record<
     bg: "bg-chart-gold/10",
     text: "text-chart-gold"
   },
-  calibration: {
-    label: "Top open roles by fit - may repeat",
-    shortLabel: "sample",
-    accent: "bg-chart-green",
-    border: "border-chart-green/35",
-    bg: "bg-chart-green/10",
-    text: "text-chart-green"
+  low_priority: {
+    label: "Low priority",
+    shortLabel: "low",
+    accent: "bg-chart-faint",
+    border: "border-white/10",
+    bg: "bg-white/[0.03]",
+    text: "text-chart-faint"
   }
 };
 
@@ -68,8 +68,7 @@ export function PotentialMatchesClient({ data, userEmail }: Props) {
     () => [
       ...data.bands.apply_now,
       ...data.bands.consider,
-      ...data.bands.stretch,
-      ...data.bands.calibration
+      ...data.bands.stretch
     ],
     [data.bands]
   );
@@ -117,12 +116,6 @@ export function PotentialMatchesClient({ data, userEmail }: Props) {
             <AuditView rows={data.auditRows} />
           ) : (
             <div className="mt-8">
-              {data.quietDay ? (
-                <div className="mb-5 rounded-lg border border-chart-gold/25 bg-chart-gold/10 px-4 py-3 text-sm text-chart-gold">
-                  Quiet day: fewer than five Apply / Consider / Stretch roles are open, so the
-                  calibration sample below shows the top open roles by fit and may repeat.
-                </div>
-              ) : null}
               <BandSection
                 expandedId={expandedId}
                 onExpand={setExpandedId}
@@ -146,15 +139,6 @@ export function PotentialMatchesClient({ data, userEmail }: Props) {
                 roles={data.bands.stretch}
                 type="stretch"
               />
-              {data.bands.calibration.length ? (
-                <BandSection
-                  expandedId={expandedId}
-                  onExpand={setExpandedId}
-                  onOpenDetail={setDetailId}
-                  roles={data.bands.calibration}
-                  type="calibration"
-                />
-              ) : null}
               {!allCards.length ? <EmptyMatches /> : null}
             </div>
           )}
@@ -248,9 +232,6 @@ function SummaryBar({ data }: { data: PotentialMatchesData }) {
         <SummaryDot count={data.counts.applyNow} label="apply" type="apply_now" />
         <SummaryDot count={data.counts.consider} label="consider" type="consider" />
         <SummaryDot count={data.counts.stretch} label="stretch" type="stretch" />
-        {data.counts.calibration ? (
-          <SummaryDot count={data.counts.calibration} label="sample" type="calibration" />
-        ) : null}
       </div>
       <div className="flex items-center gap-3 font-mono text-[10.5px] text-chart-faint">
         <span>
@@ -440,7 +421,6 @@ function ChipRow({ role }: { role: PotentialMatch }) {
       <Chip tone={pctTone(role.confidencePct)}>confidence {role.confidencePct}%</Chip>
       <Chip tone={roleIsOlderThanPolicy(role) ? "warn" : "green"}>{freshnessLabel(role)}</Chip>
       <LevelChip role={role} />
-      {role.isCalibration ? <Chip tone="green">calibration sample</Chip> : null}
     </div>
   );
 }

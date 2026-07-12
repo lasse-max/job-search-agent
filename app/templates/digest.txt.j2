@@ -1,7 +1,7 @@
 Job Search Agent · Find your layline
 Your roles — {{ digest.generated_label }} (generated {{ digest.generated_at }})
 
-Summary: {{ digest.counts.apply_now }} apply now · {{ digest.counts.consider }} consider · {{ digest.counts.stretch }} stretch{% if digest.counts.calibration %} · {{ digest.counts.calibration }} calibration{% endif %} · {{ digest.counts.failures }} source issue{{ '' if digest.counts.failures == 1 else 's' }}
+Summary: {{ digest.counts.apply_now }} apply now · {{ digest.counts.consider }} consider · {{ digest.counts.stretch }} stretch · {{ digest.counts.failures }} source issue{{ '' if digest.counts.failures == 1 else 's' }}
 Scanned {{ digest.scan_reach.fetched_count_label }} postings across {{ digest.scan_reach.company_count }} {{ digest.scan_reach.company_word }} this run
 
 {% if digest.selection.degraded -%}
@@ -22,6 +22,7 @@ Showing {{ digest.counts.shown }} of {{ digest.counts.total }} roles. ➕ {{ dig
 {{ "-" * section.default_label|length }}
 {% for role in section.roles %}
 [{{ role.stable_id }}] {{ role.company }} - {{ role.title }} ({{ role.locations_label }})
+  {{ role.freshness_label|upper }}
   Fit {{ role.fit_score }} · confidence {{ role.confidence_label }} · recommendation={{ role.recommendation }} · tier {{ role.tier }}
   First seen: {{ role.first_seen_at }} | Posted: {{ role.posted_at }}
   Department: {{ role.department }}
@@ -61,4 +62,4 @@ Source failures and coverage gaps
 
 Review: {{ digest.review_command }}
 Export CSVs: {{ digest.csv_command }}
-Shown: {{ digest.counts.shown }} role card{{ '' if digest.counts.shown == 1 else 's' }}{% if digest.counts.calibration %} · {{ digest.counts.calibration }} calibration sample role{{ '' if digest.counts.calibration == 1 else 's' }}{% endif %} · cap {{ digest.selection.cap }}
+Shown: {{ digest.counts.shown }} role card{{ '' if digest.counts.shown == 1 else 's' }} · cap {{ digest.selection.cap }}

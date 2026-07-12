@@ -95,7 +95,6 @@ class DigestDeliveryResult:
     subject: str
     payload_hash: str
     role_count: int
-    calibration_count: int
     failure_count: int
     html_path: Path
     text_path: Path
@@ -119,21 +118,18 @@ def deliver_digest(
     recipient = recipient or os.getenv("DIGEST_RECIPIENT_EMAIL") or ""
     since = latest_delivered_notification_at(conn)
     raw_rows = get_digest_rows(conn, since=since, evaluator_version=HYBRID_EVALUATOR_VERSION)
-    calibration_pool_rows = get_digest_rows(conn, evaluator_version=HYBRID_EVALUATOR_VERSION)
-    selection = select_digest_rows(raw_rows, calibration_pool_rows=calibration_pool_rows)
+    selection = select_digest_rows(raw_rows)
     rows = selection.rows
     failures = latest_source_failures(conn)
     scan_reach = latest_scan_reach(conn)
-    calibration_count = len(selection.calibration_rows)
     subject = _subject(
         len(rows),
         len(failures),
         degraded=selection.degraded,
-        calibration_count=calibration_count,
     )
     payload_hash = _payload_hash(rows, failures, selection)
 
-    if suppress_no_change and not rows and not failures and not selection.calibration_rows:
+    if suppress_no_change and not rows and not failures:
         record_notification(
             conn,
             notification_type="digest",
@@ -147,17 +143,14 @@ def deliver_digest(
             subject=subject,
             payload_hash=payload_hash,
             role_count=0,
-            calibration_count=0,
             failure_count=0,
             html_path=html_path,
             text_path=text_path,
             recipient=recipient,
         )
 
-    quiet_cycle_calibration = bool(selection.calibration_rows) and not rows
-
     # Source failures are intentionally never suppressed, even if the payload repeats.
-    if not failures and not quiet_cycle_calibration and has_delivered_payload(conn, payload_hash):
+    if not failures and has_delivered_payload(conn, payload_hash):
         record_notification(
             conn,
             notification_type="digest",
@@ -171,7 +164,6 @@ def deliver_digest(
             subject=subject,
             payload_hash=payload_hash,
             role_count=len(rows),
-            calibration_count=calibration_count,
             failure_count=0,
             html_path=html_path,
             text_path=text_path,
@@ -199,7 +191,6 @@ def deliver_digest(
             subject=subject,
             payload_hash=payload_hash,
             role_count=len(rows),
-            calibration_count=calibration_count,
             failure_count=len(failures),
             html_path=html_path,
             text_path=text_path,
@@ -227,7 +218,6 @@ def deliver_digest(
             subject=subject,
             payload_hash=payload_hash,
             role_count=len(rows),
-            calibration_count=calibration_count,
             failure_count=len(failures),
             html_path=html_path,
             text_path=text_path,
@@ -249,7 +239,6 @@ def deliver_digest(
         subject=subject,
         payload_hash=payload_hash,
         role_count=len(rows),
-        calibration_count=calibration_count,
         failure_count=len(failures),
         html_path=html_path,
         text_path=text_path,
@@ -273,19 +262,13 @@ def _subject(
     failure_count: int,
     *,
     degraded: bool = False,
-    calibration_count: int = 0,
 ) -> str:
-    if role_count == 0 and failure_count == 0 and calibration_count == 0:
+    if role_count == 0 and failure_count == 0:
         subject = "Job Search Digest: no new roles"
         return f"⚠️ DEGRADED — {subject}" if degraded else subject
     parts = []
     if role_count:
         parts.append(f"{role_count} new/changed role{'s' if role_count != 1 else ''}")
-    if calibration_count:
-        parts.append(
-            f"{calibration_count} calibration sample role"
-            f"{'s' if calibration_count != 1 else ''}"
-        )
     if failure_count:
         parts.append(f"{failure_count} source issue{'s' if failure_count != 1 else ''}")
     subject = "Job Search Digest: " + ", ".join(parts)
@@ -326,17 +309,6 @@ def _payload_hash(
             "overflow_count": selection.overflow_count,
             "fallback_filtered_count": selection.fallback_filtered_count,
             "degraded": selection.degraded,
-            "calibration_roles": [
-                {
-                    "job_id": row["job_id"],
-                    "source_type": row["source_type"],
-                    "source_key": row["source_key"],
-                    "source_job_id": row["source_job_id"],
-                    "evaluated_at": row["evaluated_at"],
-                    "evaluation_json": json.loads(row["evaluation_json"]),
-                }
-                for row in selection.calibration_rows
-            ],
         },
         "schema": "digest_payload_v1",
     }

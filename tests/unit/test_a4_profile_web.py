@@ -148,8 +148,9 @@ class ProfileConfigContractTest(unittest.TestCase):
 
         self.assertIn("Watchlist coverage · B-27", profile)
         self.assertIn("Coverage", profile)
-        self.assertIn("Dark companies · highest-cost gaps first", profile)
-        self.assertIn("Tier {tier} · {darkCompanies.length} not scanned", profile)
+        self.assertIn("All companies by tier · scan status", profile)
+        self.assertIn("Tier {tier} · {scannedCount}/{tierCompanies.length} scanned", profile)
+        self.assertIn("data.live.companyStatuses[company.name]?.status", profile)
         self.assertIn("dead feed ·", profile)
         self.assertIn("ats_type: unknown · source_key: null", profile)
         self.assertIn("adapter_ready_disabled", profile)
@@ -162,6 +163,8 @@ class ProfileConfigContractTest(unittest.TestCase):
         self.assertIn("missingConfiguredCompanies", data_layer)
         self.assertIn("extraDatabaseEnabledCompanies", data_layer)
         self.assertIn("enabledCountMismatch", data_layer)
+        self.assertIn("companyStatuses", data_layer)
+        self.assertIn("worstRunStatus", data_layer)
 
 
 def _expected_dark_reason(company: dict[str, object]) -> str | None:
