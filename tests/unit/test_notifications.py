@@ -99,9 +99,11 @@ class NotificationDeliveryTest(unittest.TestCase):
                 recipient="owner@example.com",
             )
 
-            self.assertEqual(result.status, "suppressed_no_change")
+            self.assertEqual(result.status, "sent")
             self.assertEqual(result.role_count, 0)
-            self.assertEqual(provider.messages, [])
+            self.assertEqual(len(provider.messages), 1)
+            self.assertIn("No new roles today", provider.messages[0].text_body)
+            self.assertNotIn("Strategic Operations Manager", provider.messages[0].text_body)
 
     def test_material_hash_change_is_a_new_role_event(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -305,6 +307,8 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(first.failure_count, 1)
             self.assertEqual(second.failure_count, 1)
             self.assertEqual(len(provider.messages), 2)
+            self.assertIn("No new roles today", provider.messages[0].text_body)
+            self.assertIn("failure — FailureCo", provider.messages[0].text_body)
 
     def test_disabled_degraded_source_is_not_reported_as_latest_failure(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -314,7 +318,7 @@ class NotificationDeliveryTest(unittest.TestCase):
 
             self.assertEqual(latest_source_failures(conn), [])
 
-    def test_no_change_digest_is_suppressed(self) -> None:
+    def test_no_change_digest_sends_minimal_heartbeat(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
             conn = _connect(db_path)
@@ -334,8 +338,15 @@ class NotificationDeliveryTest(unittest.TestCase):
                 recipient="owner@example.com",
             )
 
-            self.assertEqual(result.status, "suppressed_no_change")
-            self.assertEqual(provider.messages, [])
+            self.assertEqual(result.status, "sent")
+            self.assertEqual(result.role_count, 0)
+            self.assertEqual(len(provider.messages), 1)
+            self.assertEqual(
+                provider.messages[0].text_body.strip(),
+                "No new roles today · scanned 0 postings across 0 companies",
+            )
+            self.assertIn("No new roles today", provider.messages[0].html_body)
+            self.assertNotIn("Your roles", provider.messages[0].html_body)
 
     def test_identical_role_digest_is_not_resent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -565,7 +576,7 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertNotIn("Top open roles by fit", text_body)
             self.assertNotIn("Source: https://example.com/older-valid-", text_body)
 
-    def test_quiet_cycle_is_suppressed_without_calibration_resurfacing(self) -> None:
+    def test_quiet_cycle_repeats_heartbeat_without_repeating_roles(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
             output_dir = Path(directory) / "output"
@@ -609,11 +620,14 @@ class NotificationDeliveryTest(unittest.TestCase):
                 recipient="owner@example.com",
             )
 
-            self.assertEqual(first.status, "suppressed_no_change")
-            self.assertEqual(second.status, "suppressed_no_change")
+            self.assertEqual(first.status, "sent")
+            self.assertEqual(second.status, "sent")
             self.assertEqual(first.role_count, 0)
             self.assertEqual(second.role_count, 0)
-            self.assertEqual(len(provider.messages), 0)
+            self.assertEqual(len(provider.messages), 2)
+            for message in provider.messages:
+                self.assertIn("No new roles today", message.text_body)
+                self.assertNotIn("Source: https://example.com/quiet-calibration-", message.text_body)
 
     def test_provider_withholds_fallback_rows_when_valid_rows_exist(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="supported-color-schemes" content="dark">
+  <title>Job Search Heartbeat</title>
+</head>
+<body style="margin:0;padding:0;background-color:#0a141c;color:#eef0ec;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0a141c" style="width:100%;background-color:#0a141c;border-collapse:collapse;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#eef0ec;">
+    <tr>
+      <td align="center" bgcolor="#0a141c" style="padding:24px 12px;background-color:#0a141c;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#13242f" style="width:100%;max-width:600px;background-color:#13242f;border:1px solid #243746;border-radius:12px;border-collapse:separate;">
+          <tr>
+            <td bgcolor="#13242f" style="padding:20px 22px;background-color:#13242f;color:#eef0ec;font-size:15px;line-height:22px;">
+              <strong style="color:#96d9bd;">No new roles today</strong>
+              <span style="color:#526571;"> · </span>
+              <span style="color:#9fb0b6;">scanned {{ digest.scan_reach.fetched_count_label }} postings across {{ digest.scan_reach.company_count }} {{ digest.scan_reach.company_word }}</span>
+            </td>
+          </tr>
+          {% if digest.selection.degraded or digest.selection.fallback_filtered_count or digest.failures %}
+          <tr>
+            <td bgcolor="#2b241c" style="padding:14px 22px;background-color:#2b241c;border-top:1px solid #7a5038;color:#e3a08c;font-size:13px;line-height:20px;">
+              {% if digest.selection.degraded %}<strong style="color:#f0876b;">⚠ DEGRADED — evaluator output was unvalidated.</strong>{% endif %}
+              {% if digest.selection.fallback_filtered_count %}{% if digest.selection.degraded %}<br>{% endif %}⚠ {{ digest.selection.fallback_filtered_count }} unvalidated role(s) withheld.{% endif %}
+              {% for failure in digest.failures %}{% if digest.selection.degraded or digest.selection.fallback_filtered_count or not loop.first %}<br>{% endif %}⚠ {{ failure.status|e }} — <strong>{{ failure.company|e }}</strong> ({{ failure.source_type|e }}:{{ failure.source_key|e }}) {{ failure.error_summary|e }}{% endfor %}
+            </td>
+          </tr>
+          {% endif %}
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

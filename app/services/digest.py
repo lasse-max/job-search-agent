@@ -216,9 +216,10 @@ def _render_template(
     selection: DigestSelection,
     scan_reach: ScanReach | None,
 ) -> str:
-    rendered = TEMPLATE_ENV.get_template(template_name).render(
-        digest=_digest_context(rows, failures, selection, scan_reach)
-    )
+    context = _digest_context(rows, failures, selection, scan_reach)
+    if context["heartbeat"]:
+        template_name = template_name.replace("digest.", "heartbeat.")
+    rendered = TEMPLATE_ENV.get_template(template_name).render(digest=context)
     return rendered.rstrip() + "\n"
 
 
@@ -270,6 +271,7 @@ def _digest_context(
     )
 
     return {
+        "heartbeat": not rows,
         "generated_at": generated_at,
         "generated_label": _format_generated_label(generated_at),
         "sections": sections,

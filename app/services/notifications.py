@@ -108,7 +108,6 @@ def deliver_digest(
     output_dir: Path = OUTPUT_DIR,
     provider: EmailProvider | None = None,
     recipient: str | None = None,
-    suppress_no_change: bool = True,
 ) -> DigestDeliveryResult:
     """Render and send the since-last digest, falling back to local files in dev."""
 
@@ -128,29 +127,11 @@ def deliver_digest(
         degraded=selection.degraded,
     )
     payload_hash = _payload_hash(rows, failures, selection)
-
-    if suppress_no_change and not rows and not failures:
-        record_notification(
-            conn,
-            notification_type="digest",
-            payload_hash=payload_hash,
-            status="suppressed_no_change",
-            error_summary="No new or changed roles, and no source failures.",
-        )
-        conn.commit()
-        return DigestDeliveryResult(
-            status="suppressed_no_change",
-            subject=subject,
-            payload_hash=payload_hash,
-            role_count=0,
-            failure_count=0,
-            html_path=html_path,
-            text_path=text_path,
-            recipient=recipient,
-        )
+    heartbeat = not rows
 
     # Source failures are intentionally never suppressed, even if the payload repeats.
-    if not failures and has_delivered_payload(conn, payload_hash):
+    # Quiet heartbeats also repeat deliberately to distinguish a healthy run from silence.
+    if not heartbeat and not failures and has_delivered_payload(conn, payload_hash):
         record_notification(
             conn,
             notification_type="digest",

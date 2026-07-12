@@ -59,7 +59,7 @@ Roadmap split (owner): **1.0 shipped** (daily email agent) → **1.5** = search 
 
 ## 🟢 LIVE, TUNED & OPERATING (2026-06-27)
 
-Stage 1 is live, delivering, and now tuned to the owner's preference. The agent scans the watchlist **once daily (`0 6 * * *`)** → calibrated Claude evaluation → a capped **Layline-dark** alert containing only genuinely new or materially changed roles inside the freshness window. Quiet cycles correctly send no role email; source-health and degraded warnings still reach the owner. Sextant is the persistent browse surface.
+Stage 1 is live, delivering, and now tuned to the owner's preference. The agent scans the watchlist **once daily (`0 6 * * *`)** → calibrated Claude evaluation → a capped **Layline-dark** alert containing only genuinely new or materially changed roles inside the freshness window. Quiet cycles send a minimal zero-role heartbeat with scan reach; source-health and degraded warnings still reach the owner. Sextant is the persistent browse surface.
 
 **Shipped this cycle (all Cato-cleared):**
 - **Email redesign** (`2bfead0` + `03bbae5`) — Layline dark brand, email-hardened, behavior preserved. PII scrubbed from the design mockups (synthetic data).

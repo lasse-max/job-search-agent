@@ -1,0 +1,10 @@
+No new roles today · scanned {{ digest.scan_reach.fetched_count_label }} postings across {{ digest.scan_reach.company_count }} {{ digest.scan_reach.company_word }}
+{% if digest.selection.degraded -%}
+⚠️ DEGRADED — evaluator output was unvalidated.
+{% endif -%}
+{% if digest.selection.fallback_filtered_count -%}
+⚠️ {{ digest.selection.fallback_filtered_count }} unvalidated role(s) withheld.
+{% endif -%}
+{% for failure in digest.failures -%}
+⚠️ {{ failure.status }} — {{ failure.company }} ({{ failure.source_type }}:{{ failure.source_key }}) {{ failure.error_summary }}
+{% endfor -%}
