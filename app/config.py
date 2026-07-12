@@ -52,6 +52,15 @@ class ScoringPolicyConfig:
 
 
 @dataclass(frozen=True)
+class RecencyPolicyConfig:
+    version: str
+    max_age_days: int
+    hide_stale_by_default: bool
+    estimated_seconds_per_evaluation: int
+    estimated_cost_per_evaluation_usd: float
+
+
+@dataclass(frozen=True)
 class MarketPolicyConfig:
     name: str
     current_authorization: str
@@ -233,6 +242,29 @@ def load_scoring_policy(
         ),
         strong_penalties=_tuple_of_str(data.get("strong_penalties")),
         gap_penalties=_dict_of_int(data.get("gap_penalties")),
+    )
+
+
+@lru_cache(maxsize=1)
+def load_recency_policy(
+    path: Path = CONFIG_DIR / "recency_policy.yaml",
+) -> RecencyPolicyConfig:
+    data = _read_yaml_mapping(path)
+    max_age_days = data.get("max_age_days")
+    estimated_seconds = data.get("estimated_seconds_per_evaluation")
+    estimated_cost = data.get("estimated_cost_per_evaluation_usd")
+    if not isinstance(max_age_days, int) or max_age_days < 0:
+        raise ValueError(f"Invalid max_age_days in {path}")
+    if not isinstance(estimated_seconds, int) or estimated_seconds < 0:
+        raise ValueError(f"Invalid estimated_seconds_per_evaluation in {path}")
+    if not isinstance(estimated_cost, int | float) or estimated_cost < 0:
+        raise ValueError(f"Invalid estimated_cost_per_evaluation_usd in {path}")
+    return RecencyPolicyConfig(
+        version=str(data.get("version") or "recency_policy_unknown"),
+        max_age_days=max_age_days,
+        hide_stale_by_default=bool(data.get("hide_stale_by_default", True)),
+        estimated_seconds_per_evaluation=estimated_seconds,
+        estimated_cost_per_evaluation_usd=float(estimated_cost),
     )
 
 

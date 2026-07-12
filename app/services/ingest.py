@@ -7,7 +7,12 @@ import os
 from pathlib import Path
 
 from app.adapters import get_adapter
-from app.config import DEFAULT_DB_PATH, OUTPUT_DIR, load_company_config
+from app.config import (
+    DEFAULT_DB_PATH,
+    OUTPUT_DIR,
+    load_company_config,
+    load_recency_policy,
+)
 from app.db import (
     connect_runtime_database,
     current_evaluation_policy_version,
@@ -26,6 +31,7 @@ from app.db import (
     upsert_postings,
 )
 from app.models import utc_now
+from app.recency import posting_is_recent
 from app.services.digest import write_digest
 from app.services.evaluate import (
     HYBRID_EVALUATOR_VERSION,
@@ -162,12 +168,22 @@ def run_scan(
         dropped_evaluation_rows = []
         fallback_evaluation_count = 0
         rows_by_id = {int(row["id"]): row for row in get_postings_by_ids(conn, candidate_ids)}
+        recency_policy = load_recency_policy()
         for candidate_id in candidate_ids:
             row = rows_by_id.get(candidate_id)
             if row is None:
                 continue
             stale_backfill = candidate_id in stale_only_candidate_ids
             row_hash = input_hash(row)
+            if fixture_path is None and not posting_is_recent(row, recency_policy):
+                record_evaluation_skip(
+                    conn,
+                    int(row["id"]),
+                    row_hash,
+                    f"posting_older_than_{recency_policy.max_age_days}_days",
+                    evaluator_version=evaluation_policy_version,
+                )
+                continue
             relevance = relevance_decision(row, company)
             if not relevance.should_evaluate:
                 record_evaluation_skip(

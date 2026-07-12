@@ -6,17 +6,22 @@ import {
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { PotentialMatchesClient } from "./potential-matches-client";
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams
+}: {
+  searchParams: Promise<{ older?: string }>;
+}) {
   const user = await requireOwner();
-  const data = await loadPotentialMatchesOrFallback();
+  const { older } = await searchParams;
+  const data = await loadPotentialMatchesOrFallback(older === "1");
 
   return <PotentialMatchesClient data={data} userEmail={user.email ?? "owner"} />;
 }
 
-async function loadPotentialMatchesOrFallback() {
+async function loadPotentialMatchesOrFallback(includeOlder: boolean) {
   try {
     const supabase = await createSupabaseServerClient();
-    return await loadPotentialMatches(supabase);
+    return await loadPotentialMatches(supabase, { includeOlder });
   } catch {
     return emptyPotentialMatchesData({
       title: "Couldn't load data",

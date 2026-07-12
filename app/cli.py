@@ -38,7 +38,7 @@ from app.services.review import (
     show_review,
     snooze_review,
 )
-from app.services.scheduled_scan import run_scheduled_scan
+from app.services.scheduled_scan import plan_stale_backfill, run_scheduled_scan
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -214,6 +214,16 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "scan-all":
+        if int(os.getenv("STALE_EVALUATION_BACKFILL_LIMIT", "25")) > 25:
+            plan = plan_stale_backfill(db_path=args.db, database_url=args.database_url)
+            hours, remainder = divmod(plan.estimated_seconds, 3600)
+            minutes = remainder // 60
+            print(
+                f"backfill_plan_items={plan.item_count} "
+                f"max_age_days={plan.max_age_days} "
+                f"eta={hours}h{minutes:02d}m "
+                f"projected_spend_usd={plan.projected_spend_usd:.2f}"
+            )
         result = run_scheduled_scan(
             db_path=args.db,
             database_url=args.database_url,

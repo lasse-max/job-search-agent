@@ -10,9 +10,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from app.config import DEFAULT_DB_PATH, load_enabled_company_configs
-from app.db import connect_runtime_database, init_db
+from app.config import DEFAULT_DB_PATH, load_enabled_company_configs, load_recency_policy
+from app.db import (
+    connect_runtime_database,
+    get_postings_by_ids,
+    init_db,
+    stale_open_posting_ids_for_evaluator,
+)
 from app.models import CompanyConfig
+from app.services.evaluate import HYBRID_EVALUATOR_VERSION, relevance_decision
 from app.services.ingest import ScanSummary, run_scan
 from app.services.notifications import DigestDeliveryResult, deliver_digest
 
@@ -31,6 +37,61 @@ class ScheduledScanResult:
         if any(summary.status == "degraded" for summary in self.summaries):
             return "degraded"
         return "success"
+
+
+@dataclass(frozen=True)
+class BackfillPlan:
+    item_count: int
+    estimated_seconds: int
+    projected_spend_usd: float
+    max_age_days: int
+
+
+def plan_stale_backfill(
+    *,
+    db_path: Path = DEFAULT_DB_PATH,
+    database_url: str | None = None,
+    companies: list[CompanyConfig] | None = None,
+) -> BackfillPlan:
+    policy = load_recency_policy()
+    conn = connect_runtime_database(db_path, database_url=database_url)
+    item_ids: set[int] = set()
+    try:
+        for company in companies or load_enabled_company_configs():
+            if company.ats_type == "manual":
+                continue
+            source = conn.execute(
+                """
+                SELECT js.id
+                FROM job_sources js
+                JOIN companies c ON c.id = js.company_id
+                WHERE c.name = ? AND js.source_type = ? AND js.source_key = ?
+                """,
+                (company.name, company.ats_type, company.source_key),
+            ).fetchone()
+            if source is None:
+                continue
+            candidate_ids = stale_open_posting_ids_for_evaluator(
+                conn,
+                int(source["id"]),
+                evaluator_version=HYBRID_EVALUATOR_VERSION,
+                limit=100_000,
+            )
+            rows = get_postings_by_ids(conn, candidate_ids)
+            item_ids.update(
+                int(row["id"])
+                for row in rows
+                if relevance_decision(row, company).should_evaluate
+            )
+    finally:
+        conn.close()
+    count = len(item_ids)
+    return BackfillPlan(
+        item_count=count,
+        estimated_seconds=count * policy.estimated_seconds_per_evaluation,
+        projected_spend_usd=count * policy.estimated_cost_per_evaluation_usd,
+        max_age_days=policy.max_age_days,
+    )
 
 
 def run_scheduled_scan(

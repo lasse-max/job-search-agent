@@ -8,6 +8,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
+from app.adapters import get_adapter
 from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
 from app.db import current_evaluation_policy_version, wake_due_snoozes
 from app.services.evaluate import DETERMINISTIC_FALLBACK_VERSION, HYBRID_EVALUATOR_VERSION
@@ -29,6 +30,35 @@ FIXTURE = ROOT / "data" / "fixtures" / "greenhouse" / "databricks_jobs.json"
 
 
 class DatabricksSliceTest(unittest.TestCase):
+    def test_live_scan_stores_but_never_scores_postings_outside_recency_window(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "slice.sqlite"
+            old_fixture = Path(directory) / "old.json"
+            payload = json.loads(FIXTURE.read_text(encoding="utf-8"))
+            for job in payload["jobs"]:
+                job["first_published"] = "2025-01-01T09:00:00+00:00"
+            old_fixture.write_text(json.dumps(payload), encoding="utf-8")
+            adapter = get_adapter("greenhouse")
+            fetch_result = adapter.fetch_from_file("databricks", str(old_fixture))
+
+            with (
+                patch("app.services.ingest.get_adapter", return_value=adapter),
+                patch.object(adapter, "fetch", return_value=fetch_result),
+                patch("app.services.ingest._degraded_reason", return_value=None),
+            ):
+                summary = run_scan(db_path=db_path)
+
+            self.assertEqual(summary.status, "success")
+            self.assertEqual(summary.fetched_count, 3)
+            self.assertEqual(summary.evaluated_count, 0)
+            conn = sqlite3.connect(db_path)
+            self.assertEqual(_count(conn, "job_postings"), 3)
+            self.assertEqual(_count(conn, "role_evaluations"), 0)
+            reasons = {
+                row[0] for row in conn.execute("SELECT reason FROM evaluation_skips")
+            }
+            self.assertEqual(reasons, {"posting_older_than_21_days"})
+
     def test_relevance_skips_are_logged_with_reasons(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "slice.sqlite"

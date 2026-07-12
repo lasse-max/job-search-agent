@@ -1,0 +1,5 @@
+version: "recency_policy_v1"
+max_age_days: 21
+hide_stale_by_default: true
+estimated_seconds_per_evaluation: 20
+estimated_cost_per_evaluation_usd: 0.004

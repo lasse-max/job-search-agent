@@ -6,6 +6,7 @@ import { useState, useTransition } from "react";
 import { removeFromShortlist } from "@/app/actions/opportunities";
 import { markApplied } from "@/app/applied/actions";
 import type { ShortlistData, ShortlistedRole } from "@/lib/data/shortlist";
+import { freshnessLabel } from "@/lib/recency";
 
 export function ToApplyClient({ data, userEmail }: { data: ShortlistData; userEmail: string }) {
   const router = useRouter();
@@ -89,6 +90,8 @@ function ShortlistCard({
             <span>{role.locationsLabel}</span>
             <span>·</span>
             <span>{ageLabel(role.flaggedAt)}</span>
+            <span>·</span>
+            <span>{freshnessLabel(role)}</span>
           </div>
           <p className="mt-3 text-[13px] leading-5 text-chart-muted">
             {role.note || "No note added."}

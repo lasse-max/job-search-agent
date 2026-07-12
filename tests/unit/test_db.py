@@ -7,8 +7,10 @@ import unittest
 
 from app.db import (
     _stored_evaluation_version,
+    get_digest_rows,
     init_db,
     record_evaluation_skip,
+    stale_open_posting_ids_for_evaluator,
     upsert_company,
     upsert_postings,
     upsert_source,
@@ -17,6 +19,64 @@ from app.models import CompanyConfig, JobPosting
 
 
 class JobPostingPersistenceTest(unittest.TestCase):
+    def test_recency_cutoff_bounds_backfill_and_digest_with_first_seen_fallback(self) -> None:
+        conn = sqlite3.connect(":memory:")
+        conn.row_factory = sqlite3.Row
+        init_db(conn)
+        company = CompanyConfig(
+            name="ExampleCo",
+            tier=1,
+            enabled=True,
+            ats_type="greenhouse",
+            source_key="example",
+            careers_url="https://example.com/careers",
+            target_locations=["London"],
+            target_role_family_notes="Strategy and operations",
+            warm_path=False,
+        )
+        company_id = upsert_company(conn, company)
+        source_id = upsert_source(conn, company_id, company)
+        result = upsert_postings(
+            conn,
+            company_id,
+            source_id,
+            [
+                _posting("fresh", ["London"], title="Fresh Strategy Role"),
+                _posting("old", ["London"], title="Old Strategy Role"),
+            ],
+            "2026-07-10T08:00:00+00:00",
+        )
+        rows = conn.execute("SELECT id, source_job_id FROM job_postings").fetchall()
+        ids = {row["source_job_id"]: int(row["id"]) for row in rows}
+        conn.execute(
+            "UPDATE job_postings SET posted_at = NULL, first_seen_at = ? WHERE id = ?",
+            ("2026-06-01T08:00:00+00:00", ids["old"]),
+        )
+        for job_id in result.new_posting_ids:
+            conn.execute(
+                """
+                INSERT INTO role_evaluations (
+                  job_posting_id, profile_version_id, location_policy_version_id,
+                  prompt_version, model_version, input_hash, evaluation_json, created_at
+                ) VALUES (?, 'profile', 'location', 'prompt', 'model', ?, '{}', ?)
+                """,
+                (job_id, f"hash-{job_id}", "2026-07-10T09:00:00+00:00"),
+            )
+
+        stale_ids = stale_open_posting_ids_for_evaluator(
+            conn,
+            source_id,
+            evaluator_version="hybrid_claude_v4",
+            limit=100,
+            recency_cutoff="2026-06-20",
+        )
+        self.assertEqual(stale_ids, [ids["fresh"]])
+        self.assertEqual(
+            [row["job_id"] for row in get_digest_rows(conn, recency_cutoff="2026-06-20")],
+            [ids["fresh"]],
+        )
+        self.assertEqual(len(get_digest_rows(conn, include_older=True)), 2)
+
     def test_init_db_adds_version_marker_to_legacy_evaluation_skips(self) -> None:
         conn = sqlite3.connect(":memory:")
         conn.row_factory = sqlite3.Row

@@ -14,6 +14,7 @@ import type {
   PotentialMatchesData
 } from "@/lib/data/calibrated-evaluations";
 import { formatDateTime, humanizeRecommendation } from "@/lib/data/calibrated-evaluations";
+import { freshnessLabel, roleIsOlderThanPolicy } from "@/lib/recency";
 
 type Props = {
   data: PotentialMatchesData;
@@ -89,13 +90,23 @@ export function PotentialMatchesClient({ data, userEmail }: Props) {
                 generated {data.generatedAtLabel} · current calibrated evaluator only
               </p>
             </div>
-            <button
+            <div className="flex items-center gap-2">
+              <Link
+                className="rounded-md border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-[11px] text-chart-muted transition hover:border-chart-teal/35 hover:text-chart-teal"
+                href={data.includeOlder ? "/" : "/?older=1"}
+              >
+                {data.includeOlder
+                  ? `hide roles older than ${data.maxAgeDays}d`
+                  : "view older roles"}
+              </Link>
+              <button
               className="rounded-md border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-[11px] text-chart-muted transition hover:border-chart-teal/35 hover:text-chart-teal"
               onClick={() => setAuditOpen((value) => !value)}
               type="button"
             >
               {auditOpen ? "back to matches" : `skipped / all roles · ${data.counts.audit}`}
-            </button>
+              </button>
+            </div>
           </header>
 
           <SummaryBar data={data} />
@@ -427,6 +438,7 @@ function ChipRow({ role }: { role: PotentialMatch }) {
       <Chip tone={role.tier === 1 ? "teal" : "muted"}>Tier {role.tier}</Chip>
       <Chip tone={pctTone(role.feasibilityPct)}>feasibility {role.feasibilityPct}%</Chip>
       <Chip tone={pctTone(role.confidencePct)}>confidence {role.confidencePct}%</Chip>
+      <Chip tone={roleIsOlderThanPolicy(role) ? "warn" : "green"}>{freshnessLabel(role)}</Chip>
       <LevelChip role={role} />
       {role.isCalibration ? <Chip tone="green">calibration sample</Chip> : null}
     </div>

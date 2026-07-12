@@ -13,6 +13,7 @@ function readYaml(name) {
 const candidate = readYaml("candidate_profile.yaml");
 const location = readYaml("location_policy.yaml");
 const scoring = readYaml("scoring_policy.yaml");
+const recency = readYaml("recency_policy.yaml");
 const watchlist = readYaml("watchlist.yaml");
 const supportedAdapters = new Set(["ashby", "greenhouse", "lever"]);
 
@@ -76,7 +77,8 @@ const output = {
   versions: {
     candidate: candidate.version,
     location: location.version,
-    scoring: scoring.version
+    scoring: scoring.version,
+    recency: recency.version
   },
   targetRoleFamilies: candidate.primary_role_families,
   approvedStretchFamilies: candidate.approved_stretch_families,
@@ -94,6 +96,10 @@ const output = {
     applyNow: scoring.recommendation_thresholds.apply_now_min_fit,
     consider: scoring.recommendation_thresholds.consider_min_fit,
     stretch: scoring.recommendation_thresholds.stretch_min_fit
+  },
+  recency: {
+    maxAgeDays: recency.max_age_days,
+    hideStaleByDefault: Boolean(recency.hide_stale_by_default)
   },
   locations: {
     allowedMetros: location.profile_display.allowed_metros,

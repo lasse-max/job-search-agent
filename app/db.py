@@ -13,7 +13,12 @@ from typing import Any
 
 from app.adapters import parser_version, source_endpoint
 from app.adapters.utils import normal_key
-from app.config import load_candidate_profile, load_location_policy, load_scoring_policy
+from app.config import (
+    load_candidate_profile,
+    load_location_policy,
+    load_recency_policy,
+    load_scoring_policy,
+)
 from app.models import CompanyConfig, JobPosting, RoleEvaluation, utc_now
 from app.services.evaluate import has_disqualifying_hard_requirement
 from app.services.material import material_hash_for_posting, material_hash_for_row
@@ -23,6 +28,7 @@ from app.services.text_rules import (
     unsupported_language_requirement,
 )
 from app.postgres import connect_postgres, is_postgres_connection, postgres_core_schema
+from app.recency import recency_cutoff_date
 
 
 DEFAULT_EVALUATOR_VERSION = "deterministic_fallback_v1"
@@ -813,6 +819,7 @@ def stale_open_posting_ids_for_evaluator(
     evaluator_version: str,
     limit: int,
     skip_policy_version: str | None = None,
+    recency_cutoff: str | None = None,
 ) -> list[int]:
     if limit <= 0:
         return []
@@ -822,6 +829,7 @@ def stale_open_posting_ids_for_evaluator(
     skip_policy_version = skip_policy_version or current_evaluation_policy_version(
         evaluator_version
     )
+    recency_cutoff = recency_cutoff or recency_cutoff_date()
     rows = conn.execute(
         """
         SELECT jp.id
@@ -833,6 +841,7 @@ def stale_open_posting_ids_for_evaluator(
         )
         WHERE jp.source_id = ?
           AND jp.availability_state = 'open'
+          AND COALESCE(jp.posted_at, jp.first_seen_at) >= ?
           AND (
             re.id IS NULL
             OR re.model_version NOT LIKE ? ESCAPE '\\'
@@ -851,6 +860,7 @@ def stale_open_posting_ids_for_evaluator(
         """,
         (
             source_id,
+            recency_cutoff,
             _evaluator_version_like(evaluator_version),
             profile_version,
             location_version,
@@ -869,6 +879,7 @@ def current_evaluation_policy_version(evaluator_version: str) -> str:
             load_candidate_profile().version,
             load_location_policy().version,
             load_scoring_policy().version,
+            load_recency_policy().version,
         ]
     )
 
@@ -962,14 +973,20 @@ def get_digest_rows(
     *,
     since: str | None = None,
     evaluator_version: str | None = None,
+    include_older: bool = False,
+    recency_cutoff: str | None = None,
 ) -> list[sqlite3.Row]:
     wake_due_snoozes(conn, utc_now()[:10])
     since_clause = ""
     latest_version_clause = ""
+    recency_clause = ""
     params: list[str] = []
     if since is not None:
         since_clause = "AND re.created_at >= ?"
         params.append(since)
+    if not include_older:
+        recency_clause = "AND COALESCE(jp.posted_at, jp.first_seen_at) >= ?"
+        params.append(recency_cutoff or recency_cutoff_date())
     if evaluator_version is not None:
         latest_version_clause = """
               AND (
@@ -1011,6 +1028,7 @@ def get_digest_rows(
         WHERE orev.state = 'new'
           AND jp.availability_state = 'open'
           {since_clause}
+          {recency_clause}
           AND re.id = (
             SELECT MAX(id) FROM role_evaluations latest
             WHERE latest.job_posting_id = jp.id

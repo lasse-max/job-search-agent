@@ -2,7 +2,8 @@
   "versions": {
     "candidate": "candidate_profile_v3",
     "location": "location_policy_v3",
-    "scoring": "scoring_policy_v2"
+    "scoring": "scoring_policy_v2",
+    "recency": "recency_policy_v1"
   },
   "targetRoleFamilies": [
     "Strategy and Operations",
@@ -73,6 +74,10 @@
     "applyNow": 80,
     "consider": 70,
     "stretch": 60
+  },
+  "recency": {
+    "maxAgeDays": 21,
+    "hideStaleByDefault": true
   },
   "locations": {
     "allowedMetros": [

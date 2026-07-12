@@ -20,7 +20,7 @@ from app.services.manual_intake import (
     add_url_intake,
 )
 from app.services.ingest import ScanSummary
-from app.services.scheduled_scan import ScheduledScanResult, run_scheduled_scan
+from app.services.scheduled_scan import BackfillPlan, ScheduledScanResult, run_scheduled_scan
 
 
 JOB_TEXT = """Company: ExampleCo
@@ -258,6 +258,27 @@ class OperabilityTest(unittest.TestCase):
         )
         self.assertIn('MONTHLY_MODEL_SPEND_CAP_USD: "15"', workflow)
         self.assertNotIn("echo ${{ secrets.", workflow)
+
+    def test_full_backfill_reports_items_eta_and_spend_before_scan(self) -> None:
+        result = ScheduledScanResult(summaries=[], skipped=[], failures=[])
+        plan = BackfillPlan(
+            item_count=42,
+            estimated_seconds=840,
+            projected_spend_usd=0.168,
+            max_age_days=21,
+        )
+        with (
+            patch.dict("os.environ", {"STALE_EVALUATION_BACKFILL_LIMIT": "10000"}),
+            patch("app.cli.plan_stale_backfill", return_value=plan) as planner,
+            patch("app.cli.run_scheduled_scan", return_value=result),
+        ):
+            output = _run_cli(["scan-all"])
+
+        planner.assert_called_once()
+        self.assertIn(
+            "backfill_plan_items=42 max_age_days=21 eta=0h14m projected_spend_usd=0.17",
+            output,
+        )
 
     def test_sample_live_noise_cli_writes_label_template(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

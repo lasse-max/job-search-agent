@@ -1,5 +1,6 @@
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
+import { ROLE_MAX_AGE_DAYS, recencyCutoffDate } from "@/lib/recency";
 
 export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v4";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
@@ -94,6 +95,8 @@ export type PotentialMatchesData = {
     calibration: number;
     audit: number;
   };
+  includeOlder: boolean;
+  maxAgeDays: number;
   quietDay: boolean;
   initialExpandedId: number | null;
   loadError: {
@@ -115,15 +118,23 @@ export async function listCurrentEvaluationRefs(
 }
 
 export async function loadPotentialMatches(
-  supabase: AppSupabaseClient
+  supabase: AppSupabaseClient,
+  options: { includeOlder?: boolean } = {}
 ): Promise<PotentialMatchesData> {
-  const { data: evaluationRows, error } = await supabase
+  let evaluationQuery = supabase
     .from("current_opportunity_evaluations")
     .select("*")
     .eq("availability_state", "open")
     .like("model_version", CURRENT_EVALUATOR_VERSION_SUFFIX)
     .order("evaluated_at", { ascending: false })
     .limit(500);
+  if (!options.includeOlder) {
+    const cutoff = recencyCutoffDate();
+    evaluationQuery = evaluationQuery.or(
+      `posted_at.gte.${cutoff},and(posted_at.is.null,first_seen_at.gte.${cutoff})`
+    );
+  }
+  const { data: evaluationRows, error } = await evaluationQuery;
 
   if (error) {
     throw new Error(`Unable to load calibrated evaluations: ${error.message}`);
@@ -178,6 +189,8 @@ export async function loadPotentialMatches(
       calibration: bands.calibration.length,
       audit: auditRows.length
     },
+    includeOlder: Boolean(options.includeOlder),
+    maxAgeDays: ROLE_MAX_AGE_DAYS,
     quietDay,
     initialExpandedId: firstExpandable,
     loadError: null
@@ -206,6 +219,8 @@ export function emptyPotentialMatchesData(loadError: PotentialMatchesData["loadE
       calibration: 0,
       audit: 0
     },
+    includeOlder: false,
+    maxAgeDays: ROLE_MAX_AGE_DAYS,
     quietDay: false,
     initialExpandedId: null,
     loadError
