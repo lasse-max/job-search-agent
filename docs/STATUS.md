@@ -12,6 +12,15 @@ Living status doc. Single source of truth for *where things stand right now and 
 
 ---
 
+## B-27 coverage build/audit complete — rollout remains owner-gated (2026-07-12)
+
+- Live automated coverage is intentionally unchanged at **31/92**. DoorDash, SafetyCulture, and Glean sources are repaired; SmartRecruiters now covers six watchlist companies; 14 non-dead disabled Ashby feeds were revalidated. Nothing was enabled.
+- Recommended first owner batch: **DoorDash + SafetyCulture + Canva**. Preflight: 285 catalog roles, 38 fresh gate-passers, approximately **$0.15 / 12.7 minutes** for an uncached first evaluation pass.
+- Existing adapters can only lift Tier 1 to **13/20**, below the 18/20 gate. Dedicated alerts-mailbox ingestion (B-14) is therefore the next high-leverage coverage mechanism for the bespoke Google/Uber/Atlassian/Amazon/Apple/Netflix/NEURA set.
+- Full evidence, catalog counts, and batch order: `docs/source_coverage_expansion_audit_2026-07-12.md`.
+
+---
+
 ## 🟢 A3 SHIPPED · SWEEP-3 GATE CLEARED — 3 of 4 pages live (2026-07-10)
 
 - **A3 Applied tracker shipped + Cato SHIP** (`c832455` schema/RPCs + `a85f57a` UI). **Migration 003 applied to live Supabase by owner** (SQL Editor, success). Cato found no privilege-escalation / RLS-bypass / immutability-bypass / fallback-capture path: the three write RPCs are `SECURITY DEFINER` + `search_path=''` with an internal owner re-check; writes are RPC-only through a single gated create path; `application_events` and the eval snapshot are **database-immutable even against the RPCs**; snapshots can only come from the calibrated view.
