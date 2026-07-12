@@ -7,6 +7,7 @@ import { removeFromShortlist } from "@/app/actions/opportunities";
 import { markApplied } from "@/app/applied/actions";
 import type { ShortlistData, ShortlistedRole } from "@/lib/data/shortlist";
 import { freshnessLabel } from "@/lib/recency";
+import { ManualIntakeCards } from "@/app/manual-intake-cards";
 
 export function ToApplyClient({ data, userEmail }: { data: ShortlistData; userEmail: string }) {
   const router = useRouter();
@@ -45,6 +46,7 @@ export function ToApplyClient({ data, userEmail }: { data: ShortlistData; userEm
               {status}
             </div>
           ) : null}
+          <ManualIntakeCards entries={data.manualEntries} />
           <div className="mt-7 flex flex-col gap-3">
             {data.roles.map((role) => (
               <ShortlistCard
@@ -146,6 +148,7 @@ function EmptyShortlist() {
 function ToApplyNav({ count, userEmail }: { count: number; userEmail: string }) {
   const links = [
     ["Potential Matches", "/", ""],
+    ["Add a role", "/add-role", ""],
     ["To Apply", "/to-apply", String(count)],
     ["Applied", "/applied", ""],
     ["Profile", "/profile", ""]

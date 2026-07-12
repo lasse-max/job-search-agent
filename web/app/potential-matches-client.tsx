@@ -15,6 +15,7 @@ import type {
 } from "@/lib/data/calibrated-evaluations";
 import { formatDateTime, humanizeRecommendation } from "@/lib/data/calibrated-evaluations";
 import { freshnessLabel, roleIsOlderThanPolicy } from "@/lib/recency";
+import { ManualIntakeCards } from "@/app/manual-intake-cards";
 
 type Props = {
   data: PotentialMatchesData;
@@ -109,6 +110,7 @@ export function PotentialMatchesClient({ data, userEmail }: Props) {
           </header>
 
           <SummaryBar data={data} />
+          <ManualIntakeCards entries={data.manualEntries} />
 
           {data.loadError ? <DataLoadErrorBanner error={data.loadError} /> : null}
 
@@ -171,6 +173,7 @@ function SideNav({ data, userEmail }: Props) {
       count: data.counts.applyNow + data.counts.consider + data.counts.stretch,
       href: "/"
     },
+    { label: "Add a role", count: "", href: "/add-role" },
     { label: "To Apply", count: "", href: "/to-apply" },
     { label: "Applied", count: "", href: "/applied" },
     { label: "Profile", count: "", href: "/profile" }

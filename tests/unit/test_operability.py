@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import io
+import json
 import sqlite3
 import tempfile
 import unittest
@@ -13,11 +14,13 @@ import yaml
 
 from app.adapters import get_adapter
 from app.cli import main
-from app.models import CompanyConfig
+from app.db import init_db
+from app.models import CompanyConfig, RoleEvaluation
 from app.services.manual_intake import (
     ManualExtractionError,
     add_text_intake,
     add_url_intake,
+    process_manual_intake_queue,
 )
 from app.services.ingest import ScanSummary
 from app.services.scheduled_scan import BackfillPlan, ScheduledScanResult, run_scheduled_scan
@@ -35,7 +38,179 @@ Fluent in German required for customer and regional stakeholder engagement.
 """
 
 
+def _current_manual_evaluation() -> RoleEvaluation:
+    return RoleEvaluation(
+        role_fit_score=82,
+        confidence=0.88,
+        dimensions={
+            "role_family_fit": 85,
+            "evidence_strength": 80,
+            "scope_seniority": 82,
+            "gap_manageability": 82,
+        },
+        feasibility={"state": "viable", "reason": "EU-authorized"},
+        strategic_priority={"tier": "1", "reason": "manual owner-selected role"},
+        recommendation="apply_now",
+        provenance={
+            "model_version": "fake-claude",
+            "evaluator_version": "hybrid_claude_v4",
+            "fallback_quality": "false",
+        },
+        summary="Strong strategy and operations fit.",
+    )
+
+
 class OperabilityTest(unittest.TestCase):
+    def test_manual_text_queue_uses_existing_evaluator_and_enters_shortlist(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            init_db(conn)
+            conn.execute(
+                """
+                INSERT INTO manual_intake_submissions (
+                  owner_email, intake_mode, source_url, jd_text, company, title,
+                  location, note, destination, propose_watchlist, status, created_at, updated_at
+                ) VALUES (?, 'text', ?, ?, ?, ?, ?, ?, 'to_apply', 1, 'queued', ?, ?)
+                """,
+                (
+                    "owner@example.com",
+                    "https://example.com/manual-role",
+                    JOB_TEXT,
+                    "ExampleCo",
+                    "Strategic Operations Manager",
+                    "Munich, Germany",
+                    "referral",
+                    "2026-07-12T08:00:00+00:00",
+                    "2026-07-12T08:00:00+00:00",
+                ),
+            )
+            conn.commit()
+            conn.close()
+
+            with patch(
+                "app.services.manual_intake.evaluate_role",
+                return_value=_current_manual_evaluation(),
+            ) as evaluator:
+                summary = process_manual_intake_queue(db_path=db_path)
+
+            self.assertEqual(summary.completed, 1)
+            evaluator.assert_called_once()
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            submission = conn.execute("SELECT * FROM manual_intake_submissions").fetchone()
+            posting = conn.execute("SELECT * FROM job_postings").fetchone()
+            review = conn.execute("SELECT * FROM opportunity_reviews").fetchone()
+            evaluation = conn.execute("SELECT * FROM role_evaluations").fetchone()
+            self.assertEqual(submission["status"], "completed")
+            self.assertEqual(submission["job_posting_id"], posting["id"])
+            self.assertEqual(review["state"], "interested")
+            self.assertEqual(review["decision_reason"], "referral")
+            self.assertEqual(posting["source_url"], "https://example.com/manual-role")
+            self.assertTrue(evaluation["model_version"].endswith("|hybrid_claude_v4"))
+
+    def test_manual_url_queue_requests_text_without_failing_other_work(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            init_db(conn)
+            conn.execute(
+                """
+                INSERT INTO manual_intake_submissions (
+                  owner_email, intake_mode, source_url, company, title, destination,
+                  propose_watchlist, status, created_at, updated_at
+                ) VALUES ('owner@example.com', 'url', 'https://example.com/walled',
+                          'ExampleCo', 'Walled Role', 'potential_matches', 0,
+                          'queued', '2026-07-12T08:00:00+00:00', '2026-07-12T08:00:00+00:00')
+                """
+            )
+            conn.commit()
+            conn.close()
+
+            with patch(
+                "app.services.manual_intake.fetch_url_text",
+                side_effect=ManualExtractionError("url_extraction_too_short"),
+            ):
+                summary = process_manual_intake_queue(db_path=db_path)
+
+            self.assertEqual(summary.needs_text, 1)
+            conn = sqlite3.connect(db_path)
+            row = conn.execute(
+                "SELECT status, error_summary FROM manual_intake_submissions"
+            ).fetchone()
+            self.assertEqual(row, ("needs_text", "url_extraction_too_short"))
+
+    def test_manual_intake_preserves_existing_company_configuration(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            init_db(conn)
+            conn.execute(
+                """
+                INSERT INTO companies (name, tier, enabled, warm_path, notes)
+                VALUES ('ExampleCo', 1, 0, 1, 'owner configuration')
+                """
+            )
+            conn.commit()
+            conn.close()
+
+            with patch(
+                "app.services.manual_intake.evaluate_role",
+                return_value=_current_manual_evaluation(),
+            ):
+                add_text_intake(JOB_TEXT, db_path=db_path)
+
+            conn = sqlite3.connect(db_path)
+            company = conn.execute(
+                "SELECT tier, enabled, warm_path, notes FROM companies WHERE name = 'ExampleCo'"
+            ).fetchone()
+            self.assertEqual(company, (1, 0, 1, "owner configuration"))
+
+    def test_manual_text_queue_can_enter_applied_tracker(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            init_db(conn)
+            conn.execute(
+                """
+                INSERT INTO manual_intake_submissions (
+                  owner_email, intake_mode, jd_text, company, title, location,
+                  note, destination, propose_watchlist, status, created_at, updated_at
+                ) VALUES (?, 'text', ?, ?, ?, ?, ?, 'applied', 0, 'queued', ?, ?)
+                """,
+                (
+                    "owner@example.com",
+                    JOB_TEXT,
+                    "ExampleCo",
+                    "Strategic Operations Manager",
+                    "Munich, Germany",
+                    "Already applied via referral",
+                    "2026-07-12T08:00:00+00:00",
+                    "2026-07-12T08:00:00+00:00",
+                ),
+            )
+            conn.commit()
+            conn.close()
+
+            with patch(
+                "app.services.manual_intake.evaluate_role",
+                return_value=_current_manual_evaluation(),
+            ):
+                summary = process_manual_intake_queue(db_path=db_path)
+
+            self.assertEqual(summary.completed, 1)
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            application = conn.execute("SELECT * FROM applications").fetchone()
+            self.assertEqual(application["stage"], "applied")
+            self.assertEqual(application["notes"], "Already applied via referral")
+            snapshot = json.loads(application["eval_snapshot_json"])
+            self.assertTrue(snapshot["model_version"].endswith("|hybrid_claude_v4"))
+
     def test_review_cli_drives_all_requested_states(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"

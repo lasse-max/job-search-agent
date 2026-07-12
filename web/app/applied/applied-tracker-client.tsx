@@ -10,6 +10,7 @@ import {
   type ApplicationStage,
   type TrackedApplication
 } from "@/lib/data/applications";
+import { ManualIntakeCards } from "@/app/manual-intake-cards";
 import {
   updateApplicationDetails,
   updateApplicationStage
@@ -69,6 +70,7 @@ export function AppliedTrackerClient({ data, userEmail }: Props) {
           </header>
 
           {data.loadError ? <LoadError error={data.loadError} /> : null}
+          <ManualIntakeCards entries={data.manualEntries} />
           {data.applications.length ? (
             <>
               <Funnel data={data} />
@@ -99,6 +101,7 @@ function AppliedSideNav({ activeCount, userEmail }: { activeCount: number; userE
       </div>
       <nav className="flex flex-col gap-1">
         <NavItem href="/" label="Potential Matches" />
+        <NavItem href="/add-role" label="Add a role" />
         <NavItem href="/to-apply" label="To Apply" />
         <NavItem active href="/applied" label="Applied" value={String(activeCount)} />
         <NavItem href="/profile" label="Profile" />

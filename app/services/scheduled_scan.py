@@ -20,6 +20,7 @@ from app.db import (
 from app.models import CompanyConfig
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION, relevance_decision
 from app.services.ingest import ScanSummary, run_scan
+from app.services.manual_intake import ManualIntakeQueueSummary, process_manual_intake_queue
 from app.services.notifications import DigestDeliveryResult, deliver_digest
 
 
@@ -29,6 +30,7 @@ class ScheduledScanResult:
     skipped: list[str]
     failures: list[str]
     notification: DigestDeliveryResult | None = None
+    manual_intake: ManualIntakeQueueSummary | None = None
 
     @property
     def status(self) -> str:
@@ -122,6 +124,15 @@ def run_scheduled_scan(
         if summary.status == "failure":
             failures.append(f"{company.name}: {summary.error_summary or 'scan failed'}")
 
+    manual_intake = None
+    try:
+        manual_intake = process_manual_intake_queue(
+            db_path=db_path,
+            database_url=database_url,
+        )
+    except Exception as exc:  # noqa: BLE001 - queue infrastructure must fail loud.
+        failures.append(f"manual intake queue: {type(exc).__name__}: {exc}")
+
     notification = None
     if send_digest:
         conn = connect_runtime_database(db_path, database_url=database_url)
@@ -135,4 +146,5 @@ def run_scheduled_scan(
         skipped=skipped,
         failures=failures,
         notification=notification,
+        manual_intake=manual_intake,
     )

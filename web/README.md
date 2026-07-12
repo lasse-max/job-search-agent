@@ -1,6 +1,6 @@
 # Sextant Web App
 
-Stage 1.5 A2 Potential Matches.
+Stage 1.9 Sextant web app.
 
 This app is a private Next.js + TypeScript + Tailwind shell over the job-search
 agent's shared Supabase Postgres store. It does not score roles, assign bands,
@@ -31,8 +31,9 @@ OWNER_EMAIL=
 Supabase browser-safe project values. `OWNER_EMAIL` is server-side only and must
 match the single allowed owner row seeded into `app_allowed_users`.
 
-Do not set a Supabase service-role key in Vercel. The web app is read-only over
-RLS-protected views and should only use the anon key.
+Do not set a Supabase service-role key in Vercel. Reads use RLS-protected views
+and the small set of owner writes use narrow, owner-checking RPCs through the
+browser-safe anon key.
 
 Set this in the scanner runtime / GitHub Actions secrets, not in Vercel:
 
@@ -78,6 +79,7 @@ Apply the migrations in order in Supabase:
 5. `migrations/005_stage15_evaluator_v3.sql`
 6. `migrations/006_stage15_versioned_evaluation_skips.sql`
 7. `migrations/007_stage19_evaluator_v4.sql`
+8. `migrations/008_stage15_manual_intake.sql`
 
 The first migration creates the agent tables and the read views:
 
@@ -95,6 +97,10 @@ owner-gated RPCs. Migration 5 advances current evaluation reads to the level-awa
 v3 evaluator and continues to exclude fallback provenance. Migration 6 records
 current-version relevance-gate skips so bounded stale-score backfills keep moving.
 Migration 7 advances the calibrated read view to the corrected Stage 1.9 profile.
+Migration 8 adds the owner-gated manual-intake queue. Apply migration 8 manually;
+the web app degrades gracefully until it exists. URL/text submissions are
+evaluated asynchronously by the next scheduled Python scan, which remains the
+only scoring implementation. Last-resort manual lines are explicitly unscored.
 The manual migration workflow applies migrations 2 and 5–7 during a verify-only
 run for an existing cutover.
 
@@ -130,6 +136,7 @@ pnpm run build
 
 ## Scope Boundary
 
-The current web app renders Potential Matches, To Apply, Applied, and the
-read-only Profile. Application and shortlist writes use narrow owner-authorized
-RPCs; historical evaluation snapshots and stage events remain immutable.
+The current web app renders Potential Matches, Add a role, To Apply, Applied,
+and the read-only Profile. Application, shortlist, and intake writes use narrow
+owner-authorized RPCs; historical evaluation snapshots and stage events remain
+immutable. Scoring and gating remain exclusively in the Python agent.

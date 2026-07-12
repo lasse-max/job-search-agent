@@ -265,7 +265,7 @@ function Threshold({ label, tone, value }: { label: string; tone: "gold" | "rust
 }
 
 function ProfileNav({ userEmail }: { userEmail: string }) {
-  const links = [["Potential Matches", "/"], ["To Apply", "/to-apply"], ["Applied", "/applied"], ["Profile", "/profile"]] as const;
+  const links = [["Potential Matches", "/"], ["Add a role", "/add-role"], ["To Apply", "/to-apply"], ["Applied", "/applied"], ["Profile", "/profile"]] as const;
   return <aside className="flex w-56 shrink-0 flex-col border-r border-white/10 px-3.5 py-5"><div className="flex items-baseline gap-2 px-2.5 pb-6"><span className="font-serif text-[21px] font-medium italic tracking-wide">Sextant</span><span className="relative -top-0.5 h-2 w-2 rotate-45 bg-chart-tealDeep" /></div><nav className="flex flex-col gap-1">{links.map(([label, href]) => <Link className={`rounded-md px-2.5 py-2 text-[13.5px] ${href === "/profile" ? "bg-chart-teal/10 text-chart-ink" : "text-chart-muted"}`} href={href} key={href}>{label}</Link>)}</nav><div className="mt-auto border-t border-white/10 px-2.5 pt-4 font-mono text-[10.5px] leading-6 text-chart-faint"><div>read-only · edit via config</div><div className="truncate text-white/30">owner · {userEmail}</div></div></aside>;
 }
 

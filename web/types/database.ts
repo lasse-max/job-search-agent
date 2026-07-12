@@ -220,6 +220,29 @@ export type Database = {
         Update: Record<string, unknown>;
         Relationships: [];
       };
+      manual_intake_submissions: {
+        Row: {
+          id: number;
+          owner_email: string;
+          intake_mode: "url" | "text" | "manual";
+          source_url: string | null;
+          jd_text: string | null;
+          company: string;
+          title: string;
+          location: string | null;
+          note: string | null;
+          destination: "potential_matches" | "to_apply" | "applied";
+          propose_watchlist: boolean;
+          status: "queued" | "processing" | "needs_text" | "manual_unscored" | "completed" | "failed";
+          job_posting_id: number | null;
+          error_summary: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Record<string, unknown>;
+        Update: Record<string, unknown>;
+        Relationships: [];
+      };
     };
     Functions: {
       change_application_stage: {
@@ -246,6 +269,20 @@ export type Database = {
           p_contact: string;
           p_salary: string;
           p_notes: string;
+        };
+        Returns: Json;
+      };
+      submit_manual_intake: {
+        Args: {
+          p_intake_mode: string;
+          p_company: string;
+          p_title: string;
+          p_location?: string | null;
+          p_source_url?: string | null;
+          p_jd_text?: string | null;
+          p_note?: string | null;
+          p_destination?: string;
+          p_propose_watchlist?: boolean;
         };
         Returns: Json;
       };

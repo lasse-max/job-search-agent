@@ -5,6 +5,7 @@ import {
   type GapEvidence
 } from "@/lib/data/calibrated-evaluations";
 import type { Database, Json } from "@/types/database";
+import { loadOpenManualIntakes, type ManualIntakeEntry } from "@/lib/data/manual-intake";
 
 type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 type ApplicationDbRow = Database["public"]["Tables"]["applications"]["Row"];
@@ -65,6 +66,7 @@ export type TrackedApplication = {
 
 export type AppliedTrackerData = {
   applications: TrackedApplication[];
+  manualEntries: ManualIntakeEntry[];
   stats: {
     active: number;
     inInterview: number;
@@ -118,24 +120,27 @@ export async function loadAppliedTracker(
     .map((row) => normalizeApplication(row, eventsByApplication.get(row.id) ?? []))
     .filter((row): row is TrackedApplication => row !== null);
 
-  return buildAppliedTrackerData(applications);
+  const manualEntries = await loadOpenManualIntakes(supabase, "applied");
+  return buildAppliedTrackerData(applications, null, manualEntries);
 }
 
 export function emptyAppliedTrackerData(
   loadError: AppliedTrackerData["loadError"] = null
 ): AppliedTrackerData {
-  return buildAppliedTrackerData([], loadError);
+  return buildAppliedTrackerData([], loadError, []);
 }
 
 function buildAppliedTrackerData(
   applications: TrackedApplication[],
-  loadError: AppliedTrackerData["loadError"] = null
+  loadError: AppliedTrackerData["loadError"] = null,
+  manualEntries: ManualIntakeEntry[] = []
 ): AppliedTrackerData {
   const count = (stages: ApplicationStage[]) =>
     applications.filter((application) => stages.includes(application.stage)).length;
 
   return {
     applications,
+    manualEntries,
     stats: {
       active: count(["preparing", "applied", "recruiter_screen"]),
       inInterview: count(["interviewing", "final_round"]),

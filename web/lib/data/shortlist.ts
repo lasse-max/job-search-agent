@@ -5,6 +5,7 @@ import {
   normalizeCurrentEvaluation,
   type PotentialMatch
 } from "@/lib/data/calibrated-evaluations";
+import { loadOpenManualIntakes, type ManualIntakeEntry } from "@/lib/data/manual-intake";
 
 type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 type CurrentEvaluationRow =
@@ -17,6 +18,7 @@ export type ShortlistedRole = PotentialMatch & {
 
 export type ShortlistData = {
   roles: ShortlistedRole[];
+  manualEntries: ManualIntakeEntry[];
   loadError: string | null;
 };
 
@@ -49,9 +51,10 @@ export async function loadShortlist(supabase: AppSupabaseClient): Promise<Shortl
     ];
   });
 
-  return { roles, loadError: null };
+  const manualEntries = await loadOpenManualIntakes(supabase, "to_apply");
+  return { roles, manualEntries, loadError: null };
 }
 
 export function emptyShortlistData(loadError: string | null = null): ShortlistData {
-  return { roles: [], loadError };
+  return { roles: [], manualEntries: [], loadError };
 }

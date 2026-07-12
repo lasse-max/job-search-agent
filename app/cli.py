@@ -243,6 +243,11 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"source_error={summary.company}: {summary.error_summary}")
         for failure in result.failures:
             print(f"failure={failure}")
+        if result.manual_intake is not None:
+            print(f"manual_intake_processed={result.manual_intake.processed}")
+            print(f"manual_intake_completed={result.manual_intake.completed}")
+            print(f"manual_intake_needs_text={result.manual_intake.needs_text}")
+            print(f"manual_intake_failed={result.manual_intake.failed}")
         if result.notification is not None:
             print(f"notification_status={result.notification.status}")
             print(f"notification_roles={result.notification.role_count}")

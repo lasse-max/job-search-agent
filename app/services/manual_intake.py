@@ -6,7 +6,10 @@ import hashlib
 import re
 import sqlite3
 from dataclasses import dataclass
+from datetime import datetime
+import json
 from pathlib import Path
+from typing import Any
 from urllib.parse import urlparse
 
 import httpx
@@ -14,7 +17,7 @@ import httpx
 from app.adapters.utils import clean_html, compact_text, normal_key
 from app.config import DEFAULT_DB_PATH
 from app.db import (
-    connect,
+    connect_runtime_database,
     get_postings_by_ids,
     init_db,
     persist_evaluation,
@@ -23,7 +26,7 @@ from app.db import (
     upsert_source,
 )
 from app.models import CompanyConfig, JobPosting, utc_now
-from app.services.evaluate import evaluate_role, input_hash
+from app.services.evaluate import HYBRID_EVALUATOR_VERSION, evaluate_role, input_hash
 
 
 MIN_EXTRACTED_TEXT_LENGTH = 120
@@ -50,10 +53,20 @@ class ManualPostingMetadata:
     employment_type: str | None
 
 
+@dataclass(frozen=True)
+class ManualIntakeQueueSummary:
+    processed: int
+    completed: int
+    needs_text: int
+    failed: int
+    skipped_schema: bool = False
+
+
 def add_text_intake(
     text: str,
     *,
     db_path: Path = DEFAULT_DB_PATH,
+    database_url: str | None = None,
     source_url: str | None = None,
 ) -> ManualIntakeResult:
     cleaned_text = compact_text(text)
@@ -64,21 +77,24 @@ def add_text_intake(
     company = _company_from_metadata(metadata, source_url)
     posting = _posting_from_text(cleaned_text, metadata, source_url)
 
-    conn = connect(db_path)
-    init_db(conn)
-    company_id = upsert_company(conn, company)
-    source_id = upsert_source(conn, company_id, company)
-    seen_at = utc_now()
-    upsert_result = upsert_postings(conn, company_id, source_id, [posting], seen_at)
-    candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
-    job_id = _job_id_for_source_job_id(conn, source_id, posting.source_job_id)
+    conn = connect_runtime_database(db_path, database_url=database_url)
+    try:
+        init_db(conn)
+        company_id = _manual_company_id(conn, company)
+        source_id = upsert_source(conn, company_id, company)
+        seen_at = utc_now()
+        upsert_result = upsert_postings(conn, company_id, source_id, [posting], seen_at)
+        candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
+        job_id = _job_id_for_source_job_id(conn, source_id, posting.source_job_id)
 
-    evaluated_count = 0
-    for row in get_postings_by_ids(conn, candidate_ids):
-        if persist_evaluation(conn, int(row["id"]), input_hash(row), evaluate_role(row, company)):
-            evaluated_count += 1
-
-    conn.commit()
+        evaluated_count = 0
+        for row in get_postings_by_ids(conn, candidate_ids):
+            evaluation = evaluate_role(row, company)
+            if persist_evaluation(conn, int(row["id"]), input_hash(row), evaluation):
+                evaluated_count += 1
+        conn.commit()
+    finally:
+        conn.close()
     return ManualIntakeResult(
         status="stored",
         job_id=job_id,
@@ -91,9 +107,10 @@ def add_url_intake(
     url: str,
     *,
     db_path: Path = DEFAULT_DB_PATH,
+    database_url: str | None = None,
 ) -> ManualIntakeResult:
     _validate_http_url(url)
-    conn = connect(db_path)
+    conn = connect_runtime_database(db_path, database_url=database_url)
     init_db(conn)
     try:
         text = fetch_url_text(url)
@@ -112,7 +129,12 @@ def add_url_intake(
     finally:
         conn.close()
 
-    return add_text_intake(text, db_path=db_path, source_url=url)
+    return add_text_intake(
+        text,
+        db_path=db_path,
+        database_url=database_url,
+        source_url=url,
+    )
 
 
 def fetch_url_text(url: str) -> str:
@@ -126,6 +148,224 @@ def fetch_url_text(url: str) -> str:
     if len(extracted) < MIN_EXTRACTED_TEXT_LENGTH:
         raise ManualExtractionError("url_extraction_too_short")
     return extracted
+
+
+def process_manual_intake_queue(
+    *,
+    db_path: Path = DEFAULT_DB_PATH,
+    database_url: str | None = None,
+    limit: int = 10,
+) -> ManualIntakeQueueSummary:
+    if limit <= 0:
+        return ManualIntakeQueueSummary(0, 0, 0, 0)
+    conn = connect_runtime_database(db_path, database_url=database_url)
+    init_db(conn)
+    try:
+        submissions = conn.execute(
+            """
+            SELECT * FROM manual_intake_submissions
+            WHERE status = 'queued'
+            ORDER BY created_at, id
+            LIMIT ?
+            """,
+            (limit,),
+        ).fetchall()
+    except Exception as exc:  # noqa: BLE001 - migration may not be applied yet.
+        conn.close()
+        if _missing_queue_table(exc):
+            return ManualIntakeQueueSummary(0, 0, 0, 0, skipped_schema=True)
+        raise
+
+    completed = 0
+    needs_text = 0
+    failed = 0
+    for submission in submissions:
+        submission_id = int(submission["id"])
+        claimed = conn.execute(
+            """
+            UPDATE manual_intake_submissions
+            SET status = 'processing', updated_at = ?
+            WHERE id = ? AND status = 'queued'
+            """,
+            (utc_now(), submission_id),
+        )
+        conn.commit()
+        if claimed.rowcount <= 0:
+            continue
+        try:
+            source_url = str(submission["source_url"] or "") or None
+            if submission["intake_mode"] == "url":
+                try:
+                    jd_text = fetch_url_text(str(source_url))
+                except ManualExtractionError as exc:
+                    _update_submission(
+                        conn,
+                        submission_id,
+                        status="needs_text",
+                        error_summary=str(exc),
+                    )
+                    needs_text += 1
+                    continue
+            else:
+                jd_text = str(submission["jd_text"] or "")
+            enriched_text = _enriched_submission_text(submission, jd_text)
+            result = add_text_intake(
+                enriched_text,
+                db_path=db_path,
+                database_url=database_url,
+                source_url=source_url,
+            )
+            if result.job_id is None:
+                raise RuntimeError("manual intake stored no posting")
+            _apply_submission_destination(
+                conn,
+                result.job_id,
+                str(submission["destination"]),
+                str(submission["note"] or ""),
+            )
+            _update_submission(
+                conn,
+                submission_id,
+                status="completed",
+                job_posting_id=result.job_id,
+            )
+            completed += 1
+        except Exception as exc:  # noqa: BLE001 - isolate one owner submission.
+            _update_submission(
+                conn,
+                submission_id,
+                status="failed",
+                error_summary=f"{type(exc).__name__}: {exc}",
+            )
+            failed += 1
+    conn.close()
+    return ManualIntakeQueueSummary(
+        processed=completed + needs_text + failed,
+        completed=completed,
+        needs_text=needs_text,
+        failed=failed,
+    )
+
+
+def _enriched_submission_text(submission: Any, jd_text: str) -> str:
+    headers = [
+        f"Company: {submission['company']}",
+        f"Title: {submission['title']}",
+    ]
+    if submission["location"]:
+        headers.append(f"Location: {submission['location']}")
+    return "\n".join(headers) + "\n\n" + jd_text
+
+
+def _apply_submission_destination(
+    conn: Any,
+    job_id: int,
+    destination: str,
+    note: str,
+) -> None:
+    row = _current_manual_evaluation_row(conn, job_id)
+    if destination == "potential_matches":
+        return
+    if destination == "to_apply":
+        conn.execute(
+            """
+            UPDATE opportunity_reviews
+            SET state = 'interested', decision_reason = ?, reviewed_at = ?, snooze_until = NULL
+            WHERE job_posting_id = ?
+            """,
+            (note or None, utc_now(), job_id),
+        )
+        conn.commit()
+        return
+    if destination != "applied":
+        raise ValueError(f"unsupported manual intake destination: {destination}")
+
+    evaluated = json.loads(row["evaluation_json"])
+    locations = json.loads(row["locations_json"] or "[]")
+    applied_at = utc_now()
+    calendar_week = datetime.fromisoformat(applied_at).isocalendar().week
+    snapshot = {
+        "captured_at": applied_at,
+        "role_evaluation_id": row["evaluation_id"],
+        "model_version": row["model_version"],
+        "evaluated_at": row["evaluated_at"],
+        "evaluation": evaluated,
+    }
+    conn.execute(
+        """
+        INSERT INTO applications (
+          company, role, location, url, stage, applied_at, applied_calendar_week,
+          notes, source_posting_id, eval_snapshot_json
+        ) VALUES (?, ?, ?, ?, 'applied', ?, ?, ?, ?, ?)
+        ON CONFLICT(source_posting_id) DO NOTHING
+        """,
+        (
+            row["company"],
+            row["title"],
+            " · ".join(str(value) for value in locations) or "Location not listed",
+            row["source_url"],
+            applied_at,
+            calendar_week,
+            note or None,
+            job_id,
+            json.dumps(snapshot, sort_keys=True),
+        ),
+    )
+    conn.commit()
+
+
+def _current_manual_evaluation_row(conn: Any, job_id: int) -> Any:
+    row = conn.execute(
+        """
+        SELECT jp.*, c.name AS company, re.id AS evaluation_id,
+               re.model_version, re.evaluation_json, re.created_at AS evaluated_at
+        FROM job_postings jp
+        JOIN companies c ON c.id = jp.company_id
+        JOIN role_evaluations re ON re.id = (
+          SELECT MAX(latest.id) FROM role_evaluations latest
+          WHERE latest.job_posting_id = jp.id
+        )
+        WHERE jp.id = ?
+        """,
+        (job_id,),
+    ).fetchone()
+    if row is None or not str(row["model_version"]).endswith(f"|{HYBRID_EVALUATOR_VERSION}"):
+        raise RuntimeError("manual evaluation is not current and calibrated")
+    evaluated = json.loads(row["evaluation_json"])
+    provenance = evaluated.get("provenance") or {}
+    if "deterministic_fallback" in str(row["model_version"]) or any(
+        str(provenance.get(key, "")).lower() == "true"
+        for key in ("is_fallback", "fallback_quality")
+    ):
+        raise RuntimeError("manual evaluation fallback cannot enter the scored pipeline")
+    return row
+
+
+def _update_submission(
+    conn: Any,
+    submission_id: int,
+    *,
+    status: str,
+    job_posting_id: int | None = None,
+    error_summary: str | None = None,
+) -> None:
+    conn.execute(
+        """
+        UPDATE manual_intake_submissions
+        SET status = ?, job_posting_id = COALESCE(?, job_posting_id),
+            error_summary = ?, updated_at = ?
+        WHERE id = ?
+        """,
+        (status, job_posting_id, error_summary, utc_now(), submission_id),
+    )
+    conn.commit()
+
+
+def _missing_queue_table(exc: Exception) -> bool:
+    message = str(exc).lower()
+    return "manual_intake_submissions" in message and (
+        "does not exist" in message or "no such table" in message
+    )
 
 
 def _validate_http_url(url: str) -> None:
@@ -202,6 +442,16 @@ def _company_from_metadata(
         target_role_family_notes="Manual intake role selected by the owner.",
         warm_path=False,
     )
+
+
+def _manual_company_id(conn: Any, company: CompanyConfig) -> int:
+    existing = conn.execute(
+        "SELECT id FROM companies WHERE name = ?",
+        (company.name,),
+    ).fetchone()
+    if existing is not None:
+        return int(existing["id"])
+    return upsert_company(conn, company)
 
 
 def _field_value(text: str, field: str) -> str | None:

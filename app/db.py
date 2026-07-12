@@ -134,6 +134,45 @@ CREATE TABLE IF NOT EXISTS manual_intake_requests (
   updated_at TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS manual_intake_submissions (
+  id INTEGER PRIMARY KEY,
+  owner_email TEXT NOT NULL,
+  intake_mode TEXT NOT NULL,
+  source_url TEXT,
+  jd_text TEXT,
+  company TEXT NOT NULL,
+  title TEXT NOT NULL,
+  location TEXT,
+  note TEXT,
+  destination TEXT NOT NULL,
+  propose_watchlist INTEGER NOT NULL DEFAULT 0,
+  status TEXT NOT NULL,
+  job_posting_id INTEGER REFERENCES job_postings(id),
+  error_summary TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS applications (
+  id INTEGER PRIMARY KEY,
+  company TEXT NOT NULL,
+  role TEXT NOT NULL,
+  location TEXT NOT NULL,
+  url TEXT,
+  stage TEXT NOT NULL,
+  applied_at TEXT NOT NULL,
+  applied_calendar_week INTEGER NOT NULL,
+  next_action TEXT,
+  due TEXT,
+  contact TEXT,
+  salary TEXT,
+  notes TEXT,
+  source_posting_id INTEGER NOT NULL UNIQUE REFERENCES job_postings(id),
+  eval_snapshot_json TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS notifications (
   id INTEGER PRIMARY KEY,
   type TEXT NOT NULL,

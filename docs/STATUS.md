@@ -2,7 +2,15 @@
 
 Living status doc. Single source of truth for *where things stand right now and who's holding what*. Complements `DECISIONS.md` (why), `ROADMAP.md` (direction), and `docs/briefs/` (what to build). Update at each checkpoint. **Owner of this doc:** George (coordinator).
 
-**Last updated:** 2026-07-10 · **Branch:** `main`
+**Last updated:** 2026-07-12 · **Branch:** `main`
+
+## B-30 manual intake built — owner migration pending (2026-07-12)
+
+- Sextant now has an owner-only **Add a role** page with the approved fallback ladder: URL, pasted JD text, or a clearly unscored manual line. URL/text work enters a durable queue and is consumed by the existing Python evaluator on the next scheduled scan; no scoring rules were copied into the web app.
+- Evaluated roles can land in Potential Matches, To Apply, or Applied. Failed URL extraction preserves the link and asks for pasted JD text. Off-watchlist submissions can carry a watchlist proposal flag.
+- **Activation step:** owner applies `migrations/008_stage15_manual_intake.sql` to Supabase by hand. Until then, existing pages remain available and the Add-role action reports that the migration is missing.
+
+---
 
 ## 🟢 A3 SHIPPED · SWEEP-3 GATE CLEARED — 3 of 4 pages live (2026-07-10)
 

@@ -1,6 +1,7 @@
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 import { ROLE_MAX_AGE_DAYS, recencyCutoffDate } from "@/lib/recency";
+import { loadOpenManualIntakes, type ManualIntakeEntry } from "@/lib/data/manual-intake";
 
 export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v4";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
@@ -87,6 +88,7 @@ export type PotentialMatchesData = {
   };
   bands: Record<SurfacedBand, PotentialMatch[]>;
   auditRows: AuditRow[];
+  manualEntries: ManualIntakeEntry[];
   counts: {
     applyNow: number;
     consider: number;
@@ -152,9 +154,10 @@ export async function loadPotentialMatches(
     stretch: surfacedMatches.filter((role) => role.recommendation === "stretch")
   };
 
-  const [skipAuditRows, scanReach] = await Promise.all([
+  const [skipAuditRows, scanReach, manualEntries] = await Promise.all([
     loadSkipAuditRows(supabase),
-    loadScanReach(supabase)
+    loadScanReach(supabase),
+    loadOpenManualIntakes(supabase, "potential_matches")
   ]);
   const evaluatedAuditRows = allCurrentMatches
     .map((role) => matchToAuditRow(role))
@@ -168,6 +171,7 @@ export async function loadPotentialMatches(
     scanReach,
     bands,
     auditRows,
+    manualEntries,
     counts: {
       applyNow: bands.apply_now.length,
       consider: bands.consider.length,
@@ -195,6 +199,7 @@ export function emptyPotentialMatchesData(loadError: PotentialMatchesData["loadE
       stretch: []
     },
     auditRows: [],
+    manualEntries: [],
     counts: {
       applyNow: 0,
       consider: 0,
