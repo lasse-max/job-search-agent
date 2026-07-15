@@ -80,6 +80,7 @@ Apply the migrations in order in Supabase:
 6. `migrations/006_stage15_versioned_evaluation_skips.sql`
 7. `migrations/007_stage19_evaluator_v4.sql`
 8. `migrations/008_stage15_manual_intake.sql`
+9. `migrations/009_stage15_manual_intake_controls.sql`
 
 The first migration creates the agent tables and the read views:
 
@@ -97,10 +98,13 @@ owner-gated RPCs. Migration 5 advances current evaluation reads to the level-awa
 v3 evaluator and continues to exclude fallback provenance. Migration 6 records
 current-version relevance-gate skips so bounded stale-score backfills keep moving.
 Migration 7 advances the calibrated read view to the corrected Stage 1.9 profile.
-Migration 8 adds the owner-gated manual-intake queue. Apply migration 8 manually;
+Migration 8 adds the owner-gated manual-intake queue. Migration 9 adds owner-only
+remove and atomic URL-redo controls for pending rows; processing and completed rows
+remain scanner-owned. Apply migrations 8 and 9 manually;
 the web app degrades gracefully until it exists. URL/text submissions are
 evaluated asynchronously by the next scheduled Python scan, which remains the
-only scoring implementation. Last-resort manual lines are explicitly unscored.
+only scoring implementation. The queue UI states the daily scan schedule explicitly,
+and last-resort manual lines are explicitly unscored.
 The manual migration workflow applies migrations 2 and 5–7 during a verify-only
 run for an existing cutover.
 

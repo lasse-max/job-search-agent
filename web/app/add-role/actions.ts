@@ -17,6 +17,7 @@ export type ManualIntakeInput = {
   note: string;
   destination: ManualIntakeDestination;
   proposeWatchlist: boolean;
+  replaceSubmissionId?: number | null;
 };
 
 export async function submitManualIntake(input: ManualIntakeInput) {
@@ -26,21 +27,38 @@ export async function submitManualIntake(input: ManualIntakeInput) {
   const supabase = await createSupabaseServerClient();
   const rpc = supabase.rpc.bind(supabase) as unknown as (
     name: string,
-    args: Record<string, string | boolean | null>
+    args: Record<string, string | boolean | number | null>
   ) => PromiseLike<{ error: { message: string } | null }>;
-  const { error } = await rpc("submit_manual_intake", {
-    p_intake_mode: input.mode,
-    p_company: input.company.trim(),
-    p_title: input.title.trim(),
-    p_location: input.location.trim() || null,
-    p_source_url: input.url.trim() || null,
-    p_jd_text: input.jdText.trim() || null,
-    p_note: input.note.trim() || null,
-    p_destination: input.destination,
-    p_propose_watchlist: input.proposeWatchlist
-  });
+  const replacing = input.replaceSubmissionId != null;
+  const { error } = replacing
+    ? await rpc("replace_manual_intake_with_url", {
+        p_submission_id: input.replaceSubmissionId as number,
+        p_company: input.company.trim(),
+        p_title: input.title.trim(),
+        p_location: input.location.trim() || null,
+        p_source_url: input.url.trim(),
+        p_note: input.note.trim() || null,
+        p_destination: input.destination,
+        p_propose_watchlist: input.proposeWatchlist
+      })
+    : await rpc("submit_manual_intake", {
+        p_intake_mode: input.mode,
+        p_company: input.company.trim(),
+        p_title: input.title.trim(),
+        p_location: input.location.trim() || null,
+        p_source_url: input.url.trim() || null,
+        p_jd_text: input.jdText.trim() || null,
+        p_note: input.note.trim() || null,
+        p_destination: input.destination,
+        p_propose_watchlist: input.proposeWatchlist
+      });
   if (error) {
-    return { ok: false, message: "Could not queue this role. Is migration 008 applied?" };
+    return {
+      ok: false,
+      message: replacing
+        ? "Could not replace the pending role. Is migration 009 applied?"
+        : "Could not queue this role. Is migration 008 applied?"
+    };
   }
   revalidatePath("/");
   revalidatePath("/to-apply");
@@ -51,11 +69,28 @@ export async function submitManualIntake(input: ManualIntakeInput) {
     message:
       input.mode === "manual"
         ? "Saved as not evaluated."
-        : "Queued for the existing agent evaluator on the next scan."
+        : replacing
+          ? "Re-queued via URL. It will be evaluated on the next daily scan."
+          : "Queued. It will be evaluated on the next daily scan."
   };
 }
 
 function validateInput(input: ManualIntakeInput) {
+  if (!(["url", "text", "manual"] as string[]).includes(input.mode)) {
+    return { ok: false, message: "Choose a valid intake method." };
+  }
+  if (!(["potential_matches", "to_apply", "applied"] as string[]).includes(input.destination)) {
+    return { ok: false, message: "Choose a valid destination." };
+  }
+  if (
+    input.replaceSubmissionId != null &&
+    (!Number.isSafeInteger(input.replaceSubmissionId) || input.replaceSubmissionId <= 0)
+  ) {
+    return { ok: false, message: "That pending role could not be identified." };
+  }
+  if (input.replaceSubmissionId != null && input.mode !== "url") {
+    return { ok: false, message: "Pending roles can only be redone through the URL path." };
+  }
   if (!input.company.trim() || !input.title.trim()) {
     return { ok: false, message: "Company and title are required." };
   }

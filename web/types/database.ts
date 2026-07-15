@@ -286,6 +286,23 @@ export type Database = {
         };
         Returns: Json;
       };
+      remove_manual_intake: {
+        Args: { p_submission_id: number };
+        Returns: Json;
+      };
+      replace_manual_intake_with_url: {
+        Args: {
+          p_submission_id: number;
+          p_company: string;
+          p_title: string;
+          p_location?: string | null;
+          p_source_url?: string | null;
+          p_note?: string | null;
+          p_destination?: string;
+          p_propose_watchlist?: boolean;
+        };
+        Returns: Json;
+      };
     };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
