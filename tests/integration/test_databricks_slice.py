@@ -30,6 +30,13 @@ FIXTURE = ROOT / "data" / "fixtures" / "greenhouse" / "databricks_jobs.json"
 
 
 class DatabricksSliceTest(unittest.TestCase):
+    def setUp(self) -> None:
+        # These integration fixtures test evaluator/health behavior, not elapsed wall time.
+        # Keep their DB read cutoff anchored; the dedicated test below owns recency expiry.
+        recency_patcher = patch("app.db.recency_cutoff_date", return_value="2026-06-01")
+        recency_patcher.start()
+        self.addCleanup(recency_patcher.stop)
+
     def test_live_scan_stores_but_never_scores_postings_outside_recency_window(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "slice.sqlite"
