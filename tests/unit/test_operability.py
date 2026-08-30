@@ -414,6 +414,42 @@ class OperabilityTest(unittest.TestCase):
 
         self.assertIn("status=degraded", output)
         self.assertIn("source_error=Databricks: expected_volume_degraded", output)
+        self.assertIn(
+            "::warning title=Source health::Databricks: expected_volume_degraded",
+            output,
+        )
+
+    def test_source_level_failure_warns_without_failing_scan_all(self) -> None:
+        failed_source_summary = ScanSummary(
+            company="Black Forest Labs",
+            source_type="greenhouse",
+            source_key="blackforestlabs",
+            status="failure",
+            fetched_count=0,
+            new_count=0,
+            changed_count=0,
+            evaluated_count=0,
+            digest_count=0,
+            digest_html=Path("output/latest_digest.html"),
+            digest_text=Path("output/latest_digest.txt"),
+            error_summary="HTTP 404",
+        )
+        result = ScheduledScanResult(
+            summaries=[failed_source_summary],
+            skipped=[],
+            failures=[],
+        )
+
+        with patch("app.cli.run_scheduled_scan", return_value=result):
+            output = _run_cli(["scan-all"])
+
+        self.assertIn("status=degraded", output)
+        self.assertIn("source=Black Forest Labs failure fetched=0", output)
+        self.assertIn("source_error=Black Forest Labs: HTTP 404", output)
+        self.assertIn(
+            "::warning title=Source health::Black Forest Labs: HTTP 404",
+            output,
+        )
 
     def test_scan_workflow_runs_daily_and_supports_manual_dispatch(self) -> None:
         workflow = Path(".github/workflows/scan.yml").read_text(encoding="utf-8")

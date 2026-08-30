@@ -378,14 +378,14 @@
           "London",
           "Remote - EU"
         ],
-        "atsType": "greenhouse",
-        "sourceKey": "blackforestlabs",
-        "supportedAdapter": "greenhouse",
-        "jobCountAtAudit": 12,
+        "atsType": "ashby",
+        "sourceKey": "black-forest-labs",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 16,
         "careersUrl": "https://bfl.ai/careers",
-        "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/blackforestlabs/jobs",
-        "manualFallback": "Greenhouse feed live; if it ever returns zero, use manual URL/text intake.",
-        "notes": "Added 2026-06-30 by owner. Greenhouse source_key=blackforestlabs verified live (12 jobs at audit). German AI lab, Freiburg — strong location fit; mostly research/eng today, watch for S&O/BizOps/partnerships roles.",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/black-forest-labs?includeCompensation=false",
+        "manualFallback": "Ashby feed live; if it ever fails, use manual URL/text intake.",
+        "notes": "Re-audited 2026-08-30: old Greenhouse source_key=blackforestlabs returns HTTP 404; Ashby source_key=black-forest-labs returns 16 jobs. German AI lab, Freiburg — strong location fit; mostly research/eng today, watch for S&O/BizOps/partnerships roles.",
         "darkReasonCode": null
       },
       {
@@ -439,14 +439,14 @@
           "London",
           "Singapore"
         ],
-        "atsType": "lever",
-        "sourceKey": "mistral",
-        "supportedAdapter": "lever",
-        "jobCountAtAudit": 172,
-        "careersUrl": "https://jobs.lever.co/mistral",
-        "sourceEvidenceUrl": "https://api.lever.co/v0/postings/mistral?mode=json",
+        "atsType": "ashby",
+        "sourceKey": "mistral.ai",
+        "supportedAdapter": "ashby",
+        "jobCountAtAudit": 173,
+        "careersUrl": "https://mistral.ai/careers/",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/mistral.ai?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
+        "notes": "Re-audited 2026-08-30: old Lever source_key=mistral returns a valid empty array; current careers roles are served from Ashby source_key=mistral.ai with 173 jobs.",
         "darkReasonCode": null
       },
       {

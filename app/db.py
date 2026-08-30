@@ -270,6 +270,15 @@ def upsert_source(
     expected_volume_min = company.expected_volume_min if seed_expected_volume else None
     conn.execute(
         """
+        UPDATE job_sources
+        SET health_status = 'disabled'
+        WHERE company_id = ?
+          AND NOT (source_type = ? AND source_key = ?)
+        """,
+        (company_id, company.ats_type, company.source_key),
+    )
+    conn.execute(
+        """
         INSERT INTO job_sources (
           company_id, source_type, source_key, source_url, parser_version, health_status,
           expected_volume_min
@@ -1173,6 +1182,7 @@ def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sql
           )
         ) latest ON latest.job_source_id = js.id
         WHERE c.enabled = 1
+          AND js.health_status != 'disabled'
           AND (
             js.health_status IN ('degraded', 'failing', 'unsupported')
             OR latest.status != 'success'
@@ -1202,6 +1212,7 @@ def latest_scan_reach(conn: sqlite3.Connection) -> ScanReach:
           )
         ) latest ON latest.job_source_id = js.id
         WHERE c.enabled = 1
+          AND js.health_status != 'disabled'
           AND js.source_type != 'manual'
         """
     ).fetchone()

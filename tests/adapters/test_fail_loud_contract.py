@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import io
 from pathlib import Path
 import unittest
@@ -58,7 +58,7 @@ class FailLoudContractTest(unittest.TestCase):
     def test_malformed_json_syntax_fails_loudly_for_all_adapters(self) -> None:
         for case in CASES:
             with self.subTest(adapter=case.source_type):
-                company = load_company_config(case.company_name)
+                company = _company_for_case(case)
                 adapter = get_adapter(case.source_type)
                 result = adapter.fetch_from_file(
                     company.source_key,
@@ -75,7 +75,7 @@ class FailLoudContractTest(unittest.TestCase):
     def test_invalid_idless_posting_fails_loudly_for_all_adapters(self) -> None:
         for case in CASES:
             with self.subTest(adapter=case.source_type):
-                company = load_company_config(case.company_name)
+                company = _company_for_case(case)
                 adapter = get_adapter(case.source_type)
                 result = adapter.fetch_from_file(
                     company.source_key,
@@ -92,7 +92,7 @@ class FailLoudContractTest(unittest.TestCase):
     def test_http_error_fetch_fails_loudly_for_all_adapters(self) -> None:
         for case in CASES:
             with self.subTest(adapter=case.source_type):
-                company = load_company_config(case.company_name)
+                company = _company_for_case(case)
                 adapter = get_adapter(case.source_type)
                 http_error = urllib.error.HTTPError(
                     url="https://example.invalid/jobs",
@@ -115,7 +115,7 @@ class FailLoudContractTest(unittest.TestCase):
     def test_timeout_fetch_fails_loudly_for_all_adapters(self) -> None:
         for case in CASES:
             with self.subTest(adapter=case.source_type):
-                company = load_company_config(case.company_name)
+                company = _company_for_case(case)
                 adapter = get_adapter(case.source_type)
 
                 with patch("urllib.request.urlopen", side_effect=TimeoutError("timed out")):
@@ -127,6 +127,13 @@ class FailLoudContractTest(unittest.TestCase):
                 self.assertIsNone(result.http_status)
                 self.assertEqual(health.status, "failing")
                 self.assertIn("timed out", health.error_summary or "")
+
+
+def _company_for_case(case: FailLoudCase):
+    company = load_company_config(case.company_name)
+    if case.source_type == "lever" and company.ats_type != "lever":
+        return replace(company, ats_type="lever", source_key="mistral")
+    return company
 
 
 if __name__ == "__main__":

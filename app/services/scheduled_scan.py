@@ -36,7 +36,7 @@ class ScheduledScanResult:
     def status(self) -> str:
         if self.failures:
             return "failure"
-        if any(summary.status == "degraded" for summary in self.summaries):
+        if any(summary.status in {"degraded", "failure"} for summary in self.summaries):
             return "degraded"
         return "success"
 
@@ -121,8 +121,6 @@ def run_scheduled_scan(
             failures.append(f"{company.name}: {type(exc).__name__}: {exc}")
             continue
         summaries.append(summary)
-        if summary.status == "failure":
-            failures.append(f"{company.name}: {summary.error_summary or 'scan failed'}")
 
     manual_intake = None
     try:

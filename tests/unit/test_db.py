@@ -9,7 +9,9 @@ from app.db import (
     _stored_evaluation_version,
     get_digest_rows,
     init_db,
+    latest_source_failures,
     record_evaluation_skip,
+    record_source_run,
     stale_open_posting_ids_for_evaluator,
     upsert_company,
     upsert_postings,
@@ -19,6 +21,71 @@ from app.models import CompanyConfig, JobPosting
 
 
 class JobPostingPersistenceTest(unittest.TestCase):
+    def test_upsert_source_retires_previous_company_source(self) -> None:
+        conn = sqlite3.connect(":memory:")
+        conn.row_factory = sqlite3.Row
+        init_db(conn)
+        old_company = CompanyConfig(
+            name="SourceMover",
+            tier=1,
+            enabled=True,
+            ats_type="lever",
+            source_key="old-source",
+            careers_url="https://example.com/careers",
+            target_locations=["London"],
+            target_role_family_notes="Strategy and operations",
+            warm_path=False,
+        )
+        company_id = upsert_company(conn, old_company)
+        old_source_id = upsert_source(conn, company_id, old_company)
+        conn.execute(
+            "UPDATE job_sources SET health_status = 'failing' WHERE id = ?",
+            (old_source_id,),
+        )
+        record_source_run(
+            conn,
+            old_source_id,
+            started_at="2026-08-30T08:00:00+00:00",
+            finished_at="2026-08-30T08:01:00+00:00",
+            status="failure",
+            http_status=404,
+            fetched_count=0,
+            new_count=0,
+            changed_count=0,
+            error_summary="HTTP 404",
+        )
+
+        new_company = CompanyConfig(
+            name="SourceMover",
+            tier=1,
+            enabled=True,
+            ats_type="ashby",
+            source_key="new-source",
+            careers_url="https://example.com/careers",
+            target_locations=["London"],
+            target_role_family_notes="Strategy and operations",
+            warm_path=False,
+        )
+        upsert_source(conn, company_id, new_company)
+
+        rows = conn.execute(
+            """
+            SELECT source_type, source_key, health_status
+            FROM job_sources
+            WHERE company_id = ?
+            ORDER BY source_type, source_key
+            """,
+            (company_id,),
+        ).fetchall()
+        self.assertEqual(
+            [(row["source_type"], row["source_key"], row["health_status"]) for row in rows],
+            [
+                ("ashby", "new-source", "healthy"),
+                ("lever", "old-source", "disabled"),
+            ],
+        )
+        self.assertEqual(latest_source_failures(conn), [])
+
     def test_recency_cutoff_bounds_backfill_and_digest_with_first_seen_fallback(self) -> None:
         conn = sqlite3.connect(":memory:")
         conn.row_factory = sqlite3.Row

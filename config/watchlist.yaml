@@ -163,18 +163,18 @@ companies:
     enabled: true
     careers_url: "https://bfl.ai/careers"
     current_role_url: null
-    ats_type: "greenhouse"
-    source_key: "blackforestlabs"
-    supported_adapter: "greenhouse"
+    ats_type: "ashby"
+    source_key: "black-forest-labs"
+    supported_adapter: "ashby"
     coverage_state: "Supported"
-    source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/blackforestlabs/jobs"
-    job_count_at_audit: 12
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/black-forest-labs?includeCompensation=false"
+    job_count_at_audit: 16
     target_locations: ["Freiburg", "Berlin", "London", "Remote - EU"]
     target_role_family_notes: "Strategy & Operations / BizOps / Partnerships / Strategic Finance at a frontier image+video generative-AI lab (FLUX); HQ Freiburg, Germany."
     warm_path: false
-    manual_fallback: "Greenhouse feed live; if it ever returns zero, use manual URL/text intake."
+    manual_fallback: "Ashby feed live; if it ever fails, use manual URL/text intake."
     selected_for_initial_coverage: false
-    notes: "Added 2026-06-30 by owner. Greenhouse source_key=blackforestlabs verified live (12 jobs at audit). German AI lab, Freiburg — strong location fit; mostly research/eng today, watch for S&O/BizOps/partnerships roles."
+    notes: "Re-audited 2026-08-30: old Greenhouse source_key=blackforestlabs returns HTTP 404; Ashby source_key=black-forest-labs returns 16 jobs. German AI lab, Freiburg — strong location fit; mostly research/eng today, watch for S&O/BizOps/partnerships roles."
   - name: "Airwallex"
     tier: 1
     enabled: true
@@ -210,19 +210,20 @@ companies:
   - name: "Mistral AI"
     tier: 1
     enabled: true
-    careers_url: "https://jobs.lever.co/mistral"
+    careers_url: "https://mistral.ai/careers/"
     current_role_url: null
-    ats_type: "lever"
-    source_key: "mistral"
-    supported_adapter: "lever"
+    ats_type: "ashby"
+    source_key: "mistral.ai"
+    supported_adapter: "ashby"
     coverage_state: "Supported"
-    source_evidence_url: "https://api.lever.co/v0/postings/mistral?mode=json"
-    job_count_at_audit: 172
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/mistral.ai?includeCompensation=false"
+    job_count_at_audit: 173
     target_locations: ["Munich", "London", "Singapore"]
     target_role_family_notes: "AI Deployment; Solution Operations"
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: true
+    notes: "Re-audited 2026-08-30: old Lever source_key=mistral returns a valid empty array; current careers roles are served from Ashby source_key=mistral.ai with 173 jobs."
   - name: "Palantir"
     tier: 1
     enabled: true

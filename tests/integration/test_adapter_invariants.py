@@ -110,7 +110,7 @@ class AdapterInvariantTest(unittest.TestCase):
                     conn = sqlite3.connect(db_path)
                     conn.row_factory = sqlite3.Row
                     source = conn.execute("SELECT * FROM job_sources").fetchone()
-                    company = load_company_config(case.company_name)
+                    company = _company_for_case(case)
 
                     self.assertEqual(_count(conn, "job_postings"), case.expected_count)
                     self.assertEqual(_count(conn, "role_evaluations"), case.expected_evaluated)
@@ -242,14 +242,19 @@ def _write_partial_fixture(case: AdapterInvariantCase, directory: Path) -> Path:
 
 
 def _run_case_scan(case: AdapterInvariantCase, **kwargs):
-    company = load_company_config(case.company_name)
-    if company.enabled:
-        return run_scan(**kwargs)
+    company = _company_for_case(case)
     with patch(
         "app.services.ingest.load_company_config",
         return_value=replace(company, enabled=True),
     ):
         return run_scan(**kwargs)
+
+
+def _company_for_case(case: AdapterInvariantCase):
+    company = load_company_config(case.company_name)
+    if case.source_type == "lever" and company.ats_type != "lever":
+        return replace(company, ats_type="lever", source_key="mistral")
+    return company
 
 
 def _posting_row(conn: sqlite3.Connection, source_job_id: str) -> sqlite3.Row:

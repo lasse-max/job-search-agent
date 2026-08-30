@@ -41,6 +41,14 @@ from app.services.review import (
 from app.services.scheduled_scan import plan_stale_backfill, run_scheduled_scan
 
 
+def _actions_escape(value: str) -> str:
+    return value.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+
+
+def _print_actions_warning(title: str, message: str) -> None:
+    print(f"::warning title={_actions_escape(title)}::{_actions_escape(message)}")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="job-agent")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -240,7 +248,9 @@ def main(argv: list[str] | None = None) -> int:
                 f"new={summary.new_count} changed={summary.changed_count}"
             )
             if summary.error_summary:
-                print(f"source_error={summary.company}: {summary.error_summary}")
+                message = f"{summary.company}: {summary.error_summary}"
+                print(f"source_error={message}")
+                _print_actions_warning("Source health", message)
         for failure in result.failures:
             print(f"failure={failure}")
         if result.manual_intake is not None:

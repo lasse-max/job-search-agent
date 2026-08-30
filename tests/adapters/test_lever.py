@@ -4,7 +4,7 @@ from pathlib import Path
 import unittest
 
 from app.adapters.lever import LeverAdapter
-from app.config import load_company_config
+from app.models import CompanyConfig
 
 
 FIXTURE_DIR = Path(__file__).resolve().parents[2] / "data" / "fixtures" / "lever"
@@ -12,7 +12,7 @@ FIXTURE_DIR = Path(__file__).resolve().parents[2] / "data" / "fixtures" / "lever
 
 class LeverAdapterTest(unittest.TestCase):
     def test_normalizes_mistral_fixture(self) -> None:
-        company = load_company_config("Mistral AI")
+        company = _lever_fixture_company()
         adapter = LeverAdapter()
         result = adapter.fetch_from_file(
             company.source_key,
@@ -42,7 +42,7 @@ class LeverAdapterTest(unittest.TestCase):
         )
 
     def test_zero_job_response_is_healthy(self) -> None:
-        company = load_company_config("Mistral AI")
+        company = _lever_fixture_company()
         adapter = LeverAdapter()
         result = adapter.fetch_from_file(company.source_key, str(FIXTURE_DIR / "zero_jobs.json"))
 
@@ -54,7 +54,7 @@ class LeverAdapterTest(unittest.TestCase):
         self.assertEqual(postings, [])
 
     def test_malformed_payload_fails_loudly(self) -> None:
-        company = load_company_config("Mistral AI")
+        company = _lever_fixture_company()
         adapter = LeverAdapter()
         result = adapter.fetch_from_file(
             company.source_key,
@@ -67,7 +67,7 @@ class LeverAdapterTest(unittest.TestCase):
         self.assertIn("postings array", health.error_summary or "")
 
     def test_all_locations_are_preserved(self) -> None:
-        company = load_company_config("Mistral AI")
+        company = _lever_fixture_company()
         adapter = LeverAdapter()
         result = adapter.fetch_from_file(
             company.source_key,
@@ -81,6 +81,20 @@ class LeverAdapterTest(unittest.TestCase):
             emea.locations,
             ["Paris", "London", "Munich", "Madrid", "Amsterdam"],
         )
+
+
+def _lever_fixture_company() -> CompanyConfig:
+    return CompanyConfig(
+        name="Lever Fixture Co",
+        tier=1,
+        enabled=True,
+        ats_type="lever",
+        source_key="mistral",
+        careers_url="https://jobs.lever.co/mistral",
+        target_locations=["Munich", "London", "Singapore"],
+        target_role_family_notes="AI Deployment; Solution Operations",
+        warm_path=False,
+    )
 
 
 if __name__ == "__main__":
