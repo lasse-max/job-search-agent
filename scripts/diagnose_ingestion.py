@@ -18,8 +18,11 @@ def main() -> int:
             prepare_threshold=None,
             options="-c default_transaction_read_only=on -c statement_timeout=20000",
         ) as conn:
+            # Poolers may ignore startup options; BEGIN READ ONLY is explicit
+            # on the actual transaction used for every diagnostic query.
+            conn.read_only = True
             readonly = conn.execute("SHOW transaction_read_only").fetchone()[0]
-            if readonly != "on":
+            if readonly not in ("on", b"on"):
                 raise RuntimeError("read-only transaction required")
             print("transaction_read_only=on")
             for signature in (
@@ -40,7 +43,8 @@ def main() -> int:
                 FROM public.manual_intake_submissions GROUP BY status ORDER BY status"""
             ).fetchall()
             for status, count, max_text, rejected in rows:
-                print(json.dumps({"status": status, "submissions": count,
+                print(json.dumps({"status": status.decode() if isinstance(status, bytes) else status,
+                                  "submissions": count,
                                   "max_jd_characters": max_text, "http_400_count": rejected}))
     except Exception as exc:
         # Exception messages can include the database host, user, or credentials.

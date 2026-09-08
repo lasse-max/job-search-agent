@@ -19,6 +19,7 @@ class IngestionDiagnosticTest(unittest.TestCase):
                 with redirect_stdout(output):
                     result = main()
         self.assertEqual(result, 0)
+        self.assertIs(connection.read_only, True)
         self.assertIn("default_transaction_read_only=on", connect.call_args.kwargs["options"])
         self.assertTrue(all(
             call.args[0].lstrip().startswith(("SELECT", "SHOW"))
