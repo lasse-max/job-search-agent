@@ -1,126 +1,156 @@
-# Job Search Agent
+# Sextant — Job Search Agent
 
-A single-user system that detects strong, freshly-posted roles at a fixed company watchlist within hours, evaluates each one against a real, encoded career strategy, and keeps an accurate application pipeline — **without taking any consequential action silently.**
+**Find the right roles early. Put your time into landing them.**
 
-> **Status:** Stage 1 Checkpoint B started: one-source Databricks/Greenhouse vertical slice is implemented locally. See [ROADMAP.md](./ROADMAP.md).
+A relevant opportunity is easier to act on when it reaches you promptly. LinkedIn reports up to a **fourfold increase in the chance of a response** for applications made within ten minutes of a LinkedIn job notification. [Source: LinkedIn Learning, Career Services guide](https://learning.linkedin.com/content/dam/me/learning/resources/pdfs/HED.Strategy.Guidev2.pdf).
 
----
+Finding a promising role soon after it opens takes persistence: checking company sites, repeating searches, and reading job descriptions every day. Keeping that up across a serious company watchlist can consume the time you need for interview preparation, learning, and better applications.
 
-## Why this exists
+Sextant takes on that daily discovery work. In its current live setup, it scans a pool of **6,000+ roles each day** and delivers relevant opportunities straight to the inbox. It matches the work against a detailed candidate profile: career experience, skills, target seniority, company priorities, and practical constraints.
 
-High-quality roles at a finite set of target companies appear irregularly, use inconsistent titles, and close quickly. Manual career-page checks are repetitive and generic job alerts are noise. This system detects roles early, explains fit with evidence from the candidate's actual background, and reduces tracker maintenance while keeping the human in control of every decision that matters.
+The companion web app helps turn a promising role into a prepared application. Clear fit bands make the list easier to prioritise. Role-level evidence surfaces strengths and potential gaps to address. Shortlisting and application tracking keep the next action visible.
 
-## What makes it different
+**Live and in active testing.** The system is being used in a real job search, with feedback shaping its coverage, matching, and workflow.
 
-It is **not** a generic CV-to-JD matcher. Its value is that it encodes and *tests* a specific decision logic, benchmarked against ~30 historically-labelled roles ([`data/evaluation_set/`](./data/evaluation_set/evaluation_set.yaml)):
+Built by Lasse as part of Layline, with AI-assisted implementation and review. This repository contains both the agent and the Sextant web application.
 
-- Clean fit vs. strategic stretch (e.g. Deployment Strategist is a *stretch*, not core)
-- Strategy/operations work vs. Customer Success (a different career, deprioritized)
-- Right seniority and ownership (associate-scope roles are penalized regardless of title)
-- Location/work-authorization feasibility (a strong role can still be `blocked` on visa)
-- Company priority and warm-path value (a warm intro can lift a stretch to `apply_now`)
-- Honest technical and domain gaps
+## Demo and walkthrough
 
-Crucially, fit, feasibility, and company priority are scored **separately**, so brand or location can never hide a weak role fit.
+The operational app requires owner authentication because it contains personal job-search data. There is no public interactive demo at present.
 
-## How it works (Stage 1)
+**Planned showcase:** screenshots and a short walkthrough using sample data, following an opportunity from discovery to a decision. These assets have not been added yet.
 
+<!-- Add real demonstration assets here once available; do not publish broken image links.
+Suggested screenshots: opportunity list; role-detail evidence; shortlist/application tracker.
+Suggested video: 60–90 seconds showing one sample role and the decision it supports.
+If this working repository is private, also publish the selected assets in the public
+lasse-max profile repository so visitors can view them without signing in.
+-->
+
+## Built around your search
+
+A matching job title is only a starting point. Two roles with the same title can demand different skills, carry different responsibilities, and lead to different careers.
+
+Sextant is configurable around the candidate's actual direction:
+
+- **Company priorities:** focus the search around a tiered watchlist of employers.
+- **Experience and skills:** compare the substance of a role with the candidate's background and evidence.
+- **Career goals and constraints:** account for role family, seniority, location, and feasibility.
+- **Application preparation:** identify relevant strengths and gaps to address in written materials or interview preparation.
+
+The aim is to give candidates more time for the opportunities worth pursuing.
+
+## A clear order of attention
+
+| Fit score | Recommendation | How to use it |
+|---|---|---|
+| Below 60 | Skip | Move past weak fits and protect your attention. |
+| 60–69 | Stretch | Look at the opportunity and the gaps you would need to bridge. |
+| 70–79 | Consider | Review the evidence and decide whether it advances your goals. |
+| 80–89 | Apply now | Prioritise a timely, tailored application. |
+| 90–100 | Apply now — strongest fit | Treat these as strong-apply opportunities and give them your earliest attention. |
+
+Scores of 90+ are the strongest end of the app's **Apply now** category. Fit scores are prioritisation signals, not probabilities of an interview or offer, and feasibility checks still apply.
+
+## What is implemented
+
+| Capability | What it does |
+|---|---|
+| Daily discovery | Scans 6,000+ roles in the current setup, normalises postings, removes duplicates, and records source health. |
+| Evaluation | Combines deterministic relevance and feasibility rules with Claude's structured assessment of job-description evidence. |
+| Potential Matches | Presents stored recommendations and their supporting evidence. |
+| To Apply | Maintains an owner-selected shortlist. |
+| Applied | Tracks application stages and next actions while preserving the evaluation recorded when a role was added. |
+| Profile | Displays the current search criteria in a read-only view. |
+| Manual intake | Accepts a URL, pasted description, or an explicitly unscored manual entry; URL/text evaluation is queued for the scanner. |
+| Email digest | Delivers a bounded summary and source-health information through Resend. |
+
+Manual intake requires its database migrations to be applied. Deployment setup is documented in [web/README.md](https://github.com/lasse-max/job-search-agent/blob/main/web/README.md).
+
+## Product and engineering decisions
+
+**Make the criteria inspectable.** Fit, feasibility, and strategic priority are represented separately. Explicit constraints remain visible rather than being hidden inside a single persuasive score.
+
+**Keep one evaluation implementation.** The Python agent owns scoring. The web app reads stored results and records owner decisions, avoiding a second scoring system that could drift from the digest.
+
+**Preserve the reason for past decisions.** Current recommendations use the active evaluation version. Historical application records retain their snapshots, so changing the evaluator does not erase the basis for a past decision.
+
+**Measure both missed opportunities and noise.** Evaluation uses labelled examples and live-feed samples. Precision alone can look good while useful roles disappear; recall alone can flood the inbox. Both matter.
+
+**Keep actions with the owner.** The system recommends and organises. Shortlisting, application tracking, and other consequential actions require an explicit user action; it does not submit job applications.
+
+## Architecture
+
+```text
+Daily GitHub Actions scan + queued manual intake
+    → ATS adapters: Greenhouse / Lever / Ashby / SmartRecruiters
+    → normalise, deduplicate, and record source health
+    → deterministic rules + structured Claude evaluation
+    → Supabase Postgres
+        → Sextant web app: review, shortlist, track
+        → Resend email digest
 ```
- scheduler (every 6h)
-        │
-        ▼
- [adapters] Greenhouse · Lever · Ashby  +  manual URL/text intake
-        │  fetch → normalize → dedupe (idempotent)
-        ▼
- [source health]  fail loudly: a broken connector ≠ a zero-job success
-        │
-        ▼
- [deterministic blockers + feasibility policy]   ← code, not the LLM
-        │
-        ▼
- [LLM evaluator]  4 outputs: fit · feasibility · strategic priority · recommendation
-        │  (structured JSON, schema-validated)
-        ▼
- [SQLite state]  postings · evaluations · review decisions · runs
-        │
-        ▼
- [morning digest]  Apply now / Consider / Stretch / Low / Source failures  → email
-```
 
-The existing spreadsheet remains the manually-maintained tracker during Stage 1; the system never writes to it. Stage 2 migrates state into a web app + Postgres.
+Adapter support does not mean every watchlist company is covered or enabled. Unsupported sources and coverage gaps remain part of the operating picture.
 
-## Repository layout
+**Agent:** Python, HTTPX, Pydantic, SQLAlchemy, YAML configuration, and Claude.
 
-```
-docs/        PRD (authoritative spec), architecture, evaluation guide
-config/      watchlist · candidate_profile · location_policy · scoring_policy (YAML, versioned)
-data/        evaluation_set (benchmark labels) · fixtures (saved ATS payloads)
-app/         adapters · services · models · prompts · templates · cli
-tests/       unit · integration · adapters · evaluation benchmark
-scripts/     tracker import · CSV export
-.github/     CI, scheduled-scan workflow, issue/PR templates
-```
+**Application:** Next.js, React, TypeScript, Tailwind CSS, Supabase Auth/Postgres, and Vercel. Owner access is enforced through authentication, database policies, and restricted write operations.
 
-## Quickstart
+SQLite remains available for local development; the deployed application reads the shared Postgres store. The configured scheduled workflow runs once daily.
+
+## Evaluation and current limits
+
+The repository includes adapter, unit, integration, and benchmark tests. GitHub Actions runs Python lint and automated tests. These checks support development; they do not establish that every live recommendation is correct.
+
+- The LinkedIn timing statistic describes its own job notifications. Sextant scans daily; its effect on response or interview rates has not yet been measured.
+- The evaluation is tailored to one person's strategy; generalisation to other candidates has not been established.
+- Coverage depends on available feeds and enabled sources. A healthy scheduled run does not imply complete market coverage.
+- Job descriptions and model interpretations can be incomplete or wrong. Recommendations need human review.
+- This is currently an owner-only application. A reusable open-source setup and a public walkthrough are future work.
+
+## What's next
+
+Use live feedback to improve the relevance of recommendations and the experience of acting on them. Then package the system as an **open-source setup that candidates can configure and run for their own job search**, with their own company priorities, background, skills, and goals.
+
+That reusable release is planned; a supported public setup and open-source licence are not yet available.
+
+## Development
+
+Requires Python 3.12 or later. From an authorised checkout:
 
 ```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-cp .env.example .env          # fill locally; never commit .env
-
-job-agent scan                # run a discovery scan (writes a local digest)
-job-agent scan-all            # scheduled-style scan + digest notification/fallback
-job-agent sample-live-noise   # write a label template from cached live postings
-job-agent review list         # review surfaced opportunities
-job-agent add-url <job-url>   # manually evaluate any role
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
+cp .env.example .env
 ```
 
-Development sends no email by default — the digest is written to
-`output/latest_digest.html`. Live delivery uses Resend when `RESEND_API_KEY` is
-set. Required for live delivery: `DIGEST_RECIPIENT_EMAIL` (for example,
-`you@example.com`). Optional: `DIGEST_FROM_EMAIL`.
+Configure local values in `.env`. Use a separate development database and sample inputs. Live evaluation requires an Anthropic API key; email delivery additionally requires Resend configuration. Development fallback evaluations are not evidence of calibrated model quality.
 
-The evaluator uses Claude only when `ANTHROPIC_API_KEY` is present. Without a
-key, local and CI runs can render deterministic fallback files, but those
-evaluations are marked `fallback evaluator — not validated` and are blocked from
-email delivery. The scheduled workflow intentionally leaves live email secrets
-unwired until the live-noise precision gate clears.
-
-### MVP commands
-
-Run the deterministic fixture slice:
+Run the same Python checks used by CI:
 
 ```bash
-python -m app.cli scan --fixture data/fixtures/greenhouse/databricks_jobs.json
-python -m app.cli review list
+python -m ruff check .
+python -m unittest discover -s tests
 ```
 
-Run the live Databricks Greenhouse slice:
+For the web app, database setup, authentication, and deployment, see [web/README.md](https://github.com/lasse-max/job-search-agent/blob/main/web/README.md).
 
-```bash
-python -m app.cli scan
-```
+## Repository guide
 
-The current evaluator is a deterministic development evaluator. It produces the required structured evaluation shape and proves the ingestion, dedupe, health, persistence, review, and digest path. The final LLM-backed evaluator is still a Stage 1 follow-up.
+| Directory | Contents |
+|---|---|
+| `app/` | Discovery adapters, evaluation, state, CLI, and notifications |
+| `web/` | Sextant interface and owner-authorised actions |
+| `config/` | Search criteria, watchlist, and scoring policy |
+| `migrations/` | Database schema and access policies |
+| `tests/` | Automated behaviour and regression checks |
+| `data/evaluation_set/` | Evaluation inputs and reports |
+| `docs/` | Product decisions, architecture, and operating notes |
 
-## Documentation
+Some planning documents contain historical stages; this README describes the implemented system reviewed in September 2026. See [ROADMAP.md](https://github.com/lasse-max/job-search-agent/blob/main/ROADMAP.md) for planned work and [DECISIONS.md](https://github.com/lasse-max/job-search-agent/blob/main/DECISIONS.md) for the decision history.
 
-| Doc | Purpose |
-|-----|---------|
-| [`docs/PRD.md`](./docs/PRD.md) | Authoritative product & build spec (the source of truth). |
-| [`ROADMAP.md`](./ROADMAP.md) | Staged delivery, checkpoints, and exit criteria. |
-| [`DECISIONS.md`](./DECISIONS.md) | Architecture decision log (ADR-style). |
-| [`docs/architecture.md`](./docs/architecture.md) | System design and data flow. |
-| [`docs/evaluation.md`](./docs/evaluation.md) | How the fit benchmark works. |
+## Usage
 
-## Guardrails (non-negotiable)
-
-- Nothing consequential happens silently — no application creation, status change, outreach, or submission without explicit approval.
-- Deterministic logic first; the LLM only interprets, maps evidence, and explains.
-- ATS APIs before scraping; unsupported coverage is published, not faked.
-- Secrets stay server-side; no real application or email data in the repo.
-- The system serves the job search — it must not become the job search.
-
-## License
-
-Private, single-user project. Not for redistribution.
+Personal project. No open-source licence is granted by this README.
