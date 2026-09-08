@@ -33,7 +33,7 @@ class SourceConfigTest(unittest.TestCase):
         )
         self.assertEqual(parser_version("smartrecruiters"), "smartrecruiters_v1")
 
-    def test_supported_sources_remain_owner_gated_when_newly_audited(self) -> None:
+    def test_bounded_rollout_keeps_unaudited_or_dead_feeds_disabled(self) -> None:
         companies = load_watchlist()
         ashby_companies = {
             str(company["name"]): bool(company["enabled"])
@@ -66,13 +66,18 @@ class SourceConfigTest(unittest.TestCase):
         self.assertTrue(ashby_companies["OpenAI"])
         self.assertTrue(ashby_companies["Airwallex"])
         self.assertTrue(ashby_companies["Sierra"])
-        self.assertEqual(disabled_greenhouse, ["DoorDash", "Glean"])
+        self.assertEqual(disabled_greenhouse, [])
         self.assertEqual(disabled_lever, ["Atlassian", "SafetyCulture"])
         self.assertEqual(
             disabled_smartrecruiters,
-            ["Canva", "Wise", "Grab", "ServiceNow / Moveworks", "Nearmap", "Delivery Hero"],
+            ["Wise", "Grab", "ServiceNow / Moveworks", "Nearmap", "Delivery Hero"],
         )
         self.assertEqual(enabled_unsupported, [])
+        by_name = {company["name"]: company for company in companies}
+        for name in ("DoorDash", "Canva", "Glean", "DeepL", "Magentic"):
+            self.assertTrue(by_name[name]["enabled"])
+            self.assertGreater(by_name[name]["job_count_at_audit"], 0)
+        self.assertEqual(by_name["SafetyCulture"]["job_count_at_audit"], 0)
 
 
 if __name__ == "__main__":

@@ -147,29 +147,29 @@
   },
   "watchlist": {
     "total": 92,
-    "enabled": 31,
+    "enabled": 36,
     "coverage": {
-      "scanned": 31,
+      "scanned": 36,
       "total": 92,
-      "percentage": 34,
+      "percentage": 39,
       "tone": "red",
-      "dark": 61,
+      "dark": 56,
       "byTier": [
         {
           "tier": 1,
-          "scanned": 10,
+          "scanned": 12,
           "total": 20,
-          "percentage": 50,
+          "percentage": 60,
           "tone": "amber",
-          "dark": 10
+          "dark": 8
         },
         {
           "tier": 2,
-          "scanned": 13,
+          "scanned": 16,
           "total": 45,
-          "percentage": 29,
+          "percentage": 36,
           "tone": "red",
-          "dark": 32
+          "dark": 29
         },
         {
           "tier": 3,
@@ -182,8 +182,8 @@
       ],
       "darkByReason": {
         "missing_source": 30,
-        "adapter_ready_disabled": 23,
-        "dead_feed": 2,
+        "adapter_ready_disabled": 17,
+        "dead_feed": 3,
         "manual_only": 6
       }
     },
@@ -293,8 +293,8 @@
       {
         "name": "DoorDash",
         "tier": 1,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported (Australia only)",
         "targetLocations": [
           "Sydney",
           "Melbourne",
@@ -303,12 +303,12 @@
         "atsType": "greenhouse",
         "sourceKey": "doordashaustralia",
         "supportedAdapter": "greenhouse",
-        "jobCountAtAudit": 29,
+        "jobCountAtAudit": 33,
         "careersUrl": "https://careersatdoordash.com/",
         "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/doordashaustralia/jobs?content=true",
-        "manualFallback": "Manual URL/text intake until owner enables the validated Australia feed.",
-        "notes": "Validated 2026-07-12. Australia board has 29 jobs. Separate doordashusa board has 454 and may carry other markets; keep disabled until catalog scope, volume, spend, and runtime are owner-approved.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Australia feed only; use alerts/manual intake for other DoorDash markets.",
+        "notes": "Enabled 2026-09-08: 33 Australia postings, 3 fresh gate-passers. Regional coverage only; doordashusa and other markets are not scanned.",
+        "darkReasonCode": null
       },
       {
         "name": "Uber",
@@ -333,20 +333,20 @@
       {
         "name": "Canva",
         "tier": 1,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "Sydney"
         ],
         "atsType": "smartrecruiters",
         "sourceKey": "Canva",
         "supportedAdapter": "smartrecruiters",
-        "jobCountAtAudit": 223,
+        "jobCountAtAudit": 269,
         "careersUrl": "https://www.lifeatcanva.com/en/jobs/",
         "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Canva/postings?limit=100&offset=0",
-        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
-        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": "Enabled 2026-09-08: 269 listed and normalized postings, 25 fresh gate-passers. SmartRecruiters requires complete list/detail parity.",
+        "darkReasonCode": null
       },
       {
         "name": "Atlassian",
@@ -533,19 +533,19 @@
         "name": "SafetyCulture",
         "tier": 1,
         "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Sydney"
         ],
         "atsType": "lever",
         "sourceKey": "safetyculture-2",
         "supportedAdapter": "lever",
-        "jobCountAtAudit": 33,
+        "jobCountAtAudit": 0,
         "careersUrl": "https://safetyculture.com/careers/",
         "sourceEvidenceUrl": "https://api.lever.co/v0/postings/safetyculture-2?mode=json",
-        "manualFallback": "Manual URL/text intake until owner enables the repaired Lever feed.",
-        "notes": "Repaired 2026-07-12: the old Ashby token was dead; the live careers page identifies Lever source safetyculture-2. Deliberately disabled pending owner rollout.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Lever feed is empty; use alerts/manual intake until the company catalog is verified.",
+        "notes": "Re-audited 2026-09-08: safetyculture-2 returns 0; Ashby safetyculture returns 404. The configured careers URL redirects to Mitti (by SafetyCulture). Do not treat a differently branded catalog as full SafetyCulture coverage.",
+        "darkReasonCode": "dead_feed"
       },
       {
         "name": "NEURA Robotics",
@@ -920,8 +920,8 @@
       {
         "name": "Glean",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London",
           "Singapore",
@@ -930,12 +930,12 @@
         "atsType": "greenhouse",
         "sourceKey": "gleanwork",
         "supportedAdapter": "greenhouse",
-        "jobCountAtAudit": 132,
+        "jobCountAtAudit": 115,
         "careersUrl": "https://www.glean.com/careers",
         "sourceEvidenceUrl": "https://boards-api.greenhouse.io/v1/boards/gleanwork/jobs?content=true",
-        "manualFallback": "Manual URL/text intake until owner enables the validated Greenhouse feed.",
-        "notes": "Greenhouse source_key gleanwork validated 2026-07-12; deliberately disabled pending bounded rollout.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": "Enabled 2026-09-08: 115 postings, 0 fresh gate-passers under current location/function rules. A valid feed remains monitored for future matching roles.",
+        "darkReasonCode": null
       },
       {
         "name": "Cohere",
@@ -1112,8 +1112,8 @@
       {
         "name": "DeepL",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "Germany",
           "London"
@@ -1121,12 +1121,12 @@
         "atsType": "ashby",
         "sourceKey": "deepl",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 24,
+        "jobCountAtAudit": 64,
         "careersUrl": "https://www.deepl.com/en/jobs",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/deepl?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled 2026-09-08: 64 postings, 6 fresh gate-passers.",
+        "darkReasonCode": null
       },
       {
         "name": "Parloa",
@@ -1363,20 +1363,20 @@
       {
         "name": "Magentic",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "magentic",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 6,
+        "jobCountAtAudit": 7,
         "careersUrl": "https://www.magentic.ai/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/magentic?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled 2026-09-08: 7 postings, 0 fresh gate-passers. Small live feed monitored for future openings.",
+        "darkReasonCode": null
       },
       {
         "name": "Aleph Alpha",

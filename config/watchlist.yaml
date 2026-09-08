@@ -5,9 +5,9 @@ metadata:
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
     needs_configuration: 15
-    supported: 31
-    manual_fallback: 23
-    validated_owner_enablement_pending: 23
+    supported: 36
+    manual_fallback: 24
+    validated_owner_enablement_pending: 17
 companies:
   - name: "Google"
     tier: 1
@@ -92,21 +92,21 @@ companies:
     selected_for_initial_coverage: true
   - name: "DoorDash"
     tier: 1
-    enabled: false
+    enabled: true
     careers_url: "https://careersatdoordash.com/"
     current_role_url: null
     ats_type: "greenhouse"
     source_key: "doordashaustralia"
     supported_adapter: "greenhouse"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported (Australia only)"
     source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/doordashaustralia/jobs?content=true"
-    job_count_at_audit: 29
+    job_count_at_audit: 33
     target_locations: ["Sydney", "Melbourne", "London"]
     target_role_family_notes: "Strategy & Operations; New Verticals; Ads"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until owner enables the validated Australia feed."
+    manual_fallback: "Australia feed only; use alerts/manual intake for other DoorDash markets."
     selected_for_initial_coverage: false
-    notes: "Validated 2026-07-12. Australia board has 29 jobs. Separate doordashusa board has 454 and may carry other markets; keep disabled until catalog scope, volume, spend, and runtime are owner-approved."
+    notes: "Enabled 2026-09-08: 33 Australia postings, 3 fresh gate-passers. Regional coverage only; doordashusa and other markets are not scanned."
   - name: "Uber"
     tier: 1
     enabled: false
@@ -126,21 +126,21 @@ companies:
     notes: "Audited 2026-07-12: role detail pages are public and indexable, but the list endpoint rejects the scanner client. No supported public ATS feed identified."
   - name: "Canva"
     tier: 1
-    enabled: false
+    enabled: true
     careers_url: "https://www.lifeatcanva.com/en/jobs/"
     current_role_url: null
     ats_type: "smartrecruiters"
     source_key: "Canva"
     supported_adapter: "smartrecruiters"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Canva/postings?limit=100&offset=0"
-    job_count_at_audit: 223
+    job_count_at_audit: 269
     target_locations: ["Sydney"]
     target_role_family_notes: "Business Operations; Product Operations; Growth Operations"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
-    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
+    notes: "Enabled 2026-09-08: 269 listed and normalized postings, 25 fresh gate-passers. SmartRecruiters requires complete list/detail parity."
   - name: "Atlassian"
     tier: 1
     enabled: false
@@ -299,15 +299,15 @@ companies:
     ats_type: "lever"
     source_key: "safetyculture-2"
     supported_adapter: "lever"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Manual fallback"
     source_evidence_url: "https://api.lever.co/v0/postings/safetyculture-2?mode=json"
-    job_count_at_audit: 33
+    job_count_at_audit: 0
     target_locations: ["Sydney"]
     target_role_family_notes: "AI Operations; Business Operations; Strategic Programs"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until owner enables the repaired Lever feed."
+    manual_fallback: "Lever feed is empty; use alerts/manual intake until the company catalog is verified."
     selected_for_initial_coverage: false
-    notes: "Repaired 2026-07-12: the old Ashby token was dead; the live careers page identifies Lever source safetyculture-2. Deliberately disabled pending owner rollout."
+    notes: "Re-audited 2026-09-08: safetyculture-2 returns 0; Ashby safetyculture returns 404. The configured careers URL redirects to Mitti (by SafetyCulture). Do not treat a differently branded catalog as full SafetyCulture coverage."
   - name: "NEURA Robotics"
     tier: 1
     enabled: false
@@ -618,21 +618,21 @@ companies:
     selected_for_initial_coverage: true
   - name: "Glean"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.glean.com/careers"
     current_role_url: null
     ats_type: "greenhouse"
     source_key: "gleanwork"
     supported_adapter: "greenhouse"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://boards-api.greenhouse.io/v1/boards/gleanwork/jobs?content=true"
-    job_count_at_audit: 132
+    job_count_at_audit: 115
     target_locations: ["London", "Singapore", "Sydney"]
     target_role_family_notes: "Customer Strategy; Value Consulting; Business Operations"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until owner enables the validated Greenhouse feed."
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
-    notes: "Greenhouse source_key gleanwork validated 2026-07-12; deliberately disabled pending bounded rollout."
+    notes: "Enabled 2026-09-08: 115 postings, 0 fresh gate-passers under current location/function rules. A valid feed remains monitored for future matching roles."
   - name: "Cohere"
     tier: 2
     enabled: false
@@ -779,17 +779,18 @@ companies:
     selected_for_initial_coverage: false
   - name: "DeepL"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.deepl.com/en/jobs"
     current_role_url: null
     ats_type: "ashby"
     source_key: "deepl"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/deepl?includeCompensation=false"
-    job_count_at_audit: 24
+    job_count_at_audit: 64
     target_locations: ["Germany", "London"]
     target_role_family_notes: "Business Operations; GTM Strategy; AI Programs"
+    notes: "Enabled 2026-09-08: 64 postings, 6 fresh gate-passers."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
@@ -988,17 +989,18 @@ companies:
     selected_for_initial_coverage: false
   - name: "Magentic"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.magentic.ai/careers"
     current_role_url: null
     ats_type: "ashby"
     source_key: "magentic"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/magentic?includeCompensation=false"
-    job_count_at_audit: 6
+    job_count_at_audit: 7
     target_locations: ["London"]
     target_role_family_notes: "Deployment Strategy; Enterprise AI Delivery"
+    notes: "Enabled 2026-09-08: 7 postings, 0 fresh gate-passers. Small live feed monitored for future openings."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
