@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireOwner } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { intakeActionError, type IntakeRpcError } from "@/lib/manual-intake-errors";
 
 export type ManualIntakeMode = "url" | "text" | "manual";
 export type ManualIntakeDestination = "potential_matches" | "to_apply" | "applied";
@@ -28,7 +29,7 @@ export async function submitManualIntake(input: ManualIntakeInput) {
   const rpc = supabase.rpc.bind(supabase) as unknown as (
     name: string,
     args: Record<string, string | boolean | number | null>
-  ) => PromiseLike<{ error: { message: string } | null }>;
+  ) => PromiseLike<{ error: IntakeRpcError | null }>;
   const replacing = input.replaceSubmissionId != null;
   const { error } = replacing
     ? await rpc("replace_manual_intake_with_url", {
@@ -53,11 +54,10 @@ export async function submitManualIntake(input: ManualIntakeInput) {
         p_propose_watchlist: input.proposeWatchlist
       });
   if (error) {
+    console.warn("manual_intake_submit_failed", { code: error.code ?? "unknown" });
     return {
       ok: false,
-      message: replacing
-        ? "Could not replace the pending role. Is migration 009 applied?"
-        : "Could not queue this role. Is migration 008 applied?"
+      message: intakeActionError(error, replacing ? "replace" : "queue")
     };
   }
   revalidatePath("/");

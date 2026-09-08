@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from html.parser import HTMLParser
 import re
 import sqlite3
 from dataclasses import dataclass
@@ -14,7 +15,7 @@ from urllib.parse import urlparse
 
 import httpx
 
-from app.adapters.utils import clean_html, compact_text, normal_key
+from app.adapters.utils import compact_text, normal_key
 from app.config import DEFAULT_DB_PATH
 from app.db import (
     connect_runtime_database,
@@ -30,6 +31,7 @@ from app.services.evaluate import HYBRID_EVALUATOR_VERSION, evaluate_role, input
 
 
 MIN_EXTRACTED_TEXT_LENGTH = 120
+MAX_JOB_TEXT_LENGTH = 60_000
 
 
 class ManualExtractionError(RuntimeError):
@@ -72,6 +74,10 @@ def add_text_intake(
     cleaned_text = compact_text(text)
     if not cleaned_text:
         raise ValueError("manual job-description text cannot be empty")
+    if len(cleaned_text) > MAX_JOB_TEXT_LENGTH:
+        raise ManualExtractionError(
+            "job_text_too_long: paste only the job description, not the whole page"
+        )
 
     metadata = _metadata_from_text(text)
     company = _company_from_metadata(metadata, source_url)
@@ -138,16 +144,46 @@ def add_url_intake(
 
 
 def fetch_url_text(url: str) -> str:
+    _validate_http_url(url)
     try:
         response = httpx.get(url, timeout=15, follow_redirects=True)
         response.raise_for_status()
     except httpx.HTTPError as exc:
         raise ManualExtractionError(f"url_fetch_failed: {exc}") from exc
 
-    extracted = clean_html(response.text)
+    parser = _JobPageTextParser()
+    parser.feed(response.text)
+    extracted = compact_text(" ".join(parser.parts))
     if len(extracted) < MIN_EXTRACTED_TEXT_LENGTH:
         raise ManualExtractionError("url_extraction_too_short")
+    if len(extracted) > MAX_JOB_TEXT_LENGTH:
+        raise ManualExtractionError(
+            "job_text_too_long: paste only the job description, not the whole page"
+        )
     return extracted
+
+
+class _JobPageTextParser(HTMLParser):
+    """Keep visible requirements; never send page code to the evaluator."""
+
+    ignored_tags = {"script", "style", "noscript", "svg", "template", "nav", "footer"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+        self.hidden: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in self.ignored_tags:
+            self.hidden.append(tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        if self.hidden and self.hidden[-1] == tag:
+            self.hidden.pop()
+
+    def handle_data(self, data: str) -> None:
+        if not self.hidden:
+            self.parts.append(data)
 
 
 def process_manual_intake_queue(
@@ -230,6 +266,11 @@ def process_manual_intake_queue(
                 job_posting_id=result.job_id,
             )
             completed += 1
+        except ManualExtractionError as exc:
+            _update_submission(
+                conn, submission_id, status="needs_text", error_summary=str(exc)
+            )
+            needs_text += 1
         except Exception as exc:  # noqa: BLE001 - isolate one owner submission.
             _update_submission(
                 conn,

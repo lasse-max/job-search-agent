@@ -1,6 +1,7 @@
 import profileConfig from "@/generated/profile-config.json";
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
+import { currentSourceRuns, scanReach } from "@/lib/data/source-reach";
 
 type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 type CompanyRow = Database["public"]["Tables"]["companies"]["Row"];
@@ -47,32 +48,15 @@ export async function loadProfileData(supabase: AppSupabaseClient): Promise<Prof
       .filter((company) => company.enabled)
       .map((company) => company.name)
   );
-  const configuredCompanyIds = new Set(
-    companyRows
-      .filter((company) => configuredEnabledNames.has(company.name))
-      .map((company) => company.id)
+  const current = currentSourceRuns(
+    companyRows, sourceRows, runRows, profileConfig.watchlist.companies
   );
-  const relevantSources = sourceRows.filter(
-    (source) => configuredCompanyIds.has(source.company_id) && source.source_type !== "manual"
+  const relevantSources = current.sources;
+  const latestRuns = current.runs;
+  const latestRunBySource = new Map(
+    latestRuns.map((run) => [run.job_source_id, run])
   );
-  const relevantSourceIds = new Set(relevantSources.map((source) => source.id));
-  const relevantRuns = runRows.filter((run) => relevantSourceIds.has(run.job_source_id));
-  const latestRunBySource = new Map<number, SourceRunRow>();
-  for (const run of relevantRuns) {
-    if (!latestRunBySource.has(run.job_source_id)) {
-      latestRunBySource.set(run.job_source_id, run);
-    }
-  }
-  const latestRuns = [...latestRunBySource.values()];
-  const latestScanAt = latestRuns[0]?.started_at ?? null;
-  const sourceCompanyById = new Map(
-    relevantSources.map((source) => [source.id, source.company_id])
-  );
-  const scannedCompanyIds = new Set(
-    latestRuns
-      .map((run) => sourceCompanyById.get(run.job_source_id))
-      .filter((companyId): companyId is number => companyId !== undefined)
-  );
+  const reach = scanReach(relevantSources, latestRuns);
   const databaseEnabledCompanies = companyRows.filter((company) => company.enabled === 1).length;
   const databaseEnabledNames = new Set(
     companyRows.filter((company) => company.enabled === 1).map((company) => company.name)
@@ -112,12 +96,10 @@ export async function loadProfileData(supabase: AppSupabaseClient): Promise<Prof
     live: {
       databaseCompanies: companyRows.length,
       enabledCompanies: databaseEnabledCompanies,
-      latestScanAt,
-      fetchedPostings: latestRuns.length
-        ? latestRuns.reduce((total, run) => total + run.fetched_count, 0)
-        : null,
-      successfulSources: latestRuns.length || null,
-      scannedCompanies: latestRuns.length ? scannedCompanyIds.size : null,
+      latestScanAt: reach.latestScanAt,
+      fetchedPostings: reach.fetchedCount,
+      successfulSources: latestRuns.filter((run) => run.status === "success").length,
+      scannedCompanies: reach.companyCount,
       enabledCountMismatch:
         missingConfiguredCompanies.length > 0 || extraDatabaseEnabledCompanies.length > 0,
       missingConfiguredCompanies,

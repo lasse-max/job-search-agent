@@ -2,6 +2,8 @@ import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 import { ROLE_MAX_AGE_DAYS, recencyCutoffDate } from "@/lib/recency";
 import { loadOpenManualIntakes, type ManualIntakeEntry } from "@/lib/data/manual-intake";
+import profileConfig from "@/generated/profile-config.json";
+import { currentSourceRuns, scanReach } from "@/lib/data/source-reach";
 
 export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v4";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
@@ -15,10 +17,6 @@ type PostingRow = Pick<
   "id" | "company_id" | "title" | "locations_json" | "source_url" | "availability_state"
 >;
 type CompanyRow = Pick<Database["public"]["Tables"]["companies"]["Row"], "id" | "name" | "tier">;
-type ScanRunRow = Pick<
-  Database["public"]["Tables"]["source_runs"]["Row"],
-  "started_at" | "fetched_count" | "status"
->;
 
 export type Recommendation = "apply_now" | "consider" | "stretch" | "skip" | "blocked";
 export type MatchBand = "apply_now" | "consider" | "stretch" | "low_priority";
@@ -412,31 +410,22 @@ async function loadSkipAuditRows(supabase: AppSupabaseClient): Promise<AuditRow[
 }
 
 async function loadScanReach(supabase: AppSupabaseClient) {
-  const [{ data: runs }, { count }] = await Promise.all([
+  const [runs, companies, sources] = await Promise.all([
     supabase
       .from("source_runs")
       .select("*")
       .order("id", { ascending: false })
-      .limit(96),
-    supabase.from("companies").select("id", { count: "exact", head: true }).eq("enabled", 1)
+      .limit(500),
+    supabase.from("companies").select("*"),
+    supabase.from("job_sources").select("*")
   ]);
-
-  const runRows = (runs ?? []) as ScanRunRow[];
-  const latestSuccessful = runRows.find((run) => run.status === "success" || run.status === "degraded");
-  if (!latestSuccessful) {
-    return { fetchedCount: null, companyCount: count ?? null, latestScanAt: null };
+  if (runs.error || companies.error || sources.error) {
+    return { fetchedCount: null, companyCount: null, latestScanAt: null };
   }
-
-  const latestDay = latestSuccessful.started_at.slice(0, 10);
-  const fetchedCount = runRows
-    .filter((run) => run.started_at.slice(0, 10) === latestDay)
-    .reduce((total, run) => total + run.fetched_count, 0);
-
-  return {
-    fetchedCount,
-    companyCount: count ?? null,
-    latestScanAt: latestSuccessful.started_at
-  };
+  const current = currentSourceRuns(
+    companies.data ?? [], sources.data ?? [], runs.data ?? [], profileConfig.watchlist.companies
+  );
+  return scanReach(current.sources, current.runs);
 }
 
 function skipToAuditRow(

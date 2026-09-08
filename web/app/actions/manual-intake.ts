@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireOwner } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { intakeActionError, type IntakeRpcError } from "@/lib/manual-intake-errors";
 
 export async function removeManualIntake(submissionId: number) {
   if (!Number.isSafeInteger(submissionId) || submissionId <= 0) {
@@ -14,17 +15,16 @@ export async function removeManualIntake(submissionId: number) {
   const rpc = supabase.rpc.bind(supabase) as unknown as (
     name: string,
     args: Record<string, number>
-  ) => PromiseLike<{ error: { message: string } | null }>;
+  ) => PromiseLike<{ error: IntakeRpcError | null }>;
   const { error } = await rpc("remove_manual_intake", {
     p_submission_id: submissionId
   });
 
   if (error) {
+    console.warn("manual_intake_remove_failed", { code: error.code ?? "unknown" });
     return {
       ok: false,
-      message: error.message.includes("currently processing")
-        ? "This role is being evaluated now and can no longer be removed."
-        : "Could not remove this role. Is migration 009 applied?"
+      message: intakeActionError(error, "remove")
     };
   }
 

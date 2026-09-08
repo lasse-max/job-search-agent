@@ -256,7 +256,7 @@ class ClaudeLLMProvider:
                 timeout_seconds=self.timeout_seconds,
             )
         except httpx.HTTPError as exc:
-            raise LLMProviderError(f"claude_evaluation_failed: {type(exc).__name__}: {exc}") from exc
+            raise LLMProviderError(_provider_error_summary(exc)) from exc
 
         try:
             payload = response.json()
@@ -431,6 +431,44 @@ def _is_retryable_claude_error(exc: httpx.HTTPError) -> bool:
     if isinstance(exc, httpx.HTTPStatusError):
         return exc.response.status_code in RETRYABLE_CLAUDE_STATUS_CODES
     return False
+
+
+def _provider_error_summary(exc: httpx.HTTPError) -> str:
+    """Classify provider failures without persisting echoed prompts or credentials."""
+    if not isinstance(exc, httpx.HTTPStatusError):
+        return f"claude_evaluation_failed: {type(exc).__name__}"
+    response = exc.response
+    message = ""
+    try:
+        payload = response.json()
+        error = payload.get("error") if isinstance(payload, dict) else None
+        if isinstance(error, dict):
+            message = str(error.get("message", "")).lower()
+    except ValueError:
+        pass
+    reason = "provider rejected the request"
+    if "credit balance" in message:
+        reason = "provider credit balance is too low; check billing"
+    elif "prompt is too long" in message or "input is too long" in message:
+        reason = "job page exceeds model context; paste only the job description"
+    elif response.status_code in (401, 403):
+        reason = "provider credentials or permissions need attention"
+    elif response.status_code == 429:
+        reason = "provider rate limit reached; try again later"
+    elif response.status_code >= 500:
+        reason = "provider is temporarily unavailable; try again later"
+    elif "model" in message:
+        reason = "configured model or model parameters were rejected"
+    elif "tool" in message or "schema" in message:
+        reason = "evaluation tool schema was rejected"
+    request_id = response.headers.get("request-id", "")
+    # Request IDs are safe correlation handles; arbitrary response text is not.
+    suffix = (
+        f"; request_id={request_id}"
+        if re.fullmatch(r"req_[A-Za-z0-9_-]{1,100}", request_id)
+        else ""
+    )
+    return f"claude_evaluation_failed: HTTP {response.status_code}: {reason}{suffix}"
 
 
 def _evaluation_tool_schema() -> dict[str, Any]:

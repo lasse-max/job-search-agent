@@ -1,5 +1,6 @@
 import type { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
+import { intakeEvaluationError } from "@/lib/manual-intake-errors";
 
 type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 type ManualRow = Database["public"]["Tables"]["manual_intake_submissions"]["Row"];
@@ -46,7 +47,7 @@ export async function loadOpenManualIntakes(
     status: row.status,
     destination: row.destination,
     proposeWatchlist: row.propose_watchlist,
-    error: row.error_summary,
+    error: intakeEvaluationError(row.error_summary),
     createdAt: row.created_at
   }));
 }

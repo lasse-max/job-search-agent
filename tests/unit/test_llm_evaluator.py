@@ -39,6 +39,31 @@ from app.services.llm_evaluator import (
 
 
 class LlmEvaluatorTest(unittest.TestCase):
+    def test_provider_rejection_preserves_safe_cause_and_request_id(self) -> None:
+        response = httpx.Response(
+            400,
+            json={"error": {"type": "invalid_request_error", "message":
+                "prompt is too long: 210000 tokens > 200000 maximum; private echoed content"}},
+            headers={"request-id": "req_example123"},
+            request=httpx.Request("POST", "https://api.anthropic.com/v1/messages"),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            provider = ClaudeLLMProvider(api_key="test-secret", cache_dir=Path(directory))
+            with patch("app.services.llm_evaluator.httpx.post", return_value=response) as post:
+                with self.assertRaises(LLMProviderError) as raised:
+                    provider.evaluate(LLMRoleRequest(
+                        row=_row("Strategy Lead"), company=_company(),
+                        profile=load_candidate_profile(),
+                    ))
+        self.assertEqual(post.call_count, 1)
+        message = str(raised.exception)
+        self.assertIn("HTTP 400", message)
+        self.assertIn("exceeds model context", message)
+        self.assertIn("req_example123", message)
+        self.assertNotIn("private echoed", message)
+        self.assertNotIn("test-secret", message)
+        self.assertFalse(raised.exception.retryable_output)
+
     def test_prompt_carries_tools_and_revops_translation_as_candidate_evidence(self) -> None:
         prompt = build_role_prompt(
             LLMRoleRequest(
