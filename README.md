@@ -14,18 +14,31 @@ The companion web app helps turn a promising role into a prepared application. C
 
 Built by Lasse as part of Layline, with AI-assisted implementation and review. This repository contains both the agent and the Sextant web application.
 
-## Demo and walkthrough
+## Screenshots
 
 The operational app requires owner authentication because it contains personal job-search data. There is no public interactive demo at present.
 
-**Planned showcase:** screenshots and a short walkthrough using sample data, following an opportunity from discovery to a decision. These assets have not been added yet.
+These screenshots were captured from live testing on **8 September 2026**. Counts, coverage and recommendations are snapshots of the displayed runs.
 
-<!-- Add real demonstration assets here once available; do not publish broken image links.
-Suggested screenshots: opportunity list; role-detail evidence; shortlist/application tracker.
-Suggested video: 60–90 seconds showing one sample role and the decision it supports.
-If this working repository is private, also publish the selected assets in the public
-lasse-max profile repository so visitors can view them without signing in.
--->
+### See the scan at a glance
+
+![Sextant scan overview showing 7,527 postings across 34 companies, with 3 apply, 20 consider and 13 stretch recommendations](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/scan-overview.png)
+
+The overview groups surfaced opportunities by recommendation and shows the scanned catalog alongside sorting and filtering controls.
+
+### Review the roles worth your attention
+
+![Sextant ranked matches showing role fit, company tiers, feasibility, confidence and mark-to-apply controls](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/ranked-matches.png)
+
+Each card keeps role fit, feasibility, company priority and supporting context visible. The user chooses whether to mark a role to apply, dismiss it or snooze it.
+
+### Inspect the search criteria
+
+![Sextant profile showing configured role families, seniority criteria and source coverage](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/search-profile.png)
+
+The read-only profile makes the configured target roles, seniority rules and source coverage inspectable. Changes to these criteria are made through configuration.
+
+The images are hosted in the public profile repository so the showcase remains accessible if this working repository becomes private. A short video walkthrough is planned.
 
 ## Built around your search
 
@@ -107,7 +120,7 @@ The repository includes adapter, unit, integration, and benchmark tests. GitHub 
 - The evaluation is tailored to one person's strategy; generalisation to other candidates has not been established.
 - Coverage depends on available feeds and enabled sources. A healthy scheduled run does not imply complete market coverage.
 - Job descriptions and model interpretations can be incomplete or wrong. Recommendations need human review.
-- This is currently an owner-only application. A reusable open-source setup and a public walkthrough are future work.
+- This is currently an owner-only application. A reusable open-source setup and a video walkthrough are future work; the screenshots above provide a public preview.
 
 ## What's next
 
