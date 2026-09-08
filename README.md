@@ -18,7 +18,7 @@ Built by Lasse as part of Layline, with AI-assisted implementation and review. T
 
 The operational app requires owner authentication because it contains personal job-search data. There is no public interactive demo at present.
 
-These screenshots were captured from live testing on **8 September 2026**. Counts, coverage and recommendations are snapshots of the displayed runs.
+These screenshots were captured from live testing on **8 September 2026**. The email excerpt is from **4 September 2026**. Counts, coverage and recommendations are snapshots of the displayed runs.
 
 ### See the scan at a glance
 
@@ -37,6 +37,12 @@ Each card keeps role fit, feasibility, company priority and supporting context v
 ![Sextant profile showing configured role families, seniority criteria and source coverage](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/search-profile.png)
 
 The read-only profile makes the configured target roles, seniority rules and source coverage inspectable. Changes to these criteria are made through configuration.
+
+### Get the results in your inbox
+
+![Sextant email digest excerpt showing recommendation counts, source issues and a scored role with an explanation](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/email-digest.png)
+
+An excerpt from the live email digest: scan totals, recommendation bands, source-health signals and an explanation of role fit. Email headers and personal eligibility details are excluded from this public preview.
 
 The images are hosted in the public profile repository so the showcase remains accessible if this working repository becomes private. A short video walkthrough is planned.
 
