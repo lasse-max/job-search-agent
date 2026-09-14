@@ -5,9 +5,9 @@ metadata:
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
     needs_configuration: 15
-    supported: 36
+    supported: 38
     manual_fallback: 24
-    validated_owner_enablement_pending: 17
+    validated_owner_enablement_pending: 15
 companies:
   - name: "Google"
     tier: 1
@@ -651,17 +651,18 @@ companies:
     selected_for_initial_coverage: false
   - name: "ElevenLabs"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://elevenlabs.io/careers"
     current_role_url: null
     ats_type: "ashby"
     source_key: "elevenlabs"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false"
-    job_count_at_audit: 176
+    job_count_at_audit: 246
     target_locations: ["London", "remote Europe"]
     target_role_family_notes: "GTM Strategy; Customer Operations; Partnerships"
+    notes: "Enabled 2026-09-14: 246 postings, 37 fresh and 8 fresh gate-passers. Includes Revenue Strategy & Operations - EMEA and Adoption Strategist - APAC; final suitability remains evaluator-owned."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
@@ -957,17 +958,18 @@ companies:
     selected_for_initial_coverage: false
   - name: "Encord"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://encord.com/careers/"
     current_role_url: null
     ats_type: "ashby"
     source_key: "encord"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/encord?includeCompensation=false"
-    job_count_at_audit: 51
+    job_count_at_audit: 37
     target_locations: ["London"]
     target_role_family_notes: "Customer Operations; Business Operations; GTM Strategy"
+    notes: "Enabled 2026-09-14: 37 postings, 7 fresh and 4 fresh gate-passers. Small London-oriented feed with an Operations Associate opening; level and fit require evaluation."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false

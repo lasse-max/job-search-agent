@@ -147,13 +147,13 @@
   },
   "watchlist": {
     "total": 92,
-    "enabled": 36,
+    "enabled": 38,
     "coverage": {
-      "scanned": 36,
+      "scanned": 38,
       "total": 92,
-      "percentage": 39,
+      "percentage": 41,
       "tone": "red",
-      "dark": 56,
+      "dark": 54,
       "byTier": [
         {
           "tier": 1,
@@ -165,11 +165,11 @@
         },
         {
           "tier": 2,
-          "scanned": 16,
+          "scanned": 18,
           "total": 45,
-          "percentage": 36,
+          "percentage": 40,
           "tone": "red",
-          "dark": 29
+          "dark": 27
         },
         {
           "tier": 3,
@@ -182,7 +182,7 @@
       ],
       "darkByReason": {
         "missing_source": 30,
-        "adapter_ready_disabled": 17,
+        "adapter_ready_disabled": 15,
         "dead_feed": 3,
         "manual_only": 6
       }
@@ -959,8 +959,8 @@
       {
         "name": "ElevenLabs",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London",
           "remote Europe"
@@ -968,12 +968,12 @@
         "atsType": "ashby",
         "sourceKey": "elevenlabs",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 176,
+        "jobCountAtAudit": 246,
         "careersUrl": "https://elevenlabs.io/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled 2026-09-14: 246 postings, 37 fresh and 8 fresh gate-passers. Includes Revenue Strategy & Operations - EMEA and Adoption Strategist - APAC; final suitability remains evaluator-owned.",
+        "darkReasonCode": null
       },
       {
         "name": "Pigment",
@@ -1326,20 +1326,20 @@
       {
         "name": "Encord",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "encord",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 51,
+        "jobCountAtAudit": 37,
         "careersUrl": "https://encord.com/careers/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/encord?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled 2026-09-14: 37 postings, 7 fresh and 4 fresh gate-passers. Small London-oriented feed with an Operations Associate opening; level and fit require evaluation.",
+        "darkReasonCode": null
       },
       {
         "name": "Lovable",
