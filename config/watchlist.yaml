@@ -5,9 +5,9 @@ metadata:
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
     needs_configuration: 15
-    supported: 38
+    supported: 42
     manual_fallback: 24
-    validated_owner_enablement_pending: 15
+    validated_owner_enablement_pending: 11
 companies:
   - name: "Google"
     tier: 1
@@ -307,7 +307,7 @@ companies:
     warm_path: false
     manual_fallback: "Lever feed is empty; use alerts/manual intake until the company catalog is verified."
     selected_for_initial_coverage: false
-    notes: "Re-audited 2026-09-08: safetyculture-2 returns 0; Ashby safetyculture returns 404. The configured careers URL redirects to Mitti (by SafetyCulture). Do not treat a differently branded catalog as full SafetyCulture coverage."
+    notes: "Re-audited 2026-09-15: Lever safetyculture-2 still returns 0; Lever safetyculture and Ashby safetyculture return 404. Official careers request was rate-limited; old indexed Lever pages are not evidence of a live feed. Remains disabled pending verified company catalog; do not substitute the differently branded Mitti catalog."
   - name: "NEURA Robotics"
     tier: 1
     enabled: false
@@ -748,17 +748,18 @@ companies:
     selected_for_initial_coverage: false
   - name: "Deliveroo"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://careers.deliveroo.co.uk/"
     current_role_url: null
     ats_type: "ashby"
     source_key: "deliveroo"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false"
-    job_count_at_audit: 196
+    job_count_at_audit: 226
     target_locations: ["London"]
     target_role_family_notes: "Strategy & Operations; Product Operations; Advertising"
+    notes: "Enabled after 2026-09-15 preflight: 226 postings, 96 fresh, 40 gate-passers. Includes business Program Management and Strategy & Operations; final fit is evaluator-owned."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
@@ -926,33 +927,35 @@ companies:
     notes: "Revalidated 2026-07-12: public Ashby token still returns a valid zero-job payload. Do not enable."
   - name: "Quantexa"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.quantexa.com/careers/"
     current_role_url: null
     ats_type: "ashby"
     source_key: "quantexa"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/quantexa?includeCompensation=false"
     job_count_at_audit: 30
     target_locations: ["London", "Singapore", "Sydney"]
     target_role_family_notes: "Customer Transformation; Delivery Strategy; AI Programs"
+    notes: "Enabled after 2026-09-15 preflight: 30 postings, 10 fresh, 3 gate-passers. Low-volume Tier-2 monitoring; gate pass does not imply recommended fit."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
   - name: "Synthesia"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.synthesia.io/careers"
     current_role_url: null
     ats_type: "ashby"
     source_key: "synthesia"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false"
-    job_count_at_audit: 73
+    job_count_at_audit: 56
     target_locations: ["London"]
     target_role_family_notes: "Customer Strategy; Business Operations; GTM"
+    notes: "Enabled after 2026-09-15 preflight: 56 postings, 14 fresh, 0 gate-passers. Healthy nonempty feed; monitors future openings without forcing low-fit roles into evaluation."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
@@ -975,17 +978,18 @@ companies:
     selected_for_initial_coverage: false
   - name: "Lovable"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://lovable.dev/careers"
     current_role_url: null
     ats_type: "ashby"
     source_key: "lovable"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/lovable?includeCompensation=false"
-    job_count_at_audit: 70
+    job_count_at_audit: 80
     target_locations: ["Stockholm", "London / remote Europe"]
     target_role_family_notes: "Business Operations; GTM Strategy; Customer Programs"
+    notes: "Enabled after 2026-09-15 preflight: 80 postings, 21 fresh, 3 gate-passers. Current gate candidates are not guaranteed fit; the feed also monitors future London business roles."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false

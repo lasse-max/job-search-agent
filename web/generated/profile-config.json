@@ -149,13 +149,13 @@
   },
   "watchlist": {
     "total": 92,
-    "enabled": 38,
+    "enabled": 42,
     "coverage": {
-      "scanned": 38,
+      "scanned": 42,
       "total": 92,
-      "percentage": 41,
+      "percentage": 46,
       "tone": "red",
-      "dark": 54,
+      "dark": 50,
       "byTier": [
         {
           "tier": 1,
@@ -167,11 +167,11 @@
         },
         {
           "tier": 2,
-          "scanned": 18,
+          "scanned": 22,
           "total": 45,
-          "percentage": 40,
+          "percentage": 49,
           "tone": "red",
-          "dark": 27
+          "dark": 23
         },
         {
           "tier": 3,
@@ -184,7 +184,7 @@
       ],
       "darkByReason": {
         "missing_source": 30,
-        "adapter_ready_disabled": 15,
+        "adapter_ready_disabled": 11,
         "dead_feed": 3,
         "manual_only": 6
       }
@@ -546,7 +546,7 @@
         "careersUrl": "https://safetyculture.com/careers/",
         "sourceEvidenceUrl": "https://api.lever.co/v0/postings/safetyculture-2?mode=json",
         "manualFallback": "Lever feed is empty; use alerts/manual intake until the company catalog is verified.",
-        "notes": "Re-audited 2026-09-08: safetyculture-2 returns 0; Ashby safetyculture returns 404. The configured careers URL redirects to Mitti (by SafetyCulture). Do not treat a differently branded catalog as full SafetyCulture coverage.",
+        "notes": "Re-audited 2026-09-15: Lever safetyculture-2 still returns 0; Lever safetyculture and Ashby safetyculture return 404. Official careers request was rate-limited; old indexed Lever pages are not evidence of a live feed. Remains disabled pending verified company catalog; do not substitute the differently branded Mitti catalog.",
         "darkReasonCode": "dead_feed"
       },
       {
@@ -1076,20 +1076,20 @@
       {
         "name": "Deliveroo",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "deliveroo",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 196,
+        "jobCountAtAudit": 226,
         "careersUrl": "https://careers.deliveroo.co.uk/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled after 2026-09-15 preflight: 226 postings, 96 fresh, 40 gate-passers. Includes business Program Management and Strategy & Operations; final fit is evaluator-owned.",
+        "darkReasonCode": null
       },
       {
         "name": "Block",
@@ -1290,8 +1290,8 @@
       {
         "name": "Quantexa",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London",
           "Singapore",
@@ -1304,26 +1304,26 @@
         "careersUrl": "https://www.quantexa.com/careers/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/quantexa?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled after 2026-09-15 preflight: 30 postings, 10 fresh, 3 gate-passers. Low-volume Tier-2 monitoring; gate pass does not imply recommended fit.",
+        "darkReasonCode": null
       },
       {
         "name": "Synthesia",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "synthesia",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 73,
+        "jobCountAtAudit": 56,
         "careersUrl": "https://www.synthesia.io/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled after 2026-09-15 preflight: 56 postings, 14 fresh, 0 gate-passers. Healthy nonempty feed; monitors future openings without forcing low-fit roles into evaluation.",
+        "darkReasonCode": null
       },
       {
         "name": "Encord",
@@ -1346,8 +1346,8 @@
       {
         "name": "Lovable",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "Stockholm",
           "London / remote Europe"
@@ -1355,12 +1355,12 @@
         "atsType": "ashby",
         "sourceKey": "lovable",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 70,
+        "jobCountAtAudit": 80,
         "careersUrl": "https://lovable.dev/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/lovable?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Enabled after 2026-09-15 preflight: 80 postings, 21 fresh, 3 gate-passers. Current gate candidates are not guaranteed fit; the feed also monitors future London business roles.",
+        "darkReasonCode": null
       },
       {
         "name": "Magentic",
