@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import replace
 import tempfile
 import unittest
 from pathlib import Path
@@ -317,7 +318,7 @@ class LlmEvaluatorTest(unittest.TestCase):
         )
 
         prompt = PROMPT_PATH.read_text(encoding="utf-8")
-        self.assertEqual(PROMPT_VERSION, "role_evaluation_v6")
+        self.assertEqual(PROMPT_VERSION, "role_evaluation_v7")
         self.assertIn("Estimate the role before comparing it with the target band", prompt)
         self.assertIn("an intern role is not l4", prompt.casefold())
         self.assertIn("manager-of-managers role cannot be below l6", prompt.casefold())
@@ -1140,17 +1141,23 @@ class LlmEvaluatorTest(unittest.TestCase):
             ) as post:
                 first = provider.evaluate(request)
                 second = provider.evaluate(request)
+                changed = provider.evaluate(replace(
+                    request, profile=replace(request.profile, version="next-profile"),
+                ))
 
         self.assertFalse(first.cache_hit)
         self.assertTrue(second.cache_hit)
-        self.assertEqual(post.call_count, 1)
+        self.assertEqual(post.call_count, 2)
+        self.assertFalse(changed.cache_hit)
         self.assertEqual(second.output.summary, "Strong strategy and operations match.")
 
     def test_online_provider_repairs_candidate_centric_cached_level_rationale(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             cache_dir = Path(directory)
             row = _row("Strategic Operations Lead")
-            path = _cache_path(cache_dir, "fake-model", row)
+            path = _cache_path(
+                cache_dir, "fake-model", row, profile_version=load_candidate_profile().version
+            )
             invalid_output = _valid_output().model_dump()
             invalid_output["level_rationale"] = (
                 "Eight years in a comparable role at Google supports L5."

@@ -1,0 +1,71 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices and Services; Commercial Operations leadership translates directly to revenue-leakage remediation, process automation, and cross-functional program ownership",
+        "evidence_strength": "strong",
+        "job_requirement": "Own the program roadmap, stakeholder governance, revenue-leakage remediation and process automation"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in business transformation and operational excellence across commercial functions; responsible for stakeholder governance and cross-functional coordination at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Lead operating-model change across partner operations, Finance and GTM"
+      },
+      {
+        "candidate_evidence": "Led global commercial operations transformation at Google Devices and Services with multi-geography execution and stakeholder alignment; change-management and adoption experience embedded in transformation program delivery",
+        "evidence_strength": "medium",
+        "job_requirement": "Drive training and adoption across international partners"
+      },
+      {
+        "candidate_evidence": "Advanced Excel and Google Sheets proficiency documented in tools_and_skills",
+        "evidence_strength": "strong",
+        "job_requirement": "Advanced spreadsheets required"
+      },
+      {
+        "candidate_evidence": "Proficient SQL\u2014joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly to pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Working SQL required"
+      },
+      {
+        "candidate_evidence": "Approximately eight years at Google Devices and Services with two promotions in Strategy and Operations and Program Management roles; direct seniority alignment",
+        "evidence_strength": "strong",
+        "job_requirement": "Six to eight years of business operations or program management experience"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 88,
+    "gap_manageability": 82,
+    "gaps": [
+      {
+        "gap": "Specific partner-operations domain knowledge not evidenced; prior experience in Commercial Operations at Google may differ from external partner-channel execution models",
+        "mitigation": "Operational frameworks, process automation, and revenue-leakage remediation are transferable; partner-operations governance and execution discipline can be acquired within onboarding window",
+        "severity": "medium"
+      },
+      {
+        "gap": "Company context and GTM/Finance process specifics unknown; no visibility into existing operating model or adoption readiness",
+        "mitigation": "Candidate's history of scaling and change leadership provides foundation; stakeholder mapping and process-discovery work happen in first 90 days",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited consulting or case-team background; operational transformation experience is from inside Google's scale, not external advisory perspective",
+        "mitigation": "Program ownership and cross-functional execution are core strengths; external context-building is normal for ops-leader transition",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 78,
+    "level_rationale": "Six to eight years required is typically L4\u2013L5 anchor. no direct reports suggests senior IC rather than manager, anchoring toward L5. Program ownership, stakeholder governance, and cross-function transformation scope reinforce senior IC positioning. Company stage unknown, limiting confidence.",
+    "role_family_fit": 94,
+    "scope_seniority": 86,
+    "summary": "Candidate's eight-year Commercial Operations and Program Management background at Google Devices and Services aligns directly with the Operations Programme Lead scope: program roadmap ownership, revenue-leakage remediation, process automation, and cross-functional GTM/Finance/Partner stakeholder alignment. Advanced spreadsheets, SQL proficiency, and transformation expertise match all explicit requirements; international adoption and change-management experience are demonstrated. No hard blockers; role is squarely in primary and approved-stretch families. Primary gaps are unfamiliar company and sector context, mitigated by strong operational foundations.",
+    "uncertainties": [
+      "Company size, stage, and GTM maturity not stated in Role JSON; confidence in role level set to 78 to reflect this ambiguity",
+      "Specific partner-operations model and revenue-leakage drivers unknown; candidate's Commercial Operations experience at Google may differ in scale or channel structure",
+      "No information on reporting line, peer functions, or executive context; seniority estimate is anchored on posted experience requirement and scope language alone"
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}

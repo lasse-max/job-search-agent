@@ -1,0 +1,51 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Experience with global rollout coordination and transformation program execution at Google Devices and Services",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage deployment calendars and code-freeze readiness"
+      },
+      {
+        "candidate_evidence": "UAT, rollout, and transformation program experience; no direct software defect-triage or rollback background stated",
+        "evidence_strength": "weak",
+        "job_requirement": "Defect triage and rollback coordination"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L4",
+    "evidence_strength": 25,
+    "gap_manageability": 35,
+    "gaps": [
+      {
+        "gap": "Pure SDLC release-train and engineering-delivery ownership; candidate background is commercial operations and transformation, not software engineering program management with explicit release-cycle or defect-management responsibilities",
+        "mitigation": "Candidate has scaled global operational programs and coordinated cross-functional rollouts; deployment-calendar and readiness mechanics could transfer with SDLC-specific onboarding, but this requires willingness to pivot from operations to engineering execution",
+        "severity": "high"
+      },
+      {
+        "gap": "No stated experience with defect triage, root-cause analysis, rollback procedures, or engineering-release-cycle metrics",
+        "mitigation": "Operational rigor and program-execution discipline apply, but SDLC-specific training and hands-on mentorship from release-engineering teams would be required",
+        "severity": "high"
+      },
+      {
+        "gap": "No production software-engineering or SDLC context; candidate's product experience is requirements, UAT, and launch, not release cycles or code management",
+        "mitigation": "If the role is truly about operational mechanics and calendar coordination rather than deep SDLC literacy, operational-excellence background could bridge; however, JD emphasizes engineering-release execution as core",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role requires 3\u20135 years of explicit SDLC release-management or software-delivery ownership. Title \"Release Manager\" and JD scope (deployment calendars, code-freeze readiness, defect triage, rollback) indicate L4 equivalent responsibility. no manager-of-managers or strategic transformation scope is evident. Estimated L4. confidence 70 due to company size and stage being unknown.",
+    "role_family_fit": 15,
+    "scope_seniority": 55,
+    "summary": "This is a pure SDLC release-and-delivery role, explicitly not a commercial operations program. Candidate's eight years center on business operations, commercial strategy, and transformation program execution\u2014fundamentally different from engineering-release-cycle ownership, defect triage, and rollback coordination. While the candidate has operational rigor and large-scale rollout experience, the role requires SDLC literacy, engineering-team collaboration, and release-engineering domain knowledge not present in the profile. This is a deprioritized category (deep engineering delivery) without business-transformation scope overlay that would create a stretch rationale.",
+    "uncertainties": [
+      "Company size and stage unknown; 'Example Technology' context does not clarify whether role is startup early-stage (where Release Manager scope might be broader) or established (where SDLC specificity is stricter)",
+      "Degree to which 'deployment calendars' and 'code-freeze readiness' are operational mechanics vs. deep SDLC release-cycle responsibilities is ambiguous from JD alone",
+      "Candidate's London location matches role location; no relocation or visa concern evident"
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}

@@ -1,0 +1,51 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years Program Management experience in scaling global commercial operations and transformation programs at Google Devices and Services",
+        "evidence_strength": "medium",
+        "job_requirement": "Manage hardware delivery and firmware release schedules for device platforms"
+      },
+      {
+        "candidate_evidence": "Commercial Operations and Revenue Operations background with territory management, CRM administration, and stakeholder coordination; no direct lab testing or supplier procurement experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Coordinate laboratory testing and component suppliers"
+      }
+    ],
+    "confidence": 0.55,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 25,
+    "gaps": [
+      {
+        "gap": "No hardware design, electrical engineering, or component validation expertise",
+        "mitigation": "Candidate has program management and transformation background but lacks domain knowledge in hardware validation, firmware release processes, and electrical design milestones required for credible hardware delivery leadership",
+        "severity": "high"
+      },
+      {
+        "gap": "No laboratory testing or supplier-engineering coordination experience",
+        "mitigation": "Background is Commercial/Revenue Operations; supplier coordination in this context differs fundamentally from component validation and lab-test orchestration",
+        "severity": "high"
+      },
+      {
+        "gap": "Hardware and firmware delivery unfamiliar domain",
+        "mitigation": "Product operations experience does not transfer readily to physical hardware release trains and electrical design milestones",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Role requires ownership of engineering delivery, electrical design milestones, and component validation across device platforms\u2014core L5 IC or manager scope. JD emphasizes technical domain responsibility (hardware, firmware, lab testing) rather than broader organizational transformation. Years required not stated. \"own\" language and multi-function coordination (design, testing, suppliers) suggest 5\u20138 years of hardware program delivery experience at comparable scope. Estimated L5 as mid-career senior IC or manager in hardware program management.",
+    "role_family_fit": 15,
+    "scope_seniority": 60,
+    "summary": "Hardware Program Manager role focuses on engineering delivery, electrical design, firmware release trains, laboratory testing, and component supplier coordination\u2014core hardware and firmware engineering domain. Candidate's Strategy and Operations, Commercial Operations, and Product Operations background is non-transferable to hardware validation and firmware release responsibility. No lab testing, component engineering, electrical design, or supplier-engineering experience evident. Role is above the candidate's family alignment and requires deep hardware program expertise.",
+    "uncertainties": [
+      "Company size/stage not stated; cannot assess organizational context for hardware program scope",
+      "Candidate's 'Devices and Services' experience at Google may include hardware context, but positioning and evidence focus on commercial/revenue operations, not hardware delivery",
+      "Degree or specific hardware/engineering qualifications not mentioned for either party"
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}

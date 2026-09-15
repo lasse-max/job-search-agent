@@ -55,38 +55,41 @@ def plan_stale_backfill(
     database_url: str | None = None,
     companies: list[CompanyConfig] | None = None,
 ) -> BackfillPlan:
-    policy = load_recency_policy()
     conn = connect_runtime_database(db_path, database_url=database_url)
-    item_ids: set[int] = set()
     try:
-        for company in companies or load_enabled_company_configs():
-            if company.ats_type == "manual":
-                continue
-            source = conn.execute(
-                """
+        return plan_stale_backfill_for_connection(conn, companies=companies)
+    finally:
+        conn.close()
+
+
+def plan_stale_backfill_for_connection(conn, *, companies=None) -> BackfillPlan:
+    """Read-only planning against the same candidates/gate used by ingestion."""
+    policy = load_recency_policy()
+    item_ids: set[int] = set()
+    for company in companies or load_enabled_company_configs():
+        if company.ats_type == "manual":
+            continue
+        source = conn.execute(
+            """
                 SELECT js.id
                 FROM job_sources js
                 JOIN companies c ON c.id = js.company_id
                 WHERE c.name = ? AND js.source_type = ? AND js.source_key = ?
                 """,
-                (company.name, company.ats_type, company.source_key),
-            ).fetchone()
-            if source is None:
-                continue
-            candidate_ids = stale_open_posting_ids_for_evaluator(
-                conn,
-                int(source["id"]),
-                evaluator_version=HYBRID_EVALUATOR_VERSION,
-                limit=100_000,
-            )
-            rows = get_postings_by_ids(conn, candidate_ids)
-            item_ids.update(
-                int(row["id"])
-                for row in rows
-                if relevance_decision(row, company).should_evaluate
-            )
-    finally:
-        conn.close()
+            (company.name, company.ats_type, company.source_key),
+        ).fetchone()
+        if source is None:
+            continue
+        candidate_ids = stale_open_posting_ids_for_evaluator(
+            conn,
+            int(source["id"]),
+            evaluator_version=HYBRID_EVALUATOR_VERSION,
+            limit=100_000,
+        )
+        rows = get_postings_by_ids(conn, candidate_ids)
+        item_ids.update(
+            int(row["id"]) for row in rows if relevance_decision(row, company).should_evaluate
+        )
     count = len(item_ids)
     return BackfillPlan(
         item_count=count,

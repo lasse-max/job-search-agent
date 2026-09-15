@@ -83,6 +83,11 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
         requirement_text,
     )
     if (
+        _engineering_program_scope(title_department, requirement_text)
+        and not business_program_stretch
+    ):
+        return RelevanceDecision(False, "excluded_title_department_function")
+    if (
         _matches_any(title_department, filter_config.excluded_title_department_patterns)
         and not business_program_stretch
     ):
@@ -389,10 +394,20 @@ def _calibrated_llm_dimensions(
     calibrated = {dimension: int(score) for dimension, score in dimensions.items()}
     title = row["title"]
     title_lower = title.lower()
-    title_department = _title_department_text(row)
     if (
-        _matches_any(title_department, profile.primary_role_family_patterns)
+        _is_primary_family(title, row["department"] or "", _role_text(row), profile)
         and not _is_plain_revenue_ops_manager(title_lower)
+        and (
+            calibrated["role_family_fit"] >= 60
+            or _matches_any(
+                _title_department_text(row),
+                tuple(
+                    p
+                    for p in profile.primary_role_family_patterns
+                    if p not in profile.judgment_led_primary_patterns
+                ),
+            )
+        )
     ):
         floors = {
             "role_family_fit": 82,
@@ -536,7 +551,13 @@ def _fit_cap_for_gate(
         return 55
     if _government_defense_or_clearance_scope(requirement_text):
         return 55
-    if _matches_any(title_department, filter_config.excluded_title_department_patterns):
+    business_program_stretch = _business_program_management_stretch(title_department, text)
+    if _engineering_program_scope(title_department, text) and not business_program_stretch:
+        return 55
+    if (
+        _matches_any(title_department, filter_config.excluded_title_department_patterns)
+        and not business_program_stretch
+    ):
         return 55
     if _agent_development_product_manager(title_department):
         return 68
@@ -571,9 +592,12 @@ def _role_family_fit(
         return 30
     if _is_stretch_family(title, department, text, profile):
         return 78
-    if _matches_any(combined, profile.primary_role_family_patterns) or _matches_any(
-        text,
-        profile.primary_role_family_patterns,
+    if _is_primary_family(title, department, text, profile) or (
+        not _engineering_program_scope(combined, text)
+        and _matches_any(
+            text,
+            profile.primary_role_family_patterns,
+        )
     ):
         return 92
     if "customer success" in text or "account executive" in text:
@@ -1562,37 +1586,67 @@ def _is_stretch_family(
     )
 
 
-def _business_program_management_stretch(title_department: str, text: str) -> bool:
-    combined = f"{title_department} {text}".lower()
-    if not re.search(
-        r"\b(?:technical |strategic |business |transformation )?(?:program(?:me)?|project) manager\b",
+def _is_primary_family(
+    title: str,
+    department: str,
+    text: str,
+    profile: CandidateProfileConfig,
+) -> bool:
+    combined = f"{title} {department}".lower()
+    return not _engineering_program_scope(combined, text) and _matches_any(
+        combined, profile.primary_role_family_patterns
+    )
+
+
+def _engineering_program_scope(title_department: str, text: str) -> bool:
+    program_role = re.search(
+        r"\b(?:program(?:me)?|project) (?:manager|management|lead)\b"
+        r"|\b(?:tpm|pmo)\b|\b(?:release|delivery) manager\b",
         title_department,
         flags=re.IGNORECASE,
-    ):
+    )
+    if not program_role:
         return False
-    strategic_scope = bool(
-        re.search(
-            (
-                r"\bbusiness transformation\b"
-                r"|\bstrategic initiatives?\b"
-                r"|\boperating model\b"
-                r"|\bgo-to-market\b"
-                r"|\bcross-functional business\b"
-                r"|\bcommercial operations\b"
-                r"|\bchange management\b"
-            ),
-            combined,
-            flags=re.IGNORECASE,
-        )
+    technical_title = re.search(
+        r"\b(?:technical|engineering|software|hardware)\b|\btpm\b"
+        r"|\b(?:release|delivery) manager\b",
+        title_department,
+        flags=re.IGNORECASE,
     )
-    explicitly_strategic_title = bool(
-        re.search(
-            r"\b(?:strategic|business|transformation) (?:program(?:me)?|project) manager\b",
-            title_department,
-            flags=re.IGNORECASE,
-        )
+    delivery_scope = re.search(
+        r"\bsdlc\b|\bsoftware development life ?cycle\b|\brelease trains?\b"
+        r"|\b(?:software|hardware) delivery\b"
+        r"|\b(?:own|lead|manage)\b.{0,40}\bengineering delivery\b",
+        text,
+        flags=re.IGNORECASE,
     )
-    return strategic_scope or explicitly_strategic_title
+    return bool(technical_title or delivery_scope)
+
+
+def _business_program_management_stretch(title_department: str, text: str) -> bool:
+    combined = f"{title_department} {text}".lower()
+    if not _engineering_program_scope(title_department, text):
+        return False
+    matches = re.finditer(
+        (
+            r"\bbusiness transformation\b"
+            r"|\bstrategic initiatives?\b"
+            r"|\boperating model\b"
+            r"|\bgo-to-market\b"
+            r"|\bcross-functional business\b"
+            r"|\bcommercial operations\b"
+            r"|\bchange management\b"
+        ),
+        combined,
+        flags=re.IGNORECASE,
+    )
+    return any(
+        not re.search(
+            r"\b(?:not|rather than|without)\b[^.;:\n]{0,80}$",
+            combined[max(0, match.start() - 100) : match.start()],
+        )
+        for match in matches
+    )
 
 
 def _role_text(row: sqlite3.Row) -> str:

@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions in Strategy and Operations / Product Operations; experience scaling global commercial operations and transformation programs",
+        "evidence_strength": "weak",
+        "job_requirement": "Own SDLC release trains, infrastructure dependencies, sprint delivery and engineering release readiness"
+      },
+      {
+        "candidate_evidence": "AI and agentic tooling: designs, specs and directs LLM coding agents to build production systems; owns evaluation methodology, benchmarking and calibration",
+        "evidence_strength": "medium",
+        "job_requirement": "Coordinate software delivery across platform teams"
+      },
+      {
+        "candidate_evidence": "Product experience comes from ownership, requirements, logic design, UAT, rollout, and transformation rather than native engineering product management",
+        "evidence_strength": "medium",
+        "job_requirement": "Engineering release readiness and sprint delivery coordination"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 35,
+    "gap_manageability": 30,
+    "gaps": [
+      {
+        "gap": "Native technical programme management or engineering-delivery background. Candidate is a Strategy and Operations / Product Operations leader, not an engineering programme manager or release-train coordinator.",
+        "mitigation": "Candidate's transformation and cross-functional leadership experience and understanding of engineering team dynamics through agent-tooling direction could transfer, but would require ramp-up in SDLC release processes, sprint cadence management, and infrastructure dependency mapping.",
+        "severity": "high"
+      },
+      {
+        "gap": "Pure engineering delivery and release-train ownership. Role states it 'owns engineering schedules rather than business transformation, commercial operating models or GTM programs'\u2014squarely outside candidate's primary and stretch role families.",
+        "mitigation": "None practical. The role is explicitly non-transformational engineering delivery, which is in the candidate's usually-deprioritize list.",
+        "severity": "high"
+      },
+      {
+        "gap": "Limited direct experience with SDLC methodologies, sprint planning, infrastructure-dependency tracking, and release-readiness frameworks as a core responsibility.",
+        "mitigation": "Technical foundation and cross-functional coordination skills could support learning, but candidate lacks demonstrated ownership of engineering delivery schedules.",
+        "severity": "medium"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 65,
+    "level_rationale": "Role requires ownership of SDLC release trains, infrastructure dependencies, and sprint delivery across platform teams. No company context provided. Estimated L5 based on multi-team coordination and established senior-IC delivery scope. could range L4\u2013L6 depending on company scale and platform complexity. No production-coding requirement supports non-specialist entry point.",
+    "role_family_fit": 15,
+    "scope_seniority": 70,
+    "summary": "Candidate is a Strategy and Operations / Product Operations leader with transformation and cross-functional scale experience, but role is explicitly pure engineering delivery and release-train coordination\u2014outside primary and stretch families and in the usually-deprioritize list. Weak functional fit despite medium-strength technical tooling and coordination background. Seniority may align at L5 estimate, but core delivery-schedule ownership is not candidate's domain.",
+    "uncertainties": [
+      "Company size and stage unknown; estimated L5 with lower confidence.",
+      "Candidate's agent-tooling direction provides some engineering-team coordination signal, but depth of SDLC/release-train methodologies unclear.",
+      "Definition of 'infrastructure dependencies' and release-readiness scope not detailed in brief JD; may range L4\u2013L6 depending on platform count and complexity."
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}

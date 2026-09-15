@@ -108,6 +108,7 @@ class CandidateProfileConfig:
     primary_role_families: tuple[str, ...]
     approved_stretch_families: tuple[str, ...]
     primary_role_family_patterns: tuple[str, ...]
+    judgment_led_primary_patterns: tuple[str, ...]
     stretch_role_family_patterns: tuple[str, ...]
     below_level_title_terms: tuple[str, ...]
     senior_title_terms: tuple[str, ...]
@@ -354,7 +355,11 @@ def load_candidate_profile(
         positioning=str(data.get("positioning") or ""),
         primary_role_families=_tuple_of_str(data.get("primary_role_families")),
         approved_stretch_families=_tuple_of_str(data.get("approved_stretch_families")),
-        primary_role_family_patterns=_tuple_of_str(role_patterns.get("primary")),
+        primary_role_family_patterns=(
+            _tuple_of_str(role_patterns.get("primary"))
+            + _tuple_of_str(role_patterns.get("judgment_led_primary"))
+        ),
+        judgment_led_primary_patterns=_tuple_of_str(role_patterns.get("judgment_led_primary")),
         stretch_role_family_patterns=_tuple_of_str(role_patterns.get("stretch")),
         below_level_title_terms=_tuple_of_str(scope_signals.get("below_level_title_terms")),
         senior_title_terms=_tuple_of_str(scope_signals.get("senior_title_terms")),

@@ -298,7 +298,7 @@ class DatabricksSliceTest(unittest.TestCase):
                 FROM role_evaluations
                 WHERE model_version = ?
                 """,
-                (f"fake-claude|{HYBRID_EVALUATOR_VERSION}",),
+                (f"fake-claude|{load_candidate_profile().version}|test_prompt_v1|{HYBRID_EVALUATOR_VERSION}",),
             ).fetchone()[0]
             self.assertEqual(current_count, 3)
 
@@ -445,7 +445,7 @@ class DatabricksSliceTest(unittest.TestCase):
                 FROM role_evaluations
                 WHERE model_version = ?
                 """,
-                (f"fake-claude|{HYBRID_EVALUATOR_VERSION}",),
+                (f"fake-claude|{load_candidate_profile().version}|test_prompt_v1|{HYBRID_EVALUATOR_VERSION}",),
             ).fetchone()[0]
 
             self.assertEqual(refreshed.changed_count, 0)
@@ -519,7 +519,7 @@ class DatabricksSliceTest(unittest.TestCase):
                 FROM role_evaluations
                 WHERE model_version = ?
                 """,
-                (f"fake-claude|{HYBRID_EVALUATOR_VERSION}",),
+                (f"fake-claude|{load_candidate_profile().version}|test_prompt_v1|{HYBRID_EVALUATOR_VERSION}",),
             ).fetchone()[0]
             self.assertEqual(progressed.changed_count, 0)
             self.assertEqual(progressed.evaluated_count, 5)

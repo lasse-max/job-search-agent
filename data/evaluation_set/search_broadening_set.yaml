@@ -1,0 +1,77 @@
+version: search_broadening_v1
+set_purpose: synthetic_scope_challenge
+source: synthetic_builder_authored_counterexamples_for_independent_review
+notes: Separate from the owner-labelled production sets; never blend into headline precision.
+live_noise_set:
+  - id: SB-01
+    company: Example Technology
+    company_tier: 2
+    role_title: Senior Program Manager
+    department: Business Operations
+    location: London
+    description_text: Own global partner onboarding and a cross-functional commercial transformation program. Translate Sales and Finance requirements into workflows, coordinate engineering delivery, lead UAT and rollout, build SQL dashboards and report business outcomes to executives. Seven years of business program experience required. This is a senior individual-contributor role with no coding or technical-degree requirement.
+    expected_recommendation: consider
+  - id: SB-02
+    company: Example Technology
+    company_tier: 2
+    role_title: Operations Programme Lead
+    department: Commercial Operations
+    location: London
+    description_text: Lead operating-model change across partner operations, Finance and GTM. Own the program roadmap, stakeholder governance, revenue-leakage remediation and process automation. Drive training and adoption across international partners. Six to eight years of business operations or program management experience, advanced spreadsheets and working SQL required. No direct reports.
+    expected_recommendation: consider
+  - id: SB-03
+    company: Example Technology
+    company_tier: 2
+    role_title: Operational Excellence Manager
+    department: Business Transformation
+    location: Berlin
+    description_text: Redesign commercial claims and billing workflows, reduce aged deductions, automate validations and improve partner onboarding. Own cross-functional programs with Sales, Finance and engineering, write requirements, lead UAT and build leadership reporting in SQL and Looker. Seven years of commercial operations and change-management experience required. English is the working language; German helpful.
+    expected_recommendation: consider
+  - id: SB-04
+    company: Example Technology
+    company_tier: 2
+    role_title: Technical Programme Manager
+    department: Engineering
+    location: London
+    description_text: Own SDLC release trains, infrastructure dependencies, sprint delivery and engineering release readiness. Coordinate software delivery across platform teams. This role owns engineering schedules rather than business transformation, commercial operating models or GTM programs. No production coding requirement.
+    expected_recommendation: skip
+  - id: SB-05
+    company: Example Technology
+    company_tier: 2
+    role_title: Hardware Program Manager
+    department: Product Engineering
+    location: Berlin
+    description_text: Manage hardware delivery and firmware release schedules for device platforms. Own electrical design milestones, component validation and engineering release trains. Coordinate laboratory testing and component suppliers. The scope is engineering delivery and physical product validation.
+    expected_recommendation: skip
+  - id: SB-06
+    company: Example Technology
+    company_tier: 2
+    role_title: Release Manager
+    department: Software Engineering
+    location: London
+    description_text: Own SDLC release trains and software delivery. Manage deployment calendars, code-freeze readiness, defect triage and rollback coordination. This role is responsible for engineering-release execution, not commercial operations programs.
+    expected_recommendation: skip
+  - id: SB-07
+    company: Example Manufacturing
+    company_tier: 2
+    role_title: Plant Continuous Improvement Manager
+    department: Manufacturing Excellence
+    location: Berlin
+    description_text: Own shop-floor productivity and process capability for a precision-metal factory. Lead kaizen on machining cells, improve OEE, takt time and scrap rates, and coach line supervisors in statistical process control. Requires seven years of hands-on manufacturing continuous improvement and expertise in machining processes. Lean Six Sigma Black Belt preferred. No commercial operations or software-transformation remit.
+    expected_recommendation: skip
+  - id: SB-08
+    company: Example Manufacturing
+    company_tier: 2
+    role_title: Process Excellence Lead
+    department: Production Systems
+    location: London
+    description_text: Improve yield in a chemical processing plant. Own process capability studies, root-cause analysis for reactor variability and line-balancing interventions. Requires deep experience in chemical production and industrial process optimization. Work daily with plant engineers and production operators. Six Sigma training preferred. Business workflow automation and partner operations are outside this remit.
+    expected_recommendation: skip
+  - id: SB-09
+    company: Example Manufacturing
+    company_tier: 2
+    role_title: Operational Excellence Manager
+    department: Factory Operations
+    location: Munich
+    description_text: Lead continuous improvement for automotive assembly lines. Own value-stream mapping, factory layout, maintenance productivity and industrial safety routines. Requires eight years improving physical assembly operations, practical knowledge of tooling and machine availability, and experience managing kaizen events on the shop floor. The role is a manufacturing specialist, not commercial operating-model transformation.
+    expected_recommendation: skip

@@ -56,7 +56,7 @@ class PostgresCursor:
 class PostgresConnection:
     dialect = "postgres"
 
-    def __init__(self, database_url: str) -> None:
+    def __init__(self, database_url: str, *, read_only: bool = False) -> None:
         try:
             import psycopg
         except ModuleNotFoundError as exc:  # pragma: no cover - exercised only without dependency.
@@ -74,6 +74,12 @@ class PostgresConnection:
             keepalives_count=5,
             prepare_threshold=None,
         )
+        if read_only:
+            self._conn.read_only = True
+            state = self._conn.execute("SHOW transaction_read_only").fetchone()[0]
+            if state not in ("on", b"on"):
+                self._conn.close()
+                raise RuntimeError("read-only transaction required")
 
     def execute(self, sql: str, params: tuple[Any, ...] | list[Any] = ()) -> PostgresCursor:
         translated_sql = _translate_sql(sql)

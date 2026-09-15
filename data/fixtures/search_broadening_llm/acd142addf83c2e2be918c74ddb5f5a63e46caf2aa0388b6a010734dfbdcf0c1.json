@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services scaling global commercial operations and transformation programs; designed and executed commercial process improvements and operational transformations",
+        "evidence_strength": "strong",
+        "job_requirement": "Redesign commercial claims and billing workflows, reduce aged deductions, automate validations and improve partner onboarding"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience managing cross-functional transformation programs at scale; coordinates across business, product, and engineering stakeholders in product operations and commercial operations domains",
+        "evidence_strength": "strong",
+        "job_requirement": "Own cross-functional programs with Sales, Finance and engineering"
+      },
+      {
+        "candidate_evidence": "Product operations experience includes requirements definition, logic design, UAT execution, and rollout leadership; directly cited in profile as core capability",
+        "evidence_strength": "strong",
+        "job_requirement": "Write requirements, lead UAT and rollout"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL (joins, GROUP BY, subqueries/CTEs, window functions; queries BigQuery directly); builds Looker dashboards; advanced Excel and Sheets; owns data pulling and shaping",
+        "evidence_strength": "strong",
+        "job_requirement": "Build leadership reporting in SQL and Looker"
+      },
+      {
+        "candidate_evidence": "Eight years at Google in commercial operations and transformation programs; two promotions; demonstrates change-management scope at scale",
+        "evidence_strength": "strong",
+        "job_requirement": "Seven years of commercial operations and change-management experience required"
+      },
+      {
+        "candidate_evidence": "Professional/fluent English; native German speaker",
+        "evidence_strength": "strong",
+        "job_requirement": "English is the working language; German helpful"
+      }
+    ],
+    "confidence": 0.85,
+    "estimated_level": "L5",
+    "evidence_strength": 92,
+    "gap_manageability": 82,
+    "gaps": [
+      {
+        "gap": "No stated experience in claims, billing, or insurance/fintech domain",
+        "mitigation": "Domain-agnostic operational excellence and process-redesign skills transfer directly; commercial-operations methodology is portable across payment, claims, and billing workflows; rapid domain ramp feasible through partner and stakeholder engagement",
+        "severity": "medium"
+      },
+      {
+        "gap": "Limited direct consulting brand or classic case-team experience",
+        "mitigation": "Hands-on transformation-program delivery and cross-functional leadership at scale demonstrates consulting-adjacent analytical and stakeholder-management rigor; consulting background is nice-to-have, not core to this operational role",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Role requires seven years commercial operations and change-management experience with cross-functional program ownership, requirements writing, and technical reporting (SQL/Looker). This signals established senior IC (L5) scope: ownership of material operational/revenue processes, cross-functional stakeholder leadership, and technical/analytical accountability. No manager-of-managers scope stated, ruling out L6+. Title \"Operational Excellence Manager\" at unknown-stage company supports L5 interpretation but does not shift the level estimate.",
+    "role_family_fit": 95,
+    "scope_seniority": 88,
+    "summary": "Exceptional fit. Eight years of commercial operations, process transformation, and cross-functional program delivery at Google directly match a seven-year commercial ops requirement. Core competencies\u2014workflow redesign, UAT leadership, SQL/Looker reporting, partner coordination, and change management\u2014align precisely with the JD. Domain switch from generic commercial ops to claims/billing is manageable; operational methodology and analytical rigor are portable. Language match (English professional, German native) is a strong bonus. Primary gaps are domain-specific (claims/billing/fintech) and readily mitigable through rapid stakeholder learning.",
+    "uncertainties": [
+      "Company size and stage unknown; 'Operational Excellence Manager' title interpretation varies by organizational context",
+      "Specific experience with aged-deduction reduction or claims-workflow automation not provided in candidate profile, though process-improvement methodology is well-established",
+      "No direct insight into partner-onboarding complexity or fintech/payments-operations exposure in candidate background"
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}

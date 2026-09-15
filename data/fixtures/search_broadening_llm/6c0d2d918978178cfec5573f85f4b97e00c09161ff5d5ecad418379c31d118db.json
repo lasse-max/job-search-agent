@@ -1,0 +1,66 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "apply_now",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years at Google Devices and Services with two promotions, scaling global commercial operations and transformation programs; owns product operations and business transformation initiatives",
+        "evidence_strength": "strong",
+        "job_requirement": "Own global partner onboarding and a cross-functional commercial transformation program"
+      },
+      {
+        "candidate_evidence": "Commercial Operations background translating business requirements into operational processes; experience with commercial transformation and revenue operations domain work",
+        "evidence_strength": "strong",
+        "job_requirement": "Translate Sales and Finance requirements into workflows"
+      },
+      {
+        "candidate_evidence": "Demonstrated experience in requirements definition, UAT, rollout, and cross-functional transformation execution; implementation-heavy project ownership",
+        "evidence_strength": "strong",
+        "job_requirement": "Coordinate engineering delivery, lead UAT and rollout"
+      },
+      {
+        "candidate_evidence": "Proficient in SQL with joins, GROUP BY, subqueries/CTEs, and window functions; builds Looker dashboards; queries BigQuery directly to pull and shape own data",
+        "evidence_strength": "strong",
+        "job_requirement": "Build SQL dashboards and report business outcomes to executives"
+      },
+      {
+        "candidate_evidence": "Eight years tenure, two promotions, senior scope in Strategy and Operations; no production software-engineering background required or expected",
+        "evidence_strength": "strong",
+        "job_requirement": "Senior individual-contributor role with no coding or technical-degree requirement"
+      },
+      {
+        "candidate_evidence": "Approximately eight years at Google in commercial operations and transformation programs, exceeding the seven-year minimum",
+        "evidence_strength": "strong",
+        "job_requirement": "Seven years of business program experience required"
+      }
+    ],
+    "confidence": 0.88,
+    "estimated_level": "L5",
+    "evidence_strength": 92,
+    "gap_manageability": 88,
+    "gaps": [
+      {
+        "gap": "Location is London; candidate location not stated in profile",
+        "mitigation": "Confirm candidate willingness or ability to relocate or work UK-based remotely; London visa/sponsorship requirement not stated in JD",
+        "severity": "medium"
+      },
+      {
+        "gap": "Specific partner-onboarding domain expertise not evident in supplied profile",
+        "mitigation": "Partner operations is closely aligned with business operations and commercial transformation; domain ramp-up is typical for a senior PM transitioning between transformation programs",
+        "severity": "low"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 82,
+    "level_rationale": "Posted role specifies seven years of business program experience required and is positioned as a senior individual-contributor. this maps to established IC ownership scope typical of L5. Reporting line and company stage are not stated in the JD, which slightly lowers confidence.",
+    "role_family_fit": 96,
+    "scope_seniority": 89,
+    "summary": "Strong alignment: eight years of commercial operations and transformation program experience exceed the posted seven-year requirement. Candidate owns global program scope, translates business requirements, leads cross-functional delivery, and builds SQL/Looker dashboards. Primary role-family match on Business Operations, Product Operations, and Business Transformation. No hard blockers; location (London) and visa status not yet confirmed.",
+    "uncertainties": [
+      "Company size and stage not stated in JD; cannot assess whether role scope or reporting line expectations differ",
+      "Candidate visa/work-authorization status for London role not provided",
+      "Specific partner-management or channel-operations background not detailed in candidate profile narrative"
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}

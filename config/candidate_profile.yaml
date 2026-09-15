@@ -1,4 +1,4 @@
-version: "candidate_profile_v3"
+version: "candidate_profile_v4"
 active: true
 positioning: "Strategy and Operations / Product Operations leader with approximately eight years at Google Devices and Services, two promotions, and experience scaling global commercial operations and transformation programs. Translate Commercial Operations into Revenue Operations evidence where the requirement is revenue recovery, territory management, CRM administration, forecasting/reporting cadence, pricing execution, or revenue-leakage control; the domain label differs, but these capabilities are demonstrated."
 target_seniority:
@@ -78,12 +78,14 @@ primary_role_families:
   - "GTM / Sales Strategy and Operations"
   - "Revenue Operations at appropriate seniority"
   - "Partner Operations / Partner Strategy & Operations"
-  - "Business Transformation"
+  - "Business Transformation / Operational Excellence (business processes and operating models, not specialist manufacturing or plant engineering)"
+  - "Program Management (business / operations / GTM / strategic programs)"
 approved_stretch_families:
   - "Deployment Strategist"
   - "Forward-Deployed Strategy"
   - "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering"
-  - "Program / Project Management where the role owns business or strategic programs, cross-functional execution, or transformation — not pure engineering-delivery PM"
+  - "Technical / Engineering / Software / Hardware Program Management and Release / Delivery Management only with explicit business-transformation scope; pure SDLC or engineering delivery is deprioritized, never primary"
+  - "Business / strategic Project Management with cross-functional transformation scope"
 role_family_patterns:
   primary:
     - "\\bs\\s*&\\s*o\\b"
@@ -109,14 +111,26 @@ role_family_patterns:
     - "\\bpartnerships? (?:operations|ops|strateg\\w*)\\b"
     - "\\bbusiness transformation\\b"
     - "\\bchief of staff\\b"
+  # Primary for search; Claude must confirm function fit before calibration floors.
+  judgment_led_primary:
+    - "\\b(?:business|operational|operations|process|commercial|finance|digital|enterprise) transformation\\b"
+    - "\\btransformation (?:manager|lead|program(?:me)?|office)\\b"
+    - "\\boperational excellence\\b"
+    - "\\bprocess (?:excellence|improvement|optimi[sz]ation)\\b"
+    - "\\bcontinuous improvement\\b"
+    - "\\bchange management\\b"
+    - "\\bbusiness process\\b"
+    - "\\b(?:senior |sr\\.? |lead |principal )?program(?:me)? manager\\b"
+    - "\\bprogram(?:me)? management\\b"
+    - "\\bprogram(?:me)? lead\\b"
+    - "\\b(?:operations|gtm|go-to-market|business|strategic|commercial|transformation) program(?:me)?s?\\b"
+    - "\\bpmo\\b"
   stretch:
     - "\\bdeployment strategist\\b"
     - "\\bforward[- ]deployed strateg\\w*\\b"
     - "\\bstrategist,?\\s+agent development\\b"
     - "\\bprofessional services operations\\b"
-    - "\\bstrategic program(?:me)? manager\\b"
-    - "\\b(?:business|transformation) (?:program(?:me)?|project) manager\\b"
-    - "\\btechnical (?:program(?:me)?|project) manager\\b.{0,500}\\b(?:business transformation|strategic initiatives?|operating model|go-to-market|cross-functional business)\\b"
+    - "\\b(?:strategic|business|transformation) project manager\\b"
 scope_seniority_signals:
   below_level_title_terms:
     - "intern"

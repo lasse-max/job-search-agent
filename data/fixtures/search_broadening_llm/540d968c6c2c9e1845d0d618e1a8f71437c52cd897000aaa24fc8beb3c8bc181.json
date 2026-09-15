@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years scaling global commercial operations and transformation programs at Google Devices and Services, with product operations and business transformation experience",
+        "evidence_strength": "weak",
+        "job_requirement": "Own value-stream mapping, factory layout, and maintenance productivity"
+      },
+      {
+        "candidate_evidence": "No manufacturing, plant operations, shop-floor, or kaizen/Lean-Six-Sigma expertise demonstrated in profile",
+        "evidence_strength": "weak",
+        "job_requirement": "Experience managing kaizen events on the shop floor"
+      },
+      {
+        "candidate_evidence": "No physical-asset management, manufacturing equipment, or industrial operations background",
+        "evidence_strength": "weak",
+        "job_requirement": "Practical knowledge of tooling and machine availability"
+      }
+    ],
+    "confidence": 0.75,
+    "estimated_level": "L5",
+    "evidence_strength": 15,
+    "gap_manageability": 20,
+    "gaps": [
+      {
+        "gap": "No manufacturing operations, plant engineering, or automotive assembly experience",
+        "mitigation": "Role is manufacturing-specialist, not commercial transformation. Candidate's commercial-ops and GTM expertise does not transfer to shop-floor kaizen, tooling, or machine-availability management.",
+        "severity": "high"
+      },
+      {
+        "gap": "No Lean-Six-Sigma, kaizen event facilitation, or industrial continuous-improvement methodology",
+        "mitigation": "Required domain expertise; eight years of process-improvement in commercial ops is orthogonal to factory-floor methodology and physical-asset optimization.",
+        "severity": "high"
+      },
+      {
+        "gap": "No value-stream mapping or factory-layout optimization background",
+        "mitigation": "Requires specialized manufacturing-engineering knowledge; not addressable through general operations or transformation experience.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 70,
+    "level_rationale": "Posted role requires eight years improving physical assembly operations with shop-floor and tooling expertise, suggesting established senior-IC or early-management manufacturing scope. normalizes to L5. Company size/stage context not provided, reducing confidence slightly.",
+    "role_family_fit": 5,
+    "scope_seniority": 65,
+    "summary": "Operational Excellence Manager is a manufacturing-specialist role requiring eight years of automotive-plant, shop-floor, and kaizen expertise. Candidate's strength is commercial operations, GTM, and business transformation\u2014orthogonal domain with no transferred value-stream mapping, tooling, machine-availability, or Lean-Six-Sigma knowledge. Recommend skip despite clear role definition; no bridging path.",
+    "uncertainties": [
+      "Company size and stage context for manufacturing role not stated in Role JSON, limiting confidence in level calibration.",
+      "Degree or certification requirements for manufacturing engineering roles (e.g., mechanical engineering, industrial engineering) not stated in JD; assumed none are hard-blocked.",
+      "Extent of hands-on shop-floor time versus strategic process redesign not clarified in JD; assumed operational excellence requires both."
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}

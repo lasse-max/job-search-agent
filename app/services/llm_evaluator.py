@@ -20,7 +20,8 @@ from app.models import CompanyConfig
 from app.services.material import material_hash_for_row
 
 
-PROMPT_VERSION = "role_evaluation_v6"
+PROMPT_VERSION = "role_evaluation_v7"
+LEGACY_BENCHMARK_PROMPT_VERSION = "role_evaluation_v6"
 DEFAULT_CLAUDE_MODEL = "claude-haiku-4-5"
 PROMPT_PATH = Path(__file__).resolve().parents[1] / "prompts" / "role_evaluation_v1.md"
 DEFAULT_LLM_CACHE_DIR = DATA_DIR / "evaluation_set" / "llm_cache"
@@ -228,7 +229,9 @@ class ClaudeLLMProvider:
         return self.model
 
     def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
-        cache_path = _cache_path(self.cache_dir, self.model, request.row)
+        cache_path = _cache_path(
+            self.cache_dir, self.model, request.row, profile_version=request.profile.version
+        )
         if cache_path.exists():
             try:
                 result = _cached_result(cache_path)
@@ -310,7 +313,17 @@ class CachedLLMProvider:
         return f"cached:{self.model}"
 
     def evaluate(self, request: LLMRoleRequest) -> LLMEvaluationResult:
-        cache_path = _cache_path(self.cache_dir, self.model, request.row)
+        cache_path = _cache_path(
+            self.cache_dir, self.model, request.row, profile_version=request.profile.version
+        )
+        if not cache_path.exists():
+            # Offline regression replay only; the live provider never reads legacy caches.
+            cache_path = _cache_path(
+                self.cache_dir,
+                self.model,
+                request.row,
+                prompt_version=LEGACY_BENCHMARK_PROMPT_VERSION,
+            )
         if not cache_path.exists():
             raise LLMProviderError(
                 "cached_llm_evaluation_missing: "
@@ -659,15 +672,18 @@ def _validate_role_level_consistency(
             "claude_role_level_inconsistent: role requiring 12+ years must be L6+",
             retryable_output=True,
         )
-    if re.search(
-        (
-            r"\bmanag(?:e|es|ing)\s+(?:a\s+)?(?:team\s+of\s+)?managers\b"
-            r"|\bmanager[- ]of[- ]managers\b"
-            r"|\bdirect reports?\b.{0,50}\bmanagers\b"
-        ),
-        text,
-        flags=re.IGNORECASE,
-    ) and rank < 6:
+    if (
+        re.search(
+            (
+                r"\bmanag(?:e|es|ing)\s+(?:a\s+)?(?:team\s+of\s+)?managers\b"
+                r"|\bmanager[- ]of[- ]managers\b"
+                r"|\bdirect reports?\b.{0,50}\bmanagers\b"
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
+        and rank < 6
+    ):
         raise LLMProviderError(
             "claude_role_level_inconsistent: manager-of-managers role must be L6+",
             retryable_output=True,
@@ -707,14 +723,18 @@ def _cache_path(
     row: sqlite3.Row,
     *,
     prompt_version: str = PROMPT_VERSION,
+    profile_version: str | None = None,
 ) -> Path:
+    identity = {
+        "prompt_version": prompt_version,
+        "model": model,
+        "input_hash": material_hash_for_row(row),
+    }
+    if profile_version is not None:
+        identity["profile_version"] = profile_version
     key = hashlib.sha256(
         json.dumps(
-            {
-                "prompt_version": prompt_version,
-                "model": model,
-                "input_hash": material_hash_for_row(row),
-            },
+            identity,
             sort_keys=True,
         ).encode("utf-8")
     ).hexdigest()
@@ -754,8 +774,17 @@ def write_cached_evaluation(
     row: sqlite3.Row,
     output: LLMEvaluationOutput,
     prompt_version: str = PROMPT_VERSION,
+    profile_version: str | None = None,
 ) -> Path:
-    path = _cache_path(cache_dir, model, row, prompt_version=prompt_version)
+    from app.config import load_candidate_profile
+
+    path = _cache_path(
+        cache_dir,
+        model,
+        row,
+        prompt_version=prompt_version,
+        profile_version=profile_version or load_candidate_profile().version,
+    )
     _write_cache(
         path,
         LLMEvaluationResult(

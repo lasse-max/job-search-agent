@@ -221,7 +221,7 @@ class BenchmarkCalibrationTest(unittest.TestCase):
             run.evaluator_versions,
             (
                 "hybrid_claude_v4; prompt=role_evaluation_v6; "
-                "model=claude-haiku-4-5",
+                "model=claude-haiku-4-5; profile=candidate_profile_v4",
             ),
         )
 
@@ -283,7 +283,7 @@ class BenchmarkCalibrationTest(unittest.TestCase):
             run.evaluator_versions,
             (
                 "hybrid_claude_v4; prompt=role_evaluation_v6; "
-                "model=claude-haiku-4-5",
+                "model=claude-haiku-4-5; profile=candidate_profile_v4",
             ),
         )
 
@@ -367,8 +367,8 @@ class BenchmarkCalibrationTest(unittest.TestCase):
                                 "id": "LN-002",
                                 "company": "ExampleCo",
                                 "company_tier": 1,
-                                "role_title": "Ambiguous Transformation Lead",
-                                "department": "Business Programs",
+                                "role_title": "Ambiguous Specialist",
+                                "department": "General",
                                 "employment_type": "Full-time",
                                 "location": "London, United Kingdom",
                                 "source_url": "https://example.com/stretch-noise",
@@ -379,8 +379,8 @@ class BenchmarkCalibrationTest(unittest.TestCase):
                                 "id": "LN-003",
                                 "company": "ExampleCo",
                                 "company_tier": 1,
-                                "role_title": "Adjacent Transformation Lead",
-                                "department": "Business Programs",
+                                "role_title": "Adjacent Specialist",
+                                "department": "General",
                                 "employment_type": "Full-time",
                                 "location": "London, United Kingdom",
                                 "source_url": "https://example.com/stretch",

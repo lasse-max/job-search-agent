@@ -1,9 +1,9 @@
 {
   "versions": {
-    "candidate": "candidate_profile_v3",
+    "candidate": "candidate_profile_v4",
     "location": "location_policy_v3",
     "scoring": "scoring_policy_v2",
-    "recency": "recency_policy_v1"
+    "recency": "recency_policy_v2"
   },
   "targetRoleFamilies": [
     "Strategy and Operations",
@@ -13,13 +13,15 @@
     "GTM / Sales Strategy and Operations",
     "Revenue Operations at appropriate seniority",
     "Partner Operations / Partner Strategy & Operations",
-    "Business Transformation"
+    "Business Transformation / Operational Excellence (business processes and operating models, not specialist manufacturing or plant engineering)",
+    "Program Management (business / operations / GTM / strategic programs)"
   ],
   "approvedStretchFamilies": [
     "Deployment Strategist",
     "Forward-Deployed Strategy",
     "Implementation-heavy AI transformation roles where business problem solving, stakeholder management, process design, and execution outweigh production engineering",
-    "Program / Project Management where the role owns business or strategic programs, cross-functional execution, or transformation — not pure engineering-delivery PM"
+    "Technical / Engineering / Software / Hardware Program Management and Release / Delivery Management only with explicit business-transformation scope; pure SDLC or engineering delivery is deprioritized, never primary",
+    "Business / strategic Project Management with cross-functional transformation scope"
   ],
   "seniority": {
     "preferredLevels": [

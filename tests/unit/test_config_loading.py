@@ -64,6 +64,7 @@ class ConfigLoadingTest(unittest.TestCase):
             patterns = data["role_family_patterns"]
             assert isinstance(patterns, dict)
             patterns["primary"] = [r"\bchief astronaut\b"]
+            patterns["judgment_led_primary"] = []
             patterns["stretch"] = []
 
         path = _changed_yaml("candidate_profile.yaml", mutate)

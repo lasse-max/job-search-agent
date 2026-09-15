@@ -1,0 +1,56 @@
+{
+  "model_version": "claude-haiku-4-5",
+  "output": {
+    "advisory_recommendation": "skip",
+    "alignments": [
+      {
+        "candidate_evidence": "Eight years in Commercial Operations and Product Operations at Google; scaling global operations and transformation programs. No chemical production, plant engineering, or industrial process experience.",
+        "evidence_strength": "weak",
+        "job_requirement": "Improve yield in a chemical processing plant; own process capability studies, root-cause analysis for reactor variability"
+      },
+      {
+        "candidate_evidence": "Cross-functional stakeholder management and transformation program delivery at Google Devices and Services; experience scaling global commercial operations.",
+        "evidence_strength": "medium",
+        "job_requirement": "Work daily with plant engineers and production operators on reactor variability and line-balancing interventions"
+      },
+      {
+        "candidate_evidence": "No demonstrated experience in chemical production, manufacturing, plant operations, or industrial engineering. Background is in business operations, product operations, and GTM at Google.",
+        "evidence_strength": "weak",
+        "job_requirement": "Deep experience in chemical production and industrial process optimization"
+      }
+    ],
+    "confidence": 0.65,
+    "estimated_level": "L5",
+    "evidence_strength": 25,
+    "gap_manageability": 15,
+    "gaps": [
+      {
+        "gap": "No chemical production or industrial process engineering background; all experience is in Commercial Operations, Product Operations, and business transformation at Google.",
+        "mitigation": "Candidate has demonstrated ability to learn complex operating models and drive transformation. However, chemical-production domain knowledge and hands-on reactor/line-balancing engineering are unlikely to transfer from commercial tech operations.",
+        "severity": "high"
+      },
+      {
+        "gap": "No Six Sigma certification or lean-manufacturing training noted in profile.",
+        "mitigation": "Candidate could pursue Six Sigma training post-hire, but the JD notes it as preferred rather than required.",
+        "severity": "medium"
+      },
+      {
+        "gap": "No daily hands-on work with plant engineers, production operators, or reactor systems.",
+        "mitigation": "Candidate has cross-functional stakeholder management experience but lacks the technical domain literacy needed to build immediate credibility in a chemical plant environment.",
+        "severity": "high"
+      }
+    ],
+    "hard_blockers": [],
+    "level_confidence": 72,
+    "level_rationale": "Posted role is a specialist process-excellence lead in a chemical manufacturing plant, requiring deep chemical-production and industrial-engineering domain expertise. Title and responsibility scope (reactor variability, process capability studies, line-balancing) suggest L5 senior IC in a manufacturing context, with domain depth as the key differentiator. No company size/stage stated, lowering confidence slightly. if this is a multinational plant, scope may edge toward L6.",
+    "role_family_fit": 5,
+    "scope_seniority": 70,
+    "summary": "This Process Excellence Lead role is a specialist manufacturing and plant-engineering position requiring deep chemical-production and industrial-process expertise. The candidate has strong transformation and cross-functional program-leadership experience but comes from Google Commercial/Product Operations with no chemical-production, reactor engineering, or plant-floor domain background. The gap in domain expertise is too substantial to bridge through general operational-excellence skills, and the role's specialist focus (yield optimization, reactor variability, Lean-Six-Sigma) sits outside approved stretch families and deprioritized manufacturing-specialist work.",
+    "uncertainties": [
+      "Company size and plant complexity not stated; a global multinational operation might imply L6, while a single-site facility might be L5-equivalent.",
+      "Degree requirements not specified in JD; assumed not a disqualifying hard requirement.",
+      "Whether 'Business workflow automation and partner operations are outside this remit' signals any adjacent opportunity or if this is purely chemistry/manufacturing."
+    ]
+  },
+  "prompt_version": "role_evaluation_v7"
+}
