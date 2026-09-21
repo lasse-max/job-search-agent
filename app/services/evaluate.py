@@ -1156,18 +1156,57 @@ def _enforceable_disqualifying_fragments(
     for fragment in _requirement_fragments(text):
         if _matches_any(fragment, config.nice_to_have_context_patterns):
             continue
-        if not _matches_any(fragment, config.requirement_patterns):
+        active_text = _unnegated_requirement_text(fragment, config.requirement_patterns)
+        if active_text is None:
             continue
-        if _technical_degree_mention(fragment):
-            if not _degree_requirement(fragment) or not _matches_any(
-                fragment,
+        if _technical_degree_mention(active_text):
+            if not _degree_requirement(active_text) or not _matches_any(
+                active_text,
                 config.must_have_context_patterns,
             ):
                 continue
-        elif not _technical_depth_requirement(fragment):
+        elif not _technical_depth_requirement(active_text):
             continue
         fragments.append(fragment)
     return fragments
+
+
+def _unnegated_requirement_text(text: str, patterns: tuple[str, ...]) -> str | None:
+    matches = [
+        match
+        for pattern in patterns
+        for match in re.finditer(pattern, text, flags=re.IGNORECASE)
+    ]
+    negated = []
+    for match in matches:
+        before, after = text[:match.start()], text[match.end():]
+        qualifiers = r"(?:(?:a|an|any|prior|previous|hands[- ]on)\s+)*"
+        subject_suffix = (
+            r"^\s*(?:(?:skills?|experience|expertise|background)\s+)?"
+            r"(?:(?:is|are|will be)\s+)?"
+        )
+        no_requirement = re.search(
+            rf"\bno\s+{qualifiers}$", before, flags=re.IGNORECASE,
+        ) and re.search(
+            rf"{subject_suffix}(?:required|requirements?|mandatory|necessary)\b",
+            after, flags=re.IGNORECASE,
+        )
+        if no_requirement or re.search(
+            rf"\b(?:does?|will)\s+not\s+(?:require|involve|include)\s+{qualifiers}$",
+            before, flags=re.IGNORECASE,
+        ) or re.search(
+            rf"{subject_suffix}not\s+(?:required|mandatory|necessary|expected)\b",
+            after, flags=re.IGNORECASE,
+        ):
+            negated.append(match)
+    if len(negated) == len(matches):
+        return None
+    # Mask only the negated credential/depth, not another requirement in the
+    # fragment (for example, coding required although a degree is not).
+    active_text = list(text)
+    for match in negated:
+        active_text[match.start():match.end()] = " " * (match.end() - match.start())
+    return "".join(active_text)
 
 
 def _degree_requirement(text: str) -> bool:
@@ -1286,15 +1325,25 @@ def _requirement_fragments(text: str) -> list[str]:
     return fragments
 
 
+# Split negated clauses like preferences, but never inherit their negation into
+# the next clause. Enforcement still checks each technical match locally.
+_NEGATED_REQUIREMENT_PATTERN = (
+    r"\bnot\s+(?:required|mandatory|necessary|expected)\b"
+    r"|\b(?:does?|will)\s+not\s+(?:require|involve|include)\b"
+    r"|\bno\s+[^,;.!?]{0,100}\b(?:required|requirements?|necessary)\b"
+)
+
+
 def _preference_scoped_fragments(sentence: str) -> list[str]:
     preference_pattern = (
-        r"\b(?:preferred|nice to have|bonus|a plus|asset|optional|helpful|desirable|"
+        r"(?:\b(?:preferred|nice to have|bonus|a plus|asset|optional|helpful|desirable|"
         r"not required)\b"
+        rf"|{_NEGATED_REQUIREMENT_PATTERN})"
     )
     if not re.search(preference_pattern, sentence, flags=re.IGNORECASE):
         return [sentence]
     required_context_pattern = (
-        r"\b(?:required?|mandatory|must|needs?\s+to|minimum qualifications?|"
+        r"\b(?:require(?:s|d|ment|ments)?|mandatory|must|needs?\s+to|minimum qualifications?|"
         r"requirements?|qualifications?)\b"
     )
     if not re.search(required_context_pattern, sentence, flags=re.IGNORECASE) and re.search(
@@ -1338,6 +1387,7 @@ def _preference_scoped_fragments(sentence: str) -> list[str]:
         )
         inherited_preference = (
             buffer_preferred
+            and not re.search(_NEGATED_REQUIREMENT_PATTERN, buffer, flags=re.IGNORECASE)
             and not right_preferred
             and not right_required
             and not any(

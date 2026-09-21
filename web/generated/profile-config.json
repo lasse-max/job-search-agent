@@ -149,13 +149,13 @@
   },
   "watchlist": {
     "total": 92,
-    "enabled": 42,
+    "enabled": 41,
     "coverage": {
-      "scanned": 42,
+      "scanned": 41,
       "total": 92,
-      "percentage": 46,
+      "percentage": 45,
       "tone": "red",
-      "dark": 50,
+      "dark": 51,
       "byTier": [
         {
           "tier": 1,
@@ -167,11 +167,11 @@
         },
         {
           "tier": 2,
-          "scanned": 22,
+          "scanned": 21,
           "total": 45,
-          "percentage": 49,
+          "percentage": 47,
           "tone": "red",
-          "dark": 23
+          "dark": 24
         },
         {
           "tier": 3,
@@ -184,7 +184,7 @@
       ],
       "darkByReason": {
         "missing_source": 30,
-        "adapter_ready_disabled": 11,
+        "adapter_ready_disabled": 12,
         "dead_feed": 3,
         "manual_only": 6
       }
@@ -1076,20 +1076,20 @@
       {
         "name": "Deliveroo",
         "tier": 2,
-        "enabled": true,
-        "coverageState": "Supported",
+        "enabled": false,
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "deliveroo",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 226,
+        "jobCountAtAudit": 11,
         "careersUrl": "https://careers.deliveroo.co.uk/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false",
-        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": "Enabled after 2026-09-15 preflight: 226 postings, 96 fresh, 40 gate-passers. Includes business Program Management and Strategy & Operations; final fit is evaluator-owned.",
-        "darkReasonCode": null
+        "manualFallback": "Use official corporate careers links and manual URL/text intake until the Greenhouse replacement is reviewed; Ashby is residual frontline hiring only.",
+        "notes": "Disabled 2026-09-21: Ashby shrank from 224 to 11 warehouse/site roles on September 19; no longer counts as target-role coverage. Official corporate careers links now use Greenhouse deliveroo (123 jobs audited). Replacement needs Cato approval and prior-role/freshness reconciliation: Greenhouse publication dates cluster at the migration.",
+        "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Block",

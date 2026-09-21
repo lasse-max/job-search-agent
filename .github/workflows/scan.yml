@@ -11,6 +11,10 @@ on:
         default: false
         type: boolean
 
+concurrency:
+  group: scheduled-scan
+  cancel-in-progress: false
+
 jobs:
   scan:
     runs-on: ubuntu-latest
@@ -34,6 +38,19 @@ jobs:
           restore-keys: |
             job-search-agent-db-
 
+      - name: Restore model spend ledger
+        id: model-spend
+        uses: actions/cache/restore@v4
+        with:
+          path: data/model_spend_ledger.json
+          key: job-agent-model-spend-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            job-agent-model-spend-v1-
+
+      - name: Warn when prior tracked spend is unavailable
+        if: ${{ steps.model-spend.outputs.cache-matched-key == '' }}
+        run: echo "::warning title=Model spend history unavailable::No retained spend ledger. Reconcile provider month-to-date usage before any full backfill; the configured cap cannot account for missing history."
+
       - name: Install project
         run: |
           python -m pip install --upgrade pip
@@ -46,9 +63,16 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}
           JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
-          MONTHLY_MODEL_SPEND_CAP_USD: "15"
+          MONTHLY_MODEL_SPEND_CAP_USD: "30"
           STALE_EVALUATION_BACKFILL_LIMIT: ${{ inputs.full_stale_backfill && '10000' || '25' }}
         run: job-agent scan-all
+
+      - name: Save model spend ledger even after a failed scan
+        if: ${{ always() && hashFiles('data/model_spend_ledger.json') != '' }}
+        uses: actions/cache/save@v4
+        with:
+          path: data/model_spend_ledger.json
+          key: job-agent-model-spend-v1-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Upload local outputs
         if: always()
@@ -59,4 +83,5 @@ jobs:
             output/latest_digest.html
             output/latest_digest.txt
             data/job_search_agent.sqlite
+            data/model_spend_ledger.json
           if-no-files-found: ignore

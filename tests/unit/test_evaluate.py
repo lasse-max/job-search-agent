@@ -16,6 +16,7 @@ from app.services.evaluate import (
     _technical_blockers,
     _weighted_fit_score,
     _is_stretch_family,
+    _unnegated_requirement_text,
     has_disqualifying_hard_requirement,
     relevance_decision,
 )
@@ -656,6 +657,43 @@ class EvaluateDecisionLogicTest(unittest.TestCase):
             has_disqualifying_hard_requirement(
                 "A degree in business, economics, or engineering is required."
             )
+        )
+
+    def test_qualified_negation_does_not_create_a_technical_hard_blocker(self) -> None:
+        for text in (
+            "No production coding required.",
+            "Production coding is not required for this role.",
+            "Advanced programming skills are not required.",
+            "This role does not involve production coding.",
+            "No production coding requirement.",
+            "A computer science degree is not required.",
+        ):
+            with self.subTest(text=text):
+                self.assertFalse(has_disqualifying_hard_requirement(text))
+
+    def test_negated_neighbor_does_not_cancel_a_real_technical_requirement(self) -> None:
+        for text in (
+            "Proficient in production coding.",
+            "Production coding is required.",
+            "Production coding is not only required but is the central duty.",
+            "No production coding required, but a computer science degree is mandatory.",
+            "A computer science degree is mandatory, but no production coding required.",
+            "Production coding is not required and advanced Python programming is mandatory.",
+            "Advanced programming skills are not required; production coding is required.",
+            "This role does not involve production coding but requires a computer science degree.",
+            "This role does not involve production coding but you must write production software.",
+            "Production coding is required (no travel required).",
+            "A computer science degree is required although production coding is not required.",
+            "Production coding is required even though a computer science degree is not required.",
+            "No travel required, proficient in production coding.",
+        ):
+            with self.subTest(text=text):
+                self.assertTrue(has_disqualifying_hard_requirement(text))
+
+    def test_candidate_missing_skill_is_not_a_negated_job_requirement(self) -> None:
+        text = "The candidate has no production coding background."
+        self.assertEqual(
+            _unnegated_requirement_text(text, (r"\bproduction coding\b",)), text
         )
 
     def test_native_product_director_is_downranked_without_strategy_ops_scope(self) -> None:

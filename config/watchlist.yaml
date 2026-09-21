@@ -5,8 +5,8 @@ metadata:
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
     needs_configuration: 15
-    supported: 42
-    manual_fallback: 24
+    supported: 41
+    manual_fallback: 25
     validated_owner_enablement_pending: 11
 companies:
   - name: "Google"
@@ -748,20 +748,20 @@ companies:
     selected_for_initial_coverage: false
   - name: "Deliveroo"
     tier: 2
-    enabled: true
+    enabled: false
     careers_url: "https://careers.deliveroo.co.uk/"
     current_role_url: null
     ats_type: "ashby"
     source_key: "deliveroo"
     supported_adapter: "ashby"
-    coverage_state: "Supported"
+    coverage_state: "Manual fallback"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/deliveroo?includeCompensation=false"
-    job_count_at_audit: 226
+    job_count_at_audit: 11
     target_locations: ["London"]
     target_role_family_notes: "Strategy & Operations; Product Operations; Advertising"
-    notes: "Enabled after 2026-09-15 preflight: 226 postings, 96 fresh, 40 gate-passers. Includes business Program Management and Strategy & Operations; final fit is evaluator-owned."
+    notes: "Disabled 2026-09-21: Ashby shrank from 224 to 11 warehouse/site roles on September 19; no longer counts as target-role coverage. Official corporate careers links now use Greenhouse deliveroo (123 jobs audited). Replacement needs Cato approval and prior-role/freshness reconciliation: Greenhouse publication dates cluster at the migration."
     warm_path: false
-    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
+    manual_fallback: "Use official corporate careers links and manual URL/text intake until the Greenhouse replacement is reviewed; Ashby is residual frontline hiring only."
     selected_for_initial_coverage: false
   - name: "Block"
     tier: 2

@@ -202,4 +202,4 @@ class SearchBroadeningTest(unittest.TestCase):
             with self.subTest(role=result.role_id):
                 if result.expected_recommendation == "skip":
                     self.assertLess(result.fit_score, 60)
-                    self.assertIn(result.actual_recommendation, ("skip", "blocked"))
+                    self.assertEqual(result.actual_recommendation, "skip")

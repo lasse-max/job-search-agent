@@ -23,6 +23,7 @@ from app.services.manual_intake import (
     process_manual_intake_queue,
 )
 from app.services.ingest import ScanSummary
+from app.services.notifications import DigestDeliveryResult
 from app.services.scheduled_scan import BackfillPlan, ScheduledScanResult, run_scheduled_scan
 
 
@@ -451,6 +452,108 @@ class OperabilityTest(unittest.TestCase):
             output,
         )
 
+    def test_scan_all_exits_one_when_scan_crashes_even_if_email_is_sent(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            notification = DigestDeliveryResult(
+                status="sent",
+                subject="Scan health",
+                payload_hash="test-payload",
+                role_count=0,
+                failure_count=1,
+                html_path=Path(directory) / "digest.html",
+                text_path=Path(directory) / "digest.txt",
+                recipient="owner@example.com",
+            )
+            stdout = io.StringIO()
+            with (
+                patch.dict("os.environ", {
+                    "JOB_AGENT_DATABASE_URL": "",
+                    "STALE_EVALUATION_BACKFILL_LIMIT": "25",
+                }),
+                patch(
+                    "app.services.scheduled_scan.load_enabled_company_configs",
+                    return_value=[_scheduled_company()],
+                ),
+                patch(
+                    "app.services.scheduled_scan.run_scan",
+                    side_effect=RuntimeError("posting persistence failed"),
+                ) as scan,
+                patch(
+                    "app.services.scheduled_scan.deliver_digest",
+                    return_value=notification,
+                ) as deliver,
+                redirect_stdout(stdout),
+            ):
+                code = main(["scan-all", "--db", str(db_path)])
+
+            scan.assert_called_once()
+            deliver.assert_called_once()
+            self.assertEqual(code, 1, stdout.getvalue())
+            self.assertIn("status=failure", stdout.getvalue())
+            self.assertIn(
+                "failure=ExampleCo: RuntimeError: posting persistence failed",
+                stdout.getvalue(),
+            )
+            self.assertIn("notification_status=sent", stdout.getvalue())
+
+    def test_scan_all_exits_one_when_email_is_unsent_after_successful_scan(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            db_path = Path(directory) / "agent.sqlite"
+            summary = ScanSummary(
+                company="ExampleCo",
+                source_type="ashby",
+                source_key="exampleco",
+                status="success",
+                fetched_count=1,
+                new_count=1,
+                changed_count=0,
+                evaluated_count=1,
+                digest_count=1,
+                digest_html=Path(directory) / "digest.html",
+                digest_text=Path(directory) / "digest.txt",
+            )
+            notification = DigestDeliveryResult(
+                status="failed",
+                subject="New role",
+                payload_hash="test-payload",
+                role_count=1,
+                failure_count=0,
+                html_path=summary.digest_html,
+                text_path=summary.digest_text,
+                recipient="owner@example.com",
+                error_summary="email provider rejected delivery",
+            )
+            stdout = io.StringIO()
+            with (
+                patch.dict("os.environ", {
+                    "JOB_AGENT_DATABASE_URL": "",
+                    "STALE_EVALUATION_BACKFILL_LIMIT": "25",
+                }),
+                patch(
+                    "app.services.scheduled_scan.load_enabled_company_configs",
+                    return_value=[_scheduled_company()],
+                ),
+                patch(
+                    "app.services.scheduled_scan.run_scan",
+                    return_value=summary,
+                ) as scan,
+                patch(
+                    "app.services.scheduled_scan.deliver_digest",
+                    return_value=notification,
+                ) as deliver,
+                redirect_stdout(stdout),
+            ):
+                code = main(["scan-all", "--db", str(db_path)])
+
+            scan.assert_called_once()
+            deliver.assert_called_once()
+            self.assertEqual(code, 1, stdout.getvalue())
+            self.assertIn("source=ExampleCo success fetched=1", stdout.getvalue())
+            self.assertIn("status=failure", stdout.getvalue())
+            self.assertIn("failure=email provider rejected delivery", stdout.getvalue())
+            self.assertIn("notification_status=failed", stdout.getvalue())
+
     def test_scan_workflow_runs_daily_and_supports_manual_dispatch(self) -> None:
         workflow = Path(".github/workflows/scan.yml").read_text(encoding="utf-8")
 
@@ -467,7 +570,7 @@ class OperabilityTest(unittest.TestCase):
             "DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}",
             workflow,
         )
-        self.assertIn('MONTHLY_MODEL_SPEND_CAP_USD: "15"', workflow)
+        self.assertIn('MONTHLY_MODEL_SPEND_CAP_USD: "30"', workflow)
         self.assertNotIn("echo ${{ secrets.", workflow)
 
     def test_full_backfill_reports_items_eta_and_spend_before_scan(self) -> None:
@@ -552,6 +655,20 @@ Quota-carrying sales role.
             self.assertEqual(data["set_purpose"], "gate_passer_precision")
             self.assertEqual(len(data["live_noise_set"]), 1)
             self.assertEqual(data["live_noise_set"][0]["role_title"], "Strategic Operations Manager")
+
+
+def _scheduled_company() -> CompanyConfig:
+    return CompanyConfig(
+        name="ExampleCo",
+        tier=2,
+        enabled=True,
+        ats_type="ashby",
+        source_key="exampleco",
+        careers_url="https://example.com/careers",
+        target_locations=["Munich, Germany"],
+        target_role_family_notes="Strategy and operations",
+        warm_path=False,
+    )
 
 
 def _add_job(db_path: Path) -> int:

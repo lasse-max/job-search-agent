@@ -818,6 +818,32 @@ class LlmEvaluatorTest(unittest.TestCase):
         self.assertNotEqual(trailing_preference.recommendation, "blocked")
         self.assertEqual(trailing_preference.hard_blockers, [])
 
+    def test_qualified_negation_is_not_enforced_from_jd_or_llm_evidence(self) -> None:
+        for evidence in (
+            "No production coding required.",
+            "Production coding is not required for this role.",
+            "Advanced programming skills are not required.",
+            "This role does not involve production coding.",
+        ):
+            with self.subTest(evidence=evidence):
+                payload = _valid_output().model_dump()
+                payload["hard_blockers"] = [{
+                    "type": "disqualifying_hard_requirement",
+                    "evidence": evidence,
+                }]
+                row = _row("AI Deployment Strategist")
+                row["department"] = "Professional Services"
+                row["description_text"] = (
+                    f"Translate customer business problems into deployment plans. {evidence}"
+                )
+                evaluation = evaluate_role(
+                    row, _company(),
+                    llm_provider=FakeProvider(LLMEvaluationOutput.model_validate(payload)),
+                    spend_tracker=ModelSpendTracker(monthly_cap_usd=None),
+                )
+                self.assertNotEqual(evaluation.recommendation, "blocked")
+                self.assertEqual(evaluation.hard_blockers, [])
+
     def test_preferred_neighbor_does_not_cancel_llm_required_blocker(self) -> None:
         for evidence in (
             "A computer science degree is required, while Python is preferred.",

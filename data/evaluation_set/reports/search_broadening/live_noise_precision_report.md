@@ -25,7 +25,7 @@ Older-prompt model caches are historical-response replays under the displayed cu
 | SB-01 | Example Technology | Senior Program Manager | consider | apply_now | 92 | L5 (82%) | not labelled | pass | pass |
 | SB-02 | Example Technology | Operations Programme Lead | consider | apply_now | 88 | L5 (78%) | not labelled | pass | pass |
 | SB-03 | Example Technology | Operational Excellence Manager | consider | apply_now | 90 | L5 (82%) | not labelled | pass | pass |
-| SB-04 | Example Technology | Technical Programme Manager | skip | blocked | 33 | L5 (65%) | not labelled | pass | pass |
+| SB-04 | Example Technology | Technical Programme Manager | skip | skip | 33 | L5 (65%) | not labelled | pass | pass |
 | SB-05 | Example Technology | Hardware Program Manager | skip | skip | 32 | L5 (70%) | not labelled | pass | pass |
 | SB-06 | Example Technology | Release Manager | skip | skip | 31 | L4 (70%) | not labelled | pass | pass |
 | SB-07 | Example Manufacturing | Plant Continuous Improvement Manager | skip | skip | 23 | L5 (75%) | not labelled | pass | pass |
