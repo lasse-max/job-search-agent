@@ -5,9 +5,9 @@ metadata:
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
     needs_configuration: 15
-    supported: 41
-    manual_fallback: 25
-    validated_owner_enablement_pending: 11
+    supported: 44
+    manual_fallback: 26
+    validated_owner_enablement_pending: 7
 companies:
   - name: "Google"
     tier: 1
@@ -635,17 +635,18 @@ companies:
     notes: "Enabled 2026-09-08: 115 postings, 0 fresh gate-passers under current location/function rules. A valid feed remains monitored for future matching roles."
   - name: "Cohere"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://cohere.com/careers"
     current_role_url: null
     ats_type: "ashby"
     source_key: "cohere"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false"
-    job_count_at_audit: 130
+    job_count_at_audit: 143
     target_locations: ["London", "remote Europe"]
     target_role_family_notes: "Customer Deployment; Business Operations; Partnerships"
+    notes: "Owner-requested Batch A, preflight 2026-09-22: 143 postings / unique IDs, 48 fresh, 3 gate-passers; projected 1 scoring minute / $0.09 before retries. Official careers links confirm this Ashby board."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
@@ -1018,43 +1019,46 @@ companies:
     ats_type: "ashby"
     source_key: "alephalpha"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Manual fallback"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/alephalpha?includeCompensation=false"
     job_count_at_audit: 10
     target_locations: ["Heidelberg", "Berlin"]
     target_role_family_notes: "AI Transformation; Customer Programs; Public Sector"
+    notes: "Batch A held 2026-09-22: both alephalpha and official-link AlephAlpha return zero; the official Ashby board also lists zero, a legitimate empty catalog. Disabled and uncounted pending owner monitoring choice; enabling would trip the minimum-one volume warning. Prior audit count 10 retained as history."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
   - name: "Decagon"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://jobs.ashbyhq.com/decagon"
     current_role_url: null
     ats_type: "ashby"
     source_key: "decagon"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/decagon?includeCompensation=false"
-    job_count_at_audit: 115
+    job_count_at_audit: 145
     target_locations: ["London"]
     target_role_family_notes: "Agent Strategy; Customer Deployment"
+    notes: "Owner-requested Batch A, preflight 2026-09-22: 145 postings / unique IDs, 20 fresh, 1 gate-passer; projected 20 scoring seconds / $0.03 before retries. Official careers embeds this Ashby endpoint."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
   - name: "Cognition"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://cognition.ai/careers"
     current_role_url: null
     ats_type: "ashby"
     source_key: "cognition"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/cognition?includeCompensation=false"
-    job_count_at_audit: 74
+    job_count_at_audit: 98
     target_locations: ["Singapore", "London / remote"]
     target_role_family_notes: "GTM Operations; Business Operations"
+    notes: "Owner-requested Batch A, preflight 2026-09-22: 98 postings / unique IDs, 8 fresh, 1 gate-passer; projected 20 scoring seconds / $0.03 before retries. Official careers links confirm this Ashby board."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false

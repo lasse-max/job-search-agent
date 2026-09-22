@@ -149,13 +149,13 @@
   },
   "watchlist": {
     "total": 92,
-    "enabled": 41,
+    "enabled": 44,
     "coverage": {
-      "scanned": 41,
+      "scanned": 44,
       "total": 92,
-      "percentage": 45,
+      "percentage": 48,
       "tone": "red",
-      "dark": 51,
+      "dark": 48,
       "byTier": [
         {
           "tier": 1,
@@ -167,11 +167,11 @@
         },
         {
           "tier": 2,
-          "scanned": 21,
+          "scanned": 24,
           "total": 45,
-          "percentage": 47,
-          "tone": "red",
-          "dark": 24
+          "percentage": 53,
+          "tone": "amber",
+          "dark": 21
         },
         {
           "tier": 3,
@@ -184,7 +184,7 @@
       ],
       "darkByReason": {
         "missing_source": 30,
-        "adapter_ready_disabled": 12,
+        "adapter_ready_disabled": 9,
         "dead_feed": 3,
         "manual_only": 6
       }
@@ -942,8 +942,8 @@
       {
         "name": "Cohere",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London",
           "remote Europe"
@@ -951,12 +951,12 @@
         "atsType": "ashby",
         "sourceKey": "cohere",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 130,
+        "jobCountAtAudit": 143,
         "careersUrl": "https://cohere.com/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Owner-requested Batch A, preflight 2026-09-22: 143 postings / unique IDs, 48 fresh, 3 gate-passers; projected 1 scoring minute / $0.09 before retries. Official careers links confirm this Ashby board.",
+        "darkReasonCode": null
       },
       {
         "name": "ElevenLabs",
@@ -1384,7 +1384,7 @@
         "name": "Aleph Alpha",
         "tier": 2,
         "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "coverageState": "Manual fallback",
         "targetLocations": [
           "Heidelberg",
           "Berlin"
@@ -1396,32 +1396,32 @@
         "careersUrl": "https://aleph-alpha.com/careers/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/alephalpha?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
+        "notes": "Batch A held 2026-09-22: both alephalpha and official-link AlephAlpha return zero; the official Ashby board also lists zero, a legitimate empty catalog. Disabled and uncounted pending owner monitoring choice; enabling would trip the minimum-one volume warning. Prior audit count 10 retained as history.",
         "darkReasonCode": "adapter_ready_disabled"
       },
       {
         "name": "Decagon",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "decagon",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 115,
+        "jobCountAtAudit": 145,
         "careersUrl": "https://jobs.ashbyhq.com/decagon",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/decagon?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Owner-requested Batch A, preflight 2026-09-22: 145 postings / unique IDs, 20 fresh, 1 gate-passer; projected 20 scoring seconds / $0.03 before retries. Official careers embeds this Ashby endpoint.",
+        "darkReasonCode": null
       },
       {
         "name": "Cognition",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "Singapore",
           "London / remote"
@@ -1429,12 +1429,12 @@
         "atsType": "ashby",
         "sourceKey": "cognition",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 74,
+        "jobCountAtAudit": 98,
         "careersUrl": "https://cognition.ai/careers",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/cognition?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Owner-requested Batch A, preflight 2026-09-22: 98 postings / unique IDs, 8 fresh, 1 gate-passer; projected 20 scoring seconds / $0.03 before retries. Official careers links confirm this Ashby board.",
+        "darkReasonCode": null
       },
       {
         "name": "Fortescue",

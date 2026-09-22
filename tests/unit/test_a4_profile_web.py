@@ -117,7 +117,7 @@ class ProfileConfigContractTest(unittest.TestCase):
         self.assertEqual(generated_companies["Google"]["darkReasonCode"], "manual_only")
         self.assertEqual(generated_companies["Atlassian"]["darkReasonCode"], "dead_feed")
         self.assertEqual(
-            generated_companies["Cohere"]["darkReasonCode"],
+            generated_companies["Delivery Hero"]["darkReasonCode"],
             "adapter_ready_disabled",
         )
         self.assertIsNone(generated_companies["Databricks"]["darkReasonCode"])
