@@ -149,13 +149,13 @@
   },
   "watchlist": {
     "total": 92,
-    "enabled": 44,
+    "enabled": 47,
     "coverage": {
-      "scanned": 44,
+      "scanned": 47,
       "total": 92,
-      "percentage": 48,
-      "tone": "red",
-      "dark": 48,
+      "percentage": 51,
+      "tone": "amber",
+      "dark": 45,
       "byTier": [
         {
           "tier": 1,
@@ -167,11 +167,11 @@
         },
         {
           "tier": 2,
-          "scanned": 24,
+          "scanned": 27,
           "total": 45,
-          "percentage": 53,
+          "percentage": 60,
           "tone": "amber",
-          "dark": 21
+          "dark": 18
         },
         {
           "tier": 3,
@@ -184,7 +184,7 @@
       ],
       "darkByReason": {
         "missing_source": 30,
-        "adapter_ready_disabled": 9,
+        "adapter_ready_disabled": 6,
         "dead_feed": 3,
         "manual_only": 6
       }
@@ -650,8 +650,8 @@
       {
         "name": "Wise",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London",
           "Singapore"
@@ -659,12 +659,12 @@
         "atsType": "smartrecruiters",
         "sourceKey": "Wise",
         "supportedAdapter": "smartrecruiters",
-        "jobCountAtAudit": 406,
+        "jobCountAtAudit": 422,
         "careersUrl": "https://wise.jobs/",
         "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Wise/postings?limit=100&offset=0",
-        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
-        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": "Owner-requested Batch B, preflight 2026-09-22: 422 postings / unique IDs, 183 fresh, 66 gate-passers; projected 22 scoring minutes / $1.98 before retries. Official careers confirms SmartRecruiters.",
+        "darkReasonCode": null
       },
       {
         "name": "Spotify",
@@ -705,20 +705,20 @@
       {
         "name": "Grab",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "Singapore"
         ],
         "atsType": "smartrecruiters",
         "sourceKey": "Grab",
         "supportedAdapter": "smartrecruiters",
-        "jobCountAtAudit": 338,
+        "jobCountAtAudit": 427,
         "careersUrl": "https://www.grab.careers/",
         "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Grab/postings?limit=100&offset=0",
-        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
-        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": "Owner-requested Batch B, preflight 2026-09-22: 427 postings / unique IDs, 178 fresh, 41 gate-passers; projected 13.7 scoring minutes / $1.23 before retries. Official careers links confirm this global board.",
+        "darkReasonCode": null
       },
       {
         "name": "Salesforce",
@@ -763,8 +763,8 @@
       {
         "name": "ServiceNow / Moveworks",
         "tier": 2,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London",
           "Sydney",
@@ -773,12 +773,12 @@
         "atsType": "smartrecruiters",
         "sourceKey": "ServiceNow",
         "supportedAdapter": "smartrecruiters",
-        "jobCountAtAudit": 417,
+        "jobCountAtAudit": 667,
         "careersUrl": "https://careers.servicenow.com/",
         "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings?limit=100&offset=0",
-        "manualFallback": "Manual URL/text intake until the owner enables this high-volume feed.",
-        "notes": "SmartRecruiters source validated 2026-07-12 for ServiceNow. Moveworks catalog parity is not yet established; deliberately disabled.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": "Owner-requested Batch B, preflight 2026-09-22: 667 postings / unique IDs, 371 fresh, 0 current gate-passers ($0 scoring). All 77 IDs from official Moveworks careers are in the combined catalog. One US finance posting has no description. Existing government gate appears to reject standard export-control boilerplate; separate calibration follow-up, not proof of no relevant roles.",
+        "darkReasonCode": null
       },
       {
         "name": "Meta",

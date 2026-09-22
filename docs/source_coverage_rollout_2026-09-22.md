@@ -46,6 +46,40 @@ is included in this rollout; the previous audit count is retained as history.
 After Batch A: **44/92 configured**, Tier 1 **12/20**, Tier 2 **24/45**, Tier 3
 **8/27**. Configured enablement is not yet proof of a successful scheduled scan.
 
+## Batch B
+
+| Company | Catalog / unique IDs | Fresh | Fresh gate-passers | Scoring ETA | Projected spend |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Grab | 427 / 427 | 178 | 41 | 13.7 min | $1.23 |
+| ServiceNow / Moveworks | 667 / 667 | 371 | 0 | 0 | $0 |
+| Wise | 422 / 422 | 183 | 66 | 22 min | $1.98 |
+| Total | 1,516 / 1,516 | 732 | 107 | 35.7 min | $3.21 |
+
+All three pass full summary-pagination/detail-fetch validation and normalize with
+unique IDs. No missing publication dates. Measured public fetch times were 73,
+110 and 71 seconds respectively (about 4.2 minutes total; no model spend).
+[Grab careers](https://www.grab.careers/en/jobs/),
+[Moveworks careers](https://www.moveworks.com/us/en/company/careers) and
+[Wise careers](https://wise.jobs/) confirm the configured sources. All 77 distinct
+Moveworks `sr_id` values are present in the combined ServiceNow catalog of 667;
+coverage is established by IDs, not inferred from the acquisition.
+
+ServiceNow's US finance rotation posting `744000150707379` has an empty description;
+its ID/title/location/URL/date remain valid and the location gate excludes it.
+More importantly, 38 fresh allowed-market records hit the existing
+`government_defense_clearance_declined` gate with standard export-control
+boilerplate mentioning government authorities. This is a potential calibration
+false-negative, not a connector failure or proof of zero relevant openings.
+Thirty of those 38 match only the standard export-control sentence; diagnostic
+removal of that sentence from in-memory copies produces 28 gate-passers, including
+Singapore GTM programs and sales operations. This is diagnostic evidence, not a
+company-specific fix or the active cost estimate. Escalate a generic boilerplate
+scope fix separately to Cato; this configuration-only rollout does not change gates.
+The gate-passer counts for every company are scoring candidates, not recommendations.
+
+After Batch B: **47/92 configured**, Tier 1 **12/20**, Tier 2 **27/45**, Tier 3
+**8/27**. Next scheduled ingestion still needs to confirm real reach and health.
+
 ## Review Boundary
 
 The owner explicitly requested these named enablements in order. Cato remains the

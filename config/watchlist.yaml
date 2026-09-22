@@ -5,9 +5,9 @@ metadata:
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
     needs_configuration: 15
-    supported: 44
+    supported: 47
     manual_fallback: 26
-    validated_owner_enablement_pending: 7
+    validated_owner_enablement_pending: 4
 companies:
   - name: "Google"
     tier: 1
@@ -391,21 +391,21 @@ companies:
     selected_for_initial_coverage: false
   - name: "Wise"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://wise.jobs/"
     current_role_url: null
     ats_type: "smartrecruiters"
     source_key: "Wise"
     supported_adapter: "smartrecruiters"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Wise/postings?limit=100&offset=0"
-    job_count_at_audit: 406
+    job_count_at_audit: 422
     target_locations: ["London", "Singapore"]
     target_role_family_notes: "Product Operations; Revenue Operations; Platform Operations"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
-    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
+    notes: "Owner-requested Batch B, preflight 2026-09-22: 422 postings / unique IDs, 183 fresh, 66 gate-passers; projected 22 scoring minutes / $1.98 before retries. Official careers confirms SmartRecruiters."
   - name: "Spotify"
     tier: 2
     enabled: true
@@ -440,21 +440,21 @@ companies:
     selected_for_initial_coverage: true
   - name: "Grab"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://www.grab.careers/"
     current_role_url: null
     ats_type: "smartrecruiters"
     source_key: "Grab"
     supported_adapter: "smartrecruiters"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Grab/postings?limit=100&offset=0"
-    job_count_at_audit: 338
+    job_count_at_audit: 427
     target_locations: ["Singapore"]
     target_role_family_notes: "Strategy & Programs; Business Operations; New Mobility"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
-    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
+    notes: "Owner-requested Batch B, preflight 2026-09-22: 427 postings / unique IDs, 178 fresh, 41 gate-passers; projected 13.7 scoring minutes / $1.23 before retries. Official careers links confirm this global board."
   - name: "Salesforce"
     tier: 2
     enabled: false
@@ -489,21 +489,21 @@ companies:
     selected_for_initial_coverage: true
   - name: "ServiceNow / Moveworks"
     tier: 2
-    enabled: false
+    enabled: true
     careers_url: "https://careers.servicenow.com/"
     current_role_url: null
     ats_type: "smartrecruiters"
     source_key: "ServiceNow"
     supported_adapter: "smartrecruiters"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings?limit=100&offset=0"
-    job_count_at_audit: 417
+    job_count_at_audit: 667
     target_locations: ["London", "Sydney", "Singapore"]
     target_role_family_notes: "AI Adoption; Customer Transformation; Business Operations"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until the owner enables this high-volume feed."
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
-    notes: "SmartRecruiters source validated 2026-07-12 for ServiceNow. Moveworks catalog parity is not yet established; deliberately disabled."
+    notes: "Owner-requested Batch B, preflight 2026-09-22: 667 postings / unique IDs, 371 fresh, 0 current gate-passers ($0 scoring). All 77 IDs from official Moveworks careers are in the combined catalog. One US finance posting has no description. Existing government gate appears to reject standard export-control boilerplate; separate calibration follow-up, not proof of no relevant roles."
   - name: "Meta"
     tier: 2
     enabled: false
