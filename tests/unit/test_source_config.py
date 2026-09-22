@@ -70,18 +70,22 @@ class SourceConfigTest(unittest.TestCase):
         self.assertEqual(disabled_lever, ["Atlassian", "SafetyCulture"])
         self.assertEqual(
             disabled_smartrecruiters,
-            ["Nearmap", "Delivery Hero"],
+            ["Delivery Hero"],
         )
         self.assertEqual(enabled_unsupported, [])
         by_name = {company["name"]: company for company in companies}
         for name in (
             "DoorDash", "Canva", "Glean", "DeepL", "Magentic",
             "Cognition", "Cohere", "Decagon", "Grab", "ServiceNow / Moveworks", "Wise",
+            "Nearmap", "Plaid", "Skyscanner",
         ):
             self.assertTrue(by_name[name]["enabled"])
             self.assertGreater(by_name[name]["job_count_at_audit"], 0)
         for name in ("Aleph Alpha", "Deliveroo", "Delivery Hero"):
             self.assertFalse(by_name[name]["enabled"])
+        self.assertEqual(
+            by_name["Skyscanner"]["source_key"], "eb485598-6bf3-40a5-8560-d70150131305",
+        )
         self.assertEqual(by_name["SafetyCulture"]["job_count_at_audit"], 0)
 
 

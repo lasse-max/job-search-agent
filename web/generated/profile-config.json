@@ -149,13 +149,13 @@
   },
   "watchlist": {
     "total": 92,
-    "enabled": 47,
+    "enabled": 50,
     "coverage": {
-      "scanned": 47,
+      "scanned": 50,
       "total": 92,
-      "percentage": 51,
+      "percentage": 54,
       "tone": "amber",
-      "dark": 45,
+      "dark": 42,
       "byTier": [
         {
           "tier": 1,
@@ -175,16 +175,16 @@
         },
         {
           "tier": 3,
-          "scanned": 8,
+          "scanned": 11,
           "total": 27,
-          "percentage": 30,
+          "percentage": 41,
           "tone": "red",
-          "dark": 19
+          "dark": 16
         }
       ],
       "darkByReason": {
         "missing_source": 30,
-        "adapter_ready_disabled": 6,
+        "adapter_ready_disabled": 3,
         "dead_feed": 3,
         "manual_only": 6
       }
@@ -1551,20 +1551,20 @@
       {
         "name": "Nearmap",
         "tier": 3,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "Sydney"
         ],
         "atsType": "smartrecruiters",
         "sourceKey": "Nearmap",
         "supportedAdapter": "smartrecruiters",
-        "jobCountAtAudit": 29,
+        "jobCountAtAudit": 35,
         "careersUrl": "https://www.nearmap.com/careers",
         "sourceEvidenceUrl": "https://api.smartrecruiters.com/v1/companies/Nearmap/postings?limit=100&offset=0",
-        "manualFallback": "Manual URL/text intake until owner enables the validated SmartRecruiters feed.",
-        "notes": "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout.",
-        "darkReasonCode": "adapter_ready_disabled"
+        "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
+        "notes": "Owner-requested follow-on, preflight 2026-09-22: 35 postings / unique IDs, 11 fresh, 0 current gate-passers ($0 scoring). Official careers confirms Nearmap board, not subsidiary itel's separate Paycom catalog. Barangaroo location alias is currently rejected; separate generic location-policy follow-up.",
+        "darkReasonCode": null
       },
       {
         "name": "Macquarie Group",
@@ -1775,39 +1775,39 @@
       {
         "name": "Skyscanner",
         "tier": 3,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London",
           "Singapore"
         ],
         "atsType": "ashby",
-        "sourceKey": "skyscanner",
+        "sourceKey": "eb485598-6bf3-40a5-8560-d70150131305",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 12,
+        "jobCountAtAudit": 5,
         "careersUrl": "https://www.skyscanner.net/jobs",
-        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/skyscanner?includeCompensation=false",
+        "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/eb485598-6bf3-40a5-8560-d70150131305?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Owner-requested follow-on, preflight 2026-09-22: old skyscanner token is 404; replacement UUID board identifies Skyscanner and official website/privacy URLs. API and public board match all 5 IDs; 3 fresh, 1 gate-passer, projected 20 scoring seconds / $0.03. Corporate-site catalog parity remains unverified; no claim that five is all company openings.",
+        "darkReasonCode": null
       },
       {
         "name": "Plaid",
         "tier": 3,
-        "enabled": false,
-        "coverageState": "Validated, owner enablement pending",
+        "enabled": true,
+        "coverageState": "Supported",
         "targetLocations": [
           "London"
         ],
         "atsType": "ashby",
         "sourceKey": "plaid",
         "supportedAdapter": "ashby",
-        "jobCountAtAudit": 113,
+        "jobCountAtAudit": 118,
         "careersUrl": "https://plaid.com/careers/",
         "sourceEvidenceUrl": "https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=false",
         "manualFallback": "Manual URL/text intake if feed fails or a role is missing from the feed.",
-        "notes": null,
-        "darkReasonCode": "adapter_ready_disabled"
+        "notes": "Owner-requested follow-on, preflight 2026-09-22: 118 postings / unique IDs, 40 fresh, 0 current gate-passers ($0 scoring). Official London BizOps page links this Ashby board. Military/veteran EEO text appears to trigger the government gate; separate generic calibration follow-up.",
+        "darkReasonCode": null
       },
       {
         "name": "Waymo",

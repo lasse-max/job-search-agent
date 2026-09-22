@@ -80,6 +80,64 @@ The gate-passer counts for every company are scoring candidates, not recommendat
 After Batch B: **47/92 configured**, Tier 1 **12/20**, Tier 2 **27/45**, Tier 3
 **8/27**. Next scheduled ingestion still needs to confirm real reach and health.
 
+## Follow-On: Nearmap, Plaid, Skyscanner
+
+| Company | Catalog / unique IDs | Fresh | Fresh gate-passers | Scoring ETA | Projected spend |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Nearmap | 35 / 35 | 11 | 0 | 0 | $0 |
+| Plaid | 118 / 118 | 40 | 0 | 0 | $0 |
+| Skyscanner | 5 / 5 | 3 | 1 | 20 sec | $0.03 |
+| Total | 158 / 158 | 54 | 1 | 20 sec | $0.03 |
+
+All normalize with unique IDs, complete title/location/description/URL/date and
+healthy adapter checks. Nearmap full-detail fetch took eight seconds; each Ashby
+fetch took about one second. Sources:
+[Nearmap careers](https://www.nearmap.com/au/careers),
+[Plaid's official London BizOps application link](https://plaid.com/careers/openings/business-operations/london-office/business-operations-3/),
+[Skyscanner's current public board](https://jobs.ashbyhq.com/eb485598-6bf3-40a5-8560-d70150131305).
+
+Skyscanner's old `skyscanner` org token returns 404. The replacement UUID board
+identifies Skyscanner, its official website and candidate privacy policy, is not
+marked as a demo, and matches all five API IDs exactly. Wider corporate-site
+catalog parity is unverified (corporate jobs page access challenge, not bypassed).
+This is configured public-board coverage, not proof of all company openings.
+Nearmap coverage does not include its separately linked itel/Paycom subsidiary.
+
+Two more existing recall gaps need separate general-rule review:
+
+- Nearmap: all five fresh non-US roles are rejected at the Barangaroo, NSW location
+  label, which denotes a Sydney suburb. A diagnostic location-alias substitution
+  lets one through (Group Reporting Accountant); two then fail function and two
+  hit the government gate. Do not claim an obvious high-fit loss from these data.
+- Plaid: all four London records hit the government gate on military/veteran EEO
+  text. Only Technical Support is fresh; BizOps was posted August 19 and is stale.
+  Removing the exact EEO sentence diagnostically lets these records through. A
+  generic boilerplate fix must preserve genuine defense/clearance exclusions.
+
+## Coverage And Operating Cost
+
+| Tier | Before | After | Target | Remaining gap |
+| --- | ---: | ---: | ---: | ---: |
+| Tier 1 | 12/20 (60%) | 12/20 (60%) | At least 18/20 (90%) | 6 more |
+| Tier 2 | 21/45 (46.7%) | 27/45 (60%) | At least 36/45 (80%) | 9 more |
+| Tier 3 | 8/27 (29.6%) | 11/27 (40.7%) | At least 17/27 (60%) | 6 more |
+
+The nine added feeds raise configured enablement from 41/92 to **50/92 (54.3%)**.
+Report by tier, not a blended success claim: Tier 1 is unchanged and the coverage
+gate remains unmet. Aleph Alpha, Delivery Hero and Deliveroo remain disabled and
+uncounted. Profile JSON is regenerated from the same watchlist.
+
+All three batches total **2,060 postings, 862 fresh, 113 current gate-passers**:
+about **37.7 scoring minutes / $3.39**, plus about five minutes of observed public
+fetch work and database overhead. Scoring is not launched here. These are first
+scan upper estimates before ingestion dedup; later scans should only score fresh
+new/materially changed or eligible stale-evaluator records. The $30 cap remains
+unchanged, and unknown historical monthly spend is not relabeled as zero.
+Once pushed, these enables take effect at the next daily **06:00 UTC** scheduled
+scan. Holding the separate backfill does not hold new-feed scoring in that run.
+No manual dispatch is launched by this task; Cato should review the commits before
+the next scheduled activation. Daily cadence and spend-cap code are unchanged.
+
 ## Review Boundary
 
 The owner explicitly requested these named enablements in order. Cato remains the
@@ -88,3 +146,18 @@ enabled. Deliveroo's Greenhouse migration requires its own identity/date/alert
 reconciliation review before activation. The B-14 parser remains held until the
 owner confirms 20-30 real non-Spam alerts in the dedicated Gmail inbox; no mailbox
 access or parser work is included here.
+
+Deliveroo's [separate Greenhouse replacement proposal](briefs/deliveroo-greenhouse-replacement.md)
+is submitted for Cato review, not enabled by this rollout. It requires preserved
+posting identity, age, review state and new-role alert semantics across the ATS
+change; the migration-date cohort must not be advertised as newly posted roles.
+
+## Verification
+
+- Python 3.12.14: `python -m unittest discover -s tests`, 253 passed, including
+  cached curated/live benchmark gates, source enablement holds and Profile drift.
+- `python -m ruff check .`: passed.
+- Web: `pnpm test` (3 passed), `pnpm lint`, `pnpm typecheck`, `pnpm build`: passed.
+  Prebuild regenerated Profile JSON; the three Profile contract tests also passed.
+- Independent Cato review is still required. Builder sanity checks do not close it.
+- Pre-existing unrelated documentation edits remain outside these rollout commits.

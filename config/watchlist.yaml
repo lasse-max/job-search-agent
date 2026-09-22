@@ -5,9 +5,9 @@ metadata:
   tracker_source: "sanitized_tracker_reference"
   coverage_status_counts:
     needs_configuration: 15
-    supported: 47
+    supported: 50
     manual_fallback: 26
-    validated_owner_enablement_pending: 4
+    validated_owner_enablement_pending: 1
 companies:
   - name: "Google"
     tier: 1
@@ -1160,21 +1160,21 @@ companies:
     selected_for_initial_coverage: false
   - name: "Nearmap"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://www.nearmap.com/careers"
     current_role_url: null
     ats_type: "smartrecruiters"
     source_key: "Nearmap"
     supported_adapter: "smartrecruiters"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.smartrecruiters.com/v1/companies/Nearmap/postings?limit=100&offset=0"
-    job_count_at_audit: 29
+    job_count_at_audit: 35
     target_locations: ["Sydney"]
     target_role_family_notes: "Product Operations; AI/ML Program Delivery"
     warm_path: false
-    manual_fallback: "Manual URL/text intake until owner enables the validated SmartRecruiters feed."
+    manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
-    notes: "SmartRecruiters source validated 2026-07-12; deliberately left disabled pending bounded rollout."
+    notes: "Owner-requested follow-on, preflight 2026-09-22: 35 postings / unique IDs, 11 fresh, 0 current gate-passers ($0 scoring). Official careers confirms Nearmap board, not subsidiary itel's separate Paycom catalog. Barangaroo location alias is currently rejected; separate generic location-policy follow-up."
   - name: "Macquarie Group"
     tier: 3
     enabled: false
@@ -1354,33 +1354,35 @@ companies:
     selected_for_initial_coverage: false
   - name: "Skyscanner"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://www.skyscanner.net/jobs"
     current_role_url: null
     ats_type: "ashby"
-    source_key: "skyscanner"
+    source_key: "eb485598-6bf3-40a5-8560-d70150131305"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
-    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/skyscanner?includeCompensation=false"
-    job_count_at_audit: 12
+    coverage_state: "Supported"
+    source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/eb485598-6bf3-40a5-8560-d70150131305?includeCompensation=false"
+    job_count_at_audit: 5
     target_locations: ["London", "Singapore"]
     target_role_family_notes: "Business Operations; Commercial Strategy; Product Operations"
+    notes: "Owner-requested follow-on, preflight 2026-09-22: old skyscanner token is 404; replacement UUID board identifies Skyscanner and official website/privacy URLs. API and public board match all 5 IDs; 3 fresh, 1 gate-passer, projected 20 scoring seconds / $0.03. Corporate-site catalog parity remains unverified; no claim that five is all company openings."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
   - name: "Plaid"
     tier: 3
-    enabled: false
+    enabled: true
     careers_url: "https://plaid.com/careers/"
     current_role_url: null
     ats_type: "ashby"
     source_key: "plaid"
     supported_adapter: "ashby"
-    coverage_state: "Validated, owner enablement pending"
+    coverage_state: "Supported"
     source_evidence_url: "https://api.ashbyhq.com/posting-api/job-board/plaid?includeCompensation=false"
-    job_count_at_audit: 113
+    job_count_at_audit: 118
     target_locations: ["London"]
     target_role_family_notes: "Business Operations; Partnerships Strategy; GTM Strategy"
+    notes: "Owner-requested follow-on, preflight 2026-09-22: 118 postings / unique IDs, 40 fresh, 0 current gate-passers ($0 scoring). Official London BizOps page links this Ashby board. Military/veteran EEO text appears to trigger the government gate; separate generic calibration follow-up."
     warm_path: false
     manual_fallback: "Manual URL/text intake if feed fails or a role is missing from the feed."
     selected_for_initial_coverage: false
