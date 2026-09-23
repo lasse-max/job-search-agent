@@ -5,11 +5,12 @@ import sqlite3
 import unittest
 from unittest.mock import patch
 
-from app.config import load_candidate_profile, load_company_config
+from app.config import load_candidate_profile, load_company_config, load_location_policy
 from app.db import (
     _stored_evaluation_version,
     current_evaluation_policy_version,
     init_db,
+    persist_evaluation,
     record_evaluation_skip,
     stale_open_posting_ids_for_evaluator,
     upsert_company,
@@ -172,6 +173,59 @@ class SearchBroadeningTest(unittest.TestCase):
         first = _cache_path(Path("cache"), "model", row("Program Manager"), profile_version="v3")
         second = _cache_path(Path("cache"), "model", row("Program Manager"), profile_version="v4")
         self.assertNotEqual(first, second)
+
+    def test_location_policy_bump_reopens_fresh_skip_and_persists_corrected_evaluation(self) -> None:
+        conn = sqlite3.connect(":memory:")
+        conn.row_factory = sqlite3.Row
+        init_db(conn)
+        company = load_company_config()
+        company_id = upsert_company(conn, company)
+        source_id = upsert_source(conn, company_id, company)
+        for key, posted_at in (("fresh", "2026-09-22"), ("old", "2026-07-01")):
+            result = upsert_postings(conn, company_id, source_id, [JobPosting(
+                company=company.name, title="Business Operations Manager",
+                locations=["Barangaroo"], department="Business", employment_type="Full time",
+                description_text="Lead business operations and executive planning.",
+                source_type=company.ats_type, source_url=f"https://example.com/{key}",
+                source_job_id=key, source_posted_at=posted_at, raw_payload_hash=key,
+                canonical_key=key,
+            )], "2026-09-22")
+            with patch("app.db.load_location_policy", return_value=replace(
+                load_location_policy(), version="previous-location-policy",
+            )):
+                record_evaluation_skip(
+                    conn, result.new_posting_ids[0], key, "location_filter_not_allowed",
+                    evaluator_version=current_evaluation_policy_version(HYBRID_EVALUATOR_VERSION),
+                )
+                self.assertEqual(stale_open_posting_ids_for_evaluator(
+                    conn, source_id, evaluator_version=HYBRID_EVALUATOR_VERSION,
+                    limit=100, recency_cutoff="2026-09-02",
+                ), [])
+        ids = stale_open_posting_ids_for_evaluator(
+            conn, source_id, evaluator_version=HYBRID_EVALUATOR_VERSION,
+            limit=100, recency_cutoff="2026-09-02",
+        )
+        self.assertEqual(len(ids), 1)
+        posting = conn.execute("SELECT * FROM job_postings WHERE id = ?", (ids[0],)).fetchone()
+        self.assertEqual(posting["source_job_id"], "fresh")
+        evaluation = evaluate_role(posting, company, use_env_provider=False)
+        provenance = {
+            **evaluation.provenance,
+            "model_version": "test-cached-model",
+            "evaluator_version": HYBRID_EVALUATOR_VERSION,
+        }
+        versions = []
+        for policy_version in ("previous-location-policy", load_location_policy().version):
+            evaluation = replace(
+                evaluation, provenance={**provenance, "location_policy_version": policy_version},
+            )
+            versions.append(_stored_evaluation_version(evaluation))
+            self.assertTrue(persist_evaluation(conn, ids[0], "unchanged-material", evaluation))
+        self.assertNotEqual(*versions)
+        self.assertTrue(all(v.endswith(f"|{HYBRID_EVALUATOR_VERSION}") for v in versions))
+        self.assertFalse(persist_evaluation(conn, ids[0], "unchanged-material", evaluation))
+        self.assertEqual(conn.execute("SELECT COUNT(*) FROM role_evaluations").fetchone()[0], 2)
+        conn.close()
 
     def test_profile_bump_has_distinct_persistence_identity_and_same_calibrated_suffix(self) -> None:
         versions = []

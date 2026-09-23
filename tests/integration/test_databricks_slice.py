@@ -298,7 +298,7 @@ class DatabricksSliceTest(unittest.TestCase):
                 FROM role_evaluations
                 WHERE model_version = ?
                 """,
-                (f"fake-claude|{load_candidate_profile().version}|test_prompt_v1|{HYBRID_EVALUATOR_VERSION}",),
+                (_expected_fake_model_version(),),
             ).fetchone()[0]
             self.assertEqual(current_count, 3)
 
@@ -445,7 +445,7 @@ class DatabricksSliceTest(unittest.TestCase):
                 FROM role_evaluations
                 WHERE model_version = ?
                 """,
-                (f"fake-claude|{load_candidate_profile().version}|test_prompt_v1|{HYBRID_EVALUATOR_VERSION}",),
+                (_expected_fake_model_version(),),
             ).fetchone()[0]
 
             self.assertEqual(refreshed.changed_count, 0)
@@ -519,7 +519,7 @@ class DatabricksSliceTest(unittest.TestCase):
                 FROM role_evaluations
                 WHERE model_version = ?
                 """,
-                (f"fake-claude|{load_candidate_profile().version}|test_prompt_v1|{HYBRID_EVALUATOR_VERSION}",),
+                (_expected_fake_model_version(),),
             ).fetchone()[0]
             self.assertEqual(progressed.changed_count, 0)
             self.assertEqual(progressed.evaluated_count, 5)
@@ -706,6 +706,17 @@ class FakeEmailProvider:
     def send(self, message: EmailMessage) -> EmailSendResult:
         self.messages.append(message)
         return EmailSendResult(status="sent", provider_message_id="fake-message-id")
+
+
+def _expected_fake_model_version() -> str:
+    return "|".join((
+        "fake-claude",
+        load_candidate_profile().version,
+        "test_prompt_v1",
+        load_location_policy().version,
+        load_scoring_policy().version,
+        HYBRID_EVALUATOR_VERSION,
+    ))
 
 
 def _count(conn: sqlite3.Connection, table: str) -> int:

@@ -24,7 +24,7 @@ Older-prompt model caches are historical-response replays under the displayed cu
 |---|---|---|---|---|---:|---|---|---|---|
 | LNP-001 | Spotify | Executive Protection Specialist | skip | skip | 19 | L4 (50%) | not labelled | pass | pass |
 | LNP-002 | Spotify | Business Development Senior Manager, APAC | skip | skip | 44 | L5 (75%) | not labelled | pass | pass |
-| LNP-003 | Helsing | (Senior) Expert Export Control | skip | skip | 24 | L4 (70%) | not labelled | pass | pass |
+| LNP-003 | Helsing | (Senior) Expert Export Control | skip | skip | 27 | L4 (70%) | not labelled | pass | pass |
 | LNP-004 | Parloa | Senior Agent Architect (France) | skip | skip | 46 | L5 (72%) | not labelled | pass | pass |
 | LNP-005 | Spotify | Senior Manager, EU Government Affairs | skip | skip | 24 | L5 (72%) | not labelled | pass | pass |
 | LNP-006 | Stripe | Manager, Technical Account Management | skip | skip | 57 | L6 (85%) | not labelled | pass | pass |
@@ -40,7 +40,7 @@ Older-prompt model caches are historical-response replays under the displayed cu
 | LNP-016 | Snowflake | Senior Technical Support Engineer, Observe by Snowflake | skip | blocked | 28 | L5 (78%) | not labelled | pass | pass |
 | LNP-017 | Databricks | Staff Product Manager | skip | skip | 43 | L5 (78%) | not labelled | pass | pass |
 | LNP-018 | Xero | Senior Engineer | skip | blocked | 33 | L5 (72%) | not labelled | pass | pass |
-| LNP-019 | Helsing | Avionics Systems Engineer - Safety Critical Systems | skip | blocked | 18 | L6 (75%) | not labelled | pass | pass |
+| LNP-019 | Helsing | Avionics Systems Engineer - Safety Critical Systems | skip | blocked | 22 | L6 (75%) | not labelled | pass | pass |
 | LNP-020 | Pigment | AI Deployment Strategist | skip | blocked | 81 | L4 (72%) | pass | pass | pass |
 | LNP-021 | Mistral AI | CyberSecurity Engineer, Incident Response Lead | skip | blocked | 27 | L5 (70%) | not labelled | pass | pass |
 | LNP-022 | Xero | Partner Development Representative | skip | skip | 33 | L3 (70%) | not labelled | pass | pass |
@@ -64,7 +64,7 @@ Older-prompt model caches are historical-response replays under the displayed cu
 | LNP-040 | Sierra | Strategist, Agent Development (Arabic speaking) | skip | skip | 56 | L5 (75%) | not labelled | pass | pass |
 | LNP-041 | Xero | Customer Experience Billing Specialist | skip | skip | 44 | L3 (78%) | not labelled | pass | pass |
 | LNP-042 | Airwallex | Senior Product Manager, Transaction Risk | skip | skip | 56 | L5 (82%) | not labelled | pass | pass |
-| LNP-043 | Stripe | Integration Reliability Engineer, Technical Operations | skip | blocked | 39 | L4 (72%) | not labelled | pass | pass |
+| LNP-043 | Stripe | Integration Reliability Engineer, Technical Operations | skip | blocked | 43 | L4 (72%) | not labelled | pass | pass |
 | LNP-044 | Airbnb | Manager, Premium Support (Italian/English) | skip | skip | 52 | L4 (75%) | not labelled | pass | pass |
 | LNP-045 | Quantium | Business Development Lead | FMCG | skip | skip | 31 | L4 (75%) | not labelled | pass | pass |
 | LNP-046 | Checkout.com | Analytics Engineer | skip | blocked | 54 | L4 (70%) | not labelled | pass | pass |
@@ -79,12 +79,12 @@ Older-prompt model caches are historical-response replays under the displayed cu
 | LNP-055 | Anthropic | Commercial Counsel, GTM | skip | blocked | 56 | L4 (70%) | not labelled | pass | pass |
 | LNP-056 | N26 | KYCO Intern | skip | skip | 22 | L3 (90%) | not labelled | pass | pass |
 | LNP-057 | OpenAI | Head of GTM Partnerships, EMEA | skip | stretch | 69 | L6 (75%) | not labelled | pass | fail |
-| LNP-058 | Helsing | Senior Project Manager – Physical Products | skip | blocked | 41 | L5 (72%) | not labelled | pass | pass |
+| LNP-058 | Helsing | Senior Project Manager – Physical Products | skip | skip | 41 | L5 (72%) | not labelled | pass | pass |
 | LNP-059 | Waymo | Senior Safety Researcher, Computational Behavior Modeling | skip | skip | 21 | L6 (85%) | not labelled | pass | pass |
 | LNP-060 | Celonis | Enterprise Architect Director | skip | blocked | 40 | L6 (75%) | not labelled | pass | pass |
 | LNP-061 | Mistral AI | Product Monetisation & Pricing Lead | consider | consider | 73 | L5 (75%) | not labelled | pass | pass |
 | LNP-062 | Checkout.com | Senior Associate, Strategic Pricing | skip | skip | 58 | L4 (75%) | not labelled | pass | pass |
-| LNP-063 | Parloa | Working Student - AI Agent Architecture | skip | skip | 35 | L3 (92%) | not labelled | pass | pass |
+| LNP-063 | Parloa | Working Student - AI Agent Architecture | skip | blocked | 35 | L3 (92%) | not labelled | pass | pass |
 | LNP-064 | Stripe | Product Designer, Risk | skip | skip | 38 | L5 (78%) | not labelled | pass | pass |
 | LNP-065 | Checkout.com | Senior Specialist, Benefits | skip | skip | 37 | L4 (70%) | not labelled | pass | pass |
 | LNP-066 | Pigment | Partner Excellence Manager - London | skip | skip | 51 | L4 (70%) | not labelled | pass | pass |
@@ -118,12 +118,12 @@ Older-prompt model caches are historical-response replays under the displayed cu
 | LNP-094 | HelloFresh | Intern Menu Planning & Ingredients (f/m/x) | skip | skip | 18 | L3 (95%) | not labelled | pass | pass |
 | LNP-095 | Mistral AI | Applied AI Engineer, CyberSecurity | skip | blocked | 24 | L4 (60%) | not labelled | pass | pass |
 | LNP-096 | Airwallex | Senior IT Engineer, Financial System | skip | blocked | 40 | L5 (75%) | not labelled | pass | pass |
-| LNP-097 | Airwallex | Technical Support Lead (Asia Pacific incl. China coverage) | skip | skip | 36 | L4 (70%) | not labelled | pass | pass |
+| LNP-097 | Airwallex | Technical Support Lead (Asia Pacific incl. China coverage) | skip | blocked | 36 | L4 (70%) | not labelled | pass | pass |
 | LNP-098 | HelloFresh | Field Talent Community | skip | blocked | 13 | unknown (5%) | not labelled | pass | pass |
 | LNP-099 | Xero | Head of Technical Innovation (APAC) | consider | consider | 71 | L5 (72%) | not labelled | pass | pass |
 | LNP-100 | Databricks | Delivery Solutions Architect | skip | skip | 56 | L5 (78%) | not labelled | pass | pass |
 | LNP-101 | Sierra | Strategist, Agent Development (Italian speaking) | skip | skip | 56 | L5 (72%) | not labelled | pass | pass |
-| LNP-102 | Databricks | Manager, Field Engineering - Strategic Accounts Germany | skip | blocked | 48 | L6 (75%) | not labelled | pass | pass |
+| LNP-102 | Databricks | Manager, Field Engineering - Strategic Accounts Germany | skip | blocked | 53 | L6 (75%) | not labelled | pass | pass |
 | LNP-103 | N26 | AFC Associate - SAR Delegate (CDD / Fixed-term contract) | skip | skip | 24 | L4 (75%) | not labelled | pass | pass |
 | LNP-104 | Anthropic | Senior Data Center Capacity Delivery Manager, AUS | skip | skip | 27 | L5 (72%) | not labelled | pass | pass |
 | LNP-105 | Airwallex | Senior IT Engineer, LRC | skip | blocked | 37 | L5 (75%) | not labelled | pass | pass |
@@ -131,7 +131,7 @@ Older-prompt model caches are historical-response replays under the displayed cu
 | LNP-107 | Airbnb | Market Lead, Experiences | skip | skip | 53 | L4 (78%) | not labelled | pass | pass |
 | LNP-108 | Airwallex | Senior Product Manager, Identity & Authentication | skip | skip | 56 | L5 (80%) | not labelled | pass | pass |
 | LNP-109 | Block | Principal Designer, TIDAL | skip | skip | 38 | L5 (70%) | not labelled | pass | pass |
-| LNP-110 | Databricks | Senior Solutions Architect - Lakewatch | skip | blocked | 33 | L5 (78%) | not labelled | pass | pass |
+| LNP-110 | Databricks | Senior Solutions Architect - Lakewatch | skip | skip | 33 | L5 (78%) | not labelled | pass | pass |
 | LNP-111 | Sierra | Product Manager, Agent Development | stretch | skip | 55 | L5 (78%) | not labelled | pass | fail |
 | LNP-112 | Pigment | Talent Acquisition Manager GTM - Paris | skip | skip | 58 | L4 (75%) | not labelled | pass | pass |
 | LNP-113 | Helsing | Systems Engineer - Electromagnetic Interference (EMI) | skip | blocked | 22 | L5 (72%) | not labelled | pass | pass |
@@ -142,13 +142,13 @@ Older-prompt model caches are historical-response replays under the displayed cu
 | LNP-118 | Airbnb | Manager, Luxe Supply | skip | skip | 46 | L6 (82%) | not labelled | pass | pass |
 | LNP-119 | Airwallex | Senior Manager, Enterprise Strategy & GTM, APAC | consider | consider | 73 | L5 (75%) | not labelled | pass | pass |
 | LNP-120 | Checkout.com | Manager, Fraud and Risk Strategist | skip | skip | 28 | L5 (60%) | not labelled | pass | pass |
-| LNP-121 | Databricks | Director, Lakebase Sales Specialists (Central region) | skip | skip | 44 | L6 (78%) | not labelled | pass | pass |
+| LNP-121 | Databricks | Director, Lakebase Sales Specialists (Central region) | skip | skip | 48 | L6 (78%) | not labelled | pass | pass |
 | LNP-122 | Flix | Partner Manager (m/w/d) - DACH Region | skip | skip | 47 | L4 (82%) | not labelled | pass | pass |
 | LNP-123 | OpenAI | Solutions Engineer, Large Enterprise | skip | blocked | 46 | L5 (72%) | not labelled | pass | pass |
 | LNP-124 | Airwallex | Product Director, Financial Markets & Financial Platform | skip | blocked | 54 | L6 (78%) | not labelled | pass | pass |
 | LNP-125 | Mistral AI | Senior Technical Writer / Developer Educator | skip | skip | 32 | L4 (70%) | not labelled | pass | pass |
 | LNP-126 | OpenAI | Regional Client Partner, Ads Solutions | skip | skip | 50 | L5 (72%) | not labelled | pass | pass |
-| LNP-127 | Databricks | Senior Forward Deployed Engineer - Full stack | skip | blocked | 56 | L5 (75%) | not labelled | pass | pass |
+| LNP-127 | Databricks | Senior Forward Deployed Engineer - Full stack | skip | blocked | 71 | L5 (75%) | not labelled | pass | pass |
 | LNP-128 | Checkout.com | Senior Specialist , Technical Account Management - Crypto & iGaming | skip | skip | 48 | L4 (78%) | not labelled | pass | pass |
 | LNP-129 | Checkout.com | Senior Engineer, Workplace Technology (Okta) | skip | blocked | 11 | L4 (60%) | not labelled | pass | pass |
 | LNP-130 | Mistral AI | Applied AI, Evaluation Engineer | skip | blocked | 71 | L5 (70%) | not labelled | pass | pass |

@@ -1,4 +1,4 @@
-version: "location_policy_v3"
+version: "location_policy_v4"
 active: true
 profile_display:
   allowed_metros:
@@ -18,6 +18,66 @@ profile_display:
     - "Brisbane"
   tier1_only: ["Dublin / Ireland"]
   high_friction: ["United States"]
+location_aliases:
+  # Search-only expansions. Original posting locations remain unchanged for display.
+  # Unknown extra geographic context prevents expansion; ambiguous names require context.
+  Sydney:
+    aliases: ["Barangaroo", "Pyrmont", "Surry Hills"]
+    context_patterns: ['\b(?:sydney|nsw|new south wales|australia|au)\b']
+    source: "https://www.cityofsydney.nsw.gov.au/areas-of-service"
+  Melbourne:
+    aliases: ["Docklands", "Southbank", "Parkville"]
+    context_patterns: ['\b(?:melbourne|vic|victoria|australia|au)\b']
+    required_context_patterns: ['\b(?:melbourne|vic|victoria)\b']
+    source: "https://whatson.melbourne.vic.gov.au/visitor-info/precincts"
+  London:
+    aliases: ["Canary Wharf"]
+    context_patterns: ['\b(?:london|england|united kingdom|uk|gb)\b']
+    source: "https://www.visitlondon.com/things-to-do/london-areas/canary-wharf/things-to-do-in-canary-wharf"
+  Berlin:
+    aliases: ["Kreuzberg", "Friedrichshain"]
+    context_patterns: ['\b(?:berlin|germany|deutschland|de)\b']
+    source: "https://www.visitberlin.de/en/districts/friedrichshain-kreuzberg"
+  Munich:
+    aliases: ["Schwabing", "Schwabing-West", "Schwabing-Freimann"]
+    context_patterns: ['\b(?:munich|munchen|muenchen|bavaria|bayern|germany|deutschland|de)\b']
+    source: "https://stadt.muenchen.de/en/rathaus/daten-fakten/bezirke.html"
+  Hamburg:
+    aliases: ["HafenCity", "Speicherstadt"]
+    context_patterns: ['\b(?:hamburg|germany|deutschland|de)\b']
+    source: "https://www.hamburg.com/visitors/hamburg-by/speicherstadt-hafencity-route-22756"
+  Amsterdam:
+    aliases: ["Zuidas"]
+    context_patterns: ['\b(?:amsterdam|netherlands|nederland|nl|north holland|noord holland)\b']
+    source: "https://www.amsterdam.nl/bestuur-organisatie/organisatie/ruimte-en-economie/zuidas/"
+  Paris:
+    aliases: ["La Defense"]
+    context_patterns: ['\b(?:paris|france|fr|ile de france|hauts de seine)\b']
+    source: "https://www.parisladefense.com/fr/territoire/quartier-et-son-histoire"
+  Copenhagen:
+    aliases: ["Orestad", "Oerestad"]
+    context_patterns: ['\b(?:copenhagen|kobenhavn|koebenhavn|denmark|danmark|dk)\b']
+    source: "https://www.visitcopenhagen.com/copenhagen/areas/neighborhoods/what-to-see-and-do-in-the-unique-orestad-neighbourhood"
+  Zurich:
+    aliases: ["Oerlikon", "Neu-Oerlikon"]
+    context_patterns: ['\b(?:zurich|zuerich|switzerland|schweiz|ch)\b']
+    source: "https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/kreise-und-quartiere/kreis-11/oerlikon.html"
+  Lisbon:
+    aliases: ["Parque das Nacoes"]
+    context_patterns: ['\b(?:lisbon|lisboa|portugal|pt)\b']
+    source: "https://www.visitlisboa.com/en/places/jardim-parque-das-nacoes"
+  Singapore:
+    aliases: ["one-north", "one north"]
+    context_patterns: ['\b(?:singapore|sg)\b']
+    source: "https://www.jtc.gov.sg/-/media/project/jtc-cx/corpweb/assets/find-land/estates/one-north/one-north-brochure.pdf"
+  Perth:
+    aliases: ["Claisebrook", "Claisebrook Cove"]
+    context_patterns: ['\b(?:perth|wa|western australia|australia|au)\b']
+    source: "https://www.perth.wa.gov.au/community/neighbourhoods/claisebrook"
+  Brisbane:
+    aliases: ["Fortitude Valley"]
+    context_patterns: ['\b(?:brisbane|qld|queensland|australia|au)\b']
+    source: "https://www.brisbane.qld.gov.au/business/business-support/vibrant-and-active-precincts/brisbanes-central-industrial-and-retail-precincts"
 pre_evaluation_filter:
   enabled: true
   policy_note: "Posted-location gate only; visa feasibility is evaluated separately under markets."

@@ -82,10 +82,19 @@ class LocationGateConfig:
 
 
 @dataclass(frozen=True)
+class LocationAliasConfig:
+    city: str
+    aliases: tuple[str, ...]
+    context_patterns: tuple[str, ...]
+    required_context_patterns: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class LocationPolicyConfig:
     version: str
     markets: dict[str, MarketPolicyConfig]
     pre_evaluation_filter: LocationGateConfig
+    aliases: tuple[LocationAliasConfig, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -297,9 +306,24 @@ def load_location_policy(
     if not isinstance(raw_gate, dict):
         raw_gate = {}
 
+    raw_aliases = data.get("location_aliases", {})
+    if not isinstance(raw_aliases, dict):
+        raise ValueError(f"Invalid location_aliases in {path}")
+    aliases: list[LocationAliasConfig] = []
+    for city, raw_alias in raw_aliases.items():
+        if not isinstance(raw_alias, dict) or not raw_alias.get("aliases"):
+            raise ValueError(f"Invalid location aliases for {city} in {path}")
+        aliases.append(LocationAliasConfig(
+            city=str(city),
+            aliases=_tuple_of_str(raw_alias.get("aliases")),
+            context_patterns=_tuple_of_str(raw_alias.get("context_patterns")),
+            required_context_patterns=_tuple_of_str(raw_alias.get("required_context_patterns")),
+        ))
+
     return LocationPolicyConfig(
         version=str(data.get("version") or "location_policy_unknown"),
         markets=markets,
+        aliases=tuple(aliases),
         pre_evaluation_filter=LocationGateConfig(
             enabled=bool(raw_gate.get("enabled", True)),
             allowed_location_patterns=_tuple_of_str(raw_gate.get("allowed_location_patterns")),

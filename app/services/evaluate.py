@@ -31,6 +31,12 @@ from app.services.llm_evaluator import (
     provider_from_env,
 )
 from app.services.material import material_hash_for_row
+from app.services.location_aliases import resolve_location_aliases
+from app.services.requirement_scope import (
+    CLEARANCE_PATTERN,
+    has_nearby_requirement,
+    scoped_requirement_fragments,
+)
 from app.services.text_rules import unsupported_language_requirement
 
 
@@ -75,7 +81,7 @@ def relevance_decision(row: sqlite3.Row, company: CompanyConfig) -> RelevanceDec
     if unsupported_language_requirement(requirement_text, profile.languages):
         return RelevanceDecision(False, "unsupported_language_requirement")
 
-    if _government_defense_or_clearance_scope(requirement_text):
+    if _government_defense_or_clearance_scope(requirement_text, title_department):
         return RelevanceDecision(False, "government_defense_clearance_declined")
 
     business_program_stretch = _business_program_management_stretch(
@@ -116,7 +122,7 @@ def evaluate_role(
     profile = load_candidate_profile()
     hard_blockers = _hard_blockers(
         title_lower,
-        text,
+        _role_requirement_text(row),
         locations,
         company,
         scoring_policy,
@@ -549,7 +555,7 @@ def _fit_cap_for_gate(
         return 55
     if unsupported_language_requirement(requirement_text, profile.languages):
         return 55
-    if _government_defense_or_clearance_scope(requirement_text):
+    if _government_defense_or_clearance_scope(requirement_text, title_department):
         return 55
     business_program_stretch = _business_program_management_stretch(title_department, text)
     if _engineering_program_scope(title_department, text) and not business_program_stretch:
@@ -696,7 +702,7 @@ def _feasibility(
     location_policy: LocationPolicyConfig | None = None,
 ) -> tuple[str, str]:
     location_policy = location_policy or load_location_policy()
-    joined = " ".join(locations).lower()
+    joined = " ".join(resolve_location_aliases(locations, location_policy)).lower()
     market = _market_for_location(joined, location_policy)
     if market is None:
         return (
@@ -728,7 +734,10 @@ def _market_for_location(
         "Australia": ("sydney", "melbourne", "perth", "brisbane", "australia"),
         "UK": ("london", "united kingdom", "uk"),
         "Singapore": ("singapore",),
-        "EU": ("germany", "munich", "berlin", "paris", "amsterdam", "madrid", "europe"),
+        "EU": (
+            "germany", "munich", "berlin", "hamburg", "paris", "amsterdam",
+            "copenhagen", "zurich", "lisbon", "madrid", "europe",
+        ),
     }
     us_market = location_policy.markets.get("United States")
     if us_market and _matches_us_location(joined_location):
@@ -789,7 +798,7 @@ def _is_low_priority_surface_function(
     requirement_text = _requirement_scope_text(title_department, text)
     if unsupported_language_requirement(requirement_text, profile.languages):
         return True
-    if _government_defense_or_clearance_scope(requirement_text):
+    if _government_defense_or_clearance_scope(requirement_text, title_department):
         return True
     if _pre_sales_value_function(title_department):
         return True
@@ -906,27 +915,27 @@ def _partnership_manager_without_strategy_ops(text: str) -> bool:
     )
 
 
-def _government_defense_or_clearance_scope(text: str) -> bool:
-    if re.search(
-        r"\b(?:security|sc|dv)\s+clearance\b|\bsecurity vetting\b",
-        text,
-        flags=re.IGNORECASE,
-    ):
+def _government_defense_or_clearance_scope(text: str, title_department: str = "") -> bool:
+    scope_pattern = r"\b(?:government|public sector|military|national security|defen[cs]e)\b"
+    if re.search(scope_pattern, title_department, flags=re.IGNORECASE):
         return True
+    if _security_clearance_required(text):
+        return True
+    config = load_candidate_profile().disqualifying_hard_requirements
+    duty_patterns = (
+        r"\b(?:lead|own|deliver|deploy\w*|support|serve|work(?:ing)? (?:with|for)|"
+        r"responsible for)\b",
+    )
     for fragment in _requirement_fragments(text):
-        if re.search(
-            r"\b(?:government|public sector|military|national security)\b",
-            fragment,
-            flags=re.IGNORECASE,
-        ):
-            return True
-        if not re.search(r"\bdefen[cs]e\b", fragment, flags=re.IGNORECASE):
-            continue
         if re.search(r"\b(?:first|second|third)?\s*line of defen[cs]e\b", fragment):
             continue
         if _nice_to_have_context(fragment):
             continue
-        return True
+        for match in re.finditer(scope_pattern, fragment, flags=re.IGNORECASE):
+            if fragment.startswith("Responsibilities: ") or has_nearby_requirement(
+                fragment, match, config.must_have_context_patterns + duty_patterns,
+            ):
+                return True
     return False
 
 
@@ -1097,7 +1106,7 @@ def _work_authorization_blocker(
     company: CompanyConfig,
     location_policy: LocationPolicyConfig,
 ) -> HardBlocker | None:
-    joined = " ".join(locations).lower()
+    joined = " ".join(resolve_location_aliases(locations, location_policy)).lower()
     market = _market_for_location(joined, location_policy)
     if market is None or company.warm_path:
         return None
@@ -1153,16 +1162,18 @@ def _enforceable_disqualifying_fragments(
     if not config.requirement_patterns:
         return []
     fragments: list[str] = []
-    for fragment in _requirement_fragments(text):
-        if _matches_any(fragment, config.nice_to_have_context_patterns):
+    for fragment in _requirement_fragments(text, profile):
+        if _matches_any(fragment, config.nice_to_have_context_patterns) or re.search(
+            r"\ba (?:strong|definite|big|significant) plus\b", fragment, flags=re.IGNORECASE,
+        ):
             continue
         active_text = _unnegated_requirement_text(fragment, config.requirement_patterns)
         if active_text is None:
             continue
         if _technical_degree_mention(active_text):
-            if not _degree_requirement(active_text) or not _matches_any(
-                active_text,
-                config.must_have_context_patterns,
+            if not _degree_requirement(active_text) or not any(
+                has_nearby_requirement(active_text, match, config.must_have_context_patterns)
+                for match in re.finditer(_TECHNICAL_DEGREE_PATTERN, active_text, re.IGNORECASE)
             ):
                 continue
         elif not _technical_depth_requirement(active_text):
@@ -1315,12 +1326,14 @@ def _required_credential_gap(text: str) -> bool:
     return False
 
 
-def _requirement_fragments(text: str) -> list[str]:
+def _requirement_fragments(
+    text: str, profile: CandidateProfileConfig | None = None,
+) -> list[str]:
     fragments: list[str] = []
-    for sentence in re.split(r"[\n.;•]+", text):
-        sentence = sentence.strip()
-        if not sentence:
-            continue
+    config = (profile or load_candidate_profile()).disqualifying_hard_requirements
+    for sentence in scoped_requirement_fragments(
+        text, config.must_have_context_patterns, config.requirement_patterns,
+    ):
         fragments.extend(_preference_scoped_fragments(sentence))
     return fragments
 
@@ -1336,7 +1349,8 @@ _NEGATED_REQUIREMENT_PATTERN = (
 
 def _preference_scoped_fragments(sentence: str) -> list[str]:
     preference_pattern = (
-        r"(?:\b(?:preferred|nice to have|bonus|a plus|asset|optional|helpful|desirable|"
+        r"(?:\b(?:preferred|nice to have|bonus|a (?:strong |definite |big |significant )?plus|"
+        r"asset|optional|helpful|desirable|"
         r"not required)\b"
         rf"|{_NEGATED_REQUIREMENT_PATTERN})"
     )
@@ -1346,7 +1360,10 @@ def _preference_scoped_fragments(sentence: str) -> list[str]:
         r"\b(?:require(?:s|d|ment|ments)?|mandatory|must|needs?\s+to|minimum qualifications?|"
         r"requirements?|qualifications?)\b"
     )
-    if not re.search(required_context_pattern, sentence, flags=re.IGNORECASE) and re.search(
+    # A section heading supplies default context, not an explicit mandate that
+    # overrides a terminal preference covering comma-separated alternatives.
+    clause = re.sub(r"^Requirements:\s*", "", sentence)
+    if not re.search(required_context_pattern, clause, flags=re.IGNORECASE) and re.search(
         rf"{preference_pattern}\s*$",
         sentence,
         flags=re.IGNORECASE,
@@ -1410,19 +1427,17 @@ def _join_requirement_clause(buffer: str, clause: str, delimiter: str) -> str:
 
 
 def _security_clearance_required(text: str) -> bool:
-    return bool(
-        re.search(
-            (
-                r"\b(?:security|sc|dv)\s+clearance\b"
-                r"|\bsecurity vetting\b"
-                r"|\bsecurity check\s*\(sc\)"
-                r"|developed vetting"
-                r"|continuous (?:uk )?residency"
-            ),
-            text,
-            flags=re.IGNORECASE,
-        )
+    config = load_candidate_profile().disqualifying_hard_requirements
+    contexts = config.must_have_context_patterns + (
+        r"\b(?:eligible for|ability to|obtain(?:ing)?|maintain|undergo|hold|holding)\b",
     )
+    for fragment in _requirement_fragments(text):
+        if _nice_to_have_context(fragment):
+            continue
+        for match in re.finditer(CLEARANCE_PATTERN, fragment, flags=re.IGNORECASE):
+            if has_nearby_requirement(fragment, match, contexts):
+                return True
+    return False
 
 
 def _technical_pm_depth(title_lower: str, text: str) -> bool:
@@ -1751,13 +1766,13 @@ def _location_gate_decision(
     location_policy: LocationPolicyConfig,
 ) -> RelevanceDecision | None:
     gate = location_policy.pre_evaluation_filter
+    locations = resolve_location_aliases(json.loads(row["locations_json"]), location_policy)
     if not gate.enabled:
-        locations = json.loads(row["locations_json"])
         if not _matches_target_location(locations, company.target_locations):
             return RelevanceDecision(False, "non_target_location")
         return None
 
-    locations_text = " ".join(json.loads(row["locations_json"])).lower()
+    locations_text = " ".join(locations).lower()
     if not locations_text.strip():
         return RelevanceDecision(False, "location_filter_missing_location")
 

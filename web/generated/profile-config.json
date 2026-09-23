@@ -1,7 +1,7 @@
 {
   "versions": {
     "candidate": "candidate_profile_v4",
-    "location": "location_policy_v3",
+    "location": "location_policy_v4",
     "scoring": "scoring_policy_v2",
     "recency": "recency_policy_v2"
   },

@@ -979,7 +979,7 @@ def _stored_evaluation_version(
     )
     evaluator_version = evaluation.provenance.get("evaluator_version")
     # Preserve historical captures while allowing unchanged JDs to be rescored
-    # under a new profile/prompt without colliding with the unique model key.
+    # under new profile/prompt/policy inputs without colliding with the model key.
     if (
         model_version is None
         and evaluator_version
@@ -988,6 +988,8 @@ def _stored_evaluation_version(
         revisions = [
             evaluation.provenance.get("candidate_profile_version"),
             evaluation.provenance.get("prompt_version"),
+            evaluation.provenance.get("location_policy_version"),
+            evaluation.provenance.get("scoring_policy_version"),
         ]
         for revision in revisions:
             if revision and revision not in str(stored_model_version).split("|"):
