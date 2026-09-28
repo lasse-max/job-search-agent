@@ -1,0 +1,4 @@
+version: "model_budget_v1"
+default_monthly_cap_usd: 30
+# Owner-approved increases apply to the named UTC month only, never the next month.
+month_overrides: {}

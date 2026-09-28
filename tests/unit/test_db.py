@@ -4,6 +4,7 @@ import json
 import sqlite3
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 from app.db import (
     _stored_evaluation_version,
@@ -86,7 +87,10 @@ class JobPostingPersistenceTest(unittest.TestCase):
         )
         self.assertEqual(latest_source_failures(conn), [])
 
-    def test_recency_cutoff_bounds_backfill_and_digest_with_first_seen_fallback(self) -> None:
+    @patch("app.source_policy.load_watchlist", return_value=[{
+        "name": "ExampleCo", "enabled": True, "ats_type": "greenhouse", "source_key": "example",
+    }])
+    def test_recency_cutoff_bounds_backfill_and_digest_with_first_seen_fallback(self, _watchlist) -> None:
         conn = sqlite3.connect(":memory:")
         conn.row_factory = sqlite3.Row
         init_db(conn)

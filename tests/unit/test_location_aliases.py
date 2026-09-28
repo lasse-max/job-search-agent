@@ -56,6 +56,30 @@ class LocationAliasesTest(unittest.TestCase):
         self.assertEqual(row, original)
         self.assertNotIn("Sydney", locations[0])
 
+    def test_subdivision_codes_resolve_only_in_the_matching_alias_context(self) -> None:
+        cases = {
+            "Sydney": "Barangaroo, NSW",
+            "Melbourne": "Docklands, VIC",
+            "Berlin": "Kreuzberg, BE",
+            "Munich": "Schwabing, BY",
+            "Hamburg": "HafenCity, HH",
+            "Amsterdam": "Zuidas, NH",
+            "Paris": "La Defense, IDF",
+            "Zurich": "Oerlikon, ZH",
+            "Perth": "Claisebrook, WA",
+            "Brisbane": "Fortitude Valley, QLD",
+        }
+        policy = load_location_policy()
+        for city, location in cases.items():
+            with self.subTest(city=city):
+                self.assertEqual(resolve_location_aliases([location]), [f"{location} ({city})"])
+                self.assertIsNone(_location_gate_decision(_row(location), _company(), policy))
+                foreign_location = f"{location}, United States"
+                self.assertEqual(resolve_location_aliases([foreign_location]), [foreign_location])
+        for location in ("Oerlikon, NSW", "Zuidas, ZH", "Docklands, VIC, Canada", "ZH"):
+            with self.subTest(location=location):
+                self.assertEqual(resolve_location_aliases([location]), [location])
+
     def test_boundaries_homonyms_and_foreign_context_do_not_expand(self) -> None:
         cases = [
             "Barangarooville",

@@ -9,6 +9,7 @@ from datetime import date
 
 from app.db import wake_due_snoozes
 from app.models import ReviewState, utc_now
+from app.source_policy import live_source_sql
 
 
 @dataclass(frozen=True)
@@ -23,8 +24,9 @@ class ReviewUpdate:
 def list_reviews(conn: sqlite3.Connection) -> list[sqlite3.Row]:
     wake_due_snoozes(conn, utc_now()[:10])
     conn.commit()
+    source_clause, source_params = live_source_sql(conn)
     return conn.execute(
-        """
+        f"""
         SELECT
           jp.id AS job_id,
           c.name AS company,
@@ -47,6 +49,7 @@ def list_reviews(conn: sqlite3.Connection) -> list[sqlite3.Row]:
             SELECT MAX(id) FROM role_evaluations latest
             WHERE latest.job_posting_id = jp.id
           )
+        WHERE {source_clause}
         ORDER BY
           CASE orev.state
             WHEN 'new' THEN 1
@@ -58,13 +61,14 @@ def list_reviews(conn: sqlite3.Connection) -> list[sqlite3.Row]:
           c.tier,
           jp.first_seen_at DESC,
           jp.id
-        """
+        """, source_params,
     ).fetchall()
 
 
 def show_review(conn: sqlite3.Connection, job_id: int) -> sqlite3.Row | None:
+    source_clause, source_params = live_source_sql(conn)
     return conn.execute(
-        """
+        f"""
         SELECT
           jp.id AS job_id,
           c.name AS company,
@@ -91,9 +95,9 @@ def show_review(conn: sqlite3.Connection, job_id: int) -> sqlite3.Row | None:
             SELECT MAX(id) FROM role_evaluations latest
             WHERE latest.job_posting_id = jp.id
           )
-        WHERE jp.id = ?
+        WHERE jp.id = ? AND {source_clause}
         """,
-        (job_id,),
+        [job_id, *source_params],
     ).fetchone()
 
 
@@ -186,14 +190,7 @@ def _set_review(
 
 
 def _ensure_review_exists(conn: sqlite3.Connection, job_id: int) -> None:
-    row = conn.execute(
-        """
-        SELECT 1
-        FROM opportunity_reviews
-        WHERE job_posting_id = ?
-        """,
-        (job_id,),
-    ).fetchone()
+    row = show_review(conn, job_id)
     if row is None:
         raise ValueError(f"Job not found in review queue: {job_id}")
 

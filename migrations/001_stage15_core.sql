@@ -122,11 +122,19 @@ CREATE INDEX IF NOT EXISTS idx_reviews_state ON opportunity_reviews(state);
 DROP VIEW IF EXISTS current_opportunity_evaluations;
 DROP VIEW IF EXISTS current_calibrated_role_evaluations;
 
+-- Canonical runtime bootstrap: init_db recreates this view on every scan.
+-- Keep its read guards aligned with the owner-applied 010 view migration.
 CREATE VIEW current_calibrated_role_evaluations
 WITH (security_invoker = true) AS
 SELECT re.*
 FROM role_evaluations re
-WHERE re.id = (
+JOIN job_postings jp ON jp.id = re.job_posting_id
+JOIN job_sources js ON js.id = jp.source_id
+JOIN companies c ON c.id = jp.company_id
+WHERE js.company_id = c.id
+  AND lower(js.health_status) NOT IN ('disabled', 'retired')
+  AND (js.source_type = 'manual' OR c.enabled = 1)
+  AND re.id = (
   SELECT MAX(latest.id)
   FROM role_evaluations latest
   WHERE latest.job_posting_id = re.job_posting_id

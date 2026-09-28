@@ -26,6 +26,8 @@ class BackfillPreflightTest(unittest.TestCase):
         output = io.StringIO()
         with patch.dict("os.environ", {"JOB_AGENT_DATABASE_URL": "secret"}), \
              patch("scripts.preflight_backfill.PostgresConnection") as connect, \
+             patch("scripts.preflight_backfill.write_retirement_report",
+                   return_value={"posting_count": 0, "sources": []}), \
              patch("scripts.preflight_backfill.plan_stale_backfill_for_connection",
                    return_value=BackfillPlan(3, 60, 0.012, 21)), redirect_stdout(output):
             self.assertEqual(main(), 0)

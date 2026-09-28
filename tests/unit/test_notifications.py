@@ -281,7 +281,10 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertEqual(provider.messages, [])
             self.assertTrue((output_dir / "latest_digest.html").exists())
 
-    def test_failures_are_sent_even_when_payload_repeats(self) -> None:
+    @patch("app.source_policy.load_watchlist", return_value=[{
+        "name": "FailureCo", "enabled": True, "ats_type": "greenhouse", "source_key": "failureco",
+    }])
+    def test_failures_are_sent_even_when_payload_repeats(self, _watchlist) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
             output_dir = Path(directory) / "output"
@@ -954,7 +957,12 @@ class NotificationDeliveryTest(unittest.TestCase):
             self.assertIn("AI Deployment Strategist - Singapore", text_body)
             self.assertNotIn("London, United Kingdom, Singapore", text_body)
 
-    def test_digest_headers_include_latest_scan_reach(self) -> None:
+    @patch("app.source_policy.load_watchlist", return_value=[
+        {"name": "ScanOne", "enabled": True, "ats_type": "greenhouse", "source_key": "scanone"},
+        {"name": "ScanTwo", "enabled": True, "ats_type": "ashby", "source_key": "scantwo"},
+        {"name": "DisabledScan", "enabled": False, "ats_type": "lever", "source_key": "disabledscan"},
+    ])
+    def test_digest_headers_include_latest_scan_reach(self, _watchlist) -> None:
         with tempfile.TemporaryDirectory() as directory:
             db_path = Path(directory) / "agent.sqlite"
             add_text_intake(

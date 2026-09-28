@@ -26,7 +26,11 @@ test("intake errors distinguish missing RPC, ownership, changed state and unknow
 });
 
 test("scan reach excludes stale sources, manual companies, disabled companies and repeat scans", () => {
-  const companies = [{ id: 1, name: "Current" }, { id: 2, name: "Disabled" }, { id: 3, name: "Manual" }];
+  const companies = [
+    { id: 1, name: "Current", enabled: 1 },
+    { id: 2, name: "Disabled", enabled: 0 },
+    { id: 3, name: "Manual", enabled: 0 }
+  ];
   const configured = [
     { name: "Current", enabled: true, atsType: "ashby", sourceKey: "current" },
     { name: "Disabled", enabled: false, atsType: "lever", sourceKey: "disabled" }

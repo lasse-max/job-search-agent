@@ -29,6 +29,7 @@ from app.services.text_rules import (
 )
 from app.postgres import connect_postgres, is_postgres_connection, postgres_core_schema
 from app.recency import recency_cutoff_date
+from app.source_policy import active_source_ids, live_source_sql
 
 
 DEFAULT_EVALUATOR_VERSION = "deterministic_fallback_v1"
@@ -273,9 +274,11 @@ def upsert_source(
         UPDATE job_sources
         SET health_status = 'disabled'
         WHERE company_id = ?
+          AND source_type != 'manual'
+          AND ? != 'manual'
           AND NOT (source_type = ? AND source_key = ?)
         """,
-        (company_id, company.ats_type, company.source_key),
+        (company_id, company.ats_type, company.ats_type, company.source_key),
     )
     conn.execute(
         """
@@ -868,8 +871,11 @@ def stale_open_posting_ids_for_evaluator(
     limit: int,
     skip_policy_version: str | None = None,
     recency_cutoff: str | None = None,
+    include_inactive_for_audit: bool = False,
 ) -> list[int]:
     if limit <= 0:
+        return []
+    if not include_inactive_for_audit and source_id not in active_source_ids(conn):
         return []
     profile_version = load_candidate_profile().version
     location_version = load_location_policy().version
@@ -1044,7 +1050,8 @@ def get_digest_rows(
     since_clause = ""
     latest_version_clause = ""
     recency_clause = ""
-    params: list[str] = []
+    source_clause, source_params = live_source_sql(conn)
+    params: list[str | int] = list(source_params)
     if since is not None:
         since_clause = """
           AND re.created_at >= ?
@@ -1100,6 +1107,7 @@ def get_digest_rows(
         JOIN role_evaluations re ON re.job_posting_id = jp.id
         WHERE orev.state = 'new'
           AND jp.availability_state = 'open'
+          AND {source_clause}
           {since_clause}
           {recency_clause}
           AND re.id = (
@@ -1175,8 +1183,9 @@ def record_notification(
 
 
 def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sqlite3.Row]:
+    source_clause, source_params = live_source_sql(conn, "js.id")
     return conn.execute(
-        """
+        f"""
         SELECT
           c.name AS company,
           js.source_type,
@@ -1197,8 +1206,7 @@ def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sql
             WHERE newer.job_source_id = sr.job_source_id
           )
         ) latest ON latest.job_source_id = js.id
-        WHERE c.enabled = 1
-          AND js.health_status != 'disabled'
+        WHERE {source_clause}
           AND (
             js.health_status IN ('degraded', 'failing', 'unsupported')
             OR latest.status != 'success'
@@ -1206,13 +1214,14 @@ def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sql
         ORDER BY COALESCE(latest.id, 0) DESC, c.tier, c.name
         LIMIT ?
         """,
-        (limit,),
+        [*source_params, limit],
     ).fetchall()
 
 
 def latest_scan_reach(conn: sqlite3.Connection) -> ScanReach:
+    source_clause, source_params = live_source_sql(conn, "js.id")
     row = conn.execute(
-        """
+        f"""
         SELECT
           COALESCE(SUM(COALESCE(latest.fetched_count, 0)), 0) AS fetched_count,
           COUNT(DISTINCT c.id) AS company_count
@@ -1227,10 +1236,9 @@ def latest_scan_reach(conn: sqlite3.Connection) -> ScanReach:
             WHERE newer.job_source_id = sr.job_source_id
           )
         ) latest ON latest.job_source_id = js.id
-        WHERE c.enabled = 1
-          AND js.health_status != 'disabled'
+        WHERE {source_clause}
           AND js.source_type != 'manual'
-        """
+        """, source_params,
     ).fetchone()
     return ScanReach(
         fetched_count=int(row["fetched_count"] or 0),

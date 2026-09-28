@@ -10,9 +10,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from app.config import DEFAULT_DB_PATH, load_enabled_company_configs, load_recency_policy
+from app.config import (
+    DEFAULT_DB_PATH, load_company_config, load_enabled_company_configs, load_recency_policy,
+)
 from app.db import (
     connect_runtime_database,
+    current_evaluation_policy_version,
     get_postings_by_ids,
     init_db,
     stale_open_posting_ids_for_evaluator,
@@ -22,6 +25,7 @@ from app.services.evaluate import HYBRID_EVALUATOR_VERSION, relevance_decision
 from app.services.ingest import ScanSummary, run_scan
 from app.services.manual_intake import ManualIntakeQueueSummary, process_manual_intake_queue
 from app.services.notifications import DigestDeliveryResult, deliver_digest
+from app.source_policy import source_exclusion_reason, source_inventory
 
 
 @dataclass(frozen=True)
@@ -47,6 +51,11 @@ class BackfillPlan:
     estimated_seconds: int
     projected_spend_usd: float
     max_age_days: int
+    policy_version: str = ""
+    selected_inactive_count: int = 0
+    excluded_inactive_candidate_count: int = 0
+    excluded_inactive_gate_passer_count: int = 0
+    excluded_sources: tuple[dict, ...] = ()
 
 
 def plan_stale_backfill(
@@ -91,11 +100,37 @@ def plan_stale_backfill_for_connection(conn, *, companies=None) -> BackfillPlan:
             int(row["id"]) for row in rows if relevance_decision(row, company).should_evaluate
         )
     count = len(item_ids)
+    excluded = []
+    for source in source_inventory(conn):
+        reason = source_exclusion_reason(source)
+        if reason is None or source["source_type"] == "manual":
+            continue
+        candidate_ids = stale_open_posting_ids_for_evaluator(
+            conn, source["source_id"], evaluator_version=HYBRID_EVALUATOR_VERSION,
+            limit=100_000, include_inactive_for_audit=True,
+        )
+        try:
+            company = load_company_config(source["company"])
+        except ValueError:
+            gate_passers = 0
+        else:
+            gate_passers = sum(relevance_decision(row, company).should_evaluate
+                               for row in get_postings_by_ids(conn, candidate_ids))
+        excluded.append({
+            "company": source["company"], "source_id": source["source_id"],
+            "source_type": source["source_type"], "source_key": source["source_key"],
+            "reason": reason, "fresh_stale_candidates": len(candidate_ids),
+            "gate_passers_excluded": gate_passers,
+        })
     return BackfillPlan(
         item_count=count,
         estimated_seconds=count * policy.estimated_seconds_per_evaluation,
         projected_spend_usd=count * policy.estimated_cost_per_evaluation_usd,
         max_age_days=policy.max_age_days,
+        policy_version=current_evaluation_policy_version(HYBRID_EVALUATOR_VERSION),
+        excluded_inactive_candidate_count=sum(row["fresh_stale_candidates"] for row in excluded),
+        excluded_inactive_gate_passer_count=sum(row["gate_passers_excluded"] for row in excluded),
+        excluded_sources=tuple(excluded),
     )
 
 

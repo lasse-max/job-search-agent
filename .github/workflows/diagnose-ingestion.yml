@@ -32,3 +32,10 @@ jobs:
         env:
           JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
         run: python scripts/preflight_backfill.py
+      - name: Upload read-only reconciliation report
+        if: ${{ inputs.backfill_preflight }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-retirement-reconciliation
+          path: output/source_retirement.json
+          if-no-files-found: error
