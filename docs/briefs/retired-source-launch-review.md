@@ -110,3 +110,51 @@ Local validation: Python 3.12 full unittest suite passed (288 tests), followed b
 pass. Web tests, lint, typecheck and production build pass; Profile JSON/YAML drift
 checks pass. GitHub CI and the extended production preflight are recorded below
 after the review branch is pushed. These builder checks do not replace Cato review.
+
+## Production Evidence For The PR
+
+Code commit: `a6d1507`. [PR #1](https://github.com/lasse-max/job-search-agent/pull/1).
+Both Python/Ruff and web CI passed in
+[run 36418815009](https://github.com/lasse-max/job-search-agent/actions/runs/36418815009).
+
+The extended read-only production preflight completed in 3m39s:
+[run 36418831448](https://github.com/lasse-max/job-search-agent/actions/runs/36418831448),
+2026-09-28 12:01 UTC. It uses the **proposed PR policy**, not reviewed main:
+`hybrid_claude_v4|candidate_profile_v4|location_policy_v5|scoring_policy_v2|recency_policy_v2`.
+
+| Planning result | Count / estimate |
+| --- | --- |
+| Fresh current-source roles selected | 438 |
+| Disabled/retired-source roles in selection | 0 |
+| Fresh stale candidates excluded from inactive sources | 45 |
+| Of those, relevance-gate passers excluded | 18 |
+| Scoring-only ETA | 8,760 seconds / 2h26m |
+| Scoring-only spend estimate | $13.14 |
+| Practical end-to-end planning window | Roughly 4-5 hours, including recent fetch/DB overhead |
+| Remaining September scan reserve | $3.30 |
+| Month-end projection before unplanned feed growth | Actual console MTD + $16.44 |
+
+The additional policy revision makes existing fresh older-policy evaluations/skips
+stale again, explaining why this is larger than main's 46-role plan. Do not launch
+the main plan and then another PR plan: after review/merge, reconcile fresh MTD,
+refresh this read-only count, then launch once. The $30 cap covers this estimate only
+if actual MTD is at most $13.56. No September override has been set without that input.
+
+All 45 excluded fresh candidates (18 gate passers) are from disabled Deliveroo
+Ashby. Old Mistral Lever, Black Forest Labs Greenhouse and disabled Atlassian each
+have zero fresh stale candidates. Deliveroo Greenhouse remains out.
+
+The separate all-age retirement report identifies **411 open historical-source
+postings**, not 411 backfill candidates:
+
+| Source | Open postings proposed for closure |
+| --- | --- |
+| Mistral AI, old Lever / mistral | 172 |
+| Black Forest Labs, Greenhouse / blackforestlabs | 17 |
+| Deliveroo, disabled Ashby / deliveroo | 222 |
+
+[Download the reconciliation artifact](https://github.com/lasse-max/job-search-agent/actions/runs/36418831448/artifacts/10967294662).
+Its source counts sum to 411. Plan hash:
+`45fbb631dfe1ba32f352cd0d1b85991f25a176befb902656c6416f3321a4e458`.
+No disabled manual source appeared in this production report. No retirement,
+migration, ledger replacement, cap increase, model call or email was performed.
