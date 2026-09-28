@@ -14,8 +14,22 @@ def recency_cutoff_date(
     now: datetime | None = None,
 ) -> str:
     policy = policy or load_recency_policy()
+    return _cutoff_date(policy.max_age_days, now=now)
+
+
+def backfill_cutoff_date(
+    policy: RecencyPolicyConfig | None = None,
+    *,
+    now: datetime | None = None,
+) -> str:
+    """Bound rescoring more tightly without narrowing browse/digest freshness."""
+    policy = policy or load_recency_policy()
+    return _cutoff_date(policy.backfill_max_age_days, now=now)
+
+
+def _cutoff_date(max_age_days: int, *, now: datetime | None) -> str:
     current = now or datetime.now(timezone.utc)
-    return (current.date() - timedelta(days=policy.max_age_days)).isoformat()
+    return (current.date() - timedelta(days=max_age_days)).isoformat()
 
 
 def posting_is_recent(

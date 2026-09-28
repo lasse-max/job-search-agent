@@ -28,7 +28,7 @@ from app.services.text_rules import (
     unsupported_language_requirement,
 )
 from app.postgres import connect_postgres, is_postgres_connection, postgres_core_schema
-from app.recency import recency_cutoff_date
+from app.recency import backfill_cutoff_date, recency_cutoff_date
 from app.source_policy import active_source_ids, live_source_sql
 
 
@@ -883,7 +883,7 @@ def stale_open_posting_ids_for_evaluator(
     skip_policy_version = skip_policy_version or current_evaluation_policy_version(
         evaluator_version
     )
-    recency_cutoff = recency_cutoff or recency_cutoff_date()
+    recency_cutoff = recency_cutoff or backfill_cutoff_date()
     rows = conn.execute(
         """
         SELECT jp.id
@@ -909,7 +909,7 @@ def stale_open_posting_ids_for_evaluator(
             WHERE es.job_posting_id = jp.id
               AND es.evaluator_version = ?
           )
-        ORDER BY COALESCE(re.created_at, jp.first_seen_at) ASC, jp.id ASC
+        ORDER BY COALESCE(jp.posted_at, jp.first_seen_at) DESC, jp.id DESC
         LIMIT ?
         """,
         (

@@ -168,6 +168,15 @@ def run_scan(
         dropped_evaluation_rows = []
         fallback_evaluation_count = 0
         rows_by_id = {int(row["id"]): row for row in get_postings_by_ids(conn, candidate_ids)}
+        candidate_ids = sorted(
+            (candidate_id for candidate_id in candidate_ids if candidate_id in rows_by_id),
+            key=lambda candidate_id: (
+                rows_by_id[candidate_id]["posted_at"]
+                or rows_by_id[candidate_id]["first_seen_at"],
+                candidate_id,
+            ),
+            reverse=True,
+        )
         recency_policy = load_recency_policy()
         for candidate_id in candidate_ids:
             row = rows_by_id.get(candidate_id)

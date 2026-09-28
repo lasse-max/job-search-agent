@@ -146,7 +146,7 @@ class SourceRetirementTest(unittest.TestCase):
     def test_preflight_reports_excluded_candidates_and_never_selects_them(self) -> None:
         self.seed()
         _, inactive_job = self.seed(name="Deliveroo")
-        with patch("app.db.recency_cutoff_date", return_value="2026-09-01"):
+        with patch("app.services.scheduled_scan.backfill_cutoff_date", return_value="2026-09-01"):
             plan = plan_stale_backfill_for_connection(self.conn)
         self.assertEqual(plan.item_count, 1)
         self.assertEqual(plan.selected_inactive_count, 0)
@@ -156,7 +156,7 @@ class SourceRetirementTest(unittest.TestCase):
         self.assertEqual(self.conn.execute("SELECT availability_state FROM job_postings WHERE id=?",
                                           (inactive_job,)).fetchone()[0], "open")
         self.conn.execute("UPDATE job_sources SET health_status='disabled'")
-        with patch("app.db.recency_cutoff_date", return_value="2026-09-01"):
+        with patch("app.services.scheduled_scan.backfill_cutoff_date", return_value="2026-09-01"):
             disabled_plan = plan_stale_backfill_for_connection(self.conn)
         self.assertEqual(disabled_plan.item_count, 0)
         self.assertEqual(disabled_plan.excluded_inactive_candidate_count, 2)

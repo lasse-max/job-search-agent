@@ -21,6 +21,7 @@ from app.db import (
     stale_open_posting_ids_for_evaluator,
 )
 from app.models import CompanyConfig
+from app.recency import backfill_cutoff_date
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION, relevance_decision
 from app.services.ingest import ScanSummary, run_scan
 from app.services.manual_intake import ManualIntakeQueueSummary, process_manual_intake_queue
@@ -74,6 +75,7 @@ def plan_stale_backfill(
 def plan_stale_backfill_for_connection(conn, *, companies=None) -> BackfillPlan:
     """Read-only planning against the same candidates/gate used by ingestion."""
     policy = load_recency_policy()
+    cutoff = backfill_cutoff_date(policy)
     item_ids: set[int] = set()
     for company in companies or load_enabled_company_configs():
         if company.ats_type == "manual":
@@ -94,6 +96,7 @@ def plan_stale_backfill_for_connection(conn, *, companies=None) -> BackfillPlan:
             int(source["id"]),
             evaluator_version=HYBRID_EVALUATOR_VERSION,
             limit=100_000,
+            recency_cutoff=cutoff,
         )
         rows = get_postings_by_ids(conn, candidate_ids)
         item_ids.update(
@@ -108,6 +111,7 @@ def plan_stale_backfill_for_connection(conn, *, companies=None) -> BackfillPlan:
         candidate_ids = stale_open_posting_ids_for_evaluator(
             conn, source["source_id"], evaluator_version=HYBRID_EVALUATOR_VERSION,
             limit=100_000, include_inactive_for_audit=True,
+            recency_cutoff=cutoff,
         )
         try:
             company = load_company_config(source["company"])
@@ -126,7 +130,7 @@ def plan_stale_backfill_for_connection(conn, *, companies=None) -> BackfillPlan:
         item_count=count,
         estimated_seconds=count * policy.estimated_seconds_per_evaluation,
         projected_spend_usd=count * policy.estimated_cost_per_evaluation_usd,
-        max_age_days=policy.max_age_days,
+        max_age_days=policy.backfill_max_age_days,
         policy_version=current_evaluation_policy_version(HYBRID_EVALUATOR_VERSION),
         excluded_inactive_candidate_count=sum(row["fresh_stale_candidates"] for row in excluded),
         excluded_inactive_gate_passer_count=sum(row["gate_passers_excluded"] for row in excluded),

@@ -29,11 +29,12 @@ class BackfillPreflightTest(unittest.TestCase):
              patch("scripts.preflight_backfill.write_retirement_report",
                    return_value={"posting_count": 0, "sources": []}), \
              patch("scripts.preflight_backfill.plan_stale_backfill_for_connection",
-                   return_value=BackfillPlan(3, 60, 0.012, 21)), redirect_stdout(output):
+                   return_value=BackfillPlan(3, 60, 0.012, 14)), redirect_stdout(output):
             self.assertEqual(main(), 0)
             connect.assert_called_once_with("secret", read_only=True)
             connect.return_value.close.assert_called_once()
         self.assertIn('"item_count": 3', output.getvalue())
+        self.assertIn('"max_age_days": 14', output.getvalue())
         self.assertNotIn("secret", output.getvalue())
 
     def test_preflight_redacts_errors(self) -> None:

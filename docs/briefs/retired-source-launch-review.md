@@ -11,6 +11,17 @@ raise the cap, or launch an unreviewed branch. Deliveroo Greenhouse stays exclud
 The earlier reconciliation prerequisite (ADR #103) is superseded by ADR #105;
 seed inputs, receipt cache and month-specific cap overrides are removed.
 
+**Further owner update:** the backfill window is now **14 days**, independently of
+the unchanged 21-day browse/digest window. `recency_policy_v3.backfill_max_age_days`
+controls both the full pass and daily 25-per-source trickle. Selection and actual
+evaluation order are newest effective posting date first (posting date, otherwise
+first-seen; descending ID for ties), before applying the source limit. Source
+iteration remains unchanged: this is newest-first within each source queue, not
+a cross-source queue redesign. Genuinely new/materially changed intake still uses
+the existing 21-day policy. ADR #106 records this scope. The 438-role figures below
+are historical 21-day evidence, not the new launch estimate; rerun preflight on this
+revision before launch.
+
 Read-only preflight on reviewed `main`:
 [run 36417083490](https://github.com/lasse-max/job-search-agent/actions/runs/36417083490)
 completed with server-enforced `transaction_read_only=on`: **46 pending roles,
@@ -26,7 +37,7 @@ MTD**. Reserve **$3.30** for up to three remaining September scans: maximum obse
 daily cost times three, plus 25%, rounded up. Those scans took approximately
 125/120/112 minutes end to end, so scoring-only ETA omits substantial fetch/DB time.
 
-The last observed tracked MTD of $8.439607 plus the PR's $13.14 backfill estimate
+The last observed tracked MTD of $8.439607 plus the prior $13.14 backfill estimate
 and $3.30 reserve is **$24.879607**, under the fixed $30 runaway guard. This is a
 ledger-based projection, not an accurate September provider bill. Refresh the
 read-only item count/ETA/cost before dispatch; leave the ledger itself untouched.
@@ -58,6 +69,9 @@ tracked-spend delta to be reported after the job. Do not describe it as invoiced
   stale-policy rows. No employer exceptions or model-version bump.
 - Login help identifies the owner's Supabase password, not their email password;
   no signup, reset, credential exposure or authorization change.
+- Backfill now has its own validated 14-day config and newest-first selector/loop.
+  It does not spend on policy-only re-evaluations aged 15-21 days; already-calibrated
+  roles in that range remain browse/digest eligible under the unchanged age policy.
 - Actions restores/saves the existing ledger under the same cache key/path and uses
   the unchanged $30 cap. Full backfill has no seed prerequisite. A read-only copy
   into `output/model_spend_before.json`, uploaded with the post-run ledger, records
@@ -99,6 +113,9 @@ to scanning. No builder production retirement or schema writes were performed.
 5. Re-run the extended **read-only** production preflight, inspect excluded-source
    counts/report, then use fresh item count, full ETA and cost for the one paid run.
    Do not launch it from the unreviewed PR branch or enable Deliveroo.
+6. The 14-day backfill cutoff is config-driven and shared with the planner; daily
+   and full queues are newest-first before limiting. Test exact boundary, missing
+   posted dates, scrambled IDs/evaluation timestamps, and the unchanged 21-day read.
 
 Offline cached benchmarks pass unchanged: curated33 recall100%, precision94.7%,
 blocker100%, exact20/33; uniform150 gate recall100%; gate-passer150 Apply/Consider
@@ -111,7 +128,7 @@ pass. Web tests, lint, typecheck and production build pass; Profile JSON/YAML dr
 checks pass. GitHub CI and the extended production preflight are recorded below
 after the review branch is pushed. These builder checks do not replace Cato review.
 
-## Production Evidence For The PR
+## Historical 21-Day Production Evidence
 
 Code commit: `a6d1507`. [PR #1](https://github.com/lasse-max/job-search-agent/pull/1).
 Both Python/Ruff and web CI passed in
