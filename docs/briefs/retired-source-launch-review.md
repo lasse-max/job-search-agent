@@ -18,9 +18,10 @@ evaluation order are newest effective posting date first (posting date, otherwis
 first-seen; descending ID for ties), before applying the source limit. Source
 iteration remains unchanged: this is newest-first within each source queue, not
 a cross-source queue redesign. Genuinely new/materially changed intake still uses
-the existing 21-day policy. ADR #106 records this scope. The 438-role figures below
-are historical 21-day evidence, not the new launch estimate; rerun preflight on this
-revision before launch.
+the existing 21-day policy. ADR #106 records this scope. The new read-only preflight
+selects **322 roles / $9.66 / 1h47m20s scoring**, with roughly **3.5-4.5 hours**
+end-to-end including recent fetch/DB overhead. The 438-role figures below are
+historical 21-day evidence, not the new launch estimate.
 
 Read-only preflight on reviewed `main`:
 [run 36417083490](https://github.com/lasse-max/job-search-agent/actions/runs/36417083490)
@@ -175,6 +176,43 @@ Its source counts sum to 411. Plan hash:
 `45fbb631dfe1ba32f352cd0d1b85991f25a176befb902656c6416f3321a4e458`.
 No disabled manual source appeared in this production report. No retirement,
 migration, ledger replacement, cap increase, model call or email was performed.
+
+## Current 14-Day Preflight
+
+Code: `54fad3c`. Read-only production
+[run 36423901225](https://github.com/lasse-max/job-search-agent/actions/runs/36423901225)
+completed successfully on 2026-09-28 at 12:48 UTC in 2m26s. The server reported
+`transaction_read_only=on`; no evaluation or database write occurred. Policy:
+`hybrid_claude_v4|candidate_profile_v4|location_policy_v5|scoring_policy_v2|recency_policy_v3`.
+
+| Planning result | Count / estimate |
+| --- | --- |
+| Fresh current-source roles selected, within 14 days | 322 |
+| Inactive-source roles selected | 0 |
+| Inactive-source fresh stale candidates excluded | 5 |
+| Of those, relevance-gate passers excluded | 1 |
+| Scoring-only ETA | 6,440 seconds / 1h47m20s |
+| Scoring-only spend estimate | $9.66 |
+| End-to-end planning range including fetch/DB overhead | Roughly 3.5-4.5 hours |
+| Reduction from prior 21-day plan | 116 roles / $3.48 / 38m40s scoring |
+
+All five inactive candidates are from disabled Deliveroo Ashby. The all-age
+retirement report is unchanged at 411 open postings: old Mistral Lever 172,
+Black Forest Labs Greenhouse 17, Deliveroo Ashby 222. Its refreshed
+[artifact](https://github.com/lasse-max/job-search-agent/actions/runs/36423901225/artifacts/10970244798)
+is for owner/Cato inspection, not automatically applied.
+
+Using the last observed tracked MTD (Sep27, $8.439607) plus $9.66 and the $3.30
+remaining-scan reserve projects **$21.399607 tracked**, not a provider-bill total.
+The ledger is not seeded or replaced and the cap stays $30. Refresh this plan at
+dispatch if review/merge is delayed; dates can age out and normal scans can reduce
+the queue. Deliveroo Greenhouse remains excluded.
+
+Validation: all 288 Python tests and Ruff pass locally. Actual fake-provider call
+order is tested for both 25/source and full backfills, including date boundaries,
+null posted dates, scrambled IDs/evaluation timestamps, and config14-to7 behavior.
+Web tests/lint/typecheck and Profile drift checks pass. All cached benchmark gates
+pass with byte-identical reports; no paid benchmark calls or cache edits occurred.
 
 ## Post-Merge Launch And Reporting
 
