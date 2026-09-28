@@ -571,7 +571,7 @@ class OperabilityTest(unittest.TestCase):
             workflow,
         )
         self.assertIn(
-            "MONTHLY_MODEL_SPEND_CAP_USD: ${{ steps.scan-budget.outputs.monthly_cap_usd }}", workflow,
+            'MONTHLY_MODEL_SPEND_CAP_USD: "30"', workflow,
         )
         self.assertNotIn("echo ${{ secrets.", workflow)
 

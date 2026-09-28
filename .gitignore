@@ -19,7 +19,6 @@ build/
 *.egg-info/
 data/private/
 data/model_spend_ledger.json
-data/model_spend_reconciliation.json
 # Real job-search artifacts — PII, never commit (Cato review 2026-06-27)
 *.xlsx
 Apply_Now_Interim_Tracker.xlsx

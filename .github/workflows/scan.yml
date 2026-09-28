@@ -10,14 +10,6 @@ on:
         required: false
         default: false
         type: boolean
-      reconciled_mtd_usd:
-        description: "Fresh provider console MTD in USD; replaces, never adds to tracked spend"
-        required: false
-        type: string
-      reconciled_as_of:
-        description: "Console reconciliation date, today's UTC YYYY-MM-DD (required with MTD)"
-        required: false
-        type: string
 
 concurrency:
   group: scheduled-scan
@@ -55,31 +47,23 @@ jobs:
           restore-keys: |
             job-agent-model-spend-v1-
 
-      - name: Restore model spend reconciliation proof
-        id: model-spend-reconciliation
-        uses: actions/cache/restore@v4
-        with:
-          path: data/model_spend_reconciliation.json
-          key: job-agent-spend-reconciliation-v1-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: |
-            job-agent-spend-reconciliation-v1-
-
       - name: Warn when prior tracked spend is unavailable
         if: ${{ steps.model-spend.outputs.cache-matched-key == '' }}
-        run: echo "::warning title=Model spend history unavailable::No retained spend ledger. Reconcile provider month-to-date usage before any full backfill; the configured cap cannot account for missing history."
+        run: echo "::warning title=Model spend history unavailable::No retained spend ledger. The USD 30 cap remains a runaway guard, but cannot account for missing history; tracked spend is not provider billing."
 
       - name: Install project
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
 
-      - name: Prepare and reconcile model budget
-        id: scan-budget
-        env:
-          FULL_STALE_BACKFILL: ${{ inputs.full_stale_backfill && 'true' || 'false' }}
-          RECONCILED_MTD_USD: ${{ inputs.reconciled_mtd_usd }}
-          RECONCILED_AS_OF: ${{ inputs.reconciled_as_of }}
-        run: python scripts/prepare_scan_budget.py
+      - name: Snapshot retained model spend before scan
+        run: |
+          mkdir -p output
+          if [ -f data/model_spend_ledger.json ]; then
+            cp data/model_spend_ledger.json output/model_spend_before.json
+          else
+            printf '{}\n' > output/model_spend_before.json
+          fi
 
       - name: Run scheduled scan
         env:
@@ -88,7 +72,7 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}
           JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
-          MONTHLY_MODEL_SPEND_CAP_USD: ${{ steps.scan-budget.outputs.monthly_cap_usd }}
+          MONTHLY_MODEL_SPEND_CAP_USD: "30"
           STALE_EVALUATION_BACKFILL_LIMIT: ${{ inputs.full_stale_backfill && '10000' || '25' }}
         run: job-agent scan-all
 
@@ -99,13 +83,6 @@ jobs:
           path: data/model_spend_ledger.json
           key: job-agent-model-spend-v1-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Save model spend reconciliation proof
-        if: ${{ always() && hashFiles('data/model_spend_reconciliation.json') != '' }}
-        uses: actions/cache/save@v4
-        with:
-          path: data/model_spend_reconciliation.json
-          key: job-agent-spend-reconciliation-v1-${{ github.run_id }}-${{ github.run_attempt }}
-
       - name: Upload local outputs
         if: always()
         uses: actions/upload-artifact@v4
@@ -114,7 +91,7 @@ jobs:
           path: |
             output/latest_digest.html
             output/latest_digest.txt
+            output/model_spend_before.json
             data/job_search_agent.sqlite
             data/model_spend_ledger.json
-            data/model_spend_reconciliation.json
           if-no-files-found: ignore

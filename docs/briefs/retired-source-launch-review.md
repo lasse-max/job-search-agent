@@ -4,15 +4,12 @@ Date: 2026-09-28. PR only. No paid backfill, retirement or migration applied.
 
 ## Launch Status
 
-The owner cleared `18d00e0`, but the new console-MTD field in the launch request
-still contains `[paste today's number]`. The builder asked for the actual number;
-neither the previous $11.63 nor the incomplete cached ledger is a fresh substitute.
-
-The existing main workflow restores a cached spend ledger and has no reconciliation
-input. Updating a local ignored file cannot seed Actions. This PR therefore includes
-the minimal reviewed launch plumbing; it is not pushed onto production to bypass
-the owner's new PR rule. The launch remains held for the fresh number and approval/
-merge of that plumbing. Deliveroo Greenhouse stays excluded.
+**Owner update, 2026-09-28:** drop the console-MTD seed. Once Cato clears this PR
+and it merges, launch the single full backfill with the retained Actions ledger
+and the unchanged **$30 cap**. Do not request a console number, replace the ledger,
+raise the cap, or launch an unreviewed branch. Deliveroo Greenhouse stays excluded.
+The earlier reconciliation prerequisite (ADR #103) is superseded by ADR #105;
+seed inputs, receipt cache and month-specific cap overrides are removed.
 
 Read-only preflight on reviewed `main`:
 [run 36417083490](https://github.com/lasse-max/job-search-agent/actions/runs/36417083490)
@@ -29,10 +26,14 @@ MTD**. Reserve **$3.30** for up to three remaining September scans: maximum obse
 daily cost times three, plus 25%, rounded up. Those scans took approximately
 125/120/112 minutes end to end, so scoring-only ETA omits substantial fetch/DB time.
 
-Once current MTD is supplied, calculate `MTD + fresh pending spend + $3.30` plus any
-new-feed work not covered by that plan. If it exceeds $30, the owner has authorized
-a sufficient September-only override in `config/model_budget.yaml`; report the
-chosen amount first. October returns to the default $30. No override is guessed here.
+The last observed tracked MTD of $8.439607 plus the PR's $13.14 backfill estimate
+and $3.30 reserve is **$24.879607**, under the fixed $30 runaway guard. This is a
+ledger-based projection, not an accurate September provider bill. Refresh the
+read-only item count/ETA/cost before dispatch; leave the ledger itself untouched.
+October automatically starts a new UTC-month bucket, but complete accounting still
+depends on cache retention and token-price estimates, not a calendar reset alone.
+The new before-run snapshot and existing after-run ledger artifact allow an actual
+tracked-spend delta to be reported after the job. Do not describe it as invoiced cost.
 
 ## Changes For Review
 
@@ -57,12 +58,11 @@ chosen amount first. October returns to the default $30. No override is guessed 
   stale-policy rows. No employer exceptions or model-version bump.
 - Login help identifies the owner's Supabase password, not their email password;
   no signup, reset, credential exposure or authorization change.
-- Actions can replace the restored current-month ledger from dated console MTD.
-  It never adds MTD to tracked spend. Reruns cannot reset subsequent spend; invalid,
-  nonfinite, negative or stale inputs fail before scanning. A full backfill needs
-  current reconciliation proof. Receipt cache is separate so adding its path does
-  not invalidate the existing ledger cache's hidden version. Cache state remains
-  best-effort, not durable billing accounting.
+- Actions restores/saves the existing ledger under the same cache key/path and uses
+  the unchanged $30 cap. Full backfill has no seed prerequisite. A read-only copy
+  into `output/model_spend_before.json`, uploaded with the post-run ledger, records
+  the baseline for spend reporting without resetting or adding to the ledger.
+  Cache-miss warnings remain loud; no invoice accuracy or durable billing is claimed.
 
 ## Explicit Retirement
 
@@ -94,8 +94,8 @@ to scanning. No builder production retirement or schema writes were performed.
    sources and legitimate manual roles. Applied history is not version/source-filtered.
 2. Retirement is report-first, atomic and retry-safe; no hidden historical deletion.
 3. Export variants no longer false-block, but genuine mixed-clause disqualifiers do.
-4. Console reconciliation replaces, preserves other months and cannot be replayed
-   to lower post-seed spend. Month overrides expire and the daily cron stays 06:00 UTC.
+4. No ledger replacement or cap override exists in the launch path. The snapshot
+   never mutates/creates the source ledger, and the daily cron stays 06:00 UTC.
 5. Re-run the extended **read-only** production preflight, inspect excluded-source
    counts/report, then use fresh item count, full ETA and cost for the one paid run.
    Do not launch it from the unreviewed PR branch or enable Deliveroo.
@@ -105,7 +105,7 @@ blocker100%, exact20/33; uniform150 gate recall100%; gate-passer150 Apply/Consid
 recall/precision100% (six positives), all-surfaced precision75%. These are historical
 Claude-cache replays, not fresh paid prompt/profile calibration. Labels/caches unchanged.
 
-Local validation: Python 3.12 full unittest suite passed (288 tests), followed by
+Validation before the owner update: Python 3.12 full unittest suite passed (288 tests), followed by
 22 focused tests after the final manual-source regression. Ruff and diff checks
 pass. Web tests, lint, typecheck and production build pass; Profile JSON/YAML drift
 checks pass. GitHub CI and the extended production preflight are recorded below
@@ -132,13 +132,13 @@ The extended read-only production preflight completed in 3m39s:
 | Scoring-only spend estimate | $13.14 |
 | Practical end-to-end planning window | Roughly 4-5 hours, including recent fetch/DB overhead |
 | Remaining September scan reserve | $3.30 |
-| Month-end projection before unplanned feed growth | Actual console MTD + $16.44 |
+| Tracked month-end projection before unplanned feed growth | $8.439607 + $16.44 = $24.879607 |
 
 The additional policy revision makes existing fresh older-policy evaluations/skips
 stale again, explaining why this is larger than main's 46-role plan. Do not launch
-the main plan and then another PR plan: after review/merge, reconcile fresh MTD,
-refresh this read-only count, then launch once. The $30 cap covers this estimate only
-if actual MTD is at most $13.56. No September override has been set without that input.
+the main plan and then another PR plan: after Cato clearance and merge, refresh this
+read-only count, then launch once with the retained ledger. No console number is
+required; the fixed $30 cap remains enforced and must not be raised automatically.
 
 All 45 excluded fresh candidates (18 gate passers) are from disabled Deliveroo
 Ashby. Old Mistral Lever, Black Forest Labs Greenhouse and disabled Atlassian each
@@ -158,3 +158,19 @@ Its source counts sum to 411. Plan hash:
 `45fbb631dfe1ba32f352cd0d1b85991f25a176befb902656c6416f3321a4e458`.
 No disabled manual source appeared in this production report. No retirement,
 migration, ledger replacement, cap increase, model call or email was performed.
+
+## Post-Merge Launch And Reporting
+
+1. Confirm Cato cleared the final PR revision and the owner merged it, with CI green.
+   CI success by itself is not Cato clearance. Do not merge on the owner's behalf.
+2. Check workflow history for an already-dispatched full backfill, including failed
+   or running attempts. Never dispatch the authorized full pass twice automatically.
+3. Refresh the read-only preflight on merged `main`; report count, end-to-end ETA,
+   projected spend and inactive-source exclusions. Deliveroo stays out.
+4. Dispatch `scan.yml` on `main` with `full_stale_backfill=true`, no other budget
+   inputs. Record the run ID immediately. Keep the ledger/cache and $30 cap intact.
+5. On completion, compare `output/model_spend_before.json` with the uploaded
+   `data/model_spend_ledger.json`, by UTC month if the run spans a month boundary.
+   Report the tracked run delta, ending tracked MTD, completed/deferred work and
+   any cap stop or scan/email failure. A missing baseline/artifact makes the delta
+   unavailable, not zero. Do not retry a partial run or increase the cap silently.
