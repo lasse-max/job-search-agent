@@ -1,6 +1,69 @@
 # Retired Sources And Controlled Backfill: Cato Handoff
 
-Date: 2026-09-28. PR only. No paid backfill, retirement or migration applied.
+Date: 2026-09-29. PR only. No paid backfill, retirement or migration applied.
+
+## Second-Review Fix Round
+
+Cato's verdict at `789befa` was HOLD. This round implements all ten items in
+`docs/briefs/pr1-backfill-runtime-guard.md`; the following are builder fixes for
+independent re-review, not self-closed findings:
+
+1. **Paid crash durability:** commit after each completed evaluation. Cato's exact
+   two-paid-results-then-crash scenario now preserves both results and the ledger;
+   retry calls the provider only for the remaining roles. Interrupted new/material
+   work in days 15-21 remains discoverable without widening policy-only backfill.
+2. **Runtime bounds:** one monotonic 270-minute evaluation budget across sources,
+   both full and daily modes. Finish the current evaluation, stop new scoring,
+   retain source/run health, defer manual intake and send the digest/heartbeat.
+   Source warnings and the aggregate report give evaluated/remaining counts;
+   expiry is degraded and CLI exit 0, not a failed scan. Fake-clock tests exercise
+   expiry and exact newest-first resume without duplicate paid calls.
+3. **Timeout/ledger:** `270 < 315 (scan step) < 330 (job) < 360 (runner)`.
+   The earlier step timeout leaves cleanup headroom inside the job, minus setup
+   time. Ledger increments are flushed atomically per charged result; the same
+   cache restore/save paths, fixed $30 cap and `always()` artifact/ledger steps
+   remain. Ordinary cancellation cleanup is best-effort, not a guarantee against
+   force-cancel, runner loss or job timeout. No console reconciliation gate exists.
+4. **UTC recency:** normalize timestamps before the 14-day selector's filter,
+   newest-first order and LIMIT, and the 21-day digest/web filters. Preserve raw
+   historical source strings. Shared SQL expression plus typed view `effective_at`
+   prevent lexical offset errors; chips count UTC calendar days. Owner migration
+   010 appends this column and must precede deploying the web read path.
+5. **Retirement:** new owner-only/manual `retire-sources.yml`, exact approval hash,
+   read-only regeneration, locked recheck, and shared scan concurrency. Report v2
+   includes owner-touched review/application history in its hash. Wrong hashes
+   write nothing; replaying a report changes zero actual DB rows. A workflow rerun
+   with a successfully consumed hash refuses read-only and prints the new empty
+   plan hash, rather than silently authorizing any newly arrived roles.
+
+Otto's seven documentation edits were moved byte-for-byte to a separate docs-only
+`main` commit, `a10f14d`. B-30 through B-33 already occurred once each; no rows were
+dropped. They are not mixed into the PR's implementation commits. ADRs 107-109
+record the checkpoint, timestamp and retirement choices.
+
+Implementation commits for this round:
+
+- `f31e8ce`: retirement report v2, exact-hash owner workflow, zero-write replay.
+- `fc06bdd`: UTC recency across Python/SQL/web and interrupted-material selection.
+- `de14451`: per-evaluation checkpoint, atomic ledger, shared runtime budget,
+  timeout headroom, degraded counts and digest/heartbeat warning.
+
+Targeted verification includes Cato's two mutation checks: deleting the primary
+evaluation commit fails the crash regression (zero instead of two saved), and
+disabling the deadline check fails the budget regression (five instead of two
+provider calls). Wrong-hash and retirement-replay tests assert actual database
+changes. Real disposable local PostgreSQL 16 checks passed with a non-UTC session,
+mixed-offset cutoff/limit queries and bootstrap/migration view replacement; no
+Supabase connection was used. Web's ten tests, lint/typecheck and production build
+pass. Cached benchmark reports remain byte-identical; no model calls or label/cache
+edits were needed. Final full-suite and CI results are recorded before handoff.
+
+**Production planning remains held:** the 322-role / $9.66 figures below are the
+September 28 pre-fix snapshot, not a verified count for the corrected UTC reader.
+No production MCP database tools are available in this session. Under the owner's
+"don't launch anything" instruction, no manual Actions workflow has been dispatched
+for this round. Refresh the read-only production preflight before any later paid
+launch; do not substitute the stale local SQLite copy or reuse the old plan hash.
 
 ## Launch Status
 
@@ -18,8 +81,8 @@ evaluation order are newest effective posting date first (posting date, otherwis
 first-seen; descending ID for ties), before applying the source limit. Source
 iteration remains unchanged: this is newest-first within each source queue, not
 a cross-source queue redesign. Genuinely new/materially changed intake still uses
-the existing 21-day policy. ADR #106 records this scope. The new read-only preflight
-selects **322 roles / $9.66 / 1h47m20s scoring**, with roughly **3.5-4.5 hours**
+the existing 21-day policy. ADR #106 records this scope. The last read-only preflight
+(before the UTC correction) selected **322 roles / $9.66 / 1h47m20s scoring**, with roughly **3.5-4.5 hours**
 end-to-end including recent fetch/DB overhead. The 438-role figures below are
 historical 21-day evidence, not the new launch estimate.
 
@@ -88,16 +151,24 @@ SQLite `mode=ro`/`query_only`. It never creates a missing SQLite DB:
 job-agent retire-sources --report output/source_retirement.json
 ```
 
-The report identifies each source, exclusion reason, open posting IDs and a plan
-hash. Review the entire report, including any previously disabled manual sources,
-before the owner explicitly applies it with the production connection configured:
+The v2 report identifies each source, exclusion reason, open posting IDs, all
+owner-touched review/application records on that source, and a plan hash. Review
+the entire report, including any previously disabled manual sources. The owner's
+production path is **Actions -> Retire Inactive Sources -> Run workflow on main**,
+with the exact reviewed `retirement_plan_hash`. The workflow regenerates the report
+read-only before opening a writable connection and checks the hash again under
+the lock. It never overlaps a scheduled scan. For an explicitly authorized local
+operator with the production connection configured, the existing command remains:
 
 ```sh
 job-agent retire-sources --apply-report output/source_retirement.json
 ```
 
-Apply rechecks identity/current inactivity and new postings under a short write
-lock. A stale/modified plan refuses; a successful replay changes zero rows. It sets
+Apply rechecks identity/current inactivity, new postings and touched history under
+a short write lock. A stale/modified plan refuses; direct report replay changes
+zero database rows, including source health. Actions rerun with an old consumed
+hash refuses without writes because the fresh plan differs; approve a fresh empty
+report to run an explicit no-op. It sets
 postings unavailable and source health disabled, never deletes data or changes
 review decisions, dates, evaluation history or application snapshots. Any new
 postings after the report require another report. No automatic retirement is added
@@ -177,7 +248,7 @@ Its source counts sum to 411. Plan hash:
 No disabled manual source appeared in this production report. No retirement,
 migration, ledger replacement, cap increase, model call or email was performed.
 
-## Current 14-Day Preflight
+## Historical 14-Day Preflight
 
 Code: `54fad3c`. Read-only production
 [run 36423901225](https://github.com/lasse-max/job-search-agent/actions/runs/36423901225)
