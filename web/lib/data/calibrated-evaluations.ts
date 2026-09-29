@@ -4,6 +4,7 @@ import { ROLE_MAX_AGE_DAYS, recencyCutoffDate } from "@/lib/recency";
 import { loadOpenManualIntakes, type ManualIntakeEntry } from "@/lib/data/manual-intake";
 import profileConfig from "@/generated/profile-config.json";
 import { currentSourceRuns, scanReach } from "@/lib/data/source-reach";
+import { loadCurrentSourceIds } from "@/lib/data/live-sources";
 
 export const CURRENT_EVALUATOR_VERSION = "hybrid_claude_v4";
 export const CURRENT_EVALUATOR_VERSION_SUFFIX = `%|${CURRENT_EVALUATOR_VERSION}`;
@@ -106,9 +107,11 @@ export async function listCurrentEvaluationRefs(
   supabase: AppSupabaseClient,
   limit = 25
 ) {
+  const sourceIds = await loadCurrentSourceIds(supabase);
   return supabase
     .from("current_opportunity_evaluations")
     .select("job_id, role_evaluation_id, model_version")
+    .in("source_id", sourceIds.length ? sourceIds : [-1])
     .like("model_version", CURRENT_EVALUATOR_VERSION_SUFFIX)
     .order("evaluated_at", { ascending: false })
     .limit(limit);
@@ -118,18 +121,18 @@ export async function loadPotentialMatches(
   supabase: AppSupabaseClient,
   options: { includeOlder?: boolean } = {}
 ): Promise<PotentialMatchesData> {
+  const sourceIds = await loadCurrentSourceIds(supabase);
   let evaluationQuery = supabase
     .from("current_opportunity_evaluations")
     .select("*")
+    .in("source_id", sourceIds.length ? sourceIds : [-1])
     .eq("availability_state", "open")
     .like("model_version", CURRENT_EVALUATOR_VERSION_SUFFIX)
     .order("evaluated_at", { ascending: false })
     .limit(500);
   if (!options.includeOlder) {
     const cutoff = recencyCutoffDate();
-    evaluationQuery = evaluationQuery.or(
-      `posted_at.gte.${cutoff},and(posted_at.is.null,first_seen_at.gte.${cutoff})`
-    );
+    evaluationQuery = evaluationQuery.gte("effective_at", `${cutoff}T00:00:00Z`);
   }
   const { data: evaluationRows, error } = await evaluationQuery;
 
@@ -153,7 +156,7 @@ export async function loadPotentialMatches(
   };
 
   const [skipAuditRows, scanReach, manualEntries] = await Promise.all([
-    loadSkipAuditRows(supabase),
+    loadSkipAuditRows(supabase, sourceIds),
     loadScanReach(supabase),
     loadOpenManualIntakes(supabase, "potential_matches")
   ]);
@@ -380,7 +383,8 @@ function normalizeEstimatedLevel(
     : "unknown";
 }
 
-async function loadSkipAuditRows(supabase: AppSupabaseClient): Promise<AuditRow[]> {
+async function loadSkipAuditRows(supabase: AppSupabaseClient, sourceIds: number[]): Promise<AuditRow[]> {
+  if (!sourceIds.length) return [];
   const { data: skips, error } = await supabase
     .from("evaluation_skips")
     .select("*")
@@ -396,6 +400,8 @@ async function loadSkipAuditRows(supabase: AppSupabaseClient): Promise<AuditRow[
   const { data: postings } = await supabase
     .from("job_postings")
     .select("*")
+    .in("source_id", sourceIds)
+    .eq("availability_state", "open")
     .in("id", postingIds);
   const postingRows = (postings ?? []) as PostingRow[];
   const postingsById = new Map(postingRows.map((posting) => [posting.id, posting]));
@@ -406,7 +412,9 @@ async function loadSkipAuditRows(supabase: AppSupabaseClient): Promise<AuditRow[
   const companyRows = (companies ?? []) as CompanyRow[];
   const companiesById = new Map(companyRows.map((company) => [company.id, company]));
 
-  return skipRows.map((skip) => skipToAuditRow(skip, postingsById, companiesById));
+  return skipRows
+    .filter((skip) => postingsById.has(skip.job_posting_id))
+    .map((skip) => skipToAuditRow(skip, postingsById, companiesById));
 }
 
 async function loadScanReach(supabase: AppSupabaseClient) {

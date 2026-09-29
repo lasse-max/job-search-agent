@@ -12,10 +12,50 @@ from app.services.evaluate import (
     has_disqualifying_hard_requirement,
     relevance_decision,
 )
+from app.services.requirement_scope import strip_export_approval
 from tests.unit.test_evaluate import _company, _row
 
 
 class RequirementScopeTest(unittest.TestCase):
+    def test_export_approval_is_not_government_scope_regardless_of_subject(self) -> None:
+        clauses = (
+            "may require export control approval from government authorities",
+            "must obtain export approval from the U.S. government",
+            "may require government export control approval",
+            "may require government approval under export control regulations",
+        )
+        for subject in ("Applicants", "The company", "You", "This role"):
+            for clause in clauses:
+                with self.subTest(subject=subject, clause=clause):
+                    text = f"Qualifications: {subject} {clause} for controlled technology."
+                    self.assertFalse(_government_defense_or_clearance_scope(text))
+                    self.assertTrue(relevance_decision(
+                        _row("Business Operations Manager", ["London"], description=text),
+                        _company(),
+                    ).should_evaluate)
+
+    def test_export_exception_preserves_genuine_same_sentence_requirements(self) -> None:
+        export = "Applicants may require export control approval from government authorities"
+        for requirement in (
+            "you must obtain SC clearance",
+            "you will lead deployments for government customers",
+            "you must have experience supporting military customers",
+        ):
+            for sentence in (
+                f"{export}, and {requirement}.",
+                f"{requirement}, and {export}.",
+            ):
+                with self.subTest(sentence=sentence):
+                    self.assertIn(requirement, strip_export_approval(sentence))
+                    self.assertTrue(_government_defense_or_clearance_scope(sentence))
+                    self.assertFalse(relevance_decision(
+                        _row("Business Operations Manager", ["London"], description=sentence),
+                        _company(),
+                    ).should_evaluate)
+        self.assertTrue(_government_defense_or_clearance_scope(
+            export, "Deployment Strategist - Government",
+        ))
+
     def test_live_company_legal_boilerplate_does_not_block_or_cap_business_role(self) -> None:
         # Minimal source excerpts; surrounding role text is synthetic.
         footers = {

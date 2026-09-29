@@ -83,9 +83,14 @@ export default function LoginForm({
             setMessage(null);
           }}
           autoComplete="current-password"
+          aria-describedby="password-hint"
           required
         />
       </label>
+      <p id="password-hint" className="text-xs leading-5 text-chart-muted">
+        Use the owner password set in Supabase Dashboard: Authentication &gt; Users.
+        This is not your email password. No email link or new account is needed.
+      </p>
       <button
         className="w-full rounded-md bg-[#b8472f] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#cf5638] disabled:cursor-not-allowed disabled:opacity-60"
         type="submit"

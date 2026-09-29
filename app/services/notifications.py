@@ -23,6 +23,7 @@ from app.db import (
 )
 from app.services.digest import DigestSelection, render_html, render_text, select_digest_rows
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION
+from app.models import utc_now
 
 
 DEFAULT_RESEND_FROM = "Job Search Agent <onboarding@resend.dev>"
@@ -108,6 +109,7 @@ def deliver_digest(
     output_dir: Path = OUTPUT_DIR,
     provider: EmailProvider | None = None,
     recipient: str | None = None,
+    run_warning: str | None = None,
 ) -> DigestDeliveryResult:
     """Render and send the since-last digest, falling back to local files in dev."""
 
@@ -120,6 +122,12 @@ def deliver_digest(
     selection = select_digest_rows(raw_rows)
     rows = selection.rows
     failures = latest_source_failures(conn)
+    if run_warning:
+        failures.append({
+            "company": "Evaluation budget", "source_type": "scan", "source_key": "wall-clock",
+            "health_status": "degraded", "status": "degraded",
+            "error_summary": run_warning, "finished_at": utc_now(),
+        })
     scan_reach = latest_scan_reach(conn)
     subject = _subject(
         len(rows),

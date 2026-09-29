@@ -36,6 +36,9 @@ class DatabricksSliceTest(unittest.TestCase):
         recency_patcher = patch("app.db.recency_cutoff_date", return_value="2026-06-01")
         recency_patcher.start()
         self.addCleanup(recency_patcher.stop)
+        backfill_patcher = patch("app.db.backfill_cutoff_date", return_value="2026-06-01")
+        backfill_patcher.start()
+        self.addCleanup(backfill_patcher.stop)
 
     def test_live_scan_stores_but_never_scores_postings_outside_recency_window(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -470,6 +473,10 @@ class DatabricksSliceTest(unittest.TestCase):
                 )
                 for index in range(30)
             ]
+            for index, job in enumerate(jobs):
+                job["first_published"] = (
+                    "2026-06-23T09:00:00-04:00" if index < 25 else "2026-06-22T09:00:00-04:00"
+                )
             fixture_path.write_text(
                 json.dumps({"jobs": jobs, "meta": {"total": len(jobs)}}),
                 encoding="utf-8",

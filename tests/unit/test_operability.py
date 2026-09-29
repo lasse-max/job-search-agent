@@ -570,7 +570,9 @@ class OperabilityTest(unittest.TestCase):
             "DIGEST_RECIPIENT_EMAIL: ${{ secrets.DIGEST_RECIPIENT_EMAIL }}",
             workflow,
         )
-        self.assertIn('MONTHLY_MODEL_SPEND_CAP_USD: "30"', workflow)
+        self.assertIn(
+            'MONTHLY_MODEL_SPEND_CAP_USD: "30"', workflow,
+        )
         self.assertNotIn("echo ${{ secrets.", workflow)
 
     def test_full_backfill_reports_items_eta_and_spend_before_scan(self) -> None:

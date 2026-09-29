@@ -14,6 +14,7 @@ import yaml
 from app.config import load_company_config
 from app.models import CompanyConfig, utc_now
 from app.services.evaluate import relevance_decision
+from app.source_policy import live_source_sql
 
 
 @dataclass(frozen=True)
@@ -65,8 +66,9 @@ def sample_live_noise_set(
 
 
 def _candidate_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+    source_clause, source_params = live_source_sql(conn)
     return conn.execute(
-        """
+        f"""
         SELECT
           jp.id AS job_id,
           c.name AS company,
@@ -87,8 +89,9 @@ def _candidate_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
         JOIN companies c ON c.id = jp.company_id
         JOIN job_sources js ON js.id = jp.source_id
         WHERE jp.availability_state = 'open'
+          AND {source_clause}
         ORDER BY jp.id
-        """
+        """, source_params,
     ).fetchall()
 
 

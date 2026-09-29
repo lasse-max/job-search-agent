@@ -7,6 +7,10 @@ import json
 import sqlite3
 from pathlib import Path
 
+from app.postgres import is_postgres_connection
+from app.recency import utc_timestamp_sql
+from app.source_policy import live_source_sql
+
 
 EXPORT_FILENAMES = {
     "opportunities": "opportunities.csv",
@@ -47,8 +51,12 @@ def _opportunity_rows(
     *,
     review_state: str | None = None,
 ) -> list[dict[str, object]]:
-    where_clause = "WHERE orev.state = ?" if review_state else ""
-    params: tuple[str, ...] = (review_state,) if review_state else ()
+    source_clause, source_params = live_source_sql(conn)
+    where_clause = f"WHERE {source_clause}"
+    params: list[str | int] = list(source_params)
+    if review_state:
+        where_clause += " AND orev.state = ?"
+        params.append(review_state)
     rows = conn.execute(
         f"""
         SELECT
@@ -78,7 +86,7 @@ def _opportunity_rows(
             WHERE latest.job_posting_id = jp.id
           )
         {where_clause}
-        ORDER BY c.tier, jp.first_seen_at DESC, jp.id
+        ORDER BY c.tier, ({utc_timestamp_sql('jp.first_seen_at', postgres=is_postgres_connection(conn))}) DESC, jp.id
         """,
         params,
     ).fetchall()

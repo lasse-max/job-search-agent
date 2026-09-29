@@ -7,6 +7,7 @@ import json
 import os
 import re
 import sqlite3
+import tempfile
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -197,7 +198,19 @@ class ModelSpendTracker:
         month = _current_month()
         ledger[month] = round(float(ledger.get(month, 0.0)) + cost_usd, 6)
         self.ledger_path.parent.mkdir(parents=True, exist_ok=True)
-        self.ledger_path.write_text(json.dumps(ledger, indent=2, sort_keys=True), encoding="utf-8")
+        temporary_path = None
+        try:
+            with tempfile.NamedTemporaryFile(
+                mode="w", encoding="utf-8", dir=self.ledger_path.parent, delete=False,
+            ) as temporary:
+                temporary_path = Path(temporary.name)
+                temporary.write(json.dumps(ledger, indent=2, sort_keys=True))
+                temporary.flush()
+                os.fsync(temporary.fileno())
+            os.replace(temporary_path, self.ledger_path)
+        finally:
+            if temporary_path is not None:
+                temporary_path.unlink(missing_ok=True)
 
     def current_month_spend(self) -> float:
         return float(self._read().get(_current_month(), 0.0))

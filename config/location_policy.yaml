@@ -1,4 +1,4 @@
-version: "location_policy_v4"
+version: "location_policy_v5"
 active: true
 profile_display:
   allowed_metros:
@@ -21,6 +21,7 @@ profile_display:
 location_aliases:
   # Search-only expansions. Original posting locations remain unchanged for display.
   # Unknown extra geographic context prevents expansion; ambiguous names require context.
+  # Subdivision codes: https://github.com/unicode-org/cldr/blob/main/common/subdivisions/en.xml
   Sydney:
     aliases: ["Barangaroo", "Pyrmont", "Surry Hills"]
     context_patterns: ['\b(?:sydney|nsw|new south wales|australia|au)\b']
@@ -36,23 +37,23 @@ location_aliases:
     source: "https://www.visitlondon.com/things-to-do/london-areas/canary-wharf/things-to-do-in-canary-wharf"
   Berlin:
     aliases: ["Kreuzberg", "Friedrichshain"]
-    context_patterns: ['\b(?:berlin|germany|deutschland|de)\b']
+    context_patterns: ['\b(?:berlin|be|germany|deutschland|de)\b']
     source: "https://www.visitberlin.de/en/districts/friedrichshain-kreuzberg"
   Munich:
     aliases: ["Schwabing", "Schwabing-West", "Schwabing-Freimann"]
-    context_patterns: ['\b(?:munich|munchen|muenchen|bavaria|bayern|germany|deutschland|de)\b']
+    context_patterns: ['\b(?:munich|munchen|muenchen|bavaria|bayern|by|germany|deutschland|de)\b']
     source: "https://stadt.muenchen.de/en/rathaus/daten-fakten/bezirke.html"
   Hamburg:
     aliases: ["HafenCity", "Speicherstadt"]
-    context_patterns: ['\b(?:hamburg|germany|deutschland|de)\b']
+    context_patterns: ['\b(?:hamburg|hh|germany|deutschland|de)\b']
     source: "https://www.hamburg.com/visitors/hamburg-by/speicherstadt-hafencity-route-22756"
   Amsterdam:
     aliases: ["Zuidas"]
-    context_patterns: ['\b(?:amsterdam|netherlands|nederland|nl|north holland|noord holland)\b']
+    context_patterns: ['\b(?:amsterdam|netherlands|nederland|nl|north holland|noord holland|nh)\b']
     source: "https://www.amsterdam.nl/bestuur-organisatie/organisatie/ruimte-en-economie/zuidas/"
   Paris:
     aliases: ["La Defense"]
-    context_patterns: ['\b(?:paris|france|fr|ile de france|hauts de seine)\b']
+    context_patterns: ['\b(?:paris|france|fr|ile de france|idf|hauts de seine)\b']
     source: "https://www.parisladefense.com/fr/territoire/quartier-et-son-histoire"
   Copenhagen:
     aliases: ["Orestad", "Oerestad"]
@@ -60,7 +61,7 @@ location_aliases:
     source: "https://www.visitcopenhagen.com/copenhagen/areas/neighborhoods/what-to-see-and-do-in-the-unique-orestad-neighbourhood"
   Zurich:
     aliases: ["Oerlikon", "Neu-Oerlikon"]
-    context_patterns: ['\b(?:zurich|zuerich|switzerland|schweiz|ch)\b']
+    context_patterns: ['\b(?:zurich|zuerich|zh|switzerland|schweiz|ch)\b']
     source: "https://www.stadt-zuerich.ch/de/politik-und-verwaltung/statistik-und-daten/kreise-und-quartiere/kreis-11/oerlikon.html"
   Lisbon:
     aliases: ["Parque das Nacoes"]

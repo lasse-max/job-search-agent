@@ -39,6 +39,11 @@ from app.services.review import (
     snooze_review,
 )
 from app.services.scheduled_scan import plan_stale_backfill, run_scheduled_scan
+from app.services.source_retirement import (
+    apply_retirement_report,
+    connect_for_retirement,
+    write_retirement_report,
+)
 
 
 def _actions_escape(value: str) -> str:
@@ -65,6 +70,13 @@ def main(argv: list[str] | None = None) -> int:
         "--database-url",
         help="Postgres URL; defaults to JOB_AGENT_DATABASE_URL",
     )
+
+    retire_parser = subparsers.add_parser(
+        "retire-sources", help="Read-only inactive-source report; explicit apply closes postings",
+    )
+    retire_parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
+    retire_parser.add_argument("--report", type=Path, default=OUTPUT_DIR / "source_retirement.json")
+    retire_parser.add_argument("--apply-report", type=Path, help="Apply a previously reviewed report")
 
     migrate_parser = subparsers.add_parser(
         "migrate-postgres",
@@ -195,6 +207,26 @@ def main(argv: list[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
 
+    if args.command == "retire-sources":
+        conn = None
+        try:
+            conn = connect_for_retirement(args.db, apply=args.apply_report is not None)
+            if args.apply_report:
+                report = json.loads(args.apply_report.read_text(encoding="utf-8"))
+                closed = apply_retirement_report(conn, report)
+                print(f"retirement_applied={closed} plan_hash={report['plan_hash']}")
+            else:
+                report = write_retirement_report(conn, args.report)
+                print(f"read_only=true sources={len(report['sources'])} "
+                      f"postings={report['posting_count']} report={args.report}")
+            return 0
+        except Exception as exc:
+            print(f"Source retirement failed: {type(exc).__name__}; no connection details logged")
+            return 1
+        finally:
+            if conn is not None:
+                conn.close()
+
     if args.command == "stage0-status":
         print("Stage 0 audit is complete. Checkpoint B vertical slice is now in progress.")
         return 0
@@ -240,6 +272,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"status={result.status}")
         print(f"scanned={len(result.summaries)}")
         print(f"skipped={len(result.skipped)}")
+        if result.backfill_warning:
+            print(result.backfill_warning)
+            _print_actions_warning("Evaluation time budget", result.backfill_warning)
         for skipped in result.skipped:
             print(f"skip={skipped}")
         for summary in result.summaries:

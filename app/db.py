@@ -28,7 +28,8 @@ from app.services.text_rules import (
     unsupported_language_requirement,
 )
 from app.postgres import connect_postgres, is_postgres_connection, postgres_core_schema
-from app.recency import recency_cutoff_date
+from app.recency import backfill_cutoff_date, normalize_timestamp, recency_cutoff_date, utc_timestamp_sql
+from app.source_policy import active_source_ids, live_source_sql
 
 
 DEFAULT_EVALUATOR_VERSION = "deterministic_fallback_v1"
@@ -273,9 +274,11 @@ def upsert_source(
         UPDATE job_sources
         SET health_status = 'disabled'
         WHERE company_id = ?
+          AND source_type != 'manual'
+          AND ? != 'manual'
           AND NOT (source_type = ? AND source_key = ?)
         """,
-        (company_id, company.ats_type, company.source_key),
+        (company_id, company.ats_type, company.ats_type, company.source_key),
     )
     conn.execute(
         """
@@ -868,8 +871,11 @@ def stale_open_posting_ids_for_evaluator(
     limit: int,
     skip_policy_version: str | None = None,
     recency_cutoff: str | None = None,
+    include_inactive_for_audit: bool = False,
 ) -> list[int]:
     if limit <= 0:
+        return []
+    if not include_inactive_for_audit and source_id not in active_source_ids(conn):
         return []
     profile_version = load_candidate_profile().version
     location_version = load_location_policy().version
@@ -877,9 +883,15 @@ def stale_open_posting_ids_for_evaluator(
     skip_policy_version = skip_policy_version or current_evaluation_policy_version(
         evaluator_version
     )
-    recency_cutoff = recency_cutoff or recency_cutoff_date()
+    cutoff = normalize_timestamp(recency_cutoff or backfill_cutoff_date())
+    if cutoff is None:
+        raise ValueError("Invalid recency cutoff")
+    effective_at = utc_timestamp_sql(
+        "COALESCE(jp.posted_at, jp.first_seen_at)", postgres=is_postgres_connection(conn)
+    )
+    cutoff_at = utc_timestamp_sql("?", postgres=is_postgres_connection(conn))
     rows = conn.execute(
-        """
+        f"""
         SELECT jp.id
         FROM job_postings jp
         LEFT JOIN role_evaluations re ON re.id = (
@@ -889,7 +901,7 @@ def stale_open_posting_ids_for_evaluator(
         )
         WHERE jp.source_id = ?
           AND jp.availability_state = 'open'
-          AND COALESCE(jp.posted_at, jp.first_seen_at) >= ?
+          AND ({effective_at}) >= ({cutoff_at})
           AND (
             re.id IS NULL
             OR re.model_version NOT LIKE ? ESCAPE '\\'
@@ -903,12 +915,12 @@ def stale_open_posting_ids_for_evaluator(
             WHERE es.job_posting_id = jp.id
               AND es.evaluator_version = ?
           )
-        ORDER BY COALESCE(re.created_at, jp.first_seen_at) ASC, jp.id ASC
+        ORDER BY ({effective_at}) DESC, jp.id DESC
         LIMIT ?
         """,
         (
             source_id,
-            recency_cutoff,
+            *([cutoff.isoformat()] * (3 if is_postgres_connection(conn) else 1)),
             _evaluator_version_like(evaluator_version),
             profile_version,
             location_version,
@@ -918,6 +930,67 @@ def stale_open_posting_ids_for_evaluator(
         ),
     ).fetchall()
     return [int(row["id"]) for row in rows]
+
+
+def pending_material_posting_ids(
+    conn: Connection,
+    source_id: int,
+    *,
+    recency_cutoff: str | None = None,
+) -> list[int]:
+    """Resume committed discoveries/content changes without widening policy backfill."""
+    if source_id not in active_source_ids(conn):
+        return []
+    postgres = is_postgres_connection(conn)
+    effective_at = utc_timestamp_sql("COALESCE(jp.posted_at, jp.first_seen_at)", postgres=postgres)
+    cutoff_at = utc_timestamp_sql("?", postgres=postgres)
+    cutoff = normalize_timestamp(recency_cutoff or recency_cutoff_date())
+    if cutoff is None:
+        raise ValueError("Invalid recency cutoff")
+    rows = conn.execute(
+        f"""
+        SELECT jp.*, re.input_hash AS evaluated_input_hash
+        FROM job_postings jp
+        LEFT JOIN role_evaluations re ON re.id = (
+          SELECT MAX(latest.id) FROM role_evaluations latest
+          WHERE latest.job_posting_id = jp.id
+        )
+        WHERE jp.source_id = ? AND jp.availability_state = 'open'
+          AND ({effective_at}) >= ({cutoff_at})
+        ORDER BY ({effective_at}) DESC, jp.id DESC
+        """,
+        [source_id, *([cutoff.isoformat()] * (3 if postgres else 1))],
+    ).fetchall()
+    # A completed content decision belongs to policy backfill even if its policy
+    # is old. Only interrupted/transient attempts resume through the wider window.
+    completed_skips = {
+        (int(row["job_posting_id"]), row["input_hash"])
+        for row in conn.execute(
+            """
+            SELECT es.job_posting_id, es.input_hash
+            FROM evaluation_skips es
+            JOIN job_postings jp ON jp.id = es.job_posting_id
+            WHERE jp.source_id = ?
+              AND es.reason NOT LIKE ?
+              AND es.reason != ?
+            """,
+            (
+                source_id,
+                "llm_evaluation_dropped:%",
+                "stale_evaluation_backfill_deferred_no_current_evaluator",
+            ),
+        ).fetchall()
+    }
+    pending = []
+    for row in rows:
+        material_hash = material_hash_for_row(row)
+        job_id = int(row["id"])
+        if (
+            row["evaluated_input_hash"] != material_hash
+            and (job_id, material_hash) not in completed_skips
+        ):
+            pending.append(job_id)
+    return pending
 
 
 def current_evaluation_policy_version(evaluator_version: str) -> str:
@@ -1044,7 +1117,8 @@ def get_digest_rows(
     since_clause = ""
     latest_version_clause = ""
     recency_clause = ""
-    params: list[str] = []
+    source_clause, source_params = live_source_sql(conn)
+    params: list[str | int] = list(source_params)
     if since is not None:
         since_clause = """
           AND re.created_at >= ?
@@ -1058,8 +1132,15 @@ def get_digest_rows(
         """
         params.extend([since, since])
     if not include_older:
-        recency_clause = "AND COALESCE(jp.posted_at, jp.first_seen_at) >= ?"
-        params.append(recency_cutoff or recency_cutoff_date())
+        effective_at = utc_timestamp_sql(
+            "COALESCE(jp.posted_at, jp.first_seen_at)", postgres=is_postgres_connection(conn)
+        )
+        cutoff_at = utc_timestamp_sql("?", postgres=is_postgres_connection(conn))
+        recency_clause = f"AND ({effective_at}) >= ({cutoff_at})"
+        cutoff = normalize_timestamp(recency_cutoff or recency_cutoff_date())
+        if cutoff is None:
+            raise ValueError("Invalid recency cutoff")
+        params.extend([cutoff.isoformat()] * (3 if is_postgres_connection(conn) else 1))
     if evaluator_version is not None:
         latest_version_clause = """
               AND (
@@ -1100,6 +1181,7 @@ def get_digest_rows(
         JOIN role_evaluations re ON re.job_posting_id = jp.id
         WHERE orev.state = 'new'
           AND jp.availability_state = 'open'
+          AND {source_clause}
           {since_clause}
           {recency_clause}
           AND re.id = (
@@ -1107,7 +1189,7 @@ def get_digest_rows(
             WHERE latest.job_posting_id = jp.id
             {latest_version_clause}
           )
-        ORDER BY c.tier, jp.first_seen_at DESC
+        ORDER BY c.tier, ({utc_timestamp_sql('jp.first_seen_at', postgres=is_postgres_connection(conn))}) DESC
         """,
         tuple(params),
     ).fetchall()
@@ -1175,8 +1257,9 @@ def record_notification(
 
 
 def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sqlite3.Row]:
+    source_clause, source_params = live_source_sql(conn, "js.id")
     return conn.execute(
-        """
+        f"""
         SELECT
           c.name AS company,
           js.source_type,
@@ -1197,8 +1280,7 @@ def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sql
             WHERE newer.job_source_id = sr.job_source_id
           )
         ) latest ON latest.job_source_id = js.id
-        WHERE c.enabled = 1
-          AND js.health_status != 'disabled'
+        WHERE {source_clause}
           AND (
             js.health_status IN ('degraded', 'failing', 'unsupported')
             OR latest.status != 'success'
@@ -1206,13 +1288,14 @@ def latest_source_failures(conn: sqlite3.Connection, limit: int = 5) -> list[sql
         ORDER BY COALESCE(latest.id, 0) DESC, c.tier, c.name
         LIMIT ?
         """,
-        (limit,),
+        [*source_params, limit],
     ).fetchall()
 
 
 def latest_scan_reach(conn: sqlite3.Connection) -> ScanReach:
+    source_clause, source_params = live_source_sql(conn, "js.id")
     row = conn.execute(
-        """
+        f"""
         SELECT
           COALESCE(SUM(COALESCE(latest.fetched_count, 0)), 0) AS fetched_count,
           COUNT(DISTINCT c.id) AS company_count
@@ -1227,10 +1310,9 @@ def latest_scan_reach(conn: sqlite3.Connection) -> ScanReach:
             WHERE newer.job_source_id = sr.job_source_id
           )
         ) latest ON latest.job_source_id = js.id
-        WHERE c.enabled = 1
-          AND js.health_status != 'disabled'
+        WHERE {source_clause}
           AND js.source_type != 'manual'
-        """
+        """, source_params,
     ).fetchone()
     return ScanReach(
         fetched_count=int(row["fetched_count"] or 0),

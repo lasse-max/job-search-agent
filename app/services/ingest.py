@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime, timezone
 import os
 from pathlib import Path
 
@@ -19,6 +20,7 @@ from app.db import (
     get_expected_volume_min,
     get_postings_by_ids,
     init_db,
+    pending_material_posting_ids,
     persist_evaluation,
     recover_expected_volume_min_after_degraded,
     record_evaluation_skip,
@@ -31,7 +33,7 @@ from app.db import (
     upsert_postings,
 )
 from app.models import utc_now
-from app.recency import posting_is_recent
+from app.recency import posting_is_recent, posting_timestamp
 from app.services.digest import write_digest
 from app.services.evaluate import (
     HYBRID_EVALUATOR_VERSION,
@@ -40,6 +42,7 @@ from app.services.evaluate import (
     relevance_decision,
 )
 from app.services.llm_evaluator import LLMProviderError, ModelSpendCapExceeded
+from app.services.scan_budget import ScanBudget, budget_warning
 
 DEFAULT_STALE_EVALUATION_BACKFILL_LIMIT = 25
 
@@ -77,7 +80,9 @@ def run_scan(
     db_path: Path = DEFAULT_DB_PATH,
     database_url: str | None = None,
     fixture_path: Path | None = None,
+    budget: ScanBudget | None = None,
 ) -> ScanSummary:
+    budget = budget or ScanBudget.start()
     company = load_company_config(company_name)
     if not company.enabled:
         raise ValueError(f"Company is not enabled for automated scanning: {company.name}")
@@ -134,6 +139,9 @@ def run_scan(
             error_summary=_join_errors(health.error_summary, digest_error),
         )
 
+    evaluated_count = 0
+    upsert_result = None
+    deferred_ids: set[int] = set()
     try:
         postings = adapter.normalize(result, company)
         seen_at = utc_now()
@@ -149,7 +157,10 @@ def run_scan(
             seen_at,
             count_absences=degraded_reason is None,
         )
-        fresh_candidate_ids = upsert_result.new_posting_ids + upsert_result.changed_posting_ids
+        fresh_candidate_ids = _ordered_unique_ids(
+            upsert_result.new_posting_ids + upsert_result.changed_posting_ids
+            + pending_material_posting_ids(conn, source_id)
+        )
         stale_candidate_ids = stale_open_posting_ids_for_evaluator(
             conn,
             source_id,
@@ -161,13 +172,21 @@ def run_scan(
         )
         candidate_ids = _ordered_unique_ids(fresh_candidate_ids + stale_candidate_ids)
         stale_only_candidate_ids = set(stale_candidate_ids).difference(fresh_candidate_ids)
-        evaluated_count = 0
         fresh_attempted_evaluation_count = 0
         dropped_evaluation_count = 0
         dropped_evaluation_errors: list[str] = []
         dropped_evaluation_rows = []
         fallback_evaluation_count = 0
         rows_by_id = {int(row["id"]): row for row in get_postings_by_ids(conn, candidate_ids)}
+        candidate_ids = sorted(
+            (candidate_id for candidate_id in candidate_ids if candidate_id in rows_by_id),
+            key=lambda candidate_id: (
+                posting_timestamp(rows_by_id[candidate_id])
+                or datetime.min.replace(tzinfo=timezone.utc),
+                candidate_id,
+            ),
+            reverse=True,
+        )
         recency_policy = load_recency_policy()
         for candidate_id in candidate_ids:
             row = rows_by_id.get(candidate_id)
@@ -193,6 +212,9 @@ def run_scan(
                     relevance.reason,
                     evaluator_version=evaluation_policy_version,
                 )
+                continue
+            if budget.expired():
+                deferred_ids.add(candidate_id)
                 continue
             if not stale_backfill:
                 fresh_attempted_evaluation_count += 1
@@ -225,7 +247,10 @@ def run_scan(
                 )
                 continue
             if persist_evaluation(conn, int(row["id"]), row_hash, evaluation):
+                # A later role must not roll back an already-paid evaluation.
+                conn.commit()
                 evaluated_count += 1
+                budget.evaluated_count += 1
 
         if (
             fresh_attempted_evaluation_count > 0
@@ -235,10 +260,16 @@ def run_scan(
             for row, row_hash, _reason in dropped_evaluation_rows:
                 evaluation = evaluate_role(row, company, use_env_provider=False)
                 if persist_evaluation(conn, int(row["id"]), row_hash, evaluation):
+                    conn.commit()
                     evaluated_count += 1
+                    budget.evaluated_count += 1
             dropped_evaluation_count = 0
     except Exception as exc:  # noqa: BLE001 - fail loud with durable source health.
         conn.rollback()
+        durable_new_count = len(upsert_result.new_posting_ids) if evaluated_count and upsert_result else 0
+        durable_changed_count = (
+            len(upsert_result.changed_posting_ids) if evaluated_count and upsert_result else 0
+        )
         finished_at = utc_now()
         error_summary = f"{type(exc).__name__}: {exc}"
         _record_run(
@@ -249,8 +280,8 @@ def run_scan(
             status="failure",
             http_status=result.http_status,
             fetched_count=health.fetched_count,
-            new_count=0,
-            changed_count=0,
+            new_count=durable_new_count,
+            changed_count=durable_changed_count,
             error_summary=error_summary,
             health_status="failing",
             last_success_at=None,
@@ -263,9 +294,9 @@ def run_scan(
             source_key=company.source_key,
             status="failure",
             fetched_count=health.fetched_count,
-            new_count=0,
-            changed_count=0,
-            evaluated_count=0,
+            new_count=durable_new_count,
+            changed_count=durable_changed_count,
+            evaluated_count=evaluated_count,
             digest_count=digest_count,
             digest_html=html_path,
             digest_text=text_path,
@@ -285,6 +316,11 @@ def run_scan(
         dropped_evaluation_errors,
         fallback_evaluation_count,
     )
+    if deferred_ids:
+        remaining = len(remaining_evaluation_ids(conn, source_id, company))
+        evaluation_warning = _join_errors(
+            evaluation_warning, budget_warning(evaluated_count, remaining),
+        )
     source_warning = _join_errors(degraded_reason, evaluation_warning)
     source_status = "degraded" if source_warning else "success"
     _record_run(
@@ -319,6 +355,20 @@ def run_scan(
         digest_text=text_path,
         error_summary=_join_errors(source_warning, digest_error),
     )
+
+
+def remaining_evaluation_ids(conn, source_id: int, company) -> set[int]:
+    """Unfinished fresh work, including material changes checkpointed before a stop."""
+    ids = _ordered_unique_ids(
+        stale_open_posting_ids_for_evaluator(
+            conn, source_id, evaluator_version=HYBRID_EVALUATOR_VERSION, limit=100_000,
+        )
+        + pending_material_posting_ids(conn, source_id)
+    )
+    return {
+        int(row["id"]) for row in get_postings_by_ids(conn, ids)
+        if relevance_decision(row, company).should_evaluate
+    }
 
 
 def _evaluate_role_with_retry(row, company):

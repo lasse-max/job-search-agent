@@ -36,6 +36,7 @@ from app.services.requirement_scope import (
     CLEARANCE_PATTERN,
     has_nearby_requirement,
     scoped_requirement_fragments,
+    strip_export_approval,
 )
 from app.services.text_rules import unsupported_language_requirement
 
@@ -916,6 +917,7 @@ def _partnership_manager_without_strategy_ops(text: str) -> bool:
 
 
 def _government_defense_or_clearance_scope(text: str, title_department: str = "") -> bool:
+    text = strip_export_approval(text)
     scope_pattern = r"\b(?:government|public sector|military|national security|defen[cs]e)\b"
     if re.search(scope_pattern, title_department, flags=re.IGNORECASE):
         return True

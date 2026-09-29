@@ -33,6 +33,7 @@ export type Database = {
           decision_reason: string | null;
           reviewed_at: string | null;
           snooze_until: string | null;
+          effective_at: string;
         };
         Relationships: [];
       };

@@ -6,6 +6,7 @@ import {
   type PotentialMatch
 } from "@/lib/data/calibrated-evaluations";
 import { loadOpenManualIntakes, type ManualIntakeEntry } from "@/lib/data/manual-intake";
+import { loadCurrentSourceIds } from "@/lib/data/live-sources";
 
 type AppSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 type CurrentEvaluationRow =
@@ -23,9 +24,11 @@ export type ShortlistData = {
 };
 
 export async function loadShortlist(supabase: AppSupabaseClient): Promise<ShortlistData> {
+  const sourceIds = await loadCurrentSourceIds(supabase);
   const { data, error } = await supabase
     .from("current_opportunity_evaluations")
     .select("*")
+    .in("source_id", sourceIds.length ? sourceIds : [-1])
     .eq("availability_state", "open")
     .eq("review_state", "interested")
     .like("model_version", CURRENT_EVALUATOR_VERSION_SUFFIX)

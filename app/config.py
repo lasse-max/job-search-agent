@@ -55,6 +55,8 @@ class ScoringPolicyConfig:
 class RecencyPolicyConfig:
     version: str
     max_age_days: int
+    backfill_max_age_days: int
+    backfill_wall_clock_budget_minutes: int
     hide_stale_by_default: bool
     estimated_seconds_per_evaluation: int
     estimated_cost_per_evaluation_usd: float
@@ -261,10 +263,16 @@ def load_recency_policy(
 ) -> RecencyPolicyConfig:
     data = _read_yaml_mapping(path)
     max_age_days = data.get("max_age_days")
+    backfill_max_age_days = data.get("backfill_max_age_days")
+    backfill_budget = data.get("backfill_wall_clock_budget_minutes")
     estimated_seconds = data.get("estimated_seconds_per_evaluation")
     estimated_cost = data.get("estimated_cost_per_evaluation_usd")
-    if not isinstance(max_age_days, int) or max_age_days < 0:
+    if type(max_age_days) is not int or max_age_days < 0:
         raise ValueError(f"Invalid max_age_days in {path}")
+    if type(backfill_max_age_days) is not int or not 0 <= backfill_max_age_days <= max_age_days:
+        raise ValueError(f"Invalid backfill_max_age_days in {path}")
+    if type(backfill_budget) is not int or not 0 < backfill_budget < 330:
+        raise ValueError(f"Invalid backfill_wall_clock_budget_minutes in {path}")
     if not isinstance(estimated_seconds, int) or estimated_seconds < 0:
         raise ValueError(f"Invalid estimated_seconds_per_evaluation in {path}")
     if not isinstance(estimated_cost, int | float) or estimated_cost < 0:
@@ -272,6 +280,8 @@ def load_recency_policy(
     return RecencyPolicyConfig(
         version=str(data.get("version") or "recency_policy_unknown"),
         max_age_days=max_age_days,
+        backfill_max_age_days=backfill_max_age_days,
+        backfill_wall_clock_budget_minutes=backfill_budget,
         hide_stale_by_default=bool(data.get("hide_stale_by_default", True)),
         estimated_seconds_per_evaluation=estimated_seconds,
         estimated_cost_per_evaluation_usd=float(estimated_cost),

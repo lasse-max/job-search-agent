@@ -1,4 +1,4 @@
-type Company = { id: number; name: string };
+type Company = { id: number; name: string; enabled: number };
 type Source = {
   id: number;
   company_id: number;
@@ -23,13 +23,8 @@ type ConfiguredCompany = {
 export function currentSourceRuns<S extends Source, R extends Run>(
   companies: Company[], sources: S[], runs: R[], configured: ConfiguredCompany[]
 ) {
-  const names = new Map(companies.map((company) => [company.id, company.name]));
-  const active = new Map(configured.filter((company) => company.enabled).map((company) => [company.name, company]));
-  const currentSources = sources.filter((source) => {
-    const config = active.get(names.get(source.company_id) ?? "");
-    return config && source.health_status !== "disabled" && source.source_type !== "manual"
-      && source.source_type === config.atsType && source.source_key === config.sourceKey;
-  });
+  const currentSources = currentLiveSources(companies, sources, configured)
+    .filter((source) => source.source_type !== "manual");
   const sourceIds = new Set(currentSources.map((source) => source.id));
   const latest = new Map<number, R>();
   for (const run of [...runs].sort((a, b) => b.id - a.id)) {
@@ -38,6 +33,23 @@ export function currentSourceRuns<S extends Source, R extends Run>(
     }
   }
   return { sources: currentSources, runs: [...latest.values()] };
+}
+
+export function currentLiveSources<S extends Source>(
+  companies: Company[], sources: S[], configured: ConfiguredCompany[]
+) {
+  const companiesById = new Map(companies.map((company) => [company.id, company]));
+  const active = new Map(configured.filter((company) => company.enabled).map((company) => [company.name, company]));
+  return sources.filter((source) => {
+    if (["disabled", "retired"].includes(source.health_status.toLowerCase())) return false;
+    const company = companiesById.get(source.company_id);
+    if (!company) return false;
+    // Owner-selected manual roles remain usable even when automatic coverage is off.
+    if (source.source_type === "manual") return true;
+    const config = active.get(company.name);
+    return company.enabled === 1 && config
+      && source.source_type === config.atsType && source.source_key === config.sourceKey;
+  });
 }
 
 export function scanReach(sources: Source[], runs: Run[]) {

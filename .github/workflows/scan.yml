@@ -18,6 +18,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 330
     permissions:
       contents: read
 
@@ -49,14 +50,24 @@ jobs:
 
       - name: Warn when prior tracked spend is unavailable
         if: ${{ steps.model-spend.outputs.cache-matched-key == '' }}
-        run: echo "::warning title=Model spend history unavailable::No retained spend ledger. Reconcile provider month-to-date usage before any full backfill; the configured cap cannot account for missing history."
+        run: echo "::warning title=Model spend history unavailable::No retained spend ledger. The USD 30 cap remains a runaway guard, but cannot account for missing history; tracked spend is not provider billing."
 
       - name: Install project
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
 
+      - name: Snapshot retained model spend before scan
+        run: |
+          mkdir -p output
+          if [ -f data/model_spend_ledger.json ]; then
+            cp data/model_spend_ledger.json output/model_spend_before.json
+          else
+            printf '{}\n' > output/model_spend_before.json
+          fi
+
       - name: Run scheduled scan
+        timeout-minutes: 315
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_MODEL: claude-haiku-4-5
@@ -82,6 +93,7 @@ jobs:
           path: |
             output/latest_digest.html
             output/latest_digest.txt
+            output/model_spend_before.json
             data/job_search_agent.sqlite
             data/model_spend_ledger.json
           if-no-files-found: ignore

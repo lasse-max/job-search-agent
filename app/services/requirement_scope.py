@@ -51,6 +51,27 @@ _DIRECT_DUTY = re.compile(
     r"\bemployment (?:is |will be )?contingent (?:on|upon)\b",
     flags=re.IGNORECASE,
 )
+_EXPORT_APPROVAL = re.compile(
+    r"\b(?:"
+    r"export(?:[- ]control)? (?:approvals?|authori[sz]ations?|licen[cs]es?)"
+    r"(?: from (?:the )?(?:(?:u\.s\.|us|united states|relevant|applicable|foreign)\s+)?"
+    r"government(?:al)?(?: (?:authorities|agencies))?)?"
+    r"|government(?:al)? export(?:[- ]control)? "
+    r"(?:approvals?|authori[sz]ations?|licen[cs]es?)"
+    r"|government(?:al)? (?:approvals?|authori[sz]ations?|licen[cs]es?) "
+    r"(?:for exports?|under export[- ]control regulations)"
+    r")\b",
+    flags=re.IGNORECASE,
+)
+
+
+def strip_export_approval(text: str) -> str:
+    """Remove export-approval noun phrases, never neighboring candidate duties.
+
+    The subject may be the company or an applicant. Neither makes an export
+    license a government-facing role, but clearance in the same sentence counts.
+    """
+    return _EXPORT_APPROVAL.sub(" ", text)
 
 
 def scoped_requirement_fragments(
