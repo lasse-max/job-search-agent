@@ -1,6 +1,7 @@
 version: "recency_policy_v3"
 max_age_days: 21
 backfill_max_age_days: 14
+backfill_wall_clock_budget_minutes: 270
 hide_stale_by_default: true
 estimated_seconds_per_evaluation: 20
 estimated_cost_per_evaluation_usd: 0.03

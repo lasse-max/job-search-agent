@@ -7,6 +7,18 @@ import yaml
 
 
 class SpendWorkflowTest(unittest.TestCase):
+    def test_time_budget_leaves_headroom_for_cleanup_before_runner_limit(self) -> None:
+        root = Path(__file__).resolve().parents[2]
+        workflow = yaml.safe_load((root / ".github/workflows/scan.yml").read_text())
+        recency = yaml.safe_load((root / "config/recency_policy.yaml").read_text())
+        job = workflow["jobs"]["scan"]
+        scan = next(step for step in job["steps"] if step.get("run") == "job-agent scan-all")
+        self.assertEqual(recency["backfill_wall_clock_budget_minutes"], 270)
+        self.assertEqual(job["timeout-minutes"], 330)
+        self.assertLess(recency["backfill_wall_clock_budget_minutes"], scan["timeout-minutes"])
+        self.assertLess(scan["timeout-minutes"], job["timeout-minutes"])
+        self.assertLess(job["timeout-minutes"], 360)
+
     def test_monthly_ledger_survives_success_failure_and_serializes_scans(self) -> None:
         root = Path(__file__).resolve().parents[2]
         workflow = yaml.safe_load((root / ".github/workflows/scan.yml").read_text())

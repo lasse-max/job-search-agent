@@ -272,6 +272,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"status={result.status}")
         print(f"scanned={len(result.summaries)}")
         print(f"skipped={len(result.skipped)}")
+        if result.backfill_warning:
+            print(result.backfill_warning)
+            _print_actions_warning("Evaluation time budget", result.backfill_warning)
         for skipped in result.skipped:
             print(f"skip={skipped}")
         for summary in result.summaries:

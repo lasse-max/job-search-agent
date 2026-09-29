@@ -18,6 +18,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 330
     permissions:
       contents: read
 
@@ -66,6 +67,7 @@ jobs:
           fi
 
       - name: Run scheduled scan
+        timeout-minutes: 315
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_MODEL: claude-haiku-4-5

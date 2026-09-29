@@ -23,9 +23,10 @@ from app.db import (
 from app.models import CompanyConfig
 from app.recency import backfill_cutoff_date
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION, relevance_decision
-from app.services.ingest import ScanSummary, run_scan
+from app.services.ingest import ScanSummary, remaining_evaluation_ids, run_scan
 from app.services.manual_intake import ManualIntakeQueueSummary, process_manual_intake_queue
 from app.services.notifications import DigestDeliveryResult, deliver_digest
+from app.services.scan_budget import ScanBudget, budget_warning
 from app.source_policy import source_exclusion_reason, source_inventory
 
 
@@ -36,12 +37,15 @@ class ScheduledScanResult:
     failures: list[str]
     notification: DigestDeliveryResult | None = None
     manual_intake: ManualIntakeQueueSummary | None = None
+    backfill_warning: str | None = None
 
     @property
     def status(self) -> str:
         if self.failures:
             return "failure"
-        if any(summary.status in {"degraded", "failure"} for summary in self.summaries):
+        if self.backfill_warning or any(
+            summary.status in {"degraded", "failure"} for summary in self.summaries
+        ):
             return "degraded"
         return "success"
 
@@ -144,12 +148,15 @@ def run_scheduled_scan(
     database_url: str | None = None,
     companies: list[CompanyConfig] | None = None,
     send_digest: bool = False,
+    budget: ScanBudget | None = None,
 ) -> ScheduledScanResult:
+    budget = budget or ScanBudget.start()
+    companies = companies or load_enabled_company_configs()
     summaries: list[ScanSummary] = []
     skipped: list[str] = []
     failures: list[str] = []
 
-    for company in companies or load_enabled_company_configs():
+    for company in companies:
         if company.ats_type == "manual":
             skipped.append(f"{company.name}: manual sources are intake-only")
             continue
@@ -158,6 +165,7 @@ def run_scheduled_scan(
                 company_name=company.name,
                 db_path=db_path,
                 database_url=database_url,
+                budget=budget,
             )
         except Exception as exc:  # noqa: BLE001 - scheduler must continue and report all sources.
             failures.append(f"{company.name}: {type(exc).__name__}: {exc}")
@@ -166,18 +174,43 @@ def run_scheduled_scan(
 
     manual_intake = None
     try:
-        manual_intake = process_manual_intake_queue(
-            db_path=db_path,
-            database_url=database_url,
-        )
+        if budget.expired():
+            skipped.append("manual intake queue: deferred after evaluation wall-clock budget")
+        else:
+            manual_intake = process_manual_intake_queue(
+                db_path=db_path,
+                database_url=database_url,
+            )
     except Exception as exc:  # noqa: BLE001 - queue infrastructure must fail loud.
         failures.append(f"manual intake queue: {type(exc).__name__}: {exc}")
+
+    backfill_warning = None
+    if budget.stopped:
+        conn = connect_runtime_database(db_path, database_url=database_url)
+        try:
+            remaining: set[int] = set()
+            for company in companies:
+                if company.ats_type == "manual":
+                    continue
+                source = conn.execute(
+                    "SELECT js.id FROM job_sources js JOIN companies c ON c.id=js.company_id "
+                    "WHERE c.name=? AND js.source_type=? AND js.source_key=?",
+                    (company.name, company.ats_type, company.source_key),
+                ).fetchone()
+                if source:
+                    remaining.update(remaining_evaluation_ids(conn, int(source["id"]), company))
+            backfill_warning = budget_warning(budget.evaluated_count, len(remaining))
+        finally:
+            conn.close()
 
     notification = None
     if send_digest:
         conn = connect_runtime_database(db_path, database_url=database_url)
         init_db(conn)
-        notification = deliver_digest(conn)
+        notification = (
+            deliver_digest(conn, run_warning=backfill_warning)
+            if backfill_warning else deliver_digest(conn)
+        )
         if notification.status == "failed":
             failures.append(notification.error_summary or "digest email failed")
 
@@ -187,4 +220,5 @@ def run_scheduled_scan(
         failures=failures,
         notification=notification,
         manual_intake=manual_intake,
+        backfill_warning=backfill_warning,
     )
