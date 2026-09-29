@@ -81,7 +81,8 @@ function database(reviewState = "new") {
     source_url: "https://example.com/job", locations_json: '["London"]', availability_state: "open",
     model_version: "claude|hybrid_claude_v4", review_state: reviewState,
     evaluation_json: JSON.stringify(evaluation), evaluated_at: "2026-09-28T06:00:00Z",
-    first_seen_at: "2026-09-28T06:00:00Z", posted_at: "2026-09-28T06:00:00Z"
+    first_seen_at: "2026-09-28T06:00:00Z", posted_at: "2026-09-28T06:00:00Z",
+    effective_at: "2026-09-28T06:00:00Z"
   }));
   return {
     companies, job_sources: sources, current_opportunity_evaluations: postings,
@@ -104,16 +105,22 @@ function client(rows, errorTable = null) {
   return {
     from(table) {
       let result = [...(rows[table] ?? [])];
+      let rowLimit = Infinity;
       return {
         select() { return this; },
         eq(key, value) { result = result.filter((row) => row[key] === value); return this; },
         in(key, values) { result = result.filter((row) => values.includes(row[key])); return this; },
         like(key, pattern) { result = result.filter((row) => row[key].endsWith(pattern.slice(1))); return this; },
         order() { return this; },
-        limit(limit) { result = result.slice(0, limit); return this; },
+        limit(limit) { rowLimit = limit; return this; },
+        gte(key, value) {
+          assert.equal(key, "effective_at", "recency must use the typed UTC view column");
+          result = result.filter((row) => Date.parse(row[key]) >= Date.parse(value));
+          return this;
+        },
         or() { return this; },
         then(resolve, reject) {
-          return Promise.resolve({ data: result, error: table === errorTable ? { message: "failed" } : null })
+          return Promise.resolve({ data: result.slice(0, rowLimit), error: table === errorTable ? { message: "failed" } : null })
             .then(resolve, reject);
         }
       };
@@ -152,4 +159,24 @@ test("retirement never hides an immutable Applied snapshot, including older eval
   assert.equal(tracked.applications.length, 1);
   assert.equal(tracked.applications[0].sourcePostingId, 4);
   assert.equal(tracked.applications[0].snapshot.modelVersion, "claude|hybrid_claude_v2");
+});
+
+test("browse applies the UTC cutoff to mixed-offset history and null-posted fallbacks before LIMIT", async () => {
+  const data = database();
+  const original = data.current_opportunity_evaluations[0];
+  const row = (id, postedAt, firstSeenAt, effectiveAt) => ({
+    ...original, job_id: id, source_job_id: `${id}`, title: `UTC boundary role ${id}`,
+    posted_at: postedAt, first_seen_at: firstSeenAt, effective_at: effectiveAt
+  });
+  data.current_opportunity_evaluations = [
+    ...Array.from({ length: 500 }, (_, index) => row(
+      1000 + index, "2026-09-07T00:30:00+01:00", "2026-09-28", "2026-09-06T23:30:00Z"
+    )),
+    row(2001, "2026-09-06T20:00:00-04:00", "2026-09-28", "2026-09-07T00:00:00Z"),
+    row(2002, null, "2026-09-06T23:30:00-04:00", "2026-09-07T03:30:00Z")
+  ];
+  const matches = await evaluations.loadPotentialMatches(client(data));
+  assert.deepEqual(Array.from(matches.bands.apply_now, (role) => role.id), [2001, 2002]);
+  const older = await evaluations.loadPotentialMatches(client(data), { includeOlder: true });
+  assert.equal(older.counts.applyNow, 500);
 });

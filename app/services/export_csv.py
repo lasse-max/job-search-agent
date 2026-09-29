@@ -7,6 +7,8 @@ import json
 import sqlite3
 from pathlib import Path
 
+from app.postgres import is_postgres_connection
+from app.recency import utc_timestamp_sql
 from app.source_policy import live_source_sql
 
 
@@ -84,7 +86,7 @@ def _opportunity_rows(
             WHERE latest.job_posting_id = jp.id
           )
         {where_clause}
-        ORDER BY c.tier, jp.first_seen_at DESC, jp.id
+        ORDER BY c.tier, ({utc_timestamp_sql('jp.first_seen_at', postgres=is_postgres_connection(conn))}) DESC, jp.id
         """,
         params,
     ).fetchall()

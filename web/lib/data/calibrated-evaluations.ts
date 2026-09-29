@@ -132,9 +132,7 @@ export async function loadPotentialMatches(
     .limit(500);
   if (!options.includeOlder) {
     const cutoff = recencyCutoffDate();
-    evaluationQuery = evaluationQuery.or(
-      `posted_at.gte.${cutoff},and(posted_at.is.null,first_seen_at.gte.${cutoff})`
-    );
+    evaluationQuery = evaluationQuery.gte("effective_at", `${cutoff}T00:00:00Z`);
   }
   const { data: evaluationRows, error } = await evaluationQuery;
 

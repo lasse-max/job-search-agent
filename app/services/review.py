@@ -9,6 +9,8 @@ from datetime import date
 
 from app.db import wake_due_snoozes
 from app.models import ReviewState, utc_now
+from app.postgres import is_postgres_connection
+from app.recency import utc_timestamp_sql
 from app.source_policy import live_source_sql
 
 
@@ -59,7 +61,7 @@ def list_reviews(conn: sqlite3.Connection) -> list[sqlite3.Row]:
             ELSE 5
           END,
           c.tier,
-          jp.first_seen_at DESC,
+          ({utc_timestamp_sql('jp.first_seen_at', postgres=is_postgres_connection(conn))}) DESC,
           jp.id
         """, source_params,
     ).fetchall()

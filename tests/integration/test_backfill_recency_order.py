@@ -18,6 +18,8 @@ from app.db import (
 )
 from app.services.evaluate import HYBRID_EVALUATOR_VERSION
 from app.services.ingest import run_scan
+from app.services.material import material_hash_for_row
+from app.recency import posting_timestamp
 from app.services.scheduled_scan import plan_stale_backfill_for_connection
 from tests.integration.test_databricks_slice import SuccessfulProvider, _fixture_job
 
@@ -33,13 +35,38 @@ class RecordingProvider(SuccessfulProvider):
 
 
 class BackfillRecencyOrderTest(unittest.TestCase):
+    def test_daily_trickle_keeps_mixed_offsets_in_utc_order_after_loading_rows(self):
+        with tempfile.TemporaryDirectory() as directory:
+            db_path, fixture, adapter, _, _ = self._seed(Path(directory))
+            day = datetime.now(timezone.utc).date().isoformat()
+            timestamps = {
+                "9800000000": f"{day}T12:00:00+00:00",
+                "9800000001": f"{day}T09:00:00-04:00",
+            }
+            payload = json.loads(fixture.read_text())
+            conn = sqlite3.connect(db_path)
+            for job in payload["jobs"]:
+                timestamp = timestamps.get(str(job["id"]))
+                if timestamp:
+                    job["first_published"] = timestamp
+                    job["updated_at"] = timestamp
+                    conn.execute("UPDATE job_postings SET posted_at = ? WHERE source_job_id = ?",
+                                 (timestamp, str(job["id"])))
+            conn.commit()
+            conn.close()
+            fixture.write_text(json.dumps(payload))
+            provider = RecordingProvider()
+            result = self._scan(db_path, fixture, adapter, provider, limit=2)
+            self.assertEqual(result.status, "success", result.error_summary)
+            self.assertEqual(provider.source_ids, ["9800000001", "9800000000"])
+
     def test_daily_and_full_backfill_score_only_fresh_roles_in_actual_freshest_order(self):
         for limit in (25, 10_000):
             with self.subTest(limit=limit), tempfile.TemporaryDirectory() as directory:
                 db_path, fixture, adapter, rows, old_source_ids = self._seed(Path(directory))
                 expected = sorted(
                     [row for row in rows if row["source_job_id"] not in old_source_ids],
-                    key=lambda row: (row["posted_at"] or row["first_seen_at"], row["id"]),
+                    key=lambda row: (posting_timestamp(row), row["id"]),
                     reverse=True,
                 )[:limit]
                 provider = RecordingProvider()
@@ -155,7 +182,7 @@ class BackfillRecencyOrderTest(unittest.TestCase):
                 "location_policy_version_id, prompt_version, model_version, input_hash, "
                 "evaluation_json, created_at) VALUES (?, 'old', 'old', 'old', ?, ?, ?, ?)",
                 (row["id"], f"fake-claude|old-policy|{HYBRID_EVALUATOR_VERSION}",
-                 f"old-input-{row['id']}", evaluation_json, self._stamp(row["id"])),
+                 material_hash_for_row(row), evaluation_json, self._stamp(row["id"])),
             )
         conn.commit()
         conn.close()

@@ -109,8 +109,7 @@ class RecencyPolicyTest(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("recencyCutoffDate", data_layer)
-        self.assertIn("posted_at.gte.${cutoff}", data_layer)
-        self.assertIn("posted_at.is.null,first_seen_at.gte.${cutoff}", data_layer)
+        self.assertIn('gte("effective_at", `${cutoff}T00:00:00Z`)', data_layer)
         self.assertIn('href={data.includeOlder ? "/" : "/?older=1"}', matches_ui)
         self.assertIn("freshnessLabel(role)", matches_ui)
         self.assertIn("freshnessLabel(role)", shortlist_ui)

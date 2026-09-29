@@ -180,7 +180,8 @@ SELECT
   orev.state AS review_state,
   orev.decision_reason,
   orev.reviewed_at,
-  orev.snooze_until
+  orev.snooze_until,
+  CASE WHEN COALESCE(jp.posted_at, jp.first_seen_at) ~ '[T ].*([Zz]|[+-][0-9]{2}(:[0-9]{2}|[0-9]{2}){0,1})$' THEN CAST(COALESCE(jp.posted_at, jp.first_seen_at) AS TIMESTAMP WITH TIME ZONE) ELSE CAST(COALESCE(jp.posted_at, jp.first_seen_at) AS TIMESTAMP) AT TIME ZONE 'UTC' END AS effective_at
 FROM job_postings jp
 JOIN companies c ON c.id = jp.company_id
 JOIN job_sources js ON js.id = jp.source_id
