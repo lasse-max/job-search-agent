@@ -1,5 +1,23 @@
 # Codex Handoff — current queue (2026-07-12)
 
+## Owner Addendum: B-14 Boundary (2026-09-21)
+
+Carry this into the next B-14 handoff; it does not authorize parser work now.
+
+- Two-address pipeline: owner-managed domain forwarder -> dedicated Gmail inbox.
+  Build against the Gmail inbox only. No code access to the forwarder, ever.
+- Read the dedicated inbox address from the `ALERTS_INBOX_EMAIL` secret. The
+  subscription address is reference-only and must not appear in code.
+- Gmail scope is `gmail.readonly`; inbound-only. Never send, reply, delete or
+  modify messages. Ignore Spam by design.
+- Wait for the owner to confirm **20-30 real non-Spam alerts** have accumulated
+  before writing the parser against them. No real email content or credentials
+  in the repository or logs.
+- Canonical implementation constraints:
+  [B-14 scaffold brief](email-alert-ingestion-scaffold.md).
+
+---
+
 Ordered. Effort dial noted per item (owner default is **high**; deviations flagged).
 
 ---

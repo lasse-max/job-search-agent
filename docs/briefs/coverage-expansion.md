@@ -25,8 +25,11 @@ The 61 dark companies are marked `ats_type: unknown` because **the Stage-0 audit
 ### Track 3 — Email-sourced discovery (B-14) — the only path to the unscrapable
 Google, Apple, and Amazon run bespoke career sites. Building and maintaining a scraper per company is a treadmill and a compliance risk. **The Tier-1 ≥90% target makes B-14 a requirement, not a someday.**
 
-**Design change (owner decision 2026-07-11): a dedicated alerts mailbox, not the owner's personal inbox.**
-- The owner creates a **separate email account used ONLY to subscribe to job alerts** — never for applications, never given to recruiters.
+**Design (owner decisions 2026-07-11 + 2026-09-21): a two-address alerts pipeline, not the owner's personal inbox.**
+- **Subscription address** — on the owner's own domain. This is the address given to job boards and career sites. It **only forwards**; it holds no mail, has **no OAuth grant, and the agent never touches it**. Portable and re-pointable: swapping the agent's inbox later changes nothing at the job boards.
+- **Agent inbox** — a dedicated Gmail account that receives the forwards. **This is the only mailbox the agent has access to**, via **read-only** Gmail OAuth (`gmail.readonly`). Inbound-only: the agent never sends, replies, labels-as-action, or deletes from it.
+- **Address registry (values live in secrets/env, never committed — repo convention):** `DIGEST_RECIPIENT_EMAIL` = owner's real inbox (receives the daily digest) · `OWNER_EMAIL` = app login / `app_allowed_users` · `ALERTS_SUBSCRIPTION_EMAIL` = domain forwarder (docs/reference only; never used by code) · `ALERTS_INBOX_EMAIL` = the Gmail the agent reads. Four distinct roles — never let them collide.
+- Neither address is used for applications or given to recruiters — the alert pipeline is an **input feed**, not a communication channel.
 - **Least privilege:** the agent's Gmail OAuth read scope is then confined to a mailbox containing nothing but job alerts — no bank mail, no personal correspondence, no live recruiter threads. This matches the discipline applied everywhere else (read-only MCP, RLS owner-gate, no service-role key).
 - **Clean signal:** ~100% of that mailbox is job alerts, so the parser has almost no noise to filter.
 - **Account-locked alerts** (e.g. LinkedIn, tied to the owner's identity) are handled with a **forwarding filter** from the personal account, not a duplicate account.

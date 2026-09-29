@@ -13,18 +13,38 @@ dedicated-account confirmation and checks the actual account ID before reading.
 Synthetic unit tests check setup/mismatch rejection, parser errors and unsafe URLs.
 This is contract scaffolding only, not a parser validated against real alerts.
 
+## Owner Boundary (2026-09-21)
+
+The alerts pipeline has two addresses: an owner-managed domain forwarder feeds a
+dedicated Gmail inbox. B-14 integrates with the Gmail inbox only. The domain
+forwarder is never accessible to application code; do not integrate with or manage
+it. The subscription address is reference-only and must not appear in code.
+
+Read the dedicated inbox address from the `ALERTS_INBOX_EMAIL` secret, with no
+hardcoded address or fallback. Request only `gmail.readonly` Gmail access and bind
+it to that dedicated account. This is inbound-only: never send, reply, delete or
+modify messages. Ignore the Spam folder by design, including during sample
+collection and parser validation.
+
+**Parser work is held until the owner confirms 20-30 real alerts have accumulated
+in the dedicated Gmail inbox.** Do not infer that readiness from mailbox setup or
+write a production parser against assumed formats. Keep real addresses, email
+bodies and OAuth tokens out of the repository and logs.
+
 ## Owner Prerequisite
 
-Create a separate mailbox used only for job alerts. Subscribe to Google, Apple,
-Amazon, Uber, Netflix and Atlassian career alerts. Forward account-bound alerts
-there if needed; do not grant this agent personal-inbox access. Let representative
-alerts accumulate, then confirm the dedicated account and provide sanitized sample
-formats privately. Never commit real email bodies, addresses or OAuth tokens.
+Set up the domain forwarder and dedicated Gmail inbox outside the application.
+Subscribe to Google, Apple, Amazon, Uber, Netflix and Atlassian career alerts using
+the reference-only subscription address. Confirm the dedicated account and that
+20-30 real non-Spam alerts have accumulated, then provide sanitized sample formats
+privately. Never grant this agent personal-inbox or forwarder access.
 
 ## Next Implementation Slice
 
-1. Bind read-only access to the confirmed dedicated account and verify identity.
-2. Build format-specific MIME/HTML parsers against sanitized examples. Preserve
+1. Bind `gmail.readonly` access to the dedicated account specified by the
+   `ALERTS_INBOX_EMAIL` secret and verify identity; exclude Spam explicitly.
+2. Only after the owner's 20-30-alert confirmation, build format-specific MIME/HTML
+   parsers against sanitized examples of those alerts. Preserve
    source provenance, ignore unsubscribe/tracking links, and fail loudly for
    unsupported formats. No LinkedIn scraping.
 3. Resolve public job URLs through the existing URL/text intake path. Use the same
