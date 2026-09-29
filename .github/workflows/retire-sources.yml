@@ -1,0 +1,41 @@
+name: Retire Inactive Sources
+
+on:
+  workflow_dispatch:
+    inputs:
+      retirement_plan_hash:
+        description: "Exact hash from the reviewed read-only source retirement report"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-scan
+  cancel-in-progress: false
+
+jobs:
+  retire:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install project
+        run: python -m pip install -e .
+      - name: Regenerate report and apply exact approved plan
+        env:
+          JOB_AGENT_DATABASE_URL: ${{ secrets.JOB_AGENT_DATABASE_URL }}
+          RETIREMENT_PLAN_HASH: ${{ inputs.retirement_plan_hash }}
+        run: python scripts/retire_sources.py --retirement-plan-hash "$RETIREMENT_PLAN_HASH"
+      - name: Upload regenerated retirement report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-retirement-reconciliation-${{ github.run_attempt }}
+          path: output/source_retirement.json
+          if-no-files-found: warn

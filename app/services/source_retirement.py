@@ -14,6 +14,12 @@ from app.postgres import PostgresConnection, is_postgres_connection
 from app.source_policy import source_exclusion_reason, source_inventory
 
 
+class RetirementPlanMismatch(ValueError):
+    def __init__(self, current_report: dict) -> None:
+        super().__init__("Retirement plan changed; review and approve the new plan hash")
+        self.current_report = current_report
+
+
 def connect_for_retirement(db_path: Path, *, apply: bool = False):
     url = os.getenv("JOB_AGENT_DATABASE_URL")
     if url:
@@ -24,6 +30,22 @@ def connect_for_retirement(db_path: Path, *, apply: bool = False):
     if not apply:
         conn.execute("PRAGMA query_only = ON")
     return conn
+
+
+def _owner_touched_postings(conn, source_id: int) -> list[dict]:
+    rows = conn.execute(
+        """SELECT jp.id, c.name AS company, jp.title,
+                  orev.state AS review_state, orev.reviewed_at,
+                  a.id AS application_id, a.stage AS application_stage,
+                  CAST(a.applied_at AS TEXT) AS applied_at
+           FROM job_postings jp
+           JOIN companies c ON c.id = jp.company_id
+           LEFT JOIN opportunity_reviews orev ON orev.job_posting_id = jp.id
+           LEFT JOIN applications a ON a.source_posting_id = jp.id
+           WHERE jp.source_id = ? AND (orev.state <> 'new' OR a.id IS NOT NULL)
+           ORDER BY jp.id""", (source_id,),
+    ).fetchall()
+    return [dict(row) for row in rows]
 
 
 def retirement_plan(conn) -> dict:
@@ -39,8 +61,11 @@ def retirement_plan(conn) -> dict:
         ).fetchall()
         if not postings:
             continue
-        sources.append({**source, "reason": reason, "posting_ids": [row["id"] for row in postings]})
-    plan = {"schema_version": 1, "sources": sources,
+        sources.append({
+            **source, "reason": reason, "posting_ids": [row["id"] for row in postings],
+            "owner_touched_postings": _owner_touched_postings(conn, source["source_id"]),
+        })
+    plan = {"schema_version": 2, "sources": sources,
             "posting_count": sum(len(source["posting_ids"]) for source in sources)}
     return {**plan, "plan_hash": _plan_hash(plan), "generated_at": utc_now()}
 
@@ -52,17 +77,25 @@ def write_retirement_report(conn, path: Path) -> dict:
     return plan
 
 
-def apply_retirement_report(conn, report: dict) -> int:
-    if report.get("schema_version") != 1 or report.get("plan_hash") != _plan_hash(report):
+def apply_retirement_report(conn, report: dict, *, expected_plan_hash: str | None = None) -> int:
+    if report.get("schema_version") != 2 or report.get("plan_hash") != _plan_hash(report):
         raise ValueError("Invalid retirement report; generate a new read-only report")
     try:
         # Serialize this short reconciliation with scans. Never hold this lock
         # while fetching feeds, running models, or asking the owner a question.
         if is_postgres_connection(conn):
             conn.execute("SET LOCAL lock_timeout = '5s'")
-            conn.execute("LOCK TABLE companies, job_sources, job_postings IN SHARE ROW EXCLUSIVE MODE")
+            conn.execute("LOCK TABLE companies, job_sources, job_postings, "
+                         "opportunity_reviews, applications IN SHARE ROW EXCLUSIVE MODE")
         else:
             conn.execute("BEGIN IMMEDIATE")
+        if expected_plan_hash is not None:
+            # Repeat the exact approval check under the lock: owner review or
+            # application edits between report generation and apply invalidate it.
+            current_report = retirement_plan(conn)
+            if (current_report["plan_hash"] != expected_plan_hash
+                    or report["plan_hash"] != expected_plan_hash):
+                raise RetirementPlanMismatch(current_report)
         current = {row["source_id"]: row for row in source_inventory(conn)}
         watchlist = load_watchlist()
         for source in report["sources"]:
@@ -78,6 +111,8 @@ def apply_retirement_report(conn, report: dict) -> int:
             ).fetchall()}
             if not open_ids.issubset(set(source["posting_ids"])):
                 raise ValueError("New postings appeared; regenerate retirement report")
+            if _owner_touched_postings(conn, source["source_id"]) != source["owner_touched_postings"]:
+                raise ValueError("Owner history changed; regenerate retirement report")
         closed = 0
         for source in report["sources"]:
             # Only confirmed inactive sources are closed. Reviews, snapshots,
@@ -87,7 +122,8 @@ def apply_retirement_report(conn, report: dict) -> int:
                 "WHERE source_id = ? AND availability_state = 'open'", (source["source_id"],),
             )
             closed += result.rowcount
-            conn.execute("UPDATE job_sources SET health_status = 'disabled' WHERE id = ?",
+            conn.execute("UPDATE job_sources SET health_status = 'disabled' "
+                         "WHERE id = ? AND health_status <> 'disabled'",
                          (source["source_id"],))
         conn.commit()
         return closed

@@ -19,7 +19,8 @@ from app.services.live_noise import _candidate_rows
 from app.services.review import list_reviews, reopen_review, show_review
 from app.services.scheduled_scan import plan_stale_backfill_for_connection
 from app.services.source_retirement import (
-    apply_retirement_report, connect_for_retirement, retirement_plan, write_retirement_report,
+    RetirementPlanMismatch, apply_retirement_report, connect_for_retirement,
+    retirement_plan, write_retirement_report,
 )
 
 
@@ -102,9 +103,11 @@ class SourceRetirementTest(unittest.TestCase):
         self.conn.execute("UPDATE opportunity_reviews SET state='approved', "
                           "decision_reason='keep history', reviewed_at='2026-09-28' WHERE job_posting_id=?",
                           (job_id,))
+        self.add_application(job_id)
         self.conn.commit()
         reviews = [tuple(row) for row in self.conn.execute("SELECT * FROM opportunity_reviews")]
         evaluations = [tuple(row) for row in self.conn.execute("SELECT * FROM role_evaluations")]
+        applications = [tuple(row) for row in self.conn.execute("SELECT * FROM applications")]
         changes = self.conn.total_changes
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "report.json"
@@ -113,8 +116,15 @@ class SourceRetirementTest(unittest.TestCase):
         self.assertEqual(self.conn.total_changes, changes)
         self.assertEqual(plan["posting_count"], 1)
         self.assertEqual(plan["sources"][0]["source_id"], source_id)
+        self.assertEqual(plan["sources"][0]["owner_touched_postings"], [{
+            "id": job_id, "company": "Deliveroo", "title": "Strategy & Operations Manager",
+            "review_state": "approved", "reviewed_at": "2026-09-28", "application_id": 1,
+            "application_stage": "applied", "applied_at": "2026-09-29",
+        }])
         self.assertEqual(apply_retirement_report(self.conn, plan), 1)
+        changes_after_apply = self.conn.total_changes
         self.assertEqual(apply_retirement_report(self.conn, plan), 0)
+        self.assertEqual(self.conn.total_changes, changes_after_apply)
         self.assertEqual(self.conn.execute("SELECT availability_state FROM job_postings WHERE id=?",
                                           (job_id,)).fetchone()[0], "unavailable")
         self.assertEqual(self.conn.execute("SELECT availability_state FROM job_postings WHERE id=?",
@@ -125,6 +135,81 @@ class SourceRetirementTest(unittest.TestCase):
                          reviews)
         self.assertEqual([tuple(row) for row in self.conn.execute("SELECT * FROM role_evaluations")],
                          evaluations)
+        self.assertEqual([tuple(row) for row in self.conn.execute("SELECT * FROM applications")],
+                         applications)
+
+    def add_application(self, job_id: int) -> None:
+        self.conn.execute(
+            """INSERT INTO applications (company, role, location, stage, applied_at,
+               applied_calendar_week, source_posting_id, eval_snapshot_json)
+               VALUES ('Deliveroo', 'Strategy & Operations Manager', 'London', 'applied',
+                       '2026-09-29', 40, ?, '{"preserve":"snapshot"}')""", (job_id,),
+        )
+
+    def test_report_includes_all_reviewed_and_applied_roles_in_hash(self) -> None:
+        self.seed(name="Deliveroo", key="untouched")
+        touched_ids = []
+        for state in ("interested", "approved", "dismissed", "snoozed"):
+            _, job_id = self.seed(name="Deliveroo", key=state)
+            touched_ids.append(job_id)
+            self.conn.execute("UPDATE opportunity_reviews SET state=?, reviewed_at='2026-09-28' "
+                              "WHERE job_posting_id=?", (state, job_id))
+        # Application history remains visible even after its review was reset.
+        _, applied_id = self.seed(name="Deliveroo", key="application")
+        self.add_application(applied_id)
+        touched_ids.append(applied_id)
+        _, closed_id = self.seed(name="Deliveroo", key="already-unavailable")
+        self.conn.execute("UPDATE job_postings SET availability_state='unavailable' WHERE id=?",
+                          (closed_id,))
+        self.conn.execute("UPDATE opportunity_reviews SET state='dismissed' WHERE job_posting_id=?",
+                          (closed_id,))
+        touched_ids.append(closed_id)
+        self.conn.commit()
+        plan = retirement_plan(self.conn)
+        touched = plan["sources"][0]["owner_touched_postings"]
+        self.assertEqual([row["id"] for row in touched], touched_ids)
+        self.assertEqual(touched[-2]["review_state"], "new")
+        self.assertEqual(touched[-2]["application_stage"], "applied")
+        self.assertNotIn(closed_id, plan["sources"][0]["posting_ids"])
+        mutations = [
+            ("UPDATE opportunity_reviews SET reviewed_at='2026-09-29' WHERE job_posting_id=?",
+             (touched_ids[0],)),
+            ("UPDATE opportunity_reviews SET state='dismissed' WHERE job_posting_id=?",
+             (touched_ids[0],)),
+            ("UPDATE job_postings SET title='Revised title' WHERE id=?", (touched_ids[0],)),
+            ("UPDATE applications SET stage='interviewing' WHERE source_posting_id=?", (applied_id,)),
+            ("UPDATE applications SET applied_at='2026-09-30' WHERE source_posting_id=?",
+             (applied_id,)),
+        ]
+        for sql, params in mutations:
+            with self.subTest(sql=sql):
+                self.conn.execute(sql, params)
+                self.conn.commit()
+                updated = retirement_plan(self.conn)
+                self.assertNotEqual(updated["plan_hash"], plan["plan_hash"])
+                plan = updated
+
+    def test_owner_edits_after_report_invalidate_apply_before_any_writes(self) -> None:
+        _, job_id = self.seed(name="Deliveroo")
+        plan = retirement_plan(self.conn)
+        self.conn.execute("UPDATE opportunity_reviews SET state='interested', "
+                          "reviewed_at='2026-09-29' WHERE job_posting_id=?", (job_id,))
+        self.conn.commit()
+        changes = self.conn.total_changes
+        with self.assertRaisesRegex(ValueError, "Owner history changed"):
+            apply_retirement_report(self.conn, plan)
+        self.assertEqual(self.conn.total_changes, changes)
+        with self.assertRaises(RetirementPlanMismatch) as raised:
+            apply_retirement_report(self.conn, plan, expected_plan_hash=plan["plan_hash"])
+        self.assertNotEqual(raised.exception.current_report["plan_hash"], plan["plan_hash"])
+        self.assertEqual(self.conn.total_changes, changes)
+
+    def test_legacy_report_without_owner_history_requires_new_approval(self) -> None:
+        self.seed(name="Deliveroo")
+        plan = retirement_plan(self.conn)
+        plan["schema_version"] = 1
+        with self.assertRaisesRegex(ValueError, "Invalid retirement"):
+            apply_retirement_report(self.conn, plan)
 
     def test_reenabled_or_newly_changed_plan_is_rejected_without_partial_retirement(self) -> None:
         self.seed(name="Deliveroo")
