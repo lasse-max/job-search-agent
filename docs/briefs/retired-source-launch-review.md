@@ -1,6 +1,38 @@
 # Retired Sources And Controlled Backfill: Cato Handoff
 
-Date: 2026-09-29. PR only. No paid backfill, retirement or migration applied.
+Date: 2026-09-29. Owner confirms PR #1 merged and migration 010 applied. This
+follow-up is documentation only: no code, production writes or workflow runs.
+The review and planning evidence below is historical unless explicitly updated.
+
+## Standing Web-Migration Deploy Runbook
+
+**Cato's `fbbe27d` deploy-order finding: documentation fix recorded in ADR 108.**
+Every scan calls `init_db`, which re-runs bootstrap 001. An old-`main` scan after
+010 is applied but before the PR merges can silently restore the old view; the
+new web then fails with `column effective_at does not exist`. The cross-check
+protects the merged code, not an older commit already running or queued.
+
+The owner follows this sequence for **every future migration the web reads**:
+
+1. Confirm no Scheduled Scan is running or queued. Observed starts are
+   **10:00-12:30 UTC**, despite the 06:00 cron, and runs take about **2-2.5h**.
+   Check actual Actions state; these observations are not a guaranteed safe window.
+2. Apply the migration from the reviewed PR branch, then **merge immediately**.
+   Nothing may run a scan between migration and merge, including a manual run or
+   a rerun of an older commit. This prevents old bootstrap DDL from undoing it.
+3. After merge, verify the view/column the web requires. For migration 010:
+
+```sql
+SELECT effective_at FROM current_opportunity_evaluations LIMIT 1;
+```
+
+If the query fails, the owner re-applies the idempotent migration and verifies
+again. A successful query returning zero rows still confirms the column exists.
+The owner has confirmed the merge and migration; this documentation pass does
+not claim to have run the verification query or checked production state.
+
+Runtime DDL and the separate anonymous-access check remain tracked in **B-37**;
+this runbook does not claim that the view cross-check preserves explicit grants.
 
 ## Second-Review Fix Round
 
@@ -28,7 +60,8 @@ independent re-review, not self-closed findings:
    newest-first order and LIMIT, and the 21-day digest/web filters. Preserve raw
    historical source strings. Shared SQL expression plus typed view `effective_at`
    prevent lexical offset errors; chips count UTC calendar days. Owner migration
-   010 appends this column and must precede deploying the web read path.
+   010 appends this column; follow the idle-scan, immediate-merge and verification
+   sequence above before deploying the web read path.
 5. **Retirement:** new owner-only/manual `retire-sources.yml`, exact approval hash,
    read-only regeneration, locked recheck, and shared scan concurrency. Report v2
    includes owner-touched review/application history in its hash. Wrong hashes
@@ -121,9 +154,11 @@ tracked-spend delta to be reported after the job. Do not describe it as invoiced
   explicitly disabled manual source remains hidden and is visible in reconciliation.
 - Source coverage/run exports, backups and immutable Applied history remain intact.
   These are historical/audit reads, not a live opportunity feed.
-- `010_stage15_active_source_reads.sql` is owner-applied after review. Both it and
-  the runtime canonical `001` view enforce source state and owner/RLS boundaries;
-  a cross-check prevents the next scan's schema bootstrap from undoing 010. SQL
+- `010_stage15_active_source_reads.sql` is owner-applied after review using the
+  standing deploy sequence above. Both it and the merged runtime canonical `001`
+  view enforce source state and owner/RLS boundaries; the cross-check protects the
+  view definition only once scans use the merged code, not old-main runs between
+  migration and merge or explicit view grants (B-37). SQL
   cannot read YAML identity directly; web/Python checks plus explicit retirement
   cover unsynchronized config. Shortlist/new-application RPCs inherit the view guard.
 - Generic export-approval noun phrases are removed before government-scope checks,
@@ -289,6 +324,8 @@ pass with byte-identical reports; no paid benchmark calls or cache edits occurre
 
 1. Confirm Cato cleared the final PR revision and the owner merged it, with CI green.
    CI success by itself is not Cato clearance. Do not merge on the owner's behalf.
+   Confirm the owner completed the post-merge `effective_at` verification in the
+   standing deploy runbook above; re-apply 010 if that check fails.
 2. Check workflow history for an already-dispatched full backfill, including failed
    or running attempts. Never dispatch the authorized full pass twice automatically.
 3. Refresh the read-only preflight on merged `main`; report count, end-to-end ETA,

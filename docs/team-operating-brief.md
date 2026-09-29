@@ -64,7 +64,7 @@ Secrets are never pasted in chat, never committed, never printed in artifacts. A
 8. **Degraded ≠ failed.** Feed churn warns loudly; only a failed scan or unsent email goes red. Don't let normal noise cry wolf.
 9. **Quiet ≠ silent.** An empty digest is fine; no email is not. Always send a heartbeat with health.
 10. **Freshness is the product.** The early-application edge is the whole premise — age filters on every surface, `posted Nd ago` on every card.
-11. **Run workflow on `main`, never "Re-run jobs"** — re-run repeats the *old* commit. Never run a migration concurrently with the scheduled scan.
+11. **Run workflow on `main`, never "Re-run jobs"** — re-run repeats the *old* commit. Never run a migration concurrently with the scheduled scan. For every migration read by the web, confirm no scan is running or queued, apply the reviewed PR migration immediately before merging with no scan between, then verify the required view/column and re-apply the idempotent migration if verification fails (ADR 108).
 12. **Migration = schema, backfill = data.** Applying a migration doesn't repopulate anything.
 13. **Coverage is tier-weighted.** A blended % that climbs while every Tier-1 stays dark is a vanity metric.
 14. **Build the cheap half now; make the expensive half earn its way in with data.** (Visual highlight now; push alerts only if 90+ roles prove monthly, not weekly.)
