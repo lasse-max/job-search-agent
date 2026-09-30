@@ -18,25 +18,13 @@ Built by Lasse as part of Layline, with AI-assisted implementation and review. T
 
 The operational app requires owner authentication because it contains personal job-search data. There is no public interactive demo at present.
 
-These screenshots were captured from live testing on **8 September 2026**. The email excerpt is from **4 September 2026**. Counts, coverage and recommendations are snapshots of the displayed runs.
+The app screenshot was captured from live testing on **8 September 2026**. The email excerpt is from **4 September 2026**. Counts, coverage and recommendations are snapshots of the displayed runs.
 
 ### See the scan at a glance
 
 ![Sextant scan overview showing 7,527 postings across 34 companies, with 3 apply, 20 consider and 13 stretch recommendations](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/scan-overview.png)
 
 The overview groups surfaced opportunities by recommendation and shows the scanned catalog alongside sorting and filtering controls.
-
-### Review the roles worth your attention
-
-![Sextant ranked matches showing role fit, company tiers, feasibility, confidence and mark-to-apply controls](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/ranked-matches.png)
-
-Each card keeps role fit, feasibility, company priority and supporting context visible. The user chooses whether to mark a role to apply, dismiss it or snooze it.
-
-### Inspect the search criteria
-
-![Sextant profile showing configured role families, seniority criteria and source coverage](https://raw.githubusercontent.com/lasse-max/lasse-max/main/assets/sextant/search-profile.png)
-
-The read-only profile makes the configured target roles, seniority rules and source coverage inspectable. Changes to these criteria are made through configuration.
 
 ### Get the results in your inbox
 
