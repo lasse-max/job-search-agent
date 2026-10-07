@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sextant · Profile</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet"><style>
+:root{--page:#F3F4F1;--surface:#FFFFFF;--hover:#F7F8F6;--bar-bg:#101820;--bar-ink:#EEF2F4;--bar-ink-2:#AEB9C2;
+--ink:#101820;--ink-2:#4A5560;--rule:#EDEFEC;--rule-2:#DCE0DB;--apply:#0E7352;--apply-tint:#E4F3EC;--cons:#1D5BA3;--cons-tint:#E6EFF8;
+--str:#8F5400;--str-tint:#FAF0DC;--warn:#B3261E;--warn-tint:#FBEAE8;--meter-off:#DCE0DC;--ease:cubic-bezier(0.16,1,0.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--page);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;position:relative}
+button,input,select,textarea{font:inherit;color:inherit}
+.n{font-variant-numeric:tabular-nums;font-stretch:78%}
+.top{background:var(--bar-bg);color:var(--bar-ink);display:flex;align-items:center;gap:34px;padding:0 40px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-stretch:125%;font-weight:800;font-size:18px;letter-spacing:-.01em}
+.tabs{display:flex;height:100%}
+.tabs a{display:flex;align-items:center;gap:8px;padding:0 15px;color:var(--bar-ink-2);text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:3px solid transparent}
+.tabs a b{font-weight:600}
+.tabs a.on{color:var(--bar-ink);font-weight:700;border-bottom-color:var(--bar-ink)}
+.tabs a .bump{background:#F0B65A;color:#101820;border-radius:6px;padding:0 6px}
+.status{margin-left:auto;display:flex;gap:20px;align-items:center;font-size:13px;color:var(--bar-ink-2)}
+.status .caution{color:#F0B65A;font-weight:600;display:flex;gap:7px;align-items:center}
+.status .caution i{width:7px;height:7px;background:#F0B65A;transform:rotate(45deg)}
+main{padding:30px 40px 0}
+h1{font-stretch:125%;font-weight:800;font-size:38px;letter-spacing:-.025em;line-height:1}
+.lede{margin-top:12px;font-size:15.5px;color:var(--ink-2);max-width:90ch}
+.lede b{color:var(--ink);font-weight:700}
+.sheet{background:var(--surface);border-radius:16px}
+.btn{border:0;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;display:inline-flex;gap:12px;align-items:center;white-space:nowrap}
+.btn kbd{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-2)}
+.lnk{text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:13.5px;color:var(--ink)}
+.pencil{color:var(--ink-2)}
+kbd{font-family:inherit;font-weight:700;font-size:12px;color:var(--ink);background:var(--surface);border:1px solid #D6DAD5;border-bottom-width:2px;border-radius:5px;padding:1px 7px}
+.fit{display:flex;align-items:center;gap:12px;font-weight:700;font-size:22px}
+.fit i{display:block;width:46px;height:5px;background:var(--meter-off);border-radius:3px;position:relative;overflow:hidden}
+.fit i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:3px;background:var(--c)}
+.a{--c:var(--apply)} .c{--c:var(--cons)} .s{--c:var(--str)}
+.seg{display:inline-flex;gap:2px}.seg i{width:10px;height:10px;border-radius:2px;background:var(--meter-off)}.seg i.on{background:var(--ink)}.seg.low i.on{background:var(--str)}
+.rate{display:flex;align-items:center;gap:10px;font-size:14.5px}
+.lvl{font-size:14.5px}.lvl small{font-size:13px;margin-left:7px;color:var(--apply);font-weight:600}.lvl small.hi{color:var(--str)}
+.flag{color:var(--str);font-weight:600}
+.who h3{font-size:15.5px;font-weight:700}.who .l1{display:flex;gap:10px;align-items:baseline}.who .meta{font-size:13px;color:var(--ink-2);white-space:nowrap}.who p{font-size:14.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:0;box-shadow:inset 0 0 0 1px var(--rule-2);background:var(--surface);border-radius:10px;padding:10px 12px;font-size:14.5px;color:var(--ink)}
+.field textarea{resize:none;line-height:1.5}
+.focus-ring{box-shadow:inset 0 0 0 2px var(--ink)!important}
+.sec-h{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:10px}
+
+.grid{margin-top:24px;display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:start}
+.card{background:var(--surface);border-radius:16px;padding:22px 26px}
+.card+.card{margin-top:20px}
+.card h2{font-stretch:112%;font-weight:800;font-size:17px;margin-bottom:12px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:0 20px}
+.kv dt{font-size:13.5px;color:var(--ink-2);padding:8px 0;border-top:1px solid var(--rule)}
+.kv dd{font-size:14px;padding:8px 0;border-top:1px solid var(--rule);line-height:1.45}
+.kv dt:first-of-type,.kv dd:first-of-type{border-top:0}
+.kv dd .q{color:var(--str);font-weight:600}
+.cov{display:flex;flex-direction:column;gap:14px}
+.ct{display:grid;grid-template-columns:70px 1fr 120px;gap:14px;align-items:center;font-size:14px}
+.ct b{font-weight:700}
+.bar{height:8px;background:var(--meter-off);border-radius:4px;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;border-radius:4px;background:var(--ink)}
+.bar u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--apply)}
+.ct span{color:var(--ink-2);font-size:13px;text-align:right}
+.ct span em{font-style:normal;color:var(--str);font-weight:600}
+.small{font-size:12.5px;color:var(--ink-2);margin-top:12px}
+.src{display:flex;flex-direction:column}
+.s1{display:grid;grid-template-columns:1fr auto;gap:12px;padding:9px 0;border-top:1px solid var(--rule);font-size:14px}
+.s1:first-child{border-top:0}
+.s1 b{font-weight:700;color:var(--str)}.s1 p{font-size:13px;color:var(--ink-2);margin-top:2px}
+</style></head><body><div class="top"><div class="brand"><svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/><path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="5" cy="5" r="2.6" fill="currentColor"/></svg>Sextant</div><nav class="tabs"><a href="#">Matches <b class="n">95</b></a><a href="#">To apply <b class="n">3</b></a><a href="#">Applied <b class="n">8</b></a><a href="#">Add a role</a><a class="on" href="#">Profile</a></nav><div class="status"><span>Scanned today 03:31, 10,501 postings at 50 companies</span><span class="caution"><i></i>2 sources degraded</span></div></div><main><h1>Profile</h1><p class="lede">What the agent searches for and how it judges fit. It’s read-only here; changes go into the agent’s settings.</p>
+<div class="grid"><div>
+<div class="card"><h2>You</h2><dl class="kv">
+<dt>Work rights</dt><dd>EU citizen (German). UK and Singapore: sponsorship needed, routine at most target employers. Australia: spousal visa, about 3 months after arrival. United States: not authorised.</dd>
+<dt>Target roles</dt><dd>Strategy and operations, business operations, product operations, GTM and sales strategy, revenue operations, partner operations, business transformation, programme management.</dd>
+<dt>Stretch roles</dt><dd>Deployment strategist, forward-deployed strategy, AI transformation with real business scope.</dd>
+<dt>Level</dt><dd>L4 to L5: manager, senior manager, lead, principal, senior IC. Judged by scope, not by title.</dd>
+<dt>Cities</dt><dd>London, Berlin, Munich, Hamburg, Amsterdam, Paris, Copenhagen, Zurich, Lisbon, Singapore, Sydney, Melbourne, Perth, Brisbane. Dublin for Tier 1 only.</dd>
+</dl></div>
+<div class="card"><h2>Not in your background</h2><p style="font-size:13.5px;color:var(--ink-2);margin:-4px 0 10px">The scorer can’t claim these as experience. A core task that needs them is rated stretch or none.</p><dl class="kv">
+<dt>Confirmed not done</dt><dd>Quota, territory or sales comp ownership. SAP or ERP rollout.</dd>
+<dt>To confirm</dt><dd><span class="q">Direct reports. CSAT or NPS ownership. Consulting title. Mining or resources. Financial modelling from scratch.</span></dd>
+</dl></div></div>
+<div>
+<div class="card"><h2>Coverage by tier</h2><div class="cov">
+<div class="ct"><b>Tier 1</b><div class="bar"><i style="width:60%"></i><u style="left:90%"></u></div><span>12 of 20, <em>target 90%</em></span></div>
+<div class="ct"><b>Tier 2</b><div class="bar"><i style="width:60%"></i><u style="left:80%"></u></div><span>27 of 45, <em>target 80%</em></span></div>
+<div class="ct"><b>Tier 3</b><div class="bar"><i style="width:41%"></i><u style="left:60%"></u></div><span>11 of 27, <em>target 60%</em></span></div>
+</div><p class="small">Green mark is the target. Blended across all tiers: 54%. Dark Tier 1: Google, Amazon, Apple, Uber, Netflix, Atlassian, SafetyCulture, NEURA Robotics.</p></div>
+<div class="card"><h2>Sources</h2><p style="font-size:14px;margin:-4px 0 6px"><b>48 of 50</b> healthy in this morning’s scan.</p><div class="src">
+<div class="s1"><div><b>Helsing, Greenhouse</b><p>0 roles fetched, usually about 25. Checked again tomorrow.</p></div><span class="lnk">Details</span></div>
+<div class="s1"><div><b>Personio, Ashby</b><p>Timed out after 30 s. 41 roles from yesterday kept.</p></div><span class="lnk">Details</span></div>
+</div><p class="small">Scans daily at 06:00 UTC. Shows roles up to 21 days old. Spend cap $30 a month.</p></div>
+<p class="small" style="padding:0 6px">Profile v4, location policy v5, scoring policy v2.</p>
+</div></div></main></body></html>

@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sextant · Evidence drawer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet"><style>
+:root{--page:#F3F4F1;--surface:#FFFFFF;--hover:#F7F8F6;--bar-bg:#101820;--bar-ink:#EEF2F4;--bar-ink-2:#AEB9C2;
+--ink:#101820;--ink-2:#4A5560;--rule:#EDEFEC;--rule-2:#DCE0DB;--apply:#0E7352;--apply-tint:#E4F3EC;--cons:#1D5BA3;--cons-tint:#E6EFF8;
+--str:#8F5400;--str-tint:#FAF0DC;--warn:#B3261E;--warn-tint:#FBEAE8;--meter-off:#DCE0DC;--ease:cubic-bezier(0.16,1,0.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--page);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;position:relative}
+button,input,select,textarea{font:inherit;color:inherit}
+.n{font-variant-numeric:tabular-nums;font-stretch:78%}
+.top{background:var(--bar-bg);color:var(--bar-ink);display:flex;align-items:center;gap:34px;padding:0 40px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-stretch:125%;font-weight:800;font-size:18px;letter-spacing:-.01em}
+.tabs{display:flex;height:100%}
+.tabs a{display:flex;align-items:center;gap:8px;padding:0 15px;color:var(--bar-ink-2);text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:3px solid transparent}
+.tabs a b{font-weight:600}
+.tabs a.on{color:var(--bar-ink);font-weight:700;border-bottom-color:var(--bar-ink)}
+.tabs a .bump{background:#F0B65A;color:#101820;border-radius:6px;padding:0 6px}
+.status{margin-left:auto;display:flex;gap:20px;align-items:center;font-size:13px;color:var(--bar-ink-2)}
+.status .caution{color:#F0B65A;font-weight:600;display:flex;gap:7px;align-items:center}
+.status .caution i{width:7px;height:7px;background:#F0B65A;transform:rotate(45deg)}
+main{padding:30px 40px 0}
+h1{font-stretch:125%;font-weight:800;font-size:38px;letter-spacing:-.025em;line-height:1}
+.lede{margin-top:12px;font-size:15.5px;color:var(--ink-2);max-width:90ch}
+.lede b{color:var(--ink);font-weight:700}
+.sheet{background:var(--surface);border-radius:16px}
+.btn{border:0;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;display:inline-flex;gap:12px;align-items:center;white-space:nowrap}
+.btn kbd{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-2)}
+.lnk{text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:13.5px;color:var(--ink)}
+.pencil{color:var(--ink-2)}
+kbd{font-family:inherit;font-weight:700;font-size:12px;color:var(--ink);background:var(--surface);border:1px solid #D6DAD5;border-bottom-width:2px;border-radius:5px;padding:1px 7px}
+.fit{display:flex;align-items:center;gap:12px;font-weight:700;font-size:22px}
+.fit i{display:block;width:46px;height:5px;background:var(--meter-off);border-radius:3px;position:relative;overflow:hidden}
+.fit i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:3px;background:var(--c)}
+.a{--c:var(--apply)} .c{--c:var(--cons)} .s{--c:var(--str)}
+.seg{display:inline-flex;gap:2px}.seg i{width:10px;height:10px;border-radius:2px;background:var(--meter-off)}.seg i.on{background:var(--ink)}.seg.low i.on{background:var(--str)}
+.rate{display:flex;align-items:center;gap:10px;font-size:14.5px}
+.lvl{font-size:14.5px}.lvl small{font-size:13px;margin-left:7px;color:var(--apply);font-weight:600}.lvl small.hi{color:var(--str)}
+.flag{color:var(--str);font-weight:600}
+.who h3{font-size:15.5px;font-weight:700}.who .l1{display:flex;gap:10px;align-items:baseline}.who .meta{font-size:13px;color:var(--ink-2);white-space:nowrap}.who p{font-size:14.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:0;box-shadow:inset 0 0 0 1px var(--rule-2);background:var(--surface);border-radius:10px;padding:10px 12px;font-size:14.5px;color:var(--ink)}
+.field textarea{resize:none;line-height:1.5}
+.focus-ring{box-shadow:inset 0 0 0 2px var(--ink)!important}
+.sec-h{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:10px}
+
+.summary{margin-top:12px;font-size:15.5px;color:var(--ink-2);display:flex;gap:22px;align-items:baseline}.summary b{color:var(--ink);font-weight:700}
+.summary .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;transform:translateY(-1px)}
+.tool{margin-top:22px;display:flex;gap:12px;align-items:center}
+.filter{display:flex;gap:4px;background:var(--surface);border-radius:10px;padding:3px;box-shadow:inset 0 0 0 1px var(--rule)}
+.filter button{border:0;background:none;padding:7px 13px;border-radius:7px;font-weight:600;font-size:13.5px;color:var(--ink-2);display:flex;align-items:center;gap:7px}
+.filter button i{width:8px;height:8px;border-radius:2px}.filter button.on{background:var(--ink);color:var(--page)}
+.search{flex:0 0 290px;border:0;box-shadow:inset 0 0 0 1px var(--rule);background:var(--surface);border-radius:10px;padding:9px 12px;font-size:13.5px;color:var(--ink-2)}
+.tool .right{margin-left:auto;display:flex;gap:16px;align-items:center;color:var(--ink-2);font-size:13.5px}
+.log{margin-top:18px;background:var(--surface);border-radius:16px;padding:4px 0 8px}
+.cols,.row{display:grid;grid-template-columns:124px minmax(0,1fr) 176px 176px 168px 150px;column-gap:20px;align-items:center;padding:0 24px}
+.cols{height:44px;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.group{display:flex;align-items:baseline;gap:10px;padding:20px 24px 8px;font-weight:700;font-size:14.5px;color:var(--apply)}
+.group i{width:10px;height:10px;border-radius:2px;align-self:center;background:var(--apply)}.group span{font-weight:500;color:var(--ink-2);font-size:13.5px}
+.row{min-height:62px;border-top:1px solid var(--rule)}.who{padding:10px 0;min-width:0}
+
+.scrim{position:absolute;inset:58px 0 0 0;background:rgba(16,24,32,.38)}
+.drawer{position:absolute;top:58px;right:0;bottom:0;width:640px;background:var(--surface);box-shadow:-1px 0 0 var(--rule-2);display:flex;flex-direction:column}
+.dh{padding:26px 32px 18px;border-bottom:1px solid var(--rule)}
+.dh .band{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--apply)}
+.dh .band span.close{color:var(--ink-2);font-weight:600}
+.dh h2{font-stretch:125%;font-weight:800;font-size:28px;letter-spacing:-.02em;margin-top:10px}
+.dh .t{font-size:16px;margin-top:4px}.dh .m{font-size:13.5px;color:var(--ink-2);margin-top:6px}
+.verdict{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;margin-top:18px;padding:14px 16px;border-radius:12px;background:var(--apply-tint)}
+.verdict b{font-stretch:125%;font-weight:800;font-size:20px;color:var(--apply)}
+.verdict p{font-size:13.5px;color:var(--ink)}.verdict .lv{font-size:13.5px;text-align:right}.verdict .lv span{display:block;color:var(--ink-2);font-size:12.5px}
+.db{padding:20px 32px;overflow:hidden;flex:1}
+.db section+section{margin-top:16px}
+.hired{font-size:15px;line-height:1.5}
+.core{display:flex;flex-direction:column}
+.ci{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--rule)}
+.ci:first-child{border-top:0;padding-top:0}
+.rt{font-weight:700;font-size:13.5px}.rt.d{color:var(--apply)}.rt.t{color:var(--ink)}.rt.s{color:var(--str)}
+.ci .task{font-size:14.5px;line-height:1.45}
+.ci .ev{font-size:13px;color:var(--ink-2);margin-top:3px;line-height:1.45}
+.gline{font-size:14px;line-height:1.5}.gline b{color:var(--apply);white-space:nowrap;margin-right:10px}.gline span{color:var(--ink-2);font-size:13.5px}
+.ci .ev q{color:var(--ink)}
+.gates{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+.g{display:flex;justify-content:space-between;font-size:13.5px;padding:3px 0}.g span{color:var(--ink-2)}.g b{color:var(--apply);font-weight:700}
+.gap p{font-size:14.5px;line-height:1.5}.gap p+p{color:var(--ink-2);margin-top:2px}
+.quiet{font-size:12.5px;color:var(--ink-2)}
+.df{padding:16px 32px;border-top:1px solid var(--rule);display:flex;gap:18px;align-items:center}
+.df .r{margin-left:auto;display:flex;gap:18px}
+.row.sel{background:var(--hover);box-shadow:inset 4px 0 0 var(--apply)}</style></head><body><div class="top"><div class="brand"><svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/><path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="5" cy="5" r="2.6" fill="currentColor"/></svg>Sextant</div><nav class="tabs"><a class="on" href="#">Matches <b class="n">95</b></a><a href="#">To apply <b class="n">2</b></a><a href="#">Applied <b class="n">8</b></a><a href="#">Add a role</a><a href="#">Profile</a></nav><div class="status"><span>Scanned today 03:31, 10,501 postings at 50 companies</span><span class="caution"><i></i>2 sources degraded</span></div></div><main><h1>Matches</h1><div class="summary"><span><i class="sw" style="background:var(--apply)"></i><b>28</b> apply now</span><span><i class="sw" style="background:var(--cons)"></i><b>46</b> consider</span><span><i class="sw" style="background:var(--str)"></i><b>21</b> stretch</span><span>Nothing moves until you mark it.</span></div>
+<div class="tool"><div class="filter"><button class="on">All 95</button><button><i style="background:var(--apply)"></i>Apply now 28</button><button><i style="background:var(--cons)"></i>Consider 46</button><button><i style="background:var(--str)"></i>Stretch 21</button></div><input class="search" placeholder="Filter by company or title"><div class="right"><span class="lnk">Skipped (160)</span><span>Sort by fit</span><span><kbd>?</kbd> Shortcuts</span></div></div>
+<div class="log"><div class="cols"><span>Fit</span><span>Role</span><span>Screening odds</span><span>Career value</span><span>Level</span><span></span></div><div class="group"><i></i>Apply now<span>fit 80 and over, 28 roles</span></div><div class="row sel"><div class="fit n a" style="--w:70%">88<i></i></div><div class="who"><div class="l1"><h3>Mistral AI</h3><span class="meta">Paris, 3 days ago</span></div><p>Product Operations Manager, DesignOps</p></div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div><div class="lvl">L5<small>in band</small></div><div></div></div><div class="row "><div class="fit n a" style="--w:68%">87<i></i></div><div class="who"><div class="l1"><h3>Anthropic</h3><span class="meta">Dublin or London, 2 days ago</span></div><p>Finance &amp; Strategy, Deal Strategy</p></div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i></i></span>Fair</div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div><div class="lvl">L5<small>in band</small></div><div></div></div><div class="row "><div class="fit n a" style="--w:68%">87<i></i></div><div class="who"><div class="l1"><h3>Airwallex</h3><span class="meta">Singapore, <span class="flag">visa needed</span>, 8 days ago</span></div><p>Manager, Revenue Strategy &amp; Operations, SEA</p></div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i></i></span>Solid</div><div class="lvl">L5<small>in band</small></div><div></div></div><div class="row "><div class="fit n a" style="--w:65%">86<i></i></div><div class="who"><div class="l1"><h3>Canva</h3><span class="meta">Sydney, 1 day ago</span></div><p>Strategy &amp; Business Operations Lead</p></div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div><div class="lvl">L5<small>in band</small></div><div></div></div><div class="row "><div class="fit n a" style="--w:63%">85<i></i></div><div class="who"><div class="l1"><h3>Stripe</h3><span class="meta">Dublin, 4 days ago</span></div><p>GTM Strategy &amp; Operations, EMEA</p></div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i></i></span>Fair</div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div><div class="lvl">L4<small>in band</small></div><div></div></div><div class="row "><div class="fit n a" style="--w:60%">84<i></i></div><div class="who"><div class="l1"><h3>Wise</h3><span class="meta">London, <span class="flag">visa needed</span>, 5 days ago</span></div><p>Business Operations Manager</p></div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i></i></span>Solid</div><div class="lvl">L5<small>in band</small></div><div></div></div><div class="row "><div class="fit n a" style="--w:58%">83<i></i></div><div class="who"><div class="l1"><h3>Databricks</h3><span class="meta">Amsterdam, 6 days ago</span></div><p>Strategy &amp; Operations Manager, EMEA</p></div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i></i></span>Fair</div><div class="rate"><span class="seg><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div><div class="lvl">L5<small>in band</small></div><div></div></div></div></main><div class="scrim"></div><aside class="drawer" role="dialog" aria-label="Evidence for Mistral AI">
+<div class="dh"><div class="band"><span>Apply now, fit 88</span><span class="close"><kbd>Esc</kbd> Close</span></div>
+<h2>Mistral AI</h2><div class="t">Product Operations Manager, DesignOps</div><div class="m">Paris, posted 3 days ago, Tier 1 employer</div>
+<div class="verdict"><b>Good match</b><p>Direct on 2 of 3 core tasks, transferable on 1. Why apply: core product-ops job at a Tier 1 AI company, at your level, in an EU city.</p><div class="lv">Level L5<span>matches yours</span></div></div></div>
+<div class="db">
+<section><div class="sec-h">They’re hiring someone to</div><p class="hired">Run the operating rhythm of the design organisation, so designers ship on time and leadership can see where work stands.</p></section>
+<section><div class="sec-h">Core work, rated against your profile</div><div class="core">
+<div class="ci"><div class="rt d">Direct</div><div><div class="task">Report programme health, risks and delivery to design leadership</div><div class="ev">Your profile: <q>Built SQL, BigQuery and Looker reporting for leadership reviews.</q></div></div></div>
+<div class="ci"><div class="rt d">Direct</div><div><div class="task">Lead process changes across product, design and marketing teams</div><div class="ev">Your profile: <q>Led global transformation programmes at Google, two promotions.</q></div></div></div>
+<div class="ci"><div class="rt t">Transferable</div><div><div class="task">Run quarterly planning, resourcing and rituals for designers</div><div class="ev">You ran planning for product and GTM teams. Translate it to a design org’s cadence.</div></div></div>
+</div></section>
+<section class="gap"><div class="sec-h">Watch out for</div><p>No design-industry background.</p><p>Lead with operating-model work you did for creative and product teams.</p></section>
+<section><div class="sec-h">Gates</div><div class="gline"><b>All 4 pass</b><span>Location and work rights (EU), language (English), 6 to 10 years (you: 8), no certificate needed</span></div></section>
+</div>
+<div class="df"><button class="btn">Mark to apply <kbd>A</kbd></button><span class="quiet">Model confidence 82%<br>Scored today 03:31</span><div class="r"><span class="lnk">Open posting</span><span class="lnk">Copy summary</span></div></div></aside></body></html>

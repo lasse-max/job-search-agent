@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sextant · Applied, row drawer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet"><style>
+:root{--page:#F3F4F1;--surface:#FFFFFF;--hover:#F7F8F6;--bar-bg:#101820;--bar-ink:#EEF2F4;--bar-ink-2:#AEB9C2;
+--ink:#101820;--ink-2:#4A5560;--rule:#EDEFEC;--rule-2:#DCE0DB;--apply:#0E7352;--apply-tint:#E4F3EC;--cons:#1D5BA3;--cons-tint:#E6EFF8;
+--str:#8F5400;--str-tint:#FAF0DC;--warn:#B3261E;--warn-tint:#FBEAE8;--meter-off:#DCE0DC;--ease:cubic-bezier(0.16,1,0.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--page);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;position:relative}
+button,input,select,textarea{font:inherit;color:inherit}
+.n{font-variant-numeric:tabular-nums;font-stretch:78%}
+.top{background:var(--bar-bg);color:var(--bar-ink);display:flex;align-items:center;gap:34px;padding:0 40px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-stretch:125%;font-weight:800;font-size:18px;letter-spacing:-.01em}
+.tabs{display:flex;height:100%}
+.tabs a{display:flex;align-items:center;gap:8px;padding:0 15px;color:var(--bar-ink-2);text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:3px solid transparent}
+.tabs a b{font-weight:600}
+.tabs a.on{color:var(--bar-ink);font-weight:700;border-bottom-color:var(--bar-ink)}
+.tabs a .bump{background:#F0B65A;color:#101820;border-radius:6px;padding:0 6px}
+.status{margin-left:auto;display:flex;gap:20px;align-items:center;font-size:13px;color:var(--bar-ink-2)}
+.status .caution{color:#F0B65A;font-weight:600;display:flex;gap:7px;align-items:center}
+.status .caution i{width:7px;height:7px;background:#F0B65A;transform:rotate(45deg)}
+main{padding:30px 40px 0}
+h1{font-stretch:125%;font-weight:800;font-size:38px;letter-spacing:-.025em;line-height:1}
+.lede{margin-top:12px;font-size:15.5px;color:var(--ink-2);max-width:90ch}
+.lede b{color:var(--ink);font-weight:700}
+.sheet{background:var(--surface);border-radius:16px}
+.btn{border:0;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;display:inline-flex;gap:12px;align-items:center;white-space:nowrap}
+.btn kbd{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-2)}
+.lnk{text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:13.5px;color:var(--ink)}
+.pencil{color:var(--ink-2)}
+kbd{font-family:inherit;font-weight:700;font-size:12px;color:var(--ink);background:var(--surface);border:1px solid #D6DAD5;border-bottom-width:2px;border-radius:5px;padding:1px 7px}
+.fit{display:flex;align-items:center;gap:12px;font-weight:700;font-size:22px}
+.fit i{display:block;width:46px;height:5px;background:var(--meter-off);border-radius:3px;position:relative;overflow:hidden}
+.fit i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:3px;background:var(--c)}
+.a{--c:var(--apply)} .c{--c:var(--cons)} .s{--c:var(--str)}
+.seg{display:inline-flex;gap:2px}.seg i{width:10px;height:10px;border-radius:2px;background:var(--meter-off)}.seg i.on{background:var(--ink)}.seg.low i.on{background:var(--str)}
+.rate{display:flex;align-items:center;gap:10px;font-size:14.5px}
+.lvl{font-size:14.5px}.lvl small{font-size:13px;margin-left:7px;color:var(--apply);font-weight:600}.lvl small.hi{color:var(--str)}
+.flag{color:var(--str);font-weight:600}
+.who h3{font-size:15.5px;font-weight:700}.who .l1{display:flex;gap:10px;align-items:baseline}.who .meta{font-size:13px;color:var(--ink-2);white-space:nowrap}.who p{font-size:14.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:0;box-shadow:inset 0 0 0 1px var(--rule-2);background:var(--surface);border-radius:10px;padding:10px 12px;font-size:14.5px;color:var(--ink)}
+.field textarea{resize:none;line-height:1.5}
+.focus-ring{box-shadow:inset 0 0 0 2px var(--ink)!important}
+.sec-h{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:10px}
+
+.log{margin-top:24px;background:var(--surface);border-radius:16px;padding:4px 0 10px}
+.cols,.arow{display:grid;grid-template-columns:minmax(0,1fr) 250px 150px 300px 120px;column-gap:24px;align-items:center;padding:0 24px}
+.cols{height:44px;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.grp{padding:18px 24px 8px;font-weight:700;font-size:14.5px;display:flex;gap:10px;align-items:baseline}.grp span{font-weight:500;color:var(--ink-2);font-size:13.5px}
+.arow{min-height:62px;border-top:1px solid var(--rule)}
+.arow.hover{background:var(--hover)}
+.who{padding:10px 0;min-width:0}
+.stage{display:flex;flex-direction:column;gap:6px}
+.stage b{font-weight:600;font-size:14px}
+.track{display:flex;gap:3px}.track i{width:30px;height:5px;border-radius:3px;background:var(--meter-off)}.track i.on{background:var(--ink)}
+.stage.closed b{color:var(--warn)}.stage.closed .track i.on{background:var(--warn)}
+.date{font-size:14px}.date span{display:block;font-size:12.5px;color:var(--ink-2)}
+.date.old span{color:var(--str);font-weight:600}
+.next{font-size:14px}.next .add{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.due{font-size:14px}.due .soon{color:var(--str);font-weight:600}
+.arow.closed .who h3,.arow.closed .who p{color:var(--ink-2)}
+
+.scrim{position:absolute;inset:58px 0 0 0;background:rgba(16,24,32,.38)}
+.drawer{position:absolute;top:58px;right:0;bottom:0;width:620px;background:var(--surface);display:flex;flex-direction:column}
+.dh{padding:26px 32px 18px;border-bottom:1px solid var(--rule)}
+.dh .top2{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--warn)}.dh .top2 span:last-child{color:var(--ink-2);font-weight:600}
+.dh h2{font-stretch:125%;font-weight:800;font-size:28px;letter-spacing:-.02em;margin-top:10px}.dh .t{font-size:16px;margin-top:4px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:16px}
+.facts div{font-size:14px}.facts span{display:block;font-size:12.5px;color:var(--ink-2);margin-bottom:2px}.facts .add{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.db{padding:20px 32px;flex:1;overflow:hidden}
+.db section+section{margin-top:22px}
+.loghead{display:flex;justify-content:space-between;align-items:baseline}.loghead em{font-style:normal;font-size:12.5px;color:var(--ink-2)}
+.entries{margin-top:4px;border-left:2px solid var(--rule-2);margin-left:5px}
+.e{position:relative;padding:8px 0 8px 22px;display:grid;grid-template-columns:96px 1fr;gap:12px;font-size:14px}
+.e::before{content:"";position:absolute;left:-6px;top:13px;width:10px;height:10px;border-radius:50%;background:var(--surface);box-shadow:inset 0 0 0 2px var(--ink)}
+.e.last::before{box-shadow:inset 0 0 0 2px var(--warn);background:var(--warn)}
+.e .d{color:var(--ink-2);font-size:13px}.e p{line-height:1.45}.e p span{color:var(--ink-2)}
+.snap{background:var(--page);border-radius:12px;padding:16px 18px}
+.snap .h{display:flex;justify-content:space-between;align-items:baseline}.snap .h b{font-size:14px}.snap .h span{font-size:12.5px;color:var(--ink-2)}
+.snap .fitline{display:flex;gap:14px;align-items:center;margin-top:10px;font-size:13.5px}
+.snap p{font-size:14px;line-height:1.5;margin-top:8px}.snap p.g{color:var(--str)}
+.lesson{margin-top:12px;font-size:13.5px;line-height:1.5;padding-top:10px;border-top:1px solid var(--rule-2)}
+</style></head><body><div class="top"><div class="brand"><svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/><path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="5" cy="5" r="2.6" fill="currentColor"/></svg>Sextant</div><nav class="tabs"><a href="#">Matches <b class="n">95</b></a><a href="#">To apply <b class="n">3</b></a><a class="on" href="#">Applied <b class="n">8</b></a><a href="#">Add a role</a><a href="#">Profile</a></nav><div class="status"><span>Scanned today 03:31, 10,501 postings at 50 companies</span><span class="caution"><i></i>2 sources degraded</span></div></div><main><h1>Applied</h1><p class="lede"><b>7 active, 1 closed.</b> All seven are still being prepared, and two have waited since July. No interviews yet.</p>
+<div class="log"><div class="cols"><span>Role</span><span>Stage</span><span>Started</span><span>Next action</span><span>Due</span></div>
+<div class="grp">Active<span>7</span></div>
+<div class="arow "><div class="who"><div class="l1"><h3>OpenAI</h3><span class="meta">Sydney</span></div><p>Sales Strategy and Operations, ANZ</p></div><div class="stage"><b>Preparing</b><div class="track"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><div class="date old">11 Jul<span>12 weeks, W28</span></div><div class="next"><span>Ask Sam for a referral</span></div><div class="due"><span class="soon">Fri 10 Oct</span></div></div>
+<div class="arow hover"><div class="who"><div class="l1"><h3>Airbnb</h3><span class="meta">Sydney</span></div><p>Business Operations and Growth Lead</p></div><div class="stage"><b>Preparing</b><div class="track"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><div class="date old">15 Jul<span>12 weeks, W29</span></div><div class="next"><span class="add">Add next action</span></div><div class="due"></div></div>
+<div class="arow "><div class="who"><div class="l1"><h3>Canva</h3><span class="meta">Sydney</span></div><p>Strategy &amp; Business Operations Lead, Print</p></div><div class="stage"><b>Preparing</b><div class="track"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><div class="date">15 Sep<span>3 weeks, W38</span></div><div class="next"><span>Tailor CV to print operations</span></div><div class="due">Mon 13 Oct</div></div>
+<div class="arow "><div class="who"><div class="l1"><h3>Stripe</h3><span class="meta">Dublin</span></div><p>GTM Strategy &amp; Operations Analyst</p></div><div class="stage"><b>Preparing</b><div class="track"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><div class="date">15 Sep<span>3 weeks, W38</span></div><div class="next"><span class="add">Add next action</span></div><div class="due"></div></div>
+<div class="arow "><div class="who"><div class="l1"><h3>OpenAI</h3><span class="meta">Dublin</span></div><p>EMEA Vendor Lead, Ad Sales</p></div><div class="stage"><b>Preparing</b><div class="track"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><div class="date">15 Sep<span>3 weeks, W38</span></div><div class="next"><span class="add">Add next action</span></div><div class="due"></div></div>
+<div class="arow "><div class="who"><div class="l1"><h3>Sierra</h3><span class="meta">London, <span class="flag">visa needed</span></span></div><p>GTM Operations, Agent Development</p></div><div class="stage"><b>Preparing</b><div class="track"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><div class="date">15 Sep<span>3 weeks, W38</span></div><div class="next"><span class="add">Add next action</span></div><div class="due"></div></div>
+<div class="arow "><div class="who"><div class="l1"><h3>Airwallex</h3><span class="meta">Sydney</span></div><p>Manager, Revenue Strategy &amp; Operations, ANZ, fixed term</p></div><div class="stage"><b>Preparing</b><div class="track"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><div class="date">15 Sep<span>3 weeks, W38</span></div><div class="next"><span class="add">Add next action</span></div><div class="due"></div></div>
+<div class="grp">Closed<span>1</span></div>
+<div class="arow  closed"><div class="who"><div class="l1"><h3>Amazon</h3><span class="meta">Sydney</span></div><p>AU Global Store Program Manager</p></div><div class="stage closed"><b>Rejected after hiring manager screen</b><div class="track"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div><div class="date">21 Sep<span>Closed 2 Oct</span></div><div class="next"></div><div class="due"></div></div>
+</div></main><div class="scrim"></div><aside class="drawer" role="dialog" aria-label="Amazon application">
+<div class="dh"><div class="top2"><span>Closed, rejected after hiring manager screen</span><span><kbd>Esc</kbd> Close</span></div><h2>Amazon</h2><div class="t">AU Global Store Program Manager, Sydney</div>
+<div class="facts"><div><span>Applied</span>21 Sep, W39</div><div><span>Contact</span><span class="add">Add contact</span></div><div><span>Salary</span>Not stated</div><div><span>Source</span>Added by link</div></div></div>
+<div class="db">
+<section><div class="loghead"><div class="sec-h">Stage log</div><em>Entries can’t be edited or deleted</em></div><div class="entries">
+<div class="e"><div class="d">21 Sep 09:12</div><p>Moved from To apply. <span>Preparing</span></p></div>
+<div class="e"><div class="d">21 Sep 17:40</div><p>Application sent. <span>Applied</span></p></div>
+<div class="e"><div class="d">30 Sep</div><p>Hiring manager screen.</p></div>
+<div class="e last"><div class="d">2 Oct</div><p>Rejected. <span>“The role is running store operations commercially, not programme management.”</span></p></div>
+</div><p style="margin-top:10px"><span class="lnk">Add a log entry</span></p></section>
+<section><div class="sec-h">What Sextant said when you applied</div><div class="snap"><div class="h"><b>Apply now</b><span>Scored 20 Sep, evaluator v4</span></div>
+<div class="fitline"><div class="fit n a" style="--w:60%;font-size:18px">84<i></i></div><span>Level L5, in band</span></div>
+<p>Why it fits: programme management across marketplace teams, stakeholder reporting, launch planning.</p><p class="g">Watch out for: limited retail operations depth.</p>
+<div class="lesson">The title said programme manager; the core job was store operations. This role is in the test set for scoring v2.</div></div></section>
+</div></aside></body></html>

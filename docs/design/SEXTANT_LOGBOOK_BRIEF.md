@@ -7,6 +7,9 @@
 - `docs/design/directions/e-logbook-v3.png`: the starting point, revised after the Gemini review.
 - `docs/design/directions/e-logbook-v3.html`: exact tokens and markup.
 - `e-logbook-v2-day.png`: the denser 10-column version, for comparison.
+- `docs/design/directions/logbook-pages/01` to `08`: Otto's mockups of the remaining screens, as HTML and PNG. They cover the evidence drawer (built for scoring v2), Mark to apply, To apply, Applied, the Applied drawer, Profile, Add a role and Login.
+
+**Note (7 Oct):** scoring v2 (`docs/briefs/scoring-v2-core-job.md`) will replace the numeric Fit bands with a verdict (Strong / Good / Stretch / No) and fold "Screening odds" into it. The Matches column set changes once v2 passes its evaluation, so the builder brief waits for that.
 - `docs/design/2026-10_design-audit.md`: what's wrong today.
 - `docs/design/sextant/screenshots/`: the current app, every page.
 

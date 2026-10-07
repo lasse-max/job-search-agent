@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sextant · Add a role</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet"><style>
+:root{--page:#F3F4F1;--surface:#FFFFFF;--hover:#F7F8F6;--bar-bg:#101820;--bar-ink:#EEF2F4;--bar-ink-2:#AEB9C2;
+--ink:#101820;--ink-2:#4A5560;--rule:#EDEFEC;--rule-2:#DCE0DB;--apply:#0E7352;--apply-tint:#E4F3EC;--cons:#1D5BA3;--cons-tint:#E6EFF8;
+--str:#8F5400;--str-tint:#FAF0DC;--warn:#B3261E;--warn-tint:#FBEAE8;--meter-off:#DCE0DC;--ease:cubic-bezier(0.16,1,0.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--page);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;position:relative}
+button,input,select,textarea{font:inherit;color:inherit}
+.n{font-variant-numeric:tabular-nums;font-stretch:78%}
+.top{background:var(--bar-bg);color:var(--bar-ink);display:flex;align-items:center;gap:34px;padding:0 40px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-stretch:125%;font-weight:800;font-size:18px;letter-spacing:-.01em}
+.tabs{display:flex;height:100%}
+.tabs a{display:flex;align-items:center;gap:8px;padding:0 15px;color:var(--bar-ink-2);text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:3px solid transparent}
+.tabs a b{font-weight:600}
+.tabs a.on{color:var(--bar-ink);font-weight:700;border-bottom-color:var(--bar-ink)}
+.tabs a .bump{background:#F0B65A;color:#101820;border-radius:6px;padding:0 6px}
+.status{margin-left:auto;display:flex;gap:20px;align-items:center;font-size:13px;color:var(--bar-ink-2)}
+.status .caution{color:#F0B65A;font-weight:600;display:flex;gap:7px;align-items:center}
+.status .caution i{width:7px;height:7px;background:#F0B65A;transform:rotate(45deg)}
+main{padding:30px 40px 0}
+h1{font-stretch:125%;font-weight:800;font-size:38px;letter-spacing:-.025em;line-height:1}
+.lede{margin-top:12px;font-size:15.5px;color:var(--ink-2);max-width:90ch}
+.lede b{color:var(--ink);font-weight:700}
+.sheet{background:var(--surface);border-radius:16px}
+.btn{border:0;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;display:inline-flex;gap:12px;align-items:center;white-space:nowrap}
+.btn kbd{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-2)}
+.lnk{text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:13.5px;color:var(--ink)}
+.pencil{color:var(--ink-2)}
+kbd{font-family:inherit;font-weight:700;font-size:12px;color:var(--ink);background:var(--surface);border:1px solid #D6DAD5;border-bottom-width:2px;border-radius:5px;padding:1px 7px}
+.fit{display:flex;align-items:center;gap:12px;font-weight:700;font-size:22px}
+.fit i{display:block;width:46px;height:5px;background:var(--meter-off);border-radius:3px;position:relative;overflow:hidden}
+.fit i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:3px;background:var(--c)}
+.a{--c:var(--apply)} .c{--c:var(--cons)} .s{--c:var(--str)}
+.seg{display:inline-flex;gap:2px}.seg i{width:10px;height:10px;border-radius:2px;background:var(--meter-off)}.seg i.on{background:var(--ink)}.seg.low i.on{background:var(--str)}
+.rate{display:flex;align-items:center;gap:10px;font-size:14.5px}
+.lvl{font-size:14.5px}.lvl small{font-size:13px;margin-left:7px;color:var(--apply);font-weight:600}.lvl small.hi{color:var(--str)}
+.flag{color:var(--str);font-weight:600}
+.who h3{font-size:15.5px;font-weight:700}.who .l1{display:flex;gap:10px;align-items:baseline}.who .meta{font-size:13px;color:var(--ink-2);white-space:nowrap}.who p{font-size:14.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:0;box-shadow:inset 0 0 0 1px var(--rule-2);background:var(--surface);border-radius:10px;padding:10px 12px;font-size:14.5px;color:var(--ink)}
+.field textarea{resize:none;line-height:1.5}
+.focus-ring{box-shadow:inset 0 0 0 2px var(--ink)!important}
+.sec-h{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:10px}
+
+.wrap{margin-top:24px;display:grid;grid-template-columns:1fr 440px;gap:20px;align-items:start}
+.card{background:var(--surface);border-radius:16px;padding:24px 28px}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--page);padding:4px;border-radius:12px}
+.mode{border-radius:9px;padding:12px 14px}
+.mode b{display:block;font-size:14.5px}.mode span{font-size:13px;color:var(--ink-2)}
+.mode.on{background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.form{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form .full{grid-column:1/-1}
+.dest{display:flex;gap:8px}.dest span{padding:8px 14px;border-radius:9px;box-shadow:inset 0 0 0 1px var(--rule-2);font-size:14px;font-weight:600;color:var(--ink-2)}
+.dest span.on{background:var(--ink);color:#fff;box-shadow:none}
+.check{display:flex;gap:10px;align-items:center;font-size:14px}.check i{width:18px;height:18px;border-radius:5px;box-shadow:inset 0 0 0 1.5px var(--ink);display:grid;place-items:center}
+.check i::after{content:"";width:8px;height:4px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg) translate(1px,-1px)}
+.submit{display:flex;gap:16px;align-items:center;margin-top:6px}.submit span{font-size:13px;color:var(--ink-2)}
+.recent h2{font-stretch:112%;font-weight:800;font-size:17px;margin-bottom:6px}
+.r1{padding:12px 0;border-top:1px solid var(--rule)}.r1:first-of-type{border-top:0}
+.r1 b{font-size:14.5px}.r1 p{font-size:13.5px;margin-top:3px;line-height:1.45}
+.r1 .st{font-weight:700}.ok{color:var(--ink-2)}.bad{color:var(--warn)}.wait{color:var(--ink-2)}.fix{color:var(--str)}
+</style></head><body><div class="top"><div class="brand"><svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/><path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="5" cy="5" r="2.6" fill="currentColor"/></svg>Sextant</div><nav class="tabs"><a href="#">Matches <b class="n">95</b></a><a href="#">To apply <b class="n">3</b></a><a href="#">Applied <b class="n">8</b></a><a class="on" href="#">Add a role</a><a href="#">Profile</a></nav><div class="status"><span>Scanned today 03:31, 10,501 postings at 50 companies</span><span class="caution"><i></i>2 sources degraded</span></div></div><main><h1>Add a role</h1><p class="lede">For roles the daily scan can’t reach: referrals, LinkedIn finds, Google or Apple careers pages. It gets the same scoring as everything else.</p>
+<div class="wrap"><div class="card">
+<div class="modes"><div class="mode on"><b>Paste a link</b><span>Try this first</span></div><div class="mode"><b>Paste the description</b><span>When the link won’t load</span></div><div class="mode"><b>Just note it</b><span>Saved, not scored</span></div></div>
+<div class="form">
+<div class="field full"><label>Job link</label><input class="focus-ring" value="https://www.google.com/about/careers/applications/jobs/results/1234-strategy-operations-manager"></div>
+<div class="field full"><label>Private note <span style="font-weight:400">(optional)</span></label><textarea style="height:72px">Referral from Priya, she’s on the Cloud BizOps team.</textarea></div>
+<div class="field"><label>Where should it go?</label><div class="dest"><span class="on">Matches</span><span>To apply</span><span>Applied</span></div></div>
+<div class="field" style="align-self:end"><div class="check"><i></i>Suggest Google for the watchlist</div></div>
+<div class="submit full"><button class="btn">Queue for scoring</button><span>Scored in tomorrow’s 06:00 scan.</span></div>
+</div></div>
+<div class="card recent"><h2>Recently added</h2>
+<div class="r1"><b>Google, Strategy &amp; Operations Manager</b><p><span class="st fix">Link didn’t load.</span> <span class="lnk">Paste the description</span> and it’ll be scored tomorrow.</p></div>
+<div class="r1"><b>Rio Tinto, Senior Advisor GIS Data</b><p><span class="st bad">Scored: no match.</span> The core job is GIS and spatial data.</p></div>
+<div class="r1"><b>WesTrac, Programme Manager</b><p><span class="st bad">Gate failed:</span> PMI certification required.</p></div>
+<div class="r1"><b>Apple, Carrier Business Analyst</b><p><span class="st fix">Scored: stretch.</span> Quota allocation and territory design are core.</p></div>
+<div class="r1"><b>ElevenLabs, GTM Operations, Singapore</b><p><span class="st wait">Queued for tomorrow’s scan.</span></p></div>
+</div></div></main></body></html>

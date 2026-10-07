@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Sextant · Login</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet"><style>
+:root{--page:#F3F4F1;--surface:#FFFFFF;--hover:#F7F8F6;--bar-bg:#101820;--bar-ink:#EEF2F4;--bar-ink-2:#AEB9C2;
+--ink:#101820;--ink-2:#4A5560;--rule:#EDEFEC;--rule-2:#DCE0DB;--apply:#0E7352;--apply-tint:#E4F3EC;--cons:#1D5BA3;--cons-tint:#E6EFF8;
+--str:#8F5400;--str-tint:#FAF0DC;--warn:#B3261E;--warn-tint:#FBEAE8;--meter-off:#DCE0DC;--ease:cubic-bezier(0.16,1,0.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;height:900px;overflow:hidden;background:var(--page);color:var(--ink);font-family:Archivo,system-ui,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;position:relative}
+button,input,select,textarea{font:inherit;color:inherit}
+.n{font-variant-numeric:tabular-nums;font-stretch:78%}
+.top{background:var(--bar-bg);color:var(--bar-ink);display:flex;align-items:center;gap:34px;padding:0 40px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-stretch:125%;font-weight:800;font-size:18px;letter-spacing:-.01em}
+.tabs{display:flex;height:100%}
+.tabs a{display:flex;align-items:center;gap:8px;padding:0 15px;color:var(--bar-ink-2);text-decoration:none;font-weight:500;font-size:14.5px;border-bottom:3px solid transparent}
+.tabs a b{font-weight:600}
+.tabs a.on{color:var(--bar-ink);font-weight:700;border-bottom-color:var(--bar-ink)}
+.tabs a .bump{background:#F0B65A;color:#101820;border-radius:6px;padding:0 6px}
+.status{margin-left:auto;display:flex;gap:20px;align-items:center;font-size:13px;color:var(--bar-ink-2)}
+.status .caution{color:#F0B65A;font-weight:600;display:flex;gap:7px;align-items:center}
+.status .caution i{width:7px;height:7px;background:#F0B65A;transform:rotate(45deg)}
+main{padding:30px 40px 0}
+h1{font-stretch:125%;font-weight:800;font-size:38px;letter-spacing:-.025em;line-height:1}
+.lede{margin-top:12px;font-size:15.5px;color:var(--ink-2);max-width:90ch}
+.lede b{color:var(--ink);font-weight:700}
+.sheet{background:var(--surface);border-radius:16px}
+.btn{border:0;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;display:inline-flex;gap:12px;align-items:center;white-space:nowrap}
+.btn kbd{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-2)}
+.lnk{text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:13.5px;color:var(--ink)}
+.pencil{color:var(--ink-2)}
+kbd{font-family:inherit;font-weight:700;font-size:12px;color:var(--ink);background:var(--surface);border:1px solid #D6DAD5;border-bottom-width:2px;border-radius:5px;padding:1px 7px}
+.fit{display:flex;align-items:center;gap:12px;font-weight:700;font-size:22px}
+.fit i{display:block;width:46px;height:5px;background:var(--meter-off);border-radius:3px;position:relative;overflow:hidden}
+.fit i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);border-radius:3px;background:var(--c)}
+.a{--c:var(--apply)} .c{--c:var(--cons)} .s{--c:var(--str)}
+.seg{display:inline-flex;gap:2px}.seg i{width:10px;height:10px;border-radius:2px;background:var(--meter-off)}.seg i.on{background:var(--ink)}.seg.low i.on{background:var(--str)}
+.rate{display:flex;align-items:center;gap:10px;font-size:14.5px}
+.lvl{font-size:14.5px}.lvl small{font-size:13px;margin-left:7px;color:var(--apply);font-weight:600}.lvl small.hi{color:var(--str)}
+.flag{color:var(--str);font-weight:600}
+.who h3{font-size:15.5px;font-weight:700}.who .l1{display:flex;gap:10px;align-items:baseline}.who .meta{font-size:13px;color:var(--ink-2);white-space:nowrap}.who p{font-size:14.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:0;box-shadow:inset 0 0 0 1px var(--rule-2);background:var(--surface);border-radius:10px;padding:10px 12px;font-size:14.5px;color:var(--ink)}
+.field textarea{resize:none;line-height:1.5}
+.focus-ring{box-shadow:inset 0 0 0 2px var(--ink)!important}
+.sec-h{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:10px}
+
+body{display:grid;grid-template-rows:58px 1fr}
+.lb{background:var(--bar-bg)}
+.center{display:grid;place-items:center}
+.box{width:420px}
+.box .brand2{display:flex;align-items:center;gap:12px;font-stretch:125%;font-weight:800;font-size:30px;letter-spacing:-.02em}
+.box p.l{margin-top:10px;font-size:15px;color:var(--ink-2)}
+.card{background:var(--surface);border-radius:16px;padding:26px 28px;margin-top:22px;display:flex;flex-direction:column;gap:16px}
+.err{font-size:13.5px;color:var(--warn);font-weight:600}
+.btn.full{width:100%;justify-content:center;padding:12px 16px;font-size:15px}
+.foot{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-2)}
+</style></head><body><div class="lb"></div><div class="center"><div class="box"><div class="brand2"><svg width="30" height="30" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/><path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="5" cy="5" r="2.6" fill="currentColor"/></svg>Sextant</div><p class="l">Owner sign-in.</p>
+<div class="card"><div class="field"><label>Email</label><input value="lasse@…"></div><div class="field"><label>Password</label><input class="focus-ring" type="password" value="••••••••••••"></div>
+<p class="err">That email and password don’t match. Check both and try again.</p><button class="btn full">Sign in</button>
+<div class="foot"><span class="lnk">Forgot password</span><span>Private, one owner</span></div></div></div></div></body></html>
