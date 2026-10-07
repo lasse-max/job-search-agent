@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sextant · Direction E · Logbook v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  /* Design language
+     - One family, three widths: Expanded for titles, Normal for words, Condensed for numbers (instrument readouts).
+     - Each band owns one hue: Apply now = sea green, Consider = chart blue, Stretch = buoy amber. Nothing else uses them.
+     - The action is neutral and solid (ink on day, white on night), so colour stays meaning, not decoration.
+     - Rules are the log ruling: they separate entries. A double rule marks the margin where the fit is written. */
+  body[data-theme="day"] {
+    --page: #F3F4F1; --surface: #FFFFFF; --focus: #FFFFFF; --hover: #F8F9F7;
+    --bar-bg: #101820; --bar-ink: #EEF2F4; --bar-ink-2: #AEB9C2;
+    --ink: #101820; --ink-2: #4A5560; --rule: #E1E4E0; --rule-strong: #101820;
+    --apply: #0E7352; --apply-tint: #E4F3EC; --cons: #1D5BA3; --cons-tint: #E6EFF8; --str: #8F5400; --str-tint: #FAF0DC;
+    --warn: #B3261E; --meter-off: #D9DEDA; --btn: #101820; --on-btn: #FFFFFF; --kbd: #FFFFFF;
+  }
+  body[data-theme="night"] {
+    --page: #0B1218; --surface: #111B23; --focus: #1A2833; --hover: #141F28;
+    --bar-bg: #070C10; --bar-ink: #EEF2F4; --bar-ink-2: #9DABB6;
+    --ink: #EEF2F4; --ink-2: #9DABB6; --rule: #1E2B35; --rule-strong: #3A4B58;
+    --apply: #5FD6A8; --apply-tint: #10271F; --cons: #79B8F5; --cons-tint: #0F2030; --str: #F0B65A; --str-tint: #251D0F;
+    --warn: #FF8A7A; --meter-off: #2B3A46; --btn: #EEF2F4; --on-btn: #0B1218; --kbd: #1A2833;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: var(--page); color: var(--ink);
+    font-family: Archivo, system-ui, sans-serif; font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input, select { font: inherit; color: inherit; }
+  .n { font-variant-numeric: tabular-nums; font-stretch: 78%; }
+
+  /* Top bar: the bridge */
+  .top { background: var(--bar-bg); color: var(--bar-ink); display: flex; align-items: center; gap: 34px; padding: 0 40px; height: 58px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-stretch: 125%; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; }
+  .tabs { display: flex; height: 100%; }
+  .tabs a { display: flex; align-items: center; gap: 8px; padding: 0 15px; color: var(--bar-ink-2); text-decoration: none; font-weight: 500; font-size: 14.5px; border-bottom: 3px solid transparent; }
+  .tabs a b { font-weight: 600; }
+  .tabs a.on { color: var(--bar-ink); font-weight: 700; border-bottom-color: var(--bar-ink); }
+  .status { margin-left: auto; display: flex; gap: 20px; align-items: center; font-size: 13px; color: var(--bar-ink-2); }
+  .status .caution { color: #F0B65A; font-weight: 600; display: flex; gap: 7px; align-items: center; }
+  .status .caution i { width: 7px; height: 7px; background: #F0B65A; transform: rotate(45deg); }
+
+  main { padding: 28px 40px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 30px; }
+  h1 { font-stretch: 125%; font-weight: 800; font-size: 38px; letter-spacing: -0.025em; line-height: 1; }
+  .summary { margin-top: 12px; font-size: 15.5px; color: var(--ink-2); display: flex; gap: 22px; align-items: baseline; }
+  .summary b { color: var(--ink); font-weight: 700; }
+  .summary .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 7px; transform: translateY(-1px); }
+  .keys { display: flex; gap: 16px; color: var(--ink-2); font-size: 13px; align-items: center; }
+  kbd { font-family: inherit; font-weight: 700; font-size: 12px; color: var(--ink); background: var(--kbd); border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 5px; padding: 2px 7px; margin-right: 5px; }
+
+  .tool { margin-top: 20px; display: flex; gap: 12px; align-items: center; }
+  .filter { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 3px; }
+  .filter button { border: 0; background: none; padding: 7px 13px; border-radius: 7px; font-weight: 600; font-size: 13.5px; cursor: pointer; color: var(--ink-2); display: flex; align-items: center; gap: 7px; }
+  .filter button i { width: 8px; height: 8px; border-radius: 2px; }
+  .filter button.on { background: var(--ink); color: var(--page); }
+  .search { flex: 0 0 290px; border: 1px solid var(--rule); background: var(--surface); border-radius: 10px; padding: 9px 12px; font-size: 13.5px; color: var(--ink-2); }
+  .tool .right { margin-left: auto; display: flex; gap: 14px; align-items: center; color: var(--ink-2); font-size: 13.5px; }
+  .tool select { border: 1px solid var(--rule); background: var(--surface); border-radius: 10px; padding: 8px 10px; font-size: 13.5px; color: var(--ink); }
+  .tool .plain { border: 0; background: none; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  .log { margin-top: 16px; background: var(--surface); border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-weight: 600; font-size: 12.5px; color: var(--ink-2); padding: 12px 12px 10px; border-bottom: 1.5px solid var(--rule-strong); white-space: nowrap; }
+  th.r, td.r { text-align: right; }
+  td { padding: 0 12px; height: 41px; border-bottom: 1px solid var(--rule); white-space: nowrap; font-size: 14px; }
+  td:first-child, th:first-child { padding-left: 20px; border-right: 3px double var(--rule); }
+  td.co { font-weight: 700; }
+  td.role { max-width: 300px; overflow: hidden; text-overflow: ellipsis; }
+  td.loc { color: var(--ink-2); }
+  td.loc .flag { color: var(--str); font-weight: 600; margin-left: 6px; }
+
+  tr.group td { height: 36px; font-weight: 700; font-size: 13.5px; }
+  tr.group td:first-child { border-right: 0; }
+  tr.group td span { font-weight: 500; color: var(--ink-2); margin-left: 8px; }
+  tr.group.apply td { background: var(--apply-tint); color: var(--apply); }
+  tr.group.cons td { background: var(--cons-tint); color: var(--cons); }
+  tr.group.str td { background: var(--str-tint); color: var(--str); }
+  tr.group a { float: right; color: inherit; font-weight: 600; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+
+  .fit { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+  .fit i { display: block; width: 44px; height: 5px; background: var(--meter-off); border-radius: 3px; position: relative; overflow: hidden; }
+  .fit i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 3px; background: var(--c); }
+  .a { --c: var(--apply); } .c { --c: var(--cons); } .s { --c: var(--str); }
+
+  .rate { display: flex; align-items: center; gap: 9px; }
+  .seg { display: inline-flex; gap: 2px; }
+  .seg i { width: 9px; height: 9px; border-radius: 2px; background: var(--meter-off); }
+  .seg i.on { background: var(--ink); }
+  .seg.low i.on { background: var(--str); }
+  .lvl small { font-size: 12.5px; margin-left: 6px; color: var(--apply); font-weight: 600; }
+  .lvl small.hi { color: var(--str); }
+
+  tr.focus td { background: var(--focus); border-bottom: 0; height: 46px; }
+  tr.focus td:first-child, tr.detail td:first-child { box-shadow: inset 4px 0 0 var(--apply); }
+  tr.detail td { background: var(--focus); height: auto; padding: 2px 12px 20px 20px; border-bottom: 1px solid var(--rule); white-space: normal; border-right: 0; }
+  .detail-grid { display: grid; grid-template-columns: 1.15fr 1fr auto; gap: 40px; padding-left: 117px; }
+  .detail-grid h4 { font-size: 13px; font-weight: 700; color: var(--apply); margin-bottom: 5px; }
+  .detail-grid .gap h4 { color: var(--str); }
+  .detail-grid p { font-size: 14.5px; line-height: 1.55; max-width: 54ch; }
+  .detail-grid p + p { color: var(--ink-2); margin-top: 3px; }
+  .detail-grid .meta { margin-top: 10px; font-size: 13px; color: var(--ink-2); }
+  .acts { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .btn { border: 0; background: var(--btn); color: var(--on-btn); font-weight: 700; font-size: 14px; padding: 10px 16px; border-radius: 10px; display: flex; gap: 12px; align-items: center; cursor: pointer; }
+  .btn kbd { background: transparent; color: var(--on-btn); border-color: color-mix(in srgb, var(--on-btn) 40%, transparent); margin: 0; }
+  .acts a { font-size: 13.5px; color: var(--ink); text-underline-offset: 3px; }
+  tr.hover td { background: var(--hover); }
+  .mark { font-weight: 700; font-size: 13.5px; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body data-theme="day">
+  <div class="top">
+    <div class="brand">
+      <svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="5" cy="5" r="2.6" fill="currentColor"/>
+      </svg>
+      Sextant
+    </div>
+    <nav class="tabs">
+      <a class="on" href="#">Matches <b class="n">95</b></a>
+      <a href="#">To apply <b class="n">0</b></a>
+      <a href="#">Applied <b class="n">8</b></a>
+      <a href="#">Add a role</a>
+      <a href="#">Profile</a>
+    </nav>
+    <div class="status">
+      <span>Scanned today 03:31, 10,501 postings at 50 companies</span>
+      <span class="caution"><i></i>2 sources degraded</span>
+    </div>
+  </div>
+
+  <main>
+    <div class="head">
+      <div>
+        <h1>Matches</h1>
+        <div class="summary">
+          <span><i class="sw" style="background:var(--apply)"></i><b>28</b> apply now</span>
+          <span><i class="sw" style="background:var(--cons)"></i><b>46</b> consider</span>
+          <span><i class="sw" style="background:var(--str)"></i><b>21</b> stretch</span>
+          <span>Nothing moves until you mark it.</span>
+        </div>
+      </div>
+      <div class="keys">
+        <span><kbd>J</kbd><kbd>K</kbd>move</span>
+        <span><kbd>A</kbd>mark to apply</span>
+        <span><kbd>↵</kbd>open evidence</span>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="filter" role="tablist">
+        <button class="on">All 95</button>
+        <button><i style="background:var(--apply)"></i>Apply now 28</button>
+        <button><i style="background:var(--cons)"></i>Consider 46</button>
+        <button><i style="background:var(--str)"></i>Stretch 21</button>
+      </div>
+      <input class="search" placeholder="Filter by company or title">
+      <div class="right">
+        <button class="plain">Skipped (160)</button>
+        <label>Sort <select><option>Fit</option></select></label>
+      </div>
+    </div>
+
+    <div class="log">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:128px">Fit</th>
+            <th style="width:136px">Company</th>
+            <th>Role</th>
+            <th style="width:200px">Location</th>
+            <th style="width:128px">Screening odds</th>
+            <th style="width:118px">Career value</th>
+            <th class="r" style="width:84px">Evidence</th>
+            <th style="width:122px">Level</th>
+            <th class="r" style="width:64px">Posted</th>
+            <th style="width:112px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group apply"><td colspan="10">Apply now<span>fit 80 and over, 28 roles</span><a href="#">Show all</a></td></tr>
+
+          <tr class="focus">
+            <td><div class="fit n a" style="--w:70%">88<i></i></div></td>
+            <td class="co">Mistral AI</td>
+            <td class="role">Product Operations Manager, DesignOps</td>
+            <td class="loc">Paris</td>
+            <td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div></td>
+            <td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div></td>
+            <td class="r n">4 of 5</td>
+            <td class="lvl">L5<small>in band</small></td>
+            <td class="r n">3d</td>
+            <td></td>
+          </tr>
+          <tr class="detail">
+            <td colspan="10">
+              <div class="detail-grid">
+                <div>
+                  <h4>Why it fits</h4>
+                  <p>They want six to ten years in product operations or programme management. You have eight at Google running product ops and transformation programmes, with two promotions.</p>
+                  <p class="meta">EU role, no visa needed. Model confidence 82%.</p>
+                </div>
+                <div class="gap">
+                  <h4>Watch out for</h4>
+                  <p>No design-industry background.</p>
+                  <p>Lead with operating-model work for creative and product teams.</p>
+                </div>
+                <div class="acts">
+                  <button class="btn">Mark to apply <kbd>A</kbd></button>
+                  <a href="#">Full evidence</a>
+                  <a href="#">Open posting</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="hover">
+            <td><div class="fit n a" style="--w:68%">87<i></i></div></td>
+            <td class="co">Anthropic</td>
+            <td class="role">Finance &amp; Strategy, Deal Strategy</td>
+            <td class="loc">Dublin, London</td>
+            <td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Fair</div></td>
+            <td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div></td>
+            <td class="r n">4 of 5</td>
+            <td class="lvl">L5<small>in band</small></td>
+            <td class="r n">2d</td>
+            <td class="r"><span class="mark">Mark to apply</span></td>
+          </tr>
+          <tr><td><div class="fit n a" style="--w:68%">87<i></i></div></td><td class="co">Airwallex</td><td class="role">Manager, Revenue Strategy &amp; Operations, SEA</td><td class="loc">Singapore<span class="flag">visa</span></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Solid</div></td><td class="r n">3 of 5</td><td class="lvl">L5<small>in band</small></td><td class="r n">8d</td><td></td></tr>
+          <tr><td><div class="fit n a" style="--w:65%">86<i></i></div></td><td class="co">Canva</td><td class="role">Strategy &amp; Business Operations Lead</td><td class="loc">Sydney</td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div></td><td class="r n">5 of 5</td><td class="lvl">L5<small>in band</small></td><td class="r n">1d</td><td></td></tr>
+          <tr><td><div class="fit n a" style="--w:63%">85<i></i></div></td><td class="co">Stripe</td><td class="role">GTM Strategy &amp; Operations, EMEA</td><td class="loc">Dublin</td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Fair</div></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div></td><td class="r n">4 of 6</td><td class="lvl">L4<small>in band</small></td><td class="r n">4d</td><td></td></tr>
+          <tr><td><div class="fit n a" style="--w:60%">84<i></i></div></td><td class="co">Wise</td><td class="role">Business Operations Manager</td><td class="loc">London<span class="flag">visa</span></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Solid</div></td><td class="r n">4 of 5</td><td class="lvl">L5<small>in band</small></td><td class="r n">5d</td><td></td></tr>
+
+          <tr class="group cons"><td colspan="10">Consider<span>fit 70 to 79, 46 roles</span><a href="#">Show all</a></td></tr>
+          <tr><td><div class="fit n c" style="--w:45%">78<i></i></div></td><td class="co">Sierra</td><td class="role">GTM Operations, Agent Development</td><td class="loc">London<span class="flag">visa</span></td><td><div class="rate"><span class="seg low"><i class="on"></i><i></i><i></i></span>Long shot</div></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div></td><td class="r n">3 of 5</td><td class="lvl">L6<small class="hi">above band</small></td><td class="r n">6d</td><td></td></tr>
+          <tr><td><div class="fit n c" style="--w:40%">76<i></i></div></td><td class="co">Personio</td><td class="role">Revenue Operations Lead</td><td class="loc">Munich</td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Fair</div></td><td><div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Solid</div></td><td class="r n">3 of 4</td><td class="lvl">L5<small>in band</small></td><td class="r n">4d</td><td></td></tr>
+
+          <tr class="group str"><td colspan="10">Stretch<span>fit 60 to 69, 21 roles, collapsed</span><a href="#">Show</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <script>
+    const t = new URLSearchParams(location.search).get('theme');
+    if (t) document.body.dataset.theme = t;
+  </script>
+</body>
+</html>

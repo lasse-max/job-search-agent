@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sextant · Direction C · Logbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F5F2;
+    --paper-2: #E9EDE7;   /* group rows, focused row */
+    --rule: #D8DDD7;
+    --ink: #14191B;
+    --ink-2: #4B5559;     /* 7.0:1 */
+    --signal: #C2410C;    /* international orange: act here */
+    --caution: #8A5300;
+    --bar: #DFE3DD;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: var(--paper); color: var(--ink);
+    font-family: Archivo, system-ui, sans-serif; font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input, select { font: inherit; color: inherit; }
+  .n { font-variant-numeric: tabular-nums; }
+
+  /* Top bar */
+  .top { display: flex; align-items: center; gap: 36px; padding: 0 40px; height: 60px; border-bottom: 1.5px solid var(--ink); }
+  .brand { font-stretch: 125%; font-weight: 800; font-size: 19px; letter-spacing: -0.01em; }
+  .tabs { display: flex; gap: 4px; height: 100%; }
+  .tabs a { display: flex; align-items: center; gap: 8px; padding: 0 14px; color: var(--ink-2); text-decoration: none; font-weight: 500; font-size: 14.5px; border-bottom: 3px solid transparent; margin-bottom: -1.5px; }
+  .tabs a b { font-weight: 600; color: var(--ink-2); }
+  .tabs a.on { color: var(--ink); font-weight: 700; border-bottom-color: var(--signal); }
+  .tabs a.on b { color: var(--ink); }
+  .status { margin-left: auto; display: flex; gap: 22px; align-items: center; font-size: 13px; color: var(--ink-2); }
+  .status .caution { color: var(--caution); font-weight: 600; display: flex; gap: 7px; align-items: center; }
+  .status .caution i { width: 7px; height: 7px; background: var(--caution); border-radius: 50%; }
+
+  main { padding: 30px 40px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; }
+  h1 { font-stretch: 125%; font-weight: 800; font-size: 40px; letter-spacing: -0.02em; line-height: 1; }
+  .head p { margin-top: 10px; color: var(--ink-2); font-size: 15px; }
+  .keys { display: flex; gap: 18px; color: var(--ink-2); font-size: 13px; align-items: center; }
+  kbd { font-family: inherit; font-weight: 700; font-size: 12px; color: var(--ink); background: #fff; border: 1px solid var(--rule); border-bottom-width: 2px; border-radius: 5px; padding: 2px 7px; margin-right: 5px; }
+
+  .tool { margin-top: 24px; display: flex; gap: 14px; align-items: center; }
+  .filter { display: flex; border: 1.5px solid var(--ink); border-radius: 9px; overflow: hidden; }
+  .filter button { border: 0; background: none; padding: 8px 14px; font-weight: 600; font-size: 13.5px; cursor: pointer; }
+  .filter button + button { border-left: 1.5px solid var(--ink); }
+  .filter button span { font-weight: 500; color: var(--ink-2); margin-left: 6px; }
+  .filter button.on { background: var(--ink); color: var(--paper); }
+  .filter button.on span { color: #C9D0CC; }
+  .search { flex: 0 0 300px; border: 1.5px solid var(--rule); background: #fff; border-radius: 9px; padding: 8px 12px; font-size: 13.5px; color: var(--ink-2); }
+  .tool .right { margin-left: auto; display: flex; gap: 14px; align-items: center; color: var(--ink-2); font-size: 13.5px; }
+  .tool select { border: 1.5px solid var(--rule); background: #fff; border-radius: 9px; padding: 7px 10px; font-size: 13.5px; color: var(--ink); }
+  .tool .plain { border: 0; background: none; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 18px; font-stretch: 92%; }
+  th { text-align: left; font-weight: 600; font-size: 12.5px; color: var(--ink-2); padding: 0 12px 9px; border-bottom: 1.5px solid var(--ink); white-space: nowrap; }
+  th.r, td.r { text-align: right; }
+  td { padding: 0 12px; height: 42px; border-bottom: 1px solid var(--rule); white-space: nowrap; font-size: 14px; }
+  td.co { font-weight: 700; }
+  td.role { max-width: 360px; overflow: hidden; text-overflow: ellipsis; }
+  td.loc { color: var(--ink-2); }
+  tr.group td { height: 34px; background: var(--paper-2); font-weight: 700; font-size: 13px; font-stretch: 100%; border-bottom: 1px solid var(--rule); }
+  tr.group td span { font-weight: 500; color: var(--ink-2); margin-left: 8px; }
+  .fit { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+  .fit i { display: block; width: 46px; height: 5px; background: var(--bar); border-radius: 3px; position: relative; }
+  /* bar spans the useful range, fit 60 to 100 */
+  .fit i::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--w); background: var(--ink); border-radius: 3px; }
+  .fit.c i::after { background: #6B7A80; }
+  .lvl small { color: var(--ink-2); font-size: 12.5px; margin-left: 6px; }
+  tr.focus td { background: #fff; border-bottom: 0; }
+  tr.focus td:first-child { box-shadow: inset 4px 0 0 var(--signal); }
+  tr.detail td { background: #fff; height: auto; padding: 4px 12px 20px; border-bottom: 1.5px solid var(--rule); white-space: normal; }
+  tr.detail td:first-child { box-shadow: inset 4px 0 0 var(--signal); }
+  .detail-grid { display: grid; grid-template-columns: 1.1fr 1fr auto; gap: 40px; padding-left: 118px; font-stretch: 100%; }
+  .detail-grid h4 { font-size: 13px; font-weight: 700; margin-bottom: 5px; }
+  .detail-grid .gap h4 { color: var(--caution); }
+  .detail-grid p { font-size: 14px; line-height: 1.55; max-width: 52ch; }
+  .detail-grid p + p { color: var(--ink-2); margin-top: 3px; }
+  .acts { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .btn { border: 0; background: var(--signal); color: #fff; font-weight: 700; font-size: 14px; padding: 10px 16px; border-radius: 9px; display: flex; gap: 10px; align-items: center; cursor: pointer; }
+  .btn kbd { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.35); color: #fff; margin: 0; }
+  .acts a { font-size: 13.5px; color: var(--ink); text-underline-offset: 3px; }
+  tr.hover td { background: #FAFBF9; }
+  .mark { color: var(--signal); font-weight: 700; font-size: 13.5px; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">Sextant</div>
+    <nav class="tabs">
+      <a class="on" href="#">Matches <b class="n">95</b></a>
+      <a href="#">To apply <b class="n">0</b></a>
+      <a href="#">Applied <b class="n">8</b></a>
+      <a href="#">Add a role</a>
+      <a href="#">Profile</a>
+    </nav>
+    <div class="status">
+      <span>Scanned today 03:31, <span class="n">10,501</span> postings at 50 companies</span>
+      <span class="caution"><i></i>2 sources degraded</span>
+    </div>
+  </div>
+
+  <main>
+    <div class="head">
+      <div>
+        <h1>Matches</h1>
+        <p>95 roles above the fit floor. 28 are strong enough to apply to now.</p>
+      </div>
+      <div class="keys">
+        <span><kbd>J</kbd><kbd>K</kbd>move</span>
+        <span><kbd>A</kbd>mark to apply</span>
+        <span><kbd>↵</kbd>open evidence</span>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="filter" role="tablist">
+        <button>All<span>95</span></button>
+        <button class="on">Apply now<span>28</span></button>
+        <button>Consider<span>46</span></button>
+        <button>Stretch<span>21</span></button>
+      </div>
+      <input class="search" value="" placeholder="Filter by company or title">
+      <div class="right">
+        <button class="plain">Skipped (160)</button>
+        <label>Sort <select><option>Fit</option></select></label>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:118px">Fit</th>
+          <th style="width:150px">Company</th>
+          <th>Role</th>
+          <th style="width:170px">Location</th>
+          <th class="r" style="width:86px">Feasible</th>
+          <th class="r" style="width:96px">Confidence</th>
+          <th style="width:130px">Level</th>
+          <th class="r" style="width:76px">Posted</th>
+          <th style="width:120px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group"><td colspan="9">Apply now<span>fit 80 and over, 28 roles</span></td></tr>
+
+        <tr class="focus">
+          <td><div class="fit n" style="--w:70%">88<i></i></div></td>
+          <td class="co">Mistral AI</td>
+          <td class="role">Product Operations Manager, DesignOps</td>
+          <td class="loc">Paris</td>
+          <td class="r n">90%</td><td class="r n">82%</td>
+          <td class="lvl">L5<small>in band</small></td>
+          <td class="r n">3d</td>
+          <td></td>
+        </tr>
+        <tr class="detail">
+          <td colspan="9">
+            <div class="detail-grid">
+              <div>
+                <h4>Why it fits</h4>
+                <p>They want six to ten years in product operations or programme management. You have eight at Google running product ops and transformation programmes, with two promotions.</p>
+              </div>
+              <div class="gap">
+                <h4>Watch out for</h4>
+                <p>No design-industry background.</p>
+                <p>Lead with operating-model work for creative and product teams.</p>
+              </div>
+              <div class="acts">
+                <button class="btn">Mark to apply <kbd>A</kbd></button>
+                <a href="#">Full evidence</a>
+                <a href="#">Open posting</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="hover">
+          <td><div class="fit n" style="--w:68%">87<i></i></div></td>
+          <td class="co">Anthropic</td>
+          <td class="role">Finance &amp; Strategy, Deal Strategy</td>
+          <td class="loc">Dublin, London</td>
+          <td class="r n">90%</td><td class="r n">82%</td>
+          <td class="lvl">L5<small>in band</small></td>
+          <td class="r n">2d</td>
+          <td class="r"><span class="mark">Mark to apply</span></td>
+        </tr>
+        <tr><td><div class="fit n" style="--w:68%">87<i></i></div></td><td class="co">Airwallex</td><td class="role">Manager, Revenue Strategy &amp; Operations, SEA</td><td class="loc">Singapore</td><td class="r n">90%</td><td class="r n">82%</td><td class="lvl">L5<small>in band</small></td><td class="r n">8d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:65%">86<i></i></div></td><td class="co">Canva</td><td class="role">Strategy &amp; Business Operations Lead</td><td class="loc">Sydney</td><td class="r n">92%</td><td class="r n">80%</td><td class="lvl">L5<small>in band</small></td><td class="r n">1d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:62%">85<i></i></div></td><td class="co">Stripe</td><td class="role">GTM Strategy &amp; Operations, EMEA</td><td class="loc">Dublin</td><td class="r n">88%</td><td class="r n">79%</td><td class="lvl">L4<small>in band</small></td><td class="r n">4d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:60%">84<i></i></div></td><td class="co">Wise</td><td class="role">Business Operations Manager</td><td class="loc">London</td><td class="r n">92%</td><td class="r n">81%</td><td class="lvl">L5<small>in band</small></td><td class="r n">5d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:57%">83<i></i></div></td><td class="co">Databricks</td><td class="role">Strategy &amp; Operations Manager, EMEA</td><td class="loc">Amsterdam</td><td class="r n">85%</td><td class="r n">78%</td><td class="lvl">L5<small>in band</small></td><td class="r n">6d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:55%">82<i></i></div></td><td class="co">Revolut</td><td class="role">Business Transformation Lead</td><td class="loc">London</td><td class="r n">88%</td><td class="r n">76%</td><td class="lvl">L5<small>in band</small></td><td class="r n">2d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:52%">81<i></i></div></td><td class="co">Atlassian</td><td class="role">Program Manager, Business Operations</td><td class="loc">Sydney</td><td class="r n">90%</td><td class="r n">74%</td><td class="lvl">L6<small>above band</small></td><td class="r n">9d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:52%">81<i></i></div></td><td class="co">Harvey</td><td class="role">GTM Strategy &amp; Operations</td><td class="loc">London</td><td class="r n">86%</td><td class="r n">77%</td><td class="lvl">L5<small>in band</small></td><td class="r n">3d</td><td></td></tr>
+        <tr><td><div class="fit n" style="--w:50%">80<i></i></div></td><td class="co">Personio</td><td class="role">Revenue Operations Lead</td><td class="loc">Munich</td><td class="r n">92%</td><td class="r n">72%</td><td class="lvl">L5<small>in band</small></td><td class="r n">4d</td><td></td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

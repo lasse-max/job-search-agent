@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sextant · Direction A · Night chart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0C1E25;      /* ground: open water at night */
+    --channel: #12303A;   /* raised: the selected passage */
+    --channel-2: #0F2830; /* hover / quiet raise */
+    --ink: #EEF4F2;
+    --mist: #A9BFBE;      /* secondary text, 8.9:1 */
+    --dim: #86A09F;       /* tertiary text, 6.1:1 */
+    --glass: #93D5C8;     /* the one signal colour */
+    --amber: #E2B866;     /* caution only */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: var(--deep); color: var(--ink);
+    font-family: "Schibsted Grotesk", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: grid; grid-template-columns: 236px 1fr;
+  }
+  button, select { font: inherit; color: inherit; }
+
+  /* Rail */
+  .rail { padding: 36px 28px; display: flex; flex-direction: column; }
+  .mark { display: flex; align-items: center; gap: 10px; margin-bottom: 56px; }
+  .mark span { font-size: 21px; font-weight: 800; letter-spacing: -0.03em; }
+  nav { display: flex; flex-direction: column; gap: 4px; }
+  nav a {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 9px 12px 9px 14px; border-radius: 10px;
+    font-size: 15px; color: var(--mist); text-decoration: none;
+  }
+  nav a b { font-weight: 500; font-size: 14px; color: var(--dim); }
+  nav a.on { background: var(--channel); color: var(--ink); font-weight: 600; }
+  nav a.on b { color: var(--glass); }
+  nav .gap { height: 18px; }
+  .scan { margin-top: auto; font-size: 13px; line-height: 1.6; color: var(--dim); }
+  .scan .warn { color: var(--amber); margin-top: 10px; display: flex; gap: 8px; align-items: center; }
+  .scan .warn i { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); display: inline-block; }
+
+  /* Main */
+  main { padding: 52px 64px 0 40px; overflow: hidden; }
+  header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; }
+  h1 {
+    font-size: 64px; line-height: 0.98; font-weight: 700;
+    letter-spacing: -0.045em; max-width: 17ch;
+  }
+  .sub { margin-top: 18px; font-size: 17px; line-height: 1.5; color: var(--mist); max-width: 52ch; }
+  .head-tools { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; padding-bottom: 6px; }
+  .quiet {
+    background: none; border: 0; color: var(--mist); font-size: 14px; cursor: pointer;
+    text-decoration: underline; text-decoration-color: rgba(169,191,190,.35); text-underline-offset: 4px;
+  }
+
+  .bar { margin-top: 40px; display: flex; justify-content: space-between; align-items: center; }
+  .seg { display: inline-flex; background: var(--channel-2); border-radius: 12px; padding: 4px; }
+  .seg button {
+    border: 0; background: none; padding: 9px 16px; border-radius: 9px;
+    font-size: 15px; font-weight: 500; color: var(--mist); cursor: pointer;
+  }
+  .seg button span { margin-left: 8px; color: var(--dim); font-weight: 500; }
+  .seg button.on { background: var(--channel); color: var(--ink); font-weight: 600; }
+  .seg button.on span { color: var(--glass); }
+  .sort { font-size: 14px; color: var(--dim); display: flex; gap: 10px; align-items: center; }
+  .sort select {
+    background: var(--channel-2); border: 0; border-radius: 9px; padding: 8px 30px 8px 12px;
+    color: var(--ink); font-size: 14px; appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--mist) 50%), linear-gradient(135deg, var(--mist) 50%, transparent 50%);
+    background-position: calc(100% - 15px) 52%, calc(100% - 10px) 52%;
+    background-size: 5px 5px; background-repeat: no-repeat;
+  }
+
+  /* List */
+  .list { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 4px; }
+  .row {
+    display: grid; grid-template-columns: 92px minmax(0, 1fr) 92px 104px 104px 80px 150px;
+    align-items: start; column-gap: 20px;
+    padding: 18px 22px; border-radius: 16px;
+  }
+  .row.open { background: var(--channel); padding-top: 22px; padding-bottom: 24px; }
+  .fit { display: flex; flex-direction: column; gap: 6px; }
+  .fit strong, .sig em, nav a b, .seg button span { font-feature-settings: "tnum" 1; }
+  .fit strong { font-size: 46px; line-height: 0.9; font-weight: 700; letter-spacing: -0.05em; }
+  .row:not(.open) .fit strong { font-size: 38px; }
+  .scale { display: block; }
+  .who h2 { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+  .who p { font-size: 15px; color: var(--mist); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .who .where { font-size: 13px; color: var(--dim); margin-top: 6px; }
+  .sig { padding-top: 3px; }
+  .sig small { display: block; font-size: 12px; color: var(--dim); margin-bottom: 4px; }
+  .sig em { font-style: normal; font-size: 17px; font-weight: 600; }
+  .sig .note { display: block; font-size: 12px; color: var(--glass); margin-top: 3px; }
+  .act { justify-self: end; align-self: center; }
+  .row.open .act { align-self: start; padding-top: 4px; }
+  .btn {
+    border: 0; border-radius: 11px; padding: 11px 18px; cursor: pointer;
+    background: var(--glass); color: var(--deep); font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+  }
+  .link { border: 0; background: none; color: var(--glass); font-size: 14px; font-weight: 600; cursor: pointer; }
+
+  .why {
+    grid-column: 2 / -1; margin-top: 20px;
+    display: grid; grid-template-columns: 1.15fr 1fr auto; gap: 36px; align-items: start;
+  }
+  .why h3 { font-size: 13px; font-weight: 600; color: var(--glass); margin-bottom: 7px; }
+  .why .gap h3 { color: var(--amber); }
+  .why p { font-size: 14.5px; line-height: 1.55; color: var(--ink); max-width: 46ch; }
+  .why p + p { color: var(--mist); margin-top: 6px; }
+  .why .links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; padding-top: 2px; }
+  .why .links a { font-size: 14px; color: var(--mist); text-decoration: underline; text-decoration-color: rgba(169,191,190,.35); text-underline-offset: 4px; }
+</style>
+</head>
+<body>
+  <aside class="rail">
+    <div class="mark">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="#93D5C8" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M5 5 L 15 21" stroke="#EEF4F2" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="5" cy="5" r="2.4" fill="#EEF4F2"/>
+      </svg>
+      <span>Sextant</span>
+    </div>
+    <nav>
+      <a class="on" href="#">Matches <b>95</b></a>
+      <a href="#">To apply <b>0</b></a>
+      <a href="#">Applied <b>8</b></a>
+      <div class="gap"></div>
+      <a href="#">Add a role</a>
+      <a href="#">Profile</a>
+    </nav>
+    <div class="scan">
+      <p>Scanned today at 03:31</p>
+      <p>10,501 postings</p><p>at 50 companies</p>
+      <p class="warn"><i></i>2 sources degraded</p>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h1>28 roles worth applying to today.</h1>
+        <p class="sub">The strongest fits from this morning’s scan. Nothing moves until you mark it.</p>
+      </div>
+      <div class="head-tools">
+        <button class="quiet">Skipped roles (160)</button>
+        <button class="quiet">Show roles older than 21 days</button>
+      </div>
+    </header>
+
+    <div class="bar">
+      <div class="seg" role="tablist" aria-label="Band">
+        <button class="on" role="tab" aria-selected="true">Apply now<span>28</span></button>
+        <button role="tab">Consider<span>46</span></button>
+        <button role="tab">Stretch<span>21</span></button>
+      </div>
+      <label class="sort">Sort by
+        <select><option>Fit, highest first</option></select>
+      </label>
+    </div>
+
+    <ol class="list">
+      <li class="row open">
+        <div class="fit">
+          <strong>88</strong>
+          <svg class="scale" width="72" height="10" viewBox="0 0 72 10" aria-label="Fit 88 against bands at 60, 70 and 80">
+            <line x1="0" y1="5" x2="72" y2="5" stroke="#2C4C56" stroke-width="2"/>
+            <line x1="28.8" y1="1" x2="28.8" y2="9" stroke="#86A09F" stroke-width="1.2"/>
+            <line x1="43.2" y1="1" x2="43.2" y2="9" stroke="#86A09F" stroke-width="1.2"/>
+            <line x1="57.6" y1="1" x2="57.6" y2="9" stroke="#86A09F" stroke-width="1.2"/>
+            <circle cx="69.1" cy="5" r="3.6" fill="#93D5C8"/>
+          </svg>
+        </div>
+        <div class="who">
+          <h2>Mistral AI</h2>
+          <p>Product Operations Manager, DesignOps</p>
+          <div class="where">Paris, Tier 1 employer</div>
+        </div>
+        <div class="sig"><small>Feasible</small><em>90%</em></div>
+        <div class="sig"><small>Confidence</small><em>82%</em></div>
+        <div class="sig"><small>Level</small><em>L5</em><span class="note">in your band</span></div>
+        <div class="sig"><small>Posted</small><em>3 days</em></div>
+        <div class="act"><button class="btn">Mark to apply</button></div>
+
+        <div class="why">
+          <div>
+            <h3>Why it fits</h3>
+            <p>They want 6 to 10 years in product operations or programme management. You have 8 at Google running product ops and transformation programmes, with two promotions.</p>
+          </div>
+          <div class="gap">
+            <h3>Watch out for</h3>
+            <p>No design-industry background.</p>
+            <p>Lead with operating-model work for creative and product teams.</p>
+          </div>
+          <div class="links">
+            <a href="#">Full evidence</a>
+            <a href="#">Open posting</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="row">
+        <div class="fit"><strong>87</strong></div>
+        <div class="who"><h2>Anthropic</h2><p>Finance &amp; Strategy, Deal Strategy</p><div class="where">Dublin or London, Tier 1 employer</div></div>
+        <div class="sig"><small>Feasible</small><em>90%</em></div>
+        <div class="sig"><small>Confidence</small><em>82%</em></div>
+        <div class="sig"><small>Level</small><em>L5</em><span class="note">in your band</span></div>
+        <div class="sig"><small>Posted</small><em>2 days</em></div>
+        <div class="act"><button class="link">Mark to apply</button></div>
+      </li>
+
+      <li class="row">
+        <div class="fit"><strong>87</strong></div>
+        <div class="who"><h2>Airwallex</h2><p>Manager, Revenue Strategy &amp; Operations, SEA</p><div class="where">Singapore, Tier 1 employer</div></div>
+        <div class="sig"><small>Feasible</small><em>90%</em></div>
+        <div class="sig"><small>Confidence</small><em>82%</em></div>
+        <div class="sig"><small>Level</small><em>L5</em><span class="note">in your band</span></div>
+        <div class="sig"><small>Posted</small><em>8 days</em></div>
+        <div class="act"><button class="link">Mark to apply</button></div>
+      </li>
+
+      <li class="row">
+        <div class="fit"><strong>86</strong></div>
+        <div class="who"><h2>Canva</h2><p>Strategy &amp; Business Operations Lead</p><div class="where">Sydney, Tier 1 employer</div></div>
+        <div class="sig"><small>Feasible</small><em>92%</em></div>
+        <div class="sig"><small>Confidence</small><em>80%</em></div>
+        <div class="sig"><small>Level</small><em>L5</em><span class="note">in your band</span></div>
+        <div class="sig"><small>Posted</small><em>1 day</em></div>
+        <div class="act"><button class="link">Mark to apply</button></div>
+      </li>
+
+      <li class="row">
+        <div class="fit"><strong>85</strong></div>
+        <div class="who"><h2>Stripe</h2><p>GTM Strategy &amp; Operations, EMEA</p><div class="where">Dublin, Tier 1 employer</div></div>
+        <div class="sig"><small>Feasible</small><em>88%</em></div>
+        <div class="sig"><small>Confidence</small><em>79%</em></div>
+        <div class="sig"><small>Level</small><em>L4</em><span class="note">in your band</span></div>
+        <div class="sig"><small>Posted</small><em>4 days</em></div>
+        <div class="act"><button class="link">Mark to apply</button></div>
+      </li>
+    </ol>
+  </main>
+</body>
+</html>

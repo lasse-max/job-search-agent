@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sextant · Logbook v3 (day) · after Gemini review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #F3F4F1; --surface: #FFFFFF; --hover: #F7F8F6;
+    --bar-bg: #101820; --bar-ink: #EEF2F4; --bar-ink-2: #AEB9C2;
+    --ink: #101820; --ink-2: #4A5560; --rule: #EDEFEC; --rule-strong: #101820;
+    --apply: #0E7352; --cons: #1D5BA3; --str: #8F5400; --warn: #B3261E;
+    --meter-off: #DCE0DC; --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1440px; height: 900px; overflow: hidden; background: var(--page); color: var(--ink);
+    font-family: Archivo, system-ui, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }
+  button, input, select { font: inherit; color: inherit; }
+  .n { font-variant-numeric: tabular-nums; font-stretch: 78%; }
+
+  .top { background: var(--bar-bg); color: var(--bar-ink); display: flex; align-items: center; gap: 34px; padding: 0 40px; height: 58px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-stretch: 125%; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; }
+  .tabs { display: flex; height: 100%; }
+  .tabs a { display: flex; align-items: center; gap: 8px; padding: 0 15px; color: var(--bar-ink-2); text-decoration: none; font-weight: 500; font-size: 14.5px; border-bottom: 3px solid transparent; }
+  .tabs a b { font-weight: 600; }
+  .tabs a.on { color: var(--bar-ink); font-weight: 700; border-bottom-color: var(--bar-ink); }
+  .status { margin-left: auto; display: flex; gap: 20px; align-items: center; font-size: 13px; color: var(--bar-ink-2); }
+  .status .caution { color: #F0B65A; font-weight: 600; display: flex; gap: 7px; align-items: center; }
+  .status .caution i { width: 7px; height: 7px; background: #F0B65A; transform: rotate(45deg); }
+
+  main { padding: 30px 40px 0; }
+  h1 { font-stretch: 125%; font-weight: 800; font-size: 38px; letter-spacing: -0.025em; line-height: 1; }
+  .summary { margin-top: 12px; font-size: 15.5px; color: var(--ink-2); display: flex; gap: 22px; align-items: baseline; }
+  .summary b { color: var(--ink); font-weight: 700; }
+  .summary .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 7px; transform: translateY(-1px); }
+
+  .tool { margin-top: 22px; display: flex; gap: 12px; align-items: center; }
+  .filter { display: flex; gap: 4px; background: var(--surface); border-radius: 10px; padding: 3px; box-shadow: inset 0 0 0 1px var(--rule); }
+  .filter button { border: 0; background: none; padding: 7px 13px; border-radius: 7px; font-weight: 600; font-size: 13.5px; color: var(--ink-2); display: flex; align-items: center; gap: 7px; }
+  .filter button i { width: 8px; height: 8px; border-radius: 2px; }
+  .filter button.on { background: var(--ink); color: var(--page); }
+  .search { flex: 0 0 290px; border: 0; box-shadow: inset 0 0 0 1px var(--rule); background: var(--surface); border-radius: 10px; padding: 9px 12px; font-size: 13.5px; color: var(--ink-2); }
+  .tool .right { margin-left: auto; display: flex; gap: 16px; align-items: center; color: var(--ink-2); font-size: 13.5px; }
+  .tool select { border: 0; box-shadow: inset 0 0 0 1px var(--rule); background: var(--surface); border-radius: 10px; padding: 8px 10px; font-size: 13.5px; color: var(--ink); }
+  .tool .plain { border: 0; background: none; text-decoration: underline; text-underline-offset: 3px; }
+  .help { display: flex; gap: 7px; align-items: center; border: 0; background: none; color: var(--ink-2); }
+  kbd { font-family: inherit; font-weight: 700; font-size: 12px; color: var(--ink); background: var(--surface); border: 1px solid #D6DAD5; border-bottom-width: 2px; border-radius: 5px; padding: 1px 7px; }
+
+  .log { margin-top: 18px; background: var(--surface); border-radius: 16px; padding: 4px 0 8px; }
+  .cols, .row { display: grid; grid-template-columns: 124px minmax(0, 1fr) 176px 176px 168px 150px; column-gap: 20px; align-items: center; padding: 0 24px; }
+  .cols { height: 44px; font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+  .group { display: flex; align-items: baseline; gap: 10px; padding: 22px 24px 8px; font-weight: 700; font-size: 14.5px; }
+  .group i { width: 10px; height: 10px; border-radius: 2px; align-self: center; }
+  .group span { font-weight: 500; color: var(--ink-2); font-size: 13.5px; }
+  .group a { margin-left: auto; color: var(--ink-2); font-weight: 600; font-size: 13px; text-underline-offset: 3px; }
+  .group.apply { color: var(--apply); } .group.apply i { background: var(--apply); }
+  .group.cons { color: var(--cons); } .group.cons i { background: var(--cons); }
+  .group.str { color: var(--str); } .group.str i { background: var(--str); }
+
+  .row { min-height: 62px; border-top: 1px solid var(--rule); transition: background-color 180ms var(--ease); }
+  .row.hover { background: var(--hover); }
+  .fit { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; }
+  .fit i { display: block; width: 46px; height: 5px; background: var(--meter-off); border-radius: 3px; position: relative; overflow: hidden; }
+  .fit i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 3px; background: var(--c); }
+  .a { --c: var(--apply); } .c { --c: var(--cons); }
+  .who { padding: 10px 0; min-width: 0; }
+  .who .l1 { display: flex; gap: 10px; align-items: baseline; }
+  .who h3 { font-size: 15.5px; font-weight: 700; }
+  .who .meta { font-size: 13px; color: var(--ink-2); white-space: nowrap; }
+  .who .meta .flag { color: var(--str); font-weight: 600; }
+  .who p { font-size: 14.5px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rate { display: flex; align-items: center; gap: 10px; font-size: 14.5px; }
+  .seg { display: inline-flex; gap: 2px; }
+  .seg i { width: 10px; height: 10px; border-radius: 2px; background: var(--meter-off); }
+  .seg i.on { background: var(--ink); }
+  .seg.low i.on { background: var(--str); }
+  .lvl { font-size: 14.5px; }
+  .lvl small { font-size: 13px; margin-left: 7px; color: var(--apply); font-weight: 600; }
+  .lvl small.hi { color: var(--str); }
+  .act { justify-self: end; }
+  .mark { font-weight: 700; font-size: 13.5px; text-decoration: underline; text-underline-offset: 3px; }
+
+  .row.open { border-top-color: transparent; background: var(--surface); box-shadow: inset 4px 0 0 var(--apply), 0 0 0 1px var(--rule); border-radius: 12px; margin: 6px 12px; padding: 4px 12px 22px 12px; align-items: start; }
+  .row.open > .fit, .row.open > .who, .row.open > .rate, .row.open > .lvl { padding-top: 12px; }
+  .row.open > .who { padding-top: 10px; }
+  .detail { grid-column: 2 / -1; margin-top: 10px; display: grid; grid-template-columns: 1.15fr 1fr auto; gap: 36px; }
+  .detail h4 { font-size: 13px; font-weight: 700; color: var(--apply); margin-bottom: 5px; }
+  .detail .gap h4 { color: var(--str); }
+  .detail p { font-size: 14.5px; line-height: 1.55; max-width: 52ch; }
+  .detail p + p { color: var(--ink-2); margin-top: 3px; }
+  .detail .meta { margin-top: 10px; font-size: 13px; color: var(--ink-2); }
+  .acts { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .btn { border: 0; background: var(--ink); color: #fff; font-weight: 700; font-size: 14px; padding: 10px 16px; border-radius: 10px; display: flex; gap: 12px; align-items: center; }
+  .btn kbd { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+  .acts a { font-size: 13.5px; color: var(--ink); text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/><path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="5" cy="5" r="2.6" fill="currentColor"/></svg>
+      Sextant
+    </div>
+    <nav class="tabs">
+      <a class="on" href="#">Matches <b class="n">95</b></a>
+      <a href="#">To apply <b class="n">0</b></a>
+      <a href="#">Applied <b class="n">8</b></a>
+      <a href="#">Add a role</a>
+      <a href="#">Profile</a>
+    </nav>
+    <div class="status"><span>Scanned today 03:31, 10,501 postings at 50 companies</span><span class="caution"><i></i>2 sources degraded</span></div>
+  </div>
+
+  <main>
+    <h1>Matches</h1>
+    <div class="summary">
+      <span><i class="sw" style="background:var(--apply)"></i><b>28</b> apply now</span>
+      <span><i class="sw" style="background:var(--cons)"></i><b>46</b> consider</span>
+      <span><i class="sw" style="background:var(--str)"></i><b>21</b> stretch</span>
+      <span>Nothing moves until you mark it.</span>
+    </div>
+
+    <div class="tool">
+      <div class="filter">
+        <button class="on">All 95</button>
+        <button><i style="background:var(--apply)"></i>Apply now 28</button>
+        <button><i style="background:var(--cons)"></i>Consider 46</button>
+        <button><i style="background:var(--str)"></i>Stretch 21</button>
+      </div>
+      <input class="search" placeholder="Filter by company or title">
+      <div class="right">
+        <button class="plain">Skipped (160)</button>
+        <label>Sort <select><option>Fit</option></select></label>
+        <button class="help"><kbd>?</kbd>Shortcuts</button>
+      </div>
+    </div>
+
+    <div class="log">
+      <div class="cols"><span>Fit</span><span>Role</span><span>Screening odds</span><span>Career value</span><span>Level</span><span></span></div>
+
+      <div class="group apply"><i></i>Apply now<span>fit 80 and over, 28 roles</span><a href="#">Show all</a></div>
+
+      <div class="row open">
+        <div class="fit n a" style="--w:70%">88<i></i></div>
+        <div class="who"><div class="l1"><h3>Mistral AI</h3><span class="meta">Paris, 3 days ago</span></div><p>Product Operations Manager, DesignOps</p></div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div>
+        <div class="lvl">L5<small>in band</small></div>
+        <div></div>
+        <div class="detail">
+          <div>
+            <h4>Why it fits</h4>
+            <p>They want six to ten years in product operations or programme management. You have eight at Google running product ops and transformation programmes, with two promotions.</p>
+            <p class="meta">Evidence for 4 of 5 requirements. EU role, no visa needed. Model confidence 82%.</p>
+          </div>
+          <div class="gap">
+            <h4>Watch out for</h4>
+            <p>No design-industry background.</p>
+            <p>Lead with operating-model work for creative and product teams.</p>
+          </div>
+          <div class="acts"><button class="btn">Mark to apply <kbd>A</kbd></button><a href="#">Full evidence</a><a href="#">Open posting</a></div>
+        </div>
+      </div>
+
+      <div class="row hover">
+        <div class="fit n a" style="--w:68%">87<i></i></div>
+        <div class="who"><div class="l1"><h3>Anthropic</h3><span class="meta">Dublin or London, 2 days ago</span></div><p>Finance &amp; Strategy, Deal Strategy</p></div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Fair</div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div>
+        <div class="lvl">L5<small>in band</small></div>
+        <div class="act"><span class="mark">Mark to apply</span></div>
+      </div>
+      <div class="row">
+        <div class="fit n a" style="--w:68%">87<i></i></div>
+        <div class="who"><div class="l1"><h3>Airwallex</h3><span class="meta">Singapore, <span class="flag">visa needed</span>, 8 days ago</span></div><p>Manager, Revenue Strategy &amp; Operations, SEA</p></div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i></i></span>Solid</div>
+        <div class="lvl">L5<small>in band</small></div>
+        <div></div>
+      </div>
+      <div class="row">
+        <div class="fit n a" style="--w:65%">86<i></i></div>
+        <div class="who"><div class="l1"><h3>Canva</h3><span class="meta">Sydney, 1 day ago</span></div><p>Strategy &amp; Business Operations Lead</p></div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>Strong</div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div>
+        <div class="lvl">L5<small>in band</small></div>
+        <div></div>
+      </div>
+
+      <div class="group cons"><i></i>Consider<span>fit 70 to 79, 46 roles</span><a href="#">Show all</a></div>
+      <div class="row">
+        <div class="fit n c" style="--w:45%">78<i></i></div>
+        <div class="who"><div class="l1"><h3>Sierra</h3><span class="meta">London, <span class="flag">visa needed</span>, 6 days ago</span></div><p>GTM Operations, Agent Development</p></div>
+        <div class="rate"><span class="seg low"><i class="on"></i><i></i><i></i></span>Long shot</div>
+        <div class="rate"><span class="seg"><i class="on"></i><i class="on"></i><i class="on"></i></span>High</div>
+        <div class="lvl">L6<small class="hi">above band</small></div>
+        <div></div>
+      </div>
+
+      <div class="group str"><i></i>Stretch<span>fit 60 to 69, 21 roles, collapsed</span><a href="#">Show</a></div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sextant · Direction D · Chart v2 (A's look on B's structure)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  /* Colour has one job per hue:
+     blue = water (structure, depth of fit) · magenta = the one thing to act on (navigation aid)
+     green = in your favour · amber = caution · warm land = navigation */
+  body[data-theme="night"] {
+    --ground: #0A1521; --zone-1: #12304A; --zone-2: #0F2134; --raised: #1A3D5C;
+    --ink: #F2F5F7; --ink-2: #A9B8C6; --ink-3: #8EA0B2;
+    --green: #6FDDB5; --amber: #F2B84B; --magenta: #F06BBE; --on-magenta: #1A0B15;
+    --contour: #3E6C8F; --contour-ink: #8FB3CF; --meter-off: #2A4A66;
+    --land: #1C1A15; --land-ink: #EDE6D6; --land-ink-2: #B9B09C; --neat: #2E4A64;
+  }
+  body[data-theme="day"] {
+    --ground: #FBFCFB; --zone-1: #D9EAF0; --zone-2: #EBF4F6; --raised: #FFFFFF;
+    --ink: #18242A; --ink-2: #46555C; --ink-3: #53636A;
+    --green: #18684A; --amber: #8A5300; --magenta: #A32A80; --on-magenta: #FFFFFF;
+    --contour: #6E9DB0; --contour-ink: #3F6D7E; --meter-off: #BCD3DC;
+    --land: #F1E6C8; --land-ink: #18242A; --land-ink-2: #57564A; --neat: #18242A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1440px; height: 900px; overflow: hidden;
+    background: var(--ground); color: var(--ink);
+    font-family: "Schibsted Grotesk", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: grid; grid-template-columns: 240px 1fr;
+  }
+  button, select { font: inherit; color: inherit; }
+  .n { font-feature-settings: "tnum" 1; }
+
+  /* Land: navigation */
+  .rail { background: var(--land); color: var(--land-ink); padding: 36px 26px 30px; display: flex; flex-direction: column; }
+  .mark { display: flex; align-items: center; gap: 10px; }
+  .mark span { font-size: 21px; font-weight: 800; letter-spacing: -0.03em; }
+  .course { margin-top: 52px; position: relative; }
+  .course::before { content: ""; position: absolute; left: 6px; top: 16px; bottom: 16px; border-left: 2px dashed var(--magenta); opacity: .6; }
+  .wp { position: relative; display: grid; grid-template-columns: 14px 1fr auto; gap: 14px; align-items: center; padding: 10px 0; font-size: 15.5px; color: var(--land-ink); text-decoration: none; }
+  .wp i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--land-ink-2); background: var(--land); z-index: 1; }
+  .wp b { font-weight: 500; color: var(--land-ink-2); font-size: 14.5px; }
+  .wp.on { font-weight: 700; }
+  .wp.on i { border-color: var(--magenta); background: var(--magenta); box-shadow: inset 0 0 0 3px var(--land); }
+  .wp.on b { color: var(--magenta); font-weight: 700; }
+  .aux { margin-top: 26px; display: flex; flex-direction: column; }
+  .aux a { font-size: 15.5px; color: var(--land-ink); text-decoration: none; padding: 8px 0 8px 28px; }
+  .survey { margin-top: auto; font-size: 13px; line-height: 1.65; color: var(--land-ink-2); }
+  .survey .caution { color: var(--amber); font-weight: 600; margin-top: 10px; display: flex; gap: 8px; align-items: center; }
+  .survey .caution i { width: 8px; height: 8px; transform: rotate(45deg); background: var(--amber); }
+
+  /* Water */
+  main { position: relative; padding: 50px 52px 0 48px; overflow: hidden; }
+  .neat { position: absolute; top: 14px; left: 24px; right: 24px; height: 7px; border-top: 1px solid var(--neat); border-bottom: 1px solid var(--neat);
+    background: repeating-linear-gradient(90deg, var(--neat) 0 40px, transparent 40px 80px) 0 1px / 100% 3px no-repeat; opacity: .9; }
+  header { display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: 32px; }
+  header h1 { grid-column: 1 / -1; }
+  h1 { font-size: 54px; line-height: 1; font-weight: 700; letter-spacing: -0.045em; white-space: nowrap; }
+  .lede { margin-top: 14px; font-size: 16.5px; color: var(--ink-2); }
+  .tools { display: flex; gap: 20px; align-items: center; font-size: 14px; color: var(--ink-2); padding-bottom: 4px; white-space: nowrap; }
+  .tools button { border: 0; background: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--ink-2) 40%, transparent); }
+  .tools select { border: 0; background: var(--zone-2); border-radius: 9px; padding: 8px 12px; font-size: 14px; color: var(--ink); }
+
+  .chart { margin-top: 28px; }
+  .zone { border-radius: 22px; padding: 8px 14px 10px; }
+  .z1 { background: var(--zone-1); }
+  .z2 { background: var(--zone-2); }
+  .zone-head { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 12px 4px; }
+  .zone-head h2 { font-style: italic; font-weight: 500; font-size: 18px; letter-spacing: -0.01em; }
+  .zone-head a { font-size: 14px; font-weight: 700; color: var(--magenta); text-decoration: none; }
+  .contour { position: relative; height: 32px; }
+  .contour::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1.5px dashed var(--contour); }
+  .contour span { position: absolute; left: 34px; top: 50%; transform: translateY(-50%); background: var(--ground); padding: 0 10px; font-style: italic; font-size: 15px; color: var(--contour-ink); }
+
+  .row { display: grid; grid-template-columns: 80px minmax(0, 1fr) 118px 118px 96px 70px 138px; column-gap: 18px; align-items: start; padding: 14px 12px; border-radius: 16px; }
+  .row.open { background: var(--raised); padding: 20px 18px 22px; margin: 4px 0 6px; }
+  .row.open small, .row.open .where, .row.open .why p + p, .row.open .meta { color: var(--ink-2); }
+  .fit { font-size: 40px; line-height: .9; font-weight: 700; letter-spacing: -0.05em; }
+  .row:not(.open) .fit { font-size: 34px; }
+  .who h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.015em; }
+  .who p { font-size: 15px; color: var(--ink-2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .where { font-size: 13px; color: var(--ink-3); margin-top: 5px; }
+  .where .flag { color: var(--amber); }
+  .sig { padding-top: 2px; }
+  .sig small { display: block; font-size: 12.5px; color: var(--ink-3); margin-bottom: 4px; }
+  .sig em { font-style: normal; font-size: 16.5px; font-weight: 600; }
+  .sig .note { display: block; font-size: 12.5px; color: var(--green); margin-top: 2px; }
+  .sig .note.c { color: var(--amber); }
+  .meter { display: flex; gap: 3px; margin-top: 7px; }
+  .meter i { width: 16px; height: 5px; border-radius: 3px; background: var(--meter-off); }
+  .meter i.on { background: var(--green); }
+  .meter.c i.on { background: var(--amber); }
+  .act { justify-self: end; align-self: center; }
+  .row.open .act { align-self: start; }
+  .btn { border: 0; border-radius: 11px; background: var(--magenta); color: var(--on-magenta); font-weight: 700; font-size: 15px; padding: 11px 18px; cursor: pointer; letter-spacing: -0.01em; }
+  .link { border: 0; background: none; color: var(--magenta); font-weight: 700; font-size: 14.5px; cursor: pointer; }
+
+  .why { grid-column: 2 / -1; margin-top: 18px; display: grid; grid-template-columns: 1.1fr 1fr auto; gap: 34px; }
+  .why h4 { font-size: 13.5px; font-weight: 700; color: var(--green); margin-bottom: 6px; }
+  .why .gap h4 { color: var(--amber); }
+  .why p { font-size: 15px; line-height: 1.55; max-width: 46ch; }
+  .why p + p { margin-top: 4px; }
+  .why .links { display: flex; flex-direction: column; gap: 9px; align-items: flex-end; padding-top: 2px; }
+  .why .links a { font-size: 14px; color: var(--ink); text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+  .meta { grid-column: 2 / -1; margin-top: 14px; font-size: 13px; }
+</style>
+</head>
+<body data-theme="night">
+  <aside class="rail">
+    <div class="mark">
+      <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M3 21 A 18 18 0 0 1 23 9" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M5 5 L 15 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="5" cy="5" r="2.4" fill="currentColor"/>
+      </svg>
+      <span>Sextant</span>
+    </div>
+    <nav class="course" aria-label="Pipeline">
+      <a class="wp on" href="#"><i></i>Matches<b class="n">95</b></a>
+      <a class="wp" href="#"><i></i>To apply<b class="n">0</b></a>
+      <a class="wp" href="#"><i></i>Applied<b class="n">8</b></a>
+    </nav>
+    <nav class="aux"><a href="#">Add a role</a><a href="#">Profile</a></nav>
+    <div class="survey">
+      <p>Scanned today at 03:31</p>
+      <p>10,501 postings</p>
+      <p>at 50 companies</p>
+      <p class="caution"><i></i><span>2 sources degraded</span></p>
+    </div>
+  </aside>
+
+  <main>
+    <div class="neat" aria-hidden="true"></div>
+    <header>
+      <h1>28 roles worth applying to today.</h1>
+      <p class="lede">The deeper the water, the stronger the fit. Nothing moves until you mark it.</p>
+      <div class="tools">
+        <button>Skipped (160)</button>
+        <button>Older than 21 days</button>
+        <select aria-label="Sort"><option>Sort by fit</option></select>
+      </div>
+    </header>
+
+    <section class="chart">
+      <div class="zone z1">
+        <div class="zone-head"><h2>Apply now, fit 80 and over</h2><a href="#">All 28</a></div>
+
+        <div class="row open">
+          <div class="fit n">88</div>
+          <div class="who"><h3>Mistral AI</h3><p>Product Operations Manager, DesignOps</p><div class="where">Paris, Tier 1 employer</div></div>
+          <div class="sig"><small>Screening odds</small><em>Strong</em><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+          <div class="sig"><small>Career value</small><em>High</em><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+          <div class="sig"><small>Level</small><em>L5</em><span class="note">in your band</span></div>
+          <div class="sig"><small>Posted</small><em class="n">3d</em></div>
+          <div class="act"><button class="btn">Mark to apply</button></div>
+          <div class="why">
+            <div><h4>Why it fits</h4><p>They want six to ten years in product operations or programme management. You have eight at Google running product ops and transformation programmes, with two promotions.</p></div>
+            <div class="gap"><h4>Watch out for</h4><p>No design-industry background.</p><p>Lead with operating-model work for creative and product teams.</p></div>
+            <div class="links"><a href="#">Full evidence</a><a href="#">Open posting</a></div>
+          </div>
+          <div class="meta">Feasible: EU role, no visa needed. Model confidence 82%.</div>
+        </div>
+
+        <div class="row">
+          <div class="fit n">87</div>
+          <div class="who"><h3>Anthropic</h3><p>Finance &amp; Strategy, Deal Strategy</p><div class="where">Dublin or London, Tier 1 employer</div></div>
+          <div class="sig"><small>Screening odds</small><em>Fair</em><div class="meter"><i class="on"></i><i class="on"></i><i></i></div></div>
+          <div class="sig"><small>Career value</small><em>High</em><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+          <div class="sig"><small>Level</small><em>L5</em><span class="note">in your band</span></div>
+          <div class="sig"><small>Posted</small><em class="n">2d</em></div>
+          <div class="act"><button class="link">Mark to apply</button></div>
+        </div>
+
+        <div class="row">
+          <div class="fit n">87</div>
+          <div class="who"><h3>Airwallex</h3><p>Manager, Revenue Strategy &amp; Operations, SEA</p><div class="where">Singapore, Tier 1 employer, <span class="flag">sponsorship needed</span></div></div>
+          <div class="sig"><small>Screening odds</small><em>Strong</em><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+          <div class="sig"><small>Career value</small><em>Solid</em><div class="meter"><i class="on"></i><i class="on"></i><i></i></div></div>
+          <div class="sig"><small>Level</small><em>L5</em><span class="note">in your band</span></div>
+          <div class="sig"><small>Posted</small><em class="n">8d</em></div>
+          <div class="act"><button class="link">Mark to apply</button></div>
+        </div>
+      </div>
+
+      <div class="contour" aria-hidden="true"><span>80</span></div>
+
+      <div class="zone z2">
+        <div class="zone-head"><h2>Consider, fit 70 to 79</h2><a href="#">All 46</a></div>
+        <div class="row">
+          <div class="fit n">78</div>
+          <div class="who"><h3>Sierra</h3><p>GTM Operations, Agent Development</p><div class="where">London, Tier 2 employer, <span class="flag">UK sponsorship needed</span></div></div>
+          <div class="sig"><small>Screening odds</small><em>Long shot</em><div class="meter c"><i class="on"></i><i></i><i></i></div></div>
+          <div class="sig"><small>Career value</small><em>High</em><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+          <div class="sig"><small>Level</small><em>L6</em><span class="note c">above band</span></div>
+          <div class="sig"><small>Posted</small><em class="n">6d</em></div>
+          <div class="act"><button class="link">Mark to apply</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const t = new URLSearchParams(location.search).get('theme');
+    if (t) document.body.dataset.theme = t;
+  </script>
+</body>
+</html>
